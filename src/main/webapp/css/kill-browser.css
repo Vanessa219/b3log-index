@@ -1,0 +1,114 @@
+@charset "utf-8";
+/*
+ * init, login and kill IE page style
+ *
+ * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
+ * @version 1.0.0.6, Dec 28, 2011
+*/
+html {
+    height: 100%;
+    overflow: hidden;
+}
+*,html,body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #F3F1E5;
+    color: #4D505D;
+    font-family: \5fae\8f6f\96c5\9ed1;
+    font-size: small;
+    height: 100%;
+}
+
+.clear {
+    background-color: transparent;
+    border: 0px;
+    clear: both;
+    display: block;
+    font-size: 0px;
+    height: 0px;
+    line-height: 0px;
+    overflow: hidden;
+}
+
+.wrapper {
+    height: auto;
+    min-height: 100%;
+    position: relative;
+}
+
+.wrap {
+    border-top: 5px solid #E6E5D9;
+    min-height: 400px;
+}
+
+.content {
+    background: url("/images/zz.jpg") repeat-x scroll center bottom white;
+    border-color: #E6E5D9;
+    border-style: solid solid none;
+    border-width: 1px;
+    margin: 0 auto;
+    position: relative;
+    width: 700px;
+    top: 60px;
+}
+
+.icon {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width:16px;
+    height:16px;
+}
+
+.logo {
+    float: left;
+    padding: 162px 12px 0;
+    width: 153px;
+}
+.main {
+    border-left: 1px solid #E6E5D9;
+    float: right;
+    font-size: 15px;
+    margin: 24px 0;
+    padding: 12px 24px;
+    width: 470px;
+    height: 338px;
+}
+
+.kill {
+    position: absolute;
+    right: 40px;
+    top: 230px;
+}
+
+.main a {
+    text-decoration: none;
+}
+
+.main ul {
+    margin-bottom: 73px;
+}
+
+.main li {
+    margin: 6px 0 6px 16px;
+}
+
+.main p {
+    margin: 12px 0;
+}
+
+.footerWrapper {
+    background-color: #FFFFFF;
+    border-top: 1px solid #E6E5D9;
+    bottom: 0;
+    padding: 12px 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.footerWrapper a {
+    text-decoration: none;
+}

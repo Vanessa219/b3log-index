@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Description: B3log Index.
+    Version: 1.0.0.0, Feb 28, 2011
+    Author: Liang Ding
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.b3log</groupId>
+    <artifactId>index</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1</version>
+    <name>B3log Index</name>
+    <url>http://b3log-index.googlecode.com</url>
+    <description>B3log index.</description>
+    <inceptionYear>2011</inceptionYear>
+
+    <!-- Version -->
+    <properties>
+        <gae.version>1.6.2.1</gae.version>
+        <!-- maven plugin -->
+        <maven-license-plugin.version>1.8.0</maven-license-plugin.version>
+        <maven-checkstyle-plugin.version>2.6</maven-checkstyle-plugin.version>
+        <maven-javancss-plugin.version>2.0</maven-javancss-plugin.version>
+        <maven-gae-plugin.version>0.9.2</maven-gae-plugin.version>
+        <maven-javadoc-plugin.version>2.7</maven-javadoc-plugin.version>
+        <!-- Unit Test -->
+        <testng.version>5.9</testng.version>
+        <!-- -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <organization>
+        <name>B3log</name>
+        <url>http://www.b3log.org</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>DL88250@gmail.com</id>
+            <name>Liang Ding</name>
+            <email>DL88250@gmail.com</email>
+            <url>http://88250.b3log.org</url>
+            <roles>
+                <role>Lead</role>
+                <role>Initial Committer</role>
+            </roles>
+            <organization>B3log</organization>
+            <organizationUrl>http://www.b3log.org</organizationUrl>
+            <timezone>+8</timezone>
+        </developer>
+
+        <developer>
+            <id>LLY219@gmail.com</id>
+            <name>Liyuan Li</name>
+            <email>LLY219@gmail.com</email>
+            <url>http://vanessa.b3log.org</url>
+            <roles>
+                <role>Committer</role>
+            </roles>
+            <organization>B3log</organization>
+            <organizationUrl>http://www.b3log.org</organizationUrl>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>Google Code Issues</system>
+        <url>http://code.google.com/p/b3log-symphony/issues/list</url>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:svn:http://b3log-index.googlecode.com/svn/trunk/b3log-index</connection>
+        <developerConnection>scm:svn:https://b3log-index.googlecode.com/svn/trunk/b3log-index</developerConnection>
+        <url>http://code.google.com/p/b3log-index/source/browse/#svn/trunk/b3log-index</url>
+    </scm>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>javancss-maven-plugin</artifactId>
+                <version>${maven-javancss-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+                <scope>test</scope>
+                <classifier>jdk15</classifier>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <classifier>jdk15</classifier>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>etc/</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <skipTests>false</skipTests>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>net.kindleit</groupId>
+                <artifactId>maven-gae-plugin</artifactId>
+                <version>${maven-gae-plugin.version}</version>
+                <configuration>
+                    <serverId>b3log</serverId>
+                    <sdkDir>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</sdkDir>
+                    <appDir>${project.build.directory}/${project.build.finalName}</appDir>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+        <finalName>b3log-index</finalName>
+    </build>
+
+</project>
+
