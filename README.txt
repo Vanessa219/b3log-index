@@ -1,4 +1,4 @@
-B3log index.
+B3log Index.
 
-Home: http://www.b3log.org
-Project: http://b3log-symphony.googlecode.com
+Home: http://b3log.org
+Project: https://github.com/b3log/b3log-index

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     Description: B3log Index.
-    Version: 1.0.0.0, Feb 28, 2011
+    Version: 1.0.0.1, May 29, 2012
     Author: Liang Ding
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -13,7 +13,7 @@
     <packaging>war</packaging>
     <version>0.0.1</version>
     <name>B3log Index</name>
-    <url>http://b3log-index.googlecode.com</url>
+    <url>https://github.com/b3log/b3log-index</url>
     <description>B3log index.</description>
     <inceptionYear>2011</inceptionYear>
 
@@ -79,9 +79,7 @@
     </issueManagement>
 
     <scm>
-        <connection>scm:svn:http://b3log-index.googlecode.com/svn/trunk/b3log-index</connection>
-        <developerConnection>scm:svn:https://b3log-index.googlecode.com/svn/trunk/b3log-index</developerConnection>
-        <url>http://code.google.com/p/b3log-index/source/browse/#svn/trunk/b3log-index</url>
+        <url>https://github.com/b3log/b3log-index</url>
     </scm>
 
     <reporting>
