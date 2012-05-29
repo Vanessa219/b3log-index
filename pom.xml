@@ -74,8 +74,8 @@
     </developers>
 
     <issueManagement>
-        <system>Google Code Issues</system>
-        <url>http://code.google.com/p/b3log-symphony/issues/list</url>
+        <system>GitHub Issues</system>
+        <url>https://github.com/b3log/b3log-index/issues</url>
     </issueManagement>
 
     <scm>
