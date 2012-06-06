@@ -1513,7 +1513,7 @@ typeof VMM!="undefined"&&typeof VMM.Util=="undefined"&&(VMM.Util={
                 
                 a.getMinutes()===0?
                 b?
-                d=VMM.Util.date.month_abbr[a.getMonth()]:d=VMM.Util.date.month[a.getMonth()]+" "+a.getFullYear():
+                d=VMM.Util.date.month_abbr[a.getMonth()]:d=a.getFullYear() + "-" + VMM.Util.date.month[a.getMonth()]+"-"+a.getDate():
                 a.getHours()===0&&
                 
                 a.getMinutes()===0?

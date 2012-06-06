@@ -17,7 +17,7 @@
  * @fileoverview b3log index js.
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.0.1.1, Apr 2, 2012
+ * @version 1.0.1.2, Jun 6, 2012
  */
 
 var Cookie = {
@@ -149,35 +149,36 @@ var Index = {
     },
     
     _initThemesHTML: function () {
-        var authors = ['Dongxu Wang', 'Vanessa', 'Vanessa', 'Vanessa', 'Lamb', 'Vanessa',
-        'Vanessa', 'Vanessa', 'Dongxu Wang', 'Ansen', 'Ansen', 'Noday', 'Noday'],
-        authorUrls = ['dx.b3log.org', 'vanessa.b3log.org', 'vanessa.b3log.org', 
+        var authors = ['Vanessa', 'Dongxu Wang', 'Vanessa', 'Vanessa', 'Vanessa', 'Lamb', 'Vanessa',
+        'Vanessa', 'Vanessa', 'Dongxu Wang', 'Ansen', 'Ansen', 'Ansen', 'Noday', 'Noday'],
+        authorUrls = ['vanessa.b3log.org', 'dx.b3log.org', 'vanessa.b3log.org', 'vanessa.b3log.org', 
         'vanessa.b3log.org', 'lamb.b3log.org', 'vanessa.b3log.org',
-        'vanessa.b3log.org', 'vanessa.b3log.org', 'dx.b3log.org', 'www.ansen.org',
+        'vanessa.b3log.org', 'vanessa.b3log.org', 'dx.b3log.org', 'www.ansen.org', 'www.ansen.org',
         'www.ansen.me', 'www.noday.net', 'www.noday.net'],
         downloads = [],
-        images = ['mobile', 'andrea', 'classic', 'community', 'favourite', 'tree-house',
-        'i-nove', 'neoease', 'owmx', 'shawn', 'coda', '5stylesm', 'idream'],
+        images = ['ease', 'mobile', 'andrea', 'classic', 'community', 'favourite', 'tree-house',
+        'i-nove', 'neoease', 'owmx', 'dot-b', 'shawn', 'coda', '5stylesm', 'idream'],
         previewHTML = "", 
         previewClass = "",
         scrollHTML = "",
         scrollClass = "selected";
         
-        for (var j = 0; j < 9; j++) {
-            downloads[j] = 'code.google.com/p/b3log-solo/downloads/list';
-        //'code.google.com/p/b3log-solo/downloads/list?can=1&q=%E7%9A%AE%E8%82%A4&colspec=Filename+Summary+Uploaded+Size+DownloadCount+UploadedBy';
+        for (var j = 0; j < 10; j++) {
+            downloads[j] = 'https://github.com/b3log/b3log-solo-skins/zipball/master';
         }
-        
-        downloads[9] = 'code.google.com/p/blogskins/downloads/list';
-        downloads[10] = 'code.google.com/p/blogskins/downloads/list';
-        downloads[11] = 'code.google.com/p/noday/downloads/list';
-        downloads[12] = 'code.google.com/p/noday/downloads/list';
+        downloads[1] = 'https://github.com/b3log/b3log-solo';
+        downloads[3] = 'https://github.com/b3log/b3log-solo';
+        downloads[10] = 'https://github.com/Ansen/BlogSkins';
+        downloads[11] = 'https://github.com/Ansen/BlogSkins';
+        downloads[12] = 'https://github.com/Ansen/BlogSkins';
+        downloads[13] = 'http://code.google.com/p/noday/downloads/list';
+        downloads[14] = 'http://code.google.com/p/noday/downloads/list';
         
         for (var i = 0; i < images.length; i++) {
             previewHTML += '<div class="preview ' + previewClass + '" id="themes' + images[i] 
-            + '"><img src="images/themes/' + images[i] + '.jpg"/>'
+            + '"><img src="images/themes/' + images[i] + '.png"/>'
             + '<span class="info"><a href="http://' + authorUrls[i] + '" target="_blank">' + authors[i] + '</a><br/>'
-            + '<a href="http://' + downloads[i] + '" target="_blank">Download</a>'
+            + '<a href="' + downloads[i] + '" target="_blank">Download</a>'
             + '</span></div>';
             if (i === 0) {
                 previewClass = "none";
@@ -185,7 +186,7 @@ var Index = {
         }
         
         for (var k = 0; k < images.length; k++) {
-            scrollHTML += '<img src="images/themes/' + images[k] + '.jpg" class=' + scrollClass + ' />';
+            scrollHTML += '<img src="images/themes/' + images[k] + '.png" class=' + scrollClass + ' />';
             if (k === 0) {
                 scrollClass = "";
             }
