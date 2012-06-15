@@ -3,17 +3,17 @@
  * b3log index style
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.0.1.1, Apr 8, 2012
+ * @version 1.0.1.2, Jun 15, 2012
 */
 
 /* start reset */
-* {
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dd, dl, ol {
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-image: url("../images/background.jpg");
+    background-image: url("../images/bg.png");
     color: #FFF;
     min-height: 650px;
     min-width: 990px;
@@ -87,11 +87,11 @@ img {
 }
 
 .module {
-    background-color: rgba(139, 135, 126, 0.7);
-    border-radius: 6px 6px 6px 6px;
+    background: none repeat scroll 0 0 padding-box #8B877E;
+    border: 10px solid transparent;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     padding: 10px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-    border: 1px solid #FFF;
 }
 
 .module-title {
@@ -143,7 +143,7 @@ img {
 
 /* start frame */
 #navContent {
-    padding-top: 121px;
+    padding-top: 104px;
 }
 /* end frame */
 
@@ -170,7 +170,7 @@ img {
 }
 
 .nav ul {
-    background: url("../images/header-bg.png") repeat-x scroll -94px 116px;
+    background: url("../images/line-s.png") repeat-x scroll -94px 116px;
     margin-bottom: 5px;
 }
 
@@ -223,17 +223,16 @@ img {
 }
 
 .header {
-    background: url("../images/header-bg.png") repeat-x scroll left 111px rgba(78,75,70, 0.7);
-    border-bottom: 1px solid #FFFFFF;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    background: url("../images/line-b.png") repeat-x scroll left 98px rgba(0, 0, 0, 0.65);
+    box-shadow: 0 -5px 8px -5px rgba(0, 0, 0, 0.65) inset;
+    height: 104px;
     position: fixed;
     width: 100%;
     z-index: 2001;
-    height: 114px;
 }
 
 #sHeader {
-    background: url("../images/header-bg.png") repeat-x scroll -78px 33px rgba(78, 75, 70, 0.7);
+    background: url("../images/line-s.png") repeat-x scroll -78px 33px rgba(0, 0, 0, 0.65);
     border-bottom: 1px solid #FFFFFF;
     border-radius: 0 0 5px 5px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
@@ -244,20 +243,19 @@ img {
 }
 
 .header img {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .header-intro {
     font-size: 20px;
-    margin: 30px 0 30px 40px;
+    margin: 20px 0 0 40px;
     width: 780px;
 }
 /* end nav */
 
 /* start footer */
 .footer {
-    background-color: rgba(78, 75, 70, 0.7);
-    border-bottom: 1px solid #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.65);
     padding: 15px 0;
     text-align: right;
     height: 17px;
@@ -268,17 +266,16 @@ img {
 .intro-list {
     font-size: 16px;
     line-height: 30px;
-    list-style: square;
-    margin: 20px 70px 20px 35px;
+    list-style: square outside none;
+    margin: 10px 60px 10px 40px;
 }
 
 #news {
-    background: url("../images/ajax-loader.gif") no-repeat scroll center center rgba(182, 182, 182, 0.7);
-    line-height: 23px;
-    min-height: 208px;
+    background: url("../images/ajax-loader.gif") no-repeat scroll center center padding-box rgba(182, 182, 182, 0.7);
+    line-height: 21px;
     overflow: hidden;
     padding-left: 20px;
-    width: 415px;
+    width: 409px;
 }
 
 #news span {
@@ -296,8 +293,10 @@ img {
     color: #333;
 }
 
-.intro .line {
-    height: 222px;
+.intro .d4 {
+    border-color: rgba(0, 0, 0, 0.65);
+    padding: 0;
+    width: 491px
 }
 
 .intro div.panel {
@@ -314,8 +313,9 @@ img {
     border-radius: 3px 3px 3px 3px;
     box-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
     float: left;
-    margin: 14px 20px;
+    margin: 14px 15px;
     padding: 3px 10px;
+    white-space: nowrap;
 }
 
 .intro div.bg-1 a:hover {
@@ -335,11 +335,10 @@ img {
 
 /* start part themes */
 #themes .module {
-    left: 84px;
+    left: 80px;
     overflow: hidden;
     position: relative;
     width: 800px;
-    background-color: rgba(182, 182, 182, 0.7);
 }
 
 #themesPreview .preview {
@@ -350,7 +349,7 @@ img {
 }
 
 #themesPreview span.info {
-    background-color: rgba(78, 75, 70, 0.7);
+    background-color: rgba(0, 0, 0, 0.65);
     height: 34px;
     left: 705px;
     padding: 5px 10px;
@@ -389,7 +388,7 @@ img {
 #themesPre, #themesNext {
     background-image: url("../images/pre.png");
     height: 48px;
-    left: 16px;
+    left: 0;
     position: absolute;
     top: -85px;
     width: 48px;
@@ -397,19 +396,19 @@ img {
 }
 
 #themesPre:hover, #themesNext:hover {
-    top:-84px;
+    top: -84px;
 }
 
 #themesNext {
     background-image: url("../images/next.png");
-    left: 926px;
+    left: 949px;
 }
 /* end part themes */
 
 /* start part about */
 .about .line {
     float: left;
-    width: 968px;
+    width: 949px;
 }
 
 .about .module {
@@ -433,9 +432,9 @@ img {
 
 .about .panel {
     float: left;
-    margin-right: 21px;
-    width: 293px;
     height: 99px;
+    margin-right: 20px;
+    width: 276px;
 }
 
 .about .bg-3 {

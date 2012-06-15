@@ -17,12 +17,12 @@
  * @fileoverview scroll top and down.
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.0.0.9, Apr 2, 2012
+ * @version 1.0.1.0, Jun 16 2012
  */
 (function ($) {
     $.fn.extend({
         scrollv: {
-            version: "1.0.0.7",
+            version: "1.0.0.8",
             author: "lly219@gmail.com"
         }
     });
@@ -74,13 +74,9 @@
             var inst = this._getInst(target);
             var id = inst.id,
             settings = inst.settings;
-            var winHeight = document.documentElement.clientHeight,
-            winWidth = document.documentElement.clientWidth;
+            var winHeight = document.documentElement.clientHeight;
             if (winHeight < 650) {
                 winHeight = 650;
-            }
-            if (winWidth < 990) {
-                winWidth = 990;
             }
             
             var $scrollvContentItems = $("#" + id + "Content>div"),

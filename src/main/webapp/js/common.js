@@ -17,7 +17,7 @@
  * @fileoverview b3log index js.
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.0.1.2, Jun 6, 2012
+ * @version 1.0.1.3, Jun 16, 2012
  */
 
 var Cookie = {
@@ -55,12 +55,12 @@ var Index = {
             dataType:"jsonp",
             jsonp: "callback",
             error: function(){
-                $("#news").html("加载新闻列表失败 :-(").css("background-image", "none");
+                $("#news").html("加载新闻列表失败 :-(").css("background", "none repeat scroll 0 0 padding-box rgba(182, 182, 182, 0.7)");
             },
             success: function(data, textStatus){
                 var articles = data.articles;
                 if (0 === articles.length) {
-                    $("#news").html("无新闻").css("background-image", "none");
+                    $("#news").html("无新闻").css("background", "none repeat scroll 0 0 padding-box rgba(182, 182, 182, 0.7)");
                     return;
                 }
                 
@@ -75,7 +75,12 @@ var Index = {
                 }
                 listHTML += "</ul>";
                     
-                $("#news").html(listHTML).css("background-image", "none");
+                if ($.browser.msie && $.browser.version < 9) {
+                    $("#news").html(listHTML).css("background-color", "#C3C3C1");
+                    return;
+                }
+                $("#news").html(listHTML).css("background", "none repeat scroll 0 0 padding-box rgba(182, 182, 182, 0.7)");
+                
             }
         });
     },
@@ -284,7 +289,7 @@ var Index = {
     },
     
     initTimeline: function () {
-        var height = $(window).height() - 80;
+        var height = $(window).height() - 70;
         $(".time-line").height(height);
         $("#timeline").height(height);
         

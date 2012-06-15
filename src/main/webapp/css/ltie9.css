@@ -3,7 +3,7 @@
  * style for lt IE9
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.0.0.4, Apr 8, 2012
+ * @version 1.0.0.5, Jun 16, 2012
 */
 
 #timeline {
@@ -62,7 +62,7 @@
 
 
 #sHeader {
-     background: url("../images/header-bg.png") repeat-x scroll -78px 33px #7B7973;
+    background: url("../images/header-bg.png") repeat-x scroll -78px 33px #7B7973;
 }
 
 
@@ -70,12 +70,16 @@
     background-color: #7B7973;
 }
 
+.module {
+    border: 10px solid #FFF;
+}
+
 #themes .module, #news {
     background-color: #C3C3C1;
 }
 
 .module, #themesPreview span.info {
-   background-color: #A6A49A;
+    background-color: #A6A49A;
 }
 
 .nav {
