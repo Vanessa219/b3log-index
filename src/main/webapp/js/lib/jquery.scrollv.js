@@ -17,12 +17,12 @@
  * @fileoverview scroll top and down.
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.0.1.0, Jun 16 2012
+ * @version 1.0.1.1, Jun 18 2012
  */
 (function ($) {
     $.fn.extend({
         scrollv: {
-            version: "1.0.0.8",
+            version: "1.0.0.9",
             author: "lly219@gmail.com"
         }
     });
@@ -175,7 +175,9 @@
                     top += $(".header").height();
                 }
                 
-                $(window).scrollTop(top);
+                $('html').animate({
+                    "scrollTop": top
+                },'slow');
             });
         },
 
