@@ -1508,25 +1508,7 @@ typeof VMM!="undefined"&&typeof VMM.Util=="undefined"&&(VMM.Util={
         prettyDate:function(a,b,c){
             var d="";
             if(type.of(a)=="date")
-                a.getMonth()===0&&a.getDate()==1&&a.getHours()===0&&a.getMinutes()===0?
-                d=a.getFullYear():a.getDate()<=1&&a.getHours()===0&&
-                
-                a.getMinutes()===0?
-                b?
-                d=VMM.Util.date.month_abbr[a.getMonth()]:d=a.getFullYear() + "-" + VMM.Util.date.month[a.getMonth()]+"-"+a.getDate():
-                a.getHours()===0&&
-                
-                a.getMinutes()===0?
-                b?
-                d=VMM.Util.date.month_abbr[a.getMonth()]+" "+a.getDate():
-                d=a.getFullYear() + "-" + VMM.Util.date.month[a.getMonth()]+"-"+a.getDate():
-                a.getMinutes()===0?
-                b?
-                d=VMM.Util.date.get12HRTime(a):
-                d=VMM.Util.date.get12HRTime(a)+"<br/><small>"+VMM.Util.date.month[a.getMonth()]+" "+a.getDate()+", "+a.getFullYear()+" </small> ":
-                b?
-                d=VMM.Util.date.day[a.getDay()]+", "+VMM.Util.date.month_abbr[a.getMonth()]+" "+a.getDate()+", "+a.getFullYear()+" at "+VMM.Util.date.get12HRTime(a):
-                d=VMM.Util.date.get12HRTime(a)+"<br/><small>"+VMM.Util.date.day[a.getDay()]+", "+VMM.Util.date.month[a.getMonth()]+" "+a.getDate()+", "+a.getFullYear()+" </small> ";
+                d=a.getFullYear() + "-" + VMM.Util.date.month[a.getMonth()]+"-"+a.getDate();
             else{
                 trace("NOT A VALID DATE?");
                 trace(a)
