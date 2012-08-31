@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
     <head>
@@ -565,3 +566,570 @@
         <script type="text/javascript" src="js/common.js" charset="utf-8"></script>
     </body>
 </html>
+=======
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>B3log - 自由•平等•奔放</title>
+        <meta name="keywords" content="GAE,博客,b3log"/>
+        <meta name="description" content="免费的个人独立博客，自由•平等•奔放"/>
+        <link href='http://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css' charset="utf-8" />
+        <link type="text/css" rel="stylesheet" href="css/style.css" charset="utf-8" />
+        <link type="text/css" rel="stylesheet" href="js/lib/timeline/timeline.css" charset="utf-8" />
+        <!--[if lt IE 9]>
+           <link type="text/css" rel="stylesheet" href="css/ltie9.css" charset="utf-8" />
+         <script type="text/javascript">
+            (function () {
+                var element = ['time', 'section', 'article', 'figure', 'figcaption'];
+                for (var i = 0; i < element.length; i++) {
+                    document.createElement(element[i]);
+                }
+            })();
+        </script>
+        <![endif]-->
+        <link rel="icon" type="image/png" href="/favicon.png" />
+    </head>
+    <body>
+        <div class="header">
+            <div class="wrapper">
+                <div class="left">
+                    <a href="http://www.b3log.org" title="B3log"><img src="images/logo.png" title="B3log" /></a>
+                    <br/>
+                    <span id="killBrowser"></span>
+                </div>
+                <div class="header-intro left">
+                    <a rel="nofollow" href="https://github.com/b3log/b3log-solo" target="_blank">B3log Solo</a> 
+                    是款开源（<a rel="nofollow" target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>）的博客程序，不仅可以运行在
+                    <a rel="nofollow" target="_blank" href="http://code.google.com/appengine">Google App Engine</a> 上，也可以运行在标准 Servlet 容器上。
+                    当前最新版本：<a rel="nofollow" target="_blank" href="http://b3log-solo.googlecode.com/files/b3log-solo-gae-0.5.0.zip">0.5.0</a>。 
+                </div>   
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="sHeader">
+            <span style="color: orange;">B</span><span style="color: blue;"><sup>3</sup></span><span style="color: green;">L</span><span style="color: red;">O</span><span style="color: blue;">G</span>
+        </div>
+
+        <div class="nav" id="nav">
+            <ul>
+                <li>
+                    <a href="javascript:void(0)" data-index="0" class="color-1 current">Intro</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" data-index="1"  class="color-3">About</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" data-index="2" class="color-2">Theme</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" data-index="3"  class="color-4">Time Line</a>
+                </li>
+            </ul>
+            <div class="share">
+                <span class="tencent-ico"></span>
+                <span class="sina-ico"></span>
+                <span class="twitter-ico"></span>
+                <span class="google-ico"></span>
+                <span class="clear"></span>
+            </div>
+        </div>
+        <img id="dragImg" src="images/drag.png" />
+
+        <!-- start main -->
+        <div id="navContent" class="wrapper">
+            <!-- start intro -->
+            <div class="intro">
+                <div class="module line">
+                    <ul class="left intro-list">
+                        <li>基于标签的文章分类 </li>
+                        <li>Ping Google Blog Search Engine  </li>
+                        <li>
+                            博客/标签 
+                            <a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/feed" target="_blank">Atom/RSS</a> 
+                            输出
+                        </li>
+                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/sitemap" target="_blank">Sitemap</a> 输出 </li>
+                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/comment_reply" target="_blank">评论回复及邮件提醒</a> </li>
+                        <li>自定义页面 </li>
+                    </ul>
+                    <ul class="left intro-list">
+                        <li>置顶/相关/随机/<a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/External_articles" target="_blank">站外相关</a>文章 </li>
+                        <li>文章、页面永久链接（Permalink） </li>
+                        <li>
+                            文章草稿夹、<a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/article_sign" target="_blank">签名档</a>、<a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/has_update" target="_blank">更新提示</a> 
+                        </li>
+                        <li>缓存管理 </li>
+                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/multi_users" target="_blank">多用户</a> </li>
+                         <li>多语言 </li>
+                    </ul>
+                    <ul class="left intro-list">
+                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/skin" target="_blank">换肤</a> </li>
+                        <li>插件 </li>
+                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/metaweblog" target="_blank">MetaWeblog API</a> </li>
+                        <li><a href="https://github.com/b3log/b3log-solo/wiki/Repair" rel="nofollow" target="_blank">数据备份/恢复</a> </li>
+                        <li><b>高性能，低配额</b></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <div class="left module" id="news">
+                    </div>
+                    <div class="right module d4">
+                        <div class="panel bg-1">
+                            <h2 class="color-1 module-title">Download</h2>
+                            <a class="color-1" target="_blank" href="http://code.google.com/p/b3log-solo/downloads/list">本地下载</a>
+                            <a class="color-1" target="_blank" href="https://github.com/b3log/b3log-solo">源码 (GitHub)</a>
+                        </div>
+                        <div class="panel bg-2">
+                            <h2 class="color-2 module-title">Demo</h2>
+                            &nbsp;<b>演示地址</b>&nbsp;
+                            <a href="http://demo.b3log.org" target="_blank">
+                                http://demo.b3log.org
+                            </a><br/>
+                            &nbsp;<b>用户名</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b3log.solo@gmail.com<br/>
+                            &nbsp;<b>密码</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b3logsolo
+                        </div>
+                        <div class="panel bg-3">
+                            <h2 class="color-3 module-title">Issues & Doc</h2>
+                            &nbsp; <a target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Pre_installation">使用文档</a><br/>
+                            &nbsp; <a target="_blank" href="https://github.com/b3log/b3log-solo/issues?page=1&sort=created&state=open">Issues 列表</a><br/>
+                            &nbsp; <a target="_blank" href="https://github.com/b3log/b3log-solo/issues/new">报告 Bug & 添加特性</a>
+                        </div>
+                        <div class="panel bg-4">
+                            <h2 class="color-4 module-title">Dev</h2>
+                            <a target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Develop_steps">皮肤开发</a>
+                            <a target="_blank" href="https://docs.google.com/document/pub?id=15H7Q3EBo-44v61Xp_epiYY7vK_gPJLkQaT7T1gkE64w&pli=1" style="margin-left: 80px;">插件开发</a>
+                            <a target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Pre_dev" style="margin-left: 130px;">底层开发</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!-- end intro -->
+
+            <!-- start about -->
+            <div class="about">
+                <div class="module line">
+                    <ul>
+                        <li>
+                            <h3><a href="https://github.com/b3log/b3log-solo" target="_blank">B3log Solo</a></h3>
+                            <p>B3log Solo（奏出你的主音！）是款开源（Apache License 2.0）的博客程序，让所有人都能使用上免费的个人独立博客！</p>
+                        </li>
+                        <li>
+                            <h3><a href="https://github.com/b3log/b3log-symphony" target="_blank">B3log Symphony</a></h3>
+                            <p>B3log 社区论坛（第一乐章），敬请期待开放。</p>
+                        </li>
+                        <li>
+                            <h3><a href="https://github.com/b3log/b3log-rhythm" target="_blank">B3log Rhythm</a></h3>
+                            <p>B3log 社区服务器（和谐的节奏），用于管理各个 B3log Solo 客户端。</p>
+                        </li>
+                        <li>
+                            <h3><a href="https://github.com/b3log/b3log-index" target="_blank">B3log Index</a></h3>
+                            <p>就是你现在看到的 B3log 首页了！</p>
+                        </li>
+                        <li>
+                            <h3><a href="https://github.com/b3log/b3log-latke" target="_blank">B3log Latke</a></h3>
+                            <p>B3log 产品的开发框架，目标是支持 xAE 等云平台，支持标准 Servlet 容器，<a href="http://88250.b3log.org/latke-gae-step1" target="_blank">简单易用</a>。</p>
+                        </li>
+                        <li>
+                            <h3><a href="https://github.com/Vanessa219/bowknot" target="_blank">B3log Bowknot</a></h3>
+                            <p>基于 jQuery 的简单插件。目前有：chart, completed, dialog, paginate, table, tabs, upload。</p>
+                        </li>
+                    </ul>
+                    <a class="alipay-me-ico" href="http://me.alipay.com/b3log" target="_blank" title="捐赠">
+                        <img src="images/alipay-me.png" />
+                    </a>
+                    <div class="clear"></div>
+                </div> 
+                <div>
+                    <div class="module panel bg-1">
+                        <h2> 
+                            <a class="module-title color-1" target="_blank" href="https://github.com/b3log/b3log-solo/wiki/About_us">
+                                Team
+                            </a>
+                        </h2>
+                        自由•平等•奔放<br>
+                        成员：
+                        <a href="http://88250.b3log.org" target="_blank">88250</a>,
+                        <a href="http://vanessa.b3log.org" target="_blank">Vanessa</a>,
+                        <a href="http://jiangzezhou.b3log.org/" target="_blank">jboat</a>,
+                        <a href="http://love.b3log.org/" target="_blank">mainlove</a>,
+                        <a href="http://dx.b3log.org/" target="_blank">dx</a>.<br>
+                    </div>
+                    <div class="module panel bg-2">
+                        <h2>
+                            <a class="module-title color-2" target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Join_us">
+                                Join in
+                            </a>                           
+                        </h2>
+                        我们期待您能和 B3log 共同成长。<br/>
+                        让我们成为国内少有的开源项目团队！<br/>
+                        保持斗志、目标一致！<br/>
+                    </div>
+                    <div class="module panel bg-3">
+                        <h2>
+                            <a class="module-title color-3" href="mailto:DL88250@gmail.com?cc=LLY219@gmail.com&subject=B3log联系我们">
+                                Contact
+                            </a>         
+                        </h2>
+                        QQ 群：13139268、173161059 <br>
+                        GitHub: <a href="https://github.com/b3log/b3log-solo/issues/new" target="_blank">New Issue</a>
+                        <br><br>
+                        <span class="right">可到团队各成员的博客进行留言 ^^</span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!-- end about -->
+
+            <!-- start themes -->
+            <div id="themes">
+                <div id="themesPreview" class="module line"></div>
+                <div id="themesScroll" class="module">
+                    <div id="themesScrollPanel"></div>
+                </div>
+                <div class="pos-rel">
+                    <div id="themesPre"></div>
+                    <div id="themesNext"></div>
+                </div>
+            </div>
+            <!-- end themes -->
+
+            <!-- start time line -->
+            <div class="time-line">
+                <div id="timeline">
+                    <section>												
+                        <time>2009,12,9</time>								
+                        <h2>B3log 源起</h2>						
+                        <article>					
+                            <p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="http://88250.b3log.org/articles/2009/12/09/1260370800000.html" target="_blank">88250 的“一分钟想法”</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                        </article>
+                        <figure>						
+                            <img src="images/timeline/getstarted.jpg" />		
+                            <cite>骚年，坚持想法，坚持实践吧！</cite>
+                        </figure>
+                    </section>
+                    <ul>
+                        <li>
+                            <time>2010,8,10</time>								
+                            <h3>B3log 成立</h3>						
+                            <article>						
+                                <p>
+                                    在 <a href="http://88250.b3log.org" target="_blank">D</a>（后端）和
+                                    <a href="http://vanessa.b3log.org" target="_blank">V</a>（前端）不断日积月累的努力下，B3log 终于成立了！
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/logo.png">		
+                                <figcaption>PS 了一晚上才诞生的 logo</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2010,9,9</time>	
+                            <h3>B3log Solo 0.1.0 Preview1</h3>						
+                            <article>										
+                                <p>
+                                    经过一个月的奋斗已经初步成型，终于勇敢的发布了 
+                                    <a href="http://88250.b3log.org/articles/2010/09/08/1283986560000.html" target="_blank">Preview1</a>。
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/favicon-90.png">
+                                <figcaption>面对 favicon，不会 PS 的孩子很受伤 T_T~</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2010,10,13</time>	
+                            <h3>B3log Solo 0.1.0</h3>						
+                            <article>										
+                                <p>
+                                    在不断的修修补补中，
+                                    <a href="http://88250.b3log.org/articles/2010/09/26/1285519372666.html" target="_blank">Preview2</a>后，
+                                    <a href="http://88250.b3log.org/articles/2010/10/13/1286980002007.html" target="_blank">0.1.0</a> 正式版终于发布了。
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/daniel.jpg">
+                                <figcaption>咯咯，我是 88250，大家都叫我
+                                    <a href="http://88250.b3log.org" target="_blank">D</a>。怀揣理想的码农，有时候很 2。
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2010,11,12</time>	
+                            <h3>B3log Solo 0.2.0</h3>						
+                            <article>										
+                                <p>
+                                    在
+                                    <a href="http://88250.b3log.org/articles/2010/10/13/1286980002007.html" target="_blank">0.1.0</a>
+                                    发布13天后，
+                                    <a href="http://88250.b3log.org/articles/2010/10/26/1288097886428.html" target="_blank">0.1.1</a>
+                                    仓促发布（囧），
+                                    当然 <a href="http://88250.b3log.org/articles/2010/10/26/1288097886428.html" target="_blank">0.2.0</a>
+                                    也很囧。
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/vanessa.jpg">
+                                <figcaption>咔咔，我就是神出鬼没的
+                                    <a href="http://vanessa.b3log.org" target="_blank">V</a>
+                                </figcaption>	
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2010,11,15</time>	
+                            <h3>Lamb 加入</h3>						
+                            <article>										
+                                <p>
+                                    有创意才有新意！<br/>
+                                    实现梦想，即使在中国！ 
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/lamb.png">
+                                <figcaption>羔羊是我，我是 <a href="http://lamb.b3log.org" target="_blank">Lamb (L)</a></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2011,2,23</time>	
+                            <h3>DX 加入</h3>						
+                            <article>										
+                                <p>
+                                    负责任务：相信会更多。<br/>
+                                    一句话飘过：Two heads are always better than one. 
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/dx.jpg">
+                                <figcaption>土星盐是我，我是 <a href="http://dx.b3log.org" target="_blank">DX</a></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2011,6,11</time>	
+                            <h3>Jboat 加入</h3>						
+                            <article>										
+                                <p>
+                                    热爱开源，技术菜鸟，很可能是刚好在你之前加入 B3 的那一个。<br/>
+                                    一句话飘过：热爱生活，相信积累。 
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/jboat.jpg">
+                                <figcaption>Smile to see the distance， 我是 <a href="http://jiangzezhou.b3log.org" target="_blank">Jboat (J)</a></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2011,6,17</time>	
+                            <h3>Mainlove 加入</h3>						
+                            <article>										
+                                <p>
+                                    有人为你往前冲是一种幸福，有人为你往后退，是一种奢华的幸福。<br/>
+                                    努力地帮大家写点代码，好让 <a href="http://88250.b3log.org" target="_blank">D</a> & 
+                                    <a href="http://vanessa.b3log.org" target="_blank">V</a> 早日生儿育女。 
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/mainlove.png">
+                                <figcaption>有人为你往前冲是一种幸福，我是 <a href="http://love.b3log.org" target="_blank">Mainlove</a>，叫我 Y 吧！</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2011,8,25</time>	
+                            <h3>B3log solo 0.3.0</h3>						
+                            <article>										
+                                <p>
+                                    走过 <a href="http://88250.b3log.org/b3log-solo-release-021.html" target="_blank">0.2.1</a>、
+                                    <a href="http://88250.b3log.org/b3log-solo-release-025-beta1.html" target="_blank">0.2.5 Beta1</a>、
+                                    <a href="http://88250.b3log.org/b3log-solo-release-025-beta2.html" target="_blank">0.2.5 Beta2</a>、
+                                    <a href="http://88250.b3log.org/b3log-solo-release-025.html" target="_blank">0.2.5</a>、
+                                    <a href="http://88250.b3log.org/b3log-solo-release-026.html" target="_blank">0.2.6</a> 后，
+                                    <a href="http://88250.b3log.org/b3log-solo-release-030.html" target="_blank">0.3.0</a> 总算诞生了。
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/030.jpg">
+                                <figcaption>0.3.0 活跃贡献者的大名<br/>D: 过个生日伤不起啊~~~~</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2011,9,4</time>	
+                            <h3>b3log.org 二级域名开放</h3>						
+                            <article>										
+                                <p>
+                                    亲，还在为不能访问你的博客而苦恼？<br/>
+                                    亲，你不绑定自己的域名？<br/>
+                                    那，亲，不要再犹豫了，<br/>
+                                    <a href="http://88250.b3log.org/apply-b3log-domain.html" target="_blank">
+                                        快来申请 b3log.org 二级域名吧！ 
+                                    </a>
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/20110904.jpg">
+                                <figcaption> 
+                                    亲们，快来申请吧！
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2011,9,26</time>	
+                            <h3>第三方皮肤</h3>						
+                            <article>										
+                                <p>
+                                    不满意现有 B3log Solo 的皮肤？<br/>
+                                    想要和他人分享自己亲手做的皮肤？<br/>
+                                    来
+                                    <a href="https://github.com/b3log/b3log-solo/wiki/Develop_steps" target="_blank">
+                                        开发第三方皮肤
+                                    </a>吧！
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/skiner.jpg">
+                                <figcaption> 
+                                    第三方皮肤贡献者：<br/>
+                                    <a href="http://www.noday.net/" target="_blank">Noday</a>(左上),
+                                    <a href="http://www.ansen.org/" target="_blank">Ansen</a>(右上),
+                                    <a href="http://www.oncereply.me/" target="_blank">答复</a>(左下),
+                                    <a href="http://www.gesong.org/" target="_blank">Chevo</a>(右下)
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2011,10,14</time>	
+                            <h3>收到第一笔捐赠</h3>						
+                            <article>										
+                                <p>
+                                    长期维护一个开源项目的确是不容易的。在一个团队都为这个项目努力的时候，更应该坚持下去。<br/>
+                                    期待更多的童鞋加入 B3log 团队，一起推进中国开源软件的发展，方便他人。
+                                    <a href="http://me.alipay.com/b3log" target="_blank"><img src="images/alipay-me.png"></a>
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/ly.jpg">
+                                <figcaption>首位捐赠者，他是 <a href="http://www.lyzane.com" target="_blank">胸毛</a></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2012,2,19</time>	
+                            <h3>0.4.0</h3>						
+                            <article>										
+                                <p>
+                                    这一年团队成员大都换了工作，比较奔波。虽然发布了 
+                                    <a href="http://88250.b3log.org/b3log-solo-release-031.html" target="_blank">0.3.1</a>、
+                                    <a href="http://88250.b3log.org/b3log-solo-release-035.html" target="_blank">0.3.5</a>、
+                                    <a href="http://88250.b3log.org/b3log-solo-release-040-beta1.html" target="_blank">0.4.0 Beta1</a>、
+                                    <a href="http://88250.b3log.org/b3log-solo-release-040-beta2.html" target="_blank">0.4.0 Beta2</a>，
+                                    但
+                                    <a href="http://88250.b3log.org/b3log-solo-release-040-final.html" target="_blank">0.4.0</a>
+                                    一直拖到现在，在此只能说声抱歉！
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/v20120219.jpg">
+                                <figcaption>今天也是 <a href="http://dx.b3log.org" target="_blank">V</a> 的生日</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2012,3,4</time>	
+                            <h3>DVLY 上海一夜</h3>						
+                            <article>										
+                                <p>
+                                    有缘千里来相会，无缘对面不相识。<br/>
+                                    在阴雨连绵的三月，团队成员 <a href="http://88250.b3log.org" target="_blank">D</a>、<a href="http://vanessa.b3log.org" target="_blank">V</a>、
+                                    <a href="http://lamb.b3log.org" target="_blank">L</a>、<a href="http://love.b3log.org" target="_blank">Y</a> 终于在上海会面了。
+                                    <a href="http://dx.b3log.org" target="_blank">DX</a>、<a href="http://jiangzezhou.b3log.org" target="_blank">J</a> 就差你们俩了！
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/20120304.png">
+                                <figcaption>地铁离别照</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2012,5,31</time>	
+                            <h3>项目已经迁往 <a href="https://github.com/b3log/b3log-solo" target="_blank">GitHub</a></h3>						
+                            <article>										
+                                <p>
+                                    经过 <a href="http://88250.b3log.org" target="_blank">D</a>
+                                    一次、二次的尝试，终于在 <a href="http://88250.b3log.org" target="_blank">V</a>
+                                    第三次尝试的带动下，<a href="https://github.com/b3log" target="_blank">项目</a>及<a href="https://github.com/b3log/b3log-solo/wiki" target="_blank">文档</a>顺利迁往 
+                                    GitHub，欢迎大家围观。
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/move-github.png">
+                                <figcaption>终于抵达 GitHub</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2012,7,2</time>	
+                            <h3>0.4.6</h3>						
+                            <article>										
+                                <p>
+                                    续
+                                    <a href="http://88250.b3log.org/b3log-solo-release-041-final.html" target="_blank">0.4.1</a> 本地版推出后，
+                                    <a href="http://vanessa.b3log.org/b3log-solo-release-045-final" target="_blank">0.4.5</a> 也毫不示弱的在六一发布了。<br/>
+                                    当然 <a href="http://88250.b3log.org/b3log-solo-release-046-final.html" target="_blank">0.4.6</a> 在一个月内修完 bug 也发布了 ^^
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/v041.png">
+                                <figcaption>NOSQL & MYSQL</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2012,8,26</time>	
+                            <h3>0.5.0</h3>						
+                            <article>										
+                                <p>
+                                    原本 <a href="https://github.com/b3log/b3log-symphony" target="_blank">B3log Symphony</a> 要和
+                                    <a href="http://vanessa.b3log.org/b3log-solo-0.5.0-release" target="_blank">B3log Solo 0.5.0</a>
+                                    一起发布的，只因为对游戏的恋战，对彼此失去的信任。。。<br/>
+                                    不过，没关系，我们会在沉沦和颓废中站起来的，在明年给大家和自己一个惊喜！
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/lol.png">
+                                <figcaption>责任重大，游戏需适可而止</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <time>2013,1,1</time>	
+                            <h3>0.5.5 & Symphony</h3>					
+                            <article>										
+                                <p>
+                                    我有一个小秘密，小秘密，就要告诉你——
+                                    <a href="https://github.com/b3log/b3log-solo/issues" target="_blank">0.5.5 计划</a>，
+                                    What is <a href="https://github.com/b3log/b3log-symphony" target="_blank">Symphony</a>.
+                                </p>
+                            </article>
+                            <figure>						
+                                <img src="images/timeline/question.png">
+                                <figcaption>未知总会带来惊喜</figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end time line -->
+        </div>
+        <!-- end main -->
+
+        <div class="footer">
+            <div class="wrapper">
+                © 2010-2012 B3log.ORG
+            </div>
+        </div>
+        <script type="text/javascript" src="js/lib/jquery.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/lib/jquery.scrollv.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/lib/timeline/timeline-min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/common.js" charset="utf-8"></script>
+    </body>
+</html>
+>>>>>>> 5e3beb6c4e06a39f664fcd76eb9542d8262bcd8e
