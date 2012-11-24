@@ -17,7 +17,8 @@
  * @fileoverview b3log index js.
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.0.1.3, Jun 16, 2012
+ * @author <a href="mailto:DL88250@gmail.com">Liang Ding</a>
+ * @version 1.0.1.4, Nov 24, 2012
  */
 
 var Cookie = {
@@ -50,7 +51,7 @@ var Cookie = {
 var Index = {
     getNews: function () {
         $.ajax({
-            url: "http://symphony.b3log.org:80/get-news",
+            url: "http://symphony.b3log.org/apis/news",
             type: "GET",
             dataType:"jsonp",
             jsonp: "callback",
@@ -68,7 +69,7 @@ var Index = {
                 for (var i = 0; i < articles.length && i < 9; i++) {
                     var article = articles[i];
                     var articleLiHtml = "<li>"
-                    + "<span>[" + Index._getDate(article.articleCreateDate) 
+                    + "<span>[" + Index._getDate(article.articleCreateTime) 
                     + "]</span><a target='_blank' href='" + article.articlePermalink + "'>"
                     +  article.articleTitle + "</a></li>"
                     listHTML += articleLiHtml
