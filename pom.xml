@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     Description: B3log Index.
-    Version: 1.0.0.1, May 29, 2012
+    Version: 1.0.0.2, Nov 26, 2012
     Author: Liang Ding
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -19,12 +19,12 @@
 
     <!-- Version -->
     <properties>
-        <gae.version>1.6.2.1</gae.version>
+        <gae.version>1.7.2</gae.version>
         <!-- maven plugin -->
         <maven-license-plugin.version>1.8.0</maven-license-plugin.version>
         <maven-checkstyle-plugin.version>2.6</maven-checkstyle-plugin.version>
         <maven-javancss-plugin.version>2.0</maven-javancss-plugin.version>
-        <maven-gae-plugin.version>0.9.2</maven-gae-plugin.version>
+        <maven-gae-plugin.version>0.9.4</maven-gae-plugin.version>
         <maven-javadoc-plugin.version>2.7</maven-javadoc-plugin.version>
         <!-- Unit Test -->
         <testng.version>5.9</testng.version>
