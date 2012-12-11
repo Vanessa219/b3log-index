@@ -302,7 +302,7 @@ var Index = {
     },
     
     share: function () {
-        var title = encodeURIComponent("B3log - 免费的个人独立博客，自由•平等•奔放"),
+        var title = encodeURIComponent("B3log - 平等•自由•奔放"),
         url = "http://www.b3log.org",
         pic = "http://www.b3log.org/images/logo.png";
         
