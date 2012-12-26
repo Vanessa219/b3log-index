@@ -56,12 +56,12 @@ var Index = {
             dataType:"jsonp",
             jsonp: "callback",
             error: function(){
-                $("#news").html("加载新闻列表失败 :-(").css("background", "none repeat scroll 0 0 padding-box rgba(182, 182, 182, 0.7)");
+                $(".news .module-content").html("加载新闻列表失败 :-(").css("background-image", "none");
             },
             success: function(data, textStatus){
                 var articles = data.articles;
                 if (0 === articles.length) {
-                    $("#news").html("无新闻").css("background", "none repeat scroll 0 0 padding-box rgba(182, 182, 182, 0.7)");
+                    $(".news .module-content").html("无新闻").css("background-image", "none");
                     return;
                 }
                 
@@ -69,18 +69,14 @@ var Index = {
                 for (var i = 0; i < articles.length && i < 9; i++) {
                     var article = articles[i];
                     var articleLiHtml = "<li>"
-                    + "<span>[" + Index._getDate(article.articleCreateTime) 
-                    + "]</span><a target='_blank' href='" + article.articlePermalink + "'>"
-                    +  article.articleTitle + "</a></li>"
+                    + "<a target='_blank' href='" + article.articlePermalink + "'>"
+                    +  article.articleTitle + "</a>&nbsp;<span>[" + Index._getDate(article.articleCreateTime) 
+                    + "]</span></li>"
                     listHTML += articleLiHtml
                 }
                 listHTML += "</ul>";
                     
-                if ($.browser.msie && $.browser.version < 9) {
-                    $("#news").html(listHTML).css("background-color", "#C3C3C1");
-                    return;
-                }
-                $("#news").html(listHTML).css("background", "none repeat scroll 0 0 padding-box rgba(182, 182, 182, 0.7)");
+                $(".news .module-content").html(listHTML).css("background-image", "none");
                 
             }
         });
@@ -88,7 +84,7 @@ var Index = {
     
     _getDate: function (a) {
         var c=new Date(a);
-        var d=c.getFullYear().toString(),
+        var d=c.getFullYear().toString().substr(2, 2),
         e=c.getMonth()+1,
         f=c.getDate();
         
@@ -105,42 +101,10 @@ var Index = {
     initThemes: function () {
         Index._initThemesHTML();
         
-        
         var imageLength =  $("#themesScroll img").length,
-        imageWidth = 164,
-        groupLength = 5;
+        imageWidth = 122;
         var $themesScrollPanel = $("#themesScrollPanel");
         $themesScrollPanel.width(imageWidth * imageLength);
-        
-        $themesScrollPanel.data("current", 0);
-        
-        $("#themesPre").click(function () {
-            var current = $themesScrollPanel.data("current"); 
-            if (current <= 0) {
-                return;
-            }
-            current--;
-            
-            $themesScrollPanel.data("current", current);
-            $themesScrollPanel.animate({
-                "left": -(imageWidth * groupLength) * current +  "px"
-            }, 1000);
-        });
-        
-        
-        $("#themesNext").click(function () {
-            var current = $themesScrollPanel.data("current"); 
-            if (current >= Math.ceil(imageLength / groupLength) - 1) {
-                return;
-            }
-            current++;
-            
-            $themesScrollPanel.data("current", current);
-            $themesScrollPanel.animate({
-                "left": -(imageWidth * groupLength) * current + "px"
-            }, 1000);
-        });
-        
         
         $themesScrollPanel.find("img").click(function () {
             var $it = $(this);
@@ -151,6 +115,24 @@ var Index = {
             
             $themesScrollPanel.find("img").removeClass();
             $it.addClass("selected");
+            
+            if ($it.data("index") === 7 || $it.data("index") === 12) {
+                $themesScrollPanel.animate({
+                    "left": "-727px"
+                }, 1000);
+            } 
+            
+            if ($it.data("index") === 6) {
+                $themesScrollPanel.animate({
+                    "left": "6px"
+                }, 1000);
+            } 
+            
+            if ($it.data("index") === 13) {
+                $themesScrollPanel.animate({
+                    "left": "-1459px"
+                }, 1000);
+            } 
         });
     },
     
@@ -172,13 +154,13 @@ var Index = {
         for (var j = 0; j < 10; j++) {
             downloads[j] = 'https://github.com/b3log/b3log-solo-skins/zipball/master';
         }
+        downloads[0] = 'https://github.com/b3log/b3log-solo';
         downloads[1] = 'https://github.com/b3log/b3log-solo';
-        downloads[3] = 'https://github.com/b3log/b3log-solo';
         downloads[10] = 'https://github.com/Ansen/BlogSkins';
         downloads[11] = 'https://github.com/Ansen/BlogSkins';
         downloads[12] = 'https://github.com/Ansen/BlogSkins';
-        downloads[13] = 'http://code.google.com/p/noday/downloads/list';
-        downloads[14] = 'http://code.google.com/p/noday/downloads/list';
+        downloads[13] = 'https://github.com/noday/b3log-solo-third-skins';
+        downloads[14] = 'https://github.com/noday/b3log-solo-third-skins';
         
         for (var i = 0; i < images.length; i++) {
             previewHTML += '<div class="preview ' + previewClass + '" id="themes' + images[i] 
@@ -192,7 +174,8 @@ var Index = {
         }
         
         for (var k = 0; k < images.length; k++) {
-            scrollHTML += '<img src="images/themes/' + images[k] + '.png" class=' + scrollClass + ' />';
+            scrollHTML += '<img data-index="' + k 
+            + '" src="images/themes/' + images[k] + '.png" class=' + scrollClass + ' />';
             if (k === 0) {
                 scrollClass = "";
             }
@@ -216,16 +199,10 @@ var Index = {
         } else {
             top = Cookie.readCookie("top");
             left = Cookie.readCookie("left");
-            $("#dragImg").hide();
         }
        
         $nav.css({
             "top": top,
-            "left": left
-        });
-        
-        $("#dragImg").css({
-            "top": parseInt(top) - 12 + "px",
             "left": left
         });
         
@@ -267,8 +244,6 @@ var Index = {
                 }
                 nav.style.left = positionX + "px";
                 nav.style.top = positionY + "px";
-                
-                $("#dragImg").hide();
             };
 
             _document.onmouseup = function() {
@@ -294,7 +269,7 @@ var Index = {
         $(".time-line").height(height);
         $("#timeline").height(height);
         
-        if ($.browser.msie && $.browser.version < 9) {
+        if ($.browser.msie && parseInt($.browser.version) < 8) {
             return;
         }
         var timeline = new VMM.Timeline();
@@ -320,53 +295,74 @@ var Index = {
         });
     },
     
-    initHeader: function () {
-        var item = $("#nav a");
-        
-        $("#sHeader").mouseover(function () {
-            $(".header").show();
-            $("#sHeader").hide();
-        });
-    
-        $(".header").mouseout(function () {
-            if (item[2].className.indexOf("current") > -1
-                || item[3].className.indexOf("current") > -1) {
-                $(".header").hide();
-                $("#sHeader").show();
-            }
-        });
-        
-        $(".header").mouseover(function () {
-            if (item[2].className.indexOf("current") > -1
-                || item[3].className.indexOf("current") > -1) {
-                $(".header").show();
-                $("#sHeader").hide();
-            }
-        });
-    },
-    
     killBrowser: function () {
         if ($.browser.msie) {
-            if ($.browser.version < 7) {
+            var version = parseInt($.browser.version);
+            if (version < 7) {
                 window.location = "/kill-browser.html";
                 return;
             }
             
-            if ($.browser.version < 9) {
+            if (version < 9) {
                 $("#killBrowser").html("请使用<a href='/kill-browser.html' target='_blank'>高级浏览器</a> ^^");
             } 
         }
-         
+    },
+    
+    initNav: function () {
+        var $navA = $("#nav li > a");
+        
+        var $scrollvContentItems = $("body > .wrapper > div"),
+        space = [[0, 0]];
+        $scrollvContentItems.each(function (i) {
+            space.push([space[i][1], this.offsetTop + $(this).height()*3/5 - $(".header").height()]);
+        });
+        space.splice(0, 1);
+
+        $(window).scroll(function () {
+            var top = document.documentElement.scrollTop || document.body.scrollTop,
+            current = 0;
+            for (var j = 0; j < space.length; j++) {
+                if (top > space[space.length - 1][0]) {
+                    current = space.length - 1;
+                    break;
+                }
+                if (top >= space[j][0] && top < space[j][1]) {
+                    current = j;
+                    break;
+                }
+            }
+            $navA.removeClass("current");
+            $($navA.get(current)).addClass("current");
+        });
+        $(window).scroll(); 
+        
+        $navA.click(function () {
+            $navA.removeClass("current");
+            $(this).addClass("current");
+            
+            var currentContent = $("body > .wrapper > div").get($(this).data("index")),
+            top = currentContent.offsetTop - $(".header").height() - 30;
+            
+            if ($.browser.webkit) {
+                $('body').animate({
+                    "scrollTop": top
+                },'slow');
+            } else {
+                $('html').animate({
+                    "scrollTop": top
+                },'slow');
+            } 
+        });
     }
 };
 
 (function () {
     Index.killBrowser();
-    Index.initHeader();
     Index.initThemes();
+    Index.initNav();
     Index.share();
     Index.getNews();
     Index.moveNav("nav");
     Index.initTimeline();
-    $("#nav").scrollv();
 })();

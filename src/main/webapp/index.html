@@ -9,7 +9,6 @@
         <link type="text/css" rel="stylesheet" href="css/style.css" charset="utf-8" />
         <link type="text/css" rel="stylesheet" href="js/lib/timeline/timeline.css" charset="utf-8" />
         <!--[if lt IE 9]>
-           <link type="text/css" rel="stylesheet" href="css/ltie9.css" charset="utf-8" />
          <script type="text/javascript">
             (function () {
                 var element = ['time', 'section', 'article', 'figure', 'figcaption'];
@@ -25,11 +24,12 @@
         <div class="header">
             <div class="wrapper">
                 <div class="left">
-                    <a href="http://www.b3log.org" title="B3log"><img src="images/logo.png" title="B3log" /></a>
-                    <br/>
+                    <h1>
+                        <a href="http://www.b3log.org" title="B3log">B3log</a>
+                    </h1>
                     <span id="killBrowser"></span>
                 </div>
-                <div class="header-intro left">
+                <div class="header-intro">
                     <a rel="nofollow" href="https://github.com/b3log/b3log-solo" target="_blank">B3log Solo</a> 
                     是款开源的博客程序，不仅可以运行在
                     <a rel="nofollow" target="_blank" href="http://code.google.com/appengine">GAE</a>、
@@ -39,14 +39,11 @@
                 <div class="clear"></div>
             </div>
         </div>
-        <div id="sHeader">
-            <span style="color: orange;">B</span><span style="color: blue;"><sup>3</sup></span><span style="color: green;">L</span><span style="color: red;">O</span><span style="color: blue;">G</span>
-        </div>
 
         <div class="nav" id="nav">
             <ul>
                 <li>
-                    <a href="javascript:void(0)" data-index="0" class="color-1 current">Intro</a>
+                    <a href="javascript:void(0)" data-index="0" class="color-1">Intro</a>
                 </li>
                 <li>
                     <a href="javascript:void(0)" data-index="1"  class="color-3">About</a>
@@ -66,170 +63,208 @@
                 <span class="clear"></span>
             </div>
         </div>
-        <img id="dragImg" src="images/drag.png" />
 
         <!-- start main -->
-        <div id="navContent" class="wrapper">
+        <div class="wrapper" style="padding-top: 71px;">
             <!-- start intro -->
             <div class="intro">
-                <div class="module line">
-                    <ul class="left intro-list">
-                        <li>基于标签的文章分类 </li>
-                        <li>Ping Google Blog Search Engine  </li>
-                        <li>
-                            博客/标签 
-                            <a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/feed" target="_blank">Atom/RSS</a> 
-                            输出
-                        </li>
-                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/sitemap" target="_blank">Sitemap</a> 输出 </li>
-                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/comment_reply" target="_blank">评论回复及邮件提醒</a> </li>
-                        <li>自定义页面 </li>
-                    </ul>
-                    <ul class="left intro-list">
-                        <li>置顶/相关/随机/<a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/External_articles" target="_blank">站外相关</a>文章 </li>
-                        <li>文章、页面永久链接（Permalink） </li>
-                        <li>
-                            文章草稿夹、<a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/article_sign" target="_blank">签名档</a>、<a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/has_update" target="_blank">更新提示</a> 
-                        </li>
-                        <li>缓存管理 </li>
-                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/multi_users" target="_blank">多用户</a> </li>
-                        <li>多语言 </li>
-                    </ul>
-                    <ul class="left intro-list">
-                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/skin" target="_blank">换肤</a> </li>
-                        <li>插件 </li>
-                        <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/metaweblog" target="_blank">MetaWeblog API</a> </li>
-                        <li><a href="https://github.com/b3log/b3log-solo/wiki/Repair" rel="nofollow" target="_blank">数据备份/恢复</a> </li>
-                        <li><b>高性能，低配额</b></li>
-                    </ul>
-                    <div class="clear"></div>
+                <div class="module-wrapper news right">
+                    <div class="module-title" style="width: 392px;">B3log 动态</div>
+                    <div class="module-content"></div>
                 </div>
-                <div>
-                    <div class="left module" id="news">
+                <div class="left d4 module-wrapper">
+                    <div class="panel bg-1">
+                        <h2 class="color-1">Download</h2>
+                        <a class="color-1" target="_blank" href="https://github.com/b3log/b3log-solo/downloads">本地下载</a>
+                        <a class="color-1" target="_blank" href="https://github.com/b3log/b3log-solo">源码 (GitHub)</a>
                     </div>
-                    <div class="right module d4">
-                        <div class="panel bg-1">
-                            <h2 class="color-1 module-title">Download</h2>
-                            <a class="color-1" target="_blank" href="https://github.com/b3log/b3log-solo/downloads">本地下载</a>
-                            <a class="color-1" target="_blank" href="https://github.com/b3log/b3log-solo">源码 (GitHub)</a>
-                        </div>
-                        <div class="panel bg-2">
-                            <h2 class="color-2 module-title">Demo</h2>
-                            &nbsp;<b>演示地址</b>&nbsp;
-                            <a href="http://demo.b3log.org" target="_blank">
-                                http://demo.b3log.org
-                            </a><br/>
-                            &nbsp;<b>用户名</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b3log.solo@gmail.com<br/>
-                            &nbsp;<b>密码</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b3logsolo
-                        </div>
-                        <div class="panel bg-3">
-                            <h2 class="color-3 module-title">Issues & Doc</h2>
-                            &nbsp; <a target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Pre_installation">使用文档</a><br/>
-                            &nbsp; <a target="_blank" href="https://github.com/b3log/b3log-solo/issues?page=1&sort=created&state=open">Issues 列表</a><br/>
-                            &nbsp; <a target="_blank" href="https://github.com/b3log/b3log-solo/issues/new">报告 Bug & 添加特性</a>
-                        </div>
-                        <div class="panel bg-4">
-                            <h2 class="color-4 module-title">Dev</h2>
-                            <a target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Develop_steps">皮肤开发</a>
-                            <a target="_blank" href="https://docs.google.com/document/pub?id=15H7Q3EBo-44v61Xp_epiYY7vK_gPJLkQaT7T1gkE64w&pli=1" style="margin-left: 80px;">插件开发</a>
-                            <a target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Pre_dev" style="margin-left: 130px;">底层开发</a>
-                        </div>
+                    <div class="panel bg-2">
+                        <h2 class="color-2">Demo</h2>
+                        <table cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th align="left" width="80">
+                                    &nbsp; &nbsp;演示地址
+                                </th>
+                                <td>
+                                    <a href="http://demo.b3log.org" target="_blank">
+                                        http://demo.b3log.org
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th align="left">
+                                    &nbsp; &nbsp;用户名
+                                </th>
+                                <td>
+                                    b3log.solo@gmail.com
+                                </td>
+                            </tr>
+                            <tr>
+                                <th align="left">
+                                    &nbsp; &nbsp;密码
+                                </th>
+                                <td>
+                                    b3logsolo
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="clear"></div>
+                    <div class="panel bg-3">
+                        <h2 class="color-3">Issues & Doc</h2>
+                        &nbsp; &nbsp; <a target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Pre_installation">使用文档</a><br/>
+                        &nbsp; &nbsp; <a target="_blank" href="https://github.com/b3log/b3log-solo/issues?page=1&sort=created&state=open">Issues 列表</a><br/>
+                        &nbsp; &nbsp; <a target="_blank" href="https://github.com/b3log/b3log-solo/issues/new">报告 Bug & 添加特性</a>
+                    </div>
+                    <div class="panel bg-4">
+                        <h2 class="color-4">Dev</h2>
+                        <a target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Develop_steps">皮肤开发</a>
+                        <a target="_blank" href="https://docs.google.com/document/pub?id=15H7Q3EBo-44v61Xp_epiYY7vK_gPJLkQaT7T1gkE64w&pli=1" style="margin-left: 95px;">插件开发</a>
+                        <a target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Pre_dev" style="margin-left: 145px;">底层开发</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="module-wrapper intro-list">
+                    <div class="module-title">
+                        <span class="left">B3log Solo 特性</span>
+                        <a target="_blank" href="http://symphony.b3log.org/register" class="color-1 right">加入社区（Symphony）</a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="module-content">
+                        <ul class="left">
+                            <li>基于标签的文章分类 </li>
+                            <li>Ping Google Blog Search Engine  </li>
+                            <li>
+                                博客/标签 
+                                <a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/feed" target="_blank">Atom/RSS</a> 
+                                输出
+                            </li>
+                            <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/sitemap" target="_blank">Sitemap</a> 输出 </li>
+                            <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/comment_reply" target="_blank">评论回复及邮件提醒</a> </li>
+                            <li>自定义页面 </li>
+                        </ul>
+                        <ul class="left">
+                            <li>置顶/相关/随机/<a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/External_articles" target="_blank">站外相关</a>文章 </li>
+                            <li>文章、页面永久链接（Permalink） </li>
+                            <li>
+                                文章草稿夹、<a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/article_sign" target="_blank">签名档</a>、<a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/has_update" target="_blank">更新提示</a> 
+                            </li>
+                            <li>缓存管理 </li>
+                            <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/multi_users" target="_blank">多用户</a> </li>
+                            <li>多语言 </li>
+                        </ul>
+                        <ul class="left">
+                            <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/skin" target="_blank">换肤</a> </li>
+                            <li>插件 </li>
+                            <li><a rel="nofollow" href="https://github.com/b3log/b3log-solo/wiki/metaweblog" target="_blank">MetaWeblog API</a> </li>
+                            <li><a href="https://github.com/b3log/b3log-solo/wiki/Repair" rel="nofollow" target="_blank">数据备份/恢复</a> </li>
+                            <li><b>高性能，低配额</b></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
                 </div>
             </div>
             <!-- end intro -->
 
             <!-- start about -->
             <div class="about">
-                <div class="module line">
-                    <ul>
-                        <li>
-                            <h3><a href="https://github.com/b3log/b3log-solo" target="_blank">B3log Solo</a></h3>
-                            <p>B3log Solo（奏出你的主音！）是款开源博客程序，让所有人都能用上免费的个人独立博客！</p>
-                        </li>
-                        <li>
-                            <h3><a href="https://github.com/b3log/b3log-symphony" target="_blank">B3log Symphony</a></h3>
-                            <p>B3log 社区论坛（第一乐章），现已开放<a href='http://symphony.b3log.org/register'>注册</a>。</p>
-                        </li>
-                        <li>
-                            <h3><a href="https://github.com/b3log/b3log-rhythm" target="_blank">B3log Rhythm</a></h3>
-                            <p>B3log 社区服务器（和谐的节奏），用于协调各内容源。</p>
-                        </li>
-                        <li>
-                            <h3><a href="https://github.com/b3log/b3log-index" target="_blank">B3log Index</a></h3>
-                            <p>就是你现在看到的 B3log 首页了！</p>
-                        </li>
-                        <li>
-                            <h3><a href="https://github.com/b3log/b3log-latke" target="_blank">B3log Latke</a></h3>
-                            <p>B3log 产品的开发框架，支持 GAE、BAE 等云平台，也支持标准 Servlet 容器，<a href="http://88250.b3log.org/tags/Latke" target="_blank">简单易用</a>。</p>
-                        </li>
-                        <li>
-                            <h3><a href="https://github.com/Vanessa219/bowknot" target="_blank">B3log Bowknot</a></h3>
-                            <p>基于 jQuery 的简单插件。目前有：chart, completed, dialog, paginate, table, tabs, upload。</p>
-                        </li>
-                    </ul>
-                    <a class="alipay-me-ico" href="http://me.alipay.com/b3log" target="_blank" title="捐赠">
-                        <img src="images/alipay-me.png" />
-                    </a>
-                    <div class="clear"></div>
-                </div> 
-                <div>
-                    <div class="module panel bg-1">
-                        <h2> 
-                            <a class="module-title color-1" target="_blank" href="https://github.com/b3log/b3log-solo/wiki/About_us">
-                                Team
-                            </a>
-                        </h2>
-                        平等•自由•奔放<br>
-                        成员：
-                        <a href="http://88250.b3log.org" target="_blank">88250</a>,
-                        <a href="http://vanessa.b3log.org" target="_blank">Vanessa</a>,
-                        <a href="http://jiangzezhou.b3log.org/" target="_blank">jboat</a>,
-                        <a href="http://love.b3log.org/" target="_blank">mainlove</a>,
-                        <a href="http://dx.b3log.org/" target="_blank">dx</a>.<br>
+                <div class="module-wrapper about-list" style="width: 681px">
+                    <div class="module-title">
+                        <span class="left">产品介绍</span>
+                        <a class="right" href="http://me.alipay.com/b3log" target="_blank" title="捐赠">
+                            <img src="images/alipay-me.png" />
+                        </a>
+                        <span class="clear"></span>
                     </div>
-                    <div class="module panel bg-2">
-                        <h2>
-                            <a class="module-title color-2" target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Join_us">
-                                Join in
-                            </a>                           
-                        </h2>
-                        我们期待您能和 B3log 共同成长。<br/>
-                        让我们成为国内少有的开源项目团队！<br/>
-                        保持斗志、目标一致！<br/>
+                    <div class="module-content">
+                        <ul>
+                            <li>
+                                <h3><a href="https://github.com/b3log/b3log-solo" target="_blank">B3log Solo</a></h3>
+                                <p>B3log Solo（奏出你的主音！）是款开源博客程序，让所有人都能用上免费的个人独立博客！</p>
+                            </li>
+                            <li>
+                                <h3><a href="https://github.com/b3log/b3log-symphony" target="_blank">B3log Symphony</a></h3>
+                                <p>B3log 社区论坛（第一乐章），现已开放<a href='http://symphony.b3log.org/register'>注册</a>。</p>
+                            </li>
+                            <li>
+                                <h3><a href="https://github.com/b3log/b3log-rhythm" target="_blank">B3log Rhythm</a></h3>
+                                <p>B3log 社区服务器（和谐的节奏），用于协调各内容源。</p>
+                            </li>
+                            <li>
+                                <h3><a href="https://github.com/b3log/b3log-index" target="_blank">B3log Index</a></h3>
+                                <p>就是你现在看到的 B3log 首页了！</p>
+                            </li>
+                            <li>
+                                <h3><a href="https://github.com/b3log/b3log-latke" target="_blank">B3log Latke</a></h3>
+                                <p>B3log 产品的开发框架，支持 GAE、BAE 等云平台，也支持标准 Servlet 容器，<a href="http://88250.b3log.org/tags/Latke" target="_blank">简单易用</a>。</p>
+                            </li>
+                            <li>
+                                <h3><a href="https://github.com/Vanessa219/bowknot" target="_blank">B3log Bowknot</a></h3>
+                                <p>基于 jQuery 的简单插件。目前有：chart, completed, dialog, paginate, table, tabs, upload。</p>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="module panel bg-3">
-                        <h2>
-                            <a class="module-title color-3" href="mailto:DL88250@gmail.com?cc=LLY219@gmail.com&subject=B3log联系我们">
-                                Contact
-                            </a>         
-                        </h2>
-                        QQ 群：13139268、173161059 <br>
-                        GitHub: <a href="https://github.com/b3log/b3log-solo/issues/new" target="_blank">New Issue</a>
-                        <br><br>
-                        <span class="right">可到团队各成员的博客进行留言 ^^</span>
+                </div> <div class="d3">
+                    <div class="module-wrapper">
+                        <div class="panel bg-1">
+                            <h2> 
+                                <a class="color-1" target="_blank" href="https://github.com/b3log/b3log-solo/wiki/About_us">
+                                    <span class="left">Team</span><span class="arrow"></span>
+                                    <span class="clear"></span>
+                                </a>
+                            </h2>
+                            &nbsp; &nbsp;平等•自由•奔放<br>
+                            &nbsp; &nbsp;成员：
+                            <a href="http://88250.b3log.org" target="_blank">88250</a>,
+                            <a href="http://vanessa.b3log.org" target="_blank">Vanessa</a>,<br/>
+                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                            <a href="http://jiangzezhou.b3log.org/" target="_blank">jboat</a>,
+                            <a href="http://love.b3log.org/" target="_blank">mainlove</a>,
+                            <a href="http://dx.b3log.org/" target="_blank">dx</a>.<br>
+                        </div>
                     </div>
-                    <div class="clear"></div>
+                    <div class="module-wrapper">
+                        <div class="panel bg-2">
+                            <h2>
+                                <a class="color-2" target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Join_us">
+                                    <span class="left">Join in</span> <span class="arrow"></span>
+                                    <span class="clear"></span>
+                                </a>                           
+                            </h2>
+                            &nbsp; &nbsp;我们期待您能和 B3log 共同成长。<br/>
+                            &nbsp; &nbsp;让我们成为国内少有的开源项目团队！<br/>
+                            &nbsp; &nbsp;保持斗志、目标一致！
+                        </div>
+                    </div>
+                    <div class="module-wrapper">
+                        <div class="panel bg-3">
+                            <h2>
+                                <a class="color-3" href="mailto:DL88250@gmail.com?cc=LLY219@gmail.com&subject=B3log联系我们">
+                                    <span class="left">Contact</span><span class="arrow"></span>
+                                    <span class="clear"></span>
+                                </a>         
+                            </h2>
+                            &nbsp; &nbsp;QQ 群：13139268、173161059 <br>
+                            &nbsp; &nbsp;GitHub: <a href="https://github.com/b3log/b3log-solo/issues/new" target="_blank">New Issue</a>
+                            <br>
+                            &nbsp; &nbsp;可到团队各成员的博客进行留言
+                        </div>
+                    </div>
                 </div>
+                <div class="clear"></div>
             </div>
             <!-- end about -->
 
             <!-- start themes -->
             <div id="themes">
-                <div id="themesPreview" class="module line"></div>
-                <div id="themesScroll" class="module">
+                <div id="themesPreview"></div>
+                <div id="themesScroll">
                     <div id="themesScrollPanel"></div>
-                </div>
-                <div class="pos-rel">
-                    <div id="themesPre"></div>
-                    <div id="themesNext"></div>
                 </div>
             </div>
             <!-- end themes -->
 
             <!-- start time line -->
-            <div class="time-line">
+            <div class="time-line module-wrapper">
                 <div id="timeline">
                     <section>												
                         <time>2009,12,9</time>								
@@ -533,7 +568,7 @@
                                 <figcaption>责任重大，游戏需适可而止</figcaption>
                             </figure>
                         </li>
-                        <li>
+                        <li class="last">
                             <time>2013,2,19</time>	
                             <h3>Solo 0.5.6</h3>					
                             <article>										
@@ -556,11 +591,13 @@
 
         <div class="footer">
             <div class="wrapper">
-                © 2010-2012 B3log.ORG
+                <div class="left">
+                    <a href="http://www.b3log.org" title="B3log"><img src="images/logo.png" title="B3log" /></a>
+                </div>
+                平等•自由•奔放  © 2010-2012 B3log.ORG
             </div>
         </div>
         <script type="text/javascript" src="js/lib/jquery.min.js" charset="utf-8"></script>
-        <script type="text/javascript" src="js/lib/jquery.scrollv.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/lib/timeline/timeline-min.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/common.js" charset="utf-8"></script>
     </body>
