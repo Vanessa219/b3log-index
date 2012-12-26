@@ -336,7 +336,7 @@ img {
     height: 177px;
     overflow: auto;
     width: 412px;
-    background-color: #F8F8F8;
+    background: url("../images/ajax-loader.gif") no-repeat scroll center center #F8F8F8;
 }
 
 .news .module-content li {
@@ -440,6 +440,7 @@ img {
 #themesScroll img:hover, #themesScroll img.selected {
     transform: scale(1.2);
     box-shadow: 0 0 5px #D26911;
+    border-bottom: 2px solid #D26911;
 }
 /* end part themes */
 
