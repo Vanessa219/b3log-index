@@ -99,90 +99,22 @@ var Index = {
     },
     
     initThemes: function () {
-        Index._initThemesHTML();
-        
-        var imageLength =  $("#themesScroll img").length,
-        imageWidth = 122;
-        var $themesScrollPanel = $("#themesScrollPanel");
-        $themesScrollPanel.width(imageWidth * imageLength);
-        
-        $themesScrollPanel.find("img").click(function () {
-            var $it = $(this);
-            var imageArray = $it.attr("src").split("/");
-            var image = imageArray[imageArray.length - 1];
-            $("#themesPreview > div").hide();
-            $("#themes" + image.split(".")[0]).show();
-            
-            $themesScrollPanel.find("img").removeClass();
-            $it.addClass("selected");
-            
-            if ($it.data("index") === 7 || $it.data("index") === 12) {
-                $themesScrollPanel.animate({
-                    "left": "-727px"
-                }, 1000);
-            } 
-            
-            if ($it.data("index") === 6) {
-                $themesScrollPanel.animate({
-                    "left": "6px"
-                }, 1000);
-            } 
-            
-            if ($it.data("index") === 13) {
-                $themesScrollPanel.animate({
-                    "left": "-1459px"
-                }, 1000);
-            } 
+        $('.fancybox-thumbs').fancybox({
+            nextClick : true,
+
+            helpers : {
+                thumbs : {
+                    width  : 50,
+                    height : 50
+                }
+            }
         });
-    },
-    
-    _initThemesHTML: function () {
-        var authors = ['Vanessa', 'Dongxu Wang', 'Vanessa', 'Vanessa', 'Vanessa', 'Lamb', 'Vanessa',
-        'Vanessa', 'Vanessa', 'Dongxu Wang', 'Ansen', 'Ansen', 'Ansen', 'Noday', 'Noday'],
-        authorUrls = ['vanessa.b3log.org', 'dx.b3log.org', 'vanessa.b3log.org', 'vanessa.b3log.org', 
-        'vanessa.b3log.org', 'lamb.b3log.org', 'vanessa.b3log.org',
-        'vanessa.b3log.org', 'vanessa.b3log.org', 'dx.b3log.org', 'www.ansen.org', 'www.ansen.org',
-        'www.ansen.me', 'www.noday.net', 'www.noday.net'],
-        downloads = [],
-        images = ['ease', 'mobile', 'andrea', 'classic', 'community', 'favourite', 'tree-house',
-        'i-nove', 'neoease', 'owmx', 'dot-b', 'shawn', 'coda', '5stylesm', 'idream'],
-        previewHTML = "", 
-        previewClass = "",
-        scrollHTML = "",
-        scrollClass = "selected";
         
-        for (var j = 0; j < 10; j++) {
-            downloads[j] = 'https://github.com/b3log/b3log-solo-skins/zipball/master';
-        }
-        downloads[0] = 'https://github.com/b3log/b3log-solo';
-        downloads[1] = 'https://github.com/b3log/b3log-solo';
-        downloads[10] = 'https://github.com/Ansen/BlogSkins';
-        downloads[11] = 'https://github.com/Ansen/BlogSkins';
-        downloads[12] = 'https://github.com/Ansen/BlogSkins';
-        downloads[13] = 'https://github.com/noday/b3log-solo-third-skins';
-        downloads[14] = 'https://github.com/noday/b3log-solo-third-skins';
-        
-        for (var i = 0; i < images.length; i++) {
-            previewHTML += '<div class="preview ' + previewClass + '" id="themes' + images[i] 
-            + '"><img src="images/themes/' + images[i] + '.png"/>'
-            + '<span class="info"><a href="http://' + authorUrls[i] + '" target="_blank">' + authors[i] + '</a><br/>'
-            + '<a href="' + downloads[i] + '" target="_blank">Download</a>'
-            + '</span></div>';
-            if (i === 0) {
-                previewClass = "none";
-            }
-        }
-        
-        for (var k = 0; k < images.length; k++) {
-            scrollHTML += '<img data-index="' + k 
-            + '" src="images/themes/' + images[k] + '.png" class=' + scrollClass + ' />';
-            if (k === 0) {
-                scrollClass = "";
-            }
-        }
-        
-        $("#themesPreview").html(previewHTML);
-        $("#themesScrollPanel").html(scrollHTML);
+        $('.fancybox-thumbs span').click(function (event) {
+            window.open($(this).data("link"));
+            event.stopPropagation();
+            event.preventDefault();
+        });
     },
     
     moveNav: function (id) {

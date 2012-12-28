@@ -8,6 +8,7 @@
         <link href='http://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css' charset="utf-8" />
         <link type="text/css" rel="stylesheet" href="css/style.css" charset="utf-8" />
         <link type="text/css" rel="stylesheet" href="js/lib/timeline/timeline.css" charset="utf-8" />
+        <link type="text/css" rel="stylesheet" href="js/lib/fancybox/jquery.fancybox.css" charset="utf-8" />
         <!--[if lt IE 9]>
          <script type="text/javascript">
             (function () {
@@ -66,7 +67,7 @@
         </div>
 
         <!-- start main -->
-        <div class="wrapper" style="padding-top: 71px;">
+        <div class="wrapper">
             <!-- start intro -->
             <div class="intro">
                 <div class="module-wrapper news right">
@@ -127,7 +128,7 @@
                 <div class="module-wrapper intro-list">
                     <div class="module-title">
                         <span class="left">B3log Solo 特性</span>
-                        <a target="_blank" href="http://symphony.b3log.org/register" class="color-1 right">加入社区（Symphony）</a>
+                        <a target="_blank" href="http://symphony.b3log.org/register">加入社区（Symphony）</a>
                         <div class="clear"></div>
                     </div>
                     <div class="module-content">
@@ -204,7 +205,21 @@
                             </li>
                         </ul>
                     </div>
-                </div> <div class="d3">
+                </div>
+                <div class="d3">
+                    <div class="module-wrapper">
+                        <div class="panel bg-2">
+                            <h2>
+                                <a class="color-2" target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Join_us">
+                                    <span class="left">Join in</span> <span class="arrow"></span>
+                                    <span class="clear"></span>
+                                </a>                           
+                            </h2>
+                            &nbsp; &nbsp;我们期待您能和 B3log 共同成长。<br/>
+                            &nbsp; &nbsp;让我们成为国内少有的开源项目团队！<br/>
+                            &nbsp; &nbsp;保持斗志、目标一致！
+                        </div>
+                    </div>
                     <div class="module-wrapper">
                         <div class="panel bg-1">
                             <h2> 
@@ -221,19 +236,6 @@
                             <a href="http://jiangzezhou.b3log.org/" target="_blank">jboat</a>,
                             <a href="http://love.b3log.org/" target="_blank">mainlove</a>,
                             <a href="http://dx.b3log.org/" target="_blank">dx</a>.<br>
-                        </div>
-                    </div>
-                    <div class="module-wrapper">
-                        <div class="panel bg-2">
-                            <h2>
-                                <a class="color-2" target="_blank" href="https://github.com/b3log/b3log-solo/wiki/Join_us">
-                                    <span class="left">Join in</span> <span class="arrow"></span>
-                                    <span class="clear"></span>
-                                </a>                           
-                            </h2>
-                            &nbsp; &nbsp;我们期待您能和 B3log 共同成长。<br/>
-                            &nbsp; &nbsp;让我们成为国内少有的开源项目团队！<br/>
-                            &nbsp; &nbsp;保持斗志、目标一致！
                         </div>
                     </div>
                     <div class="module-wrapper">
@@ -256,10 +258,151 @@
             <!-- end about -->
 
             <!-- start themes -->
-            <div id="themes">
-                <div id="themesPreview"></div>
-                <div id="themesScroll">
-                    <div id="themesScrollPanel"></div>
+            <div class="module-wrapper themes">
+                <div class="module-title">
+                    <span class="left">B3log Solo 皮肤</span>
+                    <a href="javascript:void(0)" onclick="$($('.fancybox-thumbs').get(0)).click()">预览</a>
+                    <span class="clear"></span>
+                </div>
+                <div class="module-content" style="padding: 5px;">
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/ease.png"
+                       title="ease">
+                        <div>
+                            <h3>ease</h3>
+                            <span class="left" data-link="http://vanessa.b3log.org">by Vanessa</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo">Download</span>
+                        </div>
+                        <img src="images/themes/ease.png" alt="ease" />
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/mobile.png"
+                       title="mobile">
+                        <div>
+                            <h3>mobile</h3>
+                            <span class="left" data-link="http://dx.b3log.org">by Dongxu Wang</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo">Download</span>
+                        </div>
+                        <img src="images/themes/mobile.png" alt="mobile" />
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/andrea.jpg"
+                       title="andrea">
+                        <div>
+                            <h3>andrea</h3>
+                            <span class="left" data-link="http://vanessa.b3log.org">by Vanessa</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-skins">Download</span>
+                        </div>
+                        <img src="images/themes/andrea.jpg" alt="andrea"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/classic.png"
+                       title="classic">
+                        <div>
+                            <h3>classic</h3>
+                            <span class="left" data-link="http://vanessa.b3log.org">by Vanessa</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-skins">Download</span>
+                        </div>
+                        <img src="images/themes/classic.png" alt="classic"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/community.png"
+                       title="community">
+                        <div>
+                            <h3>community</h3>
+                            <span class="left" data-link="http://vanessa.b3log.org">by Vanessa</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-skins">Download</span>
+                        </div>
+                        <img src="images/themes/community.png" alt="community"/>
+                    </a>
+                    <span class="clear"></span>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/favourite.gif"
+                       title="favourite">
+                        <div>
+                            <h3>favourite</h3>
+                            <span class="left" data-link="http://lamb.b3log.org">by Lamb</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-skins">Download</span>
+                        </div>
+                        <img src="images/themes/favourite.gif" alt="favourite"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/tree-house.jpg"
+                       title="tree-house">
+                        <div>
+                            <h3>tree-house</h3>
+                            <span class="left" data-link="http://vanessa.b3log.org">by Vanessa</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-skins">Download</span>
+                        </div>
+                        <img src="images/themes/tree-house.jpg" alt="tree-house"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/i-nove.jpg"
+                       title="i-nove">
+                        <div>
+                            <h3>i-nove</h3>
+                            <span class="left" data-link="http://vanessa.b3log.org">by Vanessa</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-skins">Download</span>
+                        </div>
+                        <img src="images/themes/i-nove.jpg" alt="i-nove"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/neoease.png"
+                       title="neoease">
+                        <div>
+                            <h3>neoease</h3>
+                            <span class="left" data-link="http://vanessa.b3log.org">by Vanessa</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-skins">Download</span>
+                        </div>
+                        <img src="images/themes/neoease.png" alt="neoease"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/owmx.png"
+                       title="owmx">
+                        <div>
+                            <h3>owmx</h3>
+                            <span class="left" data-link="http://dx.b3log.org">by Dongxu Wang</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-skins">Download</span>
+                        </div>
+                        <img src="images/themes/owmx.png" alt="owmx"/>
+                    </a>
+                    <span class="clear"></span>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/dot-b.jpg"
+                       title="Dot-B">
+                        <div>
+                            <h3>Dot-B</h3>
+                            <span class="left" data-link="http://www.ansen.org">by Ansen</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-third-skins">Download</span>
+                        </div>
+                        <img src="images/themes/dot-b.jpg" alt="Dot-B"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/shawn.jpg"
+                       title="Shawn">
+                        <div>
+                            <h3>Shawn</h3>
+                            <span class="left" data-link="http://www.ansen.org">by Ansen</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-third-skins">Download</span>
+                        </div>
+                        <img src="images/themes/shawn.jpg" alt="Shawn"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/coda.jpg"
+                       title="Coda">
+                        <div>
+                            <h3>Coda</h3>
+                            <span class="left" data-link="http://www.ansen.org">by Ansen</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-third-skins">Download</span>
+                        </div>
+                        <img src="images/themes/coda.jpg" alt="Coda"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/5stylesm.png"
+                       title="5styles">
+                        <div>
+                            <h3>5styles</h3>
+                            <span class="left" data-link="http://www.noday.net">by Noday</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-third-skins">Download</span>
+                        </div>
+                        <img src="images/themes/5styles.png" alt="5styles"/>
+                    </a>
+                    <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/idream.jpg"
+                       title="idream">
+                        <div>
+                            <h3>idream</h3>
+                            <span class="left" data-link="http://www.noday.net">by Noday</span>
+                            <span class="right" data-link="https://github.com/b3log/b3log-solo-third-skins">Download</span>
+                        </div>
+                        <img src="images/themes/idream.jpg" alt="idream"/>
+                    </a>
+                    <div class="clear"></div>
                 </div>
             </div>
             <!-- end themes -->
@@ -600,6 +743,7 @@
         </div>
         <script type="text/javascript" src="js/lib/jquery.min.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/lib/timeline/timeline-min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/lib/fancybox/jquery.fancybox.pack.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/common.js" charset="utf-8"></script>
     </body>
 </html>

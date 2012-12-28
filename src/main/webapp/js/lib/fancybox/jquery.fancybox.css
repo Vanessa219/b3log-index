@@ -1,0 +1,43 @@
+#fancybox-loading{background-image:url(fancybox_sprite.png);background-position:0 -108px;cursor:pointer;left:50%;margin-left:-22px;margin-top:-22px;opacity:0.8;position:fixed;top:50%;z-index:8060}
+#fancybox-loading div{background:url(fancybox_loading.gif) center center no-repeat;height:44px;width:44px}
+#fancybox-thumbs{left:0;overflow:hidden;position:fixed;width:100%;z-index:8050}
+#fancybox-thumbs ul{list-style:none;margin:0;padding:0;position:relative}
+#fancybox-thumbs ul li{float:left;opacity:0.5;padding:1px}
+#fancybox-thumbs ul li a{background:#111;border:1px solid #222;display:block;outline:none;overflow:hidden;position:relative}
+#fancybox-thumbs ul li img{border:0;display:block;padding:0;position:relative}
+#fancybox-thumbs ul li.active{border:1px solid #fff;opacity:0.75;padding:0}
+#fancybox-thumbs ul li:hover{opacity:1}
+#fancybox-thumbs.bottom{bottom:2px}
+#fancybox-thumbs.top{top:2px}
+.fancybox-close{background-image:url(fancybox_sprite.png);cursor:pointer;height:36px;position:absolute;right:-18px;top:-18px;width:36px;z-index:8040}
+.fancybox-error{color:#444;font:14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;margin:0;padding:15px;white-space:nowrap}
+.fancybox-iframe{display:block;height:100%;width:100%}
+.fancybox-image{border:0;display:block;height:100%;margin:0;max-height:100%;max-width:100%;outline:none;padding:0;vertical-align:top;width:100%}
+.fancybox-inner{border:0;margin:0;outline:none;overflow:hidden;padding:0;position:relative;vertical-align:top}
+.fancybox-lock{overflow:hidden}
+.fancybox-lock .fancybox-overlay{overflow:auto;overflow-y:scroll}
+.fancybox-nav{-webkit-tap-highlight-color:rgba(0,0,0,0);background:transparent url(blank.gif);border:0;cursor:pointer;height:100%;margin:0;outline:none;padding:0;position:absolute;text-decoration:none;top:0;vertical-align:top;width:40%;z-index:8040}
+.fancybox-nav span{border:0;cursor:pointer;height:34px;margin:0;margin-top:-18px;outline:none;padding:0;position:absolute;top:50%;vertical-align:top;visibility:hidden;width:36px;z-index:8040}
+.fancybox-nav:hover span{visibility:visible}
+.fancybox-next{right:0}
+.fancybox-next span{background-image:url(fancybox_sprite.png);background-position:0 -72px;right:10px}
+.fancybox-opened{z-index:8030}
+.fancybox-opened .fancybox-skin{-moz-box-shadow:0 10px 25px rgba(0,0,0,0.5);-webkit-box-shadow:0 10px 25px rgba(0,0,0,0.5);box-shadow:0 10px 25px rgba(0,0,0,0.5)}
+.fancybox-opened .fancybox-title{visibility:visible}
+.fancybox-outer{border:0;margin:0;outline:none;padding:0;position:relative;vertical-align:top}
+.fancybox-overlay{background:url(fancybox_overlay.png);display:none;left:0;overflow:hidden;position:absolute;top:0;z-index:8010}
+.fancybox-overlay-fixed{bottom:0;position:fixed;right:0}
+.fancybox-prev{left:0}
+.fancybox-prev span{background-image:url(fancybox_sprite.png);background-position:0 -36px;left:10px}
+.fancybox-skin{-moz-border-radius:4px;-webkit-border-radius:4px;background:#f9f9f9;border:0;border-radius:4px;color:#444;margin:0;outline:none;padding:0;position:relative;text-shadow:none;vertical-align:top}
+.fancybox-title{font:normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;position:relative;text-shadow:none;visibility:hidden;z-index:8050}
+.fancybox-title-float-wrap{bottom:0;margin-bottom:-35px;position:absolute;right:50%;text-align:center;z-index:8050}
+.fancybox-title-float-wrap .child{-moz-border-radius:15px;-webkit-border-radius:15px;background:rgba(0,0,0,0.8);border-radius:15px;color:#FFF;display:inline-block;font-weight:bold;line-height:24px;margin-right:-100%;padding:2px 20px;text-shadow:0 1px 2px #222;white-space:nowrap}
+.fancybox-title-inside-wrap{padding-top:10px}
+.fancybox-title-outside-wrap{color:#fff;margin-top:10px;position:relative}
+.fancybox-title-over-wrap{background:rgba(0,0,0,.8);bottom:0;color:#fff;left:0;padding:10px;position:absolute}
+.fancybox-tmp{border:0;left:-99999px;margin:0;max-height:99999px;max-width:99999px;outline:none;overflow:visible!important;padding:0;position:absolute;top:-99999px;vertical-align:top;visibility:hidden}
+.fancybox-type-iframe .fancybox-inner{-webkit-overflow-scrolling:touch}
+.fancybox-wrap{border:0;left:0;margin:0;outline:none;padding:0;position:absolute;top:0;vertical-align:top;z-index:8020}
+.fancybox-wrap iframe{border:0;margin:0;outline:none;padding:0;vertical-align:top}
+.fancybox-wrap object{border:0;margin:0;outline:none;padding:0;vertical-align:top}
