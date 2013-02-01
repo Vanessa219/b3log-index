@@ -466,7 +466,7 @@ body > .wrapper {
 .fancybox-thumbs {
     height: 160px;
     overflow: hidden;
-    width: 182px;
+    width: 150px;
     border: 1px solid #CACACA;
     border-radius: 5px 5px 5px 5px;
     float: left;
@@ -482,15 +482,15 @@ body > .wrapper {
     background-color: #EEEEEE;
     color: #555555;
     height: 100px;
-    left: 181px;
+    left: 150px;
     opacity: 0.8;
     filter: alpha(opacity=80);
-    padding: 50px 10px 10px;
+    padding: 40px 10px 20px;
     position: absolute;
     text-align: center;
     transition: left 0.3s ease-out 0s;
     white-space: normal;
-    width: 162px;
+    width: 130px;
 }
 
 .fancybox-thumbs:hover > div {
@@ -499,7 +499,7 @@ body > .wrapper {
 
 .fancybox-thumbs h3 {   
     color: #D26911;
-    font-size: 28px;
+    font-size: 23px;
 }
 
 .fancybox-thumbs span {   
