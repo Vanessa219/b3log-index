@@ -464,7 +464,7 @@ body > .wrapper {
 
 /* start themes */
 .fancybox-thumbs {
-    height: 160px;
+    height: 120px;
     overflow: hidden;
     width: 150px;
     border: 1px solid #CACACA;
@@ -485,7 +485,7 @@ body > .wrapper {
     left: 150px;
     opacity: 0.8;
     filter: alpha(opacity=80);
-    padding: 40px 10px 20px;
+    padding: 10px;
     position: absolute;
     text-align: center;
     transition: left 0.3s ease-out 0s;
@@ -500,6 +500,8 @@ body > .wrapper {
 .fancybox-thumbs h3 {   
     color: #D26911;
     font-size: 23px;
+    line-height: 22px;
+    margin-bottom: 10px;
 }
 
 .fancybox-thumbs span {   
