@@ -1468,6 +1468,7 @@ typeof VMM!="undefined"&&typeof VMM.Util=="undefined"&&(VMM.Util={
             var c=a.split(",");
             for(var d=0;d<c.length;d++)c[d]=parseInt(c[d]);
             b=new Date;
+            b.setDate(1);
             c[0]&&b.setFullYear(c[0]);
             c[1]>1?b.setMonth(c[1]-1):b.setMonth(0);
             c[2]>1?b.setDate(c[2]):b.setDate(1);

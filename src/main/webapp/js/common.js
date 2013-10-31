@@ -202,6 +202,7 @@ var Index = {
         $("#timeline").height(height);
         
         if ($.browser.msie && parseInt($.browser.version) < 8) {
+            $("#timeline").css("overflow-y", "auto");
             return;
         }
         var timeline = new VMM.Timeline();
