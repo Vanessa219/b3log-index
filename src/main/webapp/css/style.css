@@ -521,7 +521,7 @@ body > .wrapper {
 
 .donate .donate-img {
     float: left;
-    margin: 30px 50px;
+    margin: 30px 150px 30px 50px;
 }
 
 .donate h1 {
@@ -536,7 +536,7 @@ body > .wrapper {
     border-radius: 5px;
     color: #FFFFFF;
     float: left;
-    margin: 50px 0 0 150px;
+    margin: 50px 0 0 80px;
     padding: 10px 20px;
     text-align: center;
     width: 150px;
