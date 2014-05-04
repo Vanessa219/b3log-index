@@ -3,7 +3,7 @@
  * b3log index style
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.0.1.5, Dec 25, 2012
+ * @version 1.1.1.5, May 4, 2014
 */
 
 /* start reset */
@@ -17,7 +17,7 @@ html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dd, dl, ol {
 }
 
 body {
-    background-color: #FDFDFD;
+    background-color: #F8F8F8;
     color: #333;
     font-family: \5fae\8f6f\96c5\9ed1, sans-serif;
     font-size: 14px;
@@ -512,3 +512,35 @@ body > .wrapper {
     text-decoration: underline;
 }
 /* end themes */
+
+/* start donate */
+.donate {
+    background-color: #FDFDFD;
+    padding: 100px 0 30px;
+}
+
+.donate .donate-img {
+    float: left;
+    margin: 30px 50px;
+}
+
+.donate h1 {
+    float: left;
+    margin-top: 90px;
+    letter-spacing: 4px;
+}
+
+.donate h2 {
+    background: linear-gradient(#FF9900, #FF6633) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 3px solid #EEEEEE;
+    border-radius: 5px;
+    color: #FFFFFF;
+    float: left;
+    margin: 50px 0 0 150px;
+    padding: 10px 20px;
+    text-align: center;
+    width: 150px;
+    letter-spacing: 4px;
+}
+/* end donate */
+
