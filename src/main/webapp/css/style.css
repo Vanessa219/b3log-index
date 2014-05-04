@@ -531,7 +531,12 @@ body > .wrapper {
 }
 
 .donate h2 {
-    background: linear-gradient(#FF9900, #FF6633) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background-color: #FF9900;
+    background-image: linear-gradient(#FF9900, #FF6633);
+    background-image: -ms-linear-gradient(#FF9900, #FF6633);
+    background-image: -o-linear-gradient(#FF9900, #FF6633);
+    background-image: -webkit-linear-gradient(#FF9900, #FF6633);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#FF9900', endColorstr='#FF6633');
     border: 3px solid #EEEEEE;
     border-radius: 5px;
     color: #FFFFFF;
@@ -539,7 +544,7 @@ body > .wrapper {
     margin: 50px 0 0 80px;
     padding: 10px 20px;
     text-align: center;
-    width: 150px;
+    white-space: nowrap;
     letter-spacing: 4px;
 }
 /* end donate */
