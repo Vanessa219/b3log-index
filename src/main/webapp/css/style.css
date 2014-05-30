@@ -94,6 +94,7 @@ img {
     background-image: -webkit-linear-gradient(#FF9900, #FF6633);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#FF9900', endColorstr='#FF6633');
     text-align: center;
+    line-height: 19px;
 }
 
 .bg-2 {
