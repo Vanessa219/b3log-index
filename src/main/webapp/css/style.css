@@ -463,11 +463,11 @@ body > .wrapper {
 }
 
 .join > div {
-     margin: 16px 24px;
+    margin: 16px 24px;
 }
 
 .join > img {
-     margin: 0 5px;
+    margin: 0 5px;
 }
 /* end part about */
 
@@ -530,31 +530,46 @@ body > .wrapper {
 
 .donate .donate-img {
     float: left;
-    margin: 30px 150px 30px 50px;
+    margin: 50px 150px 50px 50px;
 }
 
 .donate h1 {
     float: left;
-    margin-top: 90px;
+    margin-top: 140px;
     letter-spacing: 4px;
 }
 
-.donate h2 {
+h2.open-link-us {
     background-color: #FF9900;
     background-image: linear-gradient(#FF9900, #FF6633);
     background-image: -ms-linear-gradient(#FF9900, #FF6633);
     background-image: -o-linear-gradient(#FF9900, #FF6633);
     background-image: -webkit-linear-gradient(#FF9900, #FF6633);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#FF9900', endColorstr='#FF6633');
-    border: 3px solid #EEEEEE;
+    border: 3px solid #eeeeee;
     border-radius: 5px;
-    color: #FFFFFF;
+    color: #ffffff;
     float: left;
-    margin: 50px 0 0 80px;
-    padding: 10px 20px;
-    text-align: center;
-    white-space: nowrap;
+    font-size: 18px;
+    font-weight: normal;
     letter-spacing: 4px;
+    padding: 5px 20px;
+    text-align: center;
+    text-shadow: 0 0 0;
+    white-space: nowrap;
+}
+
+.donate .paypal {
+    border-top: 1px solid #cacaca;
+}
+
+.donate .paypal .donate-img {
+    margin: 50px 230px 50px 110px;
+}
+
+.donate .paypal h1  {
+    cursor: pointer;
+    margin-top: 110px;
 }
 /* end donate */
 
