@@ -173,8 +173,8 @@ body > .wrapper {
     position: relative;
 }
 
-.intro .module-title > a,
-.themes .module-title > a{
+.themes .module-title > a,
+.about-list .module-title > a.right {
     display: block;
     background-color: #FF9900;
     background-image: linear-gradient(#FF9900, #FF6633);
@@ -195,8 +195,8 @@ body > .wrapper {
     top: 0;
 }
 
-.intro .module-title > a:hover,
-.themes .module-title > a:hover {
+.themes .module-title > a:hover,
+.about-list .module-title > a.right:hover {
     background: #E6F1F6;
     color: #555;
     text-decoration: none;
@@ -374,7 +374,7 @@ body > .wrapper {
 
 /* start part intro */
 .news .module-title,
-.about .module-title {
+.intro .module-title {
     background-color: #E6F1F6;
     background-image: none;
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#E6F1F6', endColorstr='#E6F1F6');
