@@ -19,7 +19,7 @@
 #timeline input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
 #timeline textarea{overflow:auto;vertical-align:top;}
 #timeline{width:984px;height:100%;padding:0px;margin:0px;background-color:#ffffff;position:absolute;overflow:hidden;}#timeline .feedback{position:absolute;display:table;overflow:hidden;top:0px;left:0px;z-index:2000;width:100%;height:100%;background-color:#e9e9e9;border:1px solid #cccccc;}#timeline .feedback .messege{display:table-cell;vertical-align:middle;font-size:28px;font-weight:bold;text-transform:uppercase;line-height:36px;width:75%;margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;text-align:center;}
-#timeline .container.main{position:absolute;top:0px:	left:0px;padding-bottom:3px;width:auto;height:auto;margin:0px;clear:both;}
+#timeline .container.main{position:absolute;top:0px;left:0px;padding-bottom:3px;width:auto;height:auto;margin:0px;clear:both;}
 #timeline img,#timeline embed,#timeline object,#timeline video,#timeline iframe{max-width:100%;}
 #timeline img{max-height:100%;border:1px solid #999999;}
 #timeline a{color:#0088cc;text-decoration:none;}
@@ -110,8 +110,10 @@
 #timeline h2.start{font-size:42px;line-height:44px;}
 #timeline h1{margin-bottom:15px;font-size:32px;line-height:34px;}#timeline h1 small{font-size:18px;}
 #timeline h2{margin-bottom:15px;font-size:28px;line-height:30px;}#timeline h2 small{font-size:14px;line-height:16px;}
-#timeline h3,#timeline h4,#timeline h5,#timeline h6{line-height:40px;}#timeline h3 .active,#timeline h4 .active,#timeline h5 .active,#timeline h6 .active{color:#0088cc;}
-#timeline h3{font-size:24px;line-height:26px;}#timeline h3 small{font-size:14px;}
+#timeline h3,#timeline h4,#timeline h5,#timeline h6{line-height:40px;}
+#timeline h3 .active,#timeline h4 .active,#timeline h5 .active,#timeline h6 .active{color:#0088cc;}
+#timeline h3{font-size: 24px;line-height: 26px;}
+#timeline h3 small{font-size:14px;}
 #timeline h4{font-size:16px;line-height:18px;}#timeline h4 small{font-size:12px;}
 #timeline h5{font-size:14px;line-height:16px;}
 #timeline h6{font-size:13px;line-height:14px;text-transform:uppercase;}
