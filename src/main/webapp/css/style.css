@@ -72,10 +72,6 @@ img {
     word-wrap: normal;
 }
 
-.pos-rel {
-    position: relative;
-}
-
 .color-1 {
     color: #D26911;
 }
@@ -101,51 +97,12 @@ img {
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#FF9900', endColorstr='#FF6633');
 }
 
-.bg-2 {
-    background-color: #C986C4;
-    background-image: linear-gradient(#C986C4, #C953F7);
-    background-image: -ms-linear-gradient(#C986C4, #C953F7);
-    background-image: -o-linear-gradient(#C986C4, #C953F7);
-    background-image: -webkit-linear-gradient(#C986C4, #C953F7);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#C986C4', endColorstr='#C953F7');
-}
-
-.bg-3 {
-    background-color: #00D666;
-    background-image: linear-gradient(#00D666, #00aa33);
-    background-image: -ms-linear-gradient(#00D666, #00aa33);
-    background-image: -o-linear-gradient(#00D666, #00aa33);
-    background-image: -webkit-linear-gradient(#00D666, #00aa33);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#00D666', endColorstr='#00aa33');
-}
-
-.bg-4 {
-    background-color: #FFD04D;
-    background-image: linear-gradient(#FFD04D, #FDBB00);
-    background-image: -ms-linear-gradient(#FFD04D, #FDBB00);
-    background-image: -o-linear-gradient(#FFD04D, #FDBB00);
-    background-image: -webkit-linear-gradient(#FFD04D, #FDBB00);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#FFD04D', endColorstr='#FDBB00');
-}
-
 .bg-1 > h2 {
     background-color: #FFB252;
 }
 
-.bg-2> h2 {
-    background-color: #D9A6D9;
-}
-
-.bg-3 > h2 {
-    background-color: #4DDD8F;
-}
-
-.bg-4 > h2 {
-    background-color: #FEDC7C;
-}
-
 body > .wrapper {
-    padding-top: 71px;
+    padding-top: 90px;
 }
 
 .wrapper {
@@ -156,7 +113,7 @@ body > .wrapper {
 .module-wrapper {
     background-color: #EEEEEE;
     padding: 3px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     border-radius: 3px;
 }
 
@@ -179,8 +136,7 @@ body > .wrapper {
     position: relative;
 }
 
-.themes .module-title > a,
-.about-list .module-title > a.right {
+.module-title .right {
     display: block;
     background-color: #FF9900;
     background-image: linear-gradient(#FF9900, #FF6633);
@@ -201,8 +157,7 @@ body > .wrapper {
     top: 0;
 }
 
-.themes .module-title > a:hover,
-.about-list .module-title > a.right:hover {
+.module-title a.right:hover {
     background: #E6F1F6;
     color: #555;
     text-decoration: none;
@@ -228,33 +183,8 @@ body > .wrapper {
     display: block;
     font-size: 16px;
     margin-bottom: 11px;
-    padding: 2px 10px;
+    padding: 4px 10px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-
-.panel .arrow {
-    border-color: transparent transparent transparent #FFFFFF;
-    border-style: solid;
-    border-width: 5px 0 5px 5px;
-    float: right;
-    font-size: 0;
-    margin-top: 6px;
-    line-height: 0;
-    width: 0;
-    height: 0;
-}
-
-.panel h2 > a {
-    display: block;
-}
-
-.panel h2 > a:hover .arrow {
-    border-left-color: #EEE;
-}
-
-.panel > a,
-.panel td > a {
-    color: #DDD;
 }
 /* end common */
 
@@ -379,29 +309,11 @@ body > .wrapper {
 /* end footer */
 
 /* start part intro */
-.news .module-title,
-.intro .module-title {
-    background-color: #E6F1F6;
-    background-image: none;
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#E6F1F6', endColorstr='#E6F1F6');
-}
-
 .intro-list ul {
-    line-height: 25px;
+    line-height: 30px;
     list-style: square outside none;
     margin: 10px 70px 10px 50px;
-}
-
-.intro .module-wrapper .module-wrapper {
-      margin: 10px 0 0;
-}
-
-.intro .panel {
-    width: 315px;
-}
-
-.intro .panel.bg-3 {
-    width: 316px;
+    width: 207px;
 }
 
 .news {
@@ -411,7 +323,7 @@ body > .wrapper {
 }
 
 .news .module-content {
-    height: 165px;
+    height: 171px;
     overflow: auto;
     background: url("../images/ajax-loader.gif") no-repeat scroll center center #F8F8F8;
 }
@@ -431,20 +343,13 @@ body > .wrapper {
     color: #333;
 }
 
-.d4 {
-    width: 534px;
-}
-
-.bg-4 a {
-    display: block;
-    margin-left: 45px;
-    color: #8A6600;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-
 .wide {
     float: left;
     width: 470px;
+}
+
+.wide ul {
+    width: auto;
 }
 /* end part intro */
 
