@@ -189,7 +189,7 @@ body > .wrapper {
 /* end common */
 
 /* start nav */
-.header .nav {
+#nav {
     background-color: #FAFAFA;
     background-image: linear-gradient(#FAFAFA, #EAEAEA);
     background-image: -ms-linear-gradient(#FAFAFA, #EAEAEA);
@@ -216,24 +216,24 @@ body > .wrapper {
     transition: border-radius 1000ms ease;
 }
 
-.header .nav:hover {
+#nav:hover {
     border-radius: 5px;
     transition: border-radius 1000ms ease;
 }
 
-.header .nav ul {
+#nav ul {
     background: url("../images/line-s.png") repeat-x scroll -94px 116px;
     margin-bottom: 5px;
     height: 117px;
 }
 
-.header .nav .current {
+#nav .current {
     font-size: 22px;
     font-weight: bold;
     text-shadow: 0 0 2px #231F20;
 }
 
-.header .nav .share {
+#nav .share {
     cursor: auto;
     padding-bottom: 6px; 
 }
