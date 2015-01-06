@@ -169,7 +169,7 @@ body > .wrapper {
     background-color: #fff;
 }
 
-.panel {
+.module-wrapper .panel {
     box-shadow: 0 0 2px #EEEEEE;
     float: left;
     min-height: 100px;
@@ -179,7 +179,7 @@ body > .wrapper {
     line-height: 19px;
 }
 
-.panel h2 {
+.module-wrapper .panel h2 {
     display: block;
     font-size: 16px;
     margin-bottom: 11px;
@@ -189,7 +189,7 @@ body > .wrapper {
 /* end common */
 
 /* start nav */
-.nav {
+.header .nav {
     background-color: #FAFAFA;
     background-image: linear-gradient(#FAFAFA, #EAEAEA);
     background-image: -ms-linear-gradient(#FAFAFA, #EAEAEA);
@@ -216,24 +216,24 @@ body > .wrapper {
     transition: border-radius 1000ms ease;
 }
 
-.nav:hover {
+.header .nav:hover {
     border-radius: 5px;
     transition: border-radius 1000ms ease;
 }
 
-.nav ul {
+.header .nav ul {
     background: url("../images/line-s.png") repeat-x scroll -94px 116px;
     margin-bottom: 5px;
     height: 117px;
 }
 
-.nav .current {
+.header .nav .current {
     font-size: 22px;
     font-weight: bold;
     text-shadow: 0 0 2px #231F20;
 }
 
-.nav .share {
+.header .nav .share {
     cursor: auto;
     padding-bottom: 6px; 
 }
@@ -268,6 +268,7 @@ body > .wrapper {
 }
 
 .header {
+    font-family: 微软雅黑,sans-serif;
     background-color: #FAFAFA;
     background-image: linear-gradient(#FAFAFA, #EAEAEA);
     background-image: -ms-linear-gradient(#FAFAFA, #EAEAEA);
@@ -279,11 +280,18 @@ body > .wrapper {
     width: 100%;
     z-index: 2001;
     border-bottom: 1px solid #CACACA;
-    text-shadow: 0 1px 0 #FFFFFF
+    text-shadow: 0 1px 0 #FFFFFF;
+    top: 0;
+}
+
+.header h1 {
+    margin: 0;
 }
 
 .header h1 > a {
     color: #777;    
+    font-size: 28px;
+    font-weight: normal;
 }
 
 .header h1 > a:hover {
@@ -299,10 +307,11 @@ body > .wrapper {
 
 /* start footer */
 .footer {
+    font-family: 微软雅黑,sans-serif;
     background-color: #F8F8F8;
     border-top: 1px solid #E0E0E0;
     box-shadow: 0 1px 1px white inset;
-    height: 56px;
+    height: 59px;
     line-height: 56px;
     text-align: right;
 }
