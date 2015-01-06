@@ -605,11 +605,10 @@ h1[id] {
 
 /* Variations */
 .bs-callout-danger {
-    background-color: #fdf7f7;
-    border-color: #eed3d7;
+    border-left-color: #d9534f;
 }
 .bs-callout-danger h4 {
-    color: #b94a48;
+    color: #d9534f;
 }
 .bs-callout-warning{border-left-color:#f0ad4e}.bs-callout-warning h4{color:#f0ad4e}
 .bs-callout-info {
