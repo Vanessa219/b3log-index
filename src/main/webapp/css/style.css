@@ -285,6 +285,8 @@ body > .wrapper {
 }
 
 .header h1 {
+    font-size: 28px;
+    line-height: 39px;
     margin: 0;
 }
 
@@ -300,8 +302,10 @@ body > .wrapper {
 
 .header-intro {
     float: right;
-    margin: 10px 0;
     font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+    margin: 10px 0;
 }
 /* end nav */
 
