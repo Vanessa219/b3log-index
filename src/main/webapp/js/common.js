@@ -205,8 +205,8 @@ var Index = {
     },
     share: function() {
         var title = encodeURIComponent("B3log - 平等•自由•奔放"),
-                url = "http://www.b3log.org",
-                pic = "http://www.b3log.org/images/logo.png";
+                url = "http://b3log.org",
+                pic = "http://b3log.org/images/logo.png";
 
         var urls = {};
         urls.tencent = "http://share.v.t.qq.com/index.php?c=share&a=index&title=" + title +

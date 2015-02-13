@@ -34,7 +34,7 @@
 
     <organization>
         <name>B3log</name>
-        <url>http://www.b3log.org</url>
+        <url>http://b3log.org</url>
     </organization>
 
     <licenses>
@@ -55,7 +55,7 @@
                 <role>Initial Committer</role>
             </roles>
             <organization>B3log</organization>
-            <organizationUrl>http://www.b3log.org</organizationUrl>
+            <organizationUrl>http://b3log.org</organizationUrl>
             <timezone>+8</timezone>
         </developer>
 
@@ -68,7 +68,7 @@
                 <role>Committer</role>
             </roles>
             <organization>B3log</organization>
-            <organizationUrl>http://www.b3log.org</organizationUrl>
+            <organizationUrl>http://b3log.org</organizationUrl>
             <timezone>+8</timezone>
         </developer>
     </developers>
