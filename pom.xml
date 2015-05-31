@@ -13,8 +13,8 @@
     <packaging>war</packaging>
     <version>0.0.1</version>
     <name>B3log Index</name>
-    <url>https://github.com/b3log/b3log-index</url>
-    <description>B3log index.</description>
+    <url>https://github.com/b3log/index</url>
+    <description>B3log Index.</description>
     <inceptionYear>2011</inceptionYear>
 
     <!-- Version -->
@@ -75,11 +75,11 @@
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/b3log/b3log-index/issues</url>
+        <url>https://github.com/b3log/index/issues</url>
     </issueManagement>
 
     <scm>
-        <url>https://github.com/b3log/b3log-index</url>
+        <url>https://github.com/b3log/index</url>
     </scm>
 
     <reporting>
