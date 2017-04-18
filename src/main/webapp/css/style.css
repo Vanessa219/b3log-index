@@ -435,32 +435,8 @@ body > .wrapper {
 
 .donate .donate-img {
     float: left;
-    margin: 50px 150px 50px 50px;
-}
-
-.donate h1 {
-    float: left;
-    margin-top: 140px;
-    letter-spacing: 4px;
-}
-
-.donate h3 {
-    float: left;
-    margin-top: 8px;
-}
-
-h2.open-link-us {
-    background-color: #d23f31;
-    border-color: #c0372a;
-    color: #ffffff;
-    float: left;
-    font-size: 18px;
-    font-weight: normal;
-    letter-spacing: 4px;
-    padding: 5px 20px;
-    text-align: center;
-    text-shadow: 0 0 0;
-    white-space: nowrap;
+    margin: 50px 96px;
+    width: 300px;
 }
 
 .donate .paypal {
@@ -468,7 +444,7 @@ h2.open-link-us {
 }
 
 .donate .paypal .donate-img {
-    margin: 50px 230px 50px 110px;
+    margin: 50px 76px 50px 110px;
 }
 
 .donate .paypal h1  {
