@@ -3,7 +3,7 @@
  * b3log index style
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.1.1.5, May 4, 2014
+ * @version 1.2.1.5, May 19, 2017
 */
 
 /* start reset */
@@ -431,6 +431,20 @@ body > .wrapper {
 /* start donate */
 .donate {
     padding: 100px 0 30px;
+}
+
+h2.open-link-us {
+    background-color: #d23f31;
+    border-color: #c0372a;
+    color: #ffffff;
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 4px;
+    padding: 5px 20px;
+    text-align: center;
+    text-shadow: 0 0 0;
+    white-space: nowrap;
 }
 
 .donate .donate-img {
