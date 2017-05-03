@@ -285,6 +285,15 @@ body > .wrapper {
     color: #fff;
     line-height: 48px;
 }
+
+.header-intro a:hover {
+    color: #fff;
+}
+
+.header-intro a.current {
+    border-bottom: 2px solid #d23f31;
+    padding: 0 10px 14px;
+}
 /* end nav */
 
 /* start footer */
@@ -433,18 +442,11 @@ body > .wrapper {
     padding: 100px 0 30px;
 }
 
-h2.open-link-us {
-    background-color: #d23f31;
-    border-color: #c0372a;
-    color: #ffffff;
-    float: left;
-    font-size: 18px;
-    font-weight: normal;
-    letter-spacing: 4px;
-    padding: 5px 20px;
-    text-align: center;
-    text-shadow: 0 0 0;
-    white-space: nowrap;
+.donate p {
+    padding: 50px 96px;
+    border-bottom: 1px solid #cacaca;
+    font-size: 16px;
+    line-height: 28px;
 }
 
 .donate .donate-img {
