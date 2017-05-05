@@ -1,376 +1,587 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>B3log 在线服务</title>
-        <meta name="description" content="Java 开源博客，Golang/Go IDE"/>
-        <link type="text/css" rel="stylesheet" href="../css/style.css" charset="utf-8" />
-        <link href="../js/lib/bootstrap-3.3.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../js/lib/bootstrap-3.3.1/css/docs.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="header">
-            <div class="wrapper">
-                <div class="left">
-                    <h1>
-                        <a href="http://b3log.org" title="B3log">B3log 开源</a>
-                    </h1>
-                    <span id="killBrowser"></span>
-                </div>
-                <div class="header-intro">
-                    <a target="_blank" href="https://hacpai.com/register?r=88250">黑客派</a>
-                    &nbsp; &nbsp; &nbsp;
-                    <a href="/services/index.html" class="current">服务价格</a>
-                    &nbsp; &nbsp; &nbsp;
-                    <a href="/donate.html">成为赞助者</a>
-                    &nbsp; &nbsp; &nbsp;
-                    <a href="http://liuyun.io" target="_blank">流云</a>
-                </div>   
-                <div class="clear"></div>
-            </div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>B3log 在线服务</title>
+    <meta name="description" content="Java 开源博客，Golang/Go IDE"/>
+    <link type="text/css" rel="stylesheet" href="../css/style.css" charset="utf-8"/>
+    <link href="../js/lib/bootstrap-3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../js/lib/bootstrap-3.3.1/css/docs.css" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+    <div class="wrapper">
+        <div class="left">
+            <h1>
+                <a href="http://b3log.org" title="B3log">B3log 开源</a>
+            </h1>
+            <span id="killBrowser"></span>
         </div>
-        <div class="container">
-            <div class="col-md-3">
-                <div class="bs-sidebar hidden-print" role="complementary">
-                    <ul class="nav bs-sidenav">
-                        <li><a href="#wide">在线开发环境 —— Wide</a>
+        <div class="header-intro">
+            <a target="_blank" href="https://hacpai.com/register?r=88250">黑客派</a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="/services/index.html" class="current">服务价格</a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="/donate.html">成为赞助者</a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="http://liuyun.io" target="_blank">流云</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-3">
+        <div class="bs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-sidenav">
+                <li>
+                    <a href="#sym">现代化社区 —— Symphony</a>
+                    <ul class="nav">
+                        <li><a href="#sym-intro">简介</a></li>
+                        <li><a href="#sym-features">特性概览</a></li>
+                        <li><a href="#sym-plan">套餐</a>
                             <ul class="nav">
-                                <li><a href="#wide-intro">简介</a></li>
-                                <li><a href="#wide-features">特性概览</a></li>
-                                <li><a href="#wide-plan">套餐</a>
-                                    <ul class="nav">
-                                        <li><a href="#wide-pricing">方案与报价</a></li>
-                                        <li><a href="#wide-expire">到期处理</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#wide-cases">案例</a>
-                                    <ul class="nav">
-                                        <li><a href="#wide-case-f">F 餐</a></li>
-                                        <li><a href="#wide-case-a">A 餐</a></li>
-                                        <li><a href="#wide-case-b">B 餐</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="#sym-community">社区版</a></li>
+                                <li><a href="#sym-business">商业版</a></li>
                             </ul>
                         </li>
-
-                        <li><a href="#solo">独立博客 —— Solo</a>
+                        <li><a href="#sym-cases">案例</a>
                             <ul class="nav">
-                                <li><a href="#solo-intro">简介</a></li>
-                                <li><a href="#solo-features">特性概览</a></li>
-                                <li><a href="#solo-plan">套餐</a>
-                                    <ul class="nav">
-                                        <li><a href="#solo-pricing">方案与报价</a></li>
-                                        <li><a href="#solo-expire">到期处理</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#solo-cases">案例</a>
-                                    <ul class="nav">
-                                        <li><a href="#solo-case-d">简约设计の艺术</a></li>
-                                        <li><a href="#solo-case-v">Vanessa</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="#sym-case-a">个人维护</a></li>
+                                <li><a href="#sym-case-b">公司维护</a></li>
                             </ul>
                         </li>
-
-                        <li><a href="#promote">优惠与推广</a>
-                            <ul class="nav">
-                                <li><a href="#promote-annual">包年</a></li>
-                                <li><a href="#promote-promotion">推广</a></li>
-                            </ul>
+                        <li><a href="#promote-sym">优惠与推广</a>
                         </li>
-                        <li><a href="#contact">联系方式</a>
-                            <ul class="nav">
-                                <li><a href="#buy">套餐购买</a></li>
-                                <li><a href="#donate">捐赠</a></li>
-                                <li><a href="#consult">问题咨询</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#team">我们是谁</a></li>
                     </ul>
-                </div>
+                </li>
+
+                <li><a href="#wide">在线开发环境 —— Wide</a>
+                    <ul class="nav">
+                        <li><a href="#wide-intro">简介</a></li>
+                        <li><a href="#wide-features">特性概览</a></li>
+                        <li><a href="#wide-plan">套餐</a>
+                            <ul class="nav">
+                                <li><a href="#wide-pricing">方案与报价</a></li>
+                                <li><a href="#wide-expire">到期处理</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#wide-cases">案例</a>
+                            <ul class="nav">
+                                <li><a href="#wide-case-f">F 餐</a></li>
+                                <li><a href="#wide-case-a">A 餐</a></li>
+                                <li><a href="#wide-case-b">B 餐</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#promote-wide">优惠与推广</a>
+                            <ul class="nav">
+                                <li><a href="#promote-annual-wide">包年</a></li>
+                                <li><a href="#promote-promotion-wide">推广</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a href="#solo">独立博客 —— Solo</a>
+                    <ul class="nav">
+                        <li><a href="#solo-intro">简介</a></li>
+                        <li><a href="#solo-features">特性概览</a></li>
+                        <li><a href="#solo-plan">套餐</a>
+                            <ul class="nav">
+                                <li><a href="#solo-pricing">方案与报价</a></li>
+                                <li><a href="#solo-expire">到期处理</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#solo-cases">案例</a>
+                            <ul class="nav">
+                                <li><a href="#solo-case-d">简约设计の艺术</a></li>
+                                <li><a href="#solo-case-v">Vanessa</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#promote-solo">优惠与推广</a>
+                            <ul class="nav">
+                                <li><a href="#promote-annual-solo">包年</a></li>
+                                <li><a href="#promote-promotion-solo">推广</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a href="#contact">联系方式</a>
+                    <ul class="nav">
+                        <li><a href="#buy">套餐购买</a></li>
+                        <li><a href="#donate">捐赠</a></li>
+                        <li><a href="#consult">问题咨询</a></li>
+                    </ul>
+                </li>
+                <li><a href="#team">我们是谁</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="bs-docs-section">
+            <h1 id="sym">现代化社区 —— Symphony</h1>
+            <h2 id="sym-intro">简介</h2>
+            <p>
+                <a href="https://github.com/b3log/symphony">Symphony</a>
+                （[ˈsɪmfəni]，n.交响乐）是一个现代化的社区平台，因为它：
+            <div class="bs-callout bs-callout-info">
+                <ul>
+                    <li>实现了面向内容讨论的论坛</li>
+                    <li>包含了面向用户分享、交友、游戏的社交网络</li>
+                    <li>集成了聚合独立博客的能力，共建共享优质资源</li>
+                    <li>并且 100% 开源</li>
+                </ul>
             </div>
-            <div class="col-md-9">
-                <div class="bs-docs-section">
-                    <h1 id="wide">在线开发环境 —— Wide</h1>
-                    <h2 id="wide-intro">简介</h2>
-                    <p>
-                        <a href="https://github.com/b3log/wide" target="_blank">Wide</a> 是一款基于 <b>W</b>eb 的团队 Go 语言 <b>IDE</b>，和其他在线 Web 工具一样，Wide 最大的特点就是打开浏览器就可以使用，随时随地。
-                    </p>
+            欢迎到 <a href="https://hacpai.com/">Sym 官方讨论区</a>了解更多。另外，如果你需要搭建一个企业内网论坛，请使用 <a
+                href="https://github.com/FangStarNet/symphonyx">SymX</a>。
+            </p>
 
-                    <p>
-                        Wide 可以在本地运行，也可以使用我们提供的在线服务：<a href="https://wide.b3log.org" target="_blank"><b>https://wide.b3log.org</b></a>。
-                    </p>
+            <h2 id="sym-features">特性概览</h2>
+            <ul class="list-group">
+                <li class="list-group-item">好用的编辑器</li>
+                <li class="list-group-item">智能、灵活的信息架构</li>
+                <li class="list-group-item">满足多样化的发帖需求</li>
+                <li class="list-group-item">人性化的回帖交互</li>
+                <li class="list-group-item">用户个性化设置</li>
+                <li class="list-group-item">编辑历史与匿名发布</li>
+                <li class="list-group-item">对搜索引擎友好</li>
+                <li class="list-group-item">实时的消息通知</li>
+                <li class="list-group-item">好玩的活动</li>
+                <li class="list-group-item">强大的后台管理</li>
+                <li class="list-group-item">开放的内容 API</li>
+                <li class="list-group-item">集成云邮件服务</li>
+                <li class="list-group-item">集成云搜索服务</li>
+            </ul>
 
-                    <h2 id="wide-features">特性概览</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item">代码高亮、折叠：Go/HTML/JavaScript/Markdown 等</li>
-                        <li class="list-group-item">自动完成：Go/HTML 等</li>
-                        <li class="list-group-item">编译检查：编辑器提示编译错误</li>
-                        <li class="list-group-item">格式化：Go/HTML/JSON 等</li>
-                        <li class="list-group-item">运行：支持同时运行多个程序，方便联调</li>
-                        <li class="list-group-item">多用户：团队开发，方便协作</li>
-                        <li class="list-group-item">代码导航：跳转到声明，查找使用，文件搜索等</li>
-                        <li class="list-group-item">Web 开发：前端（HTML/JS/CSS）开发支持</li>
-                        <li class="list-group-item">go tool：go get/install/fmt 等</li>
-                        <li class="list-group-item">项目导入/导出</li>
-                        <li class="list-group-item">多主题</li>
-                        <li class="list-group-item">调试：基于 gdb 的调试系统（TBD）</li>
-                        <li class="list-group-item">Git 整合：常用 git 命令可视化操作（TBD）</li>
-                        <li class="list-group-item">Shell：连接到服务器执行命令（TBD）</li>
-                    </ul>
-
-                    <h2 id="wide-plan">套餐</h2>
-                    <div class="panel panel-default">
-                        <div id="wide-pricing" class="panel-heading" style="font-weight: bold;">方案与报价</div>
-                        <table class="table table-condensed text-center" style="width: 100%;">
-                            <tr style="font-weight: bold;">
-                                <td class="bg-primary">项</td><td class="bg-warning">F 餐</td><td class="bg-success">A 餐</td><td class="bg-danger">B 餐</td>
-                            </tr>
-
-                            <tr>
-                                <td class="bg-info">磁盘空间</td><td class="bg-warning">50M</td><td class="bg-success">100M</td><td class="bg-danger">500M</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">CPU 使用</td><td class="bg-warning">限制长期占用</td><td class="bg-success">无限制</td><td class="bg-danger">无限制</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">内存使用</td><td class="bg-warning">50M</td><td class="bg-success">100M</td><td class="bg-danger">500M</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">端口使用</td><td class="bg-warning">限制长期占用</td><td class="bg-success">无限制</td><td class="bg-danger">无限制</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">数据持久性</td><td class="bg-warning">永久保留</td><td class="bg-success">永久保留</td><td class="bg-danger">永久保留</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">数据导入/导出</td><td class="bg-warning">支持</td><td class="bg-success">支持</td><td class="bg-danger">支持</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">进程安全</td><td class="bg-warning">可能被 KILL</td><td class="bg-success">无限制</td><td class="bg-danger">无限制</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">流量</td><td class="bg-warning">限制长期高占用</td><td class="bg-success">限制长期高占用</td><td class="bg-danger">无限制</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">带宽</td><td class="bg-warning">共享 1Mbps</td><td class="bg-success">共享 1Mbps</td><td class="bg-danger">独享 1Mbps</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">Wide</td><td class="bg-warning">共享</td><td class="bg-success">独享</td><td class="bg-danger">独享</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">团队人数</td><td class="bg-warning">1</td><td class="bg-success">1-5</td><td class="bg-danger">1-20</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">域名绑定</td><td class="bg-warning">不支持</td><td class="bg-success">不支持</td><td class="bg-danger">支持</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">数据库</td><td class="bg-warning">不支持</td><td class="bg-success">不支持</td><td class="bg-danger">支持</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">SSH 连接</td><td class="bg-warning">不支持</td><td class="bg-success">支持</td><td class="bg-danger">支持</td>
-                            </tr>
-                            <tr class="bg-primary">
-                                <td>价格</td><td>免费</td><td>50￥/月</td><td>280￥/月</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="panel panel-danger">
-                        <div id="wide-expire" class="panel-heading" style="font-weight: bold;">到期处理</div>
-                        <ul class="list-group">
-                            <li class="list-group-item">限制新建、编辑、删除文件</li>
-                            <li class="list-group-item">限制导入/导出</li>
-                            <li class="list-group-item">限制运行</li>
-                        </ul>
-                    </div>
-
-                    <h2 id="wide-cases">案例</h2>
-                    <div class="panel panel-default">
-                        <div id="wide-case-f" class="panel-heading" style="font-weight: bold;">F 餐</div>
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-info">支持导入/导出</li>
-                            <li class="list-group-item list-group-item-info">可使用未被占用的端口</li>
-                            <li class="list-group-item list-group-item-info">长期占用资源（网络、CPU、内存等）的运行进程会被 KILL</li>
-                            <li class="list-group-item list-group-item-warning">适用于个人项目</li>
-                        </ul>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div id="wide-case-a" class="panel-heading" style="font-weight: bold;">A 餐</div>
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-info">永久保留数据</li>
-                            <li class="list-group-item list-group-item-info">长期运行的进程不会被 KILL</li>
-                            <li class="list-group-item list-group-item-info">使用独立 Wide 的，所有数据、进程都是独立于其他套餐用户的，非常安全</li>
-                            <li class="list-group-item list-group-item-info">支持 SSH 连接</li>
-                            <li class="list-group-item list-group-item-warning">适用于 10 人以下团队</li>
-                            <li class="list-group-item list-group-item-warning">适用于非数据库/小流量线上生产服务</li>
-                        </ul>
-                    </div>
-                    <div class="panel panel-default">
-                        <div id="wide-case-b" class="panel-heading" style="font-weight: bold;">B 餐</div>
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-info">更多的内存</li>
-                            <li class="list-group-item list-group-item-info">支持数据库</li>
-                            <li class="list-group-item list-group-item-info">支持绑定域名</li>
-                            <li class="list-group-item list-group-item-info">支持 10 人以上团队</li>
-                            <li class="list-group-item list-group-item-info">独享 1Mbps 带宽</li>
-                            <li class="list-group-item list-group-item-warning">适用于 10-20 人团队</li>
-                            <li class="list-group-item list-group-item-warning">适用于跑线上生产服务（例如企业门户）</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="bs-docs-section">
-                    <h1 id="solo">独立博客 —— Solo</h1>
-                    <h2 id="solo-intro">简介</h2>
-                    <p>
-                        <a href="https://github.com/b3log/solo" target="_blank">Solo</a> 是一款专业、简约、稳定、极速的博客系统，目前是 <a href="https://github.com/b3log/solo" target="_blank">GitHub</a> 上关注度最高的 Java 开源博客系统！
-                    </p>
-
-                    <p>
-                        您可以使用 Solo 来<a href="https://github.com/b3log/solo/wiki/standalone_mode" target="_blank">搭建自己的博客</a>，也可以使用我们提供的服务：
-                    </p>
-
-                    <div class="bs-callout bs-callout-info">
-                        <h4>优势</h4>
+            <h2 id="sym-plan">套餐</h2>
+            <div class="bs-callout">
+                <h4 id="sym-community">社区版</h4>
+                <ul>
+                    <li>使用 GPL 开源，如果你选择使用社区版，则必须完全遵守 GPL 的相关条款</li>
+                </ul>
+            </div>
+            <div class="bs-callout bs-callout-info">
+                <h4 id="sym-business">商业版</h4>
+                <ul>
+                    <li>闭源，报价 ¥20000，请联系 QQ845765 或者 DL88250@gmail.com 进行细节咨询</li>
+                </ul>
+            </div>
+            <div class="bs-callout bs-callout-warning">
+                <h4>商业版相比社区版具有如下优势</h4>
+                <ul>
+                    <li>
+                        更好的安全性
                         <ul>
-                            <li>完整的数据导出</li>
-                            <li>灵活的域名绑定（无需备案）</li>
-                            <li>廉价的主题定制</li>
+                            <li>内置 CC 攻击过滤系统</li>
                         </ul>
-                    </div>
-
-                    <p>
-                        在线体验：<a href="http://demo.b3log.org" target="_blank">http://demo.b3log.org</a>，用户名/密码：b3log.solo@gmail.com/b3logsolo
-                    </p>
-
-                    <h2 id="solo-features">特性概览</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item">文章标签</li> 
-                        <li class="list-group-item">Atom/RSS, Sitemap 输出</li> 
-                        <li class="list-group-item">评论回复及邮件提醒</li> 
-                        <li class="list-group-item">自定义页面、导航</li> 
-                        <li class="list-group-item">多编辑器：Markdown、TinyMCE、KindEditor</li> 
-                        <li class="list-group-item">置顶/相关/随机/站外相关文章</li> 
-                        <li class="list-group-item">文章、页面永久链接</li> 
-                        <li class="list-group-item">文章草稿夹、签名档、更新提示</li> 
-                        <li class="list-group-item">多用户、多语言、多主题、插件</li> 
-                        <li class="list-group-item">MetaWeblog API</li> 
-                    </ul>
-
-                    <h2 id="solo-plan">套餐</h2>
-                    <div class="panel panel-default">
-                        <div id="solo-pricing" class="panel-heading" style="font-weight: bold;">方案与报价</div>
-                        <table class="table table-condensed text-center" style="width: 100%;">
-                            <tr style="font-weight: bold;">
-                                <td class="bg-primary">项</td><td class="bg-warning">A 餐</td>
-                            </tr>
-
-                            <tr>
-                                <td class="bg-info">磁盘空间（含数据库）</td><td class="bg-warning">50M</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">流量</td><td class="bg-warning">限制长期高占用</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">带宽</td><td class="bg-warning">共享 1Mbps</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">域名绑定</td><td class="bg-warning">支持</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">数据导出</td><td class="bg-warning">支持（SQL）</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">数据导入</td><td class="bg-warning">支持（MetaWeblogAPI）</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-info">数据备份</td><td class="bg-warning">全量/周</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-primary">价格</td><td class="bg-primary">10￥/月</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="panel panel-danger">
-                        <div id="solo-expire" class="panel-heading" style="font-weight: bold;">到期处理</div>
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-warning">停止服务运行</li>
-                            <li class="list-group-item list-group-item-warning">永久保留数据</li>
+                    </li>
+                    <li>
+                        更好的性能
+                        <ul>
+                            <li>数据内存缓存，数据预热系统</li>
+                            <li>数据库索引优化脚本</li>
                         </ul>
-                    </div>
+                    </li>
+                    <li>官方技术支持</li>
+                </ul>
+            </div>
 
-                    <h2 id="solo-cases">案例</h2>
-                    <ul class="list-group">
-                        <li id="solo-case-d" class="list-group-item"><a href="http://88250.b3log.org" target="_blank">简约设计の艺术</a></li>
-                        <li id="solo-case-v" class="list-group-item"><a href="http://vanessa.b3log.org" target="_blank">Vanessa</a></li>
-                    </ul>
-                </div>
+            <h2 id="sym-cases">案例</h2>
+            <div class="panel panel-default">
+                <div id="sym-case-a" class="panel-heading" style="font-weight: bold;">个人维护</div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">黑客派</li>
+                    <li class="list-group-item list-group-item-info">宽客网</li>
+                    <li class="list-group-item list-group-item-info">贵州IT</li>
+                    <li class="list-group-item list-group-item-info">超级产品经理</li>
+                    <li class="list-group-item list-group-item-info">Titandb 学习主站</li>
+                    <li class="list-group-item list-group-item-info">呆萌狮 - Demo's</li>
+                </ul>
+            </div>
+            <div class="panel panel-default">
+                <div id="sym-case-b" class="panel-heading" style="font-weight: bold;">公司维护</div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-warning">四方环视</li>
+                </ul>
+            </div>
 
-                <div class="bs-docs-section">
-                    <h1 id="promote">优惠与推广</h1>
+            <h2 id="promote-sym">优惠与推广</h2>
+            <p>请联系 QQ845765 或者 DL88250@gmail.com 进行细节咨询</p>
+        </div>
 
-                    <div class="panel panel-default">
-                        <div id="promote-annual" class="panel-heading" style="font-weight: bold;">包年</div>
-                        <ul class="list-group">
-                            <li class="list-group-item">所有服务套餐按年付将只收取 10 个月费用</li>
-                        </ul>
+        <div class="bs-docs-section">
+            <h1 id="wide">在线开发环境 —— Wide</h1>
+            <h2 id="wide-intro">简介</h2>
+            <p>
+                <a href="https://github.com/b3log/wide" target="_blank">Wide</a> 是一款基于 <b>W</b>eb 的团队 Go 语言 <b>IDE</b>，和其他在线
+                Web 工具一样，Wide 最大的特点就是打开浏览器就可以使用，随时随地。
+            </p>
 
-                        <div id="promote-promotion" class="panel-heading" style="font-weight: bold;">推广</div>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                您可以使用购买套餐时提供的用户名帮助我们推广 B3log 服务，每当您推介的用户支付 N 年套餐费用时，您将获赠 N 个月该套餐                                    
-                            </li>
-                            <li class="list-group-item">例如用户 D 购买了 Solo A 餐，然后他向 V 推介了 Solo，V 购买了 2 年 Solo A 餐，则此时 D 可获赠 2 个月 Solo A 餐</li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <h1 id="contact">联系方式</h1>
+            <p>
+                Wide 可以在本地运行，也可以使用我们提供的在线服务：<a href="https://wide.b3log.org"
+                                               target="_blank"><b>https://wide.b3log.org</b></a>。
+            </p>
 
-                    <div class="panel panel-default">
-                        <div id="consult" class="panel-heading" style="font-weight: bold;">问题咨询</div>
-                        <ul class="list-group">
-                            <li class="list-group-item">QQ：845765，<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=845765&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:845765:52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>；QQ 群：13139268，<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=943a1b9bb8dc4ea399e87a4895d1ecc4adef6fdb09c552af7aeac5525ace8e85"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="B3log" title="B3log"></a></li>
-                            <li class="list-group-item">邮件：<a href="mailto:support@liuyun.io" target="_blank">support@liuyun.io</a></li>
-                        </ul>
+            <h2 id="wide-features">特性概览</h2>
+            <ul class="list-group">
+                <li class="list-group-item">代码高亮、折叠：Go/HTML/JavaScript/Markdown 等</li>
+                <li class="list-group-item">自动完成：Go/HTML 等</li>
+                <li class="list-group-item">编译检查：编辑器提示编译错误</li>
+                <li class="list-group-item">格式化：Go/HTML/JSON 等</li>
+                <li class="list-group-item">运行：支持同时运行多个程序，方便联调</li>
+                <li class="list-group-item">多用户：团队开发，方便协作</li>
+                <li class="list-group-item">代码导航：跳转到声明，查找使用，文件搜索等</li>
+                <li class="list-group-item">Web 开发：前端（HTML/JS/CSS）开发支持</li>
+                <li class="list-group-item">go tool：go get/install/fmt 等</li>
+                <li class="list-group-item">项目导入/导出</li>
+                <li class="list-group-item">多主题</li>
+                <li class="list-group-item">调试：基于 gdb 的调试系统（TBD）</li>
+                <li class="list-group-item">Git 整合：常用 git 命令可视化操作（TBD）</li>
+                <li class="list-group-item">Shell：连接到服务器执行命令（TBD）</li>
+            </ul>
 
-                        <div id="buy" class="panel-heading" style="font-weight: bold;">套餐购买</div>
-                        <ul class="list-group">
-                            <li class="list-group-item">请发邮件至：<a href="mailto:support@liuyun.io" target="_blank">support@liuyun.io</a>，主题：购买 Wide/Solo 套餐</li>
-                        </ul>
+            <h2 id="wide-plan">套餐</h2>
+            <div class="panel panel-default">
+                <div id="wide-pricing" class="panel-heading" style="font-weight: bold;">方案与报价</div>
+                <table class="table table-condensed text-center" style="width: 100%;">
+                    <tr style="font-weight: bold;">
+                        <td class="bg-primary">项</td>
+                        <td class="bg-warning">F 餐</td>
+                        <td class="bg-success">A 餐</td>
+                        <td class="bg-danger">B 餐</td>
+                    </tr>
 
-                        <div id="donate" class="panel-heading" style="font-weight: bold;">捐赠</div>
-                        <ul class="list-group">
-                            <li class="list-group-item">捐赠地址：<a href="http://b3log.org/donate.html">http://b3log.org/donate.html</a> （支付宝/Paypal）</li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <h1 id="team">我们是谁</h1>
-                    <ul class="list-group">
-                        <li class="list-group-item">我们是一个分布式团队，组建于 2010 年</li>
-                        <li class="list-group-item">我们创建了一个开源组织——<a href="https://github.com/b3log" target="_blank">B3log</a></li>
-                        <li class="list-group-item">我们创建了一个工作室——<a href="http://liuyun.io" target="_blank">流云</a></li>
-                    </ul>
-                </div>
+                    <tr>
+                        <td class="bg-info">磁盘空间</td>
+                        <td class="bg-warning">50M</td>
+                        <td class="bg-success">100M</td>
+                        <td class="bg-danger">500M</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">CPU 使用</td>
+                        <td class="bg-warning">限制长期占用</td>
+                        <td class="bg-success">无限制</td>
+                        <td class="bg-danger">无限制</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">内存使用</td>
+                        <td class="bg-warning">50M</td>
+                        <td class="bg-success">100M</td>
+                        <td class="bg-danger">500M</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">端口使用</td>
+                        <td class="bg-warning">限制长期占用</td>
+                        <td class="bg-success">无限制</td>
+                        <td class="bg-danger">无限制</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">数据持久性</td>
+                        <td class="bg-warning">永久保留</td>
+                        <td class="bg-success">永久保留</td>
+                        <td class="bg-danger">永久保留</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">数据导入/导出</td>
+                        <td class="bg-warning">支持</td>
+                        <td class="bg-success">支持</td>
+                        <td class="bg-danger">支持</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">进程安全</td>
+                        <td class="bg-warning">可能被 KILL</td>
+                        <td class="bg-success">无限制</td>
+                        <td class="bg-danger">无限制</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">流量</td>
+                        <td class="bg-warning">限制长期高占用</td>
+                        <td class="bg-success">限制长期高占用</td>
+                        <td class="bg-danger">无限制</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">带宽</td>
+                        <td class="bg-warning">共享 1Mbps</td>
+                        <td class="bg-success">共享 1Mbps</td>
+                        <td class="bg-danger">独享 1Mbps</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">Wide</td>
+                        <td class="bg-warning">共享</td>
+                        <td class="bg-success">独享</td>
+                        <td class="bg-danger">独享</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">团队人数</td>
+                        <td class="bg-warning">1</td>
+                        <td class="bg-success">1-5</td>
+                        <td class="bg-danger">1-20</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">域名绑定</td>
+                        <td class="bg-warning">不支持</td>
+                        <td class="bg-success">不支持</td>
+                        <td class="bg-danger">支持</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">数据库</td>
+                        <td class="bg-warning">不支持</td>
+                        <td class="bg-success">不支持</td>
+                        <td class="bg-danger">支持</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">SSH 连接</td>
+                        <td class="bg-warning">不支持</td>
+                        <td class="bg-success">支持</td>
+                        <td class="bg-danger">支持</td>
+                    </tr>
+                    <tr class="bg-primary">
+                        <td>价格</td>
+                        <td>免费</td>
+                        <td>50￥/月</td>
+                        <td>280￥/月</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="panel panel-danger">
+                <div id="wide-expire" class="panel-heading" style="font-weight: bold;">到期处理</div>
+                <ul class="list-group">
+                    <li class="list-group-item">限制新建、编辑、删除文件</li>
+                    <li class="list-group-item">限制导入/导出</li>
+                    <li class="list-group-item">限制运行</li>
+                </ul>
+            </div>
+
+            <h2 id="wide-cases">案例</h2>
+            <div class="panel panel-default">
+                <div id="wide-case-f" class="panel-heading" style="font-weight: bold;">F 餐</div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">支持导入/导出</li>
+                    <li class="list-group-item list-group-item-info">可使用未被占用的端口</li>
+                    <li class="list-group-item list-group-item-info">长期占用资源（网络、CPU、内存等）的运行进程会被 KILL</li>
+                    <li class="list-group-item list-group-item-warning">适用于个人项目</li>
+                </ul>
+            </div>
+
+            <div class="panel panel-default">
+                <div id="wide-case-a" class="panel-heading" style="font-weight: bold;">A 餐</div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">永久保留数据</li>
+                    <li class="list-group-item list-group-item-info">长期运行的进程不会被 KILL</li>
+                    <li class="list-group-item list-group-item-info">使用独立 Wide 的，所有数据、进程都是独立于其他套餐用户的，非常安全</li>
+                    <li class="list-group-item list-group-item-info">支持 SSH 连接</li>
+                    <li class="list-group-item list-group-item-warning">适用于 10 人以下团队</li>
+                    <li class="list-group-item list-group-item-warning">适用于非数据库/小流量线上生产服务</li>
+                </ul>
+            </div>
+            <div class="panel panel-default">
+                <div id="wide-case-b" class="panel-heading" style="font-weight: bold;">B 餐</div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">更多的内存</li>
+                    <li class="list-group-item list-group-item-info">支持数据库</li>
+                    <li class="list-group-item list-group-item-info">支持绑定域名</li>
+                    <li class="list-group-item list-group-item-info">支持 10 人以上团队</li>
+                    <li class="list-group-item list-group-item-info">独享 1Mbps 带宽</li>
+                    <li class="list-group-item list-group-item-warning">适用于 10-20 人团队</li>
+                    <li class="list-group-item list-group-item-warning">适用于跑线上生产服务（例如企业门户）</li>
+                </ul>
+            </div>
+
+            <h2 id="promote-wide">优惠与推广</h2>
+            <div class="panel panel-default">
+                <div id="promote-annual-wide" class="panel-heading" style="font-weight: bold;">包年</div>
+                <ul class="list-group">
+                    <li class="list-group-item">所有服务套餐按年付将只收取 10 个月费用</li>
+                </ul>
+
+                <div id="promote-promotion-wide" class="panel-heading" style="font-weight: bold;">推广</div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        您可以使用购买套餐时提供的用户名帮助我们推广 B3log 服务，每当您推介的用户支付 N 年套餐费用时，您将获赠 N 个月该套餐
+                    </li>
+                    <li class="list-group-item">例如用户 D 购买了 Solo A 餐，然后他向 V 推介了 Solo，V 购买了 2 年 Solo A 餐，则此时 D 可获赠 2 个月
+                        Solo A 餐
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <div class="footer">
-            <div class="wrapper">
-                <div class="left">
-                    <a href="http://b3log.org" title="B3log"><img src="../images/logo.png" title="B3log" /></a>
-                </div>
-                平等 • 自由 • 奔放  <span class="ft-gray">© 2010-2017</span> <a href="http://b3log.org">B3log</a>
+        <div class="bs-docs-section">
+            <h1 id="solo">独立博客 —— Solo</h1>
+            <h2 id="solo-intro">简介</h2>
+            <p>
+                <a href="https://github.com/b3log/solo" target="_blank">Solo</a> 是一款专业、简约、稳定、极速的博客系统，目前是 <a
+                    href="https://github.com/b3log/solo" target="_blank">GitHub</a> 上关注度最高的 Java 开源博客系统！
+            </p>
+
+            <p>
+                您可以使用 Solo 来<a href="https://github.com/b3log/solo/wiki/standalone_mode" target="_blank">搭建自己的博客</a>，也可以使用我们提供的服务：
+            </p>
+
+            <div class="bs-callout bs-callout-info">
+                <h4>优势</h4>
+                <ul>
+                    <li>完整的数据导出</li>
+                    <li>灵活的域名绑定（无需备案）</li>
+                    <li>廉价的主题定制</li>
+                </ul>
+            </div>
+
+            <p>
+                在线体验：<a href="http://demo.b3log.org" target="_blank">http://demo.b3log.org</a>，用户名/密码：b3log.solo@gmail.com/b3logsolo
+            </p>
+
+            <h2 id="solo-features">特性概览</h2>
+            <ul class="list-group">
+                <li class="list-group-item">文章标签</li>
+                <li class="list-group-item">Atom/RSS, Sitemap 输出</li>
+                <li class="list-group-item">评论回复及邮件提醒</li>
+                <li class="list-group-item">自定义页面、导航</li>
+                <li class="list-group-item">多编辑器：Markdown、TinyMCE、KindEditor</li>
+                <li class="list-group-item">置顶/相关/随机/站外相关文章</li>
+                <li class="list-group-item">文章、页面永久链接</li>
+                <li class="list-group-item">文章草稿夹、签名档、更新提示</li>
+                <li class="list-group-item">多用户、多语言、多主题、插件</li>
+                <li class="list-group-item">MetaWeblog API</li>
+            </ul>
+
+            <h2 id="solo-plan">套餐</h2>
+            <div class="panel panel-default">
+                <div id="solo-pricing" class="panel-heading" style="font-weight: bold;">方案与报价</div>
+                <table class="table table-condensed text-center" style="width: 100%;">
+                    <tr style="font-weight: bold;">
+                        <td class="bg-primary">项</td>
+                        <td class="bg-warning">A 餐</td>
+                    </tr>
+
+                    <tr>
+                        <td class="bg-info">磁盘空间（含数据库）</td>
+                        <td class="bg-warning">50M</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">流量</td>
+                        <td class="bg-warning">限制长期高占用</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">带宽</td>
+                        <td class="bg-warning">共享 1Mbps</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">域名绑定</td>
+                        <td class="bg-warning">支持</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">数据导出</td>
+                        <td class="bg-warning">支持（SQL）</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">数据导入</td>
+                        <td class="bg-warning">支持（MetaWeblogAPI）</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-info">数据备份</td>
+                        <td class="bg-warning">全量/周</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-primary">价格</td>
+                        <td class="bg-primary">10￥/月</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="panel panel-danger">
+                <div id="solo-expire" class="panel-heading" style="font-weight: bold;">到期处理</div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-warning">停止服务运行</li>
+                    <li class="list-group-item list-group-item-warning">永久保留数据</li>
+                </ul>
+            </div>
+
+            <h2 id="solo-cases">案例</h2>
+            <ul class="list-group">
+                <li id="solo-case-d" class="list-group-item"><a href="http://88250.b3log.org"
+                                                                target="_blank">简约设计の艺术</a></li>
+                <li id="solo-case-v" class="list-group-item"><a href="http://vanessa.b3log.org"
+                                                                target="_blank">Vanessa</a></li>
+            </ul>
+
+            <h2 id="promote-solo">优惠与推广</h2>
+            <div class="panel panel-default">
+                <div id="promote-annual-solo" class="panel-heading" style="font-weight: bold;">包年</div>
+                <ul class="list-group">
+                    <li class="list-group-item">所有服务套餐按年付将只收取 10 个月费用</li>
+                </ul>
+
+                <div id="promote-promotion-solo" class="panel-heading" style="font-weight: bold;">推广</div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        您可以使用购买套餐时提供的用户名帮助我们推广 B3log 服务，每当您推介的用户支付 N 年套餐费用时，您将获赠 N 个月该套餐
+                    </li>
+                    <li class="list-group-item">例如用户 D 购买了 Solo A 餐，然后他向 V 推介了 Solo，V 购买了 2 年 Solo A 餐，则此时 D 可获赠 2 个月
+                        Solo A 餐
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <script src="../js/lib/bootstrap-3.3.1/js/jquery-1.11.2.min.js"></script>
-        <script src="../js/lib/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-        <script src="../js/lib/bootstrap-3.3.1/js/application.js"></script>
-    </body>
+        <div class="bs-docs-section">
+            <h1 id="contact">联系方式</h1>
+            <div class="panel panel-default">
+                <div id="consult" class="panel-heading" style="font-weight: bold;">问题咨询</div>
+                <ul class="list-group">
+                    <li class="list-group-item">QQ：845765，<a target="_blank"
+                                                             href="http://wpa.qq.com/msgrd?v=3&uin=845765&site=qq&menu=yes"><img
+                            border="0" src="http://wpa.qq.com/pa?p=2:845765:52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>；QQ
+                        群：13139268，<a target="_blank"
+                                      href="http://shang.qq.com/wpa/qunwpa?idkey=943a1b9bb8dc4ea399e87a4895d1ecc4adef6fdb09c552af7aeac5525ace8e85"><img
+                                border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="B3log" title="B3log"></a>
+                    </li>
+                    <li class="list-group-item">邮件：<a href="mailto:support@liuyun.io"
+                                                      target="_blank">support@liuyun.io</a></li>
+                </ul>
+
+                <div id="buy" class="panel-heading" style="font-weight: bold;">套餐购买</div>
+                <ul class="list-group">
+                    <li class="list-group-item">请发邮件至：<a href="mailto:support@liuyun.io" target="_blank">support@liuyun.io</a>，主题：购买
+                        Wide/Solo/Symphony 套餐
+                    </li>
+                </ul>
+
+                <div id="donate" class="panel-heading" style="font-weight: bold;">捐赠</div>
+                <ul class="list-group">
+                    <li class="list-group-item">捐赠地址：<a
+                            href="http://b3log.org/donate.html">http://b3log.org/donate.html</a> （支付宝/微信/Paypal/广告投放）
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="team">我们是谁</h1>
+            <ul class="list-group">
+                <li class="list-group-item">我们是一个分布式团队，组建于 2010 年</li>
+                <li class="list-group-item">我们创建了一个开源组织——<a href="https://github.com/b3log" target="_blank">B3log</a>
+                </li>
+                <li class="list-group-item">我们创建了一个工作室——<a href="http://liuyun.io" target="_blank">流云</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="wrapper">
+        <div class="left">
+            <a href="http://b3log.org" title="B3log"><img src="../images/logo.png" title="B3log"/></a>
+        </div>
+        平等 • 自由 • 奔放 <span class="ft-gray">© 2010-2017</span> <a href="http://b3log.org">B3log</a>
+    </div>
+</div>
+
+<script src="../js/lib/bootstrap-3.3.1/js/jquery-1.11.2.min.js"></script>
+<script src="../js/lib/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="../js/lib/bootstrap-3.3.1/js/application.js"></script>
+</body>
 </html>
