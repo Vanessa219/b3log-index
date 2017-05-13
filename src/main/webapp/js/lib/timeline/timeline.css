@@ -21,7 +21,7 @@
 #timeline{width:984px;height:100%;padding:0px;margin:0px;background-color:#ffffff;position:absolute;overflow:hidden;}#timeline .feedback{position:absolute;display:table;overflow:hidden;top:0px;left:0px;z-index:2000;width:100%;height:100%;background-color:#e9e9e9;border:1px solid #cccccc;}#timeline .feedback .messege{display:table-cell;vertical-align:middle;font-size:28px;font-weight:bold;text-transform:uppercase;line-height:36px;width:75%;margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;text-align:center;}
 #timeline .container.main{position:absolute;top:0px;left:0px;padding-bottom:3px;width:auto;height:auto;margin:0px;clear:both;}
 #timeline img,#timeline embed,#timeline object,#timeline video,#timeline iframe{max-width:100%;}
-#timeline img{max-height:100%;border:1px solid #999999;}
+#timeline img{max-height:100%;}
 #timeline a{color:#0088cc;text-decoration:none;}
 #timeline a:hover{color:#005580;text-decoration:underline;}
 #timeline .twitter{text-align:left;background-color:#ffffff;margin-left:auto;margin-right:auto;margin-bottom:15px;clear:both;}#timeline .twitter blockquote{font-size:15px;line-height:20px;color:#666666;}#timeline .twitter blockquote p{font-size:28px;line-height:36px;margin-bottom:6px;padding-top:10px;background-color:#ffffff;color:#000000;}

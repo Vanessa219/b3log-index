@@ -301,11 +301,15 @@ body > .wrapper {
     color: #333;
     border-top: 1px solid #E0E0E0;
     box-shadow: 0 1px 1px white inset;
-    line-height: 60px;
+    line-height: 38px;
     padding: 10px 0;
-    height: 60px;
+    height: 38px;
     background-color: #FFF;
     text-align: right;
+}
+
+.footer img {
+    height: 38px;
 }
 /* end footer */
 
