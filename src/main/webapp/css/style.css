@@ -3,7 +3,7 @@
  * b3log index style
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.2.1.5, May 19, 2017
+ * @version 1.2.1.6, May 14, 2017
 */
 
 /* start reset */
@@ -303,7 +303,6 @@ body > .wrapper {
     box-shadow: 0 1px 1px white inset;
     line-height: 38px;
     padding: 10px 0;
-    height: 38px;
     background-color: #FFF;
     text-align: right;
 }
