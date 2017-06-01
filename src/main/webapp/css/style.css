@@ -447,7 +447,7 @@ body > .wrapper {
 
 .donate p {
     padding: 50px 96px;
-    border-bottom: 1px solid #cacaca;
+    border-bottom: 1px solid #e5e5e5;
     font-size: 16px;
     line-height: 28px;
 }
@@ -456,18 +456,5 @@ body > .wrapper {
     float: left;
     margin: 50px 96px;
     width: 300px;
-}
-
-.donate .paypal {
-    border-top: 1px solid #cacaca;
-}
-
-.donate .paypal .donate-img {
-    margin: 50px 76px 50px 110px;
-}
-
-.donate .paypal h1  {
-    cursor: pointer;
-    margin-top: 110px;
 }
 /* end donate */
