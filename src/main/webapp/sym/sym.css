@@ -173,6 +173,28 @@ fn-clear:after {
     height: 46px;
 }
 
+.header-logo:hover {
+    animation: zomg 1s infinite;
+}
+
+@keyframes zomg {
+    0% {
+        color: #4285f4
+    }
+
+    30% {
+        color: #d23f31
+    }
+
+    60% {
+        color: #3b3e43
+    }
+
+    100% {
+        color: #fff
+    }
+}
+
 .header img {
     float: left;
     height: 46px;
@@ -182,6 +204,7 @@ fn-clear:after {
 .header h1 {
     float: left;
     margin-left: 5px;
+    background-color: #f1f7fe;
 }
 
 .header div {
@@ -189,8 +212,55 @@ fn-clear:after {
     line-height: 46px;
 }
 
-.header div a {
+.header-a {
     margin-left: 20px;
+    position: relative;
+    transition-property: color;
+    transition-duration: .3s;
+    display: inline-block;
+    color: rgba(0,0,0,0.87);
+    padding: 0 10px;
+    background-color: #f1f7fe;
+}
+
+.header-a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.header-a:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #563d7c;
+    transform: scaleY(0);
+    transform-origin: 50% 100%;
+    transition: transform .3s ease-out;
+}
+
+.header-a:hover:before {
+    transform: scaleY(1);
+}
+
+.header-green:before {
+    background-color: #569e3d;
+}
+
+.header-orange:before {
+    background-color: #ffac45;
+}
+
+.header-yellow:before {
+    background-color: #f1e05a;
+}
+
+.header-red:before {
+    background-color: #d23f31;
 }
 
 .bg {
