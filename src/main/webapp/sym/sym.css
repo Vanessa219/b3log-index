@@ -158,23 +158,18 @@ blockquote {
     margin: 0;
 }
 
-fn-clear:before,
-fn-clear:after {
-     display: table;
-     content: "";
- }
+.fn-clear:before,
+.fn-clear:after {
+    display: table;
+    content: "";
+}
 
-fn-clear:after {
-     clear: both;
- }
-
-.header {
-    padding: 10px 20px;
-    height: 46px;
+.fn-clear:after {
+    clear: both;
 }
 
 .header-logo:hover {
-    animation: zomg 1s infinite;
+    animation: zomg 3s infinite;
 }
 
 @keyframes zomg {
@@ -195,32 +190,36 @@ fn-clear:after {
     }
 }
 
+.header {
+    position: relative;
+    z-index: 1;
+}
+
 .header img {
     float: left;
     height: 46px;
     width: 46px;
+    margin: 10px 5px 10px 20px;
 }
 
 .header h1 {
     float: left;
-    margin-left: 5px;
-    background-color: #f1f7fe;
+    margin-top: 10px;
 }
 
 .header div {
     float: right;
-    line-height: 46px;
+    line-height: 66px;
 }
 
 .header-a {
-    margin-left: 20px;
     position: relative;
     transition-property: color;
     transition-duration: .3s;
     display: inline-block;
-    color: rgba(0,0,0,0.87);
-    padding: 0 10px;
-    background-color: #f1f7fe;
+    color: rgba(0, 0, 0, 0.87);
+    padding: 0 20px;
+    float: left;
 }
 
 .header-a:hover {
@@ -274,25 +273,147 @@ fn-clear:after {
     background-image: url(https://sqimg.qq.com/qq_product_operations/im/2015/blog.jpg);
 }
 
-.page {
-    height: 600px;
-}
-
-#firstScreen {
-    background-color: #f1f7fe;
-    position: relative;
-}
-
-#firstScreen canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
 .first-screen {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(https://sqimg.qq.com/qq_product_operations/im/2015/blog.jpg);
+}
+
+.first-screen .required {
+    text-align: center;
+    font-size: 36px;
+    text-shadow: 0 0px 2px rgba(255, 255,255, 1);
+    margin-top: 50px;
+}
+
+.first-screen .scroll {
+    overflow: hidden;
+    display: inline-block;
+    height: 47px;
+    border-bottom: 2px solid #d23f31;
+    vertical-align: text-bottom;
+    color: #fff;
+    text-shadow: 0 0 0;
+}
+
+.first-screen .scroll ul {
+    animation: scroll 15s cubic-bezier(0.545,0.035,0.255,1) normal forwards;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateY(0px)
+    }
+
+    5% {
+        transform: translateY(0px)
+    }
+
+    10% {
+        transform: translateY(-54px)
+    }
+
+    15% {
+        transform: translateY(-54px)
+    }
+
+    20% {
+        transform: translateY(-108px)
+    }
+
+    25% {
+        transform: translateY(-108px)
+    }
+
+    30% {
+        transform: translateY(-162px)
+    }
+
+    35% {
+        transform: translateY(-162px)
+    }
+
+    40% {
+        transform: translateY(-216px)
+    }
+
+    45% {
+        transform: translateY(-216px)
+    }
+
+    50% {
+        transform: translateY(-270px)
+    }
+
+    55% {
+        transform: translateY(-270px)
+    }
+
+    60% {
+        transform: translateY(-324px)
+    }
+
+    65% {
+        transform: translateY(-324px)
+    }
+
+    70% {
+        transform: translateY(-378px)
+    }
+
+    75% {
+        transform: translateY(-378px)
+    }
+
+    80% {
+        transform: translateY(-432px)
+    }
+
+    85% {
+        transform: translateY(-432px)
+    }
+
+    90% {
+        transform: translateY(-486px)
+    }
+
+    95% {
+        transform: translateY(-486px)
+    }
+
+    100% {
+        transform: translateY(-486px)
+    }
+}
+
+.first-screen .btn {
+    color: #fff;
+    background-color: #4285f4;
+    border-radius: 3px;
+    padding: 10px;
+    display: block;
+    width: 160px;
+    margin: 50px auto 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+.first-screen .btn:hover {
+    background-color: #569e3d;
+    text-decoration: none;
+}
+
+.first-screen .btn:active {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25) inset;
+}
+
+.first-screen .panel img {
+    width: 900px;
+    display: block;
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: -137px;
+    left: 50%;
+    margin-left: -450px;
     z-index: 2;
-    width: 100%;
 }
