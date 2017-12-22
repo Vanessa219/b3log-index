@@ -8,6 +8,7 @@ body {
     margin: 0;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
     -webkit-font-smoothing: antialiased;
+    color: #3b3e43;
 }
 
 ::-moz-selection {
@@ -168,6 +169,11 @@ blockquote {
     clear: both;
 }
 
+.wrapper {
+    width: 900px;
+    margin: 100px auto;
+}
+
 .header-logo:hover {
     animation: zomg 3s infinite;
 }
@@ -177,16 +183,16 @@ blockquote {
         color: #4285f4
     }
 
-    30% {
+    25% {
         color: #d23f31
     }
 
-    60% {
+    50% {
         color: #3b3e43
     }
 
-    100% {
-        color: #fff
+    75% {
+        color: #f1e05a
     }
 }
 
@@ -210,6 +216,16 @@ blockquote {
 .header div {
     float: right;
     line-height: 66px;
+}
+
+.header-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 4;
+    background-color: #fff;
+    box-shadow: rgba(0,0,0,0.05) 0px 1px 7px;
+    border-bottom: 1px solid #e1e4e8;
 }
 
 .header-a {
@@ -236,7 +252,7 @@ blockquote {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #563d7c;
+    background-color: #3b3e43;
     transform: scaleY(0);
     transform-origin: 50% 100%;
     transition: transform .3s ease-out;
@@ -247,11 +263,7 @@ blockquote {
 }
 
 .header-green:before {
-    background-color: #569e3d;
-}
-
-.header-orange:before {
-    background-color: #ffac45;
+    background-color: #4285f4;
 }
 
 .header-yellow:before {
@@ -284,7 +296,7 @@ blockquote {
     text-align: center;
     font-size: 36px;
     text-shadow: 0 0px 2px rgba(255, 255,255, 1);
-    margin-top: 50px;
+    padding-top: 50px;
 }
 
 .first-screen .scroll {
@@ -400,8 +412,30 @@ blockquote {
 }
 
 .first-screen .btn:hover {
-    background-color: #569e3d;
     text-decoration: none;
+    animation: btnbg 3s infinite;
+}
+
+@keyframes btnbg {
+    0% {
+        background-color: #4285f4;
+        color: #fff;
+    }
+
+    25% {
+        background-color: #d23f31;
+        color: #fff;
+    }
+
+    50% {
+        background-color: #3b3e43;
+        color: #fff;
+    }
+
+    75% {
+        background-color: #fff;
+        color: #3b3e43;
+    }
 }
 
 .first-screen .btn:active {
@@ -416,4 +450,37 @@ blockquote {
     left: 50%;
     margin-left: -450px;
     z-index: 2;
+}
+
+.second-screen .name {
+    float: left;
+    width: 380px;
+    text-align: center;
+    color: rgba(0,0,0,0.38);
+}
+
+.second-screen .name h2 {
+    font-size: 50px;
+    margin: 50px 0 30px;
+    color: #4285f4;
+    animation: zomg 3s infinite;
+}
+
+.second-screen .content {
+    float: left;
+}
+
+.second-screen .important {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(252,41,41,0.12);
+    border-radius: 3px;
+    color: #d23f31;
+    font-family: mononoki,Consolas,"Liberation Mono",Menlo,Courier,monospace;
+}
+
+.second-screen ul {
+    line-height: 40px;
+    margin: 30px 0 0 30px;
 }
