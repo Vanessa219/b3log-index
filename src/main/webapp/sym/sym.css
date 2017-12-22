@@ -169,9 +169,67 @@ blockquote {
     clear: both;
 }
 
+.btn {
+    color: #fff;
+    background-color: #4285f4;
+    border-radius: 3px;
+    padding: 10px;
+    display: block;
+    width: 160px;
+    margin: 50px auto 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btn:hover {
+    text-decoration: none;
+    animation: btnbg 3s infinite;
+}
+
+@keyframes btnbg {
+    0% {
+        background-color: #4285f4;
+    }
+
+    25% {
+        background-color: #d23f31;
+    }
+
+    50% {
+        background-color: #3b3e43;
+    }
+
+    75% {
+        background-color: #f1e05a;
+    }
+}
+
+.btn:active {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25) inset;
+}
+
 .wrapper {
     width: 900px;
     margin: 100px auto;
+}
+
+.panel-abstract {
+    float: left;
+    width: 380px;
+    text-align: center;
+    color: rgba(0,0,0,0.38);
+}
+
+.panel-abstract h2 {
+    font-size: 50px;
+    margin: 50px 0 30px;
+    color: #4285f4;
+    animation: zomg 3s infinite;
+}
+
+.panel-content {
+    float: left;
+    width: 520px;
 }
 
 .header-logo:hover {
@@ -399,49 +457,6 @@ blockquote {
     }
 }
 
-.first-screen .btn {
-    color: #fff;
-    background-color: #4285f4;
-    border-radius: 3px;
-    padding: 10px;
-    display: block;
-    width: 160px;
-    margin: 50px auto 0;
-    text-align: center;
-    font-size: 20px;
-}
-
-.first-screen .btn:hover {
-    text-decoration: none;
-    animation: btnbg 3s infinite;
-}
-
-@keyframes btnbg {
-    0% {
-        background-color: #4285f4;
-        color: #fff;
-    }
-
-    25% {
-        background-color: #d23f31;
-        color: #fff;
-    }
-
-    50% {
-        background-color: #3b3e43;
-        color: #fff;
-    }
-
-    75% {
-        background-color: #fff;
-        color: #3b3e43;
-    }
-}
-
-.first-screen .btn:active {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.25) inset;
-}
-
 .first-screen .panel img {
     width: 900px;
     display: block;
@@ -450,24 +465,6 @@ blockquote {
     left: 50%;
     margin-left: -450px;
     z-index: 2;
-}
-
-.second-screen .name {
-    float: left;
-    width: 380px;
-    text-align: center;
-    color: rgba(0,0,0,0.38);
-}
-
-.second-screen .name h2 {
-    font-size: 50px;
-    margin: 50px 0 30px;
-    color: #4285f4;
-    animation: zomg 3s infinite;
-}
-
-.second-screen .content {
-    float: left;
 }
 
 .second-screen .important {
@@ -483,4 +480,43 @@ blockquote {
 .second-screen ul {
     line-height: 40px;
     margin: 30px 0 0 30px;
+}
+
+.third-item {
+    border-bottom: 1px solid #e1e4e8;
+    margin-bottom: 50px;
+    padding: 0 30px 50px 30px;
+}
+
+.third-item:last-child {
+    border-bottom: 0;
+}
+
+.third-item img {
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.third-item ul {
+    margin-left: 28px;
+}
+
+.third-item h2 {
+    margin-bottom: 20px;
+}
+
+.third-item .panel-abstract {
+    width: 300px;
+}
+
+.third-item .panel-content {
+    float: right;
+    width: 460px;
+}
+
+.footer {
+    color: #7d8186;
+    line-height: 24px;
+    padding: 10px 0;
+    background-color: #3b3e43;
 }
