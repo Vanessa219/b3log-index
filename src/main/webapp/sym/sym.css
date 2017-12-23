@@ -514,9 +514,66 @@ blockquote {
     width: 460px;
 }
 
+.contact-item {
+    width: 30%;
+    float: left;
+    margin-left: 5%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 10px 10px 30px;
+    box-sizing: border-box;
+    transition: all .15s ease-in-out;
+    text-align: center;
+    font-size: 20px;
+    line-height: 36px;
+    color: #3b3e43;
+}
+
+.contact-item:first-child {
+    margin-left: 0;
+}
+
+.contact-item:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #4285f4;
+}
+
+.contact-item--red:hover {
+    background-color: #d23f31;
+}
+
+.contact-item--black:hover {
+    background-color: #3b3e43;
+}
+
+.contact-item svg {
+    display: block;
+    height: 60px;
+    width: 60px;
+    margin: 30px auto;
+}
+
 .footer {
     color: #7d8186;
     line-height: 24px;
     padding: 10px 0;
     background-color: #3b3e43;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #afb1b3;
+}
+
+.footer a:hover {
+    color: #888f91;
+    text-decoration: none;
+}
+
+.footer .copyright {
+    padding-top: 30px;
+    border-top: 1px solid #7d8186;
+    text-align: center;
+    margin-top: 30px;
 }
