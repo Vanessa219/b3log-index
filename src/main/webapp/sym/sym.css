@@ -577,3 +577,70 @@ blockquote {
     text-align: center;
     margin-top: 30px;
 }
+
+.customer-item {
+    float: left;
+    text-align: center;
+    width: 425px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e1e4e8;
+    border-radius: 5px;
+}
+
+.customer-item-title {
+    font-size: 20px;
+    margin: 10px;
+    position: absolute;
+    display: none;
+    width: 100%;
+    bottom: 50px;
+}
+
+.customer-item svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    background-color: #4285f4;
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: -30px;
+    margin-top: -30px;
+    display: none;
+}
+
+.customer-item-image {
+    width: 100%;
+    transition: all .4s linear;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    height: 310px;
+}
+
+.customer-item:hover {
+    text-decoration: none;
+}
+
+.customer-item:hover .customer-item-title {
+    animation: zomg 3s infinite;
+    display: block;
+}
+
+.customer-item:hover svg {
+    animation: btnbg 3s infinite;
+    display: block;
+}
+
+.customer-item:hover .customer-item-image {
+    transform: scale(1.2) translateZ(0);
+}
+
+.customer-item-right.customer-item {
+    float: right;
+}
