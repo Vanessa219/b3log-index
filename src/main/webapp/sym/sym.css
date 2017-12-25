@@ -207,7 +207,7 @@ blockquote {
 }
 
 .btn:active {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.25) inset;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25) inset;
 }
 
 .wrapper {
@@ -219,7 +219,7 @@ blockquote {
     float: left;
     width: 380px;
     text-align: center;
-    color: rgba(0,0,0,0.38);
+    color: rgba(0, 0, 0, 0.38);
 }
 
 .panel-abstract h2 {
@@ -284,7 +284,7 @@ blockquote {
     width: 100%;
     z-index: 4;
     background-color: #fff;
-    box-shadow: rgba(0,0,0,0.05) 0px 1px 7px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 7px;
     border-bottom: 1px solid #e1e4e8;
 }
 
@@ -298,6 +298,7 @@ blockquote {
     float: left;
 }
 
+.header-a.current,
 .header-a:hover {
     color: #fff;
     text-decoration: none;
@@ -318,6 +319,7 @@ blockquote {
     transition: transform .3s ease-out;
 }
 
+.header-a.current:before,
 .header-a:hover:before {
     transform: scaleY(1);
 }
@@ -330,6 +332,7 @@ blockquote {
     background-color: #f1e05a;
 }
 
+.header-red.current:before,
 .header-red:before {
     background-color: #d23f31;
 }
@@ -355,7 +358,7 @@ blockquote {
 .first-screen .required {
     text-align: center;
     font-size: 36px;
-    text-shadow: 0 0px 2px rgba(255, 255,255, 1);
+    text-shadow: 0 0px 2px rgba(255, 255, 255, 1);
     padding-top: 50px;
     z-index: 3;
     position: relative;
@@ -372,7 +375,7 @@ blockquote {
 }
 
 .first-screen .scroll ul {
-    animation: scroll 15s cubic-bezier(0.545,0.035,0.255,.6) normal forwards;
+    animation: scroll 15s cubic-bezier(0.545, 0.035, 0.255, .6) normal forwards;
 }
 
 @keyframes scroll {
@@ -475,10 +478,10 @@ blockquote {
     padding: 0.2em 0.4em;
     margin: 0;
     font-size: 85%;
-    background-color: rgba(252,41,41,0.12);
+    background-color: rgba(252, 41, 41, 0.12);
     border-radius: 3px;
     color: #d23f31;
-    font-family: mononoki,Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    font-family: mononoki, Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 .second-screen ul {
@@ -497,7 +500,7 @@ blockquote {
 }
 
 .third-item img {
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
@@ -522,7 +525,7 @@ blockquote {
     width: 30%;
     float: left;
     margin-left: 5%;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 10px 10px 30px;
     box-sizing: border-box;
@@ -556,6 +559,51 @@ blockquote {
     height: 60px;
     width: 60px;
     margin: 30px auto;
+}
+
+.pricing-item {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 30%;
+    float: left;
+    margin-left: 5%;
+    text-align: center;
+    padding: 30px 0;
+    background-color: #3b3e43;
+    color: #fff;
+}
+
+.pricing-item:first-child {
+    margin-left: 0;
+    background-color: #4285f4;
+}
+
+.pricing-item div {
+    padding-top: 30px;
+    border-top: 1px solid #fff;
+    margin: 30px 50px 0;
+}
+
+.pricing-faq-title {
+    margin: 100px 0 30px;
+    text-align: center;
+}
+
+.pricing-faq {
+    padding: 50px 0;
+    border-top: 1px solid #e1e4e8;
+}
+
+.pricing-faq-h3 {
+    float: left;
+    width: 30%;
+    margin-left: 5%;
+    font-size: 20px;
+}
+
+.pricing-faq-content {
+    float: left;
+    width: 65%;
 }
 
 .footer {
