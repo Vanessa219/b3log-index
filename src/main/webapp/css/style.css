@@ -382,3 +382,60 @@ body > .wrapper {
     width: 300px;
 }
 /* end donate */
+
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+        padding: 0;
+        position: relative;
+    }
+
+    .header-intro a {
+        padding: 0 8px;
+    }
+
+    .wrapper {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .donate,
+    body > .wrapper {
+        padding-top: 30px;
+    }
+
+    .donate p {
+        padding: 10px;
+    }
+
+    .donate .donate-img {
+        float: none;
+        width: 100%;
+        margin: 0;
+    }
+
+    body {
+        padding-top: 0 !important;
+    }
+
+    .time-line {
+        display: none;
+    }
+
+    .wide,
+    .news,
+    .about .module-wrapper,
+    .d3,
+    .about p {
+        width: 100% !important;
+    }
+
+    .intro-list ul {
+        margin: 10px 10px 10px 30px;
+    }
+
+    .about p {
+        margin: 0;
+    }
+}
