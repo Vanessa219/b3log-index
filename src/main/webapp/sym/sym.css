@@ -561,6 +561,13 @@ blockquote {
     margin: 30px auto;
 }
 
+.customer-title {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e1e4e8;
+    text-align: center;
+}
+
 .customer-item {
     float: left;
     text-align: center;
@@ -570,6 +577,7 @@ blockquote {
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     border-bottom: 1px solid #e1e4e8;
     border-radius: 5px;
+    margin-bottom: 50px;
 }
 
 .customer-item-title {
@@ -626,6 +634,18 @@ blockquote {
 
 .customer-item-right.customer-item {
     float: right;
+}
+
+.customer-item--small {
+    width: 266px;
+}
+
+.customer-item--mid {
+    margin: 0 50px;
+}
+
+.customer-item--small .customer-item-image {
+    height: 200px;
 }
 
 .pricing-item {
@@ -778,5 +798,26 @@ blockquote {
 
     .pricing-faq-h3 {
         margin-bottom: 10px;
+    }
+
+    .customer-item,
+    .customer-item--small,
+    .customer-item--mid {
+        float: none;
+        width: 100%;
+        display: block;
+        margin: 0 0 30px;
+    }
+
+    .customer-item--small .customer-item-image {
+        height: 310px;
+    }
+
+    .customer-title {
+        margin-bottom: 30px;
+    }
+
+    .customer-item:last-child {
+        margin-bottom: 0;
     }
 }
