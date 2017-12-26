@@ -583,11 +583,13 @@ blockquote {
 
 .customer-item-title {
     font-size: 20px;
-    margin: 10px;
+    padding: 10px;
     position: absolute;
     display: none;
     width: 100%;
-    bottom: 50px;
+    bottom: 10px;
+    box-sizing: border-box;
+    text-shadow: 0 0 2px rgba(212, 206, 206, 0.9);
 }
 
 .customer-item svg {
@@ -821,5 +823,10 @@ blockquote {
 
     .customer-item:last-child {
         margin-bottom: 0;
+    }
+
+    .customer-item-title {
+        display: block;
+        color: #3b3e43;
     }
 }
