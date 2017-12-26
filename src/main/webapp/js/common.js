@@ -233,52 +233,6 @@ var Index = {
                 $("#killBrowser").html("请使用<a href='/kill-browser.html' target='_blank'>高级浏览器</a> ^^");
             }
         }
-    },
-    initNav: function() {
-        var $navA = $("#nav li > a");
-
-        var $scrollvContentItems = $("body > .wrapper > div"),
-                space = [[0, 0]];
-        $scrollvContentItems.each(function(i) {
-            space.push([space[i][1], this.offsetTop + $(this).height() * 3 / 5 - $(".header").height()]);
-        });
-        space.splice(0, 1);
-
-        $(window).scroll(function() {
-            var top = document.documentElement.scrollTop || document.body.scrollTop,
-                    current = 0;
-            for (var j = 0; j < space.length; j++) {
-                if (top > space[space.length - 1][0]) {
-                    current = space.length - 1;
-                    break;
-                }
-                if (top >= space[j][0] && top < space[j][1]) {
-                    current = j;
-                    break;
-                }
-            }
-            $navA.removeClass("current");
-            $($navA.get(current)).addClass("current");
-        });
-        $(window).scroll();
-
-        $navA.click(function() {
-            $navA.removeClass("current");
-            $(this).addClass("current");
-
-            var currentContent = $("body > .wrapper > div").get($(this).data("index")),
-                    top = currentContent.offsetTop - $(".header").height() - 30;
-
-            if ($.browser.webkit) {
-                $('body').animate({
-                    "scrollTop": top
-                }, 'slow');
-            } else {
-                $('html').animate({
-                    "scrollTop": top
-                }, 'slow');
-            }
-        });
     }
 };
 
@@ -288,7 +242,6 @@ var Index = {
         return false;
     }
     Index.initThemes();
-    Index.initNav();
     Index.share();
     Index.getNews();
     Index.moveNav("nav");
