@@ -355,14 +355,14 @@ blockquote {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(https://sqimg.qq.com/qq_product_operations/im/2015/blog.jpg);
+    background-image: url(images/bg2.jpg);
 }
 
 .first-screen {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(https://sqimg.qq.com/qq_product_operations/im/2015/blog.jpg);
+    background-image: url(images/bg1.jpg);
 }
 
 .first-screen .required {
