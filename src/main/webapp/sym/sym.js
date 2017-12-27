@@ -4,6 +4,9 @@
 
   // scroll
   $(window).scroll(function () {
+    if ($('body').height() < $(window).height() * 2 + $('.header').outerHeight()) {
+      return;
+    }
     if ($(window).scrollTop() > $(window).height()) {
       $('.header').addClass('header-fixed');
       $('.first-screen .required').css('padding-top', '116px')
