@@ -3,7 +3,7 @@
  * b3log index style
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @version 1.2.1.6, May 14, 2017
+ * @version 1.2.2.0, Jan 2, 2018
 */
 
 /* start reset */
@@ -292,6 +292,7 @@ body > .wrapper {
 .about p {
     margin: 0 0 17px 20px;
     width: 619px;
+    line-height: 21px;
 }
 
 .about .module-wrapper {
