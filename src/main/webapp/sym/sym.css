@@ -358,13 +358,6 @@ blockquote {
     background-image: url(images/bg2.jpg);
 }
 
-.first-screen {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(images/bg1.jpg);
-}
-
 .first-screen .required {
     text-align: center;
     font-size: 36px;
@@ -380,8 +373,8 @@ blockquote {
     height: 47px;
     border-bottom: 2px solid #d23f31;
     vertical-align: text-bottom;
-    color: #fff;
-    text-shadow: 0 0px 2px rgba(0, 0, 0, 1);
+    color: #4285f4;
+    text-shadow: 0 0 1px rgba(66, 133, 244, 1);
 }
 
 .first-screen .scroll ul {
@@ -476,13 +469,11 @@ blockquote {
 }
 
 .first-screen .panel img {
-    width: 900px;
+    max-width: 90%;
     display: block;
-    position: absolute;
-    bottom: -137px;
-    left: 50%;
-    margin-left: -450px;
-    z-index: 2;
+    margin: 50px auto 0;
+    padding: 0 50px;
+    box-sizing: border-box;
 }
 
 .second-screen ul {
@@ -764,12 +755,6 @@ blockquote {
 
     .header-a {
         padding: 0 10px;
-    }
-
-    .first-screen .panel img {
-        width: auto;
-        margin-left: -50%;
-        bottom: 0;
     }
 
     .panel-abstract h2 {
