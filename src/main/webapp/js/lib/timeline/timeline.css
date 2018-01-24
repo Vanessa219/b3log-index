@@ -120,6 +120,9 @@
 #timeline strong{font-weight:bold;}
 #timeline Q{quotes:'„' '“';font-style:italic;}
 #timeline .credit, #timeline .caption{text-align:left;margin-top:5px;color:#666666;font-size:11px;line-height:14px;clear:both;}
+#timeline .media-container > img {
+    min-width: 240px;
+}
 .tooltip{position:absolute;z-index:1020;display:block;visibility:visible;padding:5px;opacity:0;filter:alpha(opacity=0);font-size:15px;font-weight:bold;line-height:20px;font-size:12px;line-height:12px;}
 .tooltip.in{opacity:0.8;filter:alpha(opacity=80);}
 .tooltip.top{margin-top:-2px;}
