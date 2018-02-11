@@ -318,7 +318,7 @@ body > .wrapper {
 .fancybox-thumbs {
     height: 120px;
     overflow: hidden;
-    width: 150px;
+    width: 153px;
     border: 1px solid #CACACA;
     border-radius: 5px 5px 5px 5px;
     float: left;
@@ -327,7 +327,7 @@ body > .wrapper {
 }
 
 .fancybox-thumbs > img {
-    height: 165px;
+    width: 155px;
 }
 
 .fancybox-thumbs > div {
@@ -342,7 +342,7 @@ body > .wrapper {
     text-align: center;
     transition: left 0.3s ease-out 0s;
     white-space: normal;
-    width: 130px;
+    width: 134px;
 }
 
 .fancybox-thumbs:hover > div {
@@ -350,14 +350,14 @@ body > .wrapper {
 }
 
 .fancybox-thumbs h3 {   
-    color: #D26911;
+    color: #d23f31;
     font-size: 23px;
     line-height: 22px;
     margin-bottom: 10px;
 }
 
 .fancybox-thumbs span {   
-    color: #4183C4;
+    color: #4285f4;
 }
 
 .fancybox-thumbs span:hover {   
