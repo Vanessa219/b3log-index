@@ -304,7 +304,7 @@ blockquote {
     transition-duration: .3s;
     display: inline-block;
     color: rgba(0, 0, 0, 0.87);
-    padding: 0 20px;
+    padding: 0 20px 0 17px;
     float: left;
 }
 
@@ -327,6 +327,7 @@ blockquote {
     transform: scaleY(0);
     transform-origin: 50% 100%;
     transition: transform .3s ease-out;
+    margin-left: -3px;
 }
 
 .header-a.current:before,
@@ -358,23 +359,49 @@ blockquote {
     background-image: url(images/bg2.jpg);
 }
 
+.first-screen {
+    height: 1080px;
+    background-image: url(images/bg1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.header-a-first.header-a:before {
+    border-radius: 0 0 0 3px;
+}
+
+.first-screen .panel {
+    flex-direction: column;
+    transition: all .3s;
+    height: 1014px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
 .first-screen .required {
     text-align: center;
     font-size: 36px;
     text-shadow: 0 0px 2px rgba(255, 255, 255, 1);
-    padding-top: 50px;
     z-index: 3;
     position: relative;
+    top: -50px;
+    color: #fff;
+    line-height: 50px;
 }
 
 .first-screen .scroll {
     overflow: hidden;
     display: inline-block;
-    height: 47px;
-    border-bottom: 2px solid #d23f31;
-    vertical-align: text-bottom;
+    height: 50px;
+    box-sizing: border-box;
+    vertical-align: bottom;
+    padding: 0 10px;
     color: #4285f4;
     text-shadow: 0 0 1px rgba(66, 133, 244, 1);
+    background-color: rgba(255, 255, 255, 0.76);
+    border-radius: 3px;
 }
 
 .first-screen .scroll ul {
@@ -466,14 +493,6 @@ blockquote {
     100% {
         transform: translateY(-486px)
     }
-}
-
-.first-screen .panel img {
-    max-width: 90%;
-    display: block;
-    margin: 50px auto 0;
-    padding: 0 50px;
-    box-sizing: border-box;
 }
 
 .second-screen ul {
