@@ -352,12 +352,16 @@ blockquote {
     margin-top: 30px;
 }
 
-
 .third-item {
     border-top: 1px solid #e1e4e8;
     border-bottom: 1px solid #e1e4e8;
     padding: 100px 30px;
     margin-bottom: 100px;
+}
+
+.third-item--other {
+    border-top: 0;
+    padding-top: 0;
 }
 
 .third-item ul {
@@ -372,7 +376,6 @@ blockquote {
 
 .third-item h2 {
     margin-bottom: 20px;
-    float: left;
 }
 
 #dynamic {
@@ -421,28 +424,43 @@ blockquote {
 }
 
 /* start donate */
-.donate {
-    padding: 100px 0 30px;
-}
-
-.donate p {
-    padding: 50px 96px;
-    border-bottom: 1px solid #e5e5e5;
-    font-size: 16px;
-    line-height: 28px;
-}
-
-.donate .donate-img {
+.donate-img {
     float: left;
-    margin: 50px 96px;
+    margin: 0px 75px;
     width: 300px;
 }
+
 /* end donate */
+.kill-browser h2 {
+    margin-bottom: 30px;
+}
+
+.kill-browser__panel {
+    display: flex;
+}
+
+.kill-browser__logo {
+    display: block;
+    margin: 100px 50px 0;
+}
+
+.kill-browser__main {
+    flex: 1;
+}
+
+.kill-browser__main ul {
+    line-height: 40px;
+    margin-left: 30px;
+}
+.kill-browser__main img {
+    float: right;
+    margin-top: -100px;
+}
 
 @media (max-width: 768px) {
     .wrapper {
         width: auto;
-        margin: 30px 10px;
+        margin: 97px 10px;
     }
 
     .header-logo h1 {
@@ -466,8 +484,37 @@ blockquote {
         width: 100%;
         margin: 20px 0 0 0;
     }
-}
 
+    #timeline,
+    #timeline article {
+        width: 100%;
+    }
+
+    #timeline > section,
+    #timeline > ul > li {
+        border-bottom: 1px solid #e1e4e8;
+        height: auto;
+    }
+
+    #timeline figure {
+        position: inherit;
+    }
+
+    .donate-img {
+        margin: 0;
+        float: none;
+        width: 100%;
+    }
+
+    .kill-browser__panel {
+        display: block;
+    }
+
+    .kill-browser__logo {
+        margin: 30px auto;
+        width: 160px;
+    }
+}
 
 
 

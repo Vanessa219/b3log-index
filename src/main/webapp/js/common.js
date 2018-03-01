@@ -69,13 +69,10 @@ var Index = {
     return d + "-" + e + "-" + f;
   },
   initTimeline: function () {
-    var height = $(window).height() - 110;
-    $("#timeline").height(height);
-
-    if ($.browser.msie && parseInt($.browser.version) < 8) {
-      $("#timeline").css("overflow-y", "auto");
+    if (/Mobile/i.test(navigator.userAgent) || $("#timeline").length === 0) {
       return;
     }
+    $("#timeline").height($(window).height() - 110);
     var timeline = new VMM.Timeline();
     timeline.init();
   },
