@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009, 2010, 2011, 2012, B3log Team
+ * Copyright (c) 2009-1028, B3log Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,35 +18,8 @@
  *
  * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
  * @author <a href="mailto:DL88250@gmail.com">Liang Ding</a>
- * @version 1.0.2.4, May 4, 2014
+ * @version 1.1.0.0, Mar 1, 2018
  */
-
-var Cookie = {
-  readCookie: function (name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) === ' ')
-        c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) === 0)
-        return c.substring(nameEQ.length, c.length);
-    }
-    return "";
-  },
-  eraseCookie: function (name) {
-    this.createCookie(name, "", -1);
-  },
-  createCookie: function (name, value, days) {
-    var expires = "";
-    if (days) {
-      var date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      expires = "; expires=" + date.toGMTString();
-    }
-    document.cookie = name + "=" + value + expires + "; path=/";
-  }
-};
 
 var Index = {
   getNews: function () {
@@ -56,12 +29,12 @@ var Index = {
       dataType: "jsonp",
       jsonp: "callback",
       error: function () {
-        $(".news .module-content").html("加载新闻列表失败 :-(").css("background-image", "none");
+        $("#dynamic").html("加载新闻列表失败 :-(").css("background-image", "none");
       },
       success: function (data, textStatus) {
         var articles = data.articles;
         if (0 === articles.length) {
-          $(".news .module-content").html("无新闻").css("background-image", "none");
+          $("#dynamic").html("无新闻").css("background-image", "none");
           return;
         }
 
@@ -76,8 +49,7 @@ var Index = {
         }
         listHTML += "</ul>";
 
-        $(".news .module-content").html(listHTML).css("background-image", "none");
-
+        $("#dynamic").html(listHTML).css("background-image", "none");
       }
     });
   },
@@ -96,87 +68,8 @@ var Index = {
     }
     return d + "-" + e + "-" + f;
   },
-  moveNav: function (id) {
-    var $nav = $("#" + id),
-      winWidth = $(window).width(),
-      winHeight = $(window).height();
-
-    var top = "",
-      left = "";
-
-    if (Cookie.readCookie("top") === "") {
-      top = winHeight - $nav.height() - $(".footer").height() - 40 + "px";
-      left = winWidth - 15 - $nav.width() + "px";
-    } else {
-      top = Cookie.readCookie("top");
-      left = Cookie.readCookie("left");
-    }
-
-    $nav.css({
-      "top": top,
-      "left": left
-    });
-
-    $nav.mousedown(function (event) {
-      var _document = document;
-      if (!event) {
-        event = window.event;
-      }
-      var nav = $nav[0];
-      var x = event.clientX - parseInt(nav.style.left),
-        y = event.clientY - parseInt(nav.style.top);
-      _document.ondragstart = "return false;";
-      _document.onselectstart = "return false;";
-      _document.onselect = "document.selection.empty();";
-
-      if (this.setCapture) {
-        this.setCapture();
-      } else if (window.captureEvents) {
-        window.captureEvents(Event.MOUSEMOVE | Event.MOUSEUP);
-      }
-
-      _document.onmousemove = function (event) {
-        if (!event) {
-          event = window.event;
-        }
-        var positionX = event.clientX - x,
-          positionY = event.clientY - y;
-        if (positionX < 0) {
-          positionX = 0;
-        }
-        if (positionX > winWidth - $(nav).width()) {
-          positionX = winWidth - $(nav).width();
-        }
-        if (positionY < 0) {
-          positionY = 0;
-        }
-        if (positionY > winHeight - $(nav).height() - 11) {
-          positionY = winHeight - $(nav).height() - 11;
-        }
-        nav.style.left = positionX + "px";
-        nav.style.top = positionY + "px";
-      };
-
-      _document.onmouseup = function () {
-        if (this.releaseCapture) {
-          this.releaseCapture();
-        } else if (window.captureEvents) {
-          window.captureEvents(Event.MOUSEMOVE | Event.MOUSEUP);
-        }
-        _document.onmousemove = null;
-        _document.onmouseup = null;
-        _document.ondragstart = null;
-        _document.onselectstart = null;
-        _document.onselect = null;
-
-        Cookie.createCookie("top", nav.style.top, 365);
-        Cookie.createCookie("left", nav.style.left, 365);
-      };
-    });
-  },
   initTimeline: function () {
-    var height = $(window).height() - 70;
-    $(".time-line").height(height);
+    var height = $(window).height() - 110;
     $("#timeline").height(height);
 
     if ($.browser.msie && parseInt($.browser.version) < 8) {
@@ -205,33 +98,20 @@ var Index = {
     });
   },
   killBrowser: function () {
-    if ($.browser.msie) {
-      var version = parseInt($.browser.version);
-      if (version < 7) {
-        window.location = "/kill-browser.html";
-        return;
-      }
-
-      if (version < 9) {
-        $("#killBrowser").html("请使用<a href='/kill-browser.html' target='_blank'>高级浏览器</a> ^^");
-      }
+    if ($.browser.msie && parseInt($.browser.version) < 9) {
+      window.location = "/kill-browser.html";
     }
   }
 };
 
 (function () {
+  Index.killBrowser();
+  Index.share();
+  Index.getNews();
+  Index.initTimeline();
+
   var hm = document.createElement("script");
   hm.src = "//hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c";
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
-
-
-  Index.killBrowser();
-  if ($("#timeline").length === 0) {
-    return false;
-  }
-  Index.share();
-  Index.getNews();
-  Index.moveNav("nav");
-  Index.initTimeline();
 })();
