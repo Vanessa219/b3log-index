@@ -768,6 +768,10 @@ blockquote {
         margin: 0;
     }
 
+    .pricing-item:first-child {
+        margin-top: 70px;
+    }
+
     .header-logo h1 {
         display: none;
     }
@@ -824,6 +828,7 @@ blockquote {
 
     .customer-title {
         margin-bottom: 30px;
+        margin-top: 100px;
     }
 
     .customer-item:last-child {
