@@ -367,6 +367,8 @@ blockquote {
     color: #3b3e43;
     box-sizing: border-box;
     margin: 0 10px;
+    width: 187px;
+    font-size: 14px;
 }
 
 .intro input:focus {
