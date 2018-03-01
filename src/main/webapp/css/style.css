@@ -314,56 +314,7 @@ body > .wrapper {
 }
 /* end part about */
 
-/* start themes */
-.fancybox-thumbs {
-    height: 120px;
-    overflow: hidden;
-    width: 153px;
-    border: 1px solid #CACACA;
-    border-radius: 5px 5px 5px 5px;
-    float: left;
-    margin: 5px;
-    position: relative;
-}
 
-.fancybox-thumbs > img {
-    width: 155px;
-}
-
-.fancybox-thumbs > div {
-    background-color: #EEEEEE;
-    color: #555555;
-    height: 100px;
-    left: 150px;
-    opacity: 0.8;
-    filter: alpha(opacity=80);
-    padding: 10px;
-    position: absolute;
-    text-align: center;
-    transition: left 0.3s ease-out 0s;
-    white-space: normal;
-    width: 134px;
-}
-
-.fancybox-thumbs:hover > div {
-    left: 0;
-}
-
-.fancybox-thumbs h3 {   
-    color: #d23f31;
-    font-size: 23px;
-    line-height: 22px;
-    margin-bottom: 10px;
-}
-
-.fancybox-thumbs span {   
-    color: #4285f4;
-}
-
-.fancybox-thumbs span:hover {   
-    text-decoration: underline;
-}
-/* end themes */
 
 /* start donate */
 .donate {
