@@ -328,10 +328,20 @@ blockquote {
 }
 
 .footer .copyright {
-    padding-top: 30px;
+    padding: 30px 30px 0 30px;
     border-top: 1px solid #7d8186;
-    text-align: center;
     margin-top: 30px;
+}
+
+.footer .copyright__img {
+    font-size: 12px;
+    text-align: center;
+    float: left;
+}
+
+.footer .copyright__text {
+    float: right;
+    text-align: right;
 }
 
 .panel-abstract {
@@ -363,6 +373,15 @@ blockquote {
 .third-item--other {
     border-top: 0;
     padding-top: 0;
+}
+
+.third-item--brand {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.third-item--brand:last-child {
+    border-bottom: 0;
 }
 
 .third-item ul {
@@ -514,6 +533,20 @@ blockquote {
     .kill-browser__logo {
         margin: 30px auto;
         width: 160px;
+    }
+
+    .footer .copyright__img {
+        float: none;
+    }
+
+    .footer .copyright__text {
+        float: none;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer .copyright__br {
+        display: none;
     }
 }
 

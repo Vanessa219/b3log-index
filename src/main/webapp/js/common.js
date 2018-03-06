@@ -76,24 +76,6 @@ var Index = {
     var timeline = new VMM.Timeline();
     timeline.init();
   },
-  share: function () {
-    var title = encodeURIComponent("B3log - 平等•自由•奔放"),
-      url = "http://b3log.org",
-      pic = "http://b3log.org/images/logo.png";
-
-    var urls = {};
-    urls.tencent = "http://share.v.t.qq.com/index.php?c=share&a=index&title=" + title +
-      "&url=" + url + "&pic=" + pic;
-    urls.sina = "http://v.t.sina.com.cn/share/share.php?title=" +
-      title + "&url=" + url + "&pic=" + pic;
-    urls.google = "https://plus.google.com/share?url=" + url;
-    urls.twitter = "https://twitter.com/intent/tweet?status=" + title + " " + url;
-
-    $(".share span").click(function () {
-      var key = this.className.replace("-ico", "");
-      window.open(urls[key], "_blank", "top=100,left=200,width=648,height=618");
-    });
-  },
   killBrowser: function () {
     if ($.browser.msie && parseInt($.browser.version) < 9) {
       window.location = "/kill-browser.html";
@@ -103,7 +85,6 @@ var Index = {
 
 (function () {
   Index.killBrowser();
-  Index.share();
   Index.getNews();
   Index.initTimeline();
 
