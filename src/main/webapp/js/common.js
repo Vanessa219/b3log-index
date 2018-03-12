@@ -24,7 +24,7 @@
 var Index = {
   getNews: function () {
     $.ajax({
-      url: "http://symphony.b3log.org/apis/news",
+      url: "https://hacpai.com/apis/news",
       type: "GET",
       dataType: "jsonp",
       jsonp: "callback",
