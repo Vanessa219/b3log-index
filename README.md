@@ -1,3 +1,3 @@
-* B3log Index: http://b3log.org
-* Sym Index: http://sym.b3log.org
-* Solo Index: http://solo.b3log.org
+* B3log Index: https://b3log.org
+* Sym Index: https://sym.b3log.org
+* Solo Index: https://solo.b3log.org
