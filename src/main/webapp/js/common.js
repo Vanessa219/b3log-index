@@ -16,15 +16,15 @@
 /**
  * @fileoverview b3log index js.
  *
- * @author <a href="mailto:LLY219@gmail.com">Liyuan Li</a>
- * @author <a href="mailto:DL88250@gmail.com">Liang Ding</a>
- * @version 1.1.0.0, Mar 1, 2018
+ * @author <a href="http://vanessa.b3log.org>Liyuan Li</a>
+ * @author <a href="http://88250.b3log.org">Liang Ding</a>
+ * @version 1.1.0.1, Mar 12, 2018
  */
 
 var Index = {
   getNews: function () {
     $.ajax({
-      url: "http://symphony.b3log.org/apis/news",
+      url: "https://hacpai.com/apis/news",
       type: "GET",
       dataType: "jsonp",
       jsonp: "callback",
