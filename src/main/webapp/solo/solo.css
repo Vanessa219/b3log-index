@@ -196,6 +196,10 @@ blockquote {
     z-index: 3;
 }
 
+.btn--red {
+    background-color: #d23f31;
+}
+
 .btn:hover {
     text-decoration: none;
     animation: btnbg 3s infinite;
@@ -386,6 +390,11 @@ blockquote {
 .themes {
     border: 2px solid #e1e4e8;
     box-shadow: 0 0 10px #e1e4e8;
+}
+
+.themes__title {
+    margin: 0 auto;
+    width: 500px;
 }
 .fancybox-thumbs {
     height: 225px;
