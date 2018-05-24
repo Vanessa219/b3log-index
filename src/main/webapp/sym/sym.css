@@ -369,10 +369,6 @@ blockquote {
 
 .first-screen {
     height: 1080px;
-    background-image: url(images/bg1.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
 }
 
 .header-a-first.header-a:before {
@@ -501,6 +497,23 @@ blockquote {
     100% {
         transform: translateY(-486px)
     }
+}
+
+#firstCanvas {
+    position: absolute;
+    top: 0;
+}
+
+.first-bg {
+    background-image: url(images/bg1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
 }
 
 .second-screen ul {
