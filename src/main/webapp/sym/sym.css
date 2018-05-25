@@ -411,6 +411,7 @@ blockquote {
 .first-screen .scroll ul {
     animation: scroll 15s cubic-bezier(0.545, 0.035, 0.255, .6) normal forwards;
     line-height: 54px;
+    list-style: none;
 }
 
 @keyframes scroll {
