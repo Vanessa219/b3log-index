@@ -550,6 +550,14 @@ blockquote {
         width: 100%;
     }
 
+    .donate-currency {
+        margin: 0 0 50px;
+    }
+
+    .donate-currency div {
+        display: block;
+    }
+
     .kill-browser__panel {
         display: block;
     }
