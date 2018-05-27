@@ -450,6 +450,30 @@ blockquote {
     width: 300px;
 }
 
+.donate-currency {
+    font-size: 14px;
+    margin: 0 30px 50px;
+    word-break: break-all;
+}
+
+.donate-currency div {
+    color: #ccc;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 3px;
+    display: inline-block;
+}
+
+.donate-title {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.donate-description {
+    border-top: 0;
+    padding: 0 30px 50px;
+    margin-bottom: 50px;
+}
 /* end donate */
 .kill-browser h2 {
     margin-bottom: 30px;
