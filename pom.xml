@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     Description: B3log Index.
-    Version: 2.0.0.3, Mar 12, 2018
+    Version: 2.0.0.4, Jul 26, 2018
     Author: Liang Ding
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -35,9 +35,9 @@
 
     <developers>
         <developer>
-            <id>DL88250@gmail.com</id>
+            <id>d@b3log.org</id>
             <name>Liang Ding</name>
-            <email>DL88250@gmail.com</email>
+            <email>d@b3log.org</email>
             <url>http://88250.b3log.org</url>
             <roles>
                 <role>Lead</role>
@@ -49,9 +49,9 @@
         </developer>
 
         <developer>
-            <id>LLY219@gmail.com</id>
+            <id>v@b3log.org</id>
             <name>Liyuan Li</name>
-            <email>LLY219@gmail.com</email>
+            <email>v@b3log.org</email>
             <url>http://vanessa.b3log.org</url>
             <roles>
                 <role>Committer</role>
