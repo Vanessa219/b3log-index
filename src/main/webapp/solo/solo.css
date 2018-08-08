@@ -573,6 +573,14 @@ blockquote {
 }
 
 @media (max-width: 768px) {
+    .header img {
+        margin-left: 10px;
+    }
+
+    .themes__title {
+        width: auto;
+    }
+
     .wrapper {
         width: auto;
         margin: 30px 10px;
