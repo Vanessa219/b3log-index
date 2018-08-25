@@ -1,18 +1,4 @@
 (function () {
-  var userName = 'b3log.solo@gmail.com',
-    password = 'b3logsolo';
-  for (var i = 0; i <= 29; i++) {
-    setTimeout(function () {
-      var index = $('#userName').val().length;
-      if (index < 20) {
-        $('#userName').val(userName.substr(0, index + 1));
-      } else {
-        index = $('#password').val().length;
-        $('#password').val(password.substr(0, index + 1));
-      }
-    }, 150 * i)
-  }
-
   $('.fancybox-thumbs').fancybox({
     nextClick: true,
     helpers: {
