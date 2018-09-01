@@ -10,6 +10,9 @@
   });
 
   $('.fancybox-thumbs span').click(function (event) {
+    if (!$(this).data("link")) {
+      return
+    }
     window.open($(this).data("link"));
     event.stopPropagation();
     event.preventDefault();

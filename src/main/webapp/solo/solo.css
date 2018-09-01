@@ -453,6 +453,14 @@ blockquote {
 .fancybox-thumbs span:hover {
     text-decoration: underline;
 }
+
+.fancybox-thumbs span.text {
+    color: #fff;
+}
+
+.fancybox-thumbs span.text:hover {
+    text-decoration: none;
+}
 /* end themes */
 
 
