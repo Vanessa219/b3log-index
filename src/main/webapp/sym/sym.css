@@ -156,7 +156,10 @@ svg {
 }
 
 blockquote {
-    margin: 0;
+    padding: 0 1em;
+    color: #777;
+    border-left: .25em solid #ddd;
+    margin: 5px 0 5px 0;
 }
 
 .fn-clear:before,
