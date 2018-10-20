@@ -507,7 +507,7 @@ blockquote {
 }
 
 .contact-item {
-    width: 30%;
+    width: 21%;
     float: left;
     margin-left: 5%;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -537,6 +537,10 @@ blockquote {
 
 .contact-item--black:hover {
     background-color: #3b3e43;
+}
+
+.contact-item--yellow:hover {
+    background-color: #f1e05a;
 }
 
 .contact-item svg {
