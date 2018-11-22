@@ -501,6 +501,14 @@ blockquote {
     margin-top: -100px;
 }
 
+
+.tl-timenav .tl-attribution a {
+    display: none;
+}
+.tl-timeline p a:hover, .tl-timeline p a:focus {
+    color: #4285f4;
+}
+
 @media (max-width: 768px) {
     .wrapper {
         width: auto;
@@ -527,21 +535,6 @@ blockquote {
     .contact-item {
         width: 100%;
         margin: 20px 0 0 0;
-    }
-
-    #timeline,
-    #timeline article {
-        width: 100%;
-    }
-
-    #timeline > section,
-    #timeline > ul > li {
-        border-bottom: 1px solid #e1e4e8;
-        height: auto;
-    }
-
-    #timeline figure {
-        position: inherit;
     }
 
     .donate-img {

@@ -1,0 +1,704 @@
+{
+  "title": {
+    "media": {
+      "url": "//static.b3log.org/images/brand/b3log-128.png"
+    },
+    "text": {
+      "headline": "B3log 开源",
+      "text": "<a href='https://b3log.org' target='_blank'>B3log</a> 是一个开源组织，名字来源于Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 <a href='https://hacpai.com/b3log' target='_blank'>B3log 构思</a>。目前 B3log 已经开源了多款产品：<a href='https://hacpai.com/tag/pipe' target='_blank'>Pipe</a>、<a href='https://hacpai.com/tag/solo' target='_blank'>Solo</a>、<a href='https://hacpai.com/tag/sym' target='_blank'>Sym</a>、 <a href='https://hacpai.com/tag/wide' target='_blank'>Wide</a> 等，欢迎大家<a href='https://hacpai.com/article/1463025124998' target='_blank'>加入</a>，贡献开源。"
+    },
+    "background": {
+      "url": "//static.b3log.org/images/logo-460.png"
+    }
+  },
+  "events": [
+    {
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/getstarted.jpg",
+        "url": "//static.b3log.org/images/timeline/getstarted.jpg",
+        "caption": "骚年，坚持想法，坚持实践吧！"
+      },
+      "start_date": {
+        "year": 2009,
+        "month": 12,
+        "day": 9
+      },
+      "text": {
+        "headline": "B3log 源起",
+        "text": "<a href='http://88250.b3log.org/articles/2009/12/09/1260370800000.html' target='_blank'>88250的“一分钟想法”</a>"
+      }
+    },
+    {
+      "media": {
+        "thumbnail": "//static.b3log.org/images/logo.png",
+        "url": "//static.b3log.org/images/logo.png",
+        "caption": "PS 了一晚上才诞生的 logo"
+      },
+      "start_date": {
+        "year": 2010,
+        "month": 8,
+        "day": 10
+      },
+      "text": {
+        "headline": "B3log 成立",
+        "text": "在 <a href='https://88250.b3log.org' target='_blank'>D</a>（后端）和 <a href='http://vanessa.b3log.org' target='_blank'>V</a>（前端）不断日积月累的努力下，B3log 终于成立了！"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2010,
+        "month": 9,
+        "day": 9
+      },
+      "text": {
+        "headline": "Solo 0.1.0 Preview1",
+        "text": "经过一个月的奋斗已经初步成型，终于勇敢的发布了 <a href='http://88250.b3log.org/articles/2010/09/08/1283986560000.html' target='_blank'>Preview1</a>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/favicon-128.png",
+        "url": "//static.b3log.org/images/timeline/favicon-128.png",
+        "caption": "不会 PS 的孩子很受伤 T_T~"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2010,
+        "month": 10,
+        "day": 13
+      },
+      "text": {
+        "headline": "Solo 0.1.0 发布",
+        "text": "在不断的修修补补中，<a href='http://88250.b3log.org/articles/2010/09/26/1285519372666.html' target='_blank'>Preview2</a>后，<a href='http://88250.b3log.org/articles/2010/10/13/1286980002007.html' target='_blank'>0.1.0</a>正式版终于发布了。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/daniel.jpg",
+        "url": "//static.b3log.org/images/timeline/daniel.jpg",
+        "caption": "我是 <a href='http://88250.b3log.org' target='_blank'>D</a>，一个怀揣理想的码农"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2010,
+        "month": 11,
+        "day": 12
+      },
+      "text": {
+        "headline": "Solo 0.2.0 发布",
+        "text": "在 <a href='http://88250.b3log.org/articles/2010/10/13/1286980002007.html' target='_blank'>0.1.0</a> 发布13天后，<a href='http://88250.b3log.org/articles/2010/10/26/1288097886428.html' target='_blank'>0.1.1</a> 仓促发布（囧），当然 <a href='http://88250.b3log.org/articles/2010/10/26/1288097886428.html' target='_blank'>0.2.0</a> 也很囧。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/vanessa.jpg",
+        "url": "//static.b3log.org/images/timeline/vanessa.jpg",
+        "caption": "咔咔，我就是神出鬼没的 <a href='http://vanessa.b3log.org' target='_blank'>V"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2010,
+        "month": 11,
+        "day": 15
+      },
+      "text": {
+        "headline": "第一位成员 Lamb 的加入",
+        "text": " 有创意才有新意！<br/>实现梦想，即使在中国！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/lamb.png",
+        "url": "//static.b3log.org/images/timeline/lamb.png",
+        "caption": "羔羊是我，我是 <a href='https://hacpai.com/member/lamb' target='_blank'>Lamb (L)</a>"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2011,
+        "month": 2,
+        "day": 23
+      },
+      "text": {
+        "headline": "DX 加入",
+        "text": "负责任务：相信会更多。<br/>一句话飘过：Two heads are always better than one."
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/dx.jpg",
+        "url": "//static.b3log.org/images/timeline/dx.jpg",
+        "caption": "土星盐是我，我是 <a href='https://hacpai.com/member/e' target='_blank'>DX</a>"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2011,
+        "month": 6,
+        "day": 11
+      },
+      "text": {
+        "headline": "Jboat 加入",
+        "text": "热爱开源，技术菜鸟，很可能是刚好在你之前加入 B3 的那一个。<br/>一句话飘过：热爱生活，相信积累。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/jboat.jpg",
+        "url": "//static.b3log.org/images/timeline/jboat.jpg",
+        "caption": "Smile to see the distance， 我是 <a href='http://jiangzezhou.b3log.org' target='_blank'>Jboat (J)</a>"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2011,
+        "month": 6,
+        "day": 17
+      },
+      "text": {
+        "headline": "Mainlove 加入",
+        "text": "有人为你往前冲是一种幸福，有人为你往后退，是一种奢华的幸福。<br/>努力地帮大家写点代码，好让 <a href='http://88250.b3log.org' target='_blank'>D</a> & <a href='http://vanessa.b3log.org' target='_blank'>V</a> 早日生儿育女。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/mainlove.png",
+        "url": "//static.b3log.org/images/timeline/mainlove.png",
+        "caption": "有人为你往前冲是一种幸福，我是 <a href='http://love.b3log.org' target='_blank'>Mainlove</a>，叫我 Y 吧！"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2011,
+        "month": 8,
+        "day": 25
+      },
+      "text": {
+        "headline": "Solo 0.3.0 发布",
+        "text": "走过 <a href='http://88250.b3log.org/b3log-solo-release-021.html' target='_blank'>0.2.1</a>、<a href='http://88250.b3log.org/b3log-solo-release-025-beta1.html' target='_blank'>0.2.5 Beta1</a>、<a href='http://88250.b3log.org/b3log-solo-release-025-beta2.html' target='_blank'>0.2.5 Beta2</a>、<a href='http://88250.b3log.org/b3log-solo-release-025.html' target='_blank'>0.2.5</a>、<a href='http://88250.b3log.org/b3log-solo-release-026.html' target='_blank'>0.2.6</a> 后，<a href='http://88250.b3log.org/b3log-solo-release-030.html' target='_blank'>0.3.0</a> 总算诞生了。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/030.jpg",
+        "url": "//static.b3log.org/images/timeline/030.jpg",
+        "caption": "0.3.0 活跃贡献者的大名<br/>D: 过个生日伤不起啊~~~~"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2011,
+        "month": 9,
+        "day": 4
+      },
+      "text": {
+        "headline": "b3log.org 二级域名开放",
+        "text": "亲，还在为不能访问你的博客而苦恼？<br/>亲，你不绑定自己的域名？<br/>那，亲，不要再犹豫了，<br/><a href='http://88250.b3log.org/apply-b3log-domain.html' target='_blank'>快来申请 b3log.org 二级域名吧！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20110904.jpg",
+        "url": "//static.b3log.org/images/timeline/20110904.jpg",
+        "caption": "亲们，快来申请吧！"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2011,
+        "month": 9,
+        "day": 26
+      },
+      "text": {
+        "headline": "第三方皮肤",
+        "text": "不满意现有 Solo 的皮肤？<br/><span>想要和他人分享自己亲手做的皮肤？</span><br/>来<a href='https://hacpai.com/article/1493814851007' target='_blank'>开发第三方皮肤</a>吧！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/skiner.jpg",
+        "url": "//static.b3log.org/images/timeline/skiner.jpg",
+        "caption": " 第三方皮肤贡献者：<br/><a href='https://github.com/noday/' target='_blank'>Noday</a>(左上), <a href='https://hacpai.com/member/An/' target='_blank'>Ansen</a>(右上) <br/><a href='https://hacpai.com/member/oncereply/' target='_blank'>答复</a>(左下), <a href='http://www.gesong.org/' target='_blank'>Chevo</a>(右下)"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2011,
+        "month": 10,
+        "day": 14
+      },
+      "text": {
+        "headline": "收到第一笔捐赠",
+        "text": "长期维护一个开源项目的确是不容易的。在一个团队都为这个项目努力的时候，更应该坚持下去。<br/>期待更多的童鞋加入 B3log 团队，一起推进中国开源软件的发展，方便他人。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/ly.jpg",
+        "url": "//static.b3log.org/images/timeline/ly.jpg",
+        "caption": "首位赞助者:<a href='http://www.lyzane.com' target='_blank'>胸毛</a><br>欢迎你也<a href='https://b3log.org/donate.html' target='_blank'>成为赞助者</a>"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2012,
+        "month": 2,
+        "day": 19
+      },
+      "text": {
+        "headline": "Solo 0.4.0 发布",
+        "text": "这一年团队成员大都换了工作，比较奔波。虽然发布了 <a href='http://88250.b3log.org/b3log-solo-release-031.html' target='_blank'>0.3.1</a>、<a href='http://88250.b3log.org/b3log-solo-release-035.html' target='_blank'>0.3.5</a>、<a href='http://88250.b3log.org/b3log-solo-release-040-beta1.html' target='_blank'>0.4.0 Beta1</a>、<a href='http://88250.b3log.org/b3log-solo-release-040-beta2.html' target='_blank'>0.4.0 Beta2</a>，但 <a href='http://88250.b3log.org/b3log-solo-release-040-final.html' target='_blank'>0.4.0</a> 一直拖到现在，在此只能说声抱歉！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/v20120219.jpg",
+        "url": "//static.b3log.org/images/timeline/v20120219.jpg",
+        "caption": "今天也是 <a href='https://hacpai.com/member/e' target='_blank'>V</a> 的生日"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2012,
+        "month": 3,
+        "day": 4
+      },
+      "text": {
+        "headline": "DVLY 上海一夜",
+        "text": "有缘千里来相会，无缘对面不相识。<br/>在阴雨连绵的三月，团队成员 <a href='http://88250.b3log.org' target='_blank'>D</a>、<a href='http://vanessa.b3log.org' target='_blank'>V</a>、<a href='https://hacpai.com/member/lamb' target='_blank'>L</a>、<a href='http://love.b3log.org' target='_blank'>Y</a> 终于在上海会面了。<a href='https://hacpai.com/member/e' target='_blank'>DX</a>、<a href='http://jiangzezhou.b3log.org' target='_blank'>J</a> 就差你们俩了！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20120304.png",
+        "url": "//static.b3log.org/images/timeline/20120304.png",
+        "caption": "地铁离别照"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2012,
+        "month": 5,
+        "day": 31
+      },
+      "text": {
+        "headline": "项目已经迁往 <a href='https://github.com/b3log/solo' target='_blank'>GitHub</a>",
+        "text": "经过 <a href='http://88250.b3log.org' target='_blank'>D</a> 一次、二次的尝试，终于在 <a href='http://88250.b3log.org' target='_blank'>V</a> 第三次尝试的带动下，<a href='https://github.com/b3log' target='_blank'>项目</a>及<a href='https://github.com/b3log/solo/wiki' target='_blank'>文档</a>顺利迁往 GitHub，欢迎大家围观。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/move-github.png",
+        "url": "//static.b3log.org/images/timeline/move-github.png",
+        "caption": "终于抵达 GitHub"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2012,
+        "month": 8,
+        "day": 26
+      },
+      "text": {
+        "headline": "Solo 0.5.0 发布",
+        "text": "续 <a href='http://vanessa.b3log.org/b3log-solo-release-041' target='_blank'>0.4.1</a> 本地版推出后，经历<a href='http://vanessa.b3log.org/b3log-solo-release-045-final' target='_blank'>0.4.5</a>、<a href='http://vanessa.b3log.org/b3log-solo-release-046-final' target='_blank'>0.4.6</a>，较为稳定的版本 <a href='http://vanessa.b3log.org/b3log-solo-0.5.0-release' target='_blank'>0.5.0</a> 没有难产，大家鼓掌 ^^"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/v041.png",
+        "url": "//static.b3log.org/images/timeline/v041.png",
+        "caption": "NOSQL & MYSQL"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2012,
+        "month": 11,
+        "day": 24
+      },
+      "text": {
+        "headline": "Symphony",
+        "text": "虽然曾经对游戏有过恋战，对彼此失去过信任....<br/>但今天 <a href='http://vanessa.b3log.org/b3log-solo-055-released' target='_blank'>Solo 0.5.5</a> 和 <a href='https://hacpai.com/about' target='_blank'>Symphony</a> 一起发布了。<br>欢迎加入 <a href='https://hacpai.com' target='_blank'>Symphony</a>，与大家一起 - 平等 • 自由 • 奔放。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/lol.png",
+        "url": "//static.b3log.org/images/timeline/lol.png",
+        "caption": "责任重大，游戏需适可而止"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2013,
+        "month": 3,
+        "day": 26
+      },
+      "text": {
+        "headline": "DASHU 加入",
+        "text": "相信机会一定会留给有准备的菜鸟。<br/><br/>好吧，机会还没来，看来还要继续努力。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/DASHU.jpg",
+        "url": "//static.b3log.org/images/timeline/DASHU.jpg",
+        "caption": "我是有准备的菜鸟<a href='https://hacpai.com/member/DASHU' target='_blank'>大叔</a>"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2013,
+        "month": 4,
+        "day": 26
+      },
+      "text": {
+        "headline": "Solo 0.6.0 发布",
+        "text": "唰唰唰，时间就这么溜走了。生怕什么都没做就消失了。还好 <a href='http://vanessa.b3log.org/b3log-solo-056-released' target='_blank'>0.5.6</a> & <a href='http://vanessa.b3log.org/b3log-solo-060-released' target='_blank'>0.6.0</a> 出来了 ^^"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20130426.jpg",
+        "url": "//static.b3log.org/images/timeline/20130426.jpg",
+        "caption": "四川加油，让我们为您广播"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2013,
+        "month": 11,
+        "day": 1
+      },
+      "text": {
+        "headline": "Solo 0.6.5 发布",
+        "text": "经历了八个年头断断续续的风雨，<a href='http://88250.b3log.org' target='_blank'>D</a> & <a href='http://vanessa.b3log.org' target='_blank'>V</a> 终于走到了一起。此刻，<a href='http://88250.b3log.org/b3log-solo-061-released' target='_blank'>0.6.1</a> 也在祝福声中诞生了。<br/>随着 <a href='https://hacpai.com/member/DASHU/' target='_blank'>DASHU</a> 红本本的到手，<a href='http://88250.b3log.org/b3log-solo-065-released' target='_blank'>0.6.5</a> 同样也在幸福温馨中发布了。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20130817.jpg",
+        "url": "//static.b3log.org/images/timeline/20130817.jpg",
+        "caption": "相亲相爱，相敬如宾"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2014,
+        "month": 6,
+        "day": 1
+      },
+      "text": {
+        "headline": "Noty",
+        "text": "Solo 从 <a href='http://88250.b3log.org/b3log-solo-065-released' target='_blank'>0.6.5</a> 后将只会对其进行维护，不再增加新特性了。<br/>不过，不要沮丧和失望，这一切并没有结束，而是一个全新的开始，欢迎我们的新作品 —— <a href='https://github.com/b3log/noty' target='_blank'>Noty</a>。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20140601.jpeg",
+        "url": "//static.b3log.org/images/timeline/20140601.jpeg",
+        "caption": "新的诞生"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2014,
+        "month": 10,
+        "day": 24
+      },
+      "text": {
+        "headline": "Wide 1.0.0 发布",
+        "text": "经过了不断的思索，我们暂停了 <a href='https://github.com/b3log/noty' target='_blank'>Noty</a> 的开发，毅然决然开始挑战高难度的 Web IDE。在 3 个月的努力后，<a href='http://88250.b3log.org/wide-1.0.0-released' target='_blank'>1.0.0</a> 发布了。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/wide.png",
+        "url": "//static.b3log.org/images/timeline/wide.png",
+        "caption": "团队开发，随时随地"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2014,
+        "month": 12,
+        "day": 24
+      },
+      "text": {
+        "headline": "Wide 1.1.0 发布",
+        "text": "此时此刻我们上线了 <a href='https://wide.b3log.org' target='_blank'>Wide 在线服务</a>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20141224.png",
+        "url": "//static.b3log.org/images/timeline/20141224.png",
+        "caption": " 这是一个全新的世界！"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2015,
+        "month": 3,
+        "day": 1
+      },
+      "text": {
+        "headline": "Wide 1.2.0 发布",
+        "text": "分享乃永恒之道，让我们使用 <a href='https://wide.b3log.org/playground' target='_blank'>Playground</a> 来分享您对 Golang 认知的点点滴滴吧！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20150301.jpg",
+        "url": "//static.b3log.org/images/timeline/20150301.jpg",
+        "caption": "<a href='https://hacpai.com/article/1427255168447' target='_blank'>Solo 0.6.8</a> 也于 2015-3-25 发布了 ^^"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2015,
+        "month": 8,
+        "day": 1
+      },
+      "text": {
+        "headline": "黑客派上线",
+        "text": "<a href='http://hacpai.com' target='_blank'>黑客派</a>程序员和设计师的聚集地，汇聚了来自程序技术领域的工程师和富有创意的设计师！<br/>PS: 在 7-19 <a href='http://hacpai.com/article/1437292757551' target='_blank'>Wide 1.3.0</a> 发布了 ^^"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/hp.png",
+        "url": "//static.b3log.org/images/timeline/hp.png",
+        "caption": "感谢 <a href='https://hacpai.com/member/youngski' target='_blank'>youngski</a> 提供的 Logo"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2015,
+        "month": 9,
+        "day": 17
+      },
+      "text": {
+        "headline": "Solo 1.0.0 发布",
+        "text": "<a href='https://github.com/b3log/noty' target='_blank'>Noty</a> 跳票了...<br/>经过 5 年时间的进化，在 Solo <a href='http://hacpai.com/article/1435544295119' target='_blank'>0.6.9</a> 后，终于迎来了一个大版本 <a href='http://hacpai.com/article/1442461563547' target='_blank'>1.0.0</a>，可以上传图片喽！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/qiniu.jpg",
+        "url": "//static.b3log.org/images/timeline/qiniu.jpg",
+        "caption": "还是贴<a href='http://hd.qiniu.com/7TDC?utm_campaign=zhibofabu&utm_source=heikepai&utm_medium=advposition&utm_content=png' target='_blank'>七牛</a>在 <a href='https://hacpai.com/article/1463035290924' target='_blank'>黑客派</a> 的赞助图好了"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2015,
+        "month": 10,
+        "day": 2
+      },
+      "text": {
+        "headline": "Sym 1.3.0 发布",
+        "text": "在10月1日国庆节，Solo <a href='https://hacpai.com/article/1443685401909' target='_blank'>1.1.0</a> 挥泪告别 GAE 的第二天，Sym <a href='https://hacpai.com/article/1443685401909' target='_blank'>1.3.0</a> 居然紧随发布啦！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20151002.jpg",
+        "url": "//static.b3log.org/images/timeline/20151002.jpg",
+        "caption": "祖国万岁"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2015,
+        "month": 12,
+        "day": 19
+      },
+      "text": {
+        "headline": "Solo 1.3.0 发布",
+        "text": "在12月2日 Solo <a href='http://hacpai.com/article/1449026390274' target='_blank'>1.2.0</a> 可以一键启动后，对 Docker 支持的 <a href='https://hacpai.com/article/1450507069972' target='_blank'>1.3.0</a> 也发布啦。<br/>这应该是史上最容易跑起来的博客系统了，欢迎大家<a href='https://pan.baidu.com/s/1dzk7SU' target='_blank'>下载</a>体验，也欢迎来 <a href='https://github.com/b3log/solo' target='_blank'>Star/Fork</a>！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/one_key_start.jpg",
+        "url": "//static.b3log.org/images/timeline/one_key_start.jpg",
+        "caption": "<a href='https://github.com/b3log/solo/wiki/standalone_mode' target='_blank'>一键启动</a> & <a href='https://github.com/b3log/solo/wiki/docker' target='_blank'>Docker 支持</a>"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2016,
+        "month": 3,
+        "day": 5
+      },
+      "text": {
+        "headline": "API 开放",
+        "text": "Wide 居然半年没发布了，就在 3-5 <a href='https://hacpai.com/article/1457158841475' target='_blank'>1.5.0</a> 终于出场了！<br/>如今 <a href='http://hacpai.com' target='_blank'>黑客派</a> 内容 <a href='https://hacpai.com/article/1457158841475' target='_blank'>API</a> 也开放了，欢迎各位独立博客主进行连接。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/API.jpg",
+        "url": "//static.b3log.org/images/timeline/API.jpg",
+        "caption": "HTTPS 启程了"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2016,
+        "month": 6,
+        "day": 28
+      },
+      "text": {
+        "headline": "Solo 1.4.0",
+        "text": "<a href='https://hacpai.com/article/1467125795481' target='_blank'>1.4.0</a> 对复杂的配置进行了简化 － 减而不简<br/><br/>在此对黑客派的 <a href='https://hacpai.com/article/1463035290924' target='_blank'>2016 赞助商</a> 进行感谢"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/GitOpen.png",
+        "url": "//static.b3log.org/images/timeline/GitOpen.png",
+        "caption": "B3log 开源组织<a href='https://hacpai.com/article/1463025124998' target='_blank'>欢迎</a>您！"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2016,
+        "month": 10,
+        "day": 31
+      },
+      "text": {
+        "headline": "QQ 聊天机器人小薇 2.2.0 发布",
+        "text": "一个用 Java 写的 QQ 聊天机器人 Web 服务，可以用于社群互动<br><br><small>• 发现有“感兴趣”的内容时进行智能回复<br>• 推送到消息至论坛某个接口上，<a href='https://hacpai.com/community' target='_blank'>实例</a><br>• 在论坛中调用接口自动推送到 QQ 群<br>• 加小薇为好友后可通过暗号（key）群推消息</small>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20161019.jpg",
+        "url": "//static.b3log.org/images/timeline/20161019.jpg",
+        "caption": "Yet another QQ Bot.<br>她的名字叫做 <a href='https://github.com/b3log/xiaov' target='_blank'>XiaoV（小薇）</a> ~"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2016,
+        "month": 12,
+        "day": 26
+      },
+      "text": {
+        "headline": "Sym&Solo&Wide",
+        "text": "<a href='https://github.com/b3log/Symphony' target='_blank'>Symphony</a><br><a href='https://hacpai.com/article/1469762913967' target='_blank'>1.4.0</a> - <a href='https://hacpai.com/article/1471574493590' target='_blank'>1.5.0</a> - <a href='https://hacpai.com/article/1476845608414' target='_blank'>1.6.0</a> - <a href='https://hacpai.com/article/1481077678502' target='_blank'>1.7.0</a> - <ahref='https://hacpai.com/article/1482730362728' target='_blank'>1.8.0</a><br><br><a href='https://github.com/b3log/Solo' target='_blank'>Solo</a><br> <a href='https://hacpai.com/article/1470807556709' target='_blank'>1.5.0</a> - <a href='https://hacpai.com/article/1473387238770' target='_blank'>1.6.0</a> - <a href='https://hacpai.com/article/1478745509611' target='_blank'>1.7.0</a><br><br><a href='https://github.com/b3log/Wide' target='_blank'>Wide</a><br> <a href='https://hacpai.com/article/1472609944493' target='_blank'>1.5.1</a> - <a href='https://hacpai.com/article/1481769670521' target='_blank'>1.5.2</a>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20161226.jpg",
+        "url": "//static.b3log.org/images/timeline/20161226.jpg",
+        "caption": "频繁的发布，不平凡的特性"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2017,
+        "month": 1,
+        "day": 23
+      },
+      "text": {
+        "headline": "『书单』计划",
+        "text": "<a href='https://hacpai.com/tag/hacpai' target='_blank'>黑客派</a>社区的一个纸质书共享计划，所有书均来自捐赠，原则上当前的书籍持有者有义务将书寄送给需要的会员<br><br>PS: <a href='https://hacpai.com/article/1484210995211' target='_blank'>Sym 1.9.0</a>, <a href='https://hacpai.com/article/1485143241940' target='_blank'>Solo 1.8.0</a> 也发布了哦！"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20170123.jpg",
+        "url": "//static.b3log.org/images/timeline/20170123.jpg",
+        "caption": "合上电脑，开启你的读书之旅 & 快乐共享"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2017,
+        "month": 8,
+        "day": 31
+      },
+      "text": {
+        "headline": "B3log 2、3 季度发布列表",
+        "text": "&star; Solo: <a href='https://hacpai.com/article/1487662607431' target='_blank'>1.9.0 - 新皮肤</a>，<a href='https://hacpai.com/article/1492099966859' target='_blank'>2.0.0 - 聚合分类</a>，<a href='https://hacpai.com/article/1495722503519' target='_blank'>2.1.0</a>，<a href='https://hacpai.com/article/1499692251155' target='_blank'>2.2.0 - 静态博客导入</a>，<a href='https://hacpai.com/article/1504150339315' target='_blank'>2.3.0</a><br/><br/>&starf; QQ 聊天机器人小薇 <a href='https://hacpai.com/article/1488333521351' target='_blank'>2.2.1</a><br/><br/>&star; Sym：<a href='https://hacpai.com/article/1488854554507' target='_blank'>2.0.0</a>，<a href='https://hacpai.com/article/1495121357038' target='_blank'>2.1.0</a>，<a href='https://hacpai.com/article/1500543226433' target='_blank'>商业版优势</a><br/><br/>&starf; Go 语言 IDE - <a href='https://hacpai.com/article/1502247172047' target='_blank'>Wide 1.5.3</a>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20170831.png",
+        "url": "//static.b3log.org/images/timeline/20170831.png",
+        "caption": "新 Logo，新文档<br><a href='https://hacpai.com/article/1488603534762' target='_blank'>社区客户端 API 文档</a> <br>Solo <a href='https://hacpai.com/article/1492881378588' target='_blank'>用户指南</a>及<a href='https://hacpai.com/article/1493822943172' target='_blank'>开发指南</a>"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2017,
+        "month": 12,
+        "day": 28
+      },
+      "text": {
+        "headline": "火力全开",
+        "text": "本季度新上线了 <a href='https://hacpai.com/article/1514431709556' target='_blank'>Go 开源博客平台 Pipe</a>、<a href='//sym.b3log.org' target='_blank'>Sym 官网主页</a> 以及<a href='https://hacpai.com/article/1514135920272' target='_blank'>百度网盘高速下载 Chrome 插件</a><br><br>&star; Solo:<br> <a href='https://hacpai.com/article/1506050482466' target='_blank'>2.4.0 - 全文搜索</a>，<a href='https://hacpai.com/article/1513746439653' target='_blank'>2.5.0 - 数据导出</a><br/><br/>&starf; QQ 聊天机器人小薇 <a href='https://hacpai.com/article/1510281180427' target='_blank'>2.2.2</a><br/><br/>&star; Sym：<br><a href='https://hacpai.com/article/1509516824402' target='_blank'>2.2.0</a>，<a href='https://hacpai.com/article/1513141691403' target='_blank'>2.3.0</a> - 引入<a href='https://hacpai.com/article/1511015097370' target='_blank'>星际文件系统</a>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20171228.png",
+        "url": "//static.b3log.org/images/timeline/20171228.png",
+        "caption": "又一个开源博客 <a href='https://github.com/b3log/pipe' target='_blank'>Pipe</a> <br><a href='https://hacpai.com/article/1513761942333' target='_blank'>用户指南</a> 及<a href='https://hacpai.com/article/1512550354920' target='_blank'>主题开发指南</a>"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2018,
+        "month": 1,
+        "day": 21
+      },
+      "text": {
+        "headline": "B3T",
+        "text": "&star; 基于 ETH，<a href='https://hacpai.com/article/1516547810228' target='_blank'>B3log 社区币 B3T 发布</a>了！<br><br>&starf; 为了实现共享激励与社区基础价值的统一，B3log 社区启动了<a href='https://github.com/b3log/chainbook' target='_blank'>链书（Chainbook）</a> 产品。 <br><br>&star; <a href='https://github.com/b3log/pipe' target='_blank'>Pipe</a> 趁热打铁，继续发布了 <a href='https://hacpai.com/article/1515641797476' target='_blank'>1.1.0</a> 和 <a href='https://hacpai.com/article/1516343873822' target='_blank'>1.2.0</a>，同时也添加了 Next 和 Medium <a href='https://github.com/b3log/pipe-themes' target='_blank'>主题</a>。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20180121.jpg",
+        "url": "//static.b3log.org/images/timeline/20180121.jpg",
+        "caption": "快来设置你的<a href='https://hacpai.com/settings/wallet' target='_blank'>钱包地址</a>，领取 B3T"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2018,
+        "month": 4,
+        "day": 20
+      },
+      "text": {
+        "headline": "创业的第一个春天",
+        "text": "&star; 创业就需要加快脚步 <br>Pipe：<a href='https://hacpai.com/article/1518154723635' target='_blank'>1.3.0</a>，<a href='https://hacpai.com/article/1521599743284' target='_blank'>1.4.0</a><br>Sym：<a href='https://hacpai.com/article/1517970640599' target='_blank'>2.4.0</a>，<a href='https://hacpai.com/article/1520990044918' target='_blank'>2.5.0</a>， <a href='https://hacpai.com/article/1523320655615' target='_blank'>2.6.0</a><br>Solo：<a href='https://hacpai.com/article/1517468377777' target='_blank'>2.6.0</a>，<a href='https://hacpai.com/article/1520345077734' target='_blank'>2.7.0</a>， <a href='https://hacpai.com/article/1523932059345' target='_blank'>2.8.0</a><br><br>&starf; 每个项目都需要跟进<br>Java Web 开源框架 <a href='https://hacpai.com/article/1522908946586' target='_blank'>Latke 2.4.1</a> 发布，ORM 生成改进<br>QQ 聊天机器人<a href='https://hacpai.com/article/1522805732657' target='_blank'>小薇 2.3.0</a> 发布！<br><br>&star; 成立云南链滴科技有限公司"
+      },
+      "media": {
+        "thumbnail": "https://img.hacpai.com/bing/20180412.jpg?imageView2/2/w/260/h/187/format/jpg/interlace/0/q",
+        "url": "https://img.hacpai.com/bing/20180412.jpg?imageView2/2/w/260/h/187/format/jpg/interlace/0/q",
+        "caption": "在春天种下<a href='https://hacpai.com/article/1524191993505' target='_blank'>创业</a>的种子，期待秋天的丰收"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2018,
+        "month": 6,
+        "day": 21
+      },
+      "text": {
+        "headline": "链书 M1 上线",
+        "text": "&star; 在第二版博客 Pipe 后，书单也有了第二个版本<a href='https://hacpai.com/article/1529545076617' target='_blank'>链书</a>。同时也发布了一个新利器 <a href='https://hacpai.com/article/1524460877352' target='_blank'>BND</a><br><br>&starf; 商业版的驱动下 Sym 起飞了：<a href='https://hacpai.com/article/1525364510282' target='_blank'>2.7.0 - 首页改版</a>，<a href='https://hacpai.com/article/1527210884306' target='_blank'>2.8.0 - 新增微博功能</a>，<a href='https://hacpai.com/article/1528862109296' target='_blank'>3.0.0 - 新增问答帖</a><br><br>&star; Pipe：<a href='https://hacpai.com/article/1524641193727' target='_blank'>1.5.0</a>，<a href='https://hacpai.com/article/1527731300003' target='_blank'>1.6.0 - 支持 sitemap</a><br>Solo：<a href='https://hacpai.com/article/1526519602248' target='_blank'>2.9.0 - 支持后台文章搜索</a>"
+      },
+      "media": {
+        "thumbnail": "https://static.hacpai.com/images/chainbook-weapp.png",
+        "url": "https://static.hacpai.com/images/chainbook-weapp.png",
+        "caption": "<a href='https://hacpai.com/tag/chainbook' target='_blank'>链书</a>是区块链纸质书交易平台"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2018,
+        "month": 8,
+        "day": 2
+      },
+      "text": {
+        "headline": "Solo 迎来了看板娘",
+        "text": "边<a href='https://hacpai.com/article/1532583489064' target='_blank'>旅游</a>边打码 <br><br>&star; Java 社区平台 Sym：<a href='https://hacpai.com/article/1531357995424' target='_blank'>3.1.0 - 新增举报系统</a>，<a href='https://hacpai.com/article/1533179927765' target='_blank'>3.2.0 - 改进问答列表</a><br><br>&starf; Java 开源博客 Solo：<a href='https://hacpai.com/article/1530067238194' target='_blank'>2.9.1 - 支持 PJAX</a>，<a href='https://hacpai.com/article/1532567800804' target='_blank'>2.9.2 - 看板娘来了</a><br><br>&star; Go 博客平台 <a href='https://hacpai.com/article/1530584729120' target='_blank'>Pipe 1.7.0</a> 发布，支持本地账号"
+      },
+      "media": {
+        "thumbnail": "https://img.hacpai.com/file/2018/08/fdac6ba946b347178f3a026a45e729b1_1.png",
+        "url": "https://img.hacpai.com/file/2018/08/fdac6ba946b347178f3a026a45e729b1_1.png",
+        "caption": "<a href='https://hacpai.com/article/1532590847178' target='_blank'>创业的第一个夏天</a>需要萝莉控来降降温"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2018,
+        "month": 10,
+        "day": 24
+      },
+      "text": {
+        "headline": "迎来平安、金蝶、移动、汇桔网、润乾客户",
+        "text": "&star; Java 社区平台 Sym：<a href='https://hacpai.com/article/1535506742626' target='_blank'>3.3.0 - 支持停用账号</a>，<a href='https://hacpai.com/article/1536195705605' target='_blank'>3.4.0 - 配置标签广告位</a>，<a href='https://hacpai.com/article/1538015735056' target='_blank'>3.4.1 - 重写模板、会话管理</a>，<a href='https://hacpai.com/article/1540345039105' target='_blank'>3.4.2 - 支持 Live Photo</a><br><br>&starf; 博客系统：<a href='https://hacpai.com/article/1534989198402' target='_blank'>Solo 2.9.3 - 指定移动端皮肤</a>，<a href='https://hacpai.com/article/1537109312363' target='_blank'>Solo 2.9.4 - 新皮肤加数据库重构</a>，<a href='https://hacpai.com/article/1533785855258' target='_blank'>Pipe 1.8.0 - 添加摘要</a>，<a href='https://hacpai.com/article/1536719459514' target='_blank'>Pipe 1.8.1 - 新主题 Fara</a><br><br>&star; 又又一个百度不限速下载器诞生：<a href='https://hacpai.com/article/1535277215816' target='_blank'>百度不限速下载器 BND2 技术架构简介</a>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20181024.png",
+        "url": "//static.b3log.org/images/timeline/20181024.png",
+        "caption": "Sym 下一代的社区系统，为未来而构建"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2018,
+        "month": 11,
+        "day": 22
+      },
+      "text": {
+        "headline": "<a href='https://hacpai.com/article/1540781279972' target='_blank'>创业的第一个秋天</a>",
+        "text": "&star; 产品发布公告：<br><a href='https://hacpai.com/article/1539139945647' target='_blank'>Solo 2.9.5</a> - 大量细节优化，<a href='https://hacpai.com/article/1542252980969' target='_blank'>Solo 2.9.6</a> - 细节优化<br><a href='https://hacpai.com/article/1539737195745' target='_blank'>Pipe 1.8.2</a> - 支持 GitHub 登录，<a href='https://hacpai.com/article/1541123073767' target='_blank'>Pipe 1.8.3</a> - 支持 PJAX<br><a href='https://hacpai.com/article/1541646094222' target='_blank'>Sym 3.4.0</a> - 可自定义首页跳转，<a href='https://hacpai.com/article/1542252980969' target='_blank'>Sym 3.4.4</a> - 加入审计日志<br><br>&starf; <a href='https://hacpai.com/article/1538577113305' target='_blank'>协慌网</a>，一个汉化 Stack Overflow 的网站<br><br>&star; 链书快应用：只要你是 Android 用户，打开应用市场或负一屏搜索「链书」即可使用"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20181122.gif",
+        "url": "//static.b3log.org/images/timeline/20181122.gif",
+        "caption": "B3log 在 GitHub 上的组织已经斩获 2W 星，进入了全球组织排名<a href='https://hacpai.com/forward?goto=https%3A%2F%2Fgitstar-ranking.com%2Forganizations%3Futm_source%3Dhacpai.com' target='_blank'>前 200</a>！"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2019,
+        "month": 2,
+        "day": 19
+      },
+      "text": {
+        "headline": "???",
+        "text": "经历了 9 年的风雨，我们不断成长，只为能靠自己的力量给您带来一点点变化。"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/question.png",
+        "url": "//static.b3log.org/images/timeline/question.png",
+        "caption": "未知总会带来惊喜"
+      }
+    }
+  ]
+}
