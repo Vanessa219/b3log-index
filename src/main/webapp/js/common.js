@@ -75,7 +75,7 @@ var Index = {
       'js/index-timeline.json', {
         type: 'timeline',
         width: '100%',
-        start_at_end: true,
+        // start_at_end: true,
         language: 'zh-cn',
       })
   },
