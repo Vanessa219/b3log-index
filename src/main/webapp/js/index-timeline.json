@@ -5,10 +5,10 @@
     },
     "text": {
       "headline": "B3log 开源",
-      "text": "<a href='https://b3log.org' target='_blank'>B3log</a> 是一个开源组织，名字来源于Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 <a href='https://hacpai.com/b3log' target='_blank'>B3log 构思</a>。目前 B3log 已经开源了多款产品：<a href='https://hacpai.com/tag/pipe' target='_blank'>Pipe</a>、<a href='https://hacpai.com/tag/solo' target='_blank'>Solo</a>、<a href='https://hacpai.com/tag/sym' target='_blank'>Sym</a>、 <a href='https://hacpai.com/tag/wide' target='_blank'>Wide</a> 等，欢迎大家<a href='https://hacpai.com/article/1463025124998' target='_blank'>加入</a>，贡献开源。"
+      "text": "<a href='https://b3log.org' target='_blank'>B3log</a> 是一个开源组织，名字来源于“Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 <a href='https://hacpai.com/b3log' target='_blank'>B3log 构思</a>。目前 B3log 已经开源了多款产品：<a href='https://hacpai.com/tag/pipe' target='_blank'>Pipe</a>、<a href='https://hacpai.com/tag/solo' target='_blank'>Solo</a>、<a href='https://hacpai.com/tag/sym' target='_blank'>Sym</a>、 <a href='https://hacpai.com/tag/wide' target='_blank'>Wide</a> 等，欢迎大家<a href='https://hacpai.com/article/1463025124998' target='_blank'>加入</a>，贡献开源。"
     },
     "background": {
-      "url": "//static.b3log.org/images/logo-460.png"
+      "url": "images/logo-460.png"
     }
   },
   "events": [
