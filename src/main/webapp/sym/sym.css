@@ -525,6 +525,15 @@ blockquote {
     margin: 30px 0 0 30px;
 }
 
+.second-screen .btn {
+    float: right;
+}
+
+.second-screen .btn:last-child {
+    width: 271px;
+    margin-right: 20px;
+}
+
 .third-item {
     border-bottom: 1px solid #e1e4e8;
     margin-bottom: 50px;
@@ -613,7 +622,7 @@ blockquote {
     font-size: 12px;
 }
 
-.customer__coms  img {
+.customer__coms img {
     max-height: 60px;
     margin: 0 20px 20px 20px;
 }
@@ -631,7 +640,7 @@ blockquote {
     width: 425px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #e1e4e8;
     border-radius: 5px;
     margin-bottom: 50px;
@@ -843,6 +852,15 @@ blockquote {
         text-align: center;
         font-size: 22px;
         margin-top: 30px;
+    }
+
+    .second-screen .btn {
+        float: none;
+    }
+
+    .second-screen .btn:last-child {
+        width: 271px;
+        margin-right: auto;
     }
 
     .third-item {
