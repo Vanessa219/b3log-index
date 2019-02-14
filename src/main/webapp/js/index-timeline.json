@@ -5,7 +5,7 @@
     },
     "text": {
       "headline": "B3log 开源",
-      "text": "<a href='https://b3log.org' target='_blank'>B3log</a> 是一个开源组织，名字来源于“Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 <a href='https://hacpai.com/b3log' target='_blank'>B3log 构思</a>。目前 B3log 已经开源了多款产品：<a href='https://hacpai.com/tag/pipe' target='_blank'>Pipe</a>、<a href='https://hacpai.com/tag/solo' target='_blank'>Solo</a>、<a href='https://hacpai.com/tag/sym' target='_blank'>Sym</a>、 <a href='https://hacpai.com/tag/wide' target='_blank'>Wide</a> 等，欢迎大家<a href='https://hacpai.com/article/1463025124998' target='_blank'>加入</a>，贡献开源。"
+      "text": "<a href='https://b3log.org' target='_blank'>B3log</a> 是一个开源组织，名字来源于“Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 <a href='https://hacpai.com/b3log' target='_blank'>B3log 构思</a>。目前 B3log 已经开源了多款产品：<a href='https://hacpai.com/tag/sym' target='_blank'>Sym</a>、<a href='https://hacpai.com/tag/solo' target='_blank'>Solo</a>、<a href='https://hacpai.com/tag/pipe' target='_blank'>Pipe</a>、 <a href='https://github.com/b3log/vditor' target='_blank'>Vditor</a>、<a href='https://hacpai.com/tag/wide' target='_blank'>Wide</a> 等，欢迎大家<a href='https://hacpai.com/article/1463025124998' target='_blank'>加入</a>，贡献开源。"
     },
     "background": {
       "url": "images/logo-460.png"
@@ -676,7 +676,7 @@
       },
       "text": {
         "headline": "<a href='https://hacpai.com/article/1540781279972' target='_blank'>创业的第一个秋天</a>",
-        "text": "&star; 产品发布公告：<br><a href='https://hacpai.com/article/1539139945647' target='_blank'>Solo 2.9.5</a> - 大量细节优化，<a href='https://hacpai.com/article/1542252980969' target='_blank'>Solo 2.9.6</a> - 细节优化<br><a href='https://hacpai.com/article/1539737195745' target='_blank'>Pipe 1.8.2</a> - 支持 GitHub 登录，<a href='https://hacpai.com/article/1541123073767' target='_blank'>Pipe 1.8.3</a> - 支持 PJAX<br><a href='https://hacpai.com/article/1541646094222' target='_blank'>Sym 3.4.0</a> - 可自定义首页跳转，<a href='https://hacpai.com/article/1542252980969' target='_blank'>Sym 3.4.4</a> - 加入审计日志<br><br>&starf; <a href='https://hacpai.com/article/1538577113305' target='_blank'>协慌网</a>，一个汉化 Stack Overflow 的网站<br><br>&star; 链书快应用：只要你是 Android 用户，打开应用市场或负一屏搜索「链书」即可使用"
+        "text": "&star; 产品发布公告：<br><a href='https://hacpai.com/article/1539139945647' target='_blank'>Solo 2.9.5</a> - 大量细节优化，<a href='https://hacpai.com/article/1542252980969' target='_blank'>Solo 2.9.6</a> - 细节优化<br><a href='https://hacpai.com/article/1539737195745' target='_blank'>Pipe 1.8.2</a> - 支持 GitHub 登录，<a href='https://hacpai.com/article/1541123073767' target='_blank'>Pipe 1.8.3</a> - 支持 PJAX<br><a href='https://hacpai.com/article/1541646094222' target='_blank'>Sym 3.4.0</a> - 可自定义首页跳转，<a href='https://hacpai.com/article/1542856681254' target='_blank'>Sym 3.4.4</a> - 加入审计日志<br><br>&starf; <a href='https://hacpai.com/article/1538577113305' target='_blank'>协慌网</a>，一个汉化 Stack Overflow 的网站<br><br>&star; 链书快应用：只要你是 Android 用户，打开应用市场或负一屏搜索「链书」即可使用"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20181122.gif",
@@ -688,11 +688,27 @@
       "start_date": {
         "year": 2019,
         "month": 2,
-        "day": 19
+        "day": 14
+      },
+      "text": {
+        "headline": "Vditor 发布",
+        "text": "&star; 产品发布公告：<br><a href='https://hacpai.com/article/1544494910517' target='_blank'>Solo 2.9.7</a> - 新皮肤 Jane，<a href='https://hacpai.com/article/1547612387838' target='_blank'>Solo 2.9.8</a> - 支持阿里云 OSS，<br><a href='https://hacpai.com/article/1542252980969' target='_blank'>Solo 2.9.9</a> - 同步 GitHub 仓库<br><a href='https://hacpai.com/article/1543455416741' target='_blank'>Pipe 1.8.4</a> - 调整推荐阅读，<a href='https://hacpai.com/article/1546567261120' target='_blank'>Pipe 1.8.5</a> - 新皮肤 Littlewin，<br><a href='https://hacpai.com/article/1548305562049' target='_blank'>Pipe 1.8.6</a> - 支持标签管理<br><a href='https://hacpai.com/article/1544143529252' target='_blank'>Sym 3.4.5</a> - 重构控制器层，<a href='https://hacpai.com/article/1547084819536' target='_blank'>Sym 3.4.6</a> - 优化 Markdown<br><br>&starf; <a href='https://github.com/b3log/vditor' target='_blank'>Vditor</a>，一款浏览器端的 Markdown 编辑器，使用 TypeScript 实现。<br><br>&star; <a href='https://hacpai.com/article/1549100368149' target='_blank'>创业的第一个冬天</a>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/brand/vditor-512.png",
+        "url": "//static.b3log.org/images/brand/vditor-512.png",
+        "caption": "这是在多个产品维护的压力下，反抗出来的 🥕 坑 😜"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2019,
+        "month": 5,
+        "day": 12
       },
       "text": {
         "headline": "???",
-        "text": "经历了 9 年的风雨，我们不断成长，只为能靠自己的力量给您带来一点点变化。"
+        "text": "经历了 10 年的风雨，我们不断成长，只为能靠自己的力量给您带来一点点变化。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/question.png",
