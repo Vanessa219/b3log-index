@@ -567,6 +567,21 @@ blockquote {
     width: 460px;
 }
 
+.third-item .themes {
+    display: flex;
+    align-items: center;
+}
+
+.third-item .themes a {
+    cursor: zoom-in;
+    display: block;
+}
+
+.third-item .themes .item {
+    flex: 1;
+    margin-top: 20px;
+}
+
 .contact-item {
     width: 21%;
     float: left;
