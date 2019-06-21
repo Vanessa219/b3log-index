@@ -57,7 +57,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/favicon-128.png",
         "url": "//static.b3log.org/images/timeline/favicon-128.png",
-        "caption": "不会 PS 的孩子很受伤 T_T~"
+        "caption": "不会 PS 的孩子很受伤 <br><br>T_T~"
       }
     },
     {
@@ -137,7 +137,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/jboat.jpg",
         "url": "//static.b3log.org/images/timeline/jboat.jpg",
-        "caption": "Smile to see the distance， 我是 <a href='http://jiangzezhou.b3log.org' target='_blank'>Jboat (J)</a>"
+        "caption": "Smile to see the distance<br><br>我是 <a href='http://jiangzezhou.b3log.org' target='_blank'>Jboat (J)</a>"
       }
     },
     {
@@ -153,7 +153,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/mainlove.png",
         "url": "//static.b3log.org/images/timeline/mainlove.png",
-        "caption": "有人为你往前冲是一种幸福，我是 <a href='http://love.b3log.org' target='_blank'>Mainlove</a>，叫我 Y 吧！"
+        "caption": "有人为你往前冲是一种幸福<br><br>我是 <a href='http://love.b3log.org' target='_blank'>Mainlove</a><br><br>叫我 Y 吧！"
       }
     },
     {
@@ -169,7 +169,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/030.jpg",
         "url": "//static.b3log.org/images/timeline/030.jpg",
-        "caption": "0.3.0 活跃贡献者的大名<br/>D: 过个生日伤不起啊~~~~"
+        "caption": "0.3.0 活跃贡献者的大名<br/><br/>D: 过个生日伤不起啊~~~~"
       }
     },
     {
@@ -201,7 +201,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/skiner.jpg",
         "url": "//static.b3log.org/images/timeline/skiner.jpg",
-        "caption": " 第三方皮肤贡献者：<br/><a href='https://github.com/noday/' target='_blank'>Noday</a>(左上), <a href='https://hacpai.com/member/An/' target='_blank'>Ansen</a>(右上) <br/><a href='https://hacpai.com/member/oncereply/' target='_blank'>答复</a>(左下), <a href='http://www.gesong.org/' target='_blank'>Chevo</a>(右下)"
+        "caption": " 第三方皮肤贡献者：<br/><br/><a href='https://github.com/noday/' target='_blank'>Noday</a>(左上), <a href='https://hacpai.com/member/An/' target='_blank'>Ansen</a>(右上) <br/><br/><a href='https://hacpai.com/member/oncereply/' target='_blank'>答复</a>(左下), <a href='http://www.gesong.org/' target='_blank'>Chevo</a>(右下)"
       }
     },
     {
@@ -217,7 +217,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/ly.jpg",
         "url": "//static.b3log.org/images/timeline/ly.jpg",
-        "caption": "首位赞助者:<a href='http://www.lyzane.com' target='_blank'>胸毛</a><br>欢迎你也<a href='https://b3log.org/donate.html' target='_blank'>成为赞助者</a>"
+        "caption": "首位赞助者:<a href='http://www.lyzane.com' target='_blank'>胸毛</a><br><br>欢迎你也<a href='https://b3log.org/donate.html' target='_blank'>成为赞助者</a>"
       }
     },
     {
@@ -521,7 +521,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20161019.jpg",
         "url": "//static.b3log.org/images/timeline/20161019.jpg",
-        "caption": "Yet another QQ Bot.<br>她的名字叫做 <a href='https://github.com/b3log/xiaov' target='_blank'>XiaoV（小薇）</a> ~"
+        "caption": "Yet another QQ Bot.<br><br>她的名字叫做 <a href='https://github.com/b3log/xiaov' target='_blank'>XiaoV（小薇）</a> ~"
       }
     },
     {
@@ -553,7 +553,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20170123.jpg",
         "url": "//static.b3log.org/images/timeline/20170123.jpg",
-        "caption": "合上电脑，开启你的读书之旅 & 快乐共享"
+        "caption": "合上电脑，开启你的读书之旅 <br><br>快乐共享"
       }
     },
     {
@@ -569,7 +569,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20170831.png",
         "url": "//static.b3log.org/images/timeline/20170831.png",
-        "caption": "新 Logo，新文档<br><a href='https://hacpai.com/article/1488603534762' target='_blank'>社区客户端 API 文档</a> <br>Solo <a href='https://hacpai.com/article/1492881378588' target='_blank'>用户指南</a>及<a href='https://hacpai.com/article/1493822943172' target='_blank'>开发指南</a>"
+        "caption": "新 Logo，新文档<br><br><a href='https://hacpai.com/article/1488603534762' target='_blank'>社区客户端 API 文档</a> <br><br>Solo <a href='https://hacpai.com/article/1492881378588' target='_blank'>用户指南</a>及<a href='https://hacpai.com/article/1493822943172' target='_blank'>开发指南</a>"
       }
     },
     {
@@ -585,7 +585,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20171228.png",
         "url": "//static.b3log.org/images/timeline/20171228.png",
-        "caption": "又一个开源博客 <a href='https://github.com/b3log/pipe' target='_blank'>Pipe</a> <br><a href='https://hacpai.com/article/1513761942333' target='_blank'>用户指南</a> 及<a href='https://hacpai.com/article/1512550354920' target='_blank'>主题开发指南</a>"
+        "caption": "又一个开源博客 <a href='https://github.com/b3log/pipe' target='_blank'>Pipe</a> <br><br><a href='https://hacpai.com/article/1513761942333' target='_blank'>用户指南</a> 及<a href='https://hacpai.com/article/1512550354920' target='_blank'>主题开发指南</a>"
       }
     },
     {
@@ -681,7 +681,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20181122.gif",
         "url": "//static.b3log.org/images/timeline/20181122.gif",
-        "caption": "B3log 在 GitHub 上的组织已经斩获 2W 星，进入了全球组织排名<a href='https://hacpai.com/forward?goto=https%3A%2F%2Fgitstar-ranking.com%2Forganizations%3Futm_source%3Dhacpai.com' target='_blank'>前 200</a>！"
+        "caption": "B3log 在 GitHub 上的组织已经斩获 2W 星，进入了全球组织排名<a href='https://gitstar-ranking.com/b3log' target='_blank'>前 200</a>！"
       }
     },
     {
@@ -703,8 +703,24 @@
     {
       "start_date": {
         "year": 2019,
-        "month": 5,
-        "day": 12
+        "month": 6,
+        "day": 18
+      },
+      "text": {
+        "headline": "星火发布",
+        "text": "&star; 产品发布公告：<br>Solo：<a href=\"https://hacpai.com/article/1550329964759\" target=\"_blank\">3.0.0</a>，<a href=\"https://hacpai.com/article/1551334344078\" target=\"_blank\">3.1.0</a>，<a href=\"https://hacpai.com/article/1551746941427\" target=\"_blank\">3.2.0</a>，<a href=\"https://hacpai.com/article/1552828065463\" target=\"_blank\">3.3.0</a>，<a href=\"https://hacpai.com/article/1553561154369\" target=\"_blank\">3.4.0</a>，<a href=\"https://github.com/b3log/solo/releases/tag/v3.5.0\" target=\"_blank\">3.5.0</a>，<a href=\"https://github.com/b3log/solo/releases/tag/v3.6.0\" target=\"_blank\">3.6.0</a>，<a href=\"https://github.com/b3log/solo/releases/tag/v3.6.1\" target=\"_blank\">3.6.1</a>，<a href=\"https://github.com/b3log/solo/releases/tag/v3.6.2\" target=\"_blank\">3.6.2</a><br>Sym：<a href=\"https://hacpai.com/article/1550843264718\" target=\"_blank\">3.4.7</a>，<a href=\"https://github.com/b3log/symphony/releases/tag/v3.4.8\" target=\"_blank\">3.4.8</a>，<a href=\"https://github.com/b3log/symphony/releases/tag/v3.5.0\" target=\"_blank\">3.5.0</a><br>Pipe：<a href=\"https://hacpai.com/article/1550369171082\" target=\"_blank\">1.8.7</a>，<a href=\"https://hacpai.com/article/1551361665694\" target=\"_blank\">1.8.8</a>，<a href=\"https://github.com/b3log/pipe/releases/tag/v1.8.9\" target=\"_blank\">1.8.9</a><br>Vditor：<a href=\"https://hacpai.com/article/1552528089282\" target=\"_blank\">1.0.0</a>，<a href=\"https://hacpai.com/article/1553142368547\" target=\"_blank\">1.1.11</a>，<a href=\"https://hacpai.com/article/1554340754530\" target=\"_blank\">1.2.10</a>，<a href=\"https://hacpai.com/article/1557025312424\" target=\"_blank\">1.3.5</a>，<a href=\"https://hacpai.com/article/1559786637041\" target=\"_blank\">1.4.7</a><br><br>&starf; 新品发布：<br><a target=\"_blank\" href=\"https://github.com/b3log/we-are-under-attack\">\uD83D\uDE31We are under attack!</a>：你的服务器、电脑、电视、电冰箱、空调、洗衣机、摄像头等一切可联网设备是否已经沦为肉鸡？<br><a target=\"_blank\" href=\"https://github.com/b3log/starfire\">\uD83C\uDF1FStarfire</a>：一个分布式的内容分享讨论社区，星星之火可以燎原。<br><a target=\"_blank\" href=\"https://github.com/b3log/gulu\">⭕Gulu</a>：Go 语言常用工具库，这个轱辘还算圆！<br><a target=\"_blank\" href=\"https://github.com/b3log/30-seconds-zh_CN\">\uD83D\uDCD4每天 30 秒系列</a>：精选前端问题集，坚持每天 30 秒。<br><br>&star; <a href='https://hacpai.com/article/1555989598304' target='_blank'>创业的第二个春天</a>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/timeline/20190618.png",
+        "url": "//static.b3log.org/images/timeline/20190618.png",
+        "caption": "开源的精神支撑着我们不断前行"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2019,
+        "month": 11,
+        "day": 11
       },
       "text": {
         "headline": "???",
