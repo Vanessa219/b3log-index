@@ -162,6 +162,10 @@ blockquote {
     margin: 5px 0 5px 0;
 }
 
+.fn__flex {
+    display: flex;
+}
+
 .fn-clear:before,
 .fn-clear:after {
     display: table;
@@ -237,22 +241,32 @@ blockquote {
 }
 
 .panel-abstract {
-    float: left;
-    width: 380px;
+    align-self: center;
     text-align: center;
     color: rgba(0, 0, 0, 0.38);
+    max-width: 380px;
+    min-width: 300px;
 }
 
 .panel-abstract h2 {
     font-size: 50px;
-    margin: 50px 0 30px;
+    margin-bottom: 30px;
     color: #4285f4;
     animation: zomg 3s infinite;
 }
 
 .panel-content {
-    float: left;
-    width: 520px;
+    flex: 1;
+    align-self: center;
+}
+
+.panel-content ul {
+    line-height: 30px;
+    margin: 30px 0 10px 30px;
+}
+
+.panel-split {
+    width: 50px;
 }
 
 .header-logo:hover {
@@ -520,66 +534,23 @@ blockquote {
     opacity: 0.6;
 }
 
-.second-screen ul {
-    line-height: 40px;
-    margin: 30px 0 0 30px;
+.second-screen .panel-abstract {
+    width: 380px;
 }
 
-.second-screen .btn {
-    float: right;
-}
-
-.second-screen .btn:last-child {
-    width: 271px;
-    margin-right: 20px;
-}
-
-.third-item {
+.third-screen .fn__flex {
     border-bottom: 1px solid #e1e4e8;
     margin-bottom: 50px;
     padding: 0 30px 50px 30px;
 }
 
-.third-item:last-child {
-    border-bottom: 0;
+.third-screen .fn__flex:last-child {
+    border-bottom-width: 0;
 }
 
-.third-item img {
+.third-screen img {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-}
-
-.third-item ul {
-    margin-left: 28px;
-    line-height: 1.7;
-}
-
-.third-item h2 {
-    margin-bottom: 20px;
-}
-
-.third-item .panel-abstract {
-    width: 300px;
-}
-
-.third-item .panel-content {
-    float: right;
-    width: 460px;
-}
-
-.third-item .themes {
-    display: flex;
-    align-items: center;
-}
-
-.third-item .themes a {
-    cursor: zoom-in;
-    display: block;
-}
-
-.third-item .themes .item {
-    flex: 1;
-    margin-top: 20px;
 }
 
 .contact-item {
@@ -869,16 +840,6 @@ blockquote {
     .second-screen .btn:last-child {
         width: 271px;
         margin-right: auto;
-    }
-
-    .third-item {
-        margin-bottom: 30px;
-        padding: 0 0 30px 0;
-    }
-
-    .third-item:last-child {
-        margin-bottom: 0;
-        padding: 0;
     }
 
     .third-screen img {
