@@ -789,10 +789,11 @@ blockquote {
         margin-top: 30px;
     }
 
+    .fn__flex {
+        display: block;
+    }
+
     .panel-abstract,
-    .third-item .panel-abstract,
-    .panel-content,
-    .third-item .panel-content,
     .contact-item,
     .pricing-item,
     .pricing-faq-h3,
