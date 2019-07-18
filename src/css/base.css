@@ -211,6 +211,10 @@ blockquote {
     animation: zomg 3s infinite;
 }
 
+.fn-border {
+    border-bottom: 1px solid #e1e4e8;
+}
+
 .btn {
     color: #fff;
     background-color: #4285f4;
