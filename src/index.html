@@ -10,13 +10,13 @@
           content="B3log 是一个开源组织，名字来源于“Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 B3log 构思。目前 B3log 已经开源了多款产品：Sym、Solo、Pipe、Vditor、Wide 等，欢迎大家加入，贡献开源。"/>
     <meta name="copyright" content="B3log"/>
     <link rel="canonical" href="https://b3log.org">
-    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="apple-touch-icon" href="//static.b3log.org/images/logo-128.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta http-equiv="Window-target" content="_top"/>
-    <link rel="icon" type="image/png" href="favicon.png"/>
+    <link rel="icon" type="image/png" href="//static.b3log.org/images/logo-128.png"/>
     <link type="text/css" rel="stylesheet" href="js/lib/TimelineJS/timeline.css" charset="utf-8"/>
-    <link type="text/css" rel="stylesheet" href="css/style.css" charset="utf-8"/>
+    <link type="text/css" rel="stylesheet" href="css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
     <meta property="og:title" content="B3log - 平等•自由•奔放的开源社区"/>
@@ -33,6 +33,41 @@
     <meta name="twitter:url" content="https://b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
+    <style>
+        .tl-timenav .tl-attribution a {
+            display: none;
+        }
+
+        .tl-timeline p a:hover, .tl-timeline p a:focus {
+            color: #4285f4;
+        }
+
+        .tl-skinny .tl-media .tl-media-content-container .tl-caption {
+            margin-top: 10px;
+        }
+
+        .tl-mobile.tl-skinny .tl-media .tl-media-image {
+            max-height: 200px !important;
+        }
+
+        .tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-media-container .tl-timemarker-media {
+            float: left;
+        }
+
+        .tl-skinny .tl-text {
+            margin-top: 0;
+        }
+
+        #timelineRender {
+            margin-top: 66px;
+            height: 100vh;
+        }
+
+        #dynamic {
+            min-height: 279px;
+            background: url(//static.b3log.org/images/ajax-loader.gif) no-repeat scroll center center #fff;
+        }
+    </style>
 </head>
 <body>
 <div class="header fn-clear header-fixed">
@@ -41,33 +76,195 @@
         <h1>B3log 开源</h1>
     </a>
     <div class="fn-clear">
-        <a class="header-a" href="https://hacpai.com/register" target="_blank">社区</a>
+        <a class="header-a" href="https://hacpai.com" target="_blank">社区</a>
         <a class="header-a header-green" href="https://sym.b3log.org">Sym</a>
         <a class="header-a header-yellow" href="https://solo.b3log.org">Solo</a>
-        <a class="header-a header-red" href="donate.html"><b>成为赞助者</b></a>
+        <a class="header-a header-red" href="https://hacpai.com/sponsor" target="_blank"><b>成为赞助者</b></a>
     </div>
 </div>
 
-<div id="timelineRender" style="margin-top: 66px;height: 100vh;"></div>
+<div id="timelineRender"></div>
 
 <div class="wrapper">
-    <div class="panel-abstract">
-        <h2>B3log</h2>
-        <div>
+    <div class="index__banner">
+        <h2 class="fn-title">B3log</h2>
+        <div class="fn-50"></div>
+        <div class="ft-fade">
             [bi:ˈθriˈlɒg]
         </div>
+        <div class="fn-50"></div>
         <h3>平等 • 自由 • 奔放</h3>
     </div>
-
-    <div class="third-item fn-clear">
-        <div class="fn-clear">
-            <h2 class="fn-left">B3log 社区动态</h2>
-            <a class="fn-right" href="https://hacpai.com" target="_blank">更多社群动态</a>
+    <div>
+        <div class="fn-100"></div>
+        <div class="panel-wrap fn-flex fn-flex-reverse">
+            <div class="panel-content">
+                <h2>Symphony</h2>
+                <div class="fn-50"></div>
+                <ul class="fn-list">
+                    <li>🎶 一款用 Java 实现的现代化社区（论坛/BBS/社交网络/博客）平台</li>
+                    <li>实现了面向内容讨论的论坛</li>
+                    <li>实现了面向知识问答的社区</li>
+                    <li> 包含了面向用户分享、交友、游戏的社交网络</li>
+                    <li>100% 开源</li>
+                    <li>
+                        <a target="_blank" href="https://hacpai.com">体验</a>
+                        /
+                        <a target="_blank" href="https://github.com/b3log/symphony">源码</a>
+                        /
+                        <a href="https://sym.b3log.org">官网</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-split"></div>
+            <div class="panel-abstract">
+                <img src="//static.b3log.org/images/brand/sym-128.png">
+            </div>
         </div>
-        <div id="dynamic">
+        <div class="fn-100"></div>
+        <div class="fn-100"></div>
+        <div class="panel-wrap fn-flex">
+            <div class="panel-abstract">
+                <img src="//static.b3log.org/images/brand/solo-128.png">
+            </div>
+            <div class="panel-split"></div>
+            <div class="panel-content">
+                <h2>Solo</h2>
+                <div class="fn-50"></div>
+                <ul class="fn-list">
+                    <li>🎸 一款小而美的博客系统，专为程序员设计</li>
+                    <li>Solo 有着非常活跃的<a target="_blank" href="https://hacpai.com/tag/solo">社区</a>，可将文章作为帖子推送到社区，来自社区的回帖将作为博客评论进行联动
+                    </li>
+                    <li>100% 开源</li>
+                    <li>
+                        <a target="_blank" href="https://github.com/b3log/solo-skins">主题</a>
+                        /
+                        <a target="_blank" href="https://github.com/b3log/solo">源码</a>
+                        /
+                        <a href="https://solo.b3log.org">官网</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="fn-100"></div>
+        <div class="fn-100"></div>
+        <div class="panel-wrap fn-flex fn-flex-reverse">
+            <div class="panel-content">
+                <h2>Pipe</h2>
+                <div class="fn-50"></div>
+                <ul class="fn-list">
+                    <li>🎷 一款小而美的博客平台，专为程序员设计</li>
+                    <li>
+                        Pipe 有着非常活跃的<a target="_blank" href="https://hacpai.com/tag/pipe">社区</a>，文章自动推送到社区后可以让很多人看到，产生丰富的交流互动
+                    </li>
+                    <li>100% 开源</li>
+                    <li>
+                        <a target="_blank" href="http://pipe.b3log.org/">体验</a>
+                        /
+                        <a target="_blank" href="https://github.com/b3log/pipe">源码</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-split"></div>
+            <div class="panel-abstract">
+                <img src="//static.b3log.org/images/brand/pipe-128.png">
+            </div>
+        </div>
+        <div class="fn-100"></div>
+        <div class="fn-100"></div>
+        <div class="panel-wrap fn-flex">
+            <div class="panel-abstract">
+                <img src="//static.b3log.org/images/brand/wide-128.png">
+            </div>
+            <div class="panel-split"></div>
+            <div class="panel-content">
+                <h2>Wide</h2>
+                <div class="fn-50"></div>
+                <ul class="fn-list">
+                    <li>🌈 一款基于 Web 的 Go 语言 IDE，随时随地玩 golang</li>
+                    <li>
+                        只需要浏览器就能进行开发、运行
+                    </li>
+                    <li>
+                        极客体验
+                    </li>
+                    <li>100% 开源</li>
+                    <li>
+                        <a target="_blank" href="https://wide.b3log.org/">体验</a>
+                        /
+                        <a target="_blank" href="https://github.com/b3log/wide">源码</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="fn-100"></div>
+        <div class="fn-100"></div>
+        <div class="panel-wrap fn-flex fn-flex-reverse">
+            <div class="panel-content">
+                <h2>Latke</h2>
+                <div class="fn-50"></div>
+                <ul class="fn-list">
+                    <li>🌀 一款以 JSON 为主的 Java Web 框架</li>
+                    <li>
+                        ['lɑ:tkə，土豆饼] 是一个简单易用的 Java Web 应用开发框架，包含 MVC、IoC、事件通知、ORM、插件等组件
+                    </li>
+                    <li>
+                        在实体模型上使用 JSON 贯穿前后端，使应用开发更加快捷
+                    </li>
+                    <li>100% 开源</li>
+                    <li>
+                        <a target="_blank" href="https://hacpai.com/article/1403847528022">动机</a>
+                        /
+                        <a target="_blank" href="https://github.com/b3log/latke">源码</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-split"></div>
+            <div class="panel-abstract">
+                <img src="//static.b3log.org/images/brand/latke-128.png">
+            </div>
+        </div>
+        <div class="fn-100"></div>
+        <div class="fn-100"></div>
+        <div class="panel-wrap fn-flex">
+            <div class="panel-abstract">
+                <img src="//static.b3log.org/images/brand/vditor-128.png">
+            </div>
+            <div class="panel-split"></div>
+            <div class="panel-content">
+                <h2>Vditor</h2>
+                <div class="fn-50"></div>
+                <ul class="fn-list">
+                    <li>♏ 一款浏览器端的 Markdown 编辑器</li>
+                    <li>
+                        使用 TypeScript 实现
+                    </li>
+                    <li>
+                        支持原生 JavaScript、Vue、React
+                    </li>
+                    <li>100% 开源</li>
+                    <li>
+                        <a target="_blank" href="https://hacpai.com/guide/markdown">体验</a>
+                        /
+                        <a target="_blank" href="https://github.com/b3log/vditor">源码</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-
+    <div class="fn-100"></div>
+    <div class="panel-wrap">
+        <div class="fn-100"></div>
+        <div class="fn-clear">
+            <h2 class="fn-left">B3log 社区动态</h2>
+            <a class="fn-right" href="https://hacpai.com/recent" target="_blank">更多社群动态</a>
+        </div>
+        <div class="fn-50"></div>
+        <div id="dynamic">
+        </div>
+        <div class="fn-100"></div>
+    </div>
+    <div class="fn-100"></div>
     <div class="fn-clear">
         <a class="contact-item" href="https://github.com/b3log" target="_blank">
             <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -102,48 +299,17 @@
         </a>
     </div>
 </div>
+<div class="fn-100"></div>
 <!-- end main -->
 
 <div class="footer">
-    <div class="wrapper">
-        Symphony -
-        <a target="_blank" href="https://hacpai.com/register">注册</a> • <a target="_blank"
-                                                                          href="https://github.com/b3log/symphony">源码</a>
-        <br>
-        一款用 Java 实现的现代化社区（论坛/BBS/社交网络/博客）平台。<br> <br>
-
-        Pipe -
-        <a target="_blank" href="http://pipe.b3log.org/">体验</a> • <a target="_blank"
-                                                                     href="https://github.com/b3log/pipe">源码</a>
-        <br>
-        一款小而美的博客平台，专为程序员设计。<br> <br>
-
-        Solo -
-        <a target="_blank" href="https://github.com/b3log/solo/releases">下载</a> •
-        <a target="_blank"
-           href="https://github.com/b3log/solo">源码</a>
-        <br>
-        一款小而美的博客系统，专为程序员设计。<br> <br>
-
-        Wide -
-        <a target="_blank" href="https://wide.b3log.org/">试用</a> • <a target="_blank"
-                                                                      href="https://github.com/b3log/wide">源码</a>
-        <br>
-        一款基于 Web 的 Go 语言 IDE。<br> <br>
-
-
-        Latke
-        <a target="_blank" href="https://hacpai.com/article/1403847528022">动机</a> • <a target="_blank"
-                                                                                       href="https://github.com/b3log/latke">源码</a>
-        <br>
-        一款以 JSON 为主的 Java Web 框架。
-        <div class="copyright fn-clear">
-            <a href="https://sym.b3log.org">Sym</a>
-            &nbsp; &nbsp; <a href="https://solo.b3log.org">Solo</a>
-            &nbsp; &nbsp; <a href="https://b3log.org/brand-marking.html">品牌标识</a>
-            <div class="copyright__text">
-                © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
-            </div>
+    <div class="wrapper fn-clear">
+        <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com" target="_blank">社区</a> &nbsp; &nbsp;
+        <a href="https://b3log.org/brand-marking.html">品牌标识</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+        <div class="fn-right">
+            © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
         </div>
     </div>
 </div>

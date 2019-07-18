@@ -240,35 +240,6 @@ blockquote {
     margin: 100px auto;
 }
 
-.panel-abstract {
-    align-self: center;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.38);
-    max-width: 380px;
-    min-width: 300px;
-}
-
-.panel-abstract h2 {
-    font-size: 50px;
-    margin-bottom: 30px;
-    color: #4285f4;
-    animation: zomg 3s infinite;
-}
-
-.panel-content {
-    flex: 1;
-    align-self: center;
-}
-
-.panel-content ul {
-    line-height: 30px;
-    margin: 30px 0 10px 30px;
-}
-
-.panel-split {
-    width: 50px;
-}
-
 .header-logo:hover {
     animation: zomg 3s infinite;
 }
@@ -751,9 +722,13 @@ blockquote {
 .footer {
     color: #7d8186;
     line-height: 24px;
-    padding: 10px 0;
+    padding: 21px 0;
     background-color: #3b3e43;
     font-size: 14px;
+}
+
+.footer .wrapper {
+    margin: 0 auto;
 }
 
 .footer a {
@@ -763,16 +738,6 @@ blockquote {
 .footer a:hover {
     color: #888f91;
     text-decoration: none;
-}
-
-.footer .copyright {
-    padding-top: 30px;
-    border-top: 1px solid #7d8186;
-    margin-top: 30px;
-}
-
-.footer .copyright__text {
-    float: right;
 }
 
 @media (max-width: 768px) {
@@ -881,9 +846,5 @@ blockquote {
     .customer-item-title {
         display: block;
         color: #3b3e43;
-    }
-
-    .footer .copyright__text {
-        float: none;
     }
 }

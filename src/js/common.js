@@ -38,14 +38,14 @@ var Index = {
           return
         }
 
-        var listHTML = '<ul>'
+        var listHTML = '<ul class="fn-list">'
         for (var i = 0; i < articles.length && i < 9; i++) {
           var article = articles[i]
           var articleLiHtml = '<li>'
             + '<a target=\'_blank\' href=\'' + article.articlePermalink + '\'>'
-            + article.articleTitle + '</a>&nbsp;<span>[' +
+            + article.articleTitle + '</a>&nbsp;<small class="ft-fade">[' +
             Index._getDate(article.articleCreateTime)
-            + ']</span></li>'
+            + ']</small></li>'
           listHTML += articleLiHtml
         }
         listHTML += '</ul>'

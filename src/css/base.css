@@ -9,6 +9,9 @@ body {
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
     -webkit-font-smoothing: antialiased;
     color: #3b3e43;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 ::-moz-selection {
@@ -169,9 +172,16 @@ blockquote {
     clear: both;
 }
 
-.fn-hr {
+.fn-border {
+    border-bottom: 1px solid #e1e4e8;
+}
+
+.fn-50 {
     height: 50px;
-    display: block;
+}
+
+.fn-100 {
+    height: 100px;
 }
 
 .fn-left {
@@ -180,6 +190,19 @@ blockquote {
 
 .fn-right {
     float: right;
+}
+
+.ft-fade {
+    color: rgba(0, 0, 0, 0.38);
+}
+
+.fn-flex {
+    display: flex;
+}
+
+.fn-list {
+    line-height: 30px;
+    margin: 0 0 0 50px;
 }
 
 @keyframes btnbg {
@@ -200,14 +223,6 @@ blockquote {
     }
 }
 
-.wrapper {
-    width: 900px;
-    margin: 100px auto;
-}
-
-.header-logo:hover {
-    animation: zomg 3s infinite;
-}
 
 @keyframes zomg {
     0% {
@@ -225,6 +240,19 @@ blockquote {
     75% {
         color: #f1e05a
     }
+}
+
+.wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 10px;
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-logo:hover {
+    animation: zomg 3s infinite;
 }
 
 .header {
@@ -313,7 +341,7 @@ blockquote {
 .footer {
     color: #7d8186;
     line-height: 24px;
-    padding: 10px 0;
+    padding: 21px 0;
     background-color: #3b3e43;
     font-size: 14px;
 }
@@ -327,73 +355,36 @@ blockquote {
     text-decoration: none;
 }
 
-.footer .copyright {
-    padding-top: 30px;
-    border-top: 1px solid #7d8186;
-    margin-top: 30px;
-}
-
-.footer .copyright__text {
-    float: right;
-}
-
-.panel-abstract {
-    display: block;
+.index__banner {
+    padding: 200px 0;
     text-align: center;
-    color: rgba(0, 0, 0, 0.38);
-    padding: 150px 0 200px 0;
 }
 
-.panel-abstract h2 {
+.index__banner h2 {
     font-size: 50px;
-    margin: 50px 0 30px;
     color: #4285f4;
     animation: zomg 3s infinite;
 }
 
-.panel-abstract h3 {
-    color: #3b3e43;
-    margin-top: 30px;
+.panel-wrap {
+    padding: 0 50px;
 }
 
-.third-item {
-    border-top: 1px solid #e1e4e8;
-    border-bottom: 1px solid #e1e4e8;
-    padding: 100px 30px;
-    margin-bottom: 100px;
+.panel-abstract {
+    align-self: center;
+    text-align: center;
+    max-width: 380px;
+    min-width: 300px;
+    margin: 0 auto;
 }
 
-.third-item--other {
-    border-top: 0;
-    padding-top: 0;
+.panel-content {
+    flex: 1;
+    align-self: center;
 }
 
-.third-item--brand {
-    border-top: 0;
-    padding-top: 0;
-}
-
-.third-item--brand:last-child {
-    border-bottom: 0;
-}
-
-.third-item ul {
-    margin-left: 28px;
-    line-height: 40px;
-}
-
-.third-item li span {
-    color: rgba(0, 0, 0, 0.38);
-    font-size: 14px;
-}
-
-.third-item h2 {
-    margin-bottom: 20px;
-}
-
-#dynamic {
-    height: 360px;
-    background: url(../images/ajax-loader.gif) no-repeat scroll center center #fff;
+.panel-split {
+    width: 50px;
 }
 
 .contact-item {
@@ -436,125 +427,52 @@ blockquote {
     margin: 30px auto;
 }
 
-/* start donate */
-.donate-img {
-    float: left;
-    margin: 0px 75px;
-    width: 300px;
-}
-
-.donate-currency {
-    font-size: 14px;
-    margin: 0 30px 50px;
-    word-break: break-all;
-}
-
-.donate-currency div {
-    color: #ccc;
-    font-size: 17px;
-    font-weight: 500;
-    margin-bottom: 3px;
-    display: inline-block;
-}
-
-.donate-title {
-    padding-top: 20px;
-    text-align: center;
-}
-
-.donate-description {
-    border-top: 0;
-    padding: 0 30px 50px;
-    margin-bottom: 50px;
-}
-/* end donate */
-.kill-browser h2 {
-    margin-bottom: 30px;
-}
-
-.kill-browser__panel {
-    display: flex;
-}
-
-.kill-browser__logo {
-    display: block;
-    margin: 100px 50px 0;
-}
-
-.kill-browser__main {
-    flex: 1;
-}
-
-.kill-browser__main ul {
-    line-height: 40px;
-    margin-left: 30px;
-}
-.kill-browser__main img {
-    float: right;
-    margin-top: -100px;
-}
-
-
-.tl-timenav .tl-attribution a {
-    display: none;
-}
-.tl-timeline p a:hover, .tl-timeline p a:focus {
-    color: #4285f4;
-}
-
 @media (max-width: 768px) {
-    .wrapper {
-        width: auto;
-        margin: 97px 10px;
-    }
 
     .header-logo h1 {
         display: none;
     }
 
-    .header-a {
-        padding: 0 10px;
-    }
-
-    #dynamic {
-        height: auto;
-    }
-
-    .third-item {
-        padding: 30px 0;
-        margin-bottom: 10px;
-    }
-
     .contact-item {
         width: 100%;
-        margin: 20px 0 0 0;
+        margin: 50px 0 0 0;
     }
 
-    .donate-img {
-        margin: 0;
+    .contact-item:first-child {
+        margin-top: 0;
+    }
+
+    .footer .fn-right {
         float: none;
-        width: 100%;
     }
 
-    .donate-currency {
-        margin: 0 0 50px;
+    .fn-flex {
+        flex-direction: column;
     }
 
-    .donate-currency div {
-        display: block;
+    .fn-flex-reverse {
+        flex-direction: column-reverse;
     }
 
-    .kill-browser__panel {
-        display: block;
+    .index__banner {
+        padding: 100px 0;
     }
 
-    .kill-browser__logo {
-        margin: 30px auto;
-        width: 160px;
+    .fn-100 {
+        height: 50px;
     }
 
-    .footer .copyright__text {
-       float: none;
+    .fn-50 {
+        height: 20px;
+    }
+
+    .panel-split {
+        width: 0;
+        height: 20px;
+    }
+
+    .panel-wrap {
+        padding: 0 20px;
     }
 }
 
