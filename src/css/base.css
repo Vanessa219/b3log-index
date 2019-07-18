@@ -399,6 +399,11 @@ blockquote {
     margin: 0 auto;
 }
 
+.panel-abstract img {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
 .panel-content {
     flex: 1;
     align-self: center;
