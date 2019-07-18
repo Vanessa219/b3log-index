@@ -35,21 +35,19 @@
         .themes {
             border: 2px solid #e1e4e8;
             box-shadow: 0 0 10px #e1e4e8;
-        }
-
-        .themes__title {
-            margin: 0 auto;
-            width: 500px;
+            display: flex;
+            flex-wrap: wrap;
         }
 
         .fancybox-thumbs {
+            flex: 1;
+            min-width: 225px;
             height: 225px;
             overflow: hidden;
-            float: left;
             position: relative;
-            width: 25%;
             border: 2px solid #e1e4e8;
             box-sizing: border-box;
+            color: #4285f4;
         }
 
         .fancybox-thumbs > span {
@@ -92,20 +90,8 @@
             margin-bottom: 10px;
         }
 
-        .fancybox-thumbs span {
-            color: #4285f4;
-        }
-
         .fancybox-thumbs span:hover {
             text-decoration: underline;
-        }
-
-        .fancybox-thumbs span.text {
-            color: #fff;
-        }
-
-        .fancybox-thumbs span.text:hover {
-            text-decoration: none;
         }
     </style>
 </head>
@@ -144,16 +130,15 @@
             </ul>
         </div>
     </div>
-    <div class="fn-100"></div>
+    <div class="fn-50"></div>
 </div>
-
+<div class="wrapper" style="max-width: 520px">
+    <button class="btn fn-left" onclick="$('.fancybox-thumbs:first-child').click()">大图预览</button>
+    <a class="btn fn-right btn--red" href="https://github.com/b3log/solo/issues/12449" target="_blank">新皮肤推荐</a>
+</div>
+<div class="fn-100"></div>
 <div id="themes">
     <div class="fn-100"></div>
-    <div class="fn-clear themes__title">
-        <button class="btn fn-left" onclick="$('.fancybox-thumbs:first-child').click()">大图预览</button>
-        <a class="btn fn-right btn--red" href="https://github.com/b3log/solo/issues/12449" target="_blank">新皮肤推荐</a>
-    </div>
-    <div class="fn-50"></div>
     <div class="themes fn-clear">
         <a class="fancybox-thumbs" data-fancybox-group="thumb" href="images/themes/Bubble.jpg"
            title="Bubble">
