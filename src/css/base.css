@@ -162,6 +162,14 @@ blockquote {
     margin: 0;
 }
 
+.ft-fade {
+    color: rgba(0, 0, 0, 0.38);
+}
+
+.ft-center {
+    text-align: center;
+}
+
 .fn-clear:before,
 .fn-clear:after {
     display: table;
@@ -170,10 +178,6 @@ blockquote {
 
 .fn-clear:after {
     clear: both;
-}
-
-.fn-border {
-    border-bottom: 1px solid #e1e4e8;
 }
 
 .fn-50 {
@@ -192,10 +196,6 @@ blockquote {
     float: right;
 }
 
-.ft-fade {
-    color: rgba(0, 0, 0, 0.38);
-}
-
 .fn-flex {
     display: flex;
 }
@@ -203,6 +203,34 @@ blockquote {
 .fn-list {
     line-height: 30px;
     margin: 0 0 0 50px;
+}
+
+.fn-title {
+    font-size: 50px;
+    color: #4285f4;
+    animation: zomg 3s infinite;
+}
+
+.btn {
+    color: #fff;
+    background-color: #4285f4;
+    border-radius: 3px;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btn--red {
+    background-color: #d23f31;
+}
+
+.btn:hover {
+    text-decoration: none;
+    animation: btnbg 3s infinite;
+}
+
+.btn:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25) inset;
 }
 
 @keyframes btnbg {
@@ -355,17 +383,6 @@ blockquote {
     text-decoration: none;
 }
 
-.index__banner {
-    padding: 200px 0;
-    text-align: center;
-}
-
-.index__banner h2 {
-    font-size: 50px;
-    color: #4285f4;
-    animation: zomg 3s infinite;
-}
-
 .panel-wrap {
     padding: 0 50px;
 }
@@ -452,10 +469,6 @@ blockquote {
 
     .fn-flex-reverse {
         flex-direction: column-reverse;
-    }
-
-    .index__banner {
-        padding: 100px 0;
     }
 
     .fn-100 {
