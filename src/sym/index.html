@@ -195,6 +195,25 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-144591860-1');
+      gtag('config', 'AW-1027834162');
+    </script>
+    <!-- Event snippet for 浏览报价 conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+      function gtag_report_conversion(id, url) {
+        debugger
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-1027834162/zzEeCJqA-qYBELKCjuoD',
+          'transaction_id': id,
+          'event_callback': callback
+        });
+        return false;
+      }
     </script>
 </head>
 <body>
@@ -211,7 +230,7 @@
             <a class="header-a header-a-first current" href="https://hacpai.com/register" target="_blank">社区</a>
             <a class="header-a header-a-first header-green current" href="https://hacpai.com/article/1486188905847"
                target="_blank">文档</a>
-            <a class="header-a header-a-first header-red current" href="pricing.html"><b>价格</b></a>
+            <a class="header-a header-a-first header-red current" onclick="gtag_report_conversion((new Date()).getTime() + '-price-index')" href="pricing.html"><b>价格</b></a>
         </div>
     </div>
     <div class="panel">

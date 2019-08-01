@@ -49,12 +49,28 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144591860-1"></script>
     <script>
       window.dataLayer = window.dataLayer || []
-
       function gtag () {dataLayer.push(arguments)}
-
       gtag('js', new Date())
-
       gtag('config', 'UA-144591860-1')
+      gtag('config', 'AW-1027834162');
+    </script>
+    <!-- Event snippet for 浏览报价 conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+      function gtag_report_conversion(id, url) {
+        debugger
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-1027834162/zzEeCJqA-qYBELKCjuoD',
+          'transaction_id': id,
+          'event_callback': callback
+        });
+        return false;
+      }
     </script>
 </head>
 <body>
@@ -118,8 +134,8 @@
                         社区版仅提供给个人使用，企业在未获得商用授权前使用社区版本我们将<b>追究</b>其法律责任
                     </li>
                     <li>
-                        企业如需授权请联系 QQ：<a href="tencent://message/?uin=845765" target="_blank">845765</a> /
-                        邮件：<a href="mailto:d@b3log.org">d@b3log.org</a> <br><br>
+                        企业如需授权请联系 QQ：<a onclick="gtag_report_conversion((new Date()).getTime() + '-qq-free')" href="tencent://message/?uin=845765" target="_blank">845765</a> /
+                        邮件：<a href="mailto:d@b3log.org" onclick="gtag_report_conversion((new Date()).getTime() + '-email-free')">d@b3log.org</a> <br><br>
                     </li>
                 </ul>
             </div>
@@ -242,8 +258,8 @@
                 <ul class="fn-list">
                     <li>
                         需要购买商业版/云服务/社区版授权？<br>
-                        请联系 QQ：<a href="tencent://message/?uin=845765" target="_blank">845765</a> /
-                        邮件：<a href="mailto:d@b3log.org">d@b3log.org</a>
+                        请联系 QQ：<a href="tencent://message/?uin=845765" target="_blank" onclick="gtag_report_conversion((new Date()).getTime() + '-qq-e')">845765</a> /
+                        邮件：<a href="mailto:d@b3log.org" onclick="gtag_report_conversion((new Date()).getTime() + '-email-e')">d@b3log.org</a>
                     </li>
                     <li>
                         其他问题？<br>
