@@ -42,7 +42,7 @@
         .customer-items {
             display: flex;
             flex-wrap: wrap;
-            margin: -15px;
+            margin: -10px;
         }
 
         .customer-item {
@@ -52,7 +52,7 @@
             position: relative;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-            margin: 15px;
+            margin: 10px;
             flex: 1;
         }
 
@@ -120,7 +120,6 @@
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
     <script>
       function gtag_report_conversion(id, url) {
-        debugger
         var callback = function () {
           if (typeof(url) != 'undefined') {
             window.location = url;

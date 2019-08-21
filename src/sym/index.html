@@ -201,7 +201,6 @@
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
     <script>
       function gtag_report_conversion(id, url) {
-        debugger
         var callback = function () {
           if (typeof(url) != 'undefined') {
             window.location = url;
