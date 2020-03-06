@@ -190,28 +190,30 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144591860-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      window.dataLayer = window.dataLayer || []
 
-      gtag('config', 'UA-144591860-1');
-      gtag('config', 'AW-1027834162');
+      function gtag () {dataLayer.push(arguments)}
+
+      gtag('js', new Date())
+
+      gtag('config', 'UA-144591860-1')
+      gtag('config', 'AW-1027834162')
     </script>
     <!-- Event snippet for 浏览报价 conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
     <script>
-      function gtag_report_conversion(id, url) {
+      function gtag_report_conversion (id, url) {
         var callback = function () {
-          if (typeof(url) != 'undefined') {
-            window.location = url;
+          if (typeof (url) != 'undefined') {
+            window.location = url
           }
-        };
+        }
         gtag('event', 'conversion', {
           'send_to': 'AW-1027834162/zzEeCJqA-qYBELKCjuoD',
           'transaction_id': id,
-          'event_callback': callback
-        });
-        return false;
+          'event_callback': callback,
+        })
+        return false
       }
     </script>
 </head>
@@ -229,7 +231,9 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             <a class="header-a header-a-first current" href="https://hacpai.com/register" target="_blank">社区</a>
             <a class="header-a header-a-first header-green current" href="https://hacpai.com/article/1486188905847"
                target="_blank">文档</a>
-            <a class="header-a header-a-first header-red current" onclick="gtag_report_conversion((new Date()).getTime() + '-price-index')" href="pricing.html"><b>价格</b></a>
+            <a class="header-a header-a-first header-red current"
+               onclick="gtag_report_conversion((new Date()).getTime() + '-price-index')"
+               href="pricing.html"><b>价格</b></a>
         </div>
     </div>
     <div class="panel">
@@ -303,7 +307,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     <div class="fn-100"></div>
     <div class="fn-flex panel-wrap panel-wrap">
         <div class="panel-abstract">
-            <img src="images/3-1.jpg">
+            <a href="images/3-1.jpg" target="_blank"><img style="max-height: 360px;" src="images/3-1.jpg"></a>
         </div>
         <div class="panel-split"></div>
         <div class="panel-content">
@@ -333,13 +337,13 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         </div>
         <div class="panel-split"></div>
         <div class="panel-abstract">
-            <img src="images/3-2.jpg">
+            <a href="images/3-2.jpg" target="_blank"><img style="max-width: 340px" src="images/3-2.jpg"></a>
         </div>
     </div>
     <div class="fn-100"></div>
     <div class="fn-flex panel-wrap">
         <div class="panel-abstract">
-            <img src="images/3-3.jpg">
+            <a href="images/3-3.jpg" target="_blank"><img src="images/3-3.jpg" style="max-width: 340px"></a>
         </div>
         <div class="panel-split"></div>
         <div class="panel-content">
@@ -377,14 +381,15 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         </div>
         <div class="panel-split"></div>
         <div class="panel-abstract">
-            <img src="images/3-4.jpg">
+            <a href="images/3-4.jpg" target="_blank"><img src="images/3-4.jpg"></a>
         </div>
     </div>
     <div class="fn-100"></div>
     <div class="fn-flex panel-wrap">
         <div class="panel-abstract">
             <a href="images/theme-hacpai.png" target="_blank">
-                <img src="images/screen-hacpai.jpg" style="max-height: 360px">
+                <a href="images/screen-hacpai.jpg" target="_blank"><img src="images/screen-hacpai.jpg"
+                                                                        style="max-height: 360px"></a>
             </a>
         </div>
         <div class="panel-split"></div>
@@ -392,11 +397,27 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             <h2>提供多款主题</h2>
             <div class="fn-50"></div>
             <ul class="fn-list">
-                <li><a href="images/theme-hacpai.png" target="_blank" class="theme">Classic</a></li>
-                <li><a href="images/theme-zhihu.png" target="_blank" class="theme">知乎</a></li>
-                <li><a href="images/theme-v2ex.png" target="_blank" class="theme">V2EX</a></li>
-                <li><a href="images/theme-mobile.png" target="_blank" class="theme">Mobile</a> - 移动端专属主题</li>
-                <li>可前往黑客派<a href="https://hacpai.com/settings/function">设置</a>体验</li>
+                <li>
+                    Classic:
+                    <a href="images/theme-hacpai.png" target="_blank" class="theme">Light</a> |
+                    <a href="images/theme-hacpai-dark.png" target="_blank" class="theme">Dark</a>
+                </li>
+                <li>
+                    Mobile - 移动端专属主题:
+                    <a href="images/theme-mobile.png" target="_blank" class="theme">Light</a> |
+                    <a href="images/theme-mobile-dark.png" target="_blank" class="theme">Dark</a>
+                </li>
+                <li>
+                    知乎:
+                    <a href="images/theme-zhihu.png" target="_blank" class="theme">Light</a> |
+                    <a href="images/theme-zhihu-dark.png" target="_blank" class="theme">Dark</a>
+                </li>
+                <li>
+                    V2EX:
+                    <a href="images/theme-v2ex.png" target="_blank" class="theme">Light</a> |
+                    <a href="images/theme-v2ex-dark.png" target="_blank" class="theme">Dark</a>
+                </li>
+                <li>可前往黑客派 - 设置 - <a href="https://hacpai.com/settings/ui">界面</a>体验</li>
             </ul>
         </div>
     </div>
@@ -422,7 +443,8 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     </a>
     <a class="contact-item contact-item--black" href="https://hacpai.com/tag/sym" target="_blank">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
-            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)"
+                  d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
             <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
             <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
         </svg>
