@@ -296,13 +296,14 @@ blockquote {
     float: left;
     height: 46px;
     width: 46px;
-    margin: 10px 5px 10px 20px;
+    margin: 10px 10px 10px 20px;
 }
 
 .header h1 {
     float: left;
     font-size: 24px;
     margin-top: 15px;
+    line-height: 36px;
 }
 
 .header div {
