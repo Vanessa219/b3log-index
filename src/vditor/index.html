@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式</title>
+    <meta name="robots" content="index,follow,archive">
+    <meta name="description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta name="copyright" content="B3log"/>
+    <link rel="canonical" href="https://vditor.b3log.org">
+    <link rel="apple-touch-icon" href="//static.b3log.org/images/brand/vditor-128.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Window-target" content="_top"/>
+    <link rel="icon" type="image/png" href="//static.b3log.org/images/brand/vditor-128.png"/>
+    <link type="text/css" rel="stylesheet" href="../css/base.css" charset="utf-8"/>
+
+    <meta property="og:locale" content="zh_CN"/>
+    <meta property="og:title" content="Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式"/>
+    <meta property="og:description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
+    <meta property="og:url" content="https://vditor.b3log.org"/>
+    <meta property="og:site_name" content="B3log"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta name="twitter:title" content="Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式"/>
+    <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
+    <meta name="twitter:url" content="https://vditor.b3log.org"/>
+    <meta name="twitter:site" content="@b3logos"/>
+    <meta name="twitter:creator" content="@b3logos"/>
+</head>
+<body>
+<div class="header fn-clear header-fixed">
+    <a class="header-logo" href="https://b3log.org">
+        <img src="//static.b3log.org/images/brand/vditor-128.png">
+        <h1>Vditor</h1>
+    </a>
+    <div class="fn-clear">
+        <a class="header-a" href="https://hacpai.com/tag/vditor" target="_blank">社区</a>
+        <a class="header-a header-red" href="https://hacpai.com/article/1549638745630">API</a>
+        <a class="header-a header-green" href="https://vditor.b3log.org/demo/index.html">Demo</a>
+        <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="ft-center">
+        <div class="fn-100"></div>
+        <div class="fn-100"></div>
+        <h2 class="fn-title">Vditor</h2>
+        <div class="fn-50"></div>
+        <div class="ft-fade">
+            [vidɪtɚ]
+        </div>
+        <div class="fn-50"></div>
+        <h3>下一代的全平台编辑器，为未来而构建</h3>
+        <div class="fn-100"></div>
+        <div class="fn-100"></div>
+    </div>
+    <div class="panel-wrap">
+        Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生
+        JavaScript、Vue、React、Angular，提供<a href="https://github.com/88250/liandi" target="_blank" rel="nofollow ugc">桌面版</a>。
+        <div class="fn-50"></div>
+        <ul class="fn-list">
+            <li>支持三种编辑模式：所见即所得（wysiwyg）、即时渲染（ir）、分屏预览（sv）</li>
+            <li>支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、<a
+                    href="https://github.com/Vanessa219/vditor/issues/5"
+                    target="_blank" rel="nofollow ugc">多媒体</a>、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染
+            </li>
+            <li>内置安全过滤、导出、图片懒加载、任务列表、at、多平台预览、多主题切换、复制到微信公众号功能</li>
+            <li>实现 CommonMark 和 GFM 规范，可对 Markdown 进行格式化和语法树查看，并支持 <a
+                    href="https://hacpai.com/article/1549638745630#options-preview-markdown">10+ 项</a>配置
+            </li>
+            <li>工具栏包含 36+ 项操作，除支持扩展外还可对每一项中的<a href="https://hacpai.com/article/1582778815353">快捷键</a>、提示、提示位置、图标、点击事件、类名、子工具栏进行自定义
+            </li>
+            <li>表情自动补全，设置常用表情，支持表情自定义</li>
+            <li>可使用拖拽、剪切板粘贴上传，显示实时上传进度，支持 CORS 跨域上传</li>
+            <li>实时保存内容，防止意外丢失</li>
+            <li>录音支持，用户可直接发布语音</li>
+            <li>粘贴 HTML 自动转换为 Markdown，如粘贴中包含外链图片可通过指定接口上传到服务器</li>
+            <li>支持主窗口大小拖拽、字符计数</li>
+            <li>多主题支持，内置黑白绿三套主题</li>
+            <li>多语言支持，内置中、英、韩文本地化</li>
+            <li>支持主流浏览器，对移动端友好</li>
+        </ul>
+    </div>
+    <div class="fn-100"></div>
+    <div class="fn-100"></div>
+    <div class="panel-wrap">
+        <div class="fn-clear">
+            <h2 class="fn-left">社区热议</h2>
+            <a style="line-height: 36px" class="fn-right" href="https://hacpai.com/tag/vditor" target="_blank">更多</a>
+        </div>
+        <div class="fn-50"></div>
+        <div id="dynamic"
+             style="min-height: 279px;background: url(//static.b3log.org/images/ajax-loader.gif) no-repeat scroll center center #fff;">
+        </div>
+    </div>
+    <div class="fn-100"></div>
+    <div class="fn-100"></div>
+    <div class="fn-clear">
+        <a class="contact-item" href="https://github.com/Vanessa219/vditor" target="_blank">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+            GitHub <br>
+            源码地址
+        </a>
+        <a class="contact-item contact-item--black" href="https://hacpai.com/tag/Vditor" target="_blank">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path fill="#d23f31" style="fill: var(--color1, #d23f31)"
+                      d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+                <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+                <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+            </svg>
+            Vditor <br>
+            讨论区
+        </a>
+        <a class="contact-item contact-item--red"
+           target="_blank"
+           href="https://weibo.com/b3log">
+            <svg viewBox="0 0 32 32">
+                <path d="M13.242 27.106c-5.22 0.517-9.727-1.847-10.065-5.27-0.339-3.429 3.62-6.618 8.834-7.135 5.22-0.517 9.727 1.847 10.059 5.27 0.345 3.429-3.614 6.624-8.828 7.135zM23.677 15.735c-0.443-0.135-0.751-0.222-0.517-0.806 0.505-1.268 0.554-2.358 0.006-3.14-1.022-1.459-3.823-1.385-7.030-0.037 0 0-1.010 0.437-0.751-0.357 0.492-1.588 0.419-2.912-0.351-3.681-1.742-1.742-6.372 0.068-10.342 4.038-2.967 2.961-4.691 6.119-4.691 8.846 0 5.208 6.686 8.379 13.224 8.379 8.569 0 14.276-4.98 14.276-8.933 0-2.395-2.013-3.749-3.823-4.309z"></path>
+                <path d="M29.371 6.193c-2.069-2.296-5.122-3.17-7.942-2.573v0c-0.653 0.142-1.065 0.782-0.923 1.428 0.142 0.653 0.776 1.065 1.428 0.923 2.007-0.425 4.174 0.197 5.645 1.828s1.872 3.854 1.237 5.799v0c-0.203 0.634 0.142 1.311 0.776 1.521 0.634 0.203 1.311-0.142 1.521-0.776v-0.006c0.887-2.721 0.326-5.848-1.742-8.145z"></path>
+                <path d="M26.189 9.068c-1.010-1.12-2.499-1.545-3.866-1.25-0.56 0.117-0.917 0.677-0.8 1.237 0.123 0.56 0.677 0.917 1.231 0.794v0c0.671-0.142 1.397 0.068 1.89 0.609 0.492 0.548 0.628 1.293 0.412 1.945v0c-0.172 0.542 0.123 1.133 0.671 1.311 0.548 0.172 1.133-0.123 1.311-0.671 0.431-1.336 0.16-2.863-0.85-3.977z"></path>
+                <path d="M13.531 20.907c-0.185 0.314-0.585 0.462-0.899 0.332-0.314-0.123-0.406-0.48-0.228-0.782 0.185-0.302 0.573-0.449 0.88-0.332 0.308 0.111 0.419 0.462 0.246 0.782zM11.863 23.037c-0.505 0.806-1.588 1.157-2.401 0.788-0.8-0.363-1.040-1.299-0.536-2.087 0.499-0.782 1.545-1.133 2.352-0.794 0.819 0.351 1.084 1.28 0.585 2.093zM13.759 17.336c-2.481-0.646-5.288 0.591-6.366 2.776-1.102 2.229-0.037 4.709 2.469 5.522 2.598 0.837 5.664-0.449 6.729-2.85 1.053-2.358-0.259-4.777-2.832-5.448z"></path>
+            </svg>
+            微博 <br>
+            关注 B3log 开源
+        </a>
+    </div>
+</div>
+<div class="fn-100"></div>
+<div class="fn-100"></div>
+<!-- end main -->
+
+<div class="footer">
+    <div class="wrapper fn-clear">
+        <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com" target="_blank">社区</a> &nbsp; &nbsp;
+        <a href="https://b3log.org/brand-marking.html">品牌标识</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+        <div class="fn-right">
+            © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="//static.b3log.org/js/lib/jquery.min.js" charset="utf-8"></script>
+<script>
+  $.ajax({
+    url: 'https://hacpai.com/api/v2/articles/tag/vditor?p=1',
+    type: 'GET',
+    error: function () {
+      $('#dynamic').html('加载列表失败 :-(').css('background-image', 'none')
+    },
+    success: function (data, textStatus) {
+      var articles = data.data.articles
+      if (0 === articles.length) {
+        $('#dynamic').html('无新闻').css('background-image', 'none')
+        return
+      }
+
+      var listHTML = '<ul class="fn-list">'
+      for (var i = 0; i < articles.length; i++) {
+        var article = articles[i]
+        var articleLiHtml = '<li>'
+          + '<a target=\'_blank\' href=\'' + article.articlePermalink + '\'>'
+          + article.articleTitle + '</a>&nbsp;<small class="ft-fade">[' +
+          article.cmtTimeAgo
+          + ']</small></li>'
+        listHTML += articleLiHtml
+      }
+      listHTML += '</ul>'
+
+      $('#dynamic').html(listHTML).css('background-image', 'none')
+    },
+  })
+</script>
+</body>
+</html>
