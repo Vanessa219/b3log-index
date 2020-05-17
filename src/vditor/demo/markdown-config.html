@@ -41,6 +41,42 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
+
+        .vditor-reset ul[data-marker="+"] {
+            list-style-type: "\2764";
+        }
+
+        .vditor-reset ul[data-marker="+"] ul {
+            list-style-type: "\1f49a"
+        }
+
+        .vditor-reset ul[data-marker="+"] ul ul {
+            list-style-type: "\1f49b"
+        }
+
+        .vditor-reset ul[data-marker="-"] {
+            list-style-type: korean-hangul-formal
+        }
+
+        .vditor-reset ul[data-marker="-"] ul {
+            list-style-type: decimal-leading-zero
+        }
+
+        .vditor-reset ul[data-marker="-"] ul ul {
+            list-style-type: lower-alpha
+        }
+
+        .vditor-reset ol[data-marker="1)"] {
+            list-style-type: simp-chinese-formal
+        }
+
+        .vditor-reset ol[data-marker="1)"] ol {
+            list-style-type: simp-chinese-informal
+        }
+
+        .vditor-reset ol[data-marker="1)"] ol ol {
+            list-style-type: trad-chinese-formal
+        }
     </style>
 </head>
 <body>
@@ -58,28 +94,20 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    /** 自动空格。默认值: false */
-    autoSpace?: boolean;
-    /** 段落开头是否空两格。默认值: false */
-    paragraphBeginningSpace?: boolean;
-    /** 自动矫正术语。默认值: false */
-    fixTermTypo?: boolean;
-    /** 自动矫正标点。默认值: false */
-    chinesePunct?: boolean;
-    /** 插入目录。默认值: false */
-    toc?: boolean;
-    /** 脚注。默认值: true */
-    footnotes?: boolean;
-    /** wysiwyg & ir 模式代码块是否渲染。默认值: true */
-    codeBlockPreview: boolean;
-    /** 是否解析 setext 标题。默认值: true */
-    setext: boolean;
-    /** 是否启用过滤 XSS。默认值: false */
-    sanitize: boolean;
-    /** 内容主题。默认值：light */
-    theme?: string;
-    /** 为列表添加标记，以便[自定义列表样式](https://github.com/Vanessa219/vditor/issues/390) 默认值：false */
-    listMarker?: boolean;
+    <div class="actions">
+        <button class="btn btn--small" data-config="autoSpace">自动空格</button> &nbsp;
+        <button class="btn btn--small" data-config="paragraphBeginningSpace">段落开头空两格</button> &nbsp;
+        <button class="btn btn--small" data-config="fixTermTypo">矫正术语</button> &nbsp;
+        <button class="btn btn--small" data-config="chinesePunct">矫正标点</button> &nbsp;
+        <button class="btn btn--small" data-config="toc">启用目录</button> &nbsp;
+        <button class="btn btn--small" data-config="footnotes">禁用脚注</button> &nbsp;
+        <button class="btn btn--small" data-config="codeBlockPreview">wysiwyg & ir 模式不渲染代码块</button> &nbsp;
+        <button class="btn btn--small" data-config="setext">解析 settext</button> &nbsp;
+        <button class="btn btn--small" data-config="sanitize">不过滤 XSS</button> &nbsp;
+        <button class="btn btn--small" data-config="theme-dark">dark theme</button> &nbsp;
+        <button class="btn btn--small" data-config="theme-wechat">wechat theme</button> &nbsp;
+        <button class="btn btn--small" data-config="listMarker">为列表添加标记</button> &nbsp;
+    </div>
     <div id="vditor"></div>
 </div>
 <div class="fn-50"></div>
@@ -97,15 +125,72 @@
     </div>
 </div>
 <script>
-  window.vditor = new Vditor('vditor', {
-    typewriterMode: true,
-    placeholder: 'Hello, Vditor!',
-    preview: {
-      markdown: {
-        toc: true,
-      },
-    },
+  document.querySelectorAll('.actions .btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.getElementById('vditor').innerHTML = ''
+      setConfig(this.getAttribute('data-config'))
+    })
   })
+
+  const setConfig = (type) => {
+    let config = {}
+    config[type] = true
+    if (type === 'footnotes' || type === 'codeBlockPreview' || type === 'sanitize') {
+      config[type] = false
+    }
+    if (type && type.indexOf("theme") > -1) {
+      config = {
+        theme: type.split('-')[1]
+      }
+    }
+    new Vditor('vditor', {
+      theme: config.theme,
+      typewriterMode: true,
+      mode: (type === 'paragraphBeginningSpace' || type === 'sanitize' || type === 'listMarker') ? 'sv' : 'wysiwyg',
+      cache: {
+        enable: false,
+      },
+      value: `[toc]
+
+# Vditor
+
+一款浏览器端的markdown编辑器,支持所见即所得、即时渲染（类似 Typora）和分屏预览模式.
+
+# XSS
+
+<img src="test" onerror="alert('XSS')">
+
+# 列表
+
++ 所见即所得（wysiwyg）
+    + 即时渲染（ir）
+        + test
+
+- 所见即所得（wysiwyg）
+    - 即时渲染（ir）
+      - 分屏预览（sv）
+
+1) 所见即所得（wysiwyg）
+    1) 即时渲染（ir）
+        1) 分屏预览（sv）
+
+脚注
+===
+
+这里是一个脚注引用[^1]，这里是另一个脚注引用[^bignote]。
+
+\`\`\`javascript
+new Vditor('vditor', {})
+\`\`\`
+[^1]: 第一个脚注定义。
+[^bignote]: 脚注定义可使用多段内容。`,
+      preview: {
+        markdown: config,
+      },
+    })
+  }
+
+  setConfig()
 </script>
 </body>
 </html>

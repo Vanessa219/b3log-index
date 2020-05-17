@@ -224,6 +224,13 @@ blockquote {
     font-size: 20px;
 }
 
+.btn--small {
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 31px;
+    margin-bottom: 10px;
+}
+
 .btn--red {
     background-color: #d23f31;
 }
