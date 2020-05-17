@@ -32,12 +32,19 @@
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
-    <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
+    <style>
+        .header {
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+    </style>
 </head>
 <body>
-<div class="header fn-clear header-fixed">
+<div class="header fn-clear">
     <a class="header-logo" href="https://vditor.b3log.org">
         <img src="//static.b3log.org/images/brand/vditor-128.png">
         <h1>Vditor</h1>
@@ -49,47 +56,15 @@
         <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
     </div>
 </div>
-
 <div class="wrapper">
-    <div class="fn-100"></div>
-    <div class="fn-100"></div>
-    <ul class="fn-list">
-        <li><a href="render.html">Markdown 渲染</a></li>
-        <li><a target="_blank" href="https://hacpai.com/guide/markdown">完整示例</a></li>
-        <li><a href="markdown-config.html">Markdown 配置项</a></li>
-        <li><a href="readonly.html">设置为只读</a></li>
-        <li>如何在 React 中使用</li>
-        <li>如何在 Vue 中使用</li>
-        <li>如何在 Angular 中使用</li>
-        <li>Markdown 转换 HTML</li>
-        <li>获取 Markdown 原文</li>
-        <li>获取 HTML</li>
-        <li>格式化 Markdown 原文</li>
-        <li>浏览器端内容缓存</li>
-        <li>事件触发和处理</li>
-        <li>文件上传</li>
-        <li>自定义工具栏</li>
-        <li>多语言配置</li>
-        <li>光标和选择区域编辑操作</li>
-        <li>自定义主题</li>
-        <li>配置高度、大小</li>
-        <li>配置移动端</li>
-        <li>自定义表情</li>
-        <li>TODO</li>
-    </ul>
-</div>
-<div class="fn-100"></div>
-<div class="fn-100"></div>
-<div class="wrapper">
-    <div class="fn-clear">
-        <h2 class="fn-left">参与讨论</h2>
-        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
-    </div>
     <div class="fn-50"></div>
-    <div id="comments"></div>
+    <div>
+        <button class="btn btn--small" id="readonlyBtn">只读</button> &nbsp;
+        <button class="btn btn--small" id="cancelBtn">取消只读</button> &nbsp;
+    </div>
+    <div id="vditor"></div>
 </div>
-<div class="fn-100"></div>
-<div class="fn-100"></div>
+<div class="fn-50"></div>
 <!-- end main -->
 
 <div class="footer">
@@ -104,28 +79,20 @@
     </div>
 </div>
 <script>
-  const vcomment = new Vcomment({
-    id: 'comments',
-    postId: '1549638745630',
-    url: 'https://hacpai.com',
-    userName: 'Vanessa',
-    currentPage: 1,
-    vditor: {
-      hljsEnable: true,
-      hljsStyle: 'github',
-    },
-    after () {
-      const commentCntElement = document.getElementById('commentsCount')
-      document.getElementById('commentCnt').innerText = commentCntElement.innerText + ' 个讨论'
-      commentCntElement.nextSibling.remove()
-      commentCntElement.remove()
-    },
-    error () {
-      document.getElementById('comments').remove()
-    },
+  document.getElementById('readonlyBtn').addEventListener('click', function () {
+    vditor.disabled()
+  })
+  document.getElementById('cancelBtn').addEventListener('click', function () {
+    vditor.enable()
   })
 
-  vcomment.render()
+  const vditor = new Vditor('vditor', {
+    typewriterMode: true,
+    cache: {
+      enable: false,
+    },
+    placeholder: 'vditor.disabled()\nvditor.enable()',
+  })
 </script>
 </body>
 </html>
