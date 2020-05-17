@@ -33,26 +33,62 @@
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/method.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@3.2.7/dist/index.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vditor@3.2.7/dist/method.min.js"></script>
     <style>
         .header {
             background-color: #fff;
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
+
+        #preview {
+            margin: 0 auto;
+            max-width: 768px;
+        }
+
+        .wrapper--preview {
+            margin: 0 220px 0 0;
+            max-width: none;
+            width: auto;
+        }
+
         #outline {
             display: none;
             position: fixed;
-            width: 290px;
-            top: 100px;
+            width: 186px;
+            top: 130px;
             right: 20px;
             bottom: 86px;
             overflow: auto;
-            font-size: 13px;
-            border: 1px solid var(--border-color);
-            border-radius: 3px;
-            background-color: var(--textarea-background-color);
+            font-size: 12px;
+            border-left: 1px solid #eee;
+            background-color: #fff;
+        }
+
+        .vditor-outline__item {
+            border-left: 1px solid transparent;
+        }
+
+        .vditor-outline__item--current {
+            border-left: 1px solid #4285f4;
+            color: #4285f4;
+            background-color: #f6f8fa;
+        }
+
+        .vditor-outline__item:hover {
+            color: #4285f4;
+            background-color: #f6f8fa;
+        }
+
+        @media (max-width: 768px) {
+            #outline {
+                display: none !important;
+            }
+
+            .wrapper--preview {
+                margin: 0;
+            }
         }
     </style>
 </head>
@@ -69,14 +105,12 @@
         <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
     </div>
 </div>
-<div class="wrapper">
-    <div id="preview" style="width: 728px;margin-top: 20px"></div>
+<div class="fn-50"></div>
+<div class="wrapper wrapper--preview">
+    <div id="preview"></div>
 </div>
-<div class="vditor" style="border: 0">
-    <div id="outline" class="vditor-reset"></div>
-</div>
-<div class="fn-100"></div>
-<div class="fn-100"></div>
+<div id="outline"></div>
+<div class="fn-50"></div>
 <!-- end main -->
 
 <div class="footer">
@@ -104,7 +138,7 @@
           },
           anchor: 1,
           after () {
-            if (window.innerWidth <= 520) {
+            if (window.innerWidth <= 768) {
               return
             }
             const outlineElement = document.getElementById('outline')
@@ -112,6 +146,7 @@
               outlineElement)
             if (outlineElement.innerText.trim() !== '') {
               outlineElement.style.display = 'block'
+              initOutline()
             }
           },
           lazyLoadImage: 'https://cdn.jsdelivr.net/npm/vditor/dist/images/img-loading.svg',
@@ -132,6 +167,52 @@
           },
         })
     })
+
+  const initOutline = () => {
+    const $articleTocs = $('.article-content').children().filter((index, item) => {
+      return item.tagName.indexOf('H') === 0 && item.id
+    })
+    let toc = []
+    $(window).scroll(function () {
+      const scrollTop = $(window).scrollTop()
+      if (scrollTop > 136 && scrollTop < $('.article__body').outerHeight() &&
+        $(window).width() > 1140) {
+        $articleToc.show()
+        $articleCover.show()
+      } else {
+        $articleToc.hide()
+        $articleCover.hide()
+        return
+      }
+
+      // 界面各种图片加载会导致帖子目录定位
+      toc = []
+      $articleTocs.each(function () {
+        toc.push({
+          id: this.id,
+          offsetTop: this.offsetTop,
+        })
+      })
+
+      // 当前目录样式
+      for (var i = 0, iMax = toc.length; i < iMax; i++) {
+        if (scrollTop < toc[i].offsetTop) {
+          $articleToc.find('li').removeClass('current')
+          var index = i > 0 ? i - 1 : 0
+          $articleToc.find('a[data-id="' + toc[index].id + '"]').
+            parent().
+            addClass('current')
+          break
+        }
+      }
+      if (scrollTop >= toc[toc.length - 1].offsetTop) {
+        $articleToc.find('li').removeClass('current')
+        $articleToc.find('li:last').addClass('current')
+      }
+    })
+
+    $(window).scroll()
+  }
 </script>
 </body>
 </html>
