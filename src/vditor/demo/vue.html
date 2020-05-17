@@ -32,7 +32,6 @@
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
     <style>
         .header {
@@ -57,11 +56,9 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    <div>
-        <button class="btn btn--small" id="readonlyBtn">只读</button> &nbsp;
-        <button class="btn btn--small" id="cancelBtn">取消只读</button> &nbsp;
+    <div id="app">
+        <div id="vditor"></div>
     </div>
-    <div id="vditor"></div>
 </div>
 <div class="fn-50"></div>
 <!-- end main -->
@@ -77,21 +74,43 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.2.7/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script>
-  document.getElementById('readonlyBtn').addEventListener('click', function () {
-    vditor.disabled()
-  })
-  document.getElementById('cancelBtn').addEventListener('click', function () {
-    vditor.enable()
-  })
-
-  const vditor = new Vditor('vditor', {
-    typewriterMode: true,
-    cache: {
-      enable: false,
+  new Vue({
+    el: '#app',
+    data: {
+      contentEditor: '',
     },
-    placeholder: 'vditor.disabled()\nvditor.enable()',
+    mounted () {
+      this.contentEditor = new Vditor('vditor', {
+        toolbarConfig: {
+          pin: true,
+        },
+        minHeight: 500,
+        after: () => {
+          this.contentEditor.setValue(`\`\`\`javascript
+  new Vue({
+    el: '#app',
+    data: {
+      contentEditor: '',
+    },
+    mounted () {
+      this.contentEditor = new Vditor('vditor', {
+        toolbarConfig: {
+          pin: true,
+        },
+        minHeight: 500,
+        after: () => {
+          this.contentEditor.setValue('Hello, Vue + Vditor!')
+        },
+      })
+    },
+  })
+\`\`\``)
+        },
+      })
+    },
   })
 </script>
 </body>
