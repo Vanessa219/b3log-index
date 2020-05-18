@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式</title>
+    <meta name="robots" content="index,follow,archive">
+    <meta name="description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta name="copyright" content="B3log"/>
+    <link rel="canonical" href="https://vditor.b3log.org">
+    <link rel="apple-touch-icon" href="//static.b3log.org/images/brand/vditor-128.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Window-target" content="_top"/>
+    <link rel="icon" type="image/png" href="//static.b3log.org/images/brand/vditor-128.png"/>
+    <link type="text/css" rel="stylesheet" href="//b3log.org/css/base.css" charset="utf-8"/>
+
+    <meta property="og:locale" content="zh_CN"/>
+    <meta property="og:title" content="Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式"/>
+    <meta property="og:description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
+    <meta property="og:url" content="https://vditor.b3log.org"/>
+    <meta property="og:site_name" content="B3log"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta name="twitter:title" content="Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式"/>
+    <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
+    <meta name="twitter:url" content="https://vditor.b3log.org"/>
+    <meta name="twitter:site" content="@b3logos"/>
+    <meta name="twitter:creator" content="@b3logos"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@3.2.7/dist/index.css"/>
+    <style>
+        .header {
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+
+        #content {
+            flex: 1;
+            padding: 10px;
+            margin-right: 20px;
+            border: 1px solid #d1d5da;
+            min-height: 300px;
+            border-radius: 3px
+        }
+    </style>
+</head>
+<body>
+<div class="header fn-clear">
+    <a class="header-logo" href="https://vditor.b3log.org">
+        <img src="//static.b3log.org/images/brand/vditor-128.png">
+        <h1>Vditor</h1>
+    </a>
+    <div class="fn-clear">
+        <a class="header-a" href="https://hacpai.com/tag/vditor" target="_blank">社区</a>
+        <a class="header-a header-red" target="_blank" href="https://hacpai.com/article/1549638745630">API</a>
+        <a class="header-a header-green current" href="index.html">Demo</a>
+        <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+    </div>
+</div>
+<div class="fn-50"></div>
+<div class="wrapper">
+    相关 <a href="https://hacpai.com/article/1549638745630#static-methods" target="_blank">API</a>：
+    Vditor.outlineRender()，Vditor.mathRender()，Vditor.mindmapRender()，Vditor.chartRender()，Vditor.mermaidRender()，
+    Vditor.abcRender()，<a href="https://hacpai.com/article/1589813914768" target="_blank">Vditor.mediaRender()</a>，Vditor.codeRender()，Vditor.highlightRender()，Vditor.graphvizRender()
+    <div class="fn-50"></div>
+    <button class="btn btn--small" onclick="render('outlineRender', this)">大纲</button> &nbsp;
+    <button class="btn btn--small" onclick="render('mathRender', this)">数学公式</button> &nbsp;
+    <button class="btn btn--small" onclick="render('mindmapRender', this)">脑图</button> &nbsp;
+    <button class="btn btn--small" onclick="render('chartRender', this)">图表</button> &nbsp;
+    <button class="btn btn--small" onclick="render('mermaidRender', this)">流程图/甘特图/时序图/</button> &nbsp;
+    <button class="btn btn--small" onclick="render('abcRender', this)">五线谱</button> &nbsp;
+    <button class="btn btn--small" onclick="render('mediaRender', this)">多媒体</button> &nbsp;
+    <button class="btn btn--small" onclick="render('highlightRender', this)">代码高亮</button> &nbsp;
+    <button class="btn btn--small" onclick="render('codeRender', this)">代码复制</button> &nbsp;
+    <button class="btn btn--small" onclick="render('graphvizRender', this)">graphviz</button> &nbsp;
+    <div class="fn-50"></div>
+    点击高亮按钮可根据修改后的内容再次进行渲染
+    <div style="display: flex">
+        <textarea id="content"></textarea>
+        <div id="preview" class="vditor-reset vditor" style="flex: 1;padding: 10px"></div>
+    </div>
+</div>
+<div class="fn-50"></div>
+<!-- end main -->
+
+<div class="footer">
+    <div class="wrapper fn-clear">
+        <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com" target="_blank">社区</a> &nbsp; &nbsp;
+        <a href="https://b3log.org/brand-marking.html">品牌标识</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+        <div class="fn-right">
+            © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vditor@3.2.7/dist/method.min.js"></script>
+<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
+<script>
+  const texts = {
+    outlineRender: `# 教程
+
+这是一篇讲解如何正确使用 **Markdown** 的排版示例
+
+# 语法指导
+
+## 普通内容
+
+这段内容展示了在内容里面一些排版格式
+
+## 提及用户
+
+@Vanessa 通过 \`@User\` 可以在内容中提及用户，被提及的用户将会收到系统通知。
+
+## 表情符号 Emoji
+
+支持大部分标准的表情符号，可使用输入法直接输入，也可手动输入字符格式。
+
+### 一些表情例子
+
+:smile: :laughing:`,
+    mathRender: `多行公式块：
+
+$$
+\\frac{1}{
+  \\Bigl(\\sqrt{\\phi \\sqrt{5}}-\\phi\\Bigr) e^{
+  \\frac25 \\pi}} = 1+\\frac{e^{-2\\pi}} {1+\\frac{e^{-4\\pi}} {
+    1+\\frac{e^{-6\\pi}}
+    {1+\\frac{e^{-8\\pi}}{1+\\cdots}}
+  }
+}
+$$
+
+行内公式：
+
+公式 $a^2 + b^2 = \\color{red}c^2$ 是行内。`,
+    mindmapRender: `\`\`\`mindmap
+- 教程
+- 语法指导
+  - 普通内容
+  - 提及用户
+  - 表情符号 Emoji
+    - 一些表情例子
+  - 大标题 - Heading 3
+    - Heading 4
+      - Heading 5
+        - Heading 6
+  - 图片
+  - 代码块
+    - 普通
+    - 语法高亮支持
+      - 演示 Go 代码高亮
+      - 演示 Java 高亮
+  - 有序、无序、任务列表
+    - 无序列表
+    - 有序列表
+    - 任务列表
+  - 表格
+  - 隐藏细节
+  - 段落
+  - 链接引用
+  - 数学公式
+  - 脑图
+  - 流程图
+  - 时序图
+  - 甘特图
+  - 图表
+  - 五线谱
+  - Graphviz
+  - 多媒体
+  - 脚注
+- 快捷键
+\`\`\``,
+    chartRender: `\`\`\`echarts
+{
+  "title": { "text": "最近 30 天" },
+  "tooltip": { "trigger": "axis", "axisPointer": { "lineStyle": { "width": 0 } } },
+  "legend": { "data": ["帖子", "用户", "回帖"] },
+  "xAxis": [{
+      "type": "category",
+      "boundaryGap": false,
+      "data": ["2019-05-08","2019-05-09","2019-05-10","2019-05-11","2019-05-12","2019-05-13","2019-05-14","2019-05-15","2019-05-16","2019-05-17","2019-05-18","2019-05-19","2019-05-20","2019-05-21","2019-05-22","2019-05-23","2019-05-24","2019-05-25","2019-05-26","2019-05-27","2019-05-28","2019-05-29","2019-05-30","2019-05-31","2019-06-01","2019-06-02","2019-06-03","2019-06-04","2019-06-05","2019-06-06","2019-06-07"],
+      "axisTick": { "show": false },
+      "axisLine": { "show": false }
+  }],
+  "yAxis": [{ "type": "value", "axisTick": { "show": false }, "axisLine": { "show": false }, "splitLine": { "lineStyle": { "color": "rgba(0, 0, 0, .38)", "type": "dashed" } } }],
+  "series": [
+    {
+      "name": "帖子", "type": "line", "smooth": true, "itemStyle": { "color": "#d23f31" }, "areaStyle": { "normal": {} }, "z": 3,
+      "data": ["18","14","22","9","7","18","10","12","13","16","6","9","15","15","12","15","8","14","9","10","29","22","14","22","9","10","15","9","9","15","0"]
+    },
+    {
+      "name": "用户", "type": "line", "smooth": true, "itemStyle": { "color": "#f1e05a" }, "areaStyle": { "normal": {} }, "z": 2,
+      "data": ["31","33","30","23","16","29","23","37","41","29","16","13","39","23","38","136","89","35","22","50","57","47","36","59","14","23","46","44","51","43","0"]
+    },
+    {
+      "name": "回帖", "type": "line", "smooth": true, "itemStyle": { "color": "#4285f4" }, "areaStyle": { "normal": {} }, "z": 1,
+      "data": ["35","42","73","15","43","58","55","35","46","87","36","15","44","76","130","73","50","20","21","54","48","73","60","89","26","27","70","63","55","37","0"]
+    }
+  ]
+}
+\`\`\``,
+    mermaidRender: `### 流程图
+
+\`\`\`mermaid
+graph TB
+    c1-->a2
+    subgraph one
+    a1-->a2
+    end
+    subgraph two
+    b1-->b2
+    end
+    subgraph three
+    c1-->c2
+    end
+\`\`\`
+
+### 时序图
+
+\`\`\`mermaid
+sequenceDiagram
+    Alice->>John: Hello John, how are you?
+    loop Every minute
+        John-->>Alice: Great!
+    end
+\`\`\`
+
+### 甘特图
+
+\`\`\`mermaid
+gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2019-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2019-01-12  , 12d
+    another task      : 24d
+\`\`\``,
+    abcRender: `\`\`\`abc
+X: 24
+T: Clouds Thicken
+C: Paul Rosen
+S: Copyright 2005, Paul Rosen
+M: 6/8
+L: 1/8
+Q: 3/8=116
+R: Creepy Jig
+K: Em
+|:"Em"EEE E2G|"C7"_B2A G2F|"Em"EEE E2G|\\
+"C7"_B2A "B7"=B3|"Em"EEE E2G|
+"C7"_B2A G2F|"Em"GFE "D (Bm7)"F2D|\\
+1"Em"E3-E3:|2"Em"E3-E2B|:"Em"e2e gfe|
+"G"g2ab3|"Em"gfeg2e|"D"fedB2A|"Em"e2e gfe|\\
+"G"g2ab3|"Em"gfe"D"f2d|"Em"e3-e3:|
+\`\`\``,
+    mediaRender: `https://v.qq.com/x/cover/zf2z0xpqcculhcz/y0016tj0qvh.html`,
+    codeRender: `\`\`\`java
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+
+}
+\`\`\``,
+    highlightRender: `\`\`\`java
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+
+}
+\`\`\``,
+    graphvizRender: `\`\`\`graphviz
+digraph finite_state_machine {
+    rankdir=LR;
+    size="8,5"
+    node [shape = doublecircle]; S;
+    node [shape = point ]; qi
+
+    node [shape = circle];
+    qi -> S;
+    S  -> q1 [ label = "a" ];
+    S  -> S  [ label = "a" ];
+    q1 -> S  [ label = "a" ];
+    q1 -> q2 [ label = "ddb" ];
+    q2 -> q1 [ label = "b" ];
+    q2 -> q2 [ label = "b" ];
+}
+\`\`\``,
+  }
+  const render = async (type, it) => {
+    const contentElement = document.getElementById('content')
+    const redBtnElement = document.querySelector('.btn--red')
+    let text = ''
+    if (it.classList.contains('btn--red')) {
+      text = contentElement.value
+    } else {
+      if (redBtnElement) {
+        redBtnElement.classList.remove('btn--red')
+      }
+      text = texts[type]
+      it.classList.add('btn--red')
+      contentElement.value = text
+    }
+    const previewElement = document.getElementById('preview')
+    const html = await Vditor.md2html(text, {})
+    previewElement.innerHTML = html
+    if (type === 'outlineRender') {
+      Vditor[type](previewElement, previewElement)
+    } else if (type === 'highlightRender') {
+      Vditor[type]({enable: true}, previewElement)
+    } else {
+      Vditor[type](previewElement)
+    }
+  }
+</script>
+</body>
+</html>
