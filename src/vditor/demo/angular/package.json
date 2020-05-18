@@ -4,10 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build": "ng build --base-href ./",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +19,7 @@
     "@angular/router": "~9.1.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "vditor": "^3.2.7",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
