@@ -74,47 +74,73 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script>
-  new Vue({
-    el: '#app',
-    data: {
-      contentEditor: '',
-    },
-    mounted () {
-      this.contentEditor = new Vditor('vditor', {
+  const e = React.createElement
+
+  class APP extends React.Component {
+    constructor (props) {
+      super(props)
+    }
+
+    componentDidMount () {
+      const vditor = new Vditor('vditor', {
         toolbarConfig: {
           pin: true,
         },
         cache: {
-          enable: false
+          enable: false,
         },
         minHeight: 500,
-        after: () => {
-          this.contentEditor.setValue(`\`\`\`javascript
-  new Vue({
-    el: '#app',
-    data: {
-      contentEditor: '',
-    },
-    mounted () {
-      this.contentEditor = new Vditor('vditor', {
+        after () {
+          vditor.setValue(`\`\`\`javascript
+  const e = React.createElement
+
+  class APP extends React.Component {
+    constructor (props) {
+      super(props)
+    }
+
+    componentDidMount () {
+      const vditor = new Vditor('vditor', {
         toolbarConfig: {
           pin: true,
         },
+        cache: {
+          enable: false,
+        },
         minHeight: 500,
-        after: () => {
-          this.contentEditor.setValue('Hello, Vue + Vditor!')
+        after () {
+          vditor.setValue('Hello, React + React!')
         },
       })
-    },
-  })
+    }
+
+    render () {
+      return e(
+        'div',
+        {id: 'vditor'},
+      )
+    }
+  }
+
+  ReactDOM.render(e(APP), document.querySelector('#app'))
 \`\`\``)
         },
       })
-    },
-  })
+    }
+
+    render () {
+      return e(
+        'div',
+        {id: 'vditor'},
+      )
+    }
+  }
+
+  ReactDOM.render(e(APP), document.querySelector('#app'))
 </script>
 </body>
 </html>
