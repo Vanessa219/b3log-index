@@ -1,4 +1,10 @@
 (function () {
+
+  var hm = document.createElement('script')
+  hm.src = "https://hm.baidu.com/hm.js?c5987c99adea364abddda47382fec820";
+  var s = document.getElementsByTagName('script')[0]
+  s.parentNode.insertBefore(hm, s)
+
   if (typeof $ === 'undefined') {
     return
   }
