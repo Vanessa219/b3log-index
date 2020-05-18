@@ -105,7 +105,10 @@
     </div>
 </div>
 <div class="fn-50"></div>
-<div class="wrapper wrapper--preview">
+<div class="wrapper">
+    相关 <a href="https://hacpai.com/article/1549638745630#static-methods" target="_blank">API</a>：
+    Vditor.preview()，Vditor.outlineRender()
+    <div class="fn-50"></div>
     <div id="preview"></div>
 </div>
 <div id="outline"></div>
@@ -126,94 +129,64 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@3.2.7/dist/method.min.js"></script>
 <script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  fetch(`markdown/zh_CN.md`).
-    then(response => response.text()).
-    then(markdown => {
-      Vditor.preview(document.getElementById('preview'),
-        markdown, {
-          markdown: {
-            toc: true,
-          },
-          speech: {
-            enable: true,
-          },
-          anchor: 1,
-          after () {
-            if (window.innerWidth <= 768) {
-              return
-            }
-            const outlineElement = document.getElementById('outline')
-            Vditor.outlineRender(document.getElementById('preview'),
-              outlineElement)
-            if (outlineElement.innerText.trim() !== '') {
-              outlineElement.style.display = 'block'
-              initOutline()
-            }
-          },
-          lazyLoadImage: 'https://cdn.jsdelivr.net/npm/vditor/dist/images/img-loading.svg',
-          renderers: {
-            renderHeading: (node, entering) => {
-              const id = Lute.GetHeadingID(node)
-              if (entering) {
-                return [
-                  `<h${node.__internal_object__.HeadingLevel} id="${id}" class="vditor__heading">
-<span class="prefix"></span><span>`,
-                  Lute.WalkContinue]
-              } else {
-                return [
-                  `</span><a id="vditorAnchor-${id}" class="vditor-anchor" href="#${id}"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h${node.__internal_object__.HeadingLevel}>`,
-                  Lute.WalkContinue]
+  const initRender = () => {
+    fetch(`markdown/zh_CN.md`).
+      then(response => response.text()).
+      then(markdown => {
+        Vditor.preview(document.getElementById('preview'),
+          markdown, {
+            speech: {
+              enable: true,
+            },
+            anchor: 1,
+            after () {
+              if (window.innerWidth <= 768) {
+                return
+              }
+              const outlineElement = document.getElementById('outline')
+              Vditor.outlineRender(document.getElementById('preview'), outlineElement)
+              if (outlineElement.innerText.trim() !== '') {
+                outlineElement.style.display = 'block'
+                initOutline()
               }
             },
-          },
-        })
-    })
+          })
+      })
+  }
 
   const initOutline = () => {
-    const $articleTocs = $('.article-content').children().filter((index, item) => {
-      return item.tagName.indexOf('H') === 0 && item.id
-    })
-    let toc = []
-    $(window).scroll(function () {
-      const scrollTop = $(window).scrollTop()
-      if (scrollTop > 136 && scrollTop < $('.article__body').outerHeight() &&
-        $(window).width() > 1140) {
-        $articleToc.show()
-        $articleCover.show()
-      } else {
-        $articleToc.hide()
-        $articleCover.hide()
-        return
+    const headingElements = []
+    Array.from(document.getElementById('preview').children).forEach((item) => {
+      if (item.tagName.length === 2 && item.tagName !== 'HR' && item.tagName.indexOf('H') === 0) {
+        headingElements.push(item)
       }
+    })
 
-      // 界面各种图片加载会导致帖子目录定位
+    let toc = []
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY
       toc = []
-      $articleTocs.each(function () {
+      headingElements.forEach((item) => {
         toc.push({
-          id: this.id,
-          offsetTop: this.offsetTop,
+          id: item.id,
+          offsetTop: item.offsetTop,
         })
       })
 
-      // 当前目录样式
-      for (var i = 0, iMax = toc.length; i < iMax; i++) {
-        if (scrollTop < toc[i].offsetTop) {
-          $articleToc.find('li').removeClass('current')
-          var index = i > 0 ? i - 1 : 0
-          $articleToc.find('a[data-id="' + toc[index].id + '"]').
-            parent().
-            addClass('current')
+      const currentElement = document.querySelector('.vditor-outline__item--current')
+      for (let i = 0, iMax = toc.length; i < iMax; i++) {
+        if (scrollTop < toc[i].offsetTop - 30) {
+          if (currentElement) {
+            currentElement.classList.remove('vditor-outline__item--current')
+          }
+          let index = i > 0 ? i - 1 : 0
+          document.querySelector('div[data-id="' + toc[index].id + '"]').classList.add('vditor-outline__item--current')
           break
         }
       }
-      if (scrollTop >= toc[toc.length - 1].offsetTop) {
-        $articleToc.find('li').removeClass('current')
-        $articleToc.find('li:last').addClass('current')
-      }
     })
-
-    $(window).scroll()
   }
+  initRender()
 </script>
 </body>
 </html>
