@@ -81,7 +81,7 @@ var Index = {
   },
   killBrowser: function () {
     if ($.browser.msie && parseInt($.browser.version) < 9) {
-      window.location = '/kill-browser.html'
+      window.location = 'https://b3log.org/kill-browser.html'
     }
   },
 };
