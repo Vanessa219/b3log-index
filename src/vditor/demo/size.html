@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式</title>
+    <meta name="robots" content="index,follow,archive">
+    <meta name="description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta name="copyright" content="B3log"/>
+    <link rel="canonical" href="https://vditor.b3log.org">
+    <link rel="apple-touch-icon" href="//static.b3log.org/images/brand/vditor-128.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Window-target" content="_top"/>
+    <link rel="icon" type="image/png" href="//static.b3log.org/images/brand/vditor-128.png"/>
+    <link type="text/css" rel="stylesheet" href="//static.b3log.org/css/base.css" charset="utf-8"/>
+
+    <meta property="og:locale" content="zh_CN"/>
+    <meta property="og:title" content="Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式"/>
+    <meta property="og:description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
+    <meta property="og:url" content="https://vditor.b3log.org"/>
+    <meta property="og:site_name" content="B3log"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta name="twitter:title" content="Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式"/>
+    <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
+    <meta name="twitter:url" content="https://vditor.b3log.org"/>
+    <meta name="twitter:site" content="@b3logos"/>
+    <meta name="twitter:creator" content="@b3logos"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
+    <style>
+        .header {
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+    </style>
+</head>
+<body>
+<div class="header fn-clear">
+    <a class="header-logo" href="https://vditor.b3log.org">
+        <img src="//static.b3log.org/images/brand/vditor-128.png">
+        <h1>Vditor</h1>
+    </a>
+    <div class="fn-clear">
+        <a class="header-a" href="https://hacpai.com/tag/vditor" target="_blank">社区</a>
+        <a class="header-a header-red" target="_blank" href="https://hacpai.com/article/1549638745630">API</a>
+        <a class="header-a header-green current" href="index.html">Demo</a>
+        <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="fn-50"></div>
+    相关 <a href="https://hacpai.com/article/1549638745630#options" target="_blank">API</a>：
+    options.height，options.minHeight，options.width
+    <div class="fn-50"></div>
+    <div>
+        <button class="btn btn--small" onclick="setSize({height: 360,width:360})">固定高宽 360 * 360</button> &nbsp;
+        <button class="btn btn--small" onclick="setSize({width:'70%'})">宽度百分比 70%</button> &nbsp;
+        <button class="btn btn--small" onclick="setSize({minHeight: 500})">最小高度 500</button> &nbsp;
+        <button class="btn btn--small" onclick="setSize({})">自适应</button> &nbsp;
+    </div>
+    <div id="vditor"></div>
+</div>
+<div class="fn-50"></div>
+<!-- end main -->
+
+<div class="footer">
+    <div class="wrapper fn-clear">
+        <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com" target="_blank">社区</a> &nbsp; &nbsp;
+        <a href="https://b3log.org/brand-marking.html">品牌标识</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+        <div class="fn-right">
+            © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vditor@3.2.7/dist/index.min.js"></script>
+<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
+<script>
+  const vditorElement = document.getElementById('vditor')
+  const setSize = (options) => {
+    vditorElement.innerHTML = ''
+    vditorElement.style.minHeight = 'auto'
+    vditorElement.style.height = 'auto'
+    new Vditor('vditor', Object.assign({
+      typewriterMode: true,
+    }, options))
+  }
+  setSize()
+</script>
+</body>
+</html>
