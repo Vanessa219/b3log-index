@@ -58,11 +58,15 @@
 <div class="wrapper">
     <div class="fn-50"></div>
     相关 <a href="https://hacpai.com/article/1549638745630#methods" target="_blank">API</a>：
-    disabled()，enable()
+    disabled()，enable()，focus()，blur()，tip()
     <div class="fn-50"></div>
     <div>
-        <button class="btn btn--small" id="readonlyBtn">只读</button> &nbsp;
-        <button class="btn btn--small" id="cancelBtn">取消只读</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.disabled()">只读</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.enable()">取消只读</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.focus()">聚焦</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.blur()">失焦</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.tip('实现 CommonMark 和 GFM 规范', 2000)">消息提示 2s 后消失</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.tip('表情自动补全，设置常用表情，支持表情自定义', 0)">消息提示需手动关闭</button> &nbsp;
     </div>
     <div id="vditor"></div>
 </div>
@@ -83,19 +87,9 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@3.2.7/dist/index.min.js"></script>
 <script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  document.getElementById('readonlyBtn').addEventListener('click', function () {
-    vditor.disabled()
-  })
-  document.getElementById('cancelBtn').addEventListener('click', function () {
-    vditor.enable()
-  })
-
   const vditor = new Vditor('vditor', {
     typewriterMode: true,
-    cache: {
-      enable: false,
-    },
-    placeholder: 'vditor.disabled()\nvditor.enable()',
+    height: 500,
   })
 </script>
 </body>

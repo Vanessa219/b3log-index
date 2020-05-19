@@ -80,6 +80,7 @@
     <button class="btn btn--small" onclick="render('highlightRender', this)">代码高亮</button> &nbsp;
     <button class="btn btn--small" onclick="render('codeRender', this)">代码复制</button> &nbsp;
     <button class="btn btn--small" onclick="render('graphvizRender', this)">graphviz</button> &nbsp;
+    <button class="btn btn--small" onclick="render('md2html', this)">Markdown -> HTML</button> &nbsp;
     <div class="fn-50"></div>
     点击高亮按钮可根据修改后的内容再次进行渲染
     <div style="display: flex">
@@ -299,6 +300,9 @@ digraph finite_state_machine {
     q2 -> q2 [ label = "b" ];
 }
 \`\`\``,
+    md2html: `## 💡 简介
+
+[Vditor](https://vditor.b3log.org) 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供[桌面版](https://github.com/88250/liandi)。`
   }
   const render = async (type, it) => {
     const contentElement = document.getElementById('content')
@@ -320,6 +324,8 @@ digraph finite_state_machine {
     if (type === 'outlineRender') {
       Vditor[type](previewElement, previewElement)
     } else if (type === 'highlightRender') {
+      previewElement.innerHTML = html
+    } else if (type === 'md2html') {
       Vditor[type]({enable: true}, previewElement)
     } else {
       Vditor[type](previewElement)

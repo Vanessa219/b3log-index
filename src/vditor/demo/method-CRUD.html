@@ -57,20 +57,16 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://hacpai.com/article/1549638745630#options" target="_blank">API</a>：
-    options.tab，options.typewriterMode，options.outline，options.placeholder
+    相关 <a href="https://hacpai.com/article/1549638745630#methods" target="_blank">API</a>：
+    insertValue()，setSelection()，setValue()，deleteValue()，updateValue()，renderPreview()
     <div class="fn-50"></div>
     <div>
-        <button class="btn btn--small" onclick="setOptions({tab: '    ', value: '请按下 tab 键'})">按下 tab 键新增四个空格</button>
-        &nbsp;
-        <button class="btn btn--small" onclick="setOptions({tab: '\t', value: '请按下 tab 键'})">按下 tab 键替新增 \t</button>
-        &nbsp;
-        <button class="btn btn--small" onclick="setOptions({typewriterMode: true})">开启打字机模式（编辑位置上下剧中）</button>&nbsp;
-        <button class="btn btn--small" onclick="setOptions({outline: true})">默认展现大纲</button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setOptions({value: '', placeholder: 'Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式'})">
-            内容为空的提示
-        </button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.setValue('即时渲染模式对熟悉 Typora 的用户应该不会感到陌生，理论上这是最优雅的 Markdown 编辑方式。')">更新内容</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.insertValue('Vditor ')">在光标位置插入内容</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.setSelection(2, 8)">选中第3至第8个字</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.deleteValue()">删除选中内容</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.updateValue('Vditor')">更新选中内容</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.renderPreview('传统的分屏预览模式适合大屏下的 Markdown 编辑。')">设置预览区域内容</button> &nbsp;
     </div>
     <div id="vditor"></div>
 </div>
@@ -91,18 +87,14 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@3.2.7/dist/index.min.js"></script>
 <script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  const setOptions = (options) => {
-    document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', Object.assign({
-      toolbarConfig: {
-        pin: true,
-      },
+    const vditor = new Vditor('vditor', {
+      mode: 'sv',
       cache: {
-        enable: false,
+        enable: false
       },
-    }, options))
-  }
-  setOptions()
+      height: 500,
+      value: '所见即所得模式对不熟悉 Markdown 的用户较为友好，熟悉 Markdown 的话也可以无缝使用。'
+    })
 </script>
 </body>
 </html>
