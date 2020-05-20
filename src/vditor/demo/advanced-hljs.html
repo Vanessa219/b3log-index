@@ -40,6 +40,14 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
+
+        .label {
+            margin: 0 10px 10px 0;
+        }
+
+        .btn--small {
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -57,14 +65,51 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://hacpai.com/article/1549638745630#options-counter" target="_blank">API</a>：
-    options.counter.enable，options.counter.max，options.counter.type
+    相关 <a href="https://hacpai.com/article/1549638745630#options-preview-hljs" target="_blank">API</a>：
+    options.preview.hljs.enable，options.preview.hljs.style，options.preview.hljs.lineNumber
     <div class="fn-50"></div>
-    <div class="actions">
-        <button class="btn btn--small" onclick="setCounter({counter:{enable:true}})">Markdown 字数统计</button> &nbsp;
-        <button class="btn btn--small" onclick="setCounter({counter:{enable:true,type:'text'}})">Markdown 字数统计</button>
-        &nbsp;
-        <button class="btn btn--small" onclick="setCounter({counter:{enable:true,max: 520}})">最大 520 个字</button> &nbsp;
+    <div style="display: flex;align-items: center">
+        <button class="btn--small btn" onclick="setHljs({preview: {hljs:{enable:true}}})">启用代码高亮</button>
+        <button class="btn--small btn" onclick="setHljs({preview: {hljs:{lineNumber:true}}})">启用行号</button>
+        <span class="label">代码块主题</span>
+        <select class="btn btn--small" id="codeTheme">
+            <option>abap</option>
+            <option>algol</option>
+            <option>algol_nu</option>
+            <option>arduino</option>
+            <option>autumn</option>
+            <option>borland</option>
+            <option>bw</option>
+            <option>colorful</option>
+            <option>dracula</option>
+            <option>emacs</option>
+            <option>friendly</option>
+            <option>fruity</option>
+            <option selected>github</option>
+            <option>igor</option>
+            <option>lovelace</option>
+            <option>manni</option>
+            <option>monokai</option>
+            <option>monokailight</option>
+            <option>murphy</option>
+            <option>native</option>
+            <option>paraiso-dark</option>
+            <option>paraiso-light</option>
+            <option>pastie</option>
+            <option>perldoc</option>
+            <option>pygments</option>
+            <option>rainbow_dash</option>
+            <option>rrt</option>
+            <option>solarized-dark</option>
+            <option>solarized-dark256</option>
+            <option>solarized-light</option>
+            <option>swapoff</option>
+            <option>tango</option>
+            <option>trac</option>
+            <option>vim</option>
+            <option>vs</option>
+            <option>xcode</option>
+        </select>
     </div>
     <div id="vditor"></div>
 </div>
@@ -83,16 +128,44 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  const setCounter = (options) => {
+  let vditor
+  const setHljs = (options) => {
     document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', Object.assign({
+    vditor = new Vditor('vditor', Object.assign({
+      mode: 'sv',
       height: 500,
       typewriterMode: true,
+      cache: {
+        enable: false,
+      },
+      preview: {
+        hljs: {
+          enable: false,
+        },
+      },
+      value: `# 演示 Go 代码高亮
+
+\`\`\`go
+package main
+
+import "fmt"
+
+func main() {
+\tfmt.Println("Hello, 世界")
+}
+\`\`\``,
     }, options))
   }
-  setCounter()
+  setHljs()
+  document.querySelector('#codeTheme').onchange = () => {
+    setHljs({
+      preview: {
+        style: document.getElementById('codeTheme').value,
+      },
+    })
+  }
 </script>
+<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 </body>
 </html>

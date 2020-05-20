@@ -57,15 +57,12 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://hacpai.com/article/1549638745630#options-counter" target="_blank">API</a>：
-    options.counter.enable，options.counter.max，options.counter.type
+    相关 <a href="https://hacpai.com/article/1549638745630#options-preview-math" target="_blank">API</a>：
+    options.preview.math.inlineDigit，options.preview.math.macros，options.preview.math.engine
     <div class="fn-50"></div>
-    <div class="actions">
-        <button class="btn btn--small" onclick="setCounter({counter:{enable:true}})">Markdown 字数统计</button> &nbsp;
-        <button class="btn btn--small" onclick="setCounter({counter:{enable:true,type:'text'}})">Markdown 字数统计</button>
-        &nbsp;
-        <button class="btn btn--small" onclick="setCounter({counter:{enable:true,max: 520}})">最大 520 个字</button> &nbsp;
-    </div>
+    <button class="btn--small btn" onclick="setMath({preview: {math:{engine:'KaTeX'}}})">使用 KaTeX 渲染</button> &nbsp;
+    <button class="btn--small btn" onclick="setMath({preview: {math:{engine:'MathJax', macros:{bf: '{\\boldsymbol f}', bu: '{\\boldsymbol u}',bv: '{\\boldsymbol v}',bw: '{\\boldsymbol w}'}}}})">使用 MathJax 及宏渲染</button> &nbsp;
+    <button class="btn--small btn" onclick="setMath({preview: {math:{inlineDigit:true}}})">允许 $ 后输入数字</button>
     <div id="vditor"></div>
 </div>
 <div class="fn-50"></div>
@@ -83,16 +80,52 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  const setCounter = (options) => {
+  const setMath = (options) => {
     document.getElementById('vditor').innerHTML = ''
     new Vditor('vditor', Object.assign({
       height: 500,
       typewriterMode: true,
+      cache: {
+        enable: false,
+      },
+      value: `数字渲染：
+$520$
+
+MathJax macros：
+
+\`\`\`json
+macros: {
+    bf: '{\\\\boldsymbol f}',
+    bu: '{\\\\boldsymbol u}',
+    bv: '{\\\\boldsymbol v}',
+    bw: '{\\\\boldsymbol w}'
+}
+\`\`\`
+
+$$
+\\bf=\\bu+\\bv-\\bw
+$$
+
+多行公式块：
+
+$$
+\\frac{1}{
+  \\Bigl(\\sqrt{\\phi \\sqrt{5}}-\\phi\\Bigr) e^{
+  \\frac25 \\pi}} = 1+\\frac{e^{-2\\pi}} {1+\\frac{e^{-4\\pi}} {
+    1+\\frac{e^{-6\\pi}}
+    {1+\\frac{e^{-8\\pi}}{1+\\cdots}}
+  }
+}
+$$
+
+行内公式：
+
+公式 $a^2 + b^2 = \\color{red}c^2$ 是行内。`,
     }, options))
   }
-  setCounter()
+  setMath()
 </script>
+<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 </body>
 </html>

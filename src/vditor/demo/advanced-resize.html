@@ -57,14 +57,14 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://hacpai.com/article/1549638745630#options-counter" target="_blank">API</a>：
-    options.counter.enable，options.counter.max，options.counter.type
+    相关 <a href="https://hacpai.com/article/1549638745630#options-resize" target="_blank">API</a>：
+    options.resize.enable，options.resize.position，options.resize.after()
     <div class="fn-50"></div>
     <div class="actions">
-        <button class="btn btn--small" onclick="setCounter({counter:{enable:true}})">Markdown 字数统计</button> &nbsp;
-        <button class="btn btn--small" onclick="setCounter({counter:{enable:true,type:'text'}})">Markdown 字数统计</button>
-        &nbsp;
-        <button class="btn btn--small" onclick="setCounter({counter:{enable:true,max: 520}})">最大 520 个字</button> &nbsp;
+        <button class="btn btn--small" onclick="setResize({resize:{enable:true}})">启用</button> &nbsp;
+        <button class="btn btn--small" onclick="setResize({resize:{enable:true,position:'bottom'}})">位于底部</button> &nbsp;
+        <button class="btn btn--small" onclick="setResize({resize:{enable:true,position:'top'}})">位于顶部</button> &nbsp;
+        <button class="btn btn--small" onclick="setResize({resize:{enable:true,after(height){alert(height)}}})">拖拽结束弹出高度偏差</button> &nbsp;
     </div>
     <div id="vditor"></div>
 </div>
@@ -85,14 +85,14 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  const setCounter = (options) => {
+  const setResize = (options) => {
     document.getElementById('vditor').innerHTML = ''
     new Vditor('vditor', Object.assign({
-      height: 500,
+      height: 300,
       typewriterMode: true,
     }, options))
   }
-  setCounter()
+  setResize()
 </script>
 </body>
 </html>
