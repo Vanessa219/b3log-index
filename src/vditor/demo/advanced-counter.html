@@ -57,13 +57,22 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://hacpai.com/article/1549638745630#options" target="_blank">API</a>：
-    options.lang
+    相关 <a href="https://hacpai.com/article/1549638745630#options-preview-markdown" target="_blank">API</a>：
+    options.preview.markdown
     <div class="fn-50"></div>
-    <div>
-        <button class="btn btn--small" onclick="setLang('zh_CN')">中文</button> &nbsp;
-        <button class="btn btn--small" onclick="setLang('en_US')">英文</button> &nbsp;
-        <button class="btn btn--small" onclick="setLang('ko_KR')">韩文</button> &nbsp;
+    <div class="actions">
+        <button class="btn btn--small" data-config="autoSpace">自动空格</button> &nbsp;
+        <button class="btn btn--small" data-config="paragraphBeginningSpace">段落开头空两格</button> &nbsp;
+        <button class="btn btn--small" data-config="fixTermTypo">矫正术语</button> &nbsp;
+        <button class="btn btn--small" data-config="chinesePunct">矫正标点</button> &nbsp;
+        <button class="btn btn--small" data-config="toc">启用目录</button> &nbsp;
+        <button class="btn btn--small" data-config="footnotes">禁用脚注</button> &nbsp;
+        <button class="btn btn--small" data-config="codeBlockPreview">wysiwyg & ir 模式不渲染代码块</button> &nbsp;
+        <button class="btn btn--small" data-config="setext">解析 settext</button> &nbsp;
+        <button class="btn btn--small" data-config="sanitize">不过滤 XSS</button> &nbsp;
+        <button class="btn btn--small" data-config="theme-dark">dark theme</button> &nbsp;
+        <button class="btn btn--small" data-config="theme-wechat">wechat theme</button> &nbsp;
+        <button class="btn btn--small" data-config="listMarker">为列表添加标记</button> &nbsp;
     </div>
     <div id="vditor"></div>
 </div>
@@ -84,14 +93,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  const setLang = (lang) => {
-    document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', {
-      typewriterMode: true,
-      lang,
-    })
-  }
-  setLang('zh_CN')
+
 </script>
 </body>
 </html>
