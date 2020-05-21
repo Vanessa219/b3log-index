@@ -129,10 +129,9 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script>
-  let vditor
   const setHljs = (options) => {
     document.getElementById('vditor').innerHTML = ''
-    vditor = new Vditor('vditor', Object.assign({
+    new Vditor('vditor', Object.assign({
       mode: 'sv',
       height: 500,
       typewriterMode: true,

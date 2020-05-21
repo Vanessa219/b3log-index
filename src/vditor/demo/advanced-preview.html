@@ -57,27 +57,22 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://hacpai.com/article/1549638745630#options-hint" target="_blank">API</a>：
-    options.hint.emoji，options.hint.emojiTail，options.hint.emojiPath，options.hint.delay，options.hint.at
+    相关 <a href="https://hacpai.com/article/1549638745630#options-preview" target="_blank">API</a>：
+    options.preview.delay，options.preview.url，options.preview.parse()，options.preview.transform()
     <div class="fn-50"></div>
     <div class="actions">
         <button class="btn btn--small"
-                onclick="setHint({hint:{emoji: {'sad': '💔','j': 'https://unpkg.com/vditor@1.3.1/dist/images/emoji/j.png'}}})">
-            自定义表情
+                onclick="setPreview({preview:{transform(html){alert('添加感叹号');return html + '<p>!</p>'}}})">HTML 字符串处理
         </button> &nbsp;
-        <button class="btn btn--small" onclick="setHint({hint:{emojiTail: emojiTail}})">设置表情提示文案</button> &nbsp;
         <button class="btn btn--small"
-                onclick="setHint({hint:{emojiPath: 'https://cdn.jsdelivr.net/npm/vditor@1.8.3/dist/images/emoji'}})">
-            设置表情图片地址
+                onclick="setPreview({preview:{parse(element){alert('添加蓝色背景');element.style.backgroundColor='#4285f4'}}})">
+            DOM 处理
         </button> &nbsp;
-        <button class="btn btn--small" onclick="at()">At</button> &nbsp;
-    </div>
-    <div class="vditor-reset" style="margin-bottom: 10px">
-        <ul>
-            <li>需输入 <kbd>:</kbd> 或点击表情查看效果</li>
-            <li>设置表情图片地址后，可 F12 查看表情图片地址。试一试图片表情 <kbd>:wulian:</kbd></li>
-            <li>当启用 At 功能时，可使用 options.hint.delay 来减少服务器压力</li>
-        </ul>
+        <button class="btn btn--small" onclick="setPreview({preview:{delay: 5000}})">延迟 5s</button> &nbsp;
+        <button class="btn btn--small"
+                onclick="setPreview({value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看。服务端可使用 [Lute](https://github.com/88250/lute) 进行解析。'})">预览请求
+        </button> &nbsp;
+        <button class="btn btn--small btn--red">仅支持 sv 模式</button>
     </div>
     <div id="vditor"></div>
 </div>
@@ -98,48 +93,19 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  const emojiTail = '<a href="https://hacpai.com/settings/function" target="_blank">设置常用表情</a>'
-  const setHint = (options) => {
+  const setPreview = (options) => {
     document.getElementById('vditor').innerHTML = ''
     new Vditor('vditor', Object.assign({
+      cache: {
+        enable: false,
+      },
+      mode: 'sv',
       height: 500,
       typewriterMode: true,
+      value: '实时保存内容，防止意外丢失',
     }, options))
   }
-  setHint()
-
-  const at = () => {
-    setHint({
-        cache: {
-          enable: false,
-        },
-        value: `示例代码如下，由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看
-\`\`\`javascript
-options.hint = {
-    at: (key) => {
-      let atUsers = []
-      $.ajax({
-        url: 'https://hacpai.com/users/names',
-        type: 'POST',
-        async: false,
-        data: JSON.stringify({name: key}),
-        success: function (result) {
-          if (result.code === 0) {
-            atUsers = result.data.map((item) => {
-              item.value = '@' + item.userName
-              item.html = '<img src="' + item.userAvatarURL + '"/> ' + item.userName
-              return item
-            })
-          }
-        },
-      })
-      return atUsers
-    },
-  }
-\`\`\``,
-      },
-    )
-  }
+  setPreview()
 </script>
 </body>
 </html>
