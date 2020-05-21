@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式</title>
+    <meta name="robots" content="index,follow,archive">
+    <meta name="description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta name="copyright" content="B3log"/>
+    <link rel="canonical" href="https://vditor.b3log.org">
+    <link rel="apple-touch-icon" href="//static.b3log.org/images/brand/vditor-128.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Window-target" content="_top"/>
+    <link rel="icon" type="image/png" href="//static.b3log.org/images/brand/vditor-128.png"/>
+    <link type="text/css" rel="stylesheet" href="//static.b3log.org/css/base.css" charset="utf-8"/>
+
+    <meta property="og:locale" content="zh_CN"/>
+    <meta property="og:title" content="Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式"/>
+    <meta property="og:description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
+    <meta property="og:url" content="https://vditor.b3log.org"/>
+    <meta property="og:site_name" content="B3log"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description"
+          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+    <meta name="twitter:title" content="Vditor - 一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式"/>
+    <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
+    <meta name="twitter:url" content="https://vditor.b3log.org"/>
+    <meta name="twitter:site" content="@b3logos"/>
+    <meta name="twitter:creator" content="@b3logos"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
+    <style>
+        .header {
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+
+        .right {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="header fn-clear">
+    <a class="header-logo" href="https://vditor.b3log.org">
+        <img src="//static.b3log.org/images/brand/vditor-128.png">
+        <h1>Vditor</h1>
+    </a>
+    <div class="fn-clear">
+        <a class="header-a" href="https://hacpai.com/tag/vditor" target="_blank">社区</a>
+        <a class="header-a header-red" target="_blank" href="https://hacpai.com/article/1549638745630">API</a>
+        <a class="header-a header-green current" href="index.html">Demo</a>
+        <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="fn-50"></div>
+    相关 <a href="https://hacpai.com/article/1549638745630#options-toolbar" target="_blank">API</a>：
+    options.toolbar，<a href="https://hacpai.com/article/1549638745630#options-toolbarConfig" target="_blank">options.toolbarConfig</a>
+    <div class="fn-50"></div>
+    <div class="actions">
+        <button class="btn btn--small"
+                onclick="setToolbar({toolbar:[{hotkey: '⌘-⇧-B',  name:'bold',tipPosition: 'n',tip: '自定义粗体按钮',className: 'right',icon: boldIcon}]})">
+            自定义按钮(保持 name 一致)
+        </button> &nbsp;
+        <button class="btn btn--small"
+                onclick="setToolbar({toolbar:[{hotkey: '⌘-⇧-S',  name:'sponsor',tipPosition: 's',tip: '成为赞助者',className: 'right',icon: sponsorIcon, click () {alert('捐赠地址：https://hacpai.com/sponsor')},}]})">
+            新增按钮
+        </button>
+        &nbsp;
+        <button class="btn btn--small" onclick="setToolbar({toolbarConfig:{pin:true}})">固定工具栏(上滚才能看到效果呦)</button> &nbsp;
+        <button class="btn btn--small" onclick="setToolbar({toolbarConfig:{hide:true}})">隐藏工具栏</button> &nbsp;
+    </div>
+    <div id="vditor"></div>
+</div>
+<div class="fn-50"></div>
+<!-- end main -->
+
+<div class="footer">
+    <div class="wrapper fn-clear">
+        <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com" target="_blank">社区</a> &nbsp; &nbsp;
+        <a href="https://b3log.org/brand-marking.html">品牌标识</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+        <div class="fn-right">
+            © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
+<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
+<script>
+  const boldIcon = '<svg t="1589994502940" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1961" width="32" height="32"><path d="M0 0h1024v1024H0z" fill="#FFFFFF" p-id="1962"></path><path d="M384 256V224h-32v32h32z m0 160h-32v32h32v-32z m0 192v-32h-32v32h32z m0 160h-32v32h32v-32z m321.92-265.504l-18.56-26.048a32 32 0 0 0 4.576 54.816l13.984-28.8zM384 288h176V224H384v64z m176 96H384v64h176v-64zM416 416V256h-64v160h64z m192-80a48 48 0 0 1-48 48v64a112 112 0 0 0 112-112h-64zM560 288a48 48 0 0 1 48 48h64A112 112 0 0 0 560 224v64zM384 640h176v-64H384v64z m176 96H384v64h176v-64zM416 768v-160h-64v160h64z m192-80a48 48 0 0 1-48 48v64a112 112 0 0 0 112-112h-64zM560 640a48 48 0 0 1 48 48h64a112 112 0 0 0-112-112v64zM576 64H256v64h320V64zM192 128v768h64V128H192z m64 832h352v-64H256v64z m-64-64a64 64 0 0 0 64 64v-64H192zM256 64a64 64 0 0 0-64 64h64V64z m512 256a191.712 191.712 0 0 1-80.64 156.448l37.152 52.096A255.712 255.712 0 0 0 832 320h-64z m-192-192a192 192 0 0 1 192 192h64a256 256 0 0 0-256-256v64z m224 576a192 192 0 0 1-192 192v64a256 256 0 0 0 256-256h-64z m-108.064-172.736A192 192 0 0 1 800 704h64a256 256 0 0 0-144.064-230.304l-28 57.568z" fill="#000000" p-id="1963"></path></svg>'
+  const sponsorIcon = '<svg t="1589994565028" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2808" width="32" height="32"><path d="M506.6 423.6m-29.8 0a29.8 29.8 0 1 0 59.6 0 29.8 29.8 0 1 0-59.6 0Z" fill="#0F0F0F" p-id="2809"></path><path d="M717.8 114.5c-83.5 0-158.4 65.4-211.2 122-52.7-56.6-127.7-122-211.2-122-159.5 0-273.9 129.3-273.9 288.9C21.5 562.9 429.3 913 506.6 913s485.1-350.1 485.1-509.7c0.1-159.5-114.4-288.8-273.9-288.8z" fill="#FAFCFB" p-id="2810"></path><path d="M506.6 926c-22 0-61-20.1-116-59.6-51.5-37-109.9-86.4-164.6-139-65.4-63-217.5-220.6-217.5-324 0-81.4 28.6-157.1 80.6-213.1 53.2-57.2 126.4-88.8 206.3-88.8 40 0 81.8 14.1 124.2 41.9 28.1 18.4 56.6 42.8 86.9 74.2 30.3-31.5 58.9-55.8 86.9-74.2 42.5-27.8 84.3-41.9 124.2-41.9 79.9 0 153.2 31.5 206.3 88.8 52 56 80.6 131.7 80.6 213.1 0 103.4-152.1 261-217.5 324-54.6 52.6-113.1 102-164.6 139-54.8 39.5-93.8 59.6-115.8 59.6zM295.4 127.5c-72.6 0-139.1 28.6-187.3 80.4-47.5 51.2-73.7 120.6-73.7 195.4 0 64.8 78.3 178.9 209.6 305.3 53.8 51.8 111.2 100.3 161.7 136.6 56.1 40.4 88.9 54.8 100.9 54.8s44.7-14.4 100.9-54.8c50.5-36.3 108-84.9 161.7-136.6 131.2-126.4 209.6-240.5 209.6-305.3 0-74.9-26.2-144.2-73.7-195.4-48.2-51.9-114.7-80.4-187.3-80.4-61.8 0-127.8 38.5-201.7 117.9-2.5 2.6-5.9 4.1-9.5 4.1s-7.1-1.5-9.5-4.1C423.2 166 357.2 127.5 295.4 127.5z" fill="#141414" p-id="2811"></path><path d="M353.9 415.6m-33.8 0a33.8 33.8 0 1 0 67.6 0 33.8 33.8 0 1 0-67.6 0Z" fill="#0F0F0F" p-id="2812"></path><path d="M659.3 415.6m-33.8 0a33.8 33.8 0 1 0 67.6 0 33.8 33.8 0 1 0-67.6 0Z" fill="#0F0F0F" p-id="2813"></path><path d="M411.6 538.5c0 52.3 42.8 95 95 95 52.3 0 95-42.8 95-95v-31.7h-190v31.7z" fill="#5B5143" p-id="2814"></path><path d="M506.6 646.5c-59.6 0-108-48.5-108-108v-31.7c0-7.2 5.8-13 13-13h190.1c7.2 0 13 5.8 13 13v31.7c0 59.5-48.5 108-108.1 108z m-82-126.7v18.7c0 45.2 36.8 82 82 82s82-36.8 82-82v-18.7h-164z" fill="#141414" p-id="2815"></path><path d="M450.4 578.9a54.7 27.5 0 1 0 109.4 0 54.7 27.5 0 1 0-109.4 0Z" fill="#EA64F9" p-id="2816"></path><path d="M256 502.7a32.1 27.5 0 1 0 64.2 0 32.1 27.5 0 1 0-64.2 0Z" fill="#EFAFF9" p-id="2817"></path><path d="M703.3 502.7a32.1 27.5 0 1 0 64.2 0 32.1 27.5 0 1 0-64.2 0Z" fill="#EFAFF9" p-id="2818"></path></svg>'
+  const setToolbar = (options) => {
+    document.getElementById('vditor').innerHTML = ''
+    new Vditor('vditor', Object.assign({
+      height: window.innerHeight,
+      typewriterMode: true,
+    }, options))
+  }
+  setToolbar()
+</script>
+</body>
+</html>
