@@ -40,31 +40,6 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
-        .heading {
-            border-bottom: 1px solid #4285f4 !important;
-            position: relative;
-        }
-        .heading__prefix {
-            width: 20px;
-            height: 20px;
-            background-size: 20px 20px;
-            background-image: url(https://b3log.org/images/brand/vditor-32.png);
-            margin: 7px 2px 0 0;
-            float: left;
-        }
-        .heading__content {
-            border-bottom: 1px solid #4285f4;
-            padding-bottom: 3px;
-        }
-        .heading__suffix {
-            width: 100%;
-            height: 4px;
-            border-radius: 0 0 10px 0;
-            background: #4285f4;
-            position: absolute;
-            right: 0;
-            bottom: -6px;
-        }
     </style>
 </head>
 <body>
@@ -80,40 +55,31 @@
         <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
     </div>
 </div>
-<div class="fn-50"></div>
 <div class="wrapper">
-    相关 <a href="https://hacpai.com/article/1549638745630#static-methods" target="_blank">API</a>：
-    options.anchor，options.speech，options.lazyLoadImage，options.transform()，options.after()，<a
-        href="https://hacpai.com/article/1588412297062" target="_blank">options.renderers()</a>
+    <div class="fn-50"></div>
+    相关 <a href="https://hacpai.com/article/1549638745630#options-hint" target="_blank">API</a>：
+    options.hint.emoji，options.hint.emojiTail，options.hint.emojiPath，options.hint.delay，options.hint.at
     <div class="fn-50"></div>
     <div class="actions">
-        <button class="btn btn--small" onclick="previewConfig({anchor: 1})">锚点居前</button> &nbsp;
-        <button class="btn btn--small" onclick="previewConfig({anchor: 2})">锚点居后</button> &nbsp;
-        <button class="btn btn--small" onclick="previewConfig({speech: {enable: true}})">选择文字进行语音阅读</button> &nbsp;
         <button class="btn btn--small"
-                onclick="previewConfig({lazyLoadImage: 'https://cdn.jsdelivr.net/npm/vditor/dist/images/img-loading.svg'})">
-            图片懒加载
+                onclick="setHint({hint:{emoji: {'sad': '💔','j': 'https://unpkg.com/vditor@1.3.1/dist/images/emoji/j.png'}}})">
+            自定义表情
         </button> &nbsp;
+        <button class="btn btn--small" onclick="setHint({hint:{emojiTail: emojiTail}})">设置表情提示文案</button> &nbsp;
         <button class="btn btn--small"
-                onclick="previewConfig({transform(html){return html.replace('简介</h2>', 'Vditor 介绍</h2>')}})">渲染前回调
+                onclick="setHint({hint:{emojiPath: 'https://cdn.jsdelivr.net/npm/vditor@1.8.3/dist/images/emoji'}})">
+            设置表情图片地址
         </button> &nbsp;
-        <button class="btn btn--small" onclick="previewConfig({after(){alert('finished!')}})">渲染后回调</button> &nbsp;
-        <button class="btn btn--small" onclick="previewConfig({renderers: {
-            renderHeading: (node, entering) => {
-              const id = Lute.GetHeadingID(node)
-              if (entering) {
-                return [
-                  `<h${node.__internal_object__.HeadingLevel} id='${id}' class='heading'><span class='heading__prefix'></span><span class='heading__content'>`,
-                  Lute.WalkContinue]
-              } else {
-                return [
-                  `</span><span class='heading__suffix'></span><a id='vditorAnchor-${id}' class='vditor-anchor' href='#${id}'><svg viewBox='0 0 16 16' version='1.1' width='16' height='16'><path fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'></path></svg></a></h${node.__internal_object__.HeadingLevel}>`,
-                  Lute.WalkContinue]
-              }
-            }}})">自定义渲染
-        </button>
+        <button class="btn btn--small" onclick="at()">At</button> &nbsp;
     </div>
-    <div id="preview"></div>
+    <div class="vditor-reset" style="margin-bottom: 10px">
+        <ul>
+            <li>需输入 <kbd>:</kbd> 或点击表情查看效果</li>
+            <li>设置表情图片地址后，可 F12 查看表情图片地址。试一试图片表情 <kbd>:wulian:</kbd></li>
+            <li>当启用 At 功能时，可使用 options.hint.delay 来减少服务器压力</li>
+        </ul>
+    </div>
+    <div id="vditor"></div>
 </div>
 <div class="fn-50"></div>
 <!-- end main -->
@@ -129,37 +95,51 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/method.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  const previewConfig = (config) => {
-    fetch('markdown/preview-config.md').
-      then(response => response.text()).
-      then(markdown => {
-        Vditor.preview(document.getElementById('preview'), markdown, config, {
-
-          after () {
-          },
-          renderers: {
-            renderHeading: (node, entering) => {
-              const id = Lute.GetHeadingID(node)
-              if (entering) {
-                return [
-                  `<h${node.__internal_object__.HeadingLevel} id="${id}" class="vditor__heading">
-<span class="prefix"></span><span>`,
-                  Lute.WalkContinue]
-              } else {
-                return [
-                  `</span><a id="vditorAnchor-${id}" class="vditor-anchor" href="#${id}"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h${node.__internal_object__.HeadingLevel}>`,
-                  Lute.WalkContinue]
-              }
-            },
-          },
-        })
-      })
+  const emojiTail = '<a href="https://hacpai.com/settings/function" target="_blank">设置常用表情</a>'
+  const setHint = (options) => {
+    document.getElementById('vditor').innerHTML = ''
+    vditor = new Vditor('vditor', Object.assign({
+      height: 500,
+      typewriterMode: true,
+    }, options))
   }
+  setHint()
 
-  previewConfig({})
+  const at = () => {
+    setHint({
+        cache: {
+          enable: false,
+        },
+        value: `示例代码如下，由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看
+\`\`\`javascript
+options.hint = {
+    at: (key) => {
+      let atUsers = []
+      $.ajax({
+        url: 'https://hacpai.com/users/names',
+        type: 'POST',
+        async: false,
+        data: JSON.stringify({name: key}),
+        success: function (result) {
+          if (result.code === 0) {
+            atUsers = result.data.map((item) => {
+              item.value = '@' + item.userName
+              item.html = '<img src="' + item.userAvatarURL + '"/> ' + item.userName
+              return item
+            })
+          }
+        },
+      })
+      return atUsers
+    },
+  }
+\`\`\``,
+      },
+    )
+  }
 </script>
 </body>
 </html>

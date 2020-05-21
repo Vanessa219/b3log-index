@@ -40,55 +40,6 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
-
-        #preview {
-            margin: 0 auto;
-            max-width: 768px;
-        }
-
-        .wrapper--preview {
-            margin: 0 220px 0 0;
-            max-width: none;
-            width: auto;
-        }
-
-        #outline {
-            display: none;
-            position: fixed;
-            width: 186px;
-            top: 130px;
-            right: 20px;
-            bottom: 86px;
-            overflow: auto;
-            font-size: 12px;
-            border-left: 1px solid #eee;
-            background-color: #fff;
-        }
-
-        .vditor-outline__item {
-            border-left: 1px solid transparent;
-        }
-
-        .vditor-outline__item--current {
-            border-left: 1px solid #4285f4;
-            color: #4285f4;
-            background-color: #f6f8fa;
-        }
-
-        .vditor-outline__item:hover {
-            color: #4285f4;
-            background-color: #f6f8fa;
-        }
-
-        @media (max-width: 768px) {
-            #outline {
-                display: none !important;
-            }
-
-            .wrapper--preview {
-                margin: 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -104,14 +55,18 @@
         <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
     </div>
 </div>
-<div class="fn-50"></div>
 <div class="wrapper">
-    相关 <a href="https://hacpai.com/article/1549638745630#static-methods" target="_blank">API</a>：
-    Vditor.preview()，Vditor.outlineRender()
     <div class="fn-50"></div>
-    <div id="preview"></div>
+    相关 <a href="https://hacpai.com/article/1549638745630#options-keymap" target="_blank">API</a>：
+    options.keymap.deleteLine，options.keymap.duplicate
+    <div class="fn-50"></div>
+    <div class="actions">
+        <button class="btn btn--small" onclick="setKeymap({keymap:{deleteLine:'⌘-⇧-Backspace'}})">删除行[⌘-⇧-Backspace]</button> &nbsp;
+        <button class="btn btn--small" onclick="setKeymap({keymap:{duplicate:'⌘-⇧-D'}})">复制行[⌘-⇧-D]</button> &nbsp;
+        <button class="btn btn--small btn--red">仅支持 sv 模式</button>
+    </div>
+    <div id="vditor"></div>
 </div>
-<div id="outline"></div>
 <div class="fn-50"></div>
 <!-- end main -->
 
@@ -126,67 +81,18 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/method.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 <script>
-  const initRender = () => {
-    fetch('markdown/zh_CN.md').
-      then(response => response.text()).
-      then(markdown => {
-        Vditor.preview(document.getElementById('preview'),
-          markdown, {
-            speech: {
-              enable: true,
-            },
-            anchor: 1,
-            after () {
-              if (window.innerWidth <= 768) {
-                return
-              }
-              const outlineElement = document.getElementById('outline')
-              Vditor.outlineRender(document.getElementById('preview'), outlineElement)
-              if (outlineElement.innerText.trim() !== '') {
-                outlineElement.style.display = 'block'
-                initOutline()
-              }
-            },
-          })
-      })
+  const setKeymap = (options) => {
+    document.getElementById('vditor').innerHTML = ''
+    vditor = new Vditor('vditor', Object.assign({
+      mode: 'sv',
+      height: 500,
+      typewriterMode: true,
+    }, options))
   }
-
-  const initOutline = () => {
-    const headingElements = []
-    Array.from(document.getElementById('preview').children).forEach((item) => {
-      if (item.tagName.length === 2 && item.tagName !== 'HR' && item.tagName.indexOf('H') === 0) {
-        headingElements.push(item)
-      }
-    })
-
-    let toc = []
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY
-      toc = []
-      headingElements.forEach((item) => {
-        toc.push({
-          id: item.id,
-          offsetTop: item.offsetTop,
-        })
-      })
-
-      const currentElement = document.querySelector('.vditor-outline__item--current')
-      for (let i = 0, iMax = toc.length; i < iMax; i++) {
-        if (scrollTop < toc[i].offsetTop - 30) {
-          if (currentElement) {
-            currentElement.classList.remove('vditor-outline__item--current')
-          }
-          let index = i > 0 ? i - 1 : 0
-          document.querySelector('div[data-id="' + toc[index].id + '"]').classList.add('vditor-outline__item--current')
-          break
-        }
-      }
-    })
-  }
-  initRender()
+  setKeymap()
 </script>
 </body>
 </html>
