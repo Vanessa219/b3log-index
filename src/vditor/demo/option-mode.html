@@ -61,12 +61,40 @@
     options.mode，options.preview.mode
     <div class="fn-50"></div>
     <div>
-        <button class="btn btn--small" onclick="setMode({mode: 'wysiwyg'})">wysiwyg 模式</button> &nbsp;
-        <button class="btn btn--small" onclick="setMode({mode: 'ir'})">ir 模式</button> &nbsp;
-        <button class="btn btn--small" onclick="setMode({mode: 'sv',preview:{mode:'editor'}})">sv 模式 - 编辑器</button>&nbsp;
-        <button class="btn btn--small" onclick="setMode({mode: 'sv',preview:{mode:'both'}})">sv 模式 - 编辑器 & 预览</button> &nbsp;
+        <button class="btn btn--small"
+                onclick="setMode(this, {cache: {enable: false,},value: '可选模式：sv, ir, wysiwyg',mode: 'wysiwyg'})">wysiwyg
+            模式
+        </button> &nbsp;
+        <button class="btn btn--small"
+                onclick="setMode(this, {cache: {enable: false,},value: '可选模式：sv, ir, wysiwyg',mode: 'ir'})">ir 模式
+        </button> &nbsp;
+        <button class="btn btn--small"
+                onclick="setMode(this, {cache: {enable: false,},value: '可选模式：sv, ir, wysiwyg',mode: 'sv',preview:{mode:'editor'}})">
+            sv 模式 - 编辑器
+        </button>&nbsp;
+        <button class="btn btn--small"
+                onclick="setMode(this, {cache: {enable: false,},value: '可选模式：sv, ir, wysiwyg',mode: 'sv',preview:{mode:'both'}})">
+            sv 模式 - 编辑器 & 预览
+        </button> &nbsp;
     </div>
     <div id="vditor"></div>
+    <div id="vditorDemoCode" class="vditor-reset">
+        <pre><code class="javascript">new Vditor('vditor', {
+  cache: {
+    enable: false,
+  },
+  value: '可选模式：sv, ir, wysiwyg',
+})
+</code></pre>
+    </div>
+    <div class="fn-100"></div>
+    <div class="fn-clear">
+        <h2 class="fn-left">参与讨论</h2>
+        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
+    </div>
+    <div class="fn-50"></div>
+    <div id="vditorComments"></div>
+    <div class="fn-100"></div>
 </div>
 <div class="fn-50"></div>
 <!-- end main -->
@@ -83,24 +111,17 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
-<script>
-  const setMode = (options) => {
+<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
+<script id="vditorScript">
+  const setMode = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', Object.assign({
-      typewriterMode: true,
-      cache: {
-        enable: false,
-      },
-      value: `### 主题
-
-* 支持黑白两套主题：classic/dark
-* 参考现有样式后使用自己开发的 scss/css 进行样式的完全自定制
-* 可通过修改 [index.scss](https://link.hacpai.com/forward?goto=https%3A%2F%2Fgithub.com%2FVanessa219%2Fvditor%2Fblob%2Fmaster%2Fsrc%2Fassets%2Fscss%2Findex.scss) 中的变量对主题颜色进行定制
-* 在内容显示元素上添加 \`class="vditor-reset"\` （经典主题） 或 \`class="vditor-reset vditor-reset--dark"\`（黑色主题） 属性可对内容进行更为友好的展示`,
-    }, options))
+    if (it) {
+      updateCode(it, `new Vditor('vditor', ${JSON.stringify(options)})`)
+    }
+    new Vditor('vditor', options || {cache: {enable: false}, value: '可选模式：sv, ir, wysiwyg'})
   }
   setMode()
 </script>
+<script src="../vditor.js"></script>
 </body>
 </html>

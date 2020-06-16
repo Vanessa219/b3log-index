@@ -81,14 +81,20 @@
     <button class="btn btn--small" onclick="render('codeRender', this)">代码复制</button> &nbsp;
     <button class="btn btn--small" onclick="render('graphvizRender', this)">graphviz</button> &nbsp;
     <button class="btn btn--small" onclick="render('md2html', this)">Markdown -> HTML</button> &nbsp;
-    <div class="fn-50"></div>
-    点击高亮按钮可根据修改后的内容再次进行渲染
-    <div style="display: flex">
-        <textarea id="content"></textarea>
-        <div id="preview" class="vditor-reset vditor" style="flex: 1;padding: 10px"></div>
+    <div id="preview" class="vditor-reset"></div>
+    <div id="vditorDemoCode" class="vditor-reset">
+        <pre><code class="javascript">点击按钮查看效果
+</code></pre>
     </div>
+    <div class="fn-100"></div>
+    <div class="fn-clear">
+        <h2 class="fn-left">参与讨论</h2>
+        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
+    </div>
+    <div class="fn-50"></div>
+    <div id="vditorComments"></div>
+    <div class="fn-100"></div>
 </div>
-<div class="fn-50"></div>
 <!-- end main -->
 
 <div class="footer">
@@ -102,9 +108,9 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/method.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
+<script id="vditorScript">
   const texts = {
     outlineRender: `# 教程
 
@@ -118,7 +124,7 @@
 
 ## 提及用户
 
-@Vanessa 通过 \`@User\` 可以在内容中提及用户，被提及的用户将会收到系统通知。
+@Vanessa 通过 @User 可以在内容中提及用户，被提及的用户将会收到系统通知。
 
 ## 表情符号 Emoji
 
@@ -302,35 +308,34 @@ digraph finite_state_machine {
 \`\`\``,
     md2html: `## 💡 简介
 
-[Vditor](https://vditor.b3log.org) 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供[桌面版](https://github.com/88250/liandi)。`
+[Vditor](https://vditor.b3log.org) 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供[桌面版](https://github.com/88250/liandi)。`,
   }
   const render = async (type, it) => {
-    const contentElement = document.getElementById('content')
-    const redBtnElement = document.querySelector('.btn--red')
-    let text = ''
-    if (it.classList.contains('btn--red')) {
-      text = contentElement.value
-    } else {
-      if (redBtnElement) {
-        redBtnElement.classList.remove('btn--red')
-      }
-      text = texts[type]
-      it.classList.add('btn--red')
-      contentElement.value = text
-    }
     const previewElement = document.getElementById('preview')
-    const html = await Vditor.md2html(text, {})
+    const html = await Vditor.md2html(texts[type])
     previewElement.innerHTML = html
+    let code
     if (type === 'outlineRender') {
       Vditor[type](previewElement, previewElement)
+      code = `Vditor.${type}(previewElement, previewElement)`
     } else if (type === 'highlightRender') {
-      previewElement.innerHTML = html
+      Vditor[type]({lineNumber: true, enable: true}, previewElement)
+      code = `Vditor.${type}({lineNumber: true, enable: true}, previewElement)`
     } else if (type === 'md2html') {
       Vditor[type]({enable: true}, previewElement)
+      code = `Vditor.${type}({enable: true}, previewElement)`
     } else {
       Vditor[type](previewElement)
+      code = `Vditor.${type}(previewElement)`
     }
+
+    let text = texts[type].replace(/\\/g, '\\\\').replace(/`/g, '\\`')
+    updateCode(it, `const previewElement = document.getElementById('preview')
+const html = await Vditor.md2html(\`${text}\`)
+previewElement.innerHTML = html
+${code}`)
   }
 </script>
+<script src="../vditor.js"></script>
 </body>
 </html>

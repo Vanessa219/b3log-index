@@ -113,8 +113,8 @@ document.getElementById('log').innerHTML = '缓存已启用<br>' + JSON.stringif
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
+<script id="vditorScript">
   let vditor
   const setCache = (options) => {
     vditor = new Vditor('vditor', Object.assign({
@@ -125,5 +125,6 @@ document.getElementById('log').innerHTML = '缓存已启用<br>' + JSON.stringif
   }
   setCache({})
 </script>
+<script src="../vditor.js"></script>
 </body>
 </html>

@@ -40,10 +40,12 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
+
         .heading {
             border-bottom: 1px solid #4285f4 !important;
             position: relative;
         }
+
         .heading__prefix {
             width: 20px;
             height: 20px;
@@ -52,10 +54,12 @@
             margin: 7px 2px 0 0;
             float: left;
         }
+
         .heading__content {
             border-bottom: 1px solid #4285f4;
             padding-bottom: 3px;
         }
+
         .heading__suffix {
             width: 100%;
             height: 4px;
@@ -87,18 +91,20 @@
         href="https://hacpai.com/article/1588412297062" target="_blank">options.renderers()</a>
     <div class="fn-50"></div>
     <div class="actions">
-        <button class="btn btn--small" onclick="previewConfig({anchor: 1})">锚点居前</button> &nbsp;
-        <button class="btn btn--small" onclick="previewConfig({anchor: 2})">锚点居后</button> &nbsp;
-        <button class="btn btn--small" onclick="previewConfig({speech: {enable: true}})">选择文字进行语音阅读</button> &nbsp;
+        <button class="btn btn--small" onclick="previewConfig(this, {anchor: 1})">锚点居前</button> &nbsp;
+        <button class="btn btn--small" onclick="previewConfig(this, {anchor: 2})">锚点居后</button> &nbsp;
+        <button class="btn btn--small" onclick="previewConfig(this, {speech: {enable: true}})">选择文字进行语音阅读</button>
+        &nbsp;
         <button class="btn btn--small"
-                onclick="previewConfig({lazyLoadImage: 'https://cdn.jsdelivr.net/npm/vditor/dist/images/img-loading.svg'})">
+                onclick="previewConfig(this, {lazyLoadImage: 'https://cdn.jsdelivr.net/npm/vditor/dist/images/img-loading.svg'})">
             图片懒加载
         </button> &nbsp;
         <button class="btn btn--small"
-                onclick="previewConfig({transform(html){return html.replace('简介</h2>', 'Vditor 介绍</h2>')}})">渲染前回调
+                onclick="previewConfig(this, {transform(html){return html.replace('简介</h2>', 'Vditor 介绍</h2>')}})">渲染前回调
         </button> &nbsp;
-        <button class="btn btn--small" onclick="previewConfig({after(){alert('finished!')}})">渲染后回调</button> &nbsp;
-        <button class="btn btn--small" onclick="previewConfig({renderers: {
+        <button class="btn btn--small" onclick="previewConfig(this, {after(){alert('finished!')}})">渲染后回调</button>
+        &nbsp;
+        <button class="btn btn--small" onclick="previewConfig(this, {renderers: {
             renderHeading: (node, entering) => {
               const id = Lute.GetHeadingID(node)
               if (entering) {
@@ -114,8 +120,23 @@
         </button>
     </div>
     <div id="preview"></div>
+    <div id="vditorDemoCode" class="vditor-reset">
+        <pre><code class="javascript">Vditor.preview(document.getElementById('preview'), `## 💡 简介
+
+[Vditor](https://vditor.b3log.org) 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供[桌面版](https://github.com/88250/liandi)。
+
+![vditor.png](https://b3log.org/images/brand/vditor-512.png)`)
+</code></pre>
+    </div>
+    <div class="fn-100"></div>
+    <div class="fn-clear">
+        <h2 class="fn-left">参与讨论</h2>
+        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
+    </div>
+    <div class="fn-50"></div>
+    <div id="vditorComments"></div>
+    <div class="fn-100"></div>
 </div>
-<div class="fn-50"></div>
 <!-- end main -->
 
 <div class="footer">
@@ -129,37 +150,45 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/method.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
-<script>
-  const previewConfig = (config) => {
-    fetch('markdown/preview-config.md').
-      then(response => response.text()).
-      then(markdown => {
-        Vditor.preview(document.getElementById('preview'), markdown, config, {
+<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
+<script id="vditorScript">
+  const previewConfig = (it, config) => {
+    Vditor.preview(document.getElementById('preview'), `## 💡 简介
 
-          after () {
-          },
-          renderers: {
-            renderHeading: (node, entering) => {
-              const id = Lute.GetHeadingID(node)
-              if (entering) {
-                return [
-                  `<h${node.__internal_object__.HeadingLevel} id="${id}" class="vditor__heading">
-<span class="prefix"></span><span>`,
-                  Lute.WalkContinue]
-              } else {
-                return [
-                  `</span><a id="vditorAnchor-${id}" class="vditor-anchor" href="#${id}"><svg viewBox="0 0 16 16" version="1.1" width="16" height="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h${node.__internal_object__.HeadingLevel}>`,
-                  Lute.WalkContinue]
-              }
-            },
-          },
-        })
-      })
+[Vditor](https://vditor.b3log.org) 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供[桌面版](https://github.com/88250/liandi)。
+
+![vditor.png](https://b3log.org/images/brand/vditor-512.png)`, config)
+
+    if (it) {
+      let configStr = JSON.stringify(config)
+      if (config.transform) {
+        configStr = '{transform(html){return html.replace(\'简介&lt;/h2>\', \'Vditor 介绍&lt;/h2>\')}}'
+      } else if (config.after) {
+        configStr = '{after(){alert(\'finished!\')}}'
+      } else if (config.renderers) {
+        configStr = `{
+renderers: {
+  renderHeading: (node, entering) => {
+    const id = Lute.GetHeadingID(node)
+    if (entering) {
+      return [\`&lt;h\${node.__internal_object__.HeadingLevel} id='\${id}' class='heading'>&lt;span class='heading__prefix'>&lt;/span>&lt;span class='heading__content'>\`, Lute.WalkContinue]
+    } else {
+      return [\`&lt;/span>&lt;span class='heading__suffix'>&lt;/span>&lt;a id='vditorAnchor-\${id}' class='vditor-anchor' href='#\${id}'>&lt;svg viewBox='0 0 16 16' version='1.1' width='16' height='16'>&lt;path fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'>&lt;/path>&lt;/svg>&lt;/a>&lt;/h\${node.__internal_object__.HeadingLevel}>\`, Lute.WalkContinue]
+    }
+}}}`
+      }
+
+      updateCode(it, `Vditor.preview(document.getElementById('preview'), \`## 💡 简介
+
+[Vditor](https://vditor.b3log.org) 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供[桌面版](https://github.com/88250/liandi)。
+
+![vditor.png](https://b3log.org/images/brand/vditor-512.png)\`, ${configStr})`)
+    }
   }
 
-  previewConfig({})
+  previewConfig()
 </script>
+<script src="../vditor.js"></script>
 </body>
 </html>

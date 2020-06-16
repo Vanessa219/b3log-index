@@ -32,7 +32,6 @@
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
     <style>
         .header {
@@ -41,7 +40,7 @@
             border-bottom: 1px solid #e1e4e8;
         }
 
-        #preview {
+        .wrapper {
             margin: 0 auto;
             max-width: 768px;
         }
@@ -56,7 +55,7 @@
             display: none;
             position: fixed;
             width: 186px;
-            top: 130px;
+            top: 117px;
             right: 20px;
             bottom: 86px;
             overflow: auto;
@@ -110,9 +109,20 @@
     Vditor.preview()，Vditor.outlineRender()
     <div class="fn-50"></div>
     <div id="preview"></div>
+    <div class="fn-100"></div>
+    <div id="vditorDemoCode" class="vditor-reset">
+        <pre><code class="javascript"></code></pre>
+    </div>
+    <div class="fn-100"></div>
+    <div class="fn-clear">
+        <h2 class="fn-left">参与讨论</h2>
+        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
+    </div>
+    <div class="fn-50"></div>
+    <div id="vditorComments"></div>
+    <div class="fn-100"></div>
 </div>
 <div id="outline"></div>
-<div class="fn-50"></div>
 <!-- end main -->
 
 <div class="footer">
@@ -126,9 +136,9 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/method.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
+<script id="vditorScript">
   const initRender = () => {
     fetch('markdown/zh_CN.md').
       then(response => response.text()).
@@ -188,5 +198,6 @@
   }
   initRender()
 </script>
+<script src="//vditor.b3log.org/vditor.js"></script>
 </body>
 </html>

@@ -61,13 +61,26 @@
     options.lang
     <div class="fn-50"></div>
     <div>
-        <button class="btn btn--small" onclick="setLang('zh_CN')">中文</button> &nbsp;
-        <button class="btn btn--small" onclick="setLang('en_US')">英文</button> &nbsp;
-        <button class="btn btn--small" onclick="setLang('ko_KR')">韩文</button> &nbsp;
+        <button class="btn btn--small" onclick="setLang(this, 'zh_CN')">中文</button> &nbsp;
+        <button class="btn btn--small" onclick="setLang(this, 'en_US')">英文</button> &nbsp;
+        <button class="btn btn--small" onclick="setLang(this, 'ko_KR')">韩文</button> &nbsp;
     </div>
     <div id="vditor"></div>
+    <div id="vditorDemoCode" class="vditor-reset">
+        <pre><code class="javascript">new Vditor('vditor', {
+  lang: 'zh_CN'
+})
+</code></pre>
+    </div>
+    <div class="fn-100"></div>
+    <div class="fn-clear">
+        <h2 class="fn-left">参与讨论</h2>
+        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
+    </div>
+    <div class="fn-50"></div>
+    <div id="vditorComments"></div>
+    <div class="fn-100"></div>
 </div>
-<div class="fn-50"></div>
 <!-- end main -->
 
 <div class="footer">
@@ -82,16 +95,21 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
-<script>
-  const setLang = (lang) => {
+<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
+<script id="vditorScript">
+  const setLang = (it, lang) => {
     document.getElementById('vditor').innerHTML = ''
     new Vditor('vditor', {
-      typewriterMode: true,
-      lang,
+      lang
     })
+    if (it) {
+      updateCode(it, `new Vditor('vditor', {
+  lang: '${lang}'
+})`)
+    }
   }
-  setLang('zh_CN')
+  setLang(undefined, 'zh_CN')
 </script>
+<script src="../vditor.js"></script>
 </body>
 </html>
