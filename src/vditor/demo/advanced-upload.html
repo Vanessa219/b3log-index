@@ -64,16 +64,18 @@
         <button class="btn btn--small" onclick="alert(vditor.isUploading())">检测文件是否在上传中</button>
     </div>
     <div id="vditor"></div>
-    <div class="fn-100"></div>
+    <div id="vditorDemoCode" class="vditor-reset">
+        <pre><code class="javascript"></code></pre>
+    </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
         <h2 class="fn-left">参与讨论</h2>
         <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
     </div>
     <div class="fn-50"></div>
-    <div id="comments"></div>
+    <div id="vditorComments"></div>
+    <div class="fn-100"></div>
 </div>
-<div class="fn-50"></div>
 <!-- end main -->
 
 <div class="footer">
@@ -109,29 +111,6 @@
     typewriterMode: true,
     value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行体验，前往 [API](https://hacpai.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
   })
-
-  const vcomment = new Vcomment({
-    id: 'comments',
-    postId: '1549638745630',
-    url: 'https://hacpai.com',
-    userName: 'Vanessa',
-    currentPage: 1,
-    vditor: {
-      hljsEnable: true,
-      hljsStyle: 'github',
-    },
-    after () {
-      const commentCntElement = document.getElementById('commentsCount')
-      document.getElementById('commentCnt').innerText = commentCntElement.innerText + ' 个讨论'
-      commentCntElement.nextSibling.remove()
-      commentCntElement.remove()
-    },
-    error () {
-      document.getElementById('comments').remove()
-    },
-  })
-
-  vcomment.render()
 </script>
 <script src="../vditor.js"></script>
 </body>
