@@ -16,7 +16,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 
 function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 
-function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e25) { throw _e25; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e26) { didErr = true; err = _e26; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e25) { throw _e25; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e26) { didErr = true; err = _e26; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -38,7 +38,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -94362,7 +94362,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function node_modulesVditorDistIndexMinJs(module, exports, __webpack_require__) {
     /*!
-     * Vditor v3.2.7 - A markdown editor written in TypeScript.
+     * Vditor v3.3.0 - A markdown editor written in TypeScript.
      *   
      * MIT License
      * 
@@ -94436,7 +94436,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return n.d(t, "a", t), t;
         }, n.o = function (e, t) {
           return Object.prototype.hasOwnProperty.call(e, t);
-        }, n.p = "", n(n.s = 67);
+        }, n.p = "", n(n.s = 73);
       }([function (e, t, n) {
         "use strict";
 
@@ -94466,29 +94466,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return getSelection().rangeCount > 0 && (t = getSelection().getRangeAt(0), e.isEqualNode(t.startContainer) || e.contains(t.startContainer)) || (e.focus(), (t = e.ownerDocument.createRange()).setStart(e, 0), t.collapse(!0)), t;
         },
             s = function s(e) {
-          var t,
-              n = e.parentElement.getBoundingClientRect(),
-              r = window.getSelection().getRangeAt(0);
+          var t = window.getSelection().getRangeAt(0);
+          if (!e.contains(t.startContainer) && !Object(o.e)(t.startContainer, "vditor-panel--none")) return {
+            left: 0,
+            top: 0
+          };
+          var n,
+              r = e.parentElement.getBoundingClientRect();
+          if (0 === t.getClientRects().length) {
+            if (3 === t.startContainer.nodeType) {
+              var i = t.startContainer.parentElement;
+              if (!(i && i.getClientRects().length > 0)) return {
+                left: 0,
+                top: 0
+              };
+              n = i.getClientRects()[0];
+            } else {
+              var a = t.startContainer.children;
 
-          if (0 === r.getClientRects().length) {
-            if (3 === r.startContainer.nodeType) return {
-              left: 0,
-              top: 0
-            };
-            var i = r.startContainer.children;
+              if (a[t.startOffset] && a[t.startOffset].getClientRects().length > 0 ? n = a[t.startOffset].getClientRects()[0] : t.startContainer.childNodes.length > 0 ? (t.selectNode(t.startContainer.childNodes[Math.max(0, t.startOffset - 1)]), n = t.getClientRects()[0], t.collapse(!1)) : n = t.startContainer.getClientRects()[0], !n) {
+                for (var s = t.startContainer.childNodes[t.startOffset]; !s.getClientRects || s.getClientRects && 0 === s.getClientRects().length;) {
+                  s = s.parentElement;
+                }
 
-            if (i[r.startOffset] && i[r.startOffset].getClientRects().length > 0 ? t = i[r.startOffset].getClientRects()[0] : r.startContainer.childNodes.length > 0 ? (r.selectNode(r.startContainer.childNodes[Math.max(0, r.startOffset - 1)]), t = r.getClientRects()[0], r.collapse(!1)) : t = r.startContainer.getClientRects()[0], !t) {
-              for (var o = r.startContainer.childNodes[r.startOffset]; !o.getClientRects || o.getClientRects && 0 === o.getClientRects().length;) {
-                o = o.parentElement;
+                n = s.getClientRects()[0];
               }
-
-              t = o.getClientRects()[0];
             }
-          } else t = r.getClientRects()[0];
-
+          } else n = t.getClientRects()[0];
           return {
-            left: t.left - n.left,
-            top: t.top - n.top
+            left: n.left - r.left,
+            top: n.top - r.top
           };
         },
             l = function l(e, t) {
@@ -94550,7 +94557,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (n) {
             if (n.previousElementSibling) {
               if (n.previousElementSibling.isSameNode(n.previousSibling)) {
-                if (n.previousElementSibling.lastChild) return t.setStartBefore(n), t.collapse(!0), c(t), !Object(i.b)() || "EM" !== n.previousElementSibling.tagName && "STRONG" !== n.previousElementSibling.tagName && "S" !== n.previousElementSibling.tagName || (t.insertNode(document.createTextNode(r.a.ZWSP)), t.collapse(!1)), void n.remove();
+                if (n.previousElementSibling.lastChild) return t.setStartBefore(n), t.collapse(!0), c(t), !Object(i.c)() || "EM" !== n.previousElementSibling.tagName && "STRONG" !== n.previousElementSibling.tagName && "S" !== n.previousElementSibling.tagName || (t.insertNode(document.createTextNode(r.a.ZWSP)), t.collapse(!1)), void n.remove();
                 t.setStartAfter(n.previousElementSibling);
               } else t.setStart(n.previousSibling, n.previousSibling.textContent.length);
             } else n.previousSibling ? t.setStart(n.previousSibling, n.previousSibling.textContent.length) : n.nextSibling ? 3 === n.nextSibling.nodeType ? t.setStart(n.nextSibling, 0) : t.setStartBefore(n.nextSibling) : t.setStart(n.parentElement, 0);
@@ -94572,18 +94579,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, function (e, t, n) {
         "use strict";
 
-        n.d(t, "e", function () {
+        n.d(t, "f", function () {
           return r;
-        }), n.d(t, "d", function () {
+        }), n.d(t, "e", function () {
           return i;
         }), n.d(t, "a", function () {
           return o;
-        }), n.d(t, "c", function () {
-          return a;
-        }), n.d(t, "f", function () {
-          return s;
         }), n.d(t, "b", function () {
+          return a;
+        }), n.d(t, "d", function () {
+          return s;
+        }), n.d(t, "g", function () {
           return l;
+        }), n.d(t, "c", function () {
+          return c;
         });
 
         var r = function r() {
@@ -94593,15 +94602,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
         },
             o = function o() {
+          try {
+            return "undefined" != typeof localStorage;
+          } catch (e) {
+            return !1;
+          }
+        },
+            a = function a() {
           return navigator.userAgent.indexOf("iPhone") > -1 ? "touchstart" : "click";
         },
-            a = function a(e) {
+            s = function s(e) {
           return navigator.platform.toUpperCase().indexOf("MAC") >= 0 ? !(!e.metaKey || e.ctrlKey) : !(e.metaKey || !e.ctrlKey);
         },
-            s = function s(e) {
+            l = function l(e) {
           return /Mac/.test(navigator.platform) || "iPhone" === navigator.platform ? (e = e.replace("ctrl", "⌘").replace("shift", "⇧").replace("alt", "⌥")).indexOf("⇧") > -1 && (e = i() ? e.replace(";", ":").replace("=", "+") : e.replace(":", ";").replace("+", "=").replace("_", "-")) : (e = e.replace("⌘", "ctrl").replace("⇧", "shift").replace("⌥", "alt")).indexOf("shift") > -1 && (e = e.replace(";", ":").replace("=", "+")), e;
         },
-            l = function l() {
+            c = function c() {
           return /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
         };
       }, function (e, t, n) {
@@ -94613,7 +94629,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return i;
         });
 
-        var r = "3.2.7",
+        var r = "3.3.0",
             i = function () {
           function e() {}
 
@@ -94740,6 +94756,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             "content-theme": "Content Theme Preview",
             copied: "Copied",
             copy: "Copy",
+            "delete-column": "Delete Row",
+            "delete-row": "Delete Column",
             devtools: "DevTools",
             down: "Down",
             downloadTip: "The browser does not support the download function",
@@ -94760,6 +94778,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             "inline-code": "Inline Code",
             "insert-after": "Insert line after",
             "insert-before": "Insert line Before",
+            "insert-column": "Insert Column",
+            "insert-row": "Insert Row",
             instantRendering: "Instant Rendering",
             italic: "Italic",
             language: "Language",
@@ -94810,6 +94830,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             "content-theme": "컨텐츠테마",
             copied: "복사완료",
             copy: "복사",
+            "delete-column": "열 삭제",
+            "delete-row": "행 삭제",
             devtools: "개발툴",
             down: "다운",
             downloadTip: "브라우저가 다운로드 기능을 지원하지 않습니다",
@@ -94830,6 +94852,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             "inline-code": "인라인코드",
             "insert-after": "블락 뒤로 입력",
             "insert-before": "블락 앞으로 입력",
+            "insert-column": "열 삽입",
+            "insert-row": "행 삽입",
             instantRendering: "타이포라",
             italic: "기울임꼴",
             language: "언어",
@@ -94880,6 +94904,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             "content-theme": "内容主题预览",
             copied: "已复制",
             copy: "复制",
+            "delete-column": "删除列",
+            "delete-row": "删除行",
             devtools: "开发者工具",
             down: "下",
             downloadTip: "该浏览器不支持下载功能",
@@ -94895,11 +94921,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             headings: "标题",
             help: "帮助",
             imageURL: "图片地址",
-            indent: "增加缩进",
+            indent: "列表缩进",
             info: "关于",
             "inline-code": "行内代码",
             "insert-after": "末尾插入行",
             "insert-before": "起始插入行",
+            "insert-column": "插入列",
+            "insert-row": "插入行",
             instantRendering: "即时渲染",
             italic: "斜体",
             language: "语言",
@@ -94910,7 +94938,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             more: "更多",
             nameEmpty: "文件名不能为空",
             "ordered-list": "有序列表",
-            outdent: "减少缩进",
+            outdent: "列表反向缩进",
             outline: "大纲",
             over: "超过",
             performanceTip: "实时预览需 ${x}ms，可点击编辑 & 预览按钮进行关闭",
@@ -95057,10 +95085,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var n = e.querySelectorAll(".language-echarts");
           n.length > 0 && Object(i.a)(t + "/dist/js/echarts/echarts.min.js", "vditorEchartsScript").then(function () {
             n.forEach(function (e) {
-              try {
+              var t = e.innerText.trim();
+              if (t) try {
                 if ("true" === e.getAttribute("data-processed")) return;
-                var t = JSON.parse(e.innerText.trim());
-                echarts.init(e).setOption(t), e.setAttribute("data-processed", "true");
+                var n = JSON.parse(t);
+                echarts.init(e).setOption(n), e.setAttribute("data-processed", "true");
               } catch (t) {
                 e.className = "vditor-reset--error", e.innerHTML = "echarts render error: <br>" + t;
               }
@@ -95074,7 +95103,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return s;
         });
 
-        var r = n(26),
+        var r = n(25),
             i = n.n(r),
             o = n(4),
             a = n(8),
@@ -95269,11 +95298,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var n = e.querySelectorAll(".language-mindmap");
           n.length > 0 && Object(i.a)(t + "/dist/js/echarts/echarts.min.js", "vditorEchartsScript").then(function () {
             n.forEach(function (e) {
-              try {
+              var t = e.getAttribute("data-code");
+              if (t) try {
                 if ("true" === e.getAttribute("data-processed")) return;
-                var t = {
+                var n = {
                   series: [{
-                    data: [JSON.parse(decodeURIComponent(e.getAttribute("data-code")))],
+                    data: [JSON.parse(decodeURIComponent(t))],
                     initialTreeDepth: -1,
                     itemStyle: {
                       borderWidth: 0,
@@ -95306,7 +95336,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     triggerOn: "mousemove"
                   }
                 };
-                echarts.init(e).setOption(t), e.setAttribute("data-processed", "true");
+                echarts.init(e).setOption(n), e.setAttribute("data-processed", "true");
               } catch (t) {
                 e.className = "vditor-reset--error", e.innerHTML = "mindmap render error: <br>" + t;
               }
@@ -95325,7 +95355,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var t = e.getAttribute("href");
             t && (t.match(/^.+.(mp4|m4v|ogg|ogv|webm)$/) ? function (e, t) {
               e.insertAdjacentHTML("afterend", '<video controls="controls" src="' + t + '"></video>'), e.remove();
-            }(e, t) : t.match(/^.+.(mp3|wav)$/) ? function (e, t) {
+            }(e, t) : t.match(/^.+.(mp3|wav|flac)$/) ? function (e, t) {
               e.insertAdjacentHTML("afterend", '<audio controls="controls" src="' + t + '"></audio>'), e.remove();
             }(e, t) : function (e, t) {
               var n = t.match(/\/\/(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w|-]{11})(?:(?:[\?&]t=)(\S+))?/),
@@ -95334,8 +95364,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   o = t.match(/(?:www\.|\/\/)coub\.com\/view\/(\w+)/),
                   a = t.match(/(?:www\.|\/\/)facebook\.com\/([^\/]+)\/videos\/([0-9]+)/),
                   s = t.match(/.+dailymotion.com\/(video|hub)\/(\w+)\?/),
-                  l = t.match(/(?:www\.|\/\/)bilibili\.com\/video\/(\w+)/);
-              n && 11 === n[1].length ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video" src="//www.youtube.com/embed/' + n[1] + (n[2] ? "?start=" + n[2] : "") + '"></iframe>'), e.remove()) : r && r[1] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video" src="//player.youku.com/embed/' + r[1] + '"></iframe>'), e.remove()) : i && i[1] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video" src="https://v.qq.com/txp/iframe/player.html?vid=' + i[1] + '"></iframe>'), e.remove()) : o && o[1] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video"\n src="//coub.com/embed/' + o[1] + '?muted=false&autostart=false&originalSize=true&startWithHD=true"></iframe>'), e.remove()) : a && a[0] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video"\n src="https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(a[0]) + '"></iframe>'), e.remove()) : s && s[2] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video"\n src="https://www.dailymotion.com/embed/video/' + s[2] + '"></iframe>'), e.remove()) : l && l[1] && (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video"\n src="//player.bilibili.com/player.html?bvid=' + l[1] + '"></iframe>'), e.remove());
+                  l = t.match(/(?:www\.|\/\/)bilibili\.com\/video\/(\w+)/),
+                  c = t.match(/(?:www\.|\/\/)ted\.com\/talks\/(\w+)/);
+              n && 11 === n[1].length ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video" src="//www.youtube.com/embed/' + n[1] + (n[2] ? "?start=" + n[2] : "") + '"></iframe>'), e.remove()) : r && r[1] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video" src="//player.youku.com/embed/' + r[1] + '"></iframe>'), e.remove()) : i && i[1] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video" src="https://v.qq.com/txp/iframe/player.html?vid=' + i[1] + '"></iframe>'), e.remove()) : o && o[1] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video"\n src="//coub.com/embed/' + o[1] + '?muted=false&autostart=false&originalSize=true&startWithHD=true"></iframe>'), e.remove()) : a && a[0] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video"\n src="https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(a[0]) + '"></iframe>'), e.remove()) : s && s[2] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video"\n src="https://www.dailymotion.com/embed/video/' + s[2] + '"></iframe>'), e.remove()) : l && l[1] ? (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video"\n src="//player.bilibili.com/player.html?bvid=' + l[1] + '"></iframe>'), e.remove()) : c && c[1] && (e.insertAdjacentHTML("afterend", '<iframe class="iframe__video" src="//embed.ted.com/talks/' + c[1] + '"></iframe>'), e.remove());
             }(e, t));
           });
         };
@@ -95400,12 +95431,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var r = function r(e) {
           var t = Lute.New();
-          return t.PutEmojis(e.emojis), t.SetEmojiSite(e.emojiSite), t.SetHeadingAnchor(e.headingAnchor), t.SetInlineMathAllowDigitAfterOpenMarker(e.inlineMathDigit), t.SetAutoSpace(e.autoSpace), t.SetToC(e.toc), t.SetFootnotes(e.footnotes), t.SetChinesePunct(e.chinesePunct), t.SetFixTermTypo(e.fixTermTypo), t.SetVditorCodeBlockPreview(e.codeBlockPreview), t.SetSetext(e.setext), t.SetSanitize(e.sanitize), t.SetChineseParagraphBeginningSpace(e.paragraphBeginningSpace), t.SetRenderListMarker(e.listMarker), e.lazyLoadImage && t.SetImageLazyLoading(e.lazyLoadImage), t;
+          return t.PutEmojis(e.emojis), t.SetEmojiSite(e.emojiSite), t.SetHeadingAnchor(e.headingAnchor), t.SetInlineMathAllowDigitAfterOpenMarker(e.inlineMathDigit), t.SetAutoSpace(e.autoSpace), t.SetToC(e.toc), t.SetFootnotes(e.footnotes), t.SetChinesePunct(e.chinesePunct), t.SetFixTermTypo(e.fixTermTypo), t.SetVditorCodeBlockPreview(e.codeBlockPreview), t.SetSetext(e.setext), t.SetSanitize(e.sanitize), t.SetChineseParagraphBeginningSpace(e.paragraphBeginningSpace), t.SetRenderListMarker(e.listMarker), t.SetLinkBase(e.linkBase), e.lazyLoadImage && t.SetImageLazyLoading(e.lazyLoadImage), t;
         };
       }, function (e, t) {
         e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M11 0h-6c-0.553 0-1 0.448-1 1v30c0 0.553 0.447 1 1 1h6c0.553 0 1-0.447 1-1v-30c0-0.552-0.447-1-1-1zM27 0h-6c-0.553 0-1 0.448-1 1v30c0 0.553 0.447 1 1 1h6c0.553 0 1-0.447 1-1v-30c0-0.552-0.447-1-1-1z"></path> </svg> ';
-      }, function (e, t) {
-        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M6.857 10.857v10.286c0 0.304-0.268 0.571-0.571 0.571-0.143 0-0.304-0.054-0.411-0.161l-5.143-5.143c-0.107-0.107-0.161-0.268-0.161-0.411s0.054-0.304 0.161-0.411l5.143-5.143c0.107-0.107 0.268-0.161 0.411-0.161 0.304 0 0.571 0.268 0.571 0.571zM32 24.571v3.429c0 0.304-0.268 0.571-0.571 0.571h-30.857c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h30.857c0.304 0 0.571 0.268 0.571 0.571zM32 17.714v3.429c0 0.304-0.268 0.571-0.571 0.571h-19.429c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h19.429c0.304 0 0.571 0.268 0.571 0.571zM32 10.857v3.429c0 0.304-0.268 0.571-0.571 0.571h-19.429c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h19.429c0.304 0 0.571 0.268 0.571 0.571zM32 4v3.429c0 0.304-0.268 0.571-0.571 0.571h-30.857c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h30.857c0.304 0 0.571 0.268 0.571 0.571z"></path> </svg> ';
       }, function (e, t) {
         function n() {
           this.Diff_Timeout = 1, this.Diff_EditCost = 4, this.Match_Threshold = .5, this.Match_Distance = 1e3, this.Patch_DeleteThreshold = .5, this.Patch_Margin = 4, this.Match_MaxBits = 32;
@@ -96253,7 +96282,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             };
           }
         },
-            L = function L(e) {
+            T = function T(e) {
           var t = {
             anchor: 0,
             cdn: "https://cdn.jsdelivr.net/npm/vditor@" + f.b,
@@ -96271,10 +96300,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               codeBlockPreview: !0,
               fixTermTypo: !1,
               footnotes: !0,
+              linkBase: "",
               listMarker: !1,
               paragraphBeginningSpace: !1,
               sanitize: !0,
-              setext: !0,
+              setext: !1,
               theme: "light",
               toc: !1
             },
@@ -96290,7 +96320,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return (null == e ? void 0 : e.hljs) && (e.hljs = Object.assign({}, t.hljs, e.hljs)), (null == e ? void 0 : e.speech) && (e.speech = Object.assign({}, t.speech, e.speech)), (null == e ? void 0 : e.math) && (e.math = Object.assign({}, t.math, e.math)), (null == e ? void 0 : e.markdown) && (e.markdown = Object.assign({}, t.markdown, e.markdown)), Object.assign(t, e);
         },
             x = function x(e, t) {
-          var n = L(t);
+          var n = T(t);
           return Object(v.a)(n.cdn + "/dist/js/lute/lute.min.js", "vditorLuteScript").then(function () {
             var r = Object(g.a)({
               autoSpace: n.markdown.autoSpace,
@@ -96303,26 +96333,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               headingAnchor: 0 !== n.anchor,
               inlineMathDigit: n.math.inlineDigit,
               lazyLoadImage: n.lazyLoadImage,
+              linkBase: n.markdown.linkBase,
               listMarker: n.markdown.listMarker,
               paragraphBeginningSpace: n.markdown.paragraphBeginningSpace,
               sanitize: n.markdown.sanitize,
               setext: n.markdown.setext,
               toc: n.markdown.toc
             });
-            return t.renderers && r.SetJSRenderers({
+            return (null == t ? void 0 : t.renderers) && r.SetJSRenderers({
               renderers: {
                 Md2HTML: t.renderers
               }
             }), r.Md2HTML(e);
           });
         },
-            T = function T(e, t, n) {
+            L = function L(e, t, n) {
           return O(void 0, void 0, void 0, function () {
             var h, f;
             return k(this, function (v) {
               switch (v.label) {
                 case 0:
-                  return h = L(n), [4, x(t, h)];
+                  return h = T(n), [4, x(t, h)];
 
                 case 1:
                   return f = v.sent(), h.transform && (f = h.transform(f)), e.innerHTML = f, e.classList.add("vditor-reset"), Object(m.a)(h.markdown.theme, h.cdn), 1 === h.anchor && e.classList.add("vditor-reset--anchor"), Object(o.a)(e, h.lang), Object(s.a)(h.hljs, e, h.cdn), Object(c.a)(e, {
@@ -96344,22 +96375,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           });
         },
-            _ = n(19),
-            j = function () {
+            j = n(19),
+            _ = function () {
           function e() {}
 
-          return e.codeRender = o.a, e.graphvizRender = a.a, e.highlightRender = s.a, e.mathRender = c.a, e.mermaidRender = u.a, e.chartRender = i.a, e.abcRender = r.a, e.mindmapRender = p.a, e.outlineRender = h.a, e.mediaRender = d.a, e.speechRender = S, e.lazyLoadImageRender = l, e.md2html = x, e.preview = T, e.setCodeTheme = _.a, e.setContentTheme = m.a, e;
+          return e.codeRender = o.a, e.graphvizRender = a.a, e.highlightRender = s.a, e.mathRender = c.a, e.mermaidRender = u.a, e.chartRender = i.a, e.abcRender = r.a, e.mindmapRender = p.a, e.outlineRender = h.a, e.mediaRender = d.a, e.speechRender = S, e.lazyLoadImageRender = l, e.md2html = x, e.preview = L, e.setCodeTheme = j.a, e.setContentTheme = m.a, e;
         }();
 
-        t["default"] = j;
+        t["default"] = _;
       }, function (e, t) {
         e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M32 6.857v-2.286c0-0.625-0.518-1.143-1.143-1.143h-29.714c-0.625 0-1.143 0.518-1.143 1.143v2.286c0 0.625 0.518 1.143 1.143 1.143h29.714c0.625 0 1.143-0.518 1.143-1.143zM25.143 13.714v-2.286c0-0.625-0.518-1.143-1.143-1.143h-16c-0.625 0-1.143 0.518-1.143 1.143v2.286c0 0.625 0.518 1.143 1.143 1.143h16c0.625 0 1.143-0.518 1.143-1.143zM29.714 20.571v-2.286c0-0.625-0.518-1.143-1.143-1.143h-25.143c-0.625 0-1.143 0.518-1.143 1.143v2.286c0 0.625 0.518 1.143 1.143 1.143h25.143c0.625 0 1.143-0.518 1.143-1.143zM22.857 27.429v-2.286c0-0.625-0.518-1.143-1.143-1.143h-11.429c-0.625 0-1.143 0.518-1.143 1.143v2.286c0 0.625 0.518 1.143 1.143 1.143h11.429c0.625 0 1.143-0.518 1.143-1.143z"></path> </svg> ';
       }, function (e, t) {
-        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M6.286 16c0 0.143-0.054 0.304-0.161 0.411l-5.143 5.143c-0.107 0.107-0.268 0.161-0.411 0.161-0.304 0-0.571-0.268-0.571-0.571v-10.286c0-0.304 0.268-0.571 0.571-0.571 0.143 0 0.304 0.054 0.411 0.161l5.143 5.143c0.107 0.107 0.161 0.268 0.161 0.411zM32 24.571v3.429c0 0.304-0.268 0.571-0.571 0.571h-30.857c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h30.857c0.304 0 0.571 0.268 0.571 0.571zM32 17.714v3.429c0 0.304-0.268 0.571-0.571 0.571h-19.429c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h19.429c0.304 0 0.571 0.268 0.571 0.571zM32 10.857v3.429c0 0.304-0.268 0.571-0.571 0.571h-19.429c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h19.429c0.304 0 0.571 0.268 0.571 0.571zM32 4v3.429c0 0.304-0.268 0.571-0.571 0.571h-30.857c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h30.857c0.304 0 0.571 0.268 0.571 0.571z"></path> </svg> ';
-      }, function (e, t) {
         e.exports = '<svg xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M21.334 16.532q0-0.233-0.15-0.384l-5.867-5.867q-0.15-0.15-0.384-0.15t-0.384 0.15l-5.85 5.85q-0.167 0.2-0.167 0.399 0 0.233 0.15 0.384t0.384 0.15h3.733v5.867q0 0.217 0.159 0.375t0.375 0.159h3.2q0.217 0 0.375-0.159t0.159-0.375v-5.867h3.734q0.217 0 0.375-0.159t0.159-0.375zM32 21.332q0 2.65-1.875 4.525t-4.525 1.875h-18.133q-3.083 0-5.275-2.192t-2.192-5.275q0-2.166 1.167-4t3.134-2.75q-0.034-0.5-0.034-0.717 0-3.533 2.5-6.033t6.033-2.5q2.6 0 4.759 1.45t3.142 3.849q1.184-1.033 2.767-1.033 1.767 0 3.017 1.25t1.25 3.017q0 1.267-0.683 2.3 2.166 0.516 3.558 2.258t1.392 3.975z"></path> </svg>';
       }, function (e, t) {
+        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M6.857 10.857v10.286c0 0.304-0.268 0.571-0.571 0.571-0.143 0-0.304-0.054-0.411-0.161l-5.143-5.143c-0.107-0.107-0.161-0.268-0.161-0.411s0.054-0.304 0.161-0.411l5.143-5.143c0.107-0.107 0.268-0.161 0.411-0.161 0.304 0 0.571 0.268 0.571 0.571zM32 24.571v3.429c0 0.304-0.268 0.571-0.571 0.571h-30.857c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h30.857c0.304 0 0.571 0.268 0.571 0.571zM32 17.714v3.429c0 0.304-0.268 0.571-0.571 0.571h-19.429c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h19.429c0.304 0 0.571 0.268 0.571 0.571zM32 10.857v3.429c0 0.304-0.268 0.571-0.571 0.571h-19.429c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h19.429c0.304 0 0.571 0.268 0.571 0.571zM32 4v3.429c0 0.304-0.268 0.571-0.571 0.571h-30.857c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h30.857c0.304 0 0.571 0.268 0.571 0.571z"></path> </svg> ';
+      }, function (e, t) {
+        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M32 25.143v2.286c0 0.625-0.518 1.143-1.143 1.143h-29.714c-0.625 0-1.143-0.518-1.143-1.143v-2.286c0-0.625 0.518-1.143 1.143-1.143h29.714c0.625 0 1.143 0.518 1.143 1.143zM25.143 18.286v2.286c0 0.625-0.518 1.143-1.143 1.143h-22.857c-0.625 0-1.143-0.518-1.143-1.143v-2.286c0-0.625 0.518-1.143 1.143-1.143h22.857c0.625 0 1.143 0.518 1.143 1.143zM29.714 11.429v2.286c0 0.625-0.518 1.143-1.143 1.143h-27.429c-0.625 0-1.143-0.518-1.143-1.143v-2.286c0-0.625 0.518-1.143 1.143-1.143h27.429c0.625 0 1.143 0.518 1.143 1.143zM22.857 4.571v2.286c0 0.625-0.518 1.143-1.143 1.143h-20.571c-0.625 0-1.143-0.518-1.143-1.143v-2.286c0-0.625 0.518-1.143 1.143-1.143h20.571c0.625 0 1.143 0.518 1.143 1.143z"></path> </svg> ';
+      }, function (e, t) {
+        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M32 25.143v2.286c0 0.625-0.518 1.143-1.143 1.143h-29.714c-0.625 0-1.143-0.518-1.143-1.143v-2.286c0-0.625 0.518-1.143 1.143-1.143h29.714c0.625 0 1.143 0.518 1.143 1.143zM32 18.286v2.286c0 0.625-0.518 1.143-1.143 1.143h-22.857c-0.625 0-1.143-0.518-1.143-1.143v-2.286c0-0.625 0.518-1.143 1.143-1.143h22.857c0.625 0 1.143 0.518 1.143 1.143zM32 11.429v2.286c0 0.625-0.518 1.143-1.143 1.143h-27.429c-0.625 0-1.143-0.518-1.143-1.143v-2.286c0-0.625 0.518-1.143 1.143-1.143h27.429c0.625 0 1.143 0.518 1.143 1.143zM32 4.571v2.286c0 0.625-0.518 1.143-1.143 1.143h-20.571c-0.625 0-1.143-0.518-1.143-1.143v-2.286c0-0.625 0.518-1.143 1.143-1.143h20.571c0.625 0 1.143 0.518 1.143 1.143z"></path> </svg> ';
+      }, function (e, t) {
+        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M9.598 29.866v-16.005c0-0.589-0.478-1.067-1.067-1.067s-1.067 0.478-1.067 1.067v1.067h-4.268v-4.268h1.067c0.589 0 1.067-0.478 1.067-1.067s-0.478-1.067-1.067-1.067h-1.067c-1.178 0-2.134 0.954-2.134 2.134v19.206c0 1.18 0.956 2.134 2.134 2.134h4.268c1.178 0 2.134-0.954 2.134-2.134zM3.196 23.464v-6.402h4.268v6.402h-4.268zM3.196 29.866v-4.268h4.268v4.268h-4.268zM20.268 9.593c0 0.589 0.478 1.067 1.067 1.067h1.067v4.268h-4.268v-1.067c0-0.589-0.478-1.067-1.067-1.067s-1.067 0.478-1.067 1.067v16.005c0 1.18 0.956 2.134 2.134 2.134h10.67c1.18 0 2.134-0.954 2.134-2.134v-19.206c0-1.18-0.954-2.134-2.134-2.134h-7.469c-0.589 0-1.067 0.478-1.067 1.067zM28.804 25.598v4.268h-4.268v-4.268h4.268zM22.402 25.598v4.268h-4.268v-4.268h4.268zM28.804 17.062v6.402h-4.268v-6.402h4.268zM22.402 17.062v6.402h-4.268v-6.402h4.268zM28.804 10.66v4.268h-4.268v-4.268h4.268zM12.799 3.951l-3.651-3.651c-0.397-0.397-1.041-0.397-1.438 0-0.399 0.399-0.399 1.041 0 1.44l3.651 3.651-3.587 3.587c-0.397 0.397-0.397 1.041 0 1.438 0.397 0.399 1.041 0.399 1.438 0l3.587-3.589 3.587 3.587c0.397 0.399 1.041 0.399 1.438 0 0.397-0.397 0.397-1.041 0-1.438l-3.587-3.589 3.649-3.649c0.399-0.399 0.399-1.041 0-1.44-0.397-0.397-1.041-0.397-1.438 0l-3.649 3.653z"></path> </svg> ';
+      }, function (e, t) {
+        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M2.134 9.598h16.005c0.589 0 1.067-0.478 1.067-1.067s-0.478-1.067-1.067-1.067h-1.067v-4.268h4.268v1.067c0 0.589 0.478 1.067 1.067 1.067s1.067-0.478 1.067-1.067v-1.067c0-1.178-0.954-2.134-2.134-2.134h-19.206c-1.18 0-2.134 0.956-2.134 2.134v4.268c0 1.178 0.954 2.134 2.134 2.134zM8.536 3.196h6.402v4.268h-6.402v-4.268zM2.134 3.196h4.268v4.268h-4.268v-4.268zM22.407 20.268c-0.589 0-1.067 0.478-1.067 1.067v1.067h-4.268v-4.268h1.067c0.589 0 1.067-0.478 1.067-1.067s-0.478-1.067-1.067-1.067h-16.005c-1.18 0-2.134 0.956-2.134 2.134v10.67c0 1.18 0.954 2.134 2.134 2.134h19.206c1.18 0 2.134-0.954 2.134-2.134v-7.469c0-0.589-0.478-1.067-1.067-1.067zM6.402 28.804h-4.268v-4.268h4.268v4.268zM6.402 22.402h-4.268v-4.268h4.268v4.268zM14.938 28.804h-6.402v-4.268h6.402v4.268zM14.938 22.402h-6.402v-4.268h6.402v4.268zM21.34 28.804h-4.268v-4.268h4.268v4.268zM28.049 12.799l3.651-3.651c0.397-0.397 0.397-1.041 0-1.438-0.399-0.399-1.041-0.399-1.44 0l-3.651 3.651-3.587-3.587c-0.397-0.397-1.041-0.397-1.438 0-0.399 0.397-0.399 1.041 0 1.438l3.589 3.587-3.587 3.587c-0.399 0.397-0.399 1.041 0 1.438 0.397 0.397 1.041 0.397 1.438 0l3.589-3.587 3.649 3.649c0.399 0.399 1.041 0.399 1.44 0 0.397-0.397 0.397-1.041 0-1.438l-3.653-3.649z"></path> </svg> ';
+      }, function (e, t) {
         e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M31.628 11.185l-14.734 14.714c-0.496 0.496-1.291 0.496-1.787 0l-14.734-14.714c-0.496-0.496-0.496-1.311 0-1.807l3.296-3.276c0.496-0.496 1.291-0.496 1.787 0l10.544 10.544 10.544-10.544c0.496-0.496 1.291-0.496 1.787 0l3.296 3.276c0.496 0.496 0.496 1.311 0 1.807z"></path> </svg> ';
+      }, function (e, t) {
+        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M9.601 29.867v-19.197c0-1.18-0.956-2.133-2.133-2.133h-4.266c-1.177 0-2.133 0.953-2.133 2.133v19.197c0 1.18 0.956 2.133 2.133 2.133h4.266c1.177 0 2.133-0.953 2.133-2.133zM3.202 14.936v-4.266h4.266v4.266h-4.266zM3.202 23.468v-6.399h4.266v6.399h-4.266zM3.202 29.867v-4.266h4.266v4.266h-4.266zM16 10.669v19.197c0 1.18 0.956 2.133 2.133 2.133h10.665c1.18 0 2.133-0.953 2.133-2.133v-19.197c0-1.18-0.953-2.133-2.133-2.133h-10.665c-1.177 0-2.133 0.953-2.133 2.133zM28.798 25.601v4.266h-4.266v-4.266h4.266zM22.399 25.601v4.266h-4.266v-4.266h4.266zM28.798 17.069v6.399h-4.266v-6.399h4.266zM22.399 17.069v6.399h-4.266v-6.399h4.266zM28.798 10.669v4.266h-4.266v-4.266h4.266zM22.399 10.669v4.266h-4.266v-4.266h4.266zM7.713 2.276l3.75 5.606c0.621 0.926 2.058 0.926 2.679 0l3.75-5.606c0.661-0.99-0.094-2.276-1.34-2.276h-7.5c-1.246 0-2.001 1.288-1.34 2.276z"></path> </svg> ';
+      }, function (e, t) {
+        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M2.133 9.601h19.197c1.18 0 2.133-0.956 2.133-2.133v-4.266c0-1.177-0.953-2.133-2.133-2.133h-19.197c-1.18 0-2.133 0.956-2.133 2.133v4.266c0 1.177 0.953 2.133 2.133 2.133zM17.064 3.202h4.266v4.266h-4.266v-4.266zM8.532 3.202h6.399v4.266h-6.399v-4.266zM2.133 3.202h4.266v4.266h-4.266v-4.266zM21.331 16h-19.197c-1.18 0-2.133 0.956-2.133 2.133v10.665c0 1.18 0.953 2.133 2.133 2.133h19.197c1.18 0 2.133-0.953 2.133-2.133v-10.665c0-1.177-0.953-2.133-2.133-2.133zM6.399 28.798h-4.266v-4.266h4.266v4.266zM6.399 22.399h-4.266v-4.266h4.266v4.266zM14.931 28.798h-6.399v-4.266h6.399v4.266zM14.931 22.399h-6.399v-4.266h6.399v4.266zM21.331 28.798h-4.266v-4.266h4.266v4.266zM21.331 22.399h-4.266v-4.266h4.266v4.266zM29.724 7.713l-5.606 3.75c-0.926 0.621-0.926 2.058 0 2.679l5.606 3.75c0.99 0.661 2.276-0.094 2.276-1.34v-7.5c0-1.246-1.288-2.001-2.276-1.34z"></path> </svg> ';
       }, function (e, t) {
         e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M5.76 28.16c0 2.12 1.719 3.84 3.84 3.84h12.8c2.12 0 3.84-1.72 3.84-3.84l2.56-20.48h-25.6l2.56 20.48zM19.84 11.52h2.56v16.64h-2.56v-16.64zM14.72 11.52h2.56v16.64h-2.56v-16.64zM9.6 11.52h2.56v16.64h-2.56v-16.64zM28.16 2.56h-8.32c0 0-0.573-2.56-1.28-2.56h-5.12c-0.708 0-1.28 2.56-1.28 2.56h-8.32c-1.061 0-1.92 0.859-1.92 1.92s0 1.92 0 1.92h28.16c0 0 0-0.859 0-1.92s-0.86-1.92-1.92-1.92z"></path> </svg> ';
       }, function (e, t) {
@@ -96399,6 +96442,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, function (e, t) {
         e.exports = '<svg xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M19.652 25v6c0 0.55-0.45 1-1 1h-6c-0.55 0-1-0.45-1-1v-6c0-0.55 0.45-1 1-1h6c0.55 0 1 0.45 1 1zM27.552 10c0 4.75-3.225 6.575-5.6 7.9-1.475 0.85-2.4 2.575-2.4 3.3v0c0 0.55-0.425 1.2-1 1.2h-6c-0.55 0-0.9-0.85-0.9-1.4v-1.125c0-3.025 3-5.625 5.2-6.625 1.925-0.875 2.725-1.7 2.725-3.3 0-1.4-1.825-2.65-3.85-2.65-1.125 0-2.15 0.35-2.7 0.725-0.6 0.425-1.2 1.025-2.675 2.875-0.2 0.25-0.5 0.4-0.775 0.4-0.225 0-0.425-0.075-0.625-0.2l-4.1-3.125c-0.425-0.325-0.525-0.875-0.25-1.325 2.7-4.475 6.5-6.65 11.6-6.65 5.35 0 11.35 4.275 11.35 10z"></path> </svg> ';
       }, function (e, t) {
+        e.exports = '<svg version=1.1 xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M6.286 16c0 0.143-0.054 0.304-0.161 0.411l-5.143 5.143c-0.107 0.107-0.268 0.161-0.411 0.161-0.304 0-0.571-0.268-0.571-0.571v-10.286c0-0.304 0.268-0.571 0.571-0.571 0.143 0 0.304 0.054 0.411 0.161l5.143 5.143c0.107 0.107 0.161 0.268 0.161 0.411zM32 24.571v3.429c0 0.304-0.268 0.571-0.571 0.571h-30.857c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h30.857c0.304 0 0.571 0.268 0.571 0.571zM32 17.714v3.429c0 0.304-0.268 0.571-0.571 0.571h-19.429c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h19.429c0.304 0 0.571 0.268 0.571 0.571zM32 10.857v3.429c0 0.304-0.268 0.571-0.571 0.571h-19.429c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h19.429c0.304 0 0.571 0.268 0.571 0.571zM32 4v3.429c0 0.304-0.268 0.571-0.571 0.571h-30.857c-0.304 0-0.571-0.268-0.571-0.571v-3.429c0-0.304 0.268-0.571 0.571-0.571h30.857c0.304 0 0.571 0.268 0.571 0.571z"></path> </svg> ';
+      }, function (e, t) {
         e.exports = '<svg xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M23.273 27.636v2.909c0 0.795-0.659 1.455-1.455 1.455h-11.636c-0.795 0-1.455-0.659-1.455-1.455v-2.909c0-0.795 0.659-1.455 1.455-1.455h1.455v-8.727h-1.455c-0.795 0-1.455-0.659-1.455-1.455v-2.909c0-0.795 0.659-1.455 1.455-1.455h8.727c0.795 0 1.455 0.659 1.455 1.455v13.091h1.455c0.795 0 1.455 0.659 1.455 1.455zM20.364 1.455v4.364c0 0.795-0.659 1.455-1.455 1.455h-5.818c-0.795 0-1.455-0.659-1.455-1.455v-4.364c0-0.795 0.659-1.455 1.455-1.455h5.818c0.795 0 1.455 0.659 1.455 1.455z"></path> </svg> ';
       }, function (e, t) {
         e.exports = '<svg xmlns=http://www.w3.org/2000/svg width=32 height=32 viewBox="0 0 32 32"> <path d="M18.133 23.467l3.2 3.2 10.667-10.667-10.667-10.667-3.2 3.2 7.467 7.467z"></path> <path d="M13.867 8.533l-3.2-3.2-10.667 10.667 10.667 10.667 3.2-3.2-7.467-7.467z"></path> </svg> ';
@@ -96437,7 +96482,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var _r2,
             i,
-            o = n(27),
+            o = n(26),
             a = n(2),
             s = n(8),
             l = function l(e) {
@@ -96548,7 +96593,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }), e.toolbar.elements.emoji && (e.toolbar.elements.emoji.lastElementChild.style.display = "none")), t.includes("hint") && (e.hint.element.style.display = "none"), e.wysiwyg.popover && t.includes("popover") && (e.wysiwyg.popover.style.display = "none");
         },
             y = function y(e, t, n, r) {
-          n.addEventListener(Object(u.a)(), function (r) {
+          n.addEventListener(Object(u.b)(), function (r) {
             r.preventDefault(), r.stopPropagation(), n.classList.contains(a.a.CLASS_MENU_DISABLED) || (e.toolbar.element.querySelectorAll(".vditor-hint--current").forEach(function (e) {
               e.classList.remove("vditor-hint--current");
             }), "block" === t.style.display ? t.style.display = "none" : (b(e, ["subToolbar", "hint", "popover"], n.parentElement.parentElement), n.classList.contains("vditor-tooltipped") || n.classList.add("vditor-hint--current"), t.style.display = "block", e.toolbar.element.getBoundingClientRect().right - n.getBoundingClientRect().right < 250 ? t.classList.add("vditor-panel--left") : t.classList.remove("vditor-panel--left")));
@@ -96569,17 +96614,130 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }, 200);
         },
-            O = n(4),
-            k = function k(e, t) {
+            O = function O(e, t, n, r) {
+          r && console.log(e + " - " + n + ": " + t);
+        },
+            k = n(10),
+            T = n(11),
+            x = n(12),
+            L = n(13),
+            j = n(14),
+            _ = n(15),
+            C = n(16),
+            A = n(17),
+            N = function N(e, t, n) {
+          void 0 === n && (n = "sv");
+          var r = document.createElement("div");
+          r.innerHTML = e;
+          var i = !1;
+          1 === r.childElementCount && r.lastElementChild.style.fontFamily.indexOf("monospace") > -1 && (i = !0);
+          var o = r.querySelectorAll("pre");
+
+          if (1 === r.childElementCount && 1 === o.length && "vditor-wysiwyg" !== o[0].className && "vditor-textarea" !== o[0].className && (i = !0), 0 === e.indexOf('\n<p class="p1">') && (i = !0), i) {
+            var a = t || e;
+            return /\n/.test(a) || 1 === o.length ? "wysiwyg" === n ? '<div class="vditor-wysiwyg__block" data-block="0" data-type="code-block"><pre><code>' + a.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "<wbr></code></pre></div>" : "ir" === n ? "```\n" + a.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "\n```" : "```\n" + a + "\n```" : "wysiwyg" === n ? "<code>" + a.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "</code><wbr>" : "`" + a + "`";
+          }
+
+          return !1;
+        },
+            H = function H(e, t) {
+          if (e) {
+            var n = e.querySelector("code");
+
+            if (n) {
+              var r = n.className.replace("language-", "");
+              if ("abc" === r) Object(k.a)(e, t.options.cdn);else if ("mermaid" === r) Object(C.a)(e, ".vditor-" + t.currentMode + "__preview .language-mermaid", t.options.cdn);else if ("echarts" === r) Object(T.a)(e, t.options.cdn);else if ("mindmap" === r) Object(A.a)(e, t.options.cdn);else if ("graphviz" === r) Object(L.a)(e, t.options.cdn);else if ("math" === r) {
+                var i = "div";
+                "SPAN" === e.tagName && (i = "span"), e.innerHTML = '<code class="language-math"><' + i + ' class="vditor-math">' + e.innerHTML + "</" + i + "></code>", Object(_.a)(e.parentElement, {
+                  cdn: t.options.cdn,
+                  math: t.options.preview.math
+                });
+              } else Object(j.a)(Object.assign({}, t.options.preview.hljs), e, t.options.cdn), Object(x.a)(e, t.options.lang);
+              e.setAttribute("data-render", "1");
+            } else "html-block" === e.parentElement.getAttribute("data-type") && (e.style.backgroundColor = "var(--preview-background-color)", e.style.padding = "0.2em 0.4em", e.setAttribute("data-render", "1"));
+          }
+        },
+            D = function D(e, t, n) {
+          void 0 === n && (n = !1);
+          var r = Object(w.c)(t.startContainer);
+
+          if (r && !n) {
+            if (ot(r.innerHTML) || at(r.innerHTML)) return;
+
+            for (var i = Object(M.c)(r, t).start, o = !0, a = i - 1; a > r.textContent.substr(0, i).lastIndexOf("\n"); a--) {
+              if (" " !== r.textContent.charAt(a) && "\t" !== r.textContent.charAt(a)) {
+                o = !1;
+                break;
+              }
+            }
+
+            0 === i && (o = !1);
+            var s = !0;
+
+            for (a = i - 1; a < r.textContent.length; a++) {
+              if (" " !== r.textContent.charAt(a) && "\n" !== r.textContent.charAt(a)) {
+                s = !1;
+                break;
+              }
+            }
+
+            if (o && !r.querySelector(".language-mindmap") || s) {
+              if (!s) return;
+
+              if (!Object(w.e)(t.startContainer, "vditor-ir__marker")) {
+                var l = t.startContainer.previousSibling;
+                return void (l && 3 !== l.nodeType && l.classList.contains("vditor-ir__node--expand") && l.classList.remove("vditor-ir__node--expand"));
+              }
+            }
+          }
+
+          if (e.ir.element.querySelectorAll(".vditor-ir__node--expand").forEach(function (e) {
+            e.classList.remove("vditor-ir__node--expand");
+          }), r || (r = e.ir.element), !r.querySelector("wbr")) {
+            var c = Object(w.e)(t.startContainer, "vditor-ir__preview");
+            c && (c.previousElementSibling.firstElementChild ? t.selectNodeContents(c.previousElementSibling.firstElementChild) : t.selectNodeContents(c.previousElementSibling), t.collapse(!1)), t.insertNode(document.createElement("wbr"));
+          }
+
+          r.querySelectorAll("[style]").forEach(function (e) {
+            e.removeAttribute("style");
+          }), "link-ref-defs-block" === r.getAttribute("data-type") && (r = e.ir.element);
+          var d = r.isEqualNode(e.ir.element),
+              u = "";
+          if (d) u = r.innerHTML;else {
+            var p = Object(w.b)(t.startContainer);
+            if (p) r = Object(E.b)(t.startContainer, "BLOCKQUOTE") ? Object(w.c)(t.startContainer) || r : p;
+            var h,
+                f,
+                m = Object(w.d)(r, "data-type", "footnotes-block");
+
+            if (m && (r = m), u = r.outerHTML, "UL" === r.tagName || "OL" === r.tagName) {
+              var v = r.previousElementSibling,
+                  g = r.nextElementSibling;
+              !v || "UL" !== v.tagName && "OL" !== v.tagName || (u = v.outerHTML + u, v.remove()), !g || "UL" !== g.tagName && "OL" !== g.tagName || (u += g.outerHTML, g.remove()), u = u.replace("<div><wbr><br></div>", "<li><p><wbr><br></p></li>");
+            } else r.previousElementSibling && "" !== r.previousElementSibling.textContent && (u = r.previousElementSibling.outerHTML + u, r.previousElementSibling.remove());
+
+            (h = e.ir.element.querySelector("[data-type='link-ref-defs-block']")) && !r.isEqualNode(h) && (u += h.outerHTML, h.remove()), (f = e.ir.element.querySelector("[data-type='footnotes-block']")) && !r.isEqualNode(f) && (u += f.outerHTML, f.remove());
+          }
+          (O("SpinVditorIRDOM", u, "argument", e.options["debugger"]), u = e.lute.SpinVditorIRDOM(u), O("SpinVditorIRDOM", u, "result", e.options["debugger"]), d) ? r.innerHTML = u : (r.outerHTML = u, (h = e.ir.element.querySelector("[data-type='link-ref-defs-block']")) && e.ir.element.insertAdjacentElement("beforeend", h), (f = e.ir.element.querySelector("[data-type='footnotes-block']")) && e.ir.element.insertAdjacentElement("beforeend", f));
+          Object(M.f)(e.ir.element, t), e.ir.element.querySelectorAll(".vditor-ir__preview[data-render='2']").forEach(function (t) {
+            H(t, e);
+          }), lt(e), Tt(e, {
+            enableAddUndoStack: !0,
+            enableHint: !0,
+            enableInput: !0
+          });
+        },
+            R = n(4),
+            I = function I(e, t) {
           void 0 === t && (t = {
             enableAddUndoStack: !0,
             enableHint: !1,
             enableInput: !0
           });
           var n = l(e);
-          e.options.counter.enable && e.counter.render(e, n), "function" == typeof e.options.input && t.enableInput && e.options.input(n, e.preview.element), t.enableHint && e.hint.render(e), e.options.cache.enable && (localStorage.setItem(e.options.cache.id, n), e.options.cache.after && e.options.cache.after(n)), e.preview.render(e), t.enableAddUndoStack && e.undo.addToUndoStack(e), e.devtools && e.devtools.renderEchart(e);
+          e.options.counter.enable && e.counter.render(e, n), "function" == typeof e.options.input && t.enableInput && e.options.input(n, e.preview.element), t.enableHint && e.hint.render(e), e.options.cache.enable && Object(u.a)() && (localStorage.setItem(e.options.cache.id, n), e.options.cache.after && e.options.cache.after(n)), e.preview.render(e), t.enableAddUndoStack && e.undo.addToUndoStack(e), e.devtools && e.devtools.renderEchart(e);
         },
-            L = function L(e, t, n, r) {
+            z = function z(e, t, n, r) {
           void 0 === r && (r = {
             enableAddUndoStack: !0,
             enableHint: !1,
@@ -96591,13 +96749,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               l = !0;
           i.forEach(function (e, t) {
             "" !== e && (l = !1), t === i.length - 1 && "" === e || (o += e ? "<span>" + Object(s.a)(e.replace(/&/g, "&amp;").replace(/</g, "&lt;")) + "</span>" + a : a);
-          }), i.length <= 2 && l ? e.sv.element.innerHTML = "" : e.sv.element.innerHTML = o || a, n && Object(M.g)(n.start, n.end, e.sv.element), k(e, {
+          }), i.length <= 2 && l ? e.sv.element.innerHTML = "" : e.sv.element.innerHTML = o || a, n && Object(M.g)(n.start, n.end, e.sv.element), I(e, {
             enableAddUndoStack: r.enableAddUndoStack,
             enableHint: r.enableHint,
             enableInput: r.enableInput
           });
         },
-            x = function x(e, t, n, r, i) {
+            P = function P(e, t, n, r, i) {
           void 0 === r && (r = !1), void 0 === i && (i = !1);
           var o = Object(M.b)(e.sv.element),
               a = Object(M.c)(e.sv.element, o),
@@ -96605,25 +96763,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (o.collapsed || !o.collapsed && r) {
             var c = t + n;
-            L(e, s.substring(0, a.start) + c + s.substring(a.end), {
+            z(e, s.substring(0, a.start) + c + s.substring(a.end), {
               end: a.start + t.length,
               start: a.start + t.length
             });
           } else {
             var d = s.substring(a.start, a.end);
-            if (i && s.substring(a.start - t.length, a.start) === t && s.substring(a.end, a.end + n.length) === n) L(e, s.substring(0, a.start - t.length) + d + s.substring(a.end + n.length), {
+            if (i && s.substring(a.start - t.length, a.start) === t && s.substring(a.end, a.end + n.length) === n) z(e, s.substring(0, a.start - t.length) + d + s.substring(a.end + n.length), {
               end: a.start - t.length + d.length,
               start: a.start - t.length
             });else {
               c = t + d + n;
-              L(e, s.substring(0, a.start) + c + s.substring(a.end), {
+              z(e, s.substring(0, a.start) + c + s.substring(a.end), {
                 end: a.start + t.length + d.length,
                 start: a.start + t.length
               });
             }
           }
         },
-            T = function T(e) {
+            B = function B(e) {
           switch (e.currentMode) {
             case "ir":
               return e.ir.element;
@@ -96635,15 +96793,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               return e.sv.element;
           }
         },
-            _ = function _(e, t) {
+            q = function q(e, t) {
           e.options.upload.setHeaders && (e.options.upload.headers = e.options.upload.setHeaders()), e.options.upload.headers && Object.keys(e.options.upload.headers).forEach(function (n) {
             t.setRequestHeader(n, e.options.upload.headers[n]);
           });
         },
-            j = function j() {
+            U = function U() {
           this.isUploading = !1, this.element = document.createElement("div"), this.element.className = "vditor-upload";
         },
-            C = function C(e, t, n) {
+            F = function F(e, t, n) {
           for (var r, i = [], o = t.length, a = 0; a < o; a++) {
             var s = t[a];
             s instanceof DataTransferItem && (s = s.getAsFile()), i.push(s);
@@ -96652,7 +96810,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (e.options.upload.handler) return "string" == typeof (r = e.options.upload.handler(i)) ? void e.tip.show(r) : void 0;
           if (!e.options.upload.url || !e.upload) return n && (n.value = ""), void e.tip.show("please config: options.upload.url");
           if ((e.options.upload.file && (i = e.options.upload.file(i)), e.options.upload.validate) && "string" == typeof (r = e.options.upload.validate(i))) return void e.tip.show(r);
-          var l = T(e);
+          var l = B(e);
           e.upload.range = Object(M.b)(l);
 
           var c = function (e, t) {
@@ -96661,7 +96819,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             for (var n = [], r = "", i = "", o = e.options.lang, a = function a(_a2, s) {
               var l = t[s],
                   c = !0;
-              l.name || (r += "<li>" + O.a[o].nameEmpty + "</li>", c = !1), l.size > e.options.upload.max && (r += "<li>" + l.name + " " + O.a[o].over + " " + e.options.upload.max / 1024 / 1024 + "M</li>", c = !1);
+              l.name || (r += "<li>" + R.a[o].nameEmpty + "</li>", c = !1), l.size > e.options.upload.max && (r += "<li>" + l.name + " " + R.a[o].over + " " + e.options.upload.max / 1024 / 1024 + "M</li>", c = !1);
               var d = l.name.lastIndexOf("."),
                   u = l.name.substr(d),
                   p = e.options.upload.filename(l.name.substr(0, d)) + u;
@@ -96671,10 +96829,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 e.options.upload.accept.split(",").forEach(function (e) {
                   var t = e.trim();
                   0 === t.indexOf(".") ? u === t && (h = !0) : l.type.split("/")[0] === t.split("/")[0] && (h = !0);
-                }), h || (r += "<li>" + l.name + " " + O.a[o].fileTypeError + "</li>", c = !1);
+                }), h || (r += "<li>" + l.name + " " + R.a[o].fileTypeError + "</li>", c = !1);
               }
 
-              c && (n.push(l), i += "<li>" + p + " " + O.a[o].uploading + "</li>");
+              c && (n.push(l), i += "<li>" + p + " " + R.a[o].uploading + "</li>");
             }, s = t.length, l = 0; l < s; l++) {
               a(0, l);
             }
@@ -96695,19 +96853,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             var m = new XMLHttpRequest();
-            m.open("POST", e.options.upload.url), e.options.upload.token && m.setRequestHeader("X-Upload-Token", e.options.upload.token), e.options.upload.withCredentials && (m.withCredentials = !0), _(e, m), e.upload.isUploading = !0, l.setAttribute("contenteditable", "false"), m.onreadystatechange = function () {
+            m.open("POST", e.options.upload.url), e.options.upload.token && m.setRequestHeader("X-Upload-Token", e.options.upload.token), e.options.upload.withCredentials && (m.withCredentials = !0), q(e, m), e.upload.isUploading = !0, l.setAttribute("contenteditable", "false"), m.onreadystatechange = function () {
               if (m.readyState === XMLHttpRequest.DONE) {
                 if (e.upload.isUploading = !1, n && (n.value = ""), l.setAttribute("contenteditable", "true"), 200 === m.status) {
                   if (e.options.upload.success) e.options.upload.success(l, m.responseText);else {
                     var r = m.responseText;
                     e.options.upload.format && (r = e.options.upload.format(t, m.responseText)), function (e, t) {
-                      T(t).focus();
+                      B(t).focus();
                       var n = JSON.parse(e),
                           r = "";
                       1 === n.code && (r = "" + n.msg), n.data.errFiles && n.data.errFiles.length > 0 && (r = "<ul><li>" + r + "</li>", n.data.errFiles.forEach(function (e) {
                         var n = e.lastIndexOf("."),
                             i = t.options.upload.filename(e.substr(0, n)) + e.substr(n);
-                        r += "<li>" + i + " " + O.a[t.options.lang].uploadError + "</li>";
+                        r += "<li>" + i + " " + R.a[t.options.lang].uploadError + "</li>";
                       }), r += "</ul>"), r ? t.tip.show(r) : t.tip.hide();
                       var i = "";
                       Object.keys(n.data.succMap).forEach(function (e) {
@@ -96716,7 +96874,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             a = e.substr(o),
                             s = t.options.upload.filename(e.substr(0, o)) + a;
                         ".wav" === (a = a.toLowerCase()) || ".mp3" === a || ".ogg" === a ? "wysiwyg" === t.currentMode ? i += '<div class="vditor-wysiwyg__block" data-type="html-block"\n data-block="0"><pre><code>&lt;audio controls="controls" src="' + r + '"&gt;&lt;/audio&gt;</code></pre>' : i += '<audio controls="controls" src="' + r + '"></audio>\n' : ".apng" === a || ".bmp" === a || ".gif" === a || ".ico" === a || ".cur" === a || ".jpg" === a || ".jpeg" === a || ".jfif" === a || ".pjp" === a || ".pjpeg" === a || ".png" === a || ".svg" === a || ".webp" === a ? "wysiwyg" === t.currentMode ? i += '<img alt="' + s + '" src="' + r + '">' : i += "![" + s + "](" + r + ")\n" : "wysiwyg" === t.currentMode ? i += '<a href="' + r + '">' + s + "</a>" : i += "[" + s + "](" + r + ")\n";
-                      }), Object(M.h)(t.upload.range), "sv" !== t.currentMode ? document.execCommand("insertHTML", !1, i) : x(t, i, "", !0), t.upload.range = getSelection().getRangeAt(0).cloneRange();
+                      }), Object(M.h)(t.upload.range), "sv" !== t.currentMode ? document.execCommand("insertHTML", !1, i) : P(t, i, "", !0), t.upload.range = getSelection().getRangeAt(0).cloneRange();
                     }(r, e);
                   }
                 } else e.options.upload.error ? e.options.upload.error(m.responseText) : e.tip.show(m.responseText);
@@ -96730,82 +96888,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, m.send(d);
           } else n && (n.value = "");
         },
-            A = n(10),
-            N = n(11),
-            H = n(12),
-            D = n(13),
-            R = n(14),
-            I = n(15),
-            P = n(16),
-            B = n(17),
-            q = function q(e, t, n) {
-          void 0 === n && (n = "sv");
-          var r = document.createElement("div");
-          r.innerHTML = e;
-          var i = !1;
-          1 === r.childElementCount && r.lastElementChild.style.fontFamily.indexOf("monospace") > -1 && (i = !0);
-          var o = r.querySelectorAll("pre");
-
-          if (1 === r.childElementCount && 1 === o.length && "vditor-wysiwyg" !== o[0].className && "vditor-textarea" !== o[0].className && (i = !0), 0 === e.indexOf('\n<p class="p1">') && (i = !0), i) {
-            var a = t || e;
-            return /\n/.test(a) || 1 === o.length ? "wysiwyg" === n ? '<div class="vditor-wysiwyg__block" data-block="0" data-type="code-block"><pre><code>' + a.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "<wbr></code></pre></div>" : "ir" === n ? "```\n" + a.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "\n```" : "```\n" + a + "\n```" : "wysiwyg" === n ? "<code>" + a.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "</code><wbr>" : "`" + a + "`";
-          }
-
-          return !1;
-        },
-            z = function z(e, t) {
-          if (e) {
-            var n = e.querySelector("code");
-
-            if (n) {
-              var r = n.className.replace("language-", "");
-              if ("abc" === r) Object(A.a)(e, t.options.cdn);else if ("mermaid" === r) Object(P.a)(e, ".vditor-" + t.currentMode + "__preview .language-mermaid", t.options.cdn);else if ("echarts" === r) Object(N.a)(e, t.options.cdn);else if ("mindmap" === r) Object(B.a)(e, t.options.cdn);else if ("graphviz" === r) Object(D.a)(e, t.options.cdn);else if ("math" === r) {
-                var i = "div";
-                "SPAN" === e.tagName && (i = "span"), e.innerHTML = '<code class="language-math"><' + i + ' class="vditor-math">' + e.innerHTML + "</" + i + "></code>", Object(I.a)(e.parentElement, {
-                  cdn: t.options.cdn,
-                  math: t.options.preview.math
-                });
-              } else Object(R.a)(Object.assign({}, t.options.preview.hljs, {
-                enable: !0
-              }), e, t.options.cdn), Object(H.a)(e, t.options.lang);
-              e.setAttribute("data-render", "1");
-            }
-          }
-        },
-            U = function U(e, t) {
+            K = function K(e, t) {
           void 0 === t && (t = {
             enableAddUndoStack: !0,
             enableHint: !1,
             enableInput: !0
           }), t.enableHint && e.hint.render(e), clearTimeout(e.wysiwyg.afterRenderTimeoutId), e.wysiwyg.afterRenderTimeoutId = window.setTimeout(function () {
-            if (!e.wysiwyg.composingLock || !Object(u.e)()) {
+            if (!e.wysiwyg.composingLock || !Object(u.f)()) {
               var n = l(e);
-              "function" == typeof e.options.input && t.enableInput && e.options.input(n), e.options.counter.enable && e.counter.render(e, n), e.options.cache.enable && (localStorage.setItem(e.options.cache.id, n), e.options.cache.after && e.options.cache.after(n)), e.devtools && e.devtools.renderEchart(e), t.enableAddUndoStack && e.wysiwygUndo.addToUndoStack(e);
+              "function" == typeof e.options.input && t.enableInput && e.options.input(n), e.options.counter.enable && e.counter.render(e, n), e.options.cache.enable && Object(u.a)() && (localStorage.setItem(e.options.cache.id, n), e.options.cache.after && e.options.cache.after(n)), e.devtools && e.devtools.renderEchart(e), t.enableAddUndoStack && e.wysiwygUndo.addToUndoStack(e);
             }
           }, 800);
         },
-            F = n(28),
-            K = n.n(F),
-            V = n(31),
-            W = n.n(V),
-            J = n(29),
-            Z = n.n(J),
-            G = n(24),
+            W = n(27),
+            V = n.n(W),
+            Z = n(30),
+            J = n.n(Z),
+            G = n(31),
             X = n.n(G),
             Q = n(32),
             $ = n.n(Q),
             Y = n(33),
             ee = n.n(Y),
-            te = function te(e, t) {
+            te = n(34),
+            ne = n.n(te),
+            re = n(35),
+            ie = n.n(re),
+            oe = n(36),
+            ae = n.n(oe),
+            se = n(37),
+            le = n.n(se),
+            ce = n(38),
+            de = n.n(ce),
+            ue = function ue(e, t) {
           return Object(M.e)(e, t) ? getSelection().toString() : "";
         },
-            ne = function ne(e, t) {
-          var n = Object(u.f)(e).split("-"),
+            pe = function pe(e, t) {
+          var n = Object(u.g)(e).split("-"),
               r = n.length > 2 && ("shift" === n[1] || "⇧" === n[1]),
               i = (r ? n[2] : n[1]) || "-";
-          return !r || "-" !== i || !Object(u.d)() && /Mac/.test(navigator.platform) || (i = "_"), !(!Object(u.c)(t) || t.key.toLowerCase() !== i.toLowerCase() || t.altKey || !(!r && !t.shiftKey || r && t.shiftKey));
+          return !r || "-" !== i || !Object(u.e)() && /Mac/.test(navigator.platform) || (i = "_"), !(!Object(u.d)(t) || t.key.toLowerCase() !== i.toLowerCase() || t.altKey || !(!r && !t.shiftKey || r && t.shiftKey));
         },
-            re = function re(e, t) {
+            he = function he(e, t) {
           for (var n = e.start - 1, r = !1; !r && n > -1;) {
             "\n" === t.charAt(n) && t.length !== n + 1 ? (n++, r = !0) : 0 === n ? r = !0 : n--;
           }
@@ -96819,10 +96943,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             start: Math.max(0, n)
           };
         },
-            ie = function ie(e, t, n) {
+            fe = function fe(e, t, n) {
           var r = new DOMParser().parseFromString(t, "text/html");
           r.body && (t = r.body.innerHTML);
-          var i = q(t, n);
+          var i = N(t, n);
           return i || (e.lute.SetJSRenderers({
             renderers: {
               HTML2Md: {
@@ -96831,7 +96955,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   if (34 === t.__internal_object__.Parent.Type && r && -1 === r.indexOf("file://") && e.options.upload.linkToImgUrl && void 0 !== n) {
                     var i = new XMLHttpRequest();
-                    i.open("POST", e.options.upload.linkToImgUrl), _(e, i), i.onreadystatechange = function () {
+                    i.open("POST", e.options.upload.linkToImgUrl), q(e, i), i.onreadystatechange = function () {
                       if (i.readyState === XMLHttpRequest.DONE) if (200 === i.status) {
                         var t = JSON.parse(i.responseText);
                         if (0 !== t.code) return void e.tip.show(t.msg);
@@ -96845,7 +96969,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             var i = document.createRange();
                             i.setStart(t[n].childNodes[0], r), i.setEnd(t[n].childNodes[0], r + e.length), Object(M.h)(i);
                           }
-                        }(t.data.originalURL, e.sv.element.childNodes), x(e, t.data.url, "", !0);
+                        }(t.data.originalURL, e.sv.element.childNodes), P(e, t.data.url, "", !0);
                       } else e.tip.show(i.responseText);
                     }, i.send(JSON.stringify({
                       url: r
@@ -96858,11 +96982,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }), e.lute.HTML2Md(t));
         },
-            oe = n(9),
-            ae = function ae(e) {
+            me = n(9),
+            ve = function ve(e) {
           "dark" === e.options.theme ? e.element.classList.add("vditor--dark") : e.element.classList.remove("vditor--dark");
         },
-            se = function se(e) {
+            ge = function ge(e) {
           var t = window.innerWidth <= a.a.MOBILE_WIDTH ? 10 : 35;
 
           if ("none" !== e.wysiwyg.element.parentElement.style.display) {
@@ -96877,60 +97001,60 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           "block" === e.preview.element.style.display && "sv" !== e.currentMode || (e.toolbar.element.style.paddingLeft = Math.max(5, parseInt(e[e.currentMode].element.style.paddingLeft || "0", 10) + e.outline.element.offsetWidth) + "px");
         },
-            le = function le(e) {
+            be = function be(e) {
           if (e.options.typewriterMode) {
             var t = window.innerHeight;
             "number" == typeof e.options.height && (t = e.options.height, "number" == typeof e.options.minHeight && (t = Math.max(t, e.options.minHeight)), t = Math.min(window.innerHeight, t)), e.element.classList.contains("vditor--fullscreen") && (t = window.innerHeight), e[e.currentMode].element.style.setProperty("--editor-bottom", (t - e.toolbar.element.offsetHeight) / 2 + "px");
           }
         },
-            ce = function ce(e, t) {
-          le(e), window.addEventListener("resize", function () {
-            se(e), le(e);
+            ye = function ye(e, t) {
+          be(e), window.addEventListener("resize", function () {
+            ge(e), be(e);
           });
-          var n = localStorage.getItem(e.options.cache.id);
-          return e.options.cache.enable && n || (e.options.value ? n = e.options.value : e.originalInnerHTML ? n = ie(e, e.originalInnerHTML) : e.options.cache.enable || (n = "")), n || "";
+          var n = Object(u.a)() && localStorage.getItem(e.options.cache.id);
+          return e.options.cache.enable && n || (e.options.value ? n = e.options.value : e.originalInnerHTML ? n = fe(e, e.originalInnerHTML) : e.options.cache.enable || (n = "")), n || "";
         },
-            de = function de(e, t, n) {
+            we = function we(e, t, n) {
           void 0 === n && (n = !0);
           var r = e.wysiwyg.element;
           r.innerHTML = e.lute.Md2VditorDOM(t), r.querySelectorAll(".vditor-wysiwyg__preview[data-render='2']").forEach(function (t) {
-            z(t, e), t.previousElementSibling.setAttribute("style", "display:none");
-          }), U(e, {
+            H(t, e), t.previousElementSibling.setAttribute("style", "display:none");
+          }), K(e, {
             enableAddUndoStack: !0,
             enableHint: !1,
             enableInput: n
           });
         },
-            ue = function ue(e) {
+            Ee = function Ee(e) {
           for (var t = "", n = e.nextSibling; n;) {
             3 === n.nodeType ? t += n.textContent : t += n.outerHTML, n = n.nextSibling;
           }
 
           return t;
         },
-            pe = function pe(e) {
+            Me = function Me(e) {
           for (var t = "", n = e.previousSibling; n;) {
             t = 3 === n.nodeType ? n.textContent + t : n.outerHTML + t, n = n.previousSibling;
           }
 
           return t;
         },
-            he = function he(e, t) {
+            Se = function Se(e, t) {
           Array.from(e.wysiwyg.element.childNodes).find(function (n) {
             if (3 === n.nodeType) {
               var r = document.createElement("p");
               r.setAttribute("data-block", "0"), r.textContent = n.textContent;
-              var i = t.startOffset;
+              var i = 3 === t.startContainer.nodeType ? t.startOffset : n.textContent.length;
               return n.parentNode.insertBefore(r, n), n.remove(), t.setStart(r.firstChild, Math.min(r.firstChild.textContent.length, i)), t.collapse(!0), Object(M.h)(t), !0;
             }
 
             if (!n.getAttribute("data-block")) return "P" === n.tagName ? n.remove() : ("DIV" === n.tagName ? (t.insertNode(document.createElement("wbr")), n.outerHTML = '<p data-block="0">' + n.innerHTML + "</p>") : "BR" === n.tagName ? n.outerHTML = '<p data-block="0">' + n.outerHTML + "<wbr></p>" : (t.insertNode(document.createElement("wbr")), n.outerHTML = '<p data-block="0">' + n.outerHTML + "</p>"), Object(M.f)(e.wysiwyg.element, t), t = getSelection().getRangeAt(0)), !0;
           });
         },
-            fe = function fe(e, t, n) {
+            Oe = function Oe(e, t, n) {
           for (var r = e.startContainer.parentElement, i = !1, o = "", s = "", l = function (e) {
-            var t = pe(e.startContainer),
-                n = ue(e.startContainer),
+            var t = Me(e.startContainer),
+                n = Ee(e.startContainer),
                 r = e.startContainer.textContent,
                 i = e.startOffset,
                 o = "",
@@ -96946,75 +97070,93 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var p = "",
                   h = "",
                   f = "";
-              "0" !== r.parentElement.getAttribute("data-block") && (h = pe(r), f = ue(r)), (c || h) && (c = p = h + "<" + u + ">" + c + "</" + u + ">"), ("bold" === n && "STRONG" === u || "italic" === n && "EM" === u || "strikeThrough" === n && "S" === u) && (p += "" + o + a.a.ZWSP + "<wbr>" + s, i = !0), (d || f) && (p += d = "<" + u + ">" + d + "</" + u + ">" + f), "0" !== r.parentElement.getAttribute("data-block") ? (r = r.parentElement).innerHTML = p : (r.outerHTML = p, r = r.parentElement), o = "<" + u + ">" + o, s = "</" + u + ">" + s;
+              "0" !== r.parentElement.getAttribute("data-block") && (h = Me(r), f = Ee(r)), (c || h) && (c = p = h + "<" + u + ">" + c + "</" + u + ">"), ("bold" === n && "STRONG" === u || "italic" === n && "EM" === u || "strikeThrough" === n && "S" === u) && (p += "" + o + a.a.ZWSP + "<wbr>" + s, i = !0), (d || f) && (p += d = "<" + u + ">" + d + "</" + u + ">" + f), "0" !== r.parentElement.getAttribute("data-block") ? (r = r.parentElement).innerHTML = p : (r.outerHTML = p, r = r.parentElement), o = "<" + u + ">" + o, s = "</" + u + ">" + s;
             } else i = !0;
           }
 
           Object(M.f)(t.wysiwyg.element, e);
         },
-            me = function me(e, t) {
+            ke = function ke(e, t) {
           var n,
               r = this;
           this.element = document.createElement("div"), t.className && (n = this.element.classList).add.apply(n, t.className.split(" "));
-          var i = t.hotkey ? " <" + Object(u.f)(t.hotkey) + ">" : "";
-          2 === t.level && (i = t.hotkey ? " &lt;" + Object(u.f)(t.hotkey) + "&gt;" : "");
-          var o = t.tip ? t.tip + i : O.a[e.options.lang][t.name] + i,
+          var i = t.hotkey ? " <" + Object(u.g)(t.hotkey) + ">" : "";
+          2 === t.level && (i = t.hotkey ? " &lt;" + Object(u.g)(t.hotkey) + "&gt;" : "");
+          var o = t.tip ? t.tip + i : R.a[e.options.lang][t.name] + i,
               s = "upload" === t.name ? "div" : "button";
-          if (2 === t.level) this.element.innerHTML = "<" + s + ">" + o + "</" + s + ">";else {
+          if (2 === t.level) this.element.innerHTML = "<" + s + ' data-type="' + t.name + '">' + o + "</" + s + ">";else {
             this.element.classList.add("vditor-toolbar__item");
             var l = document.createElement(s);
             l.setAttribute("data-type", t.name), l.className = "vditor-tooltipped vditor-tooltipped__" + t.tipPosition, l.setAttribute("aria-label", o), l.innerHTML = t.icon, this.element.appendChild(l);
           }
-          t.prefix && this.element.children[0].addEventListener(Object(u.a)(), function (n) {
-            n.preventDefault(), r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || ("wysiwyg" === e.currentMode ? function (e, t) {
-              if (!e.wysiwyg.composingLock) {
-                var n = !0,
-                    r = !0;
+          t.prefix && this.element.children[0].addEventListener(Object(u.b)(), function (n) {
+            n.preventDefault(), r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || ("wysiwyg" === e.currentMode ? function (e, t, n) {
+              if (!(e.wysiwyg.composingLock && n instanceof CustomEvent)) {
+                var r = !0,
+                    i = !0;
                 e.wysiwyg.element.querySelector("wbr") && e.wysiwyg.element.querySelector("wbr").remove();
-                var i = Object(M.b)(e.wysiwyg.element),
-                    o = t.getAttribute("data-type");
+                var o = Object(M.b)(e.wysiwyg.element),
+                    s = t.getAttribute("data-type");
                 if (t.classList.contains("vditor-menu--current")) {
-                  if ("strike" === o && (o = "strikeThrough"), "quote" === o) {
-                    var s = Object(w.f)(i.startContainer, "BLOCKQUOTE");
-                    s || (s = i.startContainer.childNodes[i.startOffset]), s && (n = !1, t.classList.remove("vditor-menu--current"), i.insertNode(document.createElement("wbr")), s.outerHTML = "" === s.innerHTML.trim() ? '<p data-block="0">' + s.innerHTML + "</p>" : s.innerHTML, Object(M.f)(e.wysiwyg.element, i));
-                  } else "inline-code" === o ? i.collapsed ? (i.selectNode(i.startContainer.parentElement), document.execCommand("removeFormat", !1, "")) : document.execCommand("removeFormat", !1, "") : "link" === o ? i.collapsed ? (i.selectNode(i.startContainer.parentElement), document.execCommand("unlink", !1, "")) : document.execCommand("unlink", !1, "") : "check" === o || "list" === o || "ordered-list" === o ? (Ue(e, i, o), Object(M.f)(e.wysiwyg.element, i), n = !1, t.classList.remove("vditor-menu--current")) : (n = !1, t.classList.remove("vditor-menu--current"), "" === i.toString() ? fe(i, e, o) : document.execCommand(o, !1, ""));
-                } else if (0 === e.wysiwyg.element.childNodes.length && (e.wysiwyg.element.innerHTML = '<p data-block="0"><wbr></p>', Object(M.f)(e.wysiwyg.element, i)), "quote" === o) {
-                  if ((d = Object(w.c)(i.startContainer)) || (d = i.startContainer.childNodes[i.startOffset]), d) {
-                    n = !1, t.classList.add("vditor-menu--current"), i.insertNode(document.createElement("wbr"));
-                    var l = Object(w.f)(i.startContainer, "LI");
-                    l && d.contains(l) ? l.innerHTML = '<blockquote data-block="0">' + l.innerHTML + "</blockquote>" : d.outerHTML = '<blockquote data-block="0">' + d.outerHTML + "</blockquote>", Object(M.f)(e.wysiwyg.element, i);
+                  if ("strike" === s && (s = "strikeThrough"), "quote" === s) {
+                    var l = Object(w.f)(o.startContainer, "BLOCKQUOTE");
+                    l || (l = o.startContainer.childNodes[o.startOffset]), l && (r = !1, t.classList.remove("vditor-menu--current"), o.insertNode(document.createElement("wbr")), l.outerHTML = "" === l.innerHTML.trim() ? '<p data-block="0">' + l.innerHTML + "</p>" : l.innerHTML, Object(M.f)(e.wysiwyg.element, o));
+                  } else "inline-code" === s ? o.collapsed ? (o.selectNode(o.startContainer.parentElement), document.execCommand("removeFormat", !1, "")) : document.execCommand("removeFormat", !1, "") : "link" === s ? o.collapsed ? (o.selectNode(o.startContainer.parentElement), document.execCommand("unlink", !1, "")) : document.execCommand("unlink", !1, "") : "check" === s || "list" === s || "ordered-list" === s ? (tt(e, o, s), Object(M.f)(e.wysiwyg.element, o), r = !1, t.classList.remove("vditor-menu--current")) : (r = !1, t.classList.remove("vditor-menu--current"), "" === o.toString() ? Oe(o, e, s) : document.execCommand(s, !1, ""));
+                } else {
+                  0 === e.wysiwyg.element.childNodes.length && (e.wysiwyg.element.innerHTML = '<p data-block="0"><wbr></p>', Object(M.f)(e.wysiwyg.element, o));
+                  var c = Object(w.c)(o.startContainer);
+
+                  if ("quote" === s) {
+                    if (c || (c = o.startContainer.childNodes[o.startOffset]), c) {
+                      r = !1, t.classList.add("vditor-menu--current"), o.insertNode(document.createElement("wbr"));
+                      var d = Object(w.f)(o.startContainer, "LI");
+                      d && c.contains(d) ? d.innerHTML = '<blockquote data-block="0">' + d.innerHTML + "</blockquote>" : c.outerHTML = '<blockquote data-block="0">' + c.outerHTML + "</blockquote>", Object(M.f)(e.wysiwyg.element, o);
+                    }
+                  } else if ("check" === s || "list" === s || "ordered-list" === s) tt(e, o, s, !1), Object(M.f)(e.wysiwyg.element, o), r = !1, p(e.toolbar.elements, ["check", "list", "ordered-list"]), t.classList.add("vditor-menu--current");else if ("inline-code" === s) {
+                    if ("" === o.toString()) (u = document.createElement("code")).textContent = a.a.ZWSP, o.insertNode(u), o.setStart(u.firstChild, 1), o.collapse(!0), Object(M.h)(o);else if (3 === o.startContainer.nodeType) {
+                      var u = document.createElement("code");
+                      o.surroundContents(u), o.insertNode(u), Object(M.h)(o);
+                    }
+                    r = !1, h(e.toolbar.elements, ["inline-code"]);
+                  } else if ("code" === s) (u = document.createElement("div")).className = "vditor-wysiwyg__block", u.setAttribute("data-type", "code-block"), u.setAttribute("data-block", "0"), u.setAttribute("data-marker", "```"), "" === o.toString() ? u.innerHTML = "<pre><code><wbr>\n</code></pre>" : (u.innerHTML = "<pre><code>" + o.toString() + "<wbr></code></pre>", o.deleteContents()), o.insertNode(u), c && (c.outerHTML = e.lute.SpinVditorDOM(c.outerHTML)), Object(M.f)(e.wysiwyg.element, o), e.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview[data-render='2']").forEach(function (t) {
+                    H(t, e);
+                  });else if ("link" === s) {
+                    if ("" === o.toString()) {
+                      var f = document.createElement("a");
+                      f.innerText = a.a.ZWSP, o.insertNode(f), o.setStart(f.firstChild, 1), o.collapse(!0), Ke(e, f);
+                      var m = e.wysiwyg.popover.querySelector("input");
+                      m.value = "", m.focus(), r = !1, i = !1;
+                    } else (u = document.createElement("a")).setAttribute("href", ""), u.innerHTML = o.toString(), o.surroundContents(u), o.insertNode(u), Object(M.h)(o);
+                  } else if ("table" === s) {
+                    var v = '<table data-block="0"><thead><tr><th>col1<wbr></th><th>col2</th><th>col3</th></tr></thead><tbody><tr><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td></tr></tbody></table>';
+                    if ("" === o.toString().trim()) c && "" === c.innerHTML.trim().replace(a.a.ZWSP, "") ? c.outerHTML = v : document.execCommand("insertHTML", !1, v), o.selectNode(e.wysiwyg.element.querySelector("wbr").previousSibling), e.wysiwyg.element.querySelector("wbr").remove(), Object(M.h)(o);else {
+                      v = '<table data-block="0"><thead><tr>';
+                      var g = o.toString().split("\n"),
+                          b = g[0].split(",").length > g[0].split("\t").length ? "," : "\t";
+                      g.forEach(function (e, t) {
+                        0 === t ? (e.split(b).forEach(function (e, t) {
+                          v += 0 === t ? "<th>" + e + "<wbr></th>" : "<th>" + e + "</th>";
+                        }), v += "</tr></thead>") : (v += 1 === t ? "<tbody><tr>" : "<tr>", e.split(b).forEach(function (e) {
+                          v += "<td>" + e + "</td>";
+                        }), v += "</tr>");
+                      }), v += "</tbody></table>", document.execCommand("insertHTML", !1, v), Object(M.f)(e.wysiwyg.element, o);
+                    }
+                  } else if ("line" === s) {
+                    if (c) {
+                      var y = '<hr data-block="0"><p data-block="0"><wbr>\n</p>';
+                      "" === c.innerHTML.trim() ? c.outerHTML = y : c.insertAdjacentHTML("afterend", y), Object(M.f)(e.wysiwyg.element, o);
+                    }
+                  } else if (r = !1, t.classList.add("vditor-menu--current"), "strike" === s && (s = "strikeThrough"), "" !== o.toString() || "bold" !== s && "italic" !== s && "strikeThrough" !== s) document.execCommand(s, !1, "");else {
+                    var E = "strong";
+                    "italic" === s ? E = "em" : "strikeThrough" === s && (E = "s"), (u = document.createElement(E)).textContent = a.a.ZWSP, o.insertNode(u), u.previousSibling && u.previousSibling.textContent === a.a.ZWSP && (u.previousSibling.textContent = ""), o.setStart(u.firstChild, 1), o.collapse(!0), Object(M.h)(o);
                   }
-                } else if ("check" === o || "list" === o || "ordered-list" === o) Ue(e, i, o, !1), Object(M.f)(e.wysiwyg.element, i), n = !1, p(e.toolbar.elements, ["check", "list", "ordered-list"]), t.classList.add("vditor-menu--current");else if ("inline-code" === o) {
-                  if ("" === i.toString()) (c = document.createElement("code")).textContent = a.a.ZWSP, i.insertNode(c), i.setStart(c.firstChild, 1), i.collapse(!0), Object(M.h)(i);else if (3 === i.startContainer.nodeType) {
-                    var c = document.createElement("code");
-                    i.surroundContents(c), i.insertNode(c), Object(M.h)(i);
-                  }
-                  n = !1, h(e.toolbar.elements, ["inline-code"]);
-                } else if ("code" === o) {
-                  var d;
-                  (c = document.createElement("div")).className = "vditor-wysiwyg__block", c.setAttribute("data-type", "code-block"), c.setAttribute("data-block", "0"), c.setAttribute("data-marker", "```"), "" === i.toString() ? c.innerHTML = "<pre><code><wbr>\n</code></pre>" : (c.innerHTML = "<pre><code>" + i.toString() + "<wbr></code></pre>", i.deleteContents()), i.insertNode(c), (d = Object(w.d)(i.startContainer, "data-block", "0")) && (d.outerHTML = e.lute.SpinVditorDOM(d.outerHTML)), Object(M.f)(e.wysiwyg.element, i), e.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview[data-render='2']").forEach(function (t) {
-                    z(t, e);
-                  });
-                } else if ("link" === o) {
-                  if ("" === i.toString()) {
-                    var u = document.createElement("a");
-                    u.innerText = a.a.ZWSP, i.insertNode(u), i.setStart(u.firstChild, 1), i.collapse(!0), Ae(e, u);
-                    var f = e.wysiwyg.popover.querySelector("input");
-                    f.value = "", f.focus(), n = !1, r = !1;
-                  } else (c = document.createElement("a")).setAttribute("href", ""), c.innerHTML = i.toString(), i.surroundContents(c), i.insertNode(c), Object(M.h)(i);
-                } else if ("table" === o) document.execCommand("insertHTML", !1, '<table data-block="0"><thead><tr><th>col1<wbr></th><th>col2</th><th>col3</th></tr></thead><tbody><tr><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td></tr></tbody></table>'), i.selectNode(e.wysiwyg.element.querySelector("wbr").previousSibling), e.wysiwyg.element.querySelector("wbr").remove(), Object(M.h)(i);else if ("line" === o) {
-                  var m = i.startContainer;
-                  3 === m.nodeType && (m = i.startContainer.parentElement), m.insertAdjacentHTML("afterend", '<hr data-block="0"><p data-block="0">\n<wbr></p>'), Object(M.f)(e.wysiwyg.element, i);
-                } else if (n = !1, t.classList.add("vditor-menu--current"), "strike" === o && (o = "strikeThrough"), "" !== i.toString() || "bold" !== o && "italic" !== o && "strikeThrough" !== o) document.execCommand(o, !1, "");else {
-                  var v = "strong";
-                  "italic" === o ? v = "em" : "strikeThrough" === o && (v = "s"), (c = document.createElement(v)).textContent = a.a.ZWSP, i.insertNode(c), c.previousSibling && c.previousSibling.textContent === a.a.ZWSP && (c.previousSibling.textContent = ""), i.setStart(c.firstChild, 1), i.collapse(!0), Object(M.h)(i);
                 }
-                n && Le(e), r && U(e);
+                r && ze(e), i && K(e);
               }
-            }(e, r.element.children[0]) : "ir" === e.currentMode ? dt(e, r.element.children[0], t.prefix || "", t.suffix || "") : x(e, t.prefix || "", t.suffix || "", !1, !0));
+            }(e, r.element.children[0], n) : "ir" === e.currentMode ? jt(e, r.element.children[0], t.prefix || "", t.suffix || "") : P(e, t.prefix || "", t.suffix || "", !1, !0));
           });
         },
-            ve = (_r2 = function r(e, t) {
+            Te = (_r2 = function r(e, t) {
           return (_r2 = Object.setPrototypeOf || {
             __proto__: []
           } instanceof Array && function (e, t) {
@@ -97031,69 +97173,80 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _r2(e, t), e.prototype = null === t ? Object.create(t) : (n.prototype = t.prototype, new n());
         }),
-            ge = function ge(e, t, n) {
+            xe = function xe(e, t, n) {
           var r;
-          "string" != typeof n ? (b(e, ["subToolbar", "hint"]), n.preventDefault(), r = l(e)) : r = n, e.currentMode === t && "string" != typeof n || (e.devtools && e.devtools.renderEchart(e), "both" === e.options.preview.mode && "sv" === t ? e.preview.element.style.display = "block" : e.preview.element.style.display = "none", f(e.toolbar.elements, a.a.EDIT_TOOLBARS), p(e.toolbar.elements, a.a.EDIT_TOOLBARS), m(e.toolbar.elements, ["outdent", "indent"]), "ir" === t ? (v(e.toolbar.elements, ["format", "both"]), g(e.toolbar.elements, ["outdent", "indent", "outline", "insert-before", "insert-after"]), e.irUndo.resetIcon(e), e.sv.element.style.display = "none", e.wysiwyg.element.parentElement.style.display = "none", e.ir.element.parentElement.style.display = "block", e.currentMode = "ir", e.ir.element.innerHTML = e.lute.Md2VditorIRDOM(r), st(e, {
+          "string" != typeof n ? (b(e, ["subToolbar", "hint"]), n.preventDefault(), r = l(e)) : r = n, e.currentMode === t && "string" != typeof n || (e.devtools && e.devtools.renderEchart(e), "both" === e.options.preview.mode && "sv" === t ? e.preview.element.style.display = "block" : e.preview.element.style.display = "none", f(e.toolbar.elements, a.a.EDIT_TOOLBARS), p(e.toolbar.elements, a.a.EDIT_TOOLBARS), m(e.toolbar.elements, ["outdent", "indent"]), "ir" === t ? (v(e.toolbar.elements, ["format", "both"]), g(e.toolbar.elements, ["outdent", "indent", "outline", "insert-before", "insert-after"]), e.irUndo.resetIcon(e), e.sv.element.style.display = "none", e.wysiwyg.element.parentElement.style.display = "none", e.ir.element.parentElement.style.display = "block", e.currentMode = "ir", e.ir.element.innerHTML = e.lute.Md2VditorIRDOM(r), Tt(e, {
             enableAddUndoStack: !0,
             enableHint: !1,
             enableInput: !1
-          }), se(e), e.ir.element.querySelectorAll(".vditor-ir__preview[data-render='2']").forEach(function (t) {
-            z(t, e);
-          }), "string" != typeof n && (e.ir.element.focus(), S(e))) : "wysiwyg" === t ? (v(e.toolbar.elements, ["format", "both"]), g(e.toolbar.elements, ["outdent", "indent", "outline", "insert-before", "insert-after"]), e.wysiwygUndo.resetIcon(e), e.sv.element.style.display = "none", e.wysiwyg.element.parentElement.style.display = "block", e.ir.element.parentElement.style.display = "none", e.currentMode = "wysiwyg", se(e), de(e, r, !1), "string" != typeof n && (e.wysiwyg.element.focus(), Le(e)), e.wysiwyg.popover.style.display = "none") : "sv" === t && (g(e.toolbar.elements, ["format", "both"]), v(e.toolbar.elements, ["outdent", "indent", "outline", "insert-before", "insert-after"]), e.undo.resetIcon(e), e.wysiwyg.element.parentElement.style.display = "none", e.ir.element.parentElement.style.display = "none", ("both" === e.options.preview.mode || "editor" === e.options.preview.mode) && (e.sv.element.style.display = "block"), e.currentMode = "sv", L(e, r, void 0, {
+          }), ge(e), e.ir.element.querySelectorAll(".vditor-ir__preview[data-render='2']").forEach(function (t) {
+            H(t, e);
+          }), "string" != typeof n && (e.ir.element.focus(), S(e))) : "wysiwyg" === t ? (v(e.toolbar.elements, ["format", "both"]), g(e.toolbar.elements, ["outdent", "indent", "outline", "insert-before", "insert-after"]), e.wysiwygUndo.resetIcon(e), e.sv.element.style.display = "none", e.wysiwyg.element.parentElement.style.display = "block", e.ir.element.parentElement.style.display = "none", e.currentMode = "wysiwyg", ge(e), we(e, r, !1), "string" != typeof n && (e.wysiwyg.element.focus(), ze(e)), e.wysiwyg.popover.style.display = "none") : "sv" === t && (g(e.toolbar.elements, ["format", "both"]), v(e.toolbar.elements, ["outdent", "indent", "outline", "insert-before", "insert-after"]), e.undo.resetIcon(e), e.wysiwyg.element.parentElement.style.display = "none", e.ir.element.parentElement.style.display = "none", ("both" === e.options.preview.mode || "editor" === e.options.preview.mode) && (e.sv.element.style.display = "block"), e.currentMode = "sv", z(e, r, void 0, {
             enableAddUndoStack: !0,
             enableHint: !1,
             enableInput: !1
-          }), "string" != typeof n && e.sv.element.focus(), se(e)), "string" == typeof n && e.outline.render(e), le(e), e.toolbar.elements["edit-mode"] && (e.toolbar.elements["edit-mode"].querySelectorAll("button").forEach(function (e) {
+          }), "string" != typeof n && e.sv.element.focus(), ge(e)), "string" == typeof n && e.outline.render(e), be(e), e.toolbar.elements["edit-mode"] && (e.toolbar.elements["edit-mode"].querySelectorAll("button").forEach(function (e) {
             e.classList.remove("vditor-menu--current");
           }), e.toolbar.elements["edit-mode"].querySelector('button[data-mode="' + e.currentMode + '"]').classList.add("vditor-menu--current")), e.outline.toggle(e, "sv" !== e.currentMode && e.options.outline));
         },
-            be = function (e) {
+            Le = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this,
                 i = document.createElement("div");
-            return i.className = "vditor-hint" + (2 === n.level ? "" : " vditor-panel--arrow"), i.innerHTML = '<button data-mode="wysiwyg">' + O.a[t.options.lang].wysiwyg + " &lt;" + Object(u.f)("⌘-⌥-7") + '></button>\n<button data-mode="ir">' + O.a[t.options.lang].instantRendering + " &lt;" + Object(u.f)("⌘-⌥-8") + '></button>\n<button data-mode="sv">' + O.a[t.options.lang].splitView + " &lt;" + Object(u.f)("⌘-⌥-9") + "></button>", r.element.appendChild(i), r._bindEvent(t, i, n), r;
+            return i.className = "vditor-hint" + (2 === n.level ? "" : " vditor-panel--arrow"), i.innerHTML = '<button data-mode="wysiwyg">' + R.a[t.options.lang].wysiwyg + " &lt;" + Object(u.g)("⌘-⌥-7") + '></button>\n<button data-mode="ir">' + R.a[t.options.lang].instantRendering + " &lt;" + Object(u.g)("⌘-⌥-8") + '></button>\n<button data-mode="sv">' + R.a[t.options.lang].splitView + " &lt;" + Object(u.g)("⌘-⌥-9") + "></button>", r.element.appendChild(i), r._bindEvent(t, i, n), r;
           }
 
-          return ve(t, e), t.prototype._bindEvent = function (e, t, n) {
+          return Te(t, e), t.prototype._bindEvent = function (e, t, n) {
             var r = this.element.children[0];
-            y(e, t, r, n.level), t.children.item(0).addEventListener(Object(u.a)(), function (t) {
-              ge(e, "wysiwyg", t), t.preventDefault(), t.stopPropagation();
-            }), t.children.item(1).addEventListener(Object(u.a)(), function (t) {
-              ge(e, "ir", t), t.preventDefault(), t.stopPropagation();
-            }), t.children.item(2).addEventListener(Object(u.a)(), function (t) {
-              ge(e, "sv", t), t.preventDefault(), t.stopPropagation();
+            y(e, t, r, n.level), t.children.item(0).addEventListener(Object(u.b)(), function (t) {
+              xe(e, "wysiwyg", t), t.preventDefault(), t.stopPropagation();
+            }), t.children.item(1).addEventListener(Object(u.b)(), function (t) {
+              xe(e, "ir", t), t.preventDefault(), t.stopPropagation();
+            }), t.children.item(2).addEventListener(Object(u.b)(), function (t) {
+              xe(e, "sv", t), t.preventDefault(), t.stopPropagation();
             });
           }, t;
-        }(me),
-            ye = function ye(e, t) {
+        }(ke),
+            je = function je(e, t) {
           var n = Object(M.b)(e.wysiwyg.element),
               r = Object(w.c)(n.startContainer);
-          r || (r = n.startContainer.childNodes[n.startOffset]), r || 0 !== e.wysiwyg.element.children.length || (r = e.wysiwyg.element), r && !r.classList.contains("vditor-wysiwyg__block") && (n.insertNode(document.createElement("wbr")), "<wbr>" === r.innerHTML.trim() && (r.innerHTML = "<wbr><br>"), "BLOCKQUOTE" === r.tagName || r.classList.contains("vditor-reset") ? r.innerHTML = "<" + t + ' data-block="0">' + r.innerHTML.trim() + "</" + t + ">" : r.outerHTML = "<" + t + ' data-block="0">' + r.innerHTML.trim() + "</" + t + ">", Object(M.f)(e.wysiwyg.element, n), Ze(e));
+          r || (r = n.startContainer.childNodes[n.startOffset]), r || 0 !== e.wysiwyg.element.children.length || (r = e.wysiwyg.element), r && !r.classList.contains("vditor-wysiwyg__block") && (n.insertNode(document.createElement("wbr")), "<wbr>" === r.innerHTML.trim() && (r.innerHTML = "<wbr><br>"), "BLOCKQUOTE" === r.tagName || r.classList.contains("vditor-reset") ? r.innerHTML = "<" + t + ' data-block="0">' + r.innerHTML.trim() + "</" + t + ">" : r.outerHTML = "<" + t + ' data-block="0">' + r.innerHTML.trim() + "</" + t + ">", Object(M.f)(e.wysiwyg.element, n), lt(e));
         },
-            we = function we(e) {
+            _e = function _e(e) {
           var t = getSelection().getRangeAt(0),
               n = Object(w.c)(t.startContainer);
           n || (n = t.startContainer.childNodes[t.startOffset]), n && (t.insertNode(document.createElement("wbr")), n.outerHTML = '<p data-block="0">' + n.innerHTML + "</p>", Object(M.f)(e.wysiwyg.element, t)), e.wysiwyg.popover.style.display = "none";
         },
-            Ee = function Ee(e, t, n) {
+            Ce = function Ce(e, t, n) {
           void 0 === n && (n = !0);
           var r = e.previousElementSibling,
               i = r.ownerDocument.createRange();
-          "CODE" === r.tagName ? (r.style.display = "inline-block", n ? i.setStart(r.firstChild, 1) : i.selectNodeContents(r)) : (r.style.display = "block", r.firstChild.firstChild || r.firstChild.appendChild(document.createTextNode("")), i.selectNodeContents(r.firstChild)), n ? i.collapse(!0) : i.collapse(!1), Object(M.h)(i), e.firstElementChild.classList.contains("language-mindmap") || Se(t);
+          "CODE" === r.tagName ? (r.style.display = "inline-block", n ? i.setStart(r.firstChild, 1) : i.selectNodeContents(r)) : (r.style.display = "block", r.firstChild.firstChild || r.firstChild.appendChild(document.createTextNode("")), i.selectNodeContents(r.firstChild)), n ? i.collapse(!0) : i.collapse(!1), Object(M.h)(i), e.firstElementChild.classList.contains("language-mindmap") || De(t);
         },
-            Me = function Me(e, t) {
+            Ae = function Ae(e, t) {
+          if (pe("⌘-⇧-X", t)) {
+            var n = e.wysiwyg.popover.querySelector('[data-type="remove"]');
+            if (n) return n.click(), t.preventDefault(), !0;
+          }
+        },
+            Ne = function Ne(e, t) {
           t.addEventListener("focus", function () {
             e.options.focus && e.options.focus(l(e)), b(e, ["subToolbar"]);
           });
         },
-            Se = function Se(e) {
+            He = function He(e, t) {
+          t.addEventListener("blur", function () {
+            e.options.blur && e.options.blur(l(e));
+          });
+        },
+            De = function De(e) {
           if (e.options.typewriterMode) {
             var t = e[e.currentMode].element,
                 n = Object(M.a)(t).top;
             "string" != typeof e.options.height || e.element.classList.contains("vditor--fullscreen") || window.scrollTo(window.scrollX, n + e.element.offsetTop + e.toolbar.element.offsetHeight - window.innerHeight / 2 + 10), ("number" == typeof e.options.height || e.element.classList.contains("vditor--fullscreen")) && (t.scrollTop = n + t.scrollTop - t.clientHeight / 2 + 10);
           }
         },
-            Oe = function Oe(e, t) {
+            Re = function Re(e, t) {
           t.addEventListener("keydown", function (t) {
             if (!e.options.hint.at && !e.toolbar.elements.emoji || !e.hint.select(t, e)) {
               if ("sv" === e.currentMode) {
@@ -97105,7 +97258,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   if (e.options.tab && "Tab" === t.key) {
                     t.preventDefault(), t.stopPropagation();
-                    var o = re(r, i),
+                    var o = he(r, i),
                         a = i.substring(o.start, o.end - 1).split("\n");
 
                     if (t.shiftKey) {
@@ -97115,27 +97268,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         var r = t;
                         return 0 === t.indexOf(e.options.tab) && (0 === n && (c = !0), s++, r = t.replace(e.options.tab, "")), r;
                       }).join("\n");
-                      return L(e, i.substring(0, o.start) + d + i.substring(o.end - 1), {
+                      return z(e, i.substring(0, o.start) + d + i.substring(o.end - 1), {
                         end: r.end - s * e.options.tab.length,
                         start: r.start - (c ? e.options.tab.length : 0)
                       }), !0;
                     }
 
-                    if (r.start === r.end) return x(e, e.options.tab, ""), !0;
+                    if (r.start === r.end) return P(e, e.options.tab, ""), !0;
                     var p = a.map(function (t) {
                       return e.options.tab + t;
                     }).join("\n");
-                    return L(e, i.substring(0, o.start) + p + i.substring(o.end - 1), {
+                    return z(e, i.substring(0, o.start) + p + i.substring(o.end - 1), {
                       end: r.end + a.length * e.options.tab.length,
                       start: r.start + e.options.tab.length
                     }), !0;
                   }
 
-                  if (!Object(u.c)(t) && !t.shiftKey && 8 === t.keyCode) {
-                    if (r.start !== r.end) x(e, "", "", !0);else {
+                  if (!Object(u.d)(t) && !t.shiftKey && 8 === t.keyCode) {
+                    if (r.start !== r.end) P(e, "", "", !0);else {
                       var h = i.substring(0, r.start).match(/((?:\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])[\u2000-\u206F][\u2700-\u27BF]|((?:\uD83E[\uDD00-\uDDFF])|(?:\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])|(?:\uD83D[\uDE80-\uDEFF])|(?:\uD83D[\uDE00-\uDE4F]))[\u2000-\u206F][\u2600-\u26FF]|(?:\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])|(?:\uD83C[\uDD00-\uDDFF])|(?:\uD83D[\uDE00-\uDE4F])|(?:\uD83D[\uDE80-\uDEFF])|(?:\uD83C[\uDE00-\uDEFF])|(?:\uD83E[\uDD00-\uDDFF])|(?:\uD83C[\uDC00-\uDC2F])|[\uFE00-\uFE0F]|(?:\uD83C[\uDCA0-\uDCFF])|[\0-\x7F][\u20D0-\u20FF]|[\0-\x7F][\uFE00-\uFE0F][\u20D0-\u20FF])$/),
                           f = h ? h[0].length : 1;
-                      L(e, i.substring(0, r.start - f) + i.substring(r.start), {
+                      z(e, i.substring(0, r.start - f) + i.substring(r.start), {
                         end: r.start - f,
                         start: r.start - f
                       }, {
@@ -97147,26 +97300,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return t.preventDefault(), t.stopPropagation(), !0;
                   }
 
-                  if (e.options.keymap.deleteLine && ne(e.options.keymap.deleteLine, t)) {
-                    var m = re(r, i),
+                  if (e.options.keymap.deleteLine && pe(e.options.keymap.deleteLine, t)) {
+                    var m = he(r, i),
                         v = i.substring(0, m.start) + i.substring(m.end),
                         g = Math.min(v.length, r.start);
-                    return L(e, v, {
+                    return z(e, v, {
                       end: g,
                       start: g
                     }), t.preventDefault(), !0;
                   }
 
-                  if (e.options.keymap.duplicate && ne(e.options.keymap.duplicate, t)) {
+                  if (e.options.keymap.duplicate && pe(e.options.keymap.duplicate, t)) {
                     var b = i.substring(r.start, r.end);
 
                     if (r.start === r.end) {
-                      m = re(r, i);
-                      b = i.substring(m.start, m.end), L(e, i.substring(0, m.end) + b + i.substring(m.end), {
+                      m = he(r, i);
+                      b = i.substring(m.start, m.end), z(e, i.substring(0, m.end) + b + i.substring(m.end), {
                         end: r.end + b.length,
                         start: r.start + b.length
                       });
-                    } else L(e, i.substring(0, r.end) + b + i.substring(r.end), {
+                    } else z(e, i.substring(0, r.end) + b + i.substring(r.end), {
                       end: r.end + b.length,
                       start: r.start + b.length
                     });
@@ -97182,55 +97335,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   -1 === t.key.indexOf("Arrow") && e.wysiwygUndo.recordFirstWbr(e, t);
                   var n = Object(M.b)(e.wysiwyg.element),
                       r = n.startContainer;
-                  if (He(n, t), it(n), "Enter" !== t.key && "Tab" !== t.key && "Backspace" !== t.key && -1 === t.key.indexOf("Arrow") && !Object(u.c)(t) && "Escape" !== t.key) return !1;
+                  if (Ze(n, t), Mt(n), "Enter" !== t.key && "Tab" !== t.key && "Backspace" !== t.key && -1 === t.key.indexOf("Arrow") && !Object(u.d)(t) && "Escape" !== t.key) return !1;
                   var i = Object(w.c)(r),
                       o = Object(w.f)(r, "P");
-                  if ($e(t, e, o, n)) return !0;
-                  if (Xe(n, e, o, t)) return !0;
-                  if (Ye(e, t, n)) return !0;
+                  if (pt(t, e, o, n)) return !0;
+                  if (dt(n, e, o, t)) return !0;
+                  if (gt(e, t, n)) return !0;
                   var s = Object(w.e)(r, "vditor-wysiwyg__block");
 
                   if (s) {
                     if ("Escape" === t.key && 2 === s.children.length) return e.wysiwyg.popover.style.display = "none", s.firstElementChild.style.display = "none", e.wysiwyg.element.blur(), t.preventDefault(), !0;
 
-                    if (!Object(u.c)(t) && !t.shiftKey && t.altKey && "Enter" === t.key && "code-block" === s.getAttribute("data-type")) {
+                    if (!Object(u.d)(t) && !t.shiftKey && t.altKey && "Enter" === t.key && "code-block" === s.getAttribute("data-type")) {
                       var l = e.wysiwyg.popover.querySelector(".vditor-input");
                       return l.focus(), l.select(), t.preventDefault(), !0;
                     }
 
                     if ("0" === s.getAttribute("data-block")) {
-                      if (et(e, t, s.firstElementChild, n)) return !0;
-                      if (qe(e, t, n, s.firstElementChild, s)) return !0;
+                      if (bt(e, t, s.firstElementChild, n)) return !0;
+                      if (Ye(e, t, n, s.firstElementChild, s)) return !0;
                     }
                   }
 
-                  if (tt(e, n, t, o)) return !0;
+                  if (yt(e, n, t, o)) return !0;
                   var c = Object(w.h)(r, "BLOCKQUOTE");
 
                   if (c && !t.shiftKey && t.altKey && "Enter" === t.key) {
-                    Object(u.c)(t) ? n.setStartBefore(c) : n.setStartAfter(c), Object(M.h)(n);
+                    Object(u.d)(t) ? n.setStartBefore(c) : n.setStartAfter(c), Object(M.h)(n);
                     var d = document.createElement("p");
-                    return d.setAttribute("data-block", "0"), d.innerHTML = "\n", n.insertNode(d), n.collapse(!0), Object(M.h)(n), U(e), Se(e), t.preventDefault(), !0;
+                    return d.setAttribute("data-block", "0"), d.innerHTML = "\n", n.insertNode(d), n.collapse(!0), Object(M.h)(n), K(e), De(e), t.preventDefault(), !0;
                   }
 
                   var p,
                       h = Object(E.a)(r);
 
                   if (h) {
-                    if ("H6" === h.tagName && r.textContent.length === n.startOffset && !Object(u.c)(t) && !t.shiftKey && !t.altKey && "Enter" === t.key) {
+                    if ("H6" === h.tagName && r.textContent.length === n.startOffset && !Object(u.d)(t) && !t.shiftKey && !t.altKey && "Enter" === t.key) {
                       var f = document.createElement("p");
-                      return f.textContent = "\n", f.setAttribute("data-block", "0"), r.parentElement.insertAdjacentElement("afterend", f), n.setStart(f, 0), Object(M.h)(n), U(e), Se(e), t.preventDefault(), !0;
+                      return f.textContent = "\n", f.setAttribute("data-block", "0"), r.parentElement.insertAdjacentElement("afterend", f), n.setStart(f, 0), Object(M.h)(n), K(e), De(e), t.preventDefault(), !0;
                     }
 
                     var m;
-                    if (ne("⌘-=", t)) return (m = parseInt(h.tagName.substr(1), 10) - 1) > 0 && (ye(e, "h" + m), U(e)), t.preventDefault(), !0;
-                    if (ne("⌘--", t)) return (m = parseInt(h.tagName.substr(1), 10) + 1) < 7 && (ye(e, "h" + m), U(e)), t.preventDefault(), !0;
-                    "Backspace" !== t.key || Object(u.c)(t) || t.shiftKey || t.altKey || "" !== h.textContent || we(e);
+                    if (pe("⌘-=", t)) return (m = parseInt(h.tagName.substr(1), 10) - 1) > 0 && (je(e, "h" + m), K(e)), t.preventDefault(), !0;
+                    if (pe("⌘--", t)) return (m = parseInt(h.tagName.substr(1), 10) + 1) < 7 && (je(e, "h" + m), K(e)), t.preventDefault(), !0;
+                    "Backspace" !== t.key || Object(u.d)(t) || t.shiftKey || t.altKey || "" !== h.textContent || _e(e);
                   }
 
-                  if (nt(e, n, t)) return !0;
+                  if (wt(e, n, t)) return !0;
 
-                  if (t.altKey && "Enter" === t.key && !Object(u.c)(t) && !t.shiftKey) {
+                  if (t.altKey && "Enter" === t.key && !Object(u.d)(t) && !t.shiftKey) {
                     var v = Object(w.f)(r, "A"),
                         g = Object(w.d)(r, "data-type", "link-ref"),
                         b = Object(w.d)(r, "data-type", "footnotes-ref");
@@ -97241,23 +97394,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                   }
 
-                  if (ne("⌘-⇧-X", t) && (p = e.wysiwyg.popover.querySelector('[data-type="remove"]'))) return p.click(), t.preventDefault(), !0;
-                  if (ne("⌘-⇧-U", t) && (p = e.wysiwyg.popover.querySelector('[data-type="up"]'))) return p.click(), t.preventDefault(), !0;
-                  if (ne("⌘-⇧-D", t) && (p = e.wysiwyg.popover.querySelector('[data-type="down"]'))) return p.click(), t.preventDefault(), !0;
-                  if (Qe(e, n, t)) return !0;
-                  if (!Object(u.c)(t) && t.shiftKey && !t.altKey && "Enter" === t.key) return ["STRONG", "S", "STRONG", "I", "EM", "B"].includes(r.parentElement.tagName) ? n.insertNode(document.createTextNode("\n" + a.a.ZWSP)) : n.insertNode(document.createTextNode("\n")), n.collapse(!1), Object(M.h)(n), U(e), Se(e), t.preventDefault(), !0;
+                  if (Ae(e, t)) return !0;
+                  if (pe("⌘-⇧-U", t) && (p = e.wysiwyg.popover.querySelector('[data-type="up"]'))) return p.click(), t.preventDefault(), !0;
+                  if (pe("⌘-⇧-D", t) && (p = e.wysiwyg.popover.querySelector('[data-type="down"]'))) return p.click(), t.preventDefault(), !0;
+                  if (ut(e, n, t)) return !0;
+                  if (!Object(u.d)(t) && t.shiftKey && !t.altKey && "Enter" === t.key) return ["STRONG", "S", "STRONG", "I", "EM", "B"].includes(r.parentElement.tagName) ? n.insertNode(document.createTextNode("\n" + a.a.ZWSP)) : n.insertNode(document.createTextNode("\n")), n.collapse(!1), Object(M.h)(n), K(e), De(e), t.preventDefault(), !0;
 
-                  if ("Backspace" === t.key && !Object(u.c)(t) && !t.shiftKey && !t.altKey && "" === n.toString()) {
-                    if (rt(e, n, t, o)) return !0;
+                  if ("Backspace" === t.key && !Object(u.d)(t) && !t.shiftKey && !t.altKey && "" === n.toString()) {
+                    if (Et(e, n, t, o)) return !0;
 
                     if (i) {
                       if (i.previousElementSibling && i.previousElementSibling.classList.contains("vditor-wysiwyg__block") && "0" === i.previousElementSibling.getAttribute("data-block")) {
                         var S = Object(M.c)(i, n).start;
-                        if (0 === S || 1 === S && i.innerText.startsWith(a.a.ZWSP)) return Ee(i.previousElementSibling.lastElementChild, e, !1), "" === i.innerHTML.trim() && (i.remove(), U(e)), t.preventDefault(), !0;
+                        if (0 === S || 1 === S && i.innerText.startsWith(a.a.ZWSP)) return Ce(i.previousElementSibling.lastElementChild, e, !1), "" === i.innerHTML.trim() && (i.remove(), K(e)), t.preventDefault(), !0;
                       }
 
                       var O = n.startOffset;
-                      if ("" === n.toString() && 3 === r.nodeType && "\n" === r.textContent.charAt(O - 2) && r.textContent.charAt(O - 1) !== a.a.ZWSP && ["STRONG", "S", "STRONG", "I", "EM", "B"].includes(r.parentElement.tagName)) return r.textContent = r.textContent.substring(0, O - 1) + a.a.ZWSP, n.setStart(r, O), n.collapse(!0), U(e), t.preventDefault(), !0;
+                      if ("" === n.toString() && 3 === r.nodeType && "\n" === r.textContent.charAt(O - 2) && r.textContent.charAt(O - 1) !== a.a.ZWSP && ["STRONG", "S", "STRONG", "I", "EM", "B"].includes(r.parentElement.tagName)) return r.textContent = r.textContent.substring(0, O - 1) + a.a.ZWSP, n.setStart(r, O), n.collapse(!0), K(e), t.preventDefault(), !0;
                       r.textContent === a.a.ZWSP && 1 === n.startOffset && !r.previousSibling && function (e) {
                         for (var t = e.startContainer.nextSibling; t && "" === t.textContent;) {
                           t = t.nextSibling;
@@ -97270,9 +97423,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
                   }
 
-                  if (Object(u.d)() && 1 === n.startOffset && r.textContent.indexOf(a.a.ZWSP) > -1 && 3 !== r.previousSibling.nodeType && "CODE" === r.previousSibling.tagName && ("Backspace" === t.key || "ArrowLeft" === t.key)) return n.selectNodeContents(r.previousSibling), n.collapse(!1), t.preventDefault(), !0;
+                  if (Object(u.e)() && 1 === n.startOffset && r.textContent.indexOf(a.a.ZWSP) > -1 && r.previousSibling && 3 !== r.previousSibling.nodeType && "CODE" === r.previousSibling.tagName && ("Backspace" === t.key || "ArrowLeft" === t.key)) return n.selectNodeContents(r.previousSibling), n.collapse(!1), t.preventDefault(), !0;
+                  if (St(t, i, n)) return t.preventDefault(), !0;
 
-                  if (De(n, t.key), "ArrowDown" === t.key) {
+                  if (Je(n, t.key), "ArrowDown" === t.key) {
                     var k = r.nextSibling;
                     k && 3 !== k.nodeType && "math-inline" === k.getAttribute("data-type") && n.setStartAfter(k);
                   }
@@ -97284,10 +97438,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 -1 === t.key.indexOf("Arrow") && e.irUndo.recordFirstWbr(e, t);
                 var n = Object(M.b)(e.ir.element),
                     r = n.startContainer;
-                if (He(n, t), it(n), "Enter" !== t.key && "Tab" !== t.key && "Backspace" !== t.key && -1 === t.key.indexOf("Arrow") && !Object(u.c)(t) && "Escape" !== t.key) return !1;
+                if (Ze(n, t), Mt(n), "Enter" !== t.key && "Tab" !== t.key && "Backspace" !== t.key && -1 === t.key.indexOf("Arrow") && !Object(u.d)(t) && "Escape" !== t.key) return !1;
                 var i = Object(w.d)(r, "data-newline", "1");
 
-                if (!Object(u.c)(t) && !t.altKey && !t.shiftKey && "Enter" === t.key && i && n.startOffset < i.textContent.length) {
+                if (!Object(u.d)(t) && !t.altKey && !t.shiftKey && "Enter" === t.key && i && n.startOffset < i.textContent.length) {
                   var o = i.previousElementSibling;
                   o && (n.insertNode(document.createTextNode(o.textContent)), n.collapse(!1));
                   var a = i.nextSibling;
@@ -97295,17 +97449,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
 
                 var s = Object(w.f)(r, "P");
-                if ($e(t, e, s, n)) return !0;
-                if (Xe(n, e, s, t)) return !0;
-                if (tt(e, n, t, s)) return !0;
-                if (s && s.previousElementSibling && s.previousElementSibling.classList.contains("vditor-toc") && ze(e, t, n, s, s.previousElementSibling)) return !0;
+                if (pt(t, e, s, n)) return !0;
+                if (dt(n, e, s, t)) return !0;
+                if (yt(e, n, t, s)) return !0;
+                if (s && s.previousElementSibling && s.previousElementSibling.classList.contains("vditor-toc") && et(e, t, n, s, s.previousElementSibling)) return !0;
                 var l = Object(w.e)(r, "vditor-ir__marker--pre");
 
                 if (l && "PRE" === l.tagName) {
                   var c = l.firstChild;
-                  if (et(e, t, l, n)) return !0;
-                  if (("math-block" === c.getAttribute("data-type") || "html-block" === c.getAttribute("data-type")) && ze(e, t, n, c, l.parentElement)) return !0;
-                  if (qe(e, t, n, c, l.parentElement)) return !0;
+                  if (bt(e, t, l, n)) return !0;
+                  if (("math-block" === c.getAttribute("data-type") || "html-block" === c.getAttribute("data-type")) && et(e, t, n, c, l.parentElement)) return !0;
+                  if (Ye(e, t, n, c, l.parentElement)) return !0;
                 }
 
                 var d = Object(w.d)(r, "data-type", "code-block-info");
@@ -97318,24 +97472,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     1 === p && n.setStart(r, 0), 2 === p && (e.hint.recentLanguage = "");
                   }
 
-                  if (ze(e, t, n, d, d.parentElement)) return b(e, ["hint"]), !0;
+                  if (et(e, t, n, d, d.parentElement)) return b(e, ["hint"]), !0;
                 }
 
                 var h = Object(w.f)(r, "TD") || Object(w.f)(r, "TH");
 
                 if (t.key.indexOf("Arrow") > -1 && h) {
-                  var f = Ie(h);
-                  if (f && ze(e, t, n, h, f)) return !0;
-                  var m = Pe(h);
-                  if (m && qe(e, t, n, h, m)) return !0;
+                  var f = Xe(h);
+                  if (f && et(e, t, n, h, f)) return !0;
+                  var m = Qe(h);
+                  if (m && Ye(e, t, n, h, m)) return !0;
                 }
 
-                if (Ye(e, t, n)) return !0;
-                if (nt(e, n, t)) return !0;
-                if (Qe(e, n, t)) return !0;
+                if (gt(e, t, n)) return !0;
+                if (wt(e, n, t)) return !0;
+                if (ut(e, n, t)) return !0;
 
-                if ("Backspace" === t.key && !Object(u.c)(t) && !t.shiftKey && !t.altKey && "" === n.toString()) {
-                  if (rt(e, n, t, s)) return !0;
+                if ("Backspace" === t.key && !Object(u.d)(t) && !t.shiftKey && !t.altKey && "" === n.toString()) {
+                  if (Et(e, n, t, s)) return !0;
                   var v = Object(E.a)(r);
 
                   if (v) {
@@ -97345,20 +97499,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
 
                 var y = Object(w.c)(r);
-                return "ArrowUp" !== t.key && "ArrowDown" !== t.key || !y || y.querySelectorAll(".vditor-ir__node").forEach(function (e) {
+                return !("ArrowUp" !== t.key && "ArrowDown" !== t.key || !y || (y.querySelectorAll(".vditor-ir__node").forEach(function (e) {
                   e.contains(r) || e.classList.add("vditor-ir__node--hidden");
-                }), De(n, t.key), !1;
+                }), !St(t, y, n))) || (Je(n, t.key), !1);
               }(e, t)) return;
 
-              if (e.options.ctrlEnter && ne("⌘-Enter", t)) return e.options.ctrlEnter(l(e)), void t.preventDefault();
+              if (e.options.ctrlEnter && pe("⌘-Enter", t)) return e.options.ctrlEnter(l(e)), void t.preventDefault();
 
-              if (ne("⌘-Z", t)) {
+              if (pe("⌘-Z", t)) {
                 if ("sv" === e.currentMode && !e.toolbar.elements.undo) return e.undo.undo(e), void t.preventDefault();
                 if ("wysiwyg" === e.currentMode && !e.toolbar.elements.undo) return e.wysiwygUndo.undo(e), void t.preventDefault();
                 if ("ir" === e.currentMode) return e.irUndo.undo(e), void t.preventDefault();
               }
 
-              if (ne("⌘-Y", t)) {
+              if (pe("⌘-Y", t)) {
                 if ("sv" === e.currentMode && !e.toolbar.elements.redo) return e.undo.redo(e), void t.preventDefault();
                 if ("wysiwyg" === e.currentMode && !e.toolbar.elements.redo) return e.wysiwygUndo.redo(e), void t.preventDefault();
                 if ("ir" === e.currentMode) return e.irUndo.redo(e), void t.preventDefault();
@@ -97366,34 +97520,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               if ("Escape" === t.key) return e.options.esc && e.options.esc(l(e)), "block" === e.hint.element.style.display && (e.hint.element.style.display = "none"), void t.preventDefault();
 
-              if (Object(u.c)(t) && t.altKey && !t.shiftKey && /^Digit[1-6]$/.test(t.code)) {
+              if (Object(u.d)(t) && t.altKey && !t.shiftKey && /^Digit[1-6]$/.test(t.code)) {
                 if ("wysiwyg" === e.currentMode) {
                   var n = t.code.replace("Digit", "H");
-                  Object(w.f)(getSelection().getRangeAt(0).startContainer, n) ? we(e) : ye(e, n), U(e);
-                } else "sv" === e.currentMode ? x(e, "#".repeat(parseInt(t.code.replace("Digit", ""), 10)) + " ", "", !1, !0) : "ir" === e.currentMode && lt(e, "#".repeat(parseInt(t.code.replace("Digit", ""), 10)) + " ");
+                  Object(w.f)(getSelection().getRangeAt(0).startContainer, n) ? _e(e) : je(e, n), K(e);
+                } else "sv" === e.currentMode ? P(e, "#".repeat(parseInt(t.code.replace("Digit", ""), 10)) + " ", "", !1, !0) : "ir" === e.currentMode && xt(e, "#".repeat(parseInt(t.code.replace("Digit", ""), 10)) + " ");
 
                 return t.preventDefault(), !0;
               }
 
-              if (Object(u.c)(t) && t.altKey && !t.shiftKey && /^Digit[7-9]$/.test(t.code)) return "Digit7" === t.code ? ge(e, "wysiwyg", t) : "Digit8" === t.code ? ge(e, "ir", t) : "Digit9" === t.code && ge(e, "sv", t), !0;
+              if (Object(u.d)(t) && t.altKey && !t.shiftKey && /^Digit[7-9]$/.test(t.code)) return "Digit7" === t.code ? xe(e, "wysiwyg", t) : "Digit8" === t.code ? xe(e, "ir", t) : "Digit9" === t.code && xe(e, "sv", t), !0;
               e.options.toolbar.find(function (n) {
                 return !n.hotkey || n.toolbar ? !!n.toolbar && !!n.toolbar.find(function (n) {
-                  return !!n.hotkey && (ne(n.hotkey, t) ? (e.toolbar.elements[n.name].children[0].dispatchEvent(new CustomEvent(Object(u.a)())), t.preventDefault(), !0) : void 0);
-                }) : ne(n.hotkey, t) ? (e.toolbar.elements[n.name].children[0].dispatchEvent(new CustomEvent(Object(u.a)())), t.preventDefault(), !0) : void 0;
+                  return !!n.hotkey && (pe(n.hotkey, t) ? (e.toolbar.elements[n.name].children[0].dispatchEvent(new CustomEvent(Object(u.b)())), t.preventDefault(), !0) : void 0);
+                }) : pe(n.hotkey, t) ? (e.toolbar.elements[n.name].children[0].dispatchEvent(new CustomEvent(Object(u.b)())), t.preventDefault(), !0) : void 0;
               });
             }
           });
         },
-            ke = function ke(e, t) {
+            Ie = function Ie(e, t) {
           e.options.select && t.addEventListener("selectstart", function (n) {
             t.onmouseup = function () {
-              var t = "wysiwyg" === e.currentMode ? e.wysiwyg.element : e.sv.element,
-                  n = te(t);
-              e.options.select(n);
+              var t = ue(e[e.currentMode].element);
+              t && e.options.select(t);
             };
           });
         },
-            Le = function Le(e) {
+            ze = function ze(e) {
           clearTimeout(e.wysiwyg.hlToolbarTimeoutId), e.wysiwyg.hlToolbarTimeoutId = window.setTimeout(function () {
             var t;
 
@@ -97403,7 +97556,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   r = n.startContainer;
               3 === n.startContainer.nodeType && (r = n.startContainer.parentElement), r.classList.contains("vditor-reset") && (r = r.childNodes[n.startOffset]);
               var i = Object(w.d)(r, "data-type", "footnotes-block");
-              if (i) return e.wysiwyg.popover.innerHTML = "", je(i, e), void xe(e, i);
+              if (i) return e.wysiwyg.popover.innerHTML = "", Ue(i, e), void Pe(e, i);
               var o = Object(w.f)(r, "LI");
               o ? (o.classList.contains("vditor-task") ? h(e.toolbar.elements, ["check"]) : "OL" === o.parentElement.tagName ? h(e.toolbar.elements, ["ordered-list"]) : "UL" === o.parentElement.tagName && h(e.toolbar.elements, ["list"]), f(e.toolbar.elements, ["outdent", "indent"])) : m(e.toolbar.elements, ["outdent", "indent"]), Object(w.f)(r, "BLOCKQUOTE") && h(e.toolbar.elements, ["quote"]), (Object(w.f)(r, "B") || Object(w.f)(r, "STRONG")) && h(e.toolbar.elements, ["bold"]), (Object(w.f)(r, "I") || Object(w.f)(r, "EM")) && h(e.toolbar.elements, ["italic"]), (Object(w.f)(r, "STRIKE") || Object(w.f)(r, "S")) && h(e.toolbar.elements, ["strike"]);
               var s = Object(w.f)(r, "A");
@@ -97412,18 +97565,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   c = Object(E.a)(r);
               Object(w.f)(r, "CODE") ? Object(w.f)(r, "PRE") ? (m(e.toolbar.elements, ["headings", "bold", "italic", "strike", "line", "quote", "list", "ordered-list", "check", "code", "inline-code", "upload", "link", "table", "record"]), h(e.toolbar.elements, ["code"])) : (m(e.toolbar.elements, ["headings", "bold", "italic", "strike", "line", "quote", "list", "ordered-list", "check", "code", "upload", "link", "table", "record"]), h(e.toolbar.elements, ["inline-code"])) : c ? (m(e.toolbar.elements, ["bold"]), h(e.toolbar.elements, ["headings"])) : l && m(e.toolbar.elements, ["table"]);
               var d = Object(w.e)(r, "vditor-toc");
-              if (!d) (B = Object(w.d)(r, "data-block", "0")) && (null === (t = B.previousElementSibling) || void 0 === t ? void 0 : t.classList.contains("vditor-toc")) && (d = B.previousElementSibling);
-              d && (e.wysiwyg.popover.innerHTML = "", je(d, e), xe(e, d));
+              if (!d) (W = Object(w.d)(r, "data-block", "0")) && (null === (t = W.previousElementSibling) || void 0 === t ? void 0 : t.classList.contains("vditor-toc")) && (d = W.previousElementSibling);
+              d && (e.wysiwyg.popover.innerHTML = "", Ue(d, e), Pe(e, d));
               var v = Object(E.b)(r, "BLOCKQUOTE");
 
-              if (v && (e.wysiwyg.popover.innerHTML = "", Te(n, v, e), _e(n, v, e), je(v, e), xe(e, v)), o && (e.wysiwyg.popover.innerHTML = "", Te(n, o, e), _e(n, o, e), je(o, e), xe(e, o)), l) {
+              if (v && (e.wysiwyg.popover.innerHTML = "", Be(n, v, e), qe(n, v, e), Ue(v, e), Pe(e, v)), o && (e.wysiwyg.popover.innerHTML = "", Be(n, o, e), qe(n, o, e), Ue(o, e), Pe(e, o)), l) {
                 e.wysiwyg.popover.innerHTML = "";
 
                 var g = function g() {
                   var e = l.rows.length,
                       t = l.rows[0].cells.length,
-                      n = parseInt(_.value, 10) || e,
-                      r = parseInt(C.value, 10) || t;
+                      n = parseInt(A.value, 10) || e,
+                      r = parseInt(D.value, 10) || t;
 
                   if (n !== e || t !== r) {
                     if (t !== r) for (var i = r - t, o = 0; o < l.rows.length; o++) {
@@ -97452,99 +97605,123 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   }
                 },
                     b = function b(t) {
-                  Ve(l, t), "right" === t ? (L.classList.remove("vditor-icon--current"), x.classList.remove("vditor-icon--current"), T.classList.add("vditor-icon--current")) : "center" === t ? (L.classList.remove("vditor-icon--current"), T.classList.remove("vditor-icon--current"), x.classList.add("vditor-icon--current")) : (x.classList.remove("vditor-icon--current"), T.classList.remove("vditor-icon--current"), L.classList.add("vditor-icon--current")), Object(M.h)(n), U(e);
+                  it(l, t), "right" === t ? (k.classList.remove("vditor-icon--current"), T.classList.remove("vditor-icon--current"), x.classList.add("vditor-icon--current")) : "center" === t ? (k.classList.remove("vditor-icon--current"), x.classList.remove("vditor-icon--current"), T.classList.add("vditor-icon--current")) : (T.classList.remove("vditor-icon--current"), x.classList.remove("vditor-icon--current"), k.classList.add("vditor-icon--current")), Object(M.h)(n), K(e);
                 },
                     y = Object(w.f)(r, "TD"),
                     S = Object(w.f)(r, "TH"),
-                    k = "left";
+                    O = "left";
 
-                y ? k = y.getAttribute("align") || "left" : S && (k = S.getAttribute("align") || "center");
-                var L = document.createElement("button");
-                L.setAttribute("aria-label", O.a[e.options.lang].alignLeft + "<" + Object(u.f)("⌘-⇧-L") + ">"), L.setAttribute("data-type", "left"), L.innerHTML = X.a, L.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n" + ("left" === k ? " vditor-icon--current" : ""), L.onclick = function () {
+                y ? O = y.getAttribute("align") || "left" : S && (O = S.getAttribute("align") || "center");
+                var k = document.createElement("button");
+                k.setAttribute("aria-label", R.a[e.options.lang].alignLeft + "<" + Object(u.g)("⌘-⇧-L") + ">"), k.setAttribute("data-type", "left"), k.innerHTML = J.a, k.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n" + ("left" === O ? " vditor-icon--current" : ""), k.onclick = function () {
                   b("left");
                 };
-                var x = document.createElement("button");
-                x.setAttribute("aria-label", O.a[e.options.lang].alignCenter + "<" + Object(u.f)("⌘-⇧-C") + ">"), x.setAttribute("data-type", "center"), x.innerHTML = K.a, x.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n" + ("center" === k ? " vditor-icon--current" : ""), x.onclick = function () {
+                var T = document.createElement("button");
+                T.setAttribute("aria-label", R.a[e.options.lang].alignCenter + "<" + Object(u.g)("⌘-⇧-C") + ">"), T.setAttribute("data-type", "center"), T.innerHTML = V.a, T.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n" + ("center" === O ? " vditor-icon--current" : ""), T.onclick = function () {
                   b("center");
                 };
-                var T = document.createElement("button");
-                T.setAttribute("aria-label", O.a[e.options.lang].alignRight + "<" + Object(u.f)("⌘-⇧-R") + ">"), T.setAttribute("data-type", "right"), T.innerHTML = Z.a, T.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n" + ("right" === k ? " vditor-icon--current" : ""), T.onclick = function () {
+                var x = document.createElement("button");
+                x.setAttribute("aria-label", R.a[e.options.lang].alignRight + "<" + Object(u.g)("⌘-⇧-R") + ">"), x.setAttribute("data-type", "right"), x.innerHTML = X.a, x.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n" + ("right" === O ? " vditor-icon--current" : ""), x.onclick = function () {
                   b("right");
-                }, (J = document.createElement("span")).setAttribute("aria-label", O.a[e.options.lang].row), J.className = "vditor-tooltipped vditor-tooltipped__n";
-
-                var _ = document.createElement("input");
-
-                J.appendChild(_), _.type = "number", _.min = "1", _.className = "vditor-input", _.style.width = "42px", _.style.textAlign = "center", _.setAttribute("placeholder", O.a[e.options.lang].row), _.value = l.rows.length.toString(), _.oninput = function () {
-                  g();
-                }, _.onkeydown = function (e) {
-                  if (!e.isComposing) return "Tab" === e.key ? (C.focus(), C.select(), void e.preventDefault()) : void 0;
                 };
-                var j = document.createElement("span");
-                j.setAttribute("aria-label", O.a[e.options.lang].column), j.className = "vditor-tooltipped vditor-tooltipped__n";
-                var C = document.createElement("input");
-                j.appendChild(C), C.type = "number", C.min = "1", C.className = "vditor-input", C.style.width = "42px", C.style.textAlign = "center", C.setAttribute("placeholder", O.a[e.options.lang].column), C.value = l.rows[0].cells.length.toString(), C.oninput = function () {
+                var L = document.createElement("button");
+                L.setAttribute("aria-label", R.a[e.options.lang]["insert-row"] + "<" + Object(u.g)("⌘-=") + ">"), L.setAttribute("data-type", "insertRow"), L.innerHTML = ae.a, L.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", L.onclick = function () {
+                  var t = getSelection().getRangeAt(0).startContainer,
+                      r = Object(w.f)(t, "TD") || Object(w.f)(t, "TH");
+                  r && ht(e, n, r);
+                };
+                var j = document.createElement("button");
+                j.setAttribute("aria-label", R.a[e.options.lang]["insert-column"] + "<" + Object(u.g)("⌘-⇧-=") + ">"), j.setAttribute("data-type", "insertColumn"), j.innerHTML = ie.a, j.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", j.onclick = function () {
+                  var t = getSelection().getRangeAt(0).startContainer,
+                      n = Object(w.f)(t, "TD") || Object(w.f)(t, "TH");
+                  n && ft(e, l, n);
+                };
+
+                var _ = document.createElement("button");
+
+                _.setAttribute("aria-label", R.a[e.options.lang]["delete-row"] + "<" + Object(u.g)("⌘--") + ">"), _.setAttribute("data-type", "deleteRow"), _.innerHTML = ee.a, _.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", _.onclick = function () {
+                  var t = getSelection().getRangeAt(0).startContainer,
+                      r = Object(w.f)(t, "TD") || Object(w.f)(t, "TH");
+                  r && mt(e, n, r);
+                };
+                var C = document.createElement("button");
+                C.setAttribute("aria-label", R.a[e.options.lang]["delete-column"] + "<" + Object(u.g)("⌘-⇧--") + ">"), C.setAttribute("data-type", "deleteColumn"), C.innerHTML = $.a, C.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", C.onclick = function () {
+                  var t = getSelection().getRangeAt(0).startContainer,
+                      r = Object(w.f)(t, "TD") || Object(w.f)(t, "TH");
+                  r && vt(e, n, l, r);
+                }, (te = document.createElement("span")).setAttribute("aria-label", R.a[e.options.lang].row), te.className = "vditor-tooltipped vditor-tooltipped__n";
+                var A = document.createElement("input");
+                te.appendChild(A), A.type = "number", A.min = "1", A.className = "vditor-input", A.style.width = "42px", A.style.textAlign = "center", A.setAttribute("placeholder", R.a[e.options.lang].row), A.value = l.rows.length.toString(), A.oninput = function () {
                   g();
-                }, C.onkeydown = function (e) {
-                  if (!e.isComposing) return "Tab" === e.key ? (_.focus(), _.select(), void e.preventDefault()) : void 0;
-                }, Te(n, l, e), _e(n, l, e), je(l, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", L), e.wysiwyg.popover.insertAdjacentElement("beforeend", x), e.wysiwyg.popover.insertAdjacentElement("beforeend", T), e.wysiwyg.popover.insertAdjacentElement("beforeend", J), e.wysiwyg.popover.insertAdjacentHTML("beforeend", " x "), e.wysiwyg.popover.insertAdjacentElement("beforeend", j), xe(e, l);
+                }, A.onkeydown = function (t) {
+                  if (!t.isComposing) return "Tab" === t.key ? (D.focus(), D.select(), void t.preventDefault()) : void Ae(e, t);
+                };
+                var N = document.createElement("span");
+                N.setAttribute("aria-label", R.a[e.options.lang].column), N.className = "vditor-tooltipped vditor-tooltipped__n";
+                var D = document.createElement("input");
+                N.appendChild(D), D.type = "number", D.min = "1", D.className = "vditor-input", D.style.width = "42px", D.style.textAlign = "center", D.setAttribute("placeholder", R.a[e.options.lang].column), D.value = l.rows[0].cells.length.toString(), D.oninput = function () {
+                  g();
+                }, D.onkeydown = function (t) {
+                  if (!t.isComposing) return "Tab" === t.key ? (A.focus(), A.select(), void t.preventDefault()) : void Ae(e, t);
+                }, Be(n, l, e), qe(n, l, e), Ue(l, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", k), e.wysiwyg.popover.insertAdjacentElement("beforeend", T), e.wysiwyg.popover.insertAdjacentElement("beforeend", x), e.wysiwyg.popover.insertAdjacentElement("beforeend", L), e.wysiwyg.popover.insertAdjacentElement("beforeend", j), e.wysiwyg.popover.insertAdjacentElement("beforeend", _), e.wysiwyg.popover.insertAdjacentElement("beforeend", C), e.wysiwyg.popover.insertAdjacentElement("beforeend", te), e.wysiwyg.popover.insertAdjacentHTML("beforeend", " x "), e.wysiwyg.popover.insertAdjacentElement("beforeend", N), Pe(e, l);
               }
 
-              var A = Object(w.d)(r, "data-type", "link-ref");
-
-              if (A) {
-                e.wysiwyg.popover.innerHTML = "";
-
-                var N = function N() {
-                  "" !== H.value.trim() && (A.textContent = H.value), "" !== R.value.trim() && A.setAttribute("data-link-label", R.value);
-                };
-
-                (J = document.createElement("span")).setAttribute("aria-label", O.a[e.options.lang].textIsNotEmpty), J.className = "vditor-tooltipped vditor-tooltipped__n";
-                var H = document.createElement("input");
-                J.appendChild(H), H.className = "vditor-input", H.setAttribute("placeholder", O.a[e.options.lang].textIsNotEmpty), H.style.width = "120px", H.value = A.textContent, H.oninput = function () {
-                  N();
-                }, H.onkeydown = function (t) {
-                  Ce(e.wysiwyg.element, A, t, R);
-                };
-                var D = document.createElement("span");
-                D.setAttribute("aria-label", O.a[e.options.lang].linkRef), D.className = "vditor-tooltipped vditor-tooltipped__n";
-                var R = document.createElement("input");
-                D.appendChild(R), R.className = "vditor-input", R.setAttribute("placeholder", O.a[e.options.lang].linkRef), R.value = A.getAttribute("data-link-label"), R.oninput = function () {
-                  N();
-                }, R.onkeydown = function (t) {
-                  Ce(e.wysiwyg.element, A, t, H);
-                }, je(A, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", J), e.wysiwyg.popover.insertAdjacentElement("beforeend", D), xe(e, A);
-              }
-
-              var I = Object(w.d)(r, "data-type", "footnotes-ref");
+              var I = Object(w.d)(r, "data-type", "link-ref");
 
               if (I) {
-                e.wysiwyg.popover.innerHTML = "", (J = document.createElement("span")).setAttribute("aria-label", O.a[e.options.lang].footnoteRef + "<" + Object(u.f)("⌥-Enter") + ">"), J.className = "vditor-tooltipped vditor-tooltipped__n";
+                e.wysiwyg.popover.innerHTML = "";
+
+                var z = function z() {
+                  "" !== P.value.trim() && (I.textContent = P.value), "" !== q.value.trim() && I.setAttribute("data-link-label", q.value);
+                };
+
+                (te = document.createElement("span")).setAttribute("aria-label", R.a[e.options.lang].textIsNotEmpty), te.className = "vditor-tooltipped vditor-tooltipped__n";
                 var P = document.createElement("input");
-                J.appendChild(P), P.className = "vditor-input", P.setAttribute("placeholder", O.a[e.options.lang].footnoteRef + "<" + Object(u.f)("⌥-Enter") + ">"), P.style.width = "120px", P.value = I.getAttribute("data-footnotes-label"), P.oninput = function () {
-                  "" !== P.value.trim() && I.setAttribute("data-footnotes-label", P.value);
-                }, P.onkeydown = function (e) {
-                  e.isComposing || Object(u.c)(e) || e.shiftKey || !e.altKey || "Enter" !== e.key || (n.selectNodeContents(I), n.collapse(!1), Object(M.h)(n), e.preventDefault());
-                }, je(I, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", J), xe(e, I);
+                te.appendChild(P), P.className = "vditor-input", P.setAttribute("placeholder", R.a[e.options.lang].textIsNotEmpty), P.style.width = "120px", P.value = I.textContent, P.oninput = function () {
+                  z();
+                }, P.onkeydown = function (t) {
+                  Ae(e, t) || Fe(e.wysiwyg.element, I, t, q);
+                };
+                var B = document.createElement("span");
+                B.setAttribute("aria-label", R.a[e.options.lang].linkRef), B.className = "vditor-tooltipped vditor-tooltipped__n";
+                var q = document.createElement("input");
+                B.appendChild(q), q.className = "vditor-input", q.setAttribute("placeholder", R.a[e.options.lang].linkRef), q.value = I.getAttribute("data-link-label"), q.oninput = function () {
+                  z();
+                }, q.onkeydown = function (t) {
+                  Ae(e, t) || Fe(e.wysiwyg.element, I, t, P);
+                }, Ue(I, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", te), e.wysiwyg.popover.insertAdjacentElement("beforeend", B), Pe(e, I);
               }
 
-              var B,
-                  q = Object(w.e)(r, "vditor-wysiwyg__block");
+              var U = Object(w.d)(r, "data-type", "footnotes-ref");
 
-              if (q && q.getAttribute("data-type").indexOf("block") > -1) {
-                if (e.wysiwyg.popover.innerHTML = "", Te(n, q, e), _e(n, q, e), je(q, e), "code-block" === q.getAttribute("data-type")) {
-                  var F = document.createElement("span");
-                  F.setAttribute("aria-label", O.a[e.options.lang].language + "<" + Object(u.f)("⌥-Enter") + ">"), F.className = "vditor-tooltipped vditor-tooltipped__n";
-                  var V = document.createElement("input");
-                  F.appendChild(V);
-                  var W = q.firstElementChild.firstElementChild;
-                  V.className = "vditor-input", V.setAttribute("placeholder", O.a[e.options.lang].language + "<" + Object(u.f)("⌥-Enter") + ">"), V.value = W.className.indexOf("language-") > -1 ? W.className.split("-")[1].split(" ")[0] : e.hint.recentLanguage, V.oninput = function () {
-                    W.className = "language-" + V.value, q.lastElementChild.classList.contains("vditor-wysiwyg__preview") && (q.lastElementChild.innerHTML = q.firstElementChild.innerHTML, z(q.lastElementChild, e)), U(e);
-                  }, V.onkeydown = function (t) {
-                    t.isComposing || (Object(u.c)(t) || t.shiftKey || !t.altKey || "Enter" !== t.key || (n.setStart(W.firstChild, 0), n.collapse(!0), Object(M.h)(n)), e.hint.select(t, e));
-                  }, V.onkeyup = function (t) {
+              if (U) {
+                e.wysiwyg.popover.innerHTML = "", (te = document.createElement("span")).setAttribute("aria-label", R.a[e.options.lang].footnoteRef + "<" + Object(u.g)("⌥-Enter") + ">"), te.className = "vditor-tooltipped vditor-tooltipped__n";
+                var F = document.createElement("input");
+                te.appendChild(F), F.className = "vditor-input", F.setAttribute("placeholder", R.a[e.options.lang].footnoteRef + "<" + Object(u.g)("⌥-Enter") + ">"), F.style.width = "120px", F.value = U.getAttribute("data-footnotes-label"), F.oninput = function () {
+                  "" !== F.value.trim() && U.setAttribute("data-footnotes-label", F.value);
+                }, F.onkeydown = function (t) {
+                  if (!t.isComposing) return Object(u.d)(t) || t.shiftKey || !t.altKey || "Enter" !== t.key ? void Ae(e, t) : (n.selectNodeContents(U), n.collapse(!1), Object(M.h)(n), void t.preventDefault());
+                }, Ue(U, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", te), Pe(e, U);
+              }
+
+              var W,
+                  Z = Object(w.e)(r, "vditor-wysiwyg__block");
+
+              if (Z && Z.getAttribute("data-type").indexOf("block") > -1) {
+                if (e.wysiwyg.popover.innerHTML = "", Be(n, Z, e), qe(n, Z, e), Ue(Z, e), "code-block" === Z.getAttribute("data-type")) {
+                  var G = document.createElement("span");
+                  G.setAttribute("aria-label", R.a[e.options.lang].language + "<" + Object(u.g)("⌥-Enter") + ">"), G.className = "vditor-tooltipped vditor-tooltipped__n";
+                  var Q = document.createElement("input");
+                  G.appendChild(Q);
+                  var Y = Z.firstElementChild.firstElementChild;
+                  Q.className = "vditor-input", Q.setAttribute("placeholder", R.a[e.options.lang].language + "<" + Object(u.g)("⌥-Enter") + ">"), Q.value = Y.className.indexOf("language-") > -1 ? Y.className.split("-")[1].split(" ")[0] : e.hint.recentLanguage, Q.oninput = function () {
+                    Y.className = "language-" + Q.value, Z.lastElementChild.classList.contains("vditor-wysiwyg__preview") && (Z.lastElementChild.innerHTML = Z.firstElementChild.innerHTML, H(Z.lastElementChild, e)), K(e);
+                  }, Q.onkeydown = function (t) {
+                    t.isComposing || Ae(e, t) || (Object(u.d)(t) || t.shiftKey || !t.altKey || "Enter" !== t.key || (n.setStart(Y.firstChild, 0), n.collapse(!0), Object(M.h)(n)), e.hint.select(t, e));
+                  }, Q.onkeyup = function (t) {
                     if (!t.isComposing && "Enter" !== t.key && "ArrowUp" !== t.key && "ArrowDown" !== t.key) {
                       var n = [],
-                          r = V.value.substring(0, V.selectionStart);
+                          r = Q.value.substring(0, Q.selectionStart);
                       a.a.CODE_LANGUAGES.forEach(function (e) {
                         e.indexOf(r.toLowerCase()) > -1 && n.push({
                           html: e,
@@ -97552,79 +97729,77 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         });
                       }), e.hint.genHTML(n, r, e), t.preventDefault();
                     }
-                  }, e.wysiwyg.popover.insertAdjacentElement("beforeend", F);
+                  }, e.wysiwyg.popover.insertAdjacentElement("beforeend", G);
                 }
 
-                xe(e, q);
-              } else q || e.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview").forEach(function (e) {
+                Pe(e, Z);
+              } else Z || e.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview").forEach(function (e) {
                 e.previousElementSibling.style.display = "none";
-              }), q = void 0;
+              }), Z = void 0;
 
               if (c) {
-                var J;
-                e.wysiwyg.popover.innerHTML = "", (J = document.createElement("span")).setAttribute("aria-label", "ID<" + Object(u.f)("⌥-Enter") + ">"), J.className = "vditor-tooltipped vditor-tooltipped__n";
-                var G = document.createElement("input");
-                J.appendChild(G), G.className = "vditor-input", G.setAttribute("placeholder", "ID<" + Object(u.f)("⌥-Enter") + ">"), G.style.width = "120px", G.value = c.getAttribute("data-id") || "", G.oninput = function () {
-                  c.setAttribute("data-id", G.value);
-                }, G.onkeydown = function (e) {
-                  e.isComposing || Object(u.c)(e) || e.shiftKey || !e.altKey || "Enter" !== e.key || (n.selectNodeContents(c), n.collapse(!1), Object(M.h)(n), e.preventDefault());
-                }, Te(n, c, e), _e(n, c, e), je(c, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", J), xe(e, c);
+                var te;
+                e.wysiwyg.popover.innerHTML = "", (te = document.createElement("span")).setAttribute("aria-label", "ID<" + Object(u.g)("⌥-Enter") + ">"), te.className = "vditor-tooltipped vditor-tooltipped__n";
+                var ne = document.createElement("input");
+                te.appendChild(ne), ne.className = "vditor-input", ne.setAttribute("placeholder", "ID<" + Object(u.g)("⌥-Enter") + ">"), ne.style.width = "120px", ne.value = c.getAttribute("data-id") || "", ne.oninput = function () {
+                  c.setAttribute("data-id", ne.value);
+                }, ne.onkeydown = function (t) {
+                  if (!t.isComposing) return Object(u.d)(t) || t.shiftKey || !t.altKey || "Enter" !== t.key ? void Ae(e, t) : (n.selectNodeContents(c), n.collapse(!1), Object(M.h)(n), void t.preventDefault());
+                }, Be(n, c, e), qe(n, c, e), Ue(c, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", te), Pe(e, c);
               }
 
-              if (s && Ae(e, s), !(v || o || l || q || s || A || I || c || d)) (B = Object(w.d)(r, "data-block", "0")) && B.parentElement.isEqualNode(e.wysiwyg.element) ? (e.wysiwyg.popover.innerHTML = "", Te(n, B, e), _e(n, B, e), je(B, e), xe(e, B)) : e.wysiwyg.popover.style.display = "none";
+              if (s && Ke(e, s), !(v || o || l || Z || s || I || U || c || d)) (W = Object(w.d)(r, "data-block", "0")) && W.parentElement.isEqualNode(e.wysiwyg.element) ? (e.wysiwyg.popover.innerHTML = "", Be(n, W, e), qe(n, W, e), Ue(W, e), Pe(e, W)) : e.wysiwyg.popover.style.display = "none";
               e.wysiwyg.element.querySelectorAll('span[data-type="backslash"] > span').forEach(function (e) {
                 e.style.display = "none";
               });
-              var Q = Object(w.d)(n.startContainer, "data-type", "backslash");
-              Q && (Q.querySelector("span").style.display = "inline");
+              var re = Object(w.d)(n.startContainer, "data-type", "backslash");
+              re && (re.querySelector("span").style.display = "inline");
             }
           }, 200);
         },
-            xe = function xe(e, t) {
+            Pe = function Pe(e, t) {
           var n = t,
               r = Object(w.f)(t, "TABLE");
           r && (n = r), e.wysiwyg.popover.style.left = "0", e.wysiwyg.popover.style.display = "block", e.wysiwyg.popover.style.top = Math.max(-8, n.offsetTop - 21 - e.wysiwyg.element.scrollTop) + "px", e.wysiwyg.popover.style.left = Math.min(n.offsetLeft, e.wysiwyg.element.clientWidth - e.wysiwyg.popover.clientWidth) + "px", e.wysiwyg.popover.setAttribute("data-top", (n.offsetTop - 21).toString());
         },
-            Te = function Te(e, t, n) {
+            Be = function Be(e, t, n) {
           var r = t.previousElementSibling;
 
           if (r && (t.parentElement.isEqualNode(n.wysiwyg.element) || "LI" === t.tagName)) {
             var i = document.createElement("button");
-            i.setAttribute("data-type", "up"), i.setAttribute("aria-label", O.a[n.options.lang].up + "<" + Object(u.f)("⌘-⇧-U") + ">"), i.innerHTML = ee.a, i.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", i.onclick = function () {
-              e.insertNode(document.createElement("wbr")), r.insertAdjacentElement("beforebegin", t), Object(M.f)(n.wysiwyg.element, e), U(n), Le(n), Se(n);
+            i.setAttribute("data-type", "up"), i.setAttribute("aria-label", R.a[n.options.lang].up + "<" + Object(u.g)("⌘-⇧-U") + ">"), i.innerHTML = de.a, i.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", i.onclick = function () {
+              e.insertNode(document.createElement("wbr")), r.insertAdjacentElement("beforebegin", t), Object(M.f)(n.wysiwyg.element, e), K(n), ze(n), De(n);
             }, n.wysiwyg.popover.insertAdjacentElement("beforeend", i);
           }
         },
-            _e = function _e(e, t, n) {
+            qe = function qe(e, t, n) {
           var r = t.nextElementSibling;
 
           if (r && (t.parentElement.isEqualNode(n.wysiwyg.element) || "LI" === t.tagName)) {
             var i = document.createElement("button");
-            i.setAttribute("data-type", "down"), i.setAttribute("aria-label", O.a[n.options.lang].down + "<" + Object(u.f)("⌘-⇧-D") + ">"), i.innerHTML = W.a, i.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", i.onclick = function () {
-              e.insertNode(document.createElement("wbr")), r.insertAdjacentElement("afterend", t), Object(M.f)(n.wysiwyg.element, e), U(n), Le(n), Se(n);
+            i.setAttribute("data-type", "down"), i.setAttribute("aria-label", R.a[n.options.lang].down + "<" + Object(u.g)("⌘-⇧-D") + ">"), i.innerHTML = ne.a, i.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", i.onclick = function () {
+              e.insertNode(document.createElement("wbr")), r.insertAdjacentElement("afterend", t), Object(M.f)(n.wysiwyg.element, e), K(n), ze(n), De(n);
             }, n.wysiwyg.popover.insertAdjacentElement("beforeend", i);
           }
         },
-            je = function je(e, t) {
-          if (1 !== t.wysiwyg.element.children.length || "P" !== t.wysiwyg.element.firstElementChild.tagName) {
-            var n = document.createElement("button");
-            n.setAttribute("data-type", "remove"), n.setAttribute("aria-label", O.a[t.options.lang].remove + "<" + Object(u.f)("⌘-⇧-X") + ">"), n.innerHTML = $.a, n.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", n.onclick = function () {
-              var n = Object(M.b)(t.wysiwyg.element);
-              n.setStartAfter(e), Object(M.h)(n), e.remove(), U(t), Le(t);
-            }, t.wysiwyg.popover.insertAdjacentElement("beforeend", n);
-          }
+            Ue = function Ue(e, t) {
+          var n = document.createElement("button");
+          n.setAttribute("data-type", "remove"), n.setAttribute("aria-label", R.a[t.options.lang].remove + "<" + Object(u.g)("⌘-⇧-X") + ">"), n.innerHTML = le.a, n.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n", n.onclick = function () {
+            var n = Object(M.b)(t.wysiwyg.element);
+            n.setStartAfter(e), Object(M.h)(n), e.remove(), K(t), ze(t);
+          }, t.wysiwyg.popover.insertAdjacentElement("beforeend", n);
         },
-            Ce = function Ce(e, t, n, r) {
+            Fe = function Fe(e, t, n, r) {
           if (!n.isComposing) {
             if ("Tab" === n.key) return r.focus(), r.select(), void n.preventDefault();
 
-            if (!Object(u.c)(n) && !n.shiftKey && n.altKey && "Enter" === n.key) {
+            if (!Object(u.d)(n) && !n.shiftKey && n.altKey && "Enter" === n.key) {
               var i = Object(M.b)(e);
               t.insertAdjacentHTML("afterend", a.a.ZWSP), i.setStartAfter(t.nextSibling), i.collapse(!0), Object(M.h)(i), n.preventDefault();
             }
           }
         },
-            Ae = function Ae(e, t) {
+            Ke = function Ke(e, t) {
           e.wysiwyg.popover.innerHTML = "";
 
           var n = function n() {
@@ -97635,37 +97810,85 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             e.removeAttribute("data-marker");
           });
           var r = document.createElement("span");
-          r.setAttribute("aria-label", O.a[e.options.lang].textIsNotEmpty), r.className = "vditor-tooltipped vditor-tooltipped__n";
+          r.setAttribute("aria-label", R.a[e.options.lang].textIsNotEmpty), r.className = "vditor-tooltipped vditor-tooltipped__n";
           var i = document.createElement("input");
-          r.appendChild(i), i.className = "vditor-input", i.setAttribute("placeholder", O.a[e.options.lang].textIsNotEmpty), i.style.width = "120px", i.value = t.innerHTML || "", i.oninput = function () {
+          r.appendChild(i), i.className = "vditor-input", i.setAttribute("placeholder", R.a[e.options.lang].textIsNotEmpty), i.style.width = "120px", i.value = t.innerHTML || "", i.oninput = function () {
             n();
           }, i.onkeydown = function (n) {
-            Ce(e.wysiwyg.element, t, n, a);
+            Ae(e, n) || Fe(e.wysiwyg.element, t, n, a);
           };
           var o = document.createElement("span");
-          o.setAttribute("aria-label", O.a[e.options.lang].link), o.className = "vditor-tooltipped vditor-tooltipped__n";
+          o.setAttribute("aria-label", R.a[e.options.lang].link), o.className = "vditor-tooltipped vditor-tooltipped__n";
           var a = document.createElement("input");
-          o.appendChild(a), a.className = "vditor-input", a.setAttribute("placeholder", O.a[e.options.lang].link), a.value = t.getAttribute("href") || "", a.oninput = function () {
+          o.appendChild(a), a.className = "vditor-input", a.setAttribute("placeholder", R.a[e.options.lang].link), a.value = t.getAttribute("href") || "", a.oninput = function () {
             n();
           }, a.onkeydown = function (n) {
-            Ce(e.wysiwyg.element, t, n, l);
+            Ae(e, n) || Fe(e.wysiwyg.element, t, n, l);
           };
           var s = document.createElement("span");
-          s.setAttribute("aria-label", O.a[e.options.lang].tooltipText), s.className = "vditor-tooltipped vditor-tooltipped__n";
+          s.setAttribute("aria-label", R.a[e.options.lang].tooltipText), s.className = "vditor-tooltipped vditor-tooltipped__n";
           var l = document.createElement("input");
-          s.appendChild(l), l.className = "vditor-input", l.setAttribute("placeholder", O.a[e.options.lang].tooltipText), l.style.width = "60px", l.value = t.getAttribute("title") || "", l.oninput = function () {
+          s.appendChild(l), l.className = "vditor-input", l.setAttribute("placeholder", R.a[e.options.lang].tooltipText), l.style.width = "60px", l.value = t.getAttribute("title") || "", l.oninput = function () {
             n();
           }, l.onkeydown = function (n) {
-            Ce(e.wysiwyg.element, t, n, i);
-          }, je(t, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", r), e.wysiwyg.popover.insertAdjacentElement("beforeend", o), e.wysiwyg.popover.insertAdjacentElement("beforeend", s), xe(e, t);
+            Ae(e, n) || Fe(e.wysiwyg.element, t, n, i);
+          }, Ue(t, e), e.wysiwyg.popover.insertAdjacentElement("beforeend", r), e.wysiwyg.popover.insertAdjacentElement("beforeend", o), e.wysiwyg.popover.insertAdjacentElement("beforeend", s), Pe(e, t);
         },
-            Ne = function Ne(e, t) {
+            We = function We(e, t, n) {
+          var r = Object(w.c)(t.startContainer);
+
+          if (r || (r = e.wysiwyg.element), n && "formatItalic" !== n.inputType && "deleteByDrag" !== n.inputType && "insertFromDrop" !== n.inputType && "formatBold" !== n.inputType && "formatRemove" !== n.inputType && "formatStrikeThrough" !== n.inputType && "insertUnorderedList" !== n.inputType && "insertOrderedList" !== n.inputType && "formatOutdent" !== n.inputType && "formatIndent" !== n.inputType && "" !== n.inputType || !n) {
+            var i = function (e) {
+              for (var t = e.previousSibling; t;) {
+                if (3 !== t.nodeType && "A" === t.tagName && !t.previousSibling && "" === t.innerHTML.replace(a.a.ZWSP, "") && t.nextSibling) return t;
+                t = t.previousSibling;
+              }
+
+              return !1;
+            }(t.startContainer);
+
+            i && i.remove(), e.wysiwyg.element.querySelectorAll("wbr").forEach(function (e) {
+              e.remove();
+            }), t.insertNode(document.createElement("wbr")), r.querySelectorAll("[style]").forEach(function (e) {
+              e.removeAttribute("style");
+            });
+            var o = "";
+            ("link-ref-defs-block" === r.getAttribute("data-type") || st(r.innerText)) && (r = e.wysiwyg.element);
+            var s = r.isEqualNode(e.wysiwyg.element);
+            if (s) o = r.innerHTML;else {
+              var l = Object(w.b)(t.startContainer);
+              if (l) r = Object(E.b)(t.startContainer, "BLOCKQUOTE") ? Object(w.c)(t.startContainer) || r : l;
+              var c,
+                  d,
+                  u = Object(w.d)(r, "data-type", "footnotes-block");
+
+              if (u && (r = u), o = r.outerHTML, "UL" === r.tagName || "OL" === r.tagName) {
+                var p = r.previousElementSibling,
+                    h = r.nextElementSibling;
+                !p || "UL" !== p.tagName && "OL" !== p.tagName || (o = p.outerHTML + o, p.remove()), !h || "UL" !== h.tagName && "OL" !== h.tagName || (o += h.outerHTML, h.remove()), o = o.replace("<div><wbr><br></div>", "<li><p><wbr><br></p></li>");
+              }
+
+              (c = e.wysiwyg.element.querySelector("[data-type='link-ref-defs-block']")) && !r.isEqualNode(c) && (o += c.outerHTML, c.remove()), (d = e.wysiwyg.element.querySelector("[data-type='footnotes-block']")) && !r.isEqualNode(d) && (o += d.outerHTML, d.remove());
+            }
+            if (o = o.replace(/<\/(strong|b)><strong data-marker="\W{2}">/g, "").replace(/<\/(em|i)><em data-marker="\W{1}">/g, "").replace(/<\/(s|strike)><s data-marker="~{1,2}">/g, ""), O("SpinVditorDOM", o, "argument", e.options["debugger"]), o = e.lute.SpinVditorDOM(o), O("SpinVditorDOM", o, "result", e.options["debugger"]), s) r.innerHTML = o;else r.outerHTML = o, (c = e.wysiwyg.element.querySelector("[data-type='link-ref-defs-block']")) && e.wysiwyg.element.insertAdjacentElement("beforeend", c), (d = e.wysiwyg.element.querySelector("[data-type='footnotes-block']")) && e.wysiwyg.element.insertAdjacentElement("beforeend", d);
+            (Object(E.a)(r) || o.startsWith("<h") || "deleteContentBackward" === (null == n ? void 0 : n.inputType) || "deleteContentForward" === (null == n ? void 0 : n.inputType)) && lt(e), Object(M.f)(e.wysiwyg.element, t), e.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview[data-render='2']").forEach(function (t) {
+              H(t, e);
+            });
+          }
+
+          K(e, {
+            enableAddUndoStack: !0,
+            enableHint: !0,
+            enableInput: !0
+          });
+        },
+            Ve = function Ve(e, t) {
           return Object.defineProperty ? Object.defineProperty(e, "raw", {
             value: t
           }) : e.raw = t, e;
         },
-            He = function He(e, t) {
-          if (!("Enter" === t.key || "Tab" === t.key || "Backspace" === t.key || t.key.indexOf("Arrow") > -1 || Object(u.c)(t) || "Escape" === t.key || t.shiftKey || t.altKey)) {
+            Ze = function Ze(e, t) {
+          if (!("Enter" === t.key || "Tab" === t.key || "Backspace" === t.key || t.key.indexOf("Arrow") > -1 || Object(u.d)(t) || "Escape" === t.key || t.shiftKey || t.altKey)) {
             var n = Object(w.f)(e.startContainer, "P");
 
             if (n && 0 === Object(M.c)(n, e).start) {
@@ -97674,51 +97897,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }
         },
-            De = function De(e, t) {
+            Je = function Je(e, t) {
           if ("ArrowDown" === t || "ArrowUp" === t) {
             var n = Object(w.d)(e.startContainer, "data-type", "math-inline");
             n && ("ArrowDown" === t && e.setStartAfter(n.parentElement), "ArrowUp" === t && e.setStartBefore(n.parentElement));
           }
         },
-            Re = function Re(e, t) {
+            Ge = function Ge(e, t) {
           var n = Object(M.b)(e[e.currentMode].element),
               r = Object(w.c)(n.startContainer);
-          r && (r.insertAdjacentHTML(t, '<p data-block="0">' + a.a.ZWSP + "<wbr>\n</p>"), Object(M.f)(e[e.currentMode].element, n), "ir" === e.currentMode ? S(e) : Le(e), Ge(e));
+          r && (r.insertAdjacentHTML(t, '<p data-block="0">' + a.a.ZWSP + "<wbr>\n</p>"), Object(M.f)(e[e.currentMode].element, n), "ir" === e.currentMode ? S(e) : ze(e), ct(e));
         },
-            Ie = function Ie(e) {
+            Xe = function Xe(e) {
           var t = Object(w.f)(e, "TABLE");
           return !(!t || !t.rows[0].cells[0].isSameNode(e)) && t;
         },
-            Pe = function Pe(e) {
+            Qe = function Qe(e) {
           var t = Object(w.f)(e, "TABLE");
           return !(!t || !t.lastElementChild.lastElementChild.lastElementChild.isSameNode(e)) && t;
         },
-            Be = function Be(e, t, n) {
+            $e = function $e(e, t, n) {
           void 0 === n && (n = !0);
           var r = e.previousElementSibling;
-          return r || (r = e.parentElement.previousElementSibling ? e.parentElement.previousElementSibling.lastElementChild : "TBODY" === e.parentElement.parentElement.tagName && e.parentElement.parentElement.previousElementSibling ? e.parentElement.parentElement.previousElementSibling.lastElementChild.lastElementChild : null), r && (t.selectNodeContents(r), n || t.collapse(!1)), r;
+          return r || (r = e.parentElement.previousElementSibling ? e.parentElement.previousElementSibling.lastElementChild : "TBODY" === e.parentElement.parentElement.tagName && e.parentElement.parentElement.previousElementSibling ? e.parentElement.parentElement.previousElementSibling.lastElementChild.lastElementChild : null), r && (t.selectNodeContents(r), n || t.collapse(!1), Object(M.h)(t)), r;
         },
-            qe = function qe(e, t, n, r, i) {
+            Ye = function Ye(e, t, n, r, i) {
           var o = Object(M.c)(r, n);
 
           if ("ArrowDown" === t.key && -1 === r.textContent.trimRight().substr(o.start).indexOf("\n") || "ArrowRight" === t.key && o.start >= r.textContent.trimRight().length) {
             var s = i.nextElementSibling;
-            return !s || s && ("TABLE" === s.tagName || s.getAttribute("data-type")) ? (i.insertAdjacentHTML("afterend", '<p data-block="0">' + a.a.ZWSP + "<wbr></p>"), Object(M.f)(e[e.currentMode].element, n)) : (n.selectNodeContents(s), n.collapse(!0)), t.preventDefault(), !0;
+            return !s || s && ("TABLE" === s.tagName || s.getAttribute("data-type")) ? (i.insertAdjacentHTML("afterend", '<p data-block="0">' + a.a.ZWSP + "<wbr></p>"), Object(M.f)(e[e.currentMode].element, n)) : (n.selectNodeContents(s), n.collapse(!0), Object(M.h)(n)), t.preventDefault(), !0;
           }
 
           return !1;
         },
-            ze = function ze(e, t, n, r, i) {
+            et = function et(e, t, n, r, i) {
           var o = Object(M.c)(r, n);
 
           if ("ArrowUp" === t.key && -1 === r.textContent.substr(o.start).indexOf("\n") || ("ArrowLeft" === t.key || "Backspace" === t.key) && 0 === o.start) {
             var s = i.previousElementSibling;
-            return !s || s && ("TABLE" === s.tagName || s.getAttribute("data-type")) ? (i.insertAdjacentHTML("beforebegin", '<p data-block="0">' + a.a.ZWSP + "<wbr></p>"), Object(M.f)(e.ir.element, n)) : (n.selectNodeContents(s), n.collapse(!1)), t.preventDefault(), !0;
+            return !s || s && ("TABLE" === s.tagName || s.getAttribute("data-type")) ? (i.insertAdjacentHTML("beforebegin", '<p data-block="0">' + a.a.ZWSP + "<wbr></p>"), Object(M.f)(e.ir.element, n)) : (n.selectNodeContents(s), n.collapse(!1), Object(M.h)(n)), t.preventDefault(), !0;
           }
 
           return !1;
         },
-            Ue = function Ue(e, t, n, r) {
+            tt = function tt(e, t, n, r) {
           void 0 === r && (r = !0);
           var i = Object(w.f)(t.startContainer, "LI");
 
@@ -97746,7 +97969,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             c || (e[e.currentMode].element.querySelector("wbr").remove(), (c = e[e.currentMode].element.querySelector("p")).innerHTML = "<wbr>"), "check" === n ? (c.insertAdjacentHTML("beforebegin", '<ul data-block="0"><li class="vditor-task"><input type="checkbox" /> ' + c.innerHTML + "</li></ul>"), c.remove()) : "list" === n ? (c.insertAdjacentHTML("beforebegin", '<ul data-block="0"><li>' + c.innerHTML + "</li></ul>"), c.remove()) : "ordered-list" === n && (c.insertAdjacentHTML("beforebegin", '<ol data-block="0"><li>' + c.innerHTML + "</li></ol>"), c.remove());
           }
         },
-            Fe = function Fe(e, t, n) {
+            nt = function nt(e, t, n) {
           if (t && t.previousElementSibling) {
             e[e.currentMode].element.querySelectorAll("wbr").forEach(function (e) {
               e.remove();
@@ -97756,11 +97979,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             1 !== i.length && (i = "1" + i.slice(-1)), t.previousElementSibling.insertAdjacentHTML("beforeend", "<" + r.tagName + ' data-block="0"><li data-marker="' + i + '">' + t.innerHTML + "</li></" + r.tagName + ">"), t.remove(), "wysiwyg" === e.currentMode ? r.outerHTML = e.lute.SpinVditorDOM(r.outerHTML) : r.outerHTML = e.lute.SpinVditorIRDOM(r.outerHTML), Object(M.f)(e[e.currentMode].element, n);
             var o = Object(w.b)(n.startContainer);
             o && o.querySelectorAll(".vditor-" + e.currentMode + "__preview[data-render='2']").forEach(function (t) {
-              z(t, e), "wysiwyg" === e.currentMode && t.previousElementSibling.setAttribute("style", "display:none");
-            }), Ge(e), "wysiwyg" === e.currentMode && Le(e);
+              H(t, e), "wysiwyg" === e.currentMode && t.previousElementSibling.setAttribute("style", "display:none");
+            }), ct(e), "wysiwyg" === e.currentMode && ze(e);
           } else e[e.currentMode].element.focus();
         },
-            Ke = function Ke(e, t, n, r) {
+            rt = function rt(e, t, n, r) {
           var i = Object(w.f)(t.parentElement, "LI");
 
           if (i) {
@@ -97776,11 +97999,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }), i.insertAdjacentElement("afterend", t), l && (a.innerHTML = l, t.insertAdjacentElement("beforeend", a)), "wysiwyg" === e.currentMode ? r.outerHTML = e.lute.SpinVditorDOM(r.outerHTML) : r.outerHTML = e.lute.SpinVditorIRDOM(r.outerHTML), Object(M.f)(e[e.currentMode].element, n);
             var c = Object(w.b)(n.startContainer);
             c && c.querySelectorAll(".vditor-" + e.currentMode + "__preview[data-render='2']").forEach(function (t) {
-              z(t, e), "wysiwyg" === e.currentMode && t.previousElementSibling.setAttribute("style", "display:none");
-            }), Ge(e), "wysiwyg" === e.currentMode && Le(e);
+              H(t, e), "wysiwyg" === e.currentMode && t.previousElementSibling.setAttribute("style", "display:none");
+            }), ct(e), "wysiwyg" === e.currentMode && ze(e);
           } else e[e.currentMode].element.focus();
         },
-            Ve = function Ve(e, t) {
+            it = function it(e, t) {
           for (var n = getSelection().getRangeAt(0).startContainer.parentElement, r = e.rows[0].cells.length, i = e.rows.length, o = 0, a = 0; a < i; a++) {
             for (var s = 0; s < r; s++) {
               if (e.rows[a].cells[s].isSameNode(n)) {
@@ -97794,15 +98017,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             e.rows[l].cells[o].setAttribute("align", t);
           }
         },
-            We = function We(e) {
+            ot = function ot(e) {
           var t = e.trimRight().split("\n").pop();
           return "" !== t && ("" === t.replace(/ |-/g, "") || "" === t.replace(/ |_/g, "") || "" === t.replace(/ |\*/g, "")) && t.replace(/ /g, "").length > 2 && !(t.indexOf("-") > -1 && -1 === t.trimLeft().indexOf(" ") && e.trimRight().split("\n").length > 1) && 0 !== t.indexOf("    ") && 0 !== t.indexOf("\t");
         },
-            Je = function Je(e) {
+            at = function at(e) {
           var t = e.trimRight().split("\n");
           return 0 !== (e = t.pop()).indexOf("    ") && 0 !== e.indexOf("\t") && "" !== (e = e.trimLeft()) && 0 !== t.length && ("" === e.replace(/-/g, "") || "" === e.replace(/=/g, ""));
         },
-            Ze = function Ze(e) {
+            st = function st(e) {
+          return "[toc]" === e.trim().toLowerCase();
+        },
+            lt = function lt(e) {
           var t = e[e.currentMode].element;
           e.outline.render(e);
           var n = t.querySelector('[data-type="toc-block"]');
@@ -97818,51 +98044,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }), n.innerHTML = r || "[ToC]";
           }
         },
-            Ge = function Ge(e) {
-          "wysiwyg" === e.currentMode ? U(e) : "ir" === e.currentMode && st(e);
+            ct = function ct(e) {
+          "wysiwyg" === e.currentMode ? K(e) : "ir" === e.currentMode && Tt(e);
         },
-            Xe = function Xe(e, t, n, r) {
+            dt = function dt(e, t, n, r) {
           var i = e.startContainer,
               o = Object(w.f)(i, "LI");
 
           if (o) {
-            if (!Object(u.c)(r) && !r.altKey && "Enter" === r.key && !r.shiftKey && n && o.contains(n) && n.nextElementSibling) return o && !o.textContent.endsWith("\n") && o.insertAdjacentText("beforeend", "\n"), e.insertNode(document.createTextNode("\n")), e.collapse(!1), Ge(t), r.preventDefault(), !0;
-            if (!(Object(u.c)(r) || r.shiftKey || r.altKey || "Backspace" !== r.key || o.previousElementSibling || "" !== e.toString() || 0 !== Object(M.c)(o, e).start)) return o.nextElementSibling ? (o.parentElement.insertAdjacentHTML("beforebegin", '<p data-block="0"><wbr>' + o.innerHTML + "</p>"), o.remove()) : o.parentElement.outerHTML = '<p data-block="0"><wbr>' + o.innerHTML + "</p>", Object(M.f)(t[t.currentMode].element, e), Ge(t), r.preventDefault(), !0;
+            if (!Object(u.d)(r) && !r.altKey && "Enter" === r.key && !r.shiftKey && n && o.contains(n) && n.nextElementSibling) return o && !o.textContent.endsWith("\n") && o.insertAdjacentText("beforeend", "\n"), e.insertNode(document.createTextNode("\n")), e.collapse(!1), ct(t), r.preventDefault(), !0;
+            if (!(Object(u.d)(r) || r.shiftKey || r.altKey || "Backspace" !== r.key || o.previousElementSibling || "" !== e.toString() || 0 !== Object(M.c)(o, e).start)) return o.nextElementSibling ? (o.parentElement.insertAdjacentHTML("beforebegin", '<p data-block="0"><wbr>' + o.innerHTML + "</p>"), o.remove()) : o.parentElement.outerHTML = '<p data-block="0"><wbr>' + o.innerHTML + "</p>", Object(M.f)(t[t.currentMode].element, e), ct(t), r.preventDefault(), !0;
 
-            if (!Object(u.c)(r) && !r.altKey && "Tab" === r.key) {
+            if (!Object(u.d)(r) && !r.altKey && "Tab" === r.key) {
               var a = !1;
-              if ((0 === e.startOffset && (3 === i.nodeType && !i.previousSibling || 3 !== i.nodeType && "LI" === i.nodeName) || o.classList.contains("vditor-task") && 1 === e.startOffset && 3 !== i.previousSibling.nodeType && "INPUT" === i.previousSibling.tagName) && (a = !0), a) return r.shiftKey ? Ke(t, o, e, o.parentElement) : Fe(t, o, e), r.preventDefault(), !0;
+              if ((0 === e.startOffset && (3 === i.nodeType && !i.previousSibling || 3 !== i.nodeType && "LI" === i.nodeName) || o.classList.contains("vditor-task") && 1 === e.startOffset && 3 !== i.previousSibling.nodeType && "INPUT" === i.previousSibling.tagName) && (a = !0), a) return r.shiftKey ? rt(t, o, e, o.parentElement) : nt(t, o, e), r.preventDefault(), !0;
             }
           }
 
           return !1;
         },
-            Qe = function Qe(e, t, n) {
-          if (e.options.tab && "Tab" === n.key) return n.shiftKey || ("" === t.toString() ? (t.insertNode(document.createTextNode(e.options.tab)), t.collapse(!1)) : (t.extractContents(), t.insertNode(document.createTextNode(e.options.tab)), t.collapse(!1))), Ge(e), n.preventDefault(), !0;
+            ut = function ut(e, t, n) {
+          if (e.options.tab && "Tab" === n.key) return n.shiftKey || ("" === t.toString() ? (t.insertNode(document.createTextNode(e.options.tab)), t.collapse(!1)) : (t.extractContents(), t.insertNode(document.createTextNode(e.options.tab)), t.collapse(!1))), Object(M.h)(t), ct(e), n.preventDefault(), !0;
         },
-            $e = function $e(e, t, n, r) {
+            pt = function pt(e, t, n, r) {
           if (n) {
-            if (!Object(u.c)(e) && !e.altKey && "Enter" === e.key) {
-              var o = String.raw(i || (i = Ne(["", ""], ["", ""])), n.textContent).replace(/\\\|/g, "").trim(),
+            if (!Object(u.d)(e) && !e.altKey && "Enter" === e.key) {
+              var o = String.raw(i || (i = Ve(["", ""], ["", ""])), n.textContent).replace(/\\\|/g, "").trim(),
                   a = o.split("|");
 
               if (o.startsWith("|") && o.endsWith("|") && a.length > 3) {
                 var s = a.map(function () {
                   return "---";
                 }).join("|");
-                return s = n.textContent + s.substring(3, s.length - 3) + "\n|<wbr>", n.outerHTML = t.lute.SpinVditorDOM(s), Object(M.f)(t[t.currentMode].element, r), Ge(t), Se(t), e.preventDefault(), !0;
+                return s = n.textContent + s.substring(3, s.length - 3) + "\n|<wbr>", n.outerHTML = t.lute.SpinVditorDOM(s), Object(M.f)(t[t.currentMode].element, r), ct(t), De(t), e.preventDefault(), !0;
               }
 
-              if (We(n.innerHTML)) {
+              if (ot(n.innerHTML)) {
                 var l = "",
                     c = n.innerHTML.trimRight().split("\n");
-                return c.length > 1 && (c.pop(), l = '<p data-block="0">' + c.join("\n") + "</p>"), n.insertAdjacentHTML("afterend", l + '<hr data-block="0"><p data-block="0">\n<wbr></p>'), n.remove(), Object(M.f)(t[t.currentMode].element, r), Ge(t), Se(t), e.preventDefault(), !0;
+                return c.length > 1 && (c.pop(), l = '<p data-block="0">' + c.join("\n") + "</p>"), n.insertAdjacentHTML("afterend", l + '<hr data-block="0"><p data-block="0"><wbr>\n</p>'), n.remove(), Object(M.f)(t[t.currentMode].element, r), ct(t), De(t), e.preventDefault(), !0;
               }
 
-              if (Je(n.innerHTML)) return n.outerHTML = t.lute.SpinVditorDOM(n.innerHTML + '<p data-block="0">\n<wbr></p>'), Object(M.f)(t[t.currentMode].element, r), Ge(t), Se(t), e.preventDefault(), !0;
+              if (at(n.innerHTML)) return n.outerHTML = t.lute.SpinVditorDOM(n.innerHTML + '<p data-block="0"><wbr>\n</p>'), Object(M.f)(t[t.currentMode].element, r), ct(t), De(t), e.preventDefault(), !0;
             }
 
-            if (n.previousElementSibling && "Backspace" === e.key && !Object(u.c)(e) && !e.altKey && !e.shiftKey && n.textContent.trimRight().split("\n").length > 1 && 0 === Object(M.c)(n, r).start) {
+            if (n.previousElementSibling && "Backspace" === e.key && !Object(u.d)(e) && !e.altKey && !e.shiftKey && n.textContent.trimRight().split("\n").length > 1 && 0 === Object(M.c)(n, r).start) {
               var d = Object(w.a)(n.previousElementSibling);
               return d.textContent.endsWith("\n") || (d.textContent = d.textContent + "\n"), d.parentElement.insertAdjacentHTML("beforeend", "<wbr>" + n.innerHTML), n.remove(), Object(M.f)(t[t.currentMode].element, r), !1;
             }
@@ -97870,169 +98096,166 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return !1;
           }
         },
-            Ye = function Ye(e, t, n) {
+            ht = function ht(e, t, n) {
+          for (var r = "", i = 0; i < n.parentElement.childElementCount; i++) {
+            r += "<td>" + (0 === i ? " <wbr>" : " ") + "</td>";
+          }
+
+          "TH" === n.tagName ? n.parentElement.parentElement.insertAdjacentHTML("afterend", "<tbody><tr>" + r + "</tr></tbody>") : n.parentElement.insertAdjacentHTML("afterend", "<tr>" + r + "</tr>"), Object(M.f)(e[e.currentMode].element, t), ct(e), De(e);
+        },
+            ft = function ft(e, t, n) {
+          for (var r = 0, i = n.previousElementSibling; i;) {
+            r++, i = i.previousElementSibling;
+          }
+
+          for (var o = 0; o < t.rows.length; o++) {
+            0 === o ? t.rows[o].cells[r].insertAdjacentHTML("afterend", "<th> </th>") : t.rows[o].cells[r].insertAdjacentHTML("afterend", "<td> </td>");
+          }
+
+          ct(e);
+        },
+            mt = function mt(e, t, n) {
+          if ("TD" === n.tagName) {
+            var r = n.parentElement.parentElement;
+            n.parentElement.previousElementSibling ? t.selectNodeContents(n.parentElement.previousElementSibling.lastElementChild) : t.selectNodeContents(r.previousElementSibling.lastElementChild.lastElementChild), 1 === r.childElementCount ? r.remove() : n.parentElement.remove(), t.collapse(!1), Object(M.h)(t), ct(e);
+          }
+        },
+            vt = function vt(e, t, n, r) {
+          for (var i = 0, o = r.previousElementSibling; o;) {
+            i++, o = o.previousElementSibling;
+          }
+
+          (r.previousElementSibling || r.nextElementSibling) && (t.selectNodeContents(r.previousElementSibling || r.nextElementSibling), t.collapse(!0));
+
+          for (var a = 0; a < n.rows.length; a++) {
+            var s = n.rows[a].cells;
+
+            if (1 === s.length) {
+              n.remove(), "wysiwyg" === e.currentMode && ze(e);
+              break;
+            }
+
+            s[i].remove();
+          }
+
+          Object(M.h)(t), ct(e);
+        },
+            gt = function gt(e, t, n) {
           var r = n.startContainer,
               i = Object(w.f)(r, "TD") || Object(w.f)(r, "TH");
 
           if (i) {
-            if (!Object(u.c)(t) && !t.altKey && "Enter" === t.key) {
+            if (!Object(u.d)(t) && !t.altKey && "Enter" === t.key) {
               i.lastElementChild && (!i.lastElementChild || i.lastElementChild.isSameNode(i.lastChild) && "BR" === i.lastElementChild.tagName) || i.insertAdjacentHTML("beforeend", "<br>");
               var o = document.createElement("br");
-              return n.insertNode(o), n.setStartAfter(o), Ge(e), Se(e), t.preventDefault(), !0;
+              return n.insertNode(o), n.setStartAfter(o), ct(e), De(e), t.preventDefault(), !0;
             }
 
-            if ("Tab" === t.key) return t.shiftKey ? (Be(i, n), t.preventDefault(), !0) : ((c = i.nextElementSibling) || (c = i.parentElement.nextElementSibling ? i.parentElement.nextElementSibling.firstElementChild : "THEAD" === i.parentElement.parentElement.tagName && i.parentElement.parentElement.nextElementSibling ? i.parentElement.parentElement.nextElementSibling.firstElementChild.firstElementChild : null), c && n.selectNodeContents(c), t.preventDefault(), !0);
+            if ("Tab" === t.key) return t.shiftKey ? ($e(i, n), t.preventDefault(), !0) : ((d = i.nextElementSibling) || (d = i.parentElement.nextElementSibling ? i.parentElement.nextElementSibling.firstElementChild : "THEAD" === i.parentElement.parentElement.tagName && i.parentElement.parentElement.nextElementSibling ? i.parentElement.parentElement.nextElementSibling.firstElementChild.firstElementChild : null), d && (n.selectNodeContents(d), Object(M.h)(n)), t.preventDefault(), !0);
             var a = i.parentElement.parentElement.parentElement;
 
             if ("ArrowUp" === t.key) {
-              if (t.preventDefault(), "TH" === i.tagName) return a.previousElementSibling ? (n.selectNodeContents(a.previousElementSibling), n.collapse(!1)) : Re(e, "beforebegin"), !0;
+              if (t.preventDefault(), "TH" === i.tagName) return a.previousElementSibling ? (n.selectNodeContents(a.previousElementSibling), n.collapse(!1), Object(M.h)(n)) : Ge(e, "beforebegin"), !0;
 
               for (var s = 0, l = i.parentElement; s < l.cells.length && !l.cells[s].isSameNode(i); s++) {
                 ;
               }
 
-              return (m = l.previousElementSibling) || (m = l.parentElement.previousElementSibling.firstChild), n.selectNodeContents(m.cells[s]), n.collapse(!1), !0;
+              var c = l.previousElementSibling;
+              return c || (c = l.parentElement.previousElementSibling.firstChild), n.selectNodeContents(c.cells[s]), n.collapse(!1), Object(M.h)(n), !0;
             }
 
             if ("ArrowDown" === t.key) {
-              var c;
-              if (t.preventDefault(), !(l = i.parentElement).nextElementSibling && "TD" === i.tagName) return a.nextElementSibling ? (n.selectNodeContents(a.nextElementSibling), n.collapse(!0)) : Re(e, "afterend"), !0;
+              var d;
+              if (t.preventDefault(), !(l = i.parentElement).nextElementSibling && "TD" === i.tagName) return a.nextElementSibling ? (n.selectNodeContents(a.nextElementSibling), n.collapse(!0), Object(M.h)(n)) : Ge(e, "afterend"), !0;
 
               for (s = 0; s < l.cells.length && !l.cells[s].isSameNode(i); s++) {
                 ;
               }
 
-              return (c = l.nextElementSibling) || (c = l.parentElement.nextElementSibling.firstChild), n.selectNodeContents(c.cells[s]), n.collapse(!0), !0;
+              return (d = l.nextElementSibling) || (d = l.parentElement.nextElementSibling.firstChild), n.selectNodeContents(d.cells[s]), n.collapse(!0), Object(M.h)(n), !0;
             }
 
-            if (ne("⌘--", t)) {
-              if ("TD" === i.tagName) {
-                var d = i.parentElement.parentElement;
-                i.parentElement.previousElementSibling ? n.selectNodeContents(i.parentElement.previousElementSibling.lastElementChild) : n.selectNodeContents(d.previousElementSibling.lastElementChild.lastElementChild), 1 === d.childElementCount ? d.remove() : i.parentElement.remove(), n.collapse(!1), Ge(e);
-              }
-
-              return t.preventDefault(), !0;
+            if ("wysiwyg" === e.currentMode && !Object(u.d)(t) && "Enter" === t.key && !t.shiftKey && t.altKey) {
+              var p = e.wysiwyg.popover.querySelector(".vditor-input");
+              return p.focus(), p.select(), t.preventDefault(), !0;
             }
 
-            if (ne("⌘-=", t)) {
-              var p = "";
+            if (!Object(u.d)(t) && !t.shiftKey && !t.altKey && "Backspace" === t.key && 0 === n.startOffset && "" === n.toString()) return !$e(i, n, !1) && a && ("" === a.textContent.trim() ? (a.outerHTML = '<p data-block="0"><wbr>\n</p>', Object(M.f)(e[e.currentMode].element, n)) : (n.setStartBefore(a), n.collapse(!0)), ct(e)), t.preventDefault(), !0;
+            if (pe("⌘-=", t)) return ht(e, n, i), t.preventDefault(), !0;
+            if (pe("⌘-⇧-=", t)) return ft(e, a, i), t.preventDefault(), !0;
+            if (pe("⌘--", t)) return mt(e, n, i), t.preventDefault(), !0;
+            if (pe("⌘-⇧--", t)) return vt(e, n, a, i), t.preventDefault(), !0;
 
-              for (s = 0; s < i.parentElement.childElementCount; s++) {
-                p += "<td>" + (0 === s ? " <wbr>" : " ") + "</td>";
-              }
-
-              return "TH" === i.tagName ? i.parentElement.parentElement.insertAdjacentHTML("afterend", "<tbody><tr>" + p + "</tr></tbody>") : i.parentElement.insertAdjacentHTML("afterend", "<tr>" + p + "</tr>"), Object(M.f)(e[e.currentMode].element, n), Ge(e), Se(e), t.preventDefault(), !0;
+            if (pe("⌘-⇧-L", t)) {
+              if ("ir" === e.currentMode) return it(a, "left"), ct(e), t.preventDefault(), !0;
+              if (h = e.wysiwyg.popover.querySelector('[data-type="left"]')) return h.click(), t.preventDefault(), !0;
             }
 
-            if ("wysiwyg" === e.currentMode && !Object(u.c)(t) && "Enter" === t.key && !t.shiftKey && t.altKey) {
-              var h = e.wysiwyg.popover.querySelector(".vditor-input");
-              return h.focus(), h.select(), t.preventDefault(), !0;
+            if (pe("⌘-⇧-C", t)) {
+              if ("ir" === e.currentMode) return it(a, "center"), ct(e), t.preventDefault(), !0;
+              if (h = e.wysiwyg.popover.querySelector('[data-type="center"]')) return h.click(), t.preventDefault(), !0;
             }
 
-            if (!Object(u.c)(t) && !t.shiftKey && !t.altKey && "Backspace" === t.key && 0 === n.startOffset && "" === n.toString()) return !Be(i, n, !1) && a && (a.outerHTML = '<p data-block="0"><wbr>' + a.textContent.trim() + "</p>", Object(M.f)(e[e.currentMode].element, n), Ge(e)), t.preventDefault(), !0;
-
-            if (ne("⌘-⇧-=", t)) {
-              for (var f = 0, m = i.previousElementSibling; m;) {
-                f++, m = m.previousElementSibling;
-              }
-
-              for (var v = 0; v < a.rows.length; v++) {
-                0 === v ? a.rows[v].cells[f].insertAdjacentHTML("afterend", "<th> </th>") : a.rows[v].cells[f].insertAdjacentHTML("afterend", "<td> </td>");
-              }
-
-              return Ge(e), t.preventDefault(), !0;
-            }
-
-            if (ne("⌘-⇧--", t)) {
-              for (f = 0, m = i.previousElementSibling; m;) {
-                f++, m = m.previousElementSibling;
-              }
-
-              (i.previousElementSibling || i.nextElementSibling) && (n.selectNodeContents(i.previousElementSibling || i.nextElementSibling), n.collapse(!0));
-
-              for (v = 0; v < a.rows.length; v++) {
-                var g = a.rows[v].cells;
-
-                if (1 === g.length) {
-                  a.remove();
-                  break;
-                }
-
-                g[f].remove();
-              }
-
-              return Ge(e), t.preventDefault(), !0;
-            }
-
-            if (ne("⌘-⇧-L", t)) {
-              if ("ir" === e.currentMode) return Ve(a, "left"), Ge(e), t.preventDefault(), !0;
-              if (b = e.wysiwyg.popover.querySelector('[data-type="left"]')) return b.click(), t.preventDefault(), !0;
-            }
-
-            if (ne("⌘-⇧-C", t)) {
-              if ("ir" === e.currentMode) return Ve(a, "center"), Ge(e), t.preventDefault(), !0;
-              if (b = e.wysiwyg.popover.querySelector('[data-type="center"]')) return b.click(), t.preventDefault(), !0;
-            }
-
-            if (ne("⌘-⇧-R", t)) {
-              if ("ir" === e.currentMode) return Ve(a, "right"), Ge(e), t.preventDefault(), !0;
-              var b;
-              if (b = e.wysiwyg.popover.querySelector('[data-type="right"]')) return b.click(), t.preventDefault(), !0;
+            if (pe("⌘-⇧-R", t)) {
+              if ("ir" === e.currentMode) return it(a, "right"), ct(e), t.preventDefault(), !0;
+              var h;
+              if (h = e.wysiwyg.popover.querySelector('[data-type="right"]')) return h.click(), t.preventDefault(), !0;
             }
           }
 
           return !1;
         },
-            et = function et(e, t, n, r) {
-          if ("PRE" === n.tagName && ne("⌘-A", t)) return r.selectNodeContents(n.firstElementChild), t.preventDefault(), !0;
-          if (e.options.tab && "Tab" === t.key && !t.shiftKey && "" === r.toString()) return r.insertNode(document.createTextNode(e.options.tab)), r.collapse(!1), Ge(e), t.preventDefault(), !0;
+            bt = function bt(e, t, n, r) {
+          if ("PRE" === n.tagName && pe("⌘-A", t)) return r.selectNodeContents(n.firstElementChild), t.preventDefault(), !0;
+          if (e.options.tab && "Tab" === t.key && !t.shiftKey && "" === r.toString()) return r.insertNode(document.createTextNode(e.options.tab)), r.collapse(!1), ct(e), t.preventDefault(), !0;
 
-          if ("Backspace" === t.key && !Object(u.c)(t) && !t.shiftKey && !t.altKey) {
+          if ("Backspace" === t.key && !Object(u.d)(t) && !t.shiftKey && !t.altKey) {
             var i = Object(M.c)(n, r);
-            if ((0 === i.start || 1 === i.start && "\n" === n.innerText) && "" === r.toString()) return n.parentElement.outerHTML = '<p data-block="0"><wbr>' + n.firstElementChild.innerHTML + "</p>", Object(M.f)(e[e.currentMode].element, r), Ge(e), t.preventDefault(), !0;
+            if ((0 === i.start || 1 === i.start && "\n" === n.innerText) && "" === r.toString()) return n.parentElement.outerHTML = '<p data-block="0"><wbr>' + n.firstElementChild.innerHTML + "</p>", Object(M.f)(e[e.currentMode].element, r), ct(e), t.preventDefault(), !0;
           }
 
-          return !Object(u.c)(t) && !t.altKey && "Enter" === t.key && (n.firstElementChild.textContent.endsWith("\n") || n.firstElementChild.insertAdjacentText("beforeend", "\n"), r.insertNode(document.createTextNode("\n")), r.collapse(!1), Ge(e), Se(e), t.preventDefault(), !0);
+          return !Object(u.d)(t) && !t.altKey && "Enter" === t.key && (n.firstElementChild.textContent.endsWith("\n") || n.firstElementChild.insertAdjacentText("beforeend", "\n"), r.insertNode(document.createTextNode("\n")), r.collapse(!1), Object(M.h)(r), n.firstElementChild.classList.contains("language-mindmap") ? "wysiwyg" === e.currentMode ? We(e, r) : D(e, r) : (ct(e), De(e)), t.preventDefault(), !0);
         },
-            tt = function tt(e, t, n, r) {
+            yt = function yt(e, t, n, r) {
           var i = t.startContainer,
               o = Object(w.f)(i, "BLOCKQUOTE");
 
           if (o && "" === t.toString()) {
-            if ("Backspace" === n.key && !Object(u.c)(n) && !n.shiftKey && !n.altKey && 0 === Object(M.c)(o, t).start) return t.insertNode(document.createElement("wbr")), o.outerHTML = o.innerHTML, Object(M.f)(e[e.currentMode].element, t), Ge(e), n.preventDefault(), !0;
+            if ("Backspace" === n.key && !Object(u.d)(n) && !n.shiftKey && !n.altKey && 0 === Object(M.c)(o, t).start) return t.insertNode(document.createElement("wbr")), o.outerHTML = o.innerHTML, Object(M.f)(e[e.currentMode].element, t), ct(e), n.preventDefault(), !0;
 
-            if (r && "Enter" === n.key && !Object(u.c)(n) && !n.shiftKey && !n.altKey && "BLOCKQUOTE" === r.parentElement.tagName) {
+            if (r && "Enter" === n.key && !Object(u.d)(n) && !n.shiftKey && !n.altKey && "BLOCKQUOTE" === r.parentElement.tagName) {
               var s = !1;
-              if ("\n" === r.innerHTML.replace(a.a.ZWSP, "") ? (s = !0, r.remove()) : r.innerHTML.endsWith("\n\n") && Object(M.c)(r, t).start === r.textContent.length - 1 && (r.innerHTML = r.innerHTML.substr(0, r.innerHTML.length - 2), s = !0), s) return o.insertAdjacentHTML("afterend", '<p data-block="0">' + a.a.ZWSP + "<wbr>\n</p>"), Object(M.f)(e[e.currentMode].element, t), Ge(e), n.preventDefault(), !0;
+              if ("\n" === r.innerHTML.replace(a.a.ZWSP, "") ? (s = !0, r.remove()) : r.innerHTML.endsWith("\n\n") && Object(M.c)(r, t).start === r.textContent.length - 1 && (r.innerHTML = r.innerHTML.substr(0, r.innerHTML.length - 2), s = !0), s) return o.insertAdjacentHTML("afterend", '<p data-block="0">' + a.a.ZWSP + "<wbr>\n</p>"), Object(M.f)(e[e.currentMode].element, t), ct(e), n.preventDefault(), !0;
             }
 
             var l = Object(w.c)(i);
-            if ("wysiwyg" === e.currentMode && l && ne("⌘-⇧-:", n)) return t.insertNode(document.createElement("wbr")), l.outerHTML = '<blockquote data-block="0">' + l.outerHTML + "</blockquote>", Object(M.f)(e.wysiwyg.element, t), U(e), n.preventDefault(), !0;
+            if ("wysiwyg" === e.currentMode && l && pe("⌘-⇧-:", n)) return t.insertNode(document.createElement("wbr")), l.outerHTML = '<blockquote data-block="0">' + l.outerHTML + "</blockquote>", Object(M.f)(e.wysiwyg.element, t), K(e), n.preventDefault(), !0;
           }
 
           return !1;
         },
-            nt = function nt(e, t, n) {
+            wt = function wt(e, t, n) {
           var r = t.startContainer,
               i = Object(w.e)(r, "vditor-task");
 
           if (i) {
-            if (ne("⌘-⇧-J", n)) {
+            if (pe("⌘-⇧-J", n)) {
               var o = i.firstElementChild;
-              return o.checked ? o.removeAttribute("checked") : o.setAttribute("checked", "checked"), Ge(e), n.preventDefault(), !0;
+              return o.checked ? o.removeAttribute("checked") : o.setAttribute("checked", "checked"), ct(e), n.preventDefault(), !0;
             }
 
-            if ("Backspace" === n.key && !Object(u.c)(n) && !n.shiftKey && !n.altKey && "" === t.toString() && 1 === t.startOffset && (3 === r.nodeType && r.previousSibling && "INPUT" === r.previousSibling.tagName || 3 !== r.nodeType)) {
+            if ("Backspace" === n.key && !Object(u.d)(n) && !n.shiftKey && !n.altKey && "" === t.toString() && 1 === t.startOffset && (3 === r.nodeType && r.previousSibling && "INPUT" === r.previousSibling.tagName || 3 !== r.nodeType)) {
               var a = i.previousElementSibling;
               if (i.querySelector("input").remove(), a) Object(w.a)(a).parentElement.insertAdjacentHTML("beforeend", "<wbr>" + i.innerHTML.trim()), i.remove();else i.parentElement.insertAdjacentHTML("beforebegin", '<p data-block="0"><wbr>' + (i.innerHTML.trim() || "\n") + "</p>"), i.nextElementSibling ? i.remove() : i.parentElement.remove();
-              return Object(M.f)(e[e.currentMode].element, t), Ge(e), n.preventDefault(), !0;
+              return Object(M.f)(e[e.currentMode].element, t), ct(e), n.preventDefault(), !0;
             }
 
-            if ("Enter" === n.key && !Object(u.c)(n) && !n.shiftKey && !n.altKey) {
+            if ("Enter" === n.key && !Object(u.d)(n) && !n.shiftKey && !n.altKey) {
               if ("" === i.textContent.trim()) {
                 if (Object(w.e)(i.parentElement, "vditor-task")) {
                   var s = Object(w.b)(r);
-                  s && Ke(e, i, t, s);
+                  s && rt(e, i, t, s);
                 } else if (i.nextElementSibling) {
                   var l = "",
                       c = "",
@@ -98043,16 +98266,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   var p = i.parentElement.tagName,
                       h = "OL" === i.parentElement.tagName ? "" : ' data-marker="' + i.parentElement.getAttribute("data-marker") + '"',
                       f = "";
-                  c && (f = "UL" === i.parentElement.tagName ? "" : ' start="1"', c = "<" + p + ' data-tight="true"' + h + ' data-block="0">' + c + "</" + p + ">"), i.parentElement.outerHTML = c + '<p data-block="0">\n<wbr></p><' + p + '\n data-tight="true"' + h + ' data-block="0"' + f + ">" + l + "</" + p + ">";
-                } else i.parentElement.insertAdjacentHTML("afterend", '<p data-block="0">\n<wbr></p>'), 1 === i.parentElement.querySelectorAll("li").length ? i.parentElement.remove() : i.remove();
+                  c && (f = "UL" === i.parentElement.tagName ? "" : ' start="1"', c = "<" + p + ' data-tight="true"' + h + ' data-block="0">' + c + "</" + p + ">"), i.parentElement.outerHTML = c + '<p data-block="0"><wbr>\n</p><' + p + '\n data-tight="true"' + h + ' data-block="0"' + f + ">" + l + "</" + p + ">";
+                } else i.parentElement.insertAdjacentHTML("afterend", '<p data-block="0"><wbr>\n</p>'), 1 === i.parentElement.querySelectorAll("li").length ? i.parentElement.remove() : i.remove();
               } else 3 !== r.nodeType && 0 === t.startOffset && "INPUT" === r.firstChild.tagName ? t.setStart(r.childNodes[1], 1) : (t.setEndAfter(i.lastChild), i.insertAdjacentHTML("afterend", '<li class="vditor-task" data-marker="' + i.getAttribute("data-marker") + '"><input type="checkbox"> <wbr></li>'), document.querySelector("wbr").after(t.extractContents()));
-              return Object(M.f)(e[e.currentMode].element, t), Ge(e), Se(e), n.preventDefault(), !0;
+              return Object(M.f)(e[e.currentMode].element, t), ct(e), De(e), n.preventDefault(), !0;
             }
           }
 
           return !1;
         },
-            rt = function rt(e, t, n, r) {
+            Et = function Et(e, t, n, r) {
           if (3 !== t.startContainer.nodeType) {
             var i = t.startContainer.children[t.startOffset];
             if (i && "HR" === i.tagName) return t.selectNodeContents(i.previousElementSibling), t.collapse(!1), n.preventDefault(), !0;
@@ -98061,39 +98284,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (r) {
             var o = r.previousElementSibling;
 
-            if (o && 0 === Object(M.c)(r, t).start && (Object(u.d)() && "HR" === o.tagName || "TABLE" === o.tagName)) {
+            if (o && 0 === Object(M.c)(r, t).start && (Object(u.e)() && "HR" === o.tagName || "TABLE" === o.tagName)) {
               if ("TABLE" === o.tagName) {
                 var a = o.lastElementChild.lastElementChild.lastElementChild;
                 a.innerHTML = a.innerHTML.trimLeft() + "<wbr>" + r.textContent.trim(), r.remove();
               } else o.remove();
 
-              return Object(M.f)(e[e.currentMode].element, t), Ge(e), n.preventDefault(), !0;
+              return Object(M.f)(e[e.currentMode].element, t), ct(e), n.preventDefault(), !0;
             }
           }
 
           return !1;
         },
-            it = function it(e) {
-          Object(u.d)() && 3 !== e.startContainer.nodeType && "HR" === e.startContainer.tagName && e.setStartBefore(e.startContainer);
+            Mt = function Mt(e) {
+          Object(u.e)() && 3 !== e.startContainer.nodeType && "HR" === e.startContainer.tagName && e.setStartBefore(e.startContainer);
         },
-            ot = function ot(e, t, n) {
+            St = function St(e, t, n) {
+          var r, i;
+          if (!Object(u.e)()) return !1;
+
+          if ("ArrowUp" === e.key && t && "TABLE" === (null === (r = t.previousElementSibling) || void 0 === r ? void 0 : r.tagName)) {
+            var o = t.previousElementSibling;
+            return n.selectNodeContents(o.rows[o.rows.length - 1].lastElementChild), n.collapse(!1), e.preventDefault(), !0;
+          }
+
+          return !("ArrowDown" !== e.key || !t || "TABLE" !== (null === (i = t.nextElementSibling) || void 0 === i ? void 0 : i.tagName)) && (n.selectNodeContents(t.nextElementSibling.rows[0].cells[0]), n.collapse(!0), e.preventDefault(), !0);
+        },
+            Ot = function Ot(e, t, n) {
+          var r;
           t.stopPropagation(), t.preventDefault();
 
-          var r = t.clipboardData.getData("text/html"),
-              i = t.clipboardData.getData("text/plain"),
-              o = {},
-              a = function a(t) {
+          var i = t.clipboardData.getData("text/html"),
+              o = t.clipboardData.getData("text/plain"),
+              s = {},
+              l = function l(t) {
             var n = t.TokensStr();
 
             if (34 === t.__internal_object__.Parent.Type && n && -1 === n.indexOf("file://") && e.options.upload.linkToImgUrl) {
               var r = new XMLHttpRequest();
-              r.open("POST", e.options.upload.linkToImgUrl), _(e, r), r.onreadystatechange = function () {
+              r.open("POST", e.options.upload.linkToImgUrl), q(e, r), r.onreadystatechange = function () {
                 if (r.readyState === XMLHttpRequest.DONE) if (200 === r.status) {
                   var t = JSON.parse(r.responseText);
                   if (0 !== t.code) return void e.tip.show(t.msg);
                   var n = t.data.originalURL,
                       i = e[e.currentMode].element.querySelector('img[src="' + n + '"]');
-                  i.src = t.data.url, "ir" === e.currentMode && (i.previousElementSibling.previousElementSibling.innerHTML = t.data.url), Ge(e);
+                  i.src = t.data.url, "ir" === e.currentMode && (i.previousElementSibling.previousElementSibling.innerHTML = t.data.url), ct(e);
                 } else e.tip.show(r.responseText);
               }, r.send(JSON.stringify({
                 url: n
@@ -98103,45 +98338,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return "ir" === e.currentMode ? ['<span class="vditor-ir__marker vditor-ir__marker--link">' + n + "</span>", Lute.WalkStop] : ["", Lute.WalkStop];
           };
 
-          r.replace(/<(|\/)(html|body|meta)[^>]*?>/gi, "").trim() !== '<a href="' + i + '">' + i + "</a>" && r.replace(/<(|\/)(html|body|meta)[^>]*?>/gi, "").trim() !== '\x3c!--StartFragment--\x3e<a href="' + i + '">' + i + "</a>\x3c!--EndFragment--\x3e" || (r = "");
-          var s = new DOMParser().parseFromString(r, "text/html");
-          s.body && (r = s.body.innerHTML);
-          var l = q(r, i, e.currentMode),
-              c = Object(w.f)(t.target, "CODE");
+          i.replace(/<(|\/)(html|body|meta)[^>]*?>/gi, "").trim() !== '<a href="' + o + '">' + o + "</a>" && i.replace(/<(|\/)(html|body|meta)[^>]*?>/gi, "").trim() !== '\x3c!--StartFragment--\x3e<a href="' + o + '">' + o + "</a>\x3c!--EndFragment--\x3e" || (i = "");
+          var c = new DOMParser().parseFromString(i, "text/html");
+          c.body && (i = c.body.innerHTML);
+          var d = N(i, o, e.currentMode),
+              u = Object(w.f)(t.target, "CODE");
 
-          if (c) {
-            var d = Object(M.c)(t.target);
-            c.textContent = c.textContent.substring(0, d.start) + i + c.textContent.substring(d.end), Object(M.g)(d.start + i.length, d.start + i.length, c.parentElement), c.parentElement.nextElementSibling.classList.contains("vditor-" + e.currentMode + "__preview") && (c.parentElement.nextElementSibling.innerHTML = c.outerHTML, z(c.parentElement.nextElementSibling, e));
-          } else if (l) n.pasteCode(l);else if ("" !== r.trim()) {
-            var u = document.createElement("div");
-            u.innerHTML = r, u.querySelectorAll("[style]").forEach(function (e) {
+          if (u) {
+            var p = Object(M.c)(t.target);
+            "PRE" !== u.parentElement.tagName && (o += a.a.ZWSP), u.textContent = u.textContent.substring(0, p.start) + o + u.textContent.substring(p.end), Object(M.g)(p.start + o.length, p.start + o.length, u.parentElement), (null === (r = u.parentElement) || void 0 === r ? void 0 : r.nextElementSibling.classList.contains("vditor-" + e.currentMode + "__preview")) && (u.parentElement.nextElementSibling.innerHTML = u.outerHTML, H(u.parentElement.nextElementSibling, e));
+          } else if (d) n.pasteCode(d);else if ("" !== i.trim()) {
+            var h = document.createElement("div");
+            h.innerHTML = i, h.querySelectorAll("[style]").forEach(function (e) {
               e.removeAttribute("style");
-            }), u.querySelectorAll(".vditor-copy").forEach(function (e) {
+            }), h.querySelectorAll(".vditor-copy").forEach(function (e) {
               e.remove();
-            }), "ir" === e.currentMode ? (o.HTML2VditorIRDOM = {
-              renderLinkDest: a
+            }), "ir" === e.currentMode ? (s.HTML2VditorIRDOM = {
+              renderLinkDest: l
             }, e.lute.SetJSRenderers({
-              renderers: o
-            }), Object(M.d)(e.lute.HTML2VditorIRDOM(u.innerHTML), e)) : (o.HTML2VditorDOM = {
-              renderLinkDest: a
+              renderers: s
+            }), Object(M.d)(e.lute.HTML2VditorIRDOM(h.innerHTML), e)) : (s.HTML2VditorDOM = {
+              renderLinkDest: l
             }, e.lute.SetJSRenderers({
-              renderers: o
-            }), Object(M.d)(e.lute.HTML2VditorDOM(u.innerHTML), e)), e.outline.render(e);
-          } else t.clipboardData.files.length > 0 && e.options.upload.url ? C(e, t.clipboardData.files) : "" !== i.trim() && 0 === t.clipboardData.files.length && ("ir" === e.currentMode ? (o.Md2VditorIRDOM = {
-            renderLinkDest: a
+              renderers: s
+            }), Object(M.d)(e.lute.HTML2VditorDOM(h.innerHTML), e)), e.outline.render(e);
+          } else t.clipboardData.files.length > 0 && e.options.upload.url ? F(e, t.clipboardData.files) : "" !== o.trim() && 0 === t.clipboardData.files.length && ("ir" === e.currentMode ? (s.Md2VditorIRDOM = {
+            renderLinkDest: l
           }, e.lute.SetJSRenderers({
-            renderers: o
-          }), Object(M.d)(e.lute.Md2VditorIRDOM(i), e)) : (o.Md2VditorDOM = {
-            renderLinkDest: a
+            renderers: s
+          }), Object(M.d)(e.lute.Md2VditorIRDOM(o), e)) : (s.Md2VditorDOM = {
+            renderLinkDest: l
           }, e.lute.SetJSRenderers({
-            renderers: o
-          }), Object(M.d)(e.lute.Md2VditorDOM(i), e)), e.outline.render(e));
+            renderers: s
+          }), Object(M.d)(e.lute.Md2VditorDOM(o), e)), e.outline.render(e));
 
           e[e.currentMode].element.querySelectorAll(".vditor-" + e.currentMode + "__preview[data-render='2']").forEach(function (t) {
-            z(t, e);
-          }), Ge(e);
+            H(t, e);
+          }), ct(e);
         },
-            at = function at(e) {
+            kt = function kt(e) {
           e.hint.render(e);
           var t = Object(M.b)(e.ir.element).startContainer,
               n = Object(w.d)(t, "data-type", "code-block-info");
@@ -98158,19 +98393,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }), e.hint.genHTML(r, i, e);
           }
         },
-            st = function st(e, t) {
+            Tt = function Tt(e, t) {
           void 0 === t && (t = {
             enableAddUndoStack: !0,
             enableHint: !1,
             enableInput: !0
-          }), t.enableHint && at(e), clearTimeout(e.ir.processTimeoutId), e.ir.processTimeoutId = window.setTimeout(function () {
-            if (!e.ir.composingLock || !Object(u.e)()) {
+          }), t.enableHint && kt(e), clearTimeout(e.ir.processTimeoutId), e.ir.processTimeoutId = window.setTimeout(function () {
+            if (!e.ir.composingLock || !Object(u.f)()) {
               var n = l(e);
-              "function" == typeof e.options.input && t.enableInput && e.options.input(n), e.options.counter.enable && e.counter.render(e, n), e.options.cache.enable && (localStorage.setItem(e.options.cache.id, n), e.options.cache.after && e.options.cache.after(n)), e.devtools && e.devtools.renderEchart(e), t.enableAddUndoStack && e.irUndo.addToUndoStack(e);
+              "function" == typeof e.options.input && t.enableInput && e.options.input(n), e.options.counter.enable && e.counter.render(e, n), e.options.cache.enable && Object(u.a)() && (localStorage.setItem(e.options.cache.id, n), e.options.cache.after && e.options.cache.after(n)), e.devtools && e.devtools.renderEchart(e), t.enableAddUndoStack && e.irUndo.addToUndoStack(e);
             }
           }, 800);
         },
-            lt = function lt(e, t) {
+            xt = function xt(e, t) {
           var n = getSelection().getRangeAt(0),
               r = Object(w.c)(n.startContainer) || n.startContainer;
 
@@ -98180,10 +98415,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               n.selectNodeContents(i), document.execCommand("delete");
             } else n.selectNodeContents(r), n.collapse(!0), document.execCommand("insertHTML", !1, t);
 
-            S(e), Ze(e);
+            S(e), lt(e);
           }
         },
-            ct = function ct(e, t, n) {
+            Lt = function Lt(e, t, n) {
           var r = Object(w.d)(e.startContainer, "data-type", n);
 
           if (r) {
@@ -98192,7 +98427,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             i.innerHTML = t.lute.SpinVditorIRDOM(r.outerHTML), r.outerHTML = i.firstElementChild.innerHTML.trim();
           }
         },
-            dt = function dt(e, t, n, r) {
+            jt = function jt(e, t, n, r) {
           var i = Object(M.b)(e.ir.element),
               o = t.getAttribute("data-type"),
               a = i.startContainer;
@@ -98207,20 +98442,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 var c = Object(w.e)(i.startContainer, "vditor-ir__link");
                 c ? (i.insertNode(document.createElement("wbr")), l.outerHTML = c.innerHTML) : l.outerHTML = l.querySelector(".vditor-ir__link").innerHTML + "<wbr>";
               }
-            } else "italic" === o ? ct(i, e, "em") : "bold" === o ? ct(i, e, "strong") : "strike" === o ? ct(i, e, "s") : "inline-code" === o ? ct(i, e, "code") : "check" !== o && "list" !== o && "ordered-list" !== o || Ue(e, i, o);
-          } else if (0 === e.ir.element.childNodes.length && (e.ir.element.innerHTML = '<p data-block="0"><wbr></p>', Object(M.f)(e.ir.element, i)), "line" === o) a.classList.contains("vditor-reset") ? a.innerHTML = '<hr data-block="0"><p data-block="0">\n<wbr></p>' : a.insertAdjacentHTML("afterend", '<hr data-block="0"><p data-block="0">\n<wbr></p>');else if ("quote" === o) {
+            } else "italic" === o ? Lt(i, e, "em") : "bold" === o ? Lt(i, e, "strong") : "strike" === o ? Lt(i, e, "s") : "inline-code" === o ? Lt(i, e, "code") : "check" !== o && "list" !== o && "ordered-list" !== o || tt(e, i, o);
+          } else {
+            0 === e.ir.element.childNodes.length && (e.ir.element.innerHTML = '<p data-block="0"><wbr></p>', Object(M.f)(e.ir.element, i));
             var d = Object(w.c)(i.startContainer);
-            d && (i.insertNode(document.createElement("wbr")), d.outerHTML = '<blockquote data-block="0">' + d.outerHTML + "</blockquote>");
-          } else if ("link" === o) {
-            var u = void 0;
-            u = "" === i.toString() ? n + "<wbr>" + r : "" + n + i.toString() + r.replace(")", "<wbr>)"), document.execCommand("insertHTML", !1, u);
-          } else if ("italic" === o || "bold" === o || "strike" === o || "inline-code" === o || "code" === o || "table" === o) {
-            u = void 0;
-            u = "" === i.toString() ? n + "<wbr>" + r : "" + n + i.toString() + "<wbr>" + n, "table" !== o && "code" !== o || (u = "\n" + u + "\n"), document.execCommand("insertHTML", !1, u);
-          } else "check" !== o && "list" !== o && "ordered-list" !== o || Ue(e, i, o, !1);
-          Object(M.f)(e.ir.element, i), st(e), S(e);
+
+            if ("line" === o) {
+              if (d) {
+                var u = '<hr data-block="0"><p data-block="0"><wbr>\n</p>';
+                "" === d.innerHTML.trim() ? d.outerHTML = u : d.insertAdjacentHTML("afterend", u);
+              }
+            } else if ("quote" === o) d && (i.insertNode(document.createElement("wbr")), d.outerHTML = '<blockquote data-block="0">' + d.outerHTML + "</blockquote>");else if ("link" === o) {
+              var p = void 0;
+              p = "" === i.toString() ? n + "<wbr>" + r : "" + n + i.toString() + r.replace(")", "<wbr>)"), document.execCommand("insertHTML", !1, p);
+            } else if ("italic" === o || "bold" === o || "strike" === o || "inline-code" === o || "code" === o || "table" === o) {
+              p = void 0;
+              p = "" === i.toString() ? n + "<wbr>" + r : "" + n + i.toString() + "<wbr>" + r, "table" !== o && "code" !== o || (p = "\n" + p), document.execCommand("insertHTML", !1, p), "table" === o && (i.selectNodeContents(getSelection().getRangeAt(0).startContainer.parentElement), Object(M.h)(i));
+            } else "check" !== o && "list" !== o && "ordered-list" !== o || tt(e, i, o, !1);
+          }
+          Object(M.f)(e.ir.element, i), Tt(e), S(e);
         },
-            ut = function () {
+            _t = function () {
           function e() {
             var e = this;
             this.fillEmoji = function (t, n) {
@@ -98232,9 +98474,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if ("sv" !== n.currentMode) {
                 if ("ir" === n.currentMode) {
                   var s = Object(w.d)(o.startContainer, "data-type", "code-block-info");
-                  if (s) return s.textContent = a.a.ZWSP + r.trimRight(), o.selectNodeContents(s), o.collapse(!1), st(n), s.parentElement.querySelectorAll("code").forEach(function (e) {
+                  if (s) return s.textContent = a.a.ZWSP + r.trimRight(), o.selectNodeContents(s), o.collapse(!1), Tt(n), s.parentElement.querySelectorAll("code").forEach(function (e) {
                     e.className = "language-" + r.trimRight();
-                  }), z(s.parentElement.querySelector(".vditor-ir__preview"), n), void (e.recentLanguage = r.trimRight());
+                  }), H(s.parentElement.querySelector(".vditor-ir__preview"), n), void (e.recentLanguage = r.trimRight());
                 }
 
                 if ("wysiwyg" === n.currentMode && 3 !== o.startContainer.nodeType && o.startContainer.firstElementChild.classList.contains("vditor-input")) {
@@ -98243,13 +98485,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
 
                 var d;
-                if (o.setStart(o.startContainer, o.startContainer.textContent.lastIndexOf(i)), o.deleteContents(), r.indexOf(":") > -1 ? (Object(M.d)(n.lute.SpinVditorDOM(r), n), o.insertNode(document.createTextNode(" "))) : o.insertNode(document.createTextNode(r)), o.collapse(!1), Object(M.h)(o), "wysiwyg" === n.currentMode) (d = Object(w.e)(o.startContainer, "vditor-wysiwyg__block")) && d.lastElementChild.classList.contains("vditor-wysiwyg__preview") && (d.lastElementChild.innerHTML = d.firstElementChild.innerHTML, z(d.lastElementChild, n));else (d = Object(w.e)(o.startContainer, "vditor-ir__marker--pre")) && d.nextElementSibling.classList.contains("vditor-ir__preview") && (d.nextElementSibling.innerHTML = d.innerHTML, z(d.nextElementSibling, n));
-                Ge(n);
+                if (o.setStart(o.startContainer, o.startContainer.textContent.lastIndexOf(i)), o.deleteContents(), r.indexOf(":") > -1 ? (Object(M.d)(n.lute.SpinVditorDOM(r), n), o.insertNode(document.createTextNode(" "))) : o.insertNode(document.createTextNode(r)), o.collapse(!1), Object(M.h)(o), "wysiwyg" === n.currentMode) (d = Object(w.e)(o.startContainer, "vditor-wysiwyg__block")) && d.lastElementChild.classList.contains("vditor-wysiwyg__preview") && (d.lastElementChild.innerHTML = d.firstElementChild.innerHTML, H(d.lastElementChild, n));else (d = Object(w.e)(o.startContainer, "vditor-ir__marker--pre")) && d.nextElementSibling.classList.contains("vditor-ir__preview") && (d.nextElementSibling.innerHTML = d.innerHTML, H(d.nextElementSibling, n));
+                ct(n);
               } else {
                 var u = Object(M.c)(n.sv.element, o),
                     p = l(n),
                     h = p.substring(0, p.substring(0, u.start).lastIndexOf(i));
-                L(n, h + r + p.substring(u.start), {
+                z(n, h + r + p.substring(u.start), {
                   end: (h + r).length,
                   start: (h + r).length
                 });
@@ -98262,7 +98504,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             if (window.getSelection().focusNode) {
               var n,
-                  r = Object(M.c)("wysiwyg" === e.currentMode ? e.wysiwyg.element : e.sv.element);
+                  r = Object(M.c)(e[e.currentMode].element);
 
               if ("sv" !== e.currentMode) {
                 var i = getSelection().getRangeAt(0);
@@ -98342,7 +98584,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return n;
           }, e;
         }(),
-            pt = function pt(e, t) {
+            Ct = function Ct(e, t) {
           t.ir.element.querySelectorAll(".vditor-ir__node--expand").forEach(function (e) {
             e.classList.remove("vditor-ir__node--expand");
           });
@@ -98373,84 +98615,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (r) return r.classList.add("vditor-ir__node--expand"), void r.classList.remove("vditor-ir__node--hidden");
         },
-            ht = function ht(e, t, n, r) {
-          r && console.log(e + " - " + n + ": " + t);
-        },
-            ft = function ft(e, t, n) {
-          void 0 === n && (n = !1);
-          var r = Object(w.c)(t.startContainer);
-
-          if (r && !n) {
-            if (We(r.innerHTML) || Je(r.innerHTML)) return;
-
-            for (var i = Object(M.c)(r, t).start, o = !0, a = i - 1; a > r.textContent.substr(0, i).lastIndexOf("\n"); a--) {
-              if (" " !== r.textContent.charAt(a) && "\t" !== r.textContent.charAt(a)) {
-                o = !1;
-                break;
-              }
-            }
-
-            0 === i && (o = !1);
-            var s = !0;
-
-            for (a = i - 1; a < r.textContent.length; a++) {
-              if (" " !== r.textContent.charAt(a) && "\n" !== r.textContent.charAt(a)) {
-                s = !1;
-                break;
-              }
-            }
-
-            if (o && !r.querySelector(".language-mindmap") || s) {
-              if (!s) return;
-
-              if (!Object(w.e)(t.startContainer, "vditor-ir__marker")) {
-                var l = t.startContainer.previousSibling;
-                return void (l && 3 !== l.nodeType && l.classList.contains("vditor-ir__node--expand") && l.classList.remove("vditor-ir__node--expand"));
-              }
-            }
-          }
-
-          if (e.ir.element.querySelectorAll(".vditor-ir__node--expand").forEach(function (e) {
-            e.classList.remove("vditor-ir__node--expand");
-          }), r || (r = e.ir.element), !r.querySelector("wbr")) {
-            var c = Object(w.e)(t.startContainer, "vditor-ir__preview");
-            c && (c.previousElementSibling.firstElementChild ? t.selectNodeContents(c.previousElementSibling.firstElementChild) : t.selectNodeContents(c.previousElementSibling), t.collapse(!1)), t.insertNode(document.createElement("wbr"));
-          }
-
-          r.querySelectorAll("[style]").forEach(function (e) {
-            e.removeAttribute("style");
-          }), "link-ref-defs-block" === r.getAttribute("data-type") && (r = e.ir.element);
-          var d = r.isEqualNode(e.ir.element),
-              u = "";
-          if (d) u = r.innerHTML;else {
-            var p = Object(w.b)(t.startContainer);
-            if (p) r = Object(E.b)(t.startContainer, "BLOCKQUOTE") ? Object(w.c)(t.startContainer) || r : p;
-            var h,
-                f,
-                m = Object(w.d)(r, "data-type", "footnotes-block");
-
-            if (m && (r = m), u = r.outerHTML, "UL" === r.tagName || "OL" === r.tagName) {
-              var v = r.previousElementSibling,
-                  g = r.nextElementSibling;
-              !v || "UL" !== v.tagName && "OL" !== v.tagName || (u = v.outerHTML + u, v.remove()), !g || "UL" !== g.tagName && "OL" !== g.tagName || (u += g.outerHTML, g.remove()), u = u.replace("<div><wbr><br></div>", "<li><p><wbr><br></p></li>");
-            } else r.previousElementSibling && "" !== r.previousElementSibling.textContent && (u = r.previousElementSibling.outerHTML + u, r.previousElementSibling.remove());
-
-            (h = e.ir.element.querySelector("[data-type='link-ref-defs-block']")) && !r.isEqualNode(h) && (u += h.outerHTML, h.remove()), (f = e.ir.element.querySelector("[data-type='footnotes-block']")) && !r.isEqualNode(f) && (u += f.outerHTML, f.remove());
-          }
-          (ht("SpinVditorIRDOM", u, "argument", e.options["debugger"]), u = e.lute.SpinVditorIRDOM(u), ht("SpinVditorIRDOM", u, "result", e.options["debugger"]), d) ? r.innerHTML = u : (r.outerHTML = u, (h = e.ir.element.querySelector("[data-type='link-ref-defs-block']")) && e.ir.element.insertAdjacentElement("beforeend", h), (f = e.ir.element.querySelector("[data-type='footnotes-block']")) && e.ir.element.insertAdjacentElement("beforeend", f));
-          Object(M.f)(e.ir.element, t), e.ir.element.querySelectorAll(".vditor-ir__preview[data-render='2']").forEach(function (t) {
-            z(t, e);
-          }), Ze(e), st(e, {
-            enableAddUndoStack: !0,
-            enableHint: !0,
-            enableInput: !0
-          });
-        },
-            mt = function () {
+            At = function () {
           function e(e) {
             this.composingLock = !1;
             var t = document.createElement("div");
-            t.className = "vditor-ir", t.innerHTML = '<pre class="vditor-reset" placeholder="' + e.options.placeholder + '"\n contenteditable="true" spellcheck="false"></pre>', this.element = t.firstElementChild, this.bindEvent(e), document.execCommand("DefaultParagraphSeparator", !1, "p"), Me(e, this.element), Oe(e, this.element), ke(e, this.element);
+            t.className = "vditor-ir", t.innerHTML = '<pre class="vditor-reset" placeholder="' + e.options.placeholder + '"\n contenteditable="true" spellcheck="false"></pre>', this.element = t.firstElementChild, this.bindEvent(e), document.execCommand("DefaultParagraphSeparator", !1, "p"), Ne(e, this.element), He(e, this.element), Re(e, this.element), Ie(e, this.element);
           }
 
           return e.prototype.bindEvent = function (e) {
@@ -98464,7 +98633,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 r.appendChild(n.cloneContents()), t.clipboardData.setData("text/plain", e.lute.VditorIRDOM2Md(r.innerHTML).trim()), t.clipboardData.setData("text/html", "");
               }
             }), this.element.addEventListener("paste", function (t) {
-              ot(e, t, {
+              Ot(e, t, {
                 pasteCode: function pasteCode(e) {
                   document.execCommand("insertHTML", !1, e);
                 }
@@ -98472,30 +98641,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }), (e.options.upload.url || e.options.upload.handler) && this.element.addEventListener("drop", function (t) {
               if ("Files" === t.dataTransfer.types[0]) {
                 var n = t.dataTransfer.items;
-                n.length > 0 && C(e, n), t.preventDefault();
+                n.length > 0 && F(e, n), t.preventDefault();
               }
             }), this.element.addEventListener("compositionend", function (t) {
-              ft(e, getSelection().getRangeAt(0).cloneRange());
+              D(e, getSelection().getRangeAt(0).cloneRange());
             }), this.element.addEventListener("compositionstart", function (e) {
               t.composingLock = !0;
             }), this.element.addEventListener("input", function (n) {
-              t.preventInput ? t.preventInput = !1 : t.composingLock || ft(e, getSelection().getRangeAt(0).cloneRange());
+              t.preventInput ? t.preventInput = !1 : t.composingLock || D(e, getSelection().getRangeAt(0).cloneRange());
             }), this.element.addEventListener("click", function (n) {
-              if ("INPUT" === n.target.tagName) return n.target.checked ? n.target.setAttribute("checked", "checked") : n.target.removeAttribute("checked"), t.preventInput = !0, void st(e);
-              var r = Object(M.b)(t.element),
-                  i = t.element.lastElementChild.getBoundingClientRect();
-              if (n.target.isEqualNode(t.element) && t.element.lastElementChild && r.collapsed && n.y > i.top + i.height) "P" === t.element.lastElementChild.tagName ? (r.selectNodeContents(t.element.lastElementChild), r.collapse(!1)) : (t.element.insertAdjacentHTML("beforeend", '<p data-block="0">' + a.a.ZWSP + "<wbr></p>"), Object(M.f)(t.element, r));else {
-                pt(r, e), S(e);
-                var o = Object(w.e)(n.target, "vditor-ir__preview");
-                o || (o = Object(w.e)(r.startContainer, "vditor-ir__preview")), o && (o.previousElementSibling.firstElementChild ? r.selectNodeContents(o.previousElementSibling.firstElementChild) : r.selectNodeContents(o.previousElementSibling), r.collapse(!0), Object(M.h)(r), Se(e));
+              if ("INPUT" === n.target.tagName) return n.target.checked ? n.target.setAttribute("checked", "checked") : n.target.removeAttribute("checked"), t.preventInput = !0, void Tt(e);
+              var r = Object(M.b)(t.element);
+
+              if (n.target.isEqualNode(t.element) && t.element.lastElementChild && r.collapsed) {
+                var i = t.element.lastElementChild.getBoundingClientRect();
+                if (n.y > i.top + i.height) return void ("P" === t.element.lastElementChild.tagName ? (r.selectNodeContents(t.element.lastElementChild), r.collapse(!1)) : (t.element.insertAdjacentHTML("beforeend", '<p data-block="0">' + a.a.ZWSP + "<wbr></p>"), Object(M.f)(t.element, r)));
               }
+
+              var o = Object(w.e)(n.target, "vditor-ir__preview");
+              o || (o = Object(w.e)(r.startContainer, "vditor-ir__preview")), o && (o.previousElementSibling.firstElementChild ? r.selectNodeContents(o.previousElementSibling.firstElementChild) : r.selectNodeContents(o.previousElementSibling), r.collapse(!0), Object(M.h)(r), De(e)), Ct(r, e), S(e);
             }), this.element.addEventListener("keyup", function (n) {
-              if (!n.isComposing && !Object(u.c)(n)) if ("Enter" === n.key && Se(e), S(e), "Backspace" !== n.key && "Delete" !== n.key || "" === e.ir.element.innerHTML || 1 !== e.ir.element.childNodes.length || !e.ir.element.firstElementChild || "P" !== e.ir.element.firstElementChild.tagName || 0 !== e.ir.element.firstElementChild.childElementCount || "" !== e.ir.element.textContent && "\n" !== e.ir.element.textContent) {
+              if (!n.isComposing && !Object(u.d)(n)) if ("Enter" === n.key && De(e), S(e), "Backspace" !== n.key && "Delete" !== n.key || "" === e.ir.element.innerHTML || 1 !== e.ir.element.childNodes.length || !e.ir.element.firstElementChild || "P" !== e.ir.element.firstElementChild.tagName || 0 !== e.ir.element.firstElementChild.childElementCount || "" !== e.ir.element.textContent && "\n" !== e.ir.element.textContent) {
                 var r = Object(M.b)(t.element);
-                "Backspace" === n.key ? (Object(u.d)() && "\n" === r.startContainer.textContent && 1 === r.startOffset && (r.startContainer.textContent = "", pt(r, e)), t.element.querySelectorAll(".language-math").forEach(function (e) {
+                "Backspace" === n.key ? (Object(u.e)() && "\n" === r.startContainer.textContent && 1 === r.startOffset && (r.startContainer.textContent = "", Ct(r, e)), t.element.querySelectorAll(".language-math").forEach(function (e) {
                   var t = e.querySelector("br");
                   t && t.remove();
-                })) : n.key.indexOf("Arrow") > -1 && ("ArrowLeft" !== n.key && "ArrowRight" !== n.key || at(e), pt(r, e));
+                })) : n.key.indexOf("Arrow") > -1 && ("ArrowLeft" !== n.key && "ArrowRight" !== n.key || kt(e), Ct(r, e));
                 var i = Object(w.e)(r.startContainer, "vditor-ir__preview");
 
                 if (i) {
@@ -98506,29 +98677,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           }, e;
         }(),
-            vt = function vt(e) {
+            Nt = function Nt(e) {
           return "sv" === e.currentMode ? e.lute.Md2HTML(l(e)) : "wysiwyg" === e.currentMode ? e.lute.VditorDOM2HTML(e.wysiwyg.element.innerHTML) : "ir" === e.currentMode ? e.lute.VditorIRDOM2HTML(e.ir.element.innerHTML) : void 0;
         },
-            gt = n(22),
-            bt = n(21),
-            yt = function () {
+            Ht = n(22),
+            Dt = n(21),
+            Rt = function () {
           function e(e) {
             this.element = document.createElement("div"), this.element.className = "vditor-outline", this.element.innerHTML = '<div class="vditor-outline__title">' + e + '</div>\n<div class="vditor-outline__content"></div>';
           }
 
           return e.prototype.render = function (e) {
-            "block" === this.element.style.display && ("block" === e.preview.element.style.display ? Object(bt.a)(e.preview.element.lastElementChild, this.element.lastElementChild, e) : Object(bt.a)(e[e.currentMode].element, this.element.lastElementChild, e));
+            "block" === this.element.style.display && ("block" === e.preview.element.style.display ? Object(Dt.a)(e.preview.element.lastElementChild, this.element.lastElementChild, e) : Object(Dt.a)(e[e.currentMode].element, this.element.lastElementChild, e));
           }, e.prototype.toggle = function (e, t) {
             var n;
             void 0 === t && (t = !0);
             var r = null === (n = e.toolbar.elements.outline) || void 0 === n ? void 0 : n.firstElementChild;
-            t && window.innerWidth >= a.a.MOBILE_WIDTH ? (this.element.style.display = "block", this.render(e), null == r || r.classList.add("vditor-menu--current")) : (this.element.style.display = "none", null == r || r.classList.remove("vditor-menu--current")), se(e);
+            t && window.innerWidth >= a.a.MOBILE_WIDTH ? (this.element.style.display = "block", this.render(e), null == r || r.classList.add("vditor-menu--current")) : (this.element.style.display = "none", null == r || r.classList.remove("vditor-menu--current")), ge(e);
           }, e;
         }(),
-            wt = n(34),
-            Et = n.n(wt),
-            Mt = n(18),
-            St = function () {
+            It = n(39),
+            zt = n.n(It),
+            Pt = n(18),
+            Bt = function () {
           function e(e) {
             var t = this;
             this.element = document.createElement("div"), this.element.className = "vditor-preview";
@@ -98538,7 +98709,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               r.className = "vditor-reset", r.appendChild(getSelection().getRangeAt(0).cloneContents()), t.copyToWechat(e, r), n.preventDefault();
             });
             var r = document.createElement("div");
-            r.className = "vditor-preview__action", r.innerHTML = '<button class="vditor-preview__action--current" data-type="desktop">Desktop</button>\n<button data-type="tablet">Tablet</button>\n<button data-type="mobile">Mobile/Wechat</button>\n<button data-type="mp-wechat" class="vditor-tooltipped vditor-tooltipped__w" aria-label="复制到公众号">' + Et.a + "</button>", this.element.appendChild(r), this.element.appendChild(n), r.addEventListener(Object(u.a)(), function (i) {
+            r.className = "vditor-preview__action", r.innerHTML = '<button class="vditor-preview__action--current" data-type="desktop">Desktop</button>\n<button data-type="tablet">Tablet</button>\n<button data-type="mobile">Mobile/Wechat</button>\n<button data-type="mp-wechat" class="vditor-tooltipped vditor-tooltipped__w" aria-label="复制到公众号">' + zt.a + "</button>", this.element.appendChild(r), this.element.appendChild(n), r.addEventListener(Object(u.b)(), function (i) {
               var o = Object(E.b)(i.target, "BUTTON");
 
               if (o) {
@@ -98581,10 +98752,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }, e.prototype.afterRender = function (e, t) {
             e.options.preview.parse && e.options.preview.parse(this.element);
             var n = new Date().getTime() - t;
-            new Date().getTime() - t > 2600 ? (e.tip.show(O.a[e.options.lang].performanceTip.replace("${x}", n.toString())), e.preview.element.setAttribute("data-type", "renderPerformance")) : "renderPerformance" === e.preview.element.getAttribute("data-type") && (e.tip.hide(), e.preview.element.removeAttribute("data-type")), Object(H.a)(e.preview.element.lastElementChild, e.options.lang), Object(R.a)(e.options.preview.hljs, e.preview.element.lastElementChild, e.options.cdn), Object(I.a)(e.preview.element.lastElementChild, {
+            new Date().getTime() - t > 2600 ? (e.tip.show(R.a[e.options.lang].performanceTip.replace("${x}", n.toString())), e.preview.element.setAttribute("data-type", "renderPerformance")) : "renderPerformance" === e.preview.element.getAttribute("data-type") && (e.tip.hide(), e.preview.element.removeAttribute("data-type")), Object(x.a)(e.preview.element.lastElementChild, e.options.lang), Object(j.a)(e.options.preview.hljs, e.preview.element.lastElementChild, e.options.cdn), Object(_.a)(e.preview.element.lastElementChild, {
               cdn: e.options.cdn,
               math: e.options.preview.math
-            }), Object(P.a)(e.preview.element.lastElementChild, ".language-mermaid", e.options.cdn), Object(D.a)(e.preview.element.lastElementChild, e.options.cdn), Object(N.a)(e.preview.element.lastElementChild, e.options.cdn), Object(B.a)(e.preview.element.lastElementChild, e.options.cdn), Object(A.a)(e.preview.element.lastElementChild, e.options.cdn), Object(Mt.a)(e.preview.element.lastElementChild);
+            }), Object(C.a)(e.preview.element.lastElementChild, ".language-mermaid", e.options.cdn), Object(L.a)(e.preview.element.lastElementChild, e.options.cdn), Object(T.a)(e.preview.element.lastElementChild, e.options.cdn), Object(A.a)(e.preview.element.lastElementChild, e.options.cdn), Object(k.a)(e.preview.element.lastElementChild, e.options.cdn), Object(Pt.a)(e.preview.element.lastElementChild);
           }, e.prototype.copyToWechat = function (e, t) {
             t.querySelectorAll(".katex-html .base").forEach(function (e) {
               e.style.display = "initial";
@@ -98595,11 +98766,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             n.selectNode(t), Object(M.h)(n), document.execCommand("copy"), this.element.lastElementChild.remove(), e.tip.show("已复制，可到微信公众号平台进行粘贴");
           }, e;
         }(),
-            Ot = n(35),
-            kt = n.n(Ot),
-            Lt = function () {
+            qt = n(40),
+            Ut = n.n(qt),
+            Ft = function () {
           function e(e) {
-            this.element = document.createElement("div"), this.element.className = "vditor-resize vditor-resize--" + e.options.resize.position, this.element.innerHTML = "<div>" + kt.a + "</div>", this.bindEvent(e);
+            this.element = document.createElement("div"), this.element.className = "vditor-resize vditor-resize--" + e.options.resize.position, this.element.innerHTML = "<div>" + Ut.a + "</div>", this.bindEvent(e);
           }
 
           return e.prototype.bindEvent = function (e) {
@@ -98619,19 +98790,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           }, e;
         }(),
-            xt = function () {
+            Kt = function () {
           function e(e) {
-            this.element = document.createElement("pre"), this.element.className = "vditor-textarea", this.element.setAttribute("placeholder", e.options.placeholder), this.element.setAttribute("contenteditable", "true"), this.element.setAttribute("spellcheck", "false"), this.bindEvent(e), Me(e, this.element), Oe(e, this.element), ke(e, this.element);
+            this.element = document.createElement("pre"), this.element.className = "vditor-textarea", this.element.setAttribute("placeholder", e.options.placeholder), this.element.setAttribute("contenteditable", "true"), this.element.setAttribute("spellcheck", "false"), this.bindEvent(e), Ne(e, this.element), Re(e, this.element), Ie(e, this.element);
           }
 
           return e.prototype.bindEvent = function (e) {
             var t = this;
             this.element.addEventListener("copy", function (e) {
-              e.stopPropagation(), e.preventDefault(), e.clipboardData.setData("text/plain", te(t.element));
+              e.stopPropagation(), e.preventDefault(), e.clipboardData.setData("text/plain", ue(t.element));
             }), this.element.addEventListener("keypress", function (t) {
-              Object(u.c)(t) || "Enter" !== t.key || (x(e, "\n", "", !0), Se(e), t.preventDefault());
+              Object(u.d)(t) || "Enter" !== t.key || (P(e, "\n", "", !0), De(e), t.preventDefault());
             }), this.element.addEventListener("input", function () {
-              k(e, {
+              I(e, {
                 enableAddUndoStack: !0,
                 enableHint: !0,
                 enableInput: !0
@@ -98649,10 +98820,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 o.scrollTop = n / r > .5 ? (n + r) * o.scrollHeight / i - r : n * o.scrollHeight / i;
               }
             }), (e.options.upload.url || e.options.upload.handler) && this.element.addEventListener("drop", function (t) {
-              if ("Files" === t.dataTransfer.types[0]) {
-                var n = t.dataTransfer.items;
-                0 !== n.length && (C(e, n), t.preventDefault());
-              }
+              if ("Files" !== t.dataTransfer.types[0]) return P(e, getSelection().toString(), "", !1), void t.preventDefault();
+              var n = t.dataTransfer.items;
+              0 !== n.length && (F(e, n), t.preventDefault());
             }), this.element.addEventListener("paste", function (t) {
               var n = t.clipboardData.getData("text/html"),
                   r = t.clipboardData.getData("text/plain");
@@ -98667,19 +98837,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   }), i.querySelectorAll(".vditor-anchor").forEach(function (e) {
                     e.remove();
                   });
-                  var o = ie(e, i.innerHTML, r).trimRight();
-                  return void x(e, o, "", !0);
+                  var o = fe(e, i.innerHTML, r).trimRight();
+                  return void P(e, o, "", !0);
                 }
               } else if ("" !== r.trim() && 0 === t.clipboardData.files.length) ;else if (t.clipboardData.files.length > 0) {
                 if (!e.options.upload.url && !e.options.upload.handler) return;
-                return void C(e, t.clipboardData.files);
+                return void F(e, t.clipboardData.files);
               }
 
-              x(e, r, "", !0);
+              P(e, r, "", !0);
             });
           }, e;
         }(),
-            Tt = function () {
+            Wt = function () {
           function e() {
             this.element = document.createElement("div"), this.element.className = "vditor-tip";
           }
@@ -98696,7 +98866,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.element.className = "vditor-messageElementtip", this.element.innerHTML = "";
           }, e;
         }(),
-            _t = function _t(e, t) {
+            Vt = function Vt(e, t) {
           if (t.options.preview.mode !== e) {
             switch (t.options.preview.mode = e, e) {
               case "both":
@@ -98710,7 +98880,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             t.devtools && t.devtools.renderEchart(t);
           }
         },
-            jt = function () {
+            Zt = function () {
           var _e2 = function e(t, n) {
             return (_e2 = Object.setPrototypeOf || {
               __proto__: []
@@ -98731,21 +98901,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e2(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            Ct = function (e) {
+            Jt = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return "both" === t.options.preview.mode && r.element.children[0].classList.add("vditor-menu--current"), r.element.children[0].addEventListener(Object(u.a)(), function (e) {
-              r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || (e.preventDefault(), "sv" === t.currentMode && ("both" === t.options.preview.mode ? _t("editor", t) : _t("both", t)));
+            return "both" === t.options.preview.mode && r.element.children[0].classList.add("vditor-menu--current"), r.element.children[0].addEventListener(Object(u.b)(), function (e) {
+              r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || (e.preventDefault(), "sv" === t.currentMode && ("both" === t.options.preview.mode ? Vt("editor", t) : Vt("both", t)));
             }), r;
           }
 
-          return jt(t, e), t;
-        }(me),
-            At = function At() {
+          return Zt(t, e), t;
+        }(ke),
+            Gt = function Gt() {
           this.element = document.createElement("div"), this.element.className = "vditor-toolbar__br";
         },
-            Nt = n(19),
-            Ht = function () {
+            Xt = n(19),
+            Qt = function () {
           var _e3 = function e(t, n) {
             return (_e3 = Object.setPrototypeOf || {
               __proto__: []
@@ -98766,7 +98936,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e3(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            Dt = function (e) {
+            $t = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this,
                 i = r.element.children[0],
@@ -98775,14 +98945,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var s = "";
             return a.a.CODE_THEME.forEach(function (e) {
               s += "<button>" + e + "</button>";
-            }), o.innerHTML = '<div style="overflow: auto;max-height:' + window.innerHeight / 2 + 'px">' + s + "</div>", o.addEventListener(Object(u.a)(), function (e) {
-              "BUTTON" === e.target.tagName && (b(t, ["subToolbar"]), t.options.preview.hljs.style = e.target.textContent, Object(Nt.a)(e.target.textContent, t.options.cdn), e.preventDefault(), e.stopPropagation());
+            }), o.innerHTML = '<div style="overflow: auto;max-height:' + window.innerHeight / 2 + 'px">' + s + "</div>", o.addEventListener(Object(u.b)(), function (e) {
+              "BUTTON" === e.target.tagName && (b(t, ["subToolbar"]), t.options.preview.hljs.style = e.target.textContent, Object(Xt.a)(e.target.textContent, t.options.cdn), e.preventDefault(), e.stopPropagation());
             }), r.element.appendChild(o), y(t, o, i, n.level), r;
           }
 
-          return Ht(t, e), t;
-        }(me),
-            Rt = function () {
+          return Qt(t, e), t;
+        }(ke),
+            Yt = function () {
           var _e4 = function e(t, n) {
             return (_e4 = Object.setPrototypeOf || {
               __proto__: []
@@ -98803,7 +98973,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e4(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            It = function (e) {
+            en = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this,
                 i = r.element.children[0],
@@ -98812,14 +98982,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var s = "";
             return a.a.CONTENT_THEME.forEach(function (e) {
               s += "<button>" + e + "</button>";
-            }), o.innerHTML = '<div style="overflow: auto;max-height:' + window.innerHeight / 2 + 'px">' + s + "</div>", o.addEventListener(Object(u.a)(), function (e) {
-              "BUTTON" === e.target.tagName && (b(t, ["subToolbar"]), t.options.preview.markdown.theme = e.target.textContent, Object(oe.a)(e.target.textContent, t.options.cdn), e.preventDefault(), e.stopPropagation());
+            }), o.innerHTML = '<div style="overflow: auto;max-height:' + window.innerHeight / 2 + 'px">' + s + "</div>", o.addEventListener(Object(u.b)(), function (e) {
+              "BUTTON" === e.target.tagName && (b(t, ["subToolbar"]), t.options.preview.markdown.theme = e.target.textContent, Object(me.a)(e.target.textContent, t.options.cdn), e.preventDefault(), e.stopPropagation());
             }), r.element.appendChild(o), y(t, o, i, n.level), r;
           }
 
-          return Rt(t, e), t;
-        }(me),
-            Pt = function () {
+          return Yt(t, e), t;
+        }(ke),
+            tn = function () {
           function e(e) {
             this.element = document.createElement("span"), this.element.className = "vditor-counter vditor-tooltipped vditor-tooltipped__nw", this.render(e, "");
           }
@@ -98837,7 +99007,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             "number" == typeof e.options.counter.max ? (n > e.options.counter.max ? this.element.className = "vditor-counter vditor-counter--error" : this.element.className = "vditor-counter", this.element.innerHTML = n + "/" + e.options.counter.max) : this.element.innerHTML = "" + n, this.element.setAttribute("aria-label", e.options.counter.type);
           }, e;
         }(),
-            Bt = function () {
+            nn = function () {
           var _e5 = function e(t, n) {
             return (_e5 = Object.setPrototypeOf || {
               __proto__: []
@@ -98858,17 +99028,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e5(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            qt = function (e) {
+            rn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return r.element.children[0].innerHTML = n.icon, r.element.children[0].addEventListener(Object(u.a)(), function (e) {
+            return r.element.children[0].innerHTML = n.icon, r.element.children[0].addEventListener(Object(u.b)(), function (e) {
               e.preventDefault(), n.click();
             }), r;
           }
 
-          return Bt(t, e), t;
-        }(me),
-            zt = function () {
+          return nn(t, e), t;
+        }(ke),
+            on = function () {
           var _e6 = function e(t, n) {
             return (_e6 = Object.setPrototypeOf || {
               __proto__: []
@@ -98889,21 +99059,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e6(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            Ut = function (e) {
+            an = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return r.element.firstElementChild.addEventListener(Object(u.a)(), function (e) {
+            return r.element.firstElementChild.addEventListener(Object(u.b)(), function (e) {
               var n = r.element.firstElementChild;
-              n.classList.contains(a.a.CLASS_MENU_DISABLED) || (e.preventDefault(), n.classList.contains("vditor-menu--current") ? (n.classList.remove("vditor-menu--current"), t.devtools.element.style.display = "none", se(t)) : (n.classList.add("vditor-menu--current"), t.devtools.element.style.display = "block", se(t), t.devtools.renderEchart(t)));
+              n.classList.contains(a.a.CLASS_MENU_DISABLED) || (e.preventDefault(), n.classList.contains("vditor-menu--current") ? (n.classList.remove("vditor-menu--current"), t.devtools.element.style.display = "none", ge(t)) : (n.classList.add("vditor-menu--current"), t.devtools.element.style.display = "block", ge(t), t.devtools.renderEchart(t)));
             }), r;
           }
 
-          return zt(t, e), t;
-        }(me),
-            Ft = function Ft() {
+          return on(t, e), t;
+        }(ke),
+            sn = function sn() {
           this.element = document.createElement("div"), this.element.className = "vditor-toolbar__divider";
         },
-            Kt = function () {
+            ln = function () {
           var _e7 = function e(t, n) {
             return (_e7 = Object.setPrototypeOf || {
               __proto__: []
@@ -98924,7 +99094,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e7(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            Vt = function (e) {
+            cn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this,
                 i = document.createElement("div");
@@ -98938,12 +99108,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return i.innerHTML = '<div class="vditor-emojis" style="max-height: ' + ("auto" === t.options.height ? "auto" : t.options.height - 80) + 'px">' + o + "</div>" + a, r.element.appendChild(i), y(t, i, r.element.children[0], n.level), r._bindEvent(t, i), r;
           }
 
-          return Kt(t, e), t.prototype._bindEvent = function (e, t) {
+          return ln(t, e), t.prototype._bindEvent = function (e, t) {
             t.querySelectorAll(".vditor-emojis button").forEach(function (n) {
-              n.addEventListener(Object(u.a)(), function (r) {
+              n.addEventListener(Object(u.b)(), function (r) {
                 r.preventDefault();
                 var i = n.getAttribute("data-value");
-                if ("sv" === e.currentMode) x(e, i, "", !0);else {
+                if ("sv" === e.currentMode) P(e, i, "", !0);else {
                   var o = void 0,
                       a = "";
 
@@ -98960,12 +99130,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               });
             });
           }, t;
-        }(me),
-            Wt = function Wt(e, t, n) {
+        }(ke),
+            dn = function dn(e, t, n) {
           var r = document.createElement("a");
-          "download" in r ? (r.download = n, r.style.display = "none", r.href = URL.createObjectURL(new Blob([t])), document.body.appendChild(r), r.click(), r.remove()) : e.tip.show(O.a[e.options.lang].downloadTip, 0);
+          "download" in r ? (r.download = n, r.style.display = "none", r.href = URL.createObjectURL(new Blob([t])), document.body.appendChild(r), r.click(), r.remove()) : e.tip.show(R.a[e.options.lang].downloadTip, 0);
         },
-            Jt = function () {
+            un = function () {
           var _e8 = function e(t, n) {
             return (_e8 = Object.setPrototypeOf || {
               __proto__: []
@@ -98986,12 +99156,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e8(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            Zt = function (e) {
+            pn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this,
                 i = r.element.children[0],
                 o = document.createElement("div");
-            return o.className = "vditor-hint" + (2 === n.level ? "" : " vditor-panel--arrow"), o.innerHTML = '<button data-type="markdown">Markdown</button>\n<button data-type="pdf">PDF</button>\n<button data-type="html">HTML</button>', o.addEventListener(Object(u.a)(), function (e) {
+            return o.className = "vditor-hint" + (2 === n.level ? "" : " vditor-panel--arrow"), o.innerHTML = '<button data-type="markdown">Markdown</button>\n<button data-type="pdf">PDF</button>\n<button data-type="html">HTML</button>', o.addEventListener(Object(u.b)(), function (e) {
               var n = e.target;
 
               if ("BUTTON" === n.tagName) {
@@ -98999,13 +99169,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case "markdown":
                     !function (e) {
                       var t = l(e);
-                      Wt(e, t, t.substr(0, 10) + ".md");
+                      dn(e, t, t.substr(0, 10) + ".md");
                     }(t);
                     break;
 
                   case "pdf":
                     !function (e) {
-                      e.tip.show(O.a[e.options.lang].generate, 3800);
+                      e.tip.show(R.a[e.options.lang].generate, 3800);
                       var t = document.querySelector("iframe");
                       t.contentDocument.open(), t.contentDocument.write('<link rel="stylesheet" href="' + e.options.cdn + '/dist/index.css"/>\n<script src="' + e.options.cdn + '/dist/method.min.js"><\/script>\n<div id="preview"></div>\n<script>\nwindow.addEventListener("message", (e) => {\n  if(!e.data) {\n    return;\n  }\n  Vditor.preview(document.getElementById(\'preview\'), e.data, {\n    markdown: {\n      theme: "' + e.options.preview.markdown.theme + '"\n    },\n    hljs: {\n      style: "' + e.options.preview.hljs.style + '"\n    }\n  });\n  setTimeout(() => {\n        window.print();\n    }, 3600);\n}, false);\n<\/script>'), t.contentDocument.close(), setTimeout(function () {
                         t.contentWindow.postMessage(l(e), "*");
@@ -99015,9 +99185,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case "html":
                     !function (e) {
-                      var t = vt(e),
+                      var t = Nt(e),
                           n = '<html><head><link rel="stylesheet" type="text/css" href="' + e.options.cdn + '/dist/index.css"/>\n<script src="' + e.options.cdn + '/dist/method.min.js"><\/script></head>\n<body><div class="vditor-reset" id="preview">' + t + "</div>\n<script>\n    const previewElement = document.getElementById('preview')\n    Vditor.setContentTheme('" + e.options.preview.markdown.theme + "', '" + e.options.cdn + "');\n    Vditor.codeRender(previewElement, '" + e.options.lang + "');\n    Vditor.highlightRender(" + JSON.stringify(e.options.preview.hljs) + ", previewElement, '" + e.options.cdn + "');\n    Vditor.mathRender(previewElement, {\n        cdn: '" + e.options.cdn + "',\n        math: " + JSON.stringify(e.options.preview.math) + ',\n    });\n    Vditor.mermaidRender(previewElement, ".language-mermaid", \'' + e.options.cdn + "');\n    Vditor.graphvizRender(previewElement, '" + e.options.cdn + "');\n    Vditor.chartRender(previewElement, '" + e.options.cdn + "');\n    Vditor.mindmapRender(previewElement, '" + e.options.cdn + "');\n    Vditor.abcRender(previewElement, '" + e.options.cdn + "');\n    Vditor.mediaRender(previewElement);\n<\/script></body></html>";
-                      Wt(e, n, t.substr(0, 10) + ".html");
+                      dn(e, n, t.substr(0, 10) + ".html");
                     }(t);
                 }
 
@@ -99026,9 +99196,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }), r.element.appendChild(o), y(t, o, i, n.level), r;
           }
 
-          return Jt(t, e), t;
-        }(me),
-            Gt = function () {
+          return un(t, e), t;
+        }(ke),
+            hn = function () {
           var _e9 = function e(t, n) {
             return (_e9 = Object.setPrototypeOf || {
               __proto__: []
@@ -99049,19 +99219,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e9(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            Xt = function (e) {
+            fn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return r.element.children[0].addEventListener(Object(u.a)(), function (e) {
-              e.preventDefault(), L(t, t.lute.FormatMd(l(t)), Object(M.c)(t.sv.element, getSelection().getRangeAt(0)));
+            return r.element.children[0].addEventListener(Object(u.b)(), function (e) {
+              e.preventDefault(), z(t, t.lute.FormatMd(l(t)), Object(M.c)(t.sv.element, getSelection().getRangeAt(0)));
             }), r;
           }
 
-          return Gt(t, e), t;
-        }(me),
-            Qt = n(36),
-            $t = n.n(Qt),
-            Yt = function () {
+          return hn(t, e), t;
+        }(ke),
+            mn = n(41),
+            vn = n.n(mn),
+            gn = function () {
           var _e10 = function e(t, n) {
             return (_e10 = Object.setPrototypeOf || {
               __proto__: []
@@ -99082,25 +99252,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e10(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            en = function (e) {
+            bn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
             return r._bindEvent(t, n), r;
           }
 
-          return Yt(t, e), t.prototype._bindEvent = function (e, t) {
-            this.element.children[0].addEventListener(Object(u.a)(), function (n) {
+          return gn(t, e), t.prototype._bindEvent = function (e, t) {
+            this.element.children[0].addEventListener(Object(u.b)(), function (n) {
               n.preventDefault(), e.element.className.includes("vditor--fullscreen") ? (t.level || (this.innerHTML = t.icon), e.element.classList.remove("vditor--fullscreen"), Object.keys(e.toolbar.elements).forEach(function (t) {
                 var n = e.toolbar.elements[t].firstChild;
                 n && (n.className = n.className.replace("__s", "__n"));
-              }), e.counter && (e.counter.element.className = e.counter.element.className.replace("__s", "__n"))) : (t.level || (this.innerHTML = $t.a), e.element.classList.add("vditor--fullscreen"), Object.keys(e.toolbar.elements).forEach(function (t) {
+              }), e.counter && (e.counter.element.className = e.counter.element.className.replace("__s", "__n"))) : (t.level || (this.innerHTML = vn.a), e.element.classList.add("vditor--fullscreen"), Object.keys(e.toolbar.elements).forEach(function (t) {
                 var n = e.toolbar.elements[t].firstChild;
                 n && (n.className = n.className.replace("__n", "__s"));
-              }), e.counter && (e.counter.element.className = e.counter.element.className.replace("__n", "__s"))), e.devtools && e.devtools.renderEchart(e), t.click && t.click(e.element.classList.contains("vditor--fullscreen")), se(e), le(e);
+              }), e.counter && (e.counter.element.className = e.counter.element.className.replace("__n", "__s"))), e.devtools && e.devtools.renderEchart(e), t.click && t.click(e.element.classList.contains("vditor--fullscreen")), ge(e), be(e);
             });
           }, t;
-        }(me),
-            tn = function () {
+        }(ke),
+            yn = function () {
           var _e11 = function e(t, n) {
             return (_e11 = Object.setPrototypeOf || {
               __proto__: []
@@ -99121,27 +99291,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e11(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            nn = function (e) {
+            wn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this,
                 i = document.createElement("div");
-            return i.className = "vditor-hint vditor-panel--arrow", i.innerHTML = '<button data-tag="h1" data-value="# ">Heading 1 ' + Object(u.f)("&lt;⌘-⌥-1>") + '</button>\n<button data-tag="h2" data-value="## ">Heading 2 &lt;' + Object(u.f)("⌘-⌥-2") + '></button>\n<button data-tag="h3" data-value="### ">Heading 3 &lt;' + Object(u.f)("⌘-⌥-3") + '></button>\n<button data-tag="h4" data-value="#### ">Heading 4 &lt;' + Object(u.f)("⌘-⌥-4") + '></button>\n<button data-tag="h5" data-value="##### ">Heading 5 &lt;' + Object(u.f)("⌘-⌥-5") + '></button>\n<button data-tag="h6" data-value="###### ">Heading 6 &lt;' + Object(u.f)("⌘-⌥-6") + "></button>", r.element.appendChild(i), r._bindEvent(t, i), r;
+            return i.className = "vditor-hint vditor-panel--arrow", i.innerHTML = '<button data-tag="h1" data-value="# ">Heading 1 ' + Object(u.g)("&lt;⌘-⌥-1>") + '</button>\n<button data-tag="h2" data-value="## ">Heading 2 &lt;' + Object(u.g)("⌘-⌥-2") + '></button>\n<button data-tag="h3" data-value="### ">Heading 3 &lt;' + Object(u.g)("⌘-⌥-3") + '></button>\n<button data-tag="h4" data-value="#### ">Heading 4 &lt;' + Object(u.g)("⌘-⌥-4") + '></button>\n<button data-tag="h5" data-value="##### ">Heading 5 &lt;' + Object(u.g)("⌘-⌥-5") + '></button>\n<button data-tag="h6" data-value="###### ">Heading 6 &lt;' + Object(u.g)("⌘-⌥-6") + "></button>", r.element.appendChild(i), r._bindEvent(t, i), r;
           }
 
-          return tn(t, e), t.prototype._bindEvent = function (e, t) {
+          return yn(t, e), t.prototype._bindEvent = function (e, t) {
             var n = this.element.children[0];
-            n.addEventListener(Object(u.a)(), function (r) {
-              r.preventDefault(), n.classList.contains(a.a.CLASS_MENU_DISABLED) || (n.blur(), "wysiwyg" === e.currentMode && n.classList.contains("vditor-menu--current") ? (we(e), U(e), n.classList.remove("vditor-menu--current")) : "ir" === e.currentMode && n.classList.contains("vditor-menu--current") ? (lt(e, ""), n.classList.remove("vditor-menu--current")) : "block" === t.style.display ? t.style.display = "none" : (b(e, ["subToolbar"]), t.style.display = "block"));
+            n.addEventListener(Object(u.b)(), function (r) {
+              r.preventDefault(), n.classList.contains(a.a.CLASS_MENU_DISABLED) || (n.blur(), "wysiwyg" === e.currentMode && n.classList.contains("vditor-menu--current") ? (_e(e), K(e), n.classList.remove("vditor-menu--current")) : "ir" === e.currentMode && n.classList.contains("vditor-menu--current") ? (xt(e, ""), n.classList.remove("vditor-menu--current")) : "block" === t.style.display ? t.style.display = "none" : (b(e, ["subToolbar"]), t.style.display = "block"));
             });
 
             for (var r = 0; r < 6; r++) {
-              t.children.item(r).addEventListener(Object(u.a)(), function (r) {
-                r.preventDefault(), "wysiwyg" === e.currentMode ? (ye(e, r.target.getAttribute("data-tag")), U(e), n.classList.add("vditor-menu--current")) : "ir" === e.currentMode ? (lt(e, r.target.getAttribute("data-value")), n.classList.add("vditor-menu--current")) : x(e, r.target.getAttribute("data-value"), "", !1, !0), t.style.display = "none";
+              t.children.item(r).addEventListener(Object(u.b)(), function (r) {
+                r.preventDefault(), "wysiwyg" === e.currentMode ? (je(e, r.target.getAttribute("data-tag")), K(e), n.classList.add("vditor-menu--current")) : "ir" === e.currentMode ? (xt(e, r.target.getAttribute("data-value")), n.classList.add("vditor-menu--current")) : P(e, r.target.getAttribute("data-value"), "", !1, !0), t.style.display = "none";
               });
             }
           }, t;
-        }(me),
-            rn = function () {
+        }(ke),
+            En = function () {
           var _e12 = function e(t, n) {
             return (_e12 = Object.setPrototypeOf || {
               __proto__: []
@@ -99162,17 +99332,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e12(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            on = function (e) {
+            Mn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return r.element.children[0].addEventListener(Object(u.a)(), function (e) {
+            return r.element.children[0].addEventListener(Object(u.b)(), function (e) {
               e.preventDefault(), t.tip.show('<div style="margin-bottom:14px;font-size: 14px;line-height: 22px;min-width:300px;max-width: 360px;display: flex;">\n<div style="margin-top: 14px;flex: 1">\n    <div>Markdown 使用指南</div>\n    <ul style="list-style: none">\n        <li><a href="https://hacpai.com/article/1583308420519" target="_blank">语法速查手册</a></li>\n        <li><a href="https://hacpai.com/article/1583129520165" target="_blank">基础语法</a></li>\n        <li><a href="https://hacpai.com/article/1583305480675" target="_blank">扩展语法</a></li>\n        <li><a href="https://hacpai.com/article/1582778815353" target="_blank">键盘快捷键</a></li>\n    </ul>\n</div>\n<div style="margin-top: 14px;flex: 1">\n    <div>Vditor 支持</div>\n    <ul style="list-style: none">\n        <li><a href="https://github.com/Vanessa219/vditor/issues" target="_blank">Issues</a></li>\n        <li><a href="https://hacpai.com/tag/vditor" target="_blank">官方讨论区</a></li>\n        <li><a href="https://hacpai.com/article/1549638745630" target="_blank">开发手册</a></li>\n        <li><a href="https://hacpai.com/guide/markdown" target="_blank">演示地址</a></li>\n    </ul>\n</div></div>', 0);
             }), r;
           }
 
-          return rn(t, e), t;
-        }(me),
-            an = function () {
+          return En(t, e), t;
+        }(ke),
+            Sn = function () {
           var _e13 = function e(t, n) {
             return (_e13 = Object.setPrototypeOf || {
               __proto__: []
@@ -99193,21 +99363,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e13(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            sn = function (e) {
+            On = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return r.element.children[0].addEventListener(Object(u.a)(), function (e) {
+            return r.element.children[0].addEventListener(Object(u.b)(), function (e) {
               if (e.preventDefault(), !r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) && "sv" !== t.currentMode) {
                 var n = Object(M.b)(t[t.currentMode].element),
                     i = Object(w.f)(n.startContainer, "LI");
-                i && Fe(t, i, n);
+                i && nt(t, i, n);
               }
             }), r;
           }
 
-          return an(t, e), t;
-        }(me),
-            ln = function () {
+          return Sn(t, e), t;
+        }(ke),
+            kn = function () {
           var _e14 = function e(t, n) {
             return (_e14 = Object.setPrototypeOf || {
               __proto__: []
@@ -99228,17 +99398,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e14(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            cn = function (e) {
+            Tn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return r.element.children[0].addEventListener(Object(u.a)(), function (e) {
+            return r.element.children[0].addEventListener(Object(u.b)(), function (e) {
               e.preventDefault(), t.tip.show('<div style="max-width: 520px; font-size: 14px;line-height: 22px;margin-bottom: 14px;">\n<p style="text-align: center;margin: 14px 0">\n    <em>下一代的 Markdown 编辑器，为未来而构建</em>\n</p>\n<div style="display: flex;margin-bottom: 14px;flex-wrap: wrap;align-items: center">\n    <img src="https://cdn.jsdelivr.net/npm/vditor/src/assets/images/logo.png" style="margin: 0 auto;height: 68px"/>\n    <div>&nbsp;&nbsp;</div>\n    <div style="flex: 1;min-width: 250px">\n        Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。\n        它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供<a target="_blank" href="https://github.com/88250/liandi">桌面版</a>。\n    </div>\n</div>\n<div style="display: flex;flex-wrap: wrap;">\n    <ul style="list-style: none;flex: 1;min-width:148px">\n        <li>\n        项目地址：<a href="https://vditor.b3log.org" target="_blank">vditor.b3log.org</a>\n        </li>\n        <li>\n        开源协议：MIT\n        </li>\n    </ul>\n    <ul style="list-style: none;margin-right: 18px">\n        <li>\n        组件版本：Vditor v' + a.b + " / Lute v" + Lute.Version + '\n        </li>\n        <li>\n        赞助捐赠：<a href="https://hacpai.com/sponsor" target="_blank">https://hacpai.com/sponsor</a>\n        </li>\n    </ul>\n</div>\n</div>', 0);
             }), r;
           }
 
-          return ln(t, e), t;
-        }(me),
-            dn = function () {
+          return kn(t, e), t;
+        }(ke),
+            xn = function () {
           var _e15 = function e(t, n) {
             return (_e15 = Object.setPrototypeOf || {
               __proto__: []
@@ -99259,17 +99429,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e15(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            un = function (e) {
+            Ln = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return r.element.children[0].addEventListener(Object(u.a)(), function (e) {
-              e.preventDefault(), r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || "sv" === t.currentMode || Re(t, "afterend");
+            return r.element.children[0].addEventListener(Object(u.b)(), function (e) {
+              e.preventDefault(), r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || "sv" === t.currentMode || Ge(t, "afterend");
             }), r;
           }
 
-          return dn(t, e), t;
-        }(me),
-            pn = function () {
+          return xn(t, e), t;
+        }(ke),
+            jn = function () {
           var _e16 = function e(t, n) {
             return (_e16 = Object.setPrototypeOf || {
               __proto__: []
@@ -99290,17 +99460,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e16(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            hn = function (e) {
+            _n = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return r.element.children[0].addEventListener(Object(u.a)(), function (e) {
-              e.preventDefault(), r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || "sv" === t.currentMode || Re(t, "beforebegin");
+            return r.element.children[0].addEventListener(Object(u.b)(), function (e) {
+              e.preventDefault(), r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || "sv" === t.currentMode || Ge(t, "beforebegin");
             }), r;
           }
 
-          return pn(t, e), t;
-        }(me),
-            fn = function () {
+          return jn(t, e), t;
+        }(ke),
+            Cn = function () {
           var _e17 = function e(t, n) {
             return (_e17 = Object.setPrototypeOf || {
               __proto__: []
@@ -99321,21 +99491,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e17(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            mn = function (e) {
+            An = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return r.element.children[0].addEventListener(Object(u.a)(), function (e) {
+            return r.element.children[0].addEventListener(Object(u.b)(), function (e) {
               if (e.preventDefault(), !r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) && "sv" !== t.currentMode) {
                 var n = Object(M.b)(t[t.currentMode].element),
                     i = Object(w.f)(n.startContainer, "LI");
-                i && Ke(t, i, n, i.parentElement);
+                i && rt(t, i, n, i.parentElement);
               }
             }), r;
           }
 
-          return fn(t, e), t;
-        }(me),
-            vn = function () {
+          return Cn(t, e), t;
+        }(ke),
+            Nn = function () {
           var _e18 = function e(t, n) {
             return (_e18 = Object.setPrototypeOf || {
               __proto__: []
@@ -99356,17 +99526,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e18(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            gn = function (e) {
+            Hn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
-            return t.options.outline && r.element.firstElementChild.classList.add("vditor-menu--current"), r.element.children[0].addEventListener(Object(u.a)(), function (e) {
+            return t.options.outline && r.element.firstElementChild.classList.add("vditor-menu--current"), r.element.children[0].addEventListener(Object(u.b)(), function (e) {
               e.preventDefault(), t.toolbar.elements.outline.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || (t.options.outline = !r.element.firstElementChild.classList.contains("vditor-menu--current"), t.outline.toggle(t, t.options.outline));
             }), r;
           }
 
-          return vn(t, e), t;
-        }(me),
-            bn = function () {
+          return Nn(t, e), t;
+        }(ke),
+            Dn = function () {
           var _e19 = function e(t, n) {
             return (_e19 = Object.setPrototypeOf || {
               __proto__: []
@@ -99387,15 +99557,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e19(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            yn = function (e) {
+            Rn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
             return r._bindEvent(t), r;
           }
 
-          return bn(t, e), t.prototype._bindEvent = function (e) {
+          return Dn(t, e), t.prototype._bindEvent = function (e) {
             var t = this;
-            this.element.children[0].addEventListener(Object(u.a)(), function (n) {
+            this.element.children[0].addEventListener(Object(u.b)(), function (n) {
               n.preventDefault();
               var r = t.element.firstElementChild;
 
@@ -99403,12 +99573,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 var i = a.a.EDIT_TOOLBARS.concat(["both", "format", "edit-mode", "devtools"]);
                 r.classList.contains("vditor-menu--current") ? (r.classList.remove("vditor-menu--current"), "sv" === e.currentMode ? (e.sv.element.style.display = "block", "both" === e.options.preview.mode ? e.preview.element.style.display = "block" : e.preview.element.style.display = "none") : (e[e.currentMode].element.parentElement.style.display = "block", e.preview.element.style.display = "none"), f(e.toolbar.elements, i), e.outline.render(e)) : (m(e.toolbar.elements, i), e.preview.element.style.display = "block", "sv" === e.currentMode ? e.sv.element.style.display = "none" : e[e.currentMode].element.parentElement.style.display = "none", e.preview.render(e), r.classList.add("vditor-menu--current"), b(e, ["subToolbar", "hint", "popover"]), setTimeout(function () {
                   e.outline.render(e);
-                }, e.options.preview.delay + 10)), se(e);
+                }, e.options.preview.delay + 10)), ge(e);
               }
             });
           }, t;
-        }(me),
-            wn = function () {
+        }(ke),
+            In = function () {
           function e(e) {
             var t;
             if (this.SAMPLE_RATE = 5e3, this.isRecording = !1, this.readyFlag = !1, this.leftChannel = [], this.rightChannel = [], this.recordingLength = 0, "undefined" != typeof AudioContext) t = new AudioContext();else {
@@ -99472,7 +99642,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }, e;
         }(),
-            En = function () {
+            zn = function () {
           var _e20 = function e(t, n) {
             return (_e20 = Object.setPrototypeOf || {
               __proto__: []
@@ -99493,16 +99663,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e20(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            Mn = function (e) {
+            Pn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
             return r._bindEvent(t), r;
           }
 
-          return En(t, e), t.prototype._bindEvent = function (e) {
+          return zn(t, e), t.prototype._bindEvent = function (e) {
             var t,
                 n = this;
-            this.element.children[0].addEventListener(Object(u.a)(), function (r) {
+            this.element.children[0].addEventListener(Object(u.b)(), function (r) {
               if (r.preventDefault(), !n.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED)) {
                 var i = "wysiwyg" === e.currentMode ? e.wysiwyg.element : e.sv.element;
                 if (t) {
@@ -99511,26 +99681,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var o = new File([t.buildWavFileBlob()], "record" + new Date().getTime() + ".wav", {
                       type: "video/webm"
                     });
-                    C(e, [o]), n.element.children[0].classList.remove("vditor-menu--current");
-                  } else e.tip.show(O.a[e.options.lang].recording), i.setAttribute("contenteditable", "false"), t.startRecordingNewWavFile(), n.element.children[0].classList.add("vditor-menu--current");
+                    F(e, [o]), n.element.children[0].classList.remove("vditor-menu--current");
+                  } else e.tip.show(R.a[e.options.lang].recording), i.setAttribute("contenteditable", "false"), t.startRecordingNewWavFile(), n.element.children[0].classList.add("vditor-menu--current");
                 } else navigator.mediaDevices.getUserMedia({
                   audio: !0
                 }).then(function (r) {
-                  (t = new wn(r)).recorder.onaudioprocess = function (e) {
+                  (t = new In(r)).recorder.onaudioprocess = function (e) {
                     if (t.isRecording) {
                       var n = e.inputBuffer.getChannelData(0),
                           r = e.inputBuffer.getChannelData(1);
                       t.cloneChannelData(n, r);
                     }
-                  }, t.startRecordingNewWavFile(), e.tip.show(O.a[e.options.lang].recording), i.setAttribute("contenteditable", "false"), n.element.children[0].classList.add("vditor-menu--current");
+                  }, t.startRecordingNewWavFile(), e.tip.show(R.a[e.options.lang].recording), i.setAttribute("contenteditable", "false"), n.element.children[0].classList.add("vditor-menu--current");
                 })["catch"](function () {
-                  e.tip.show(O.a[e.options.lang]["record-tip"]);
+                  e.tip.show(R.a[e.options.lang]["record-tip"]);
                 });
               }
             });
           }, t;
-        }(me),
-            Sn = function () {
+        }(ke),
+            Bn = function () {
           var _e21 = function e(t, n) {
             return (_e21 = Object.setPrototypeOf || {
               __proto__: []
@@ -99551,19 +99721,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e21(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            On = function (e) {
+            qn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
             return m({
               redo: r.element
-            }, ["redo"]), r.element.children[0].addEventListener(Object(u.a)(), function (e) {
+            }, ["redo"]), r.element.children[0].addEventListener(Object(u.b)(), function (e) {
               e.preventDefault(), r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || ("sv" === t.currentMode ? t.undo.redo(t) : "wysiwyg" === t.currentMode ? t.wysiwygUndo.redo(t) : "ir" === t.currentMode && t.irUndo.redo(t));
             }), r;
           }
 
-          return Sn(t, e), t;
-        }(me),
-            kn = function () {
+          return Bn(t, e), t;
+        }(ke),
+            Un = function () {
           var _e22 = function e(t, n) {
             return (_e22 = Object.setPrototypeOf || {
               __proto__: []
@@ -99584,21 +99754,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e22(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            Ln = function (e) {
+            Fn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this;
             return m({
               undo: r.element
-            }, ["undo"]), r.element.children[0].addEventListener(Object(u.a)(), function (e) {
+            }, ["undo"]), r.element.children[0].addEventListener(Object(u.b)(), function (e) {
               e.preventDefault(), r.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || ("sv" === t.currentMode ? t.undo.undo(t) : "wysiwyg" === t.currentMode ? t.wysiwygUndo.undo(t) : "ir" === t.currentMode && t.irUndo.undo(t));
             }), r;
           }
 
-          return kn(t, e), t;
-        }(me),
-            xn = n(30),
-            Tn = n.n(xn),
-            _n = function () {
+          return Un(t, e), t;
+        }(ke),
+            Kn = n(28),
+            Wn = n.n(Kn),
+            Vn = function () {
           var _e23 = function e(t, n) {
             return (_e23 = Object.setPrototypeOf || {
               __proto__: []
@@ -99619,21 +99789,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e23(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            jn = function (e) {
+            Zn = function (e) {
           function t(t, n) {
             var r = e.call(this, t, n) || this,
                 i = '<input multiple="multiple" type="file">';
-            return t.options.upload.accept && (i = '<input multiple="multiple" type="file" accept="' + t.options.upload.accept + '">'), r.element.children[0].innerHTML = "" + (n.icon || Tn.a) + i, r._bindEvent(t), r;
+            return t.options.upload.accept && (i = '<input multiple="multiple" type="file" accept="' + t.options.upload.accept + '">'), r.element.children[0].innerHTML = "" + (n.icon || Wn.a) + i, r._bindEvent(t), r;
           }
 
-          return _n(t, e), t.prototype._bindEvent = function (e) {
+          return Vn(t, e), t.prototype._bindEvent = function (e) {
             var t = this;
             this.element.querySelector("input").addEventListener("change", function (n) {
-              t.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || 0 !== n.target.files.length && C(e, n.target.files, n.target);
+              t.element.firstElementChild.classList.contains(a.a.CLASS_MENU_DISABLED) || 0 !== n.target.files.length && F(e, n.target.files, n.target);
             });
           }, t;
-        }(me),
-            Cn = function () {
+        }(ke),
+            Jn = function () {
           function e(e) {
             var t = this,
                 n = e.options;
@@ -99642,13 +99812,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               if (t.element.appendChild(i), n.toolbar) {
                 var o = document.createElement("div");
-                o.className = "vditor-hint vditor-panel--arrow", o.addEventListener(Object(u.a)(), function (e) {
+                o.className = "vditor-hint vditor-panel--arrow", o.addEventListener(Object(u.b)(), function (e) {
                   o.style.display = "none";
                 }), n.toolbar.forEach(function (n, i) {
                   n.level = 2, o.appendChild(t.genItem(e, n, r + i));
                 }), i.appendChild(o), y(e, o, i.children[0]);
               }
-            }), e.options.toolbarConfig.hide && this.element.classList.add("vditor-toolbar--hide"), e.options.toolbarConfig.pin && this.element.classList.add("vditor-toolbar--pin"), e.options.counter.enable && (e.counter = new Pt(e), this.element.appendChild(e.counter.element));
+            }), e.options.toolbarConfig.hide && this.element.classList.add("vditor-toolbar--hide"), e.options.toolbarConfig.pin && this.element.classList.add("vditor-toolbar--pin"), e.options.counter.enable && (e.counter = new tn(e), this.element.appendChild(e.counter.element));
           }
 
           return e.prototype.genItem = function (e, t, n) {
@@ -99668,107 +99838,107 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               case "inline-code":
               case "link":
               case "table":
-                r = new me(e, t);
+                r = new ke(e, t);
                 break;
 
               case "emoji":
-                r = new Vt(e, t);
-                break;
-
-              case "headings":
-                r = new nn(e, t);
-                break;
-
-              case "|":
-                r = new Ft();
-                break;
-
-              case "br":
-                r = new At();
-                break;
-
-              case "undo":
-                r = new Ln(e, t);
-                break;
-
-              case "redo":
-                r = new On(e, t);
-                break;
-
-              case "help":
-                r = new on(e, t);
-                break;
-
-              case "both":
-                r = new Ct(e, t);
-                break;
-
-              case "preview":
-                r = new yn(e, t);
-                break;
-
-              case "fullscreen":
-                r = new en(e, t);
-                break;
-
-              case "upload":
-                r = new jn(e, t);
-                break;
-
-              case "record":
-                r = new Mn(e, t);
-                break;
-
-              case "info":
                 r = new cn(e, t);
                 break;
 
+              case "headings":
+                r = new wn(e, t);
+                break;
+
+              case "|":
+                r = new sn();
+                break;
+
+              case "br":
+                r = new Gt();
+                break;
+
+              case "undo":
+                r = new Fn(e, t);
+                break;
+
+              case "redo":
+                r = new qn(e, t);
+                break;
+
+              case "help":
+                r = new Mn(e, t);
+                break;
+
+              case "both":
+                r = new Jt(e, t);
+                break;
+
+              case "preview":
+                r = new Rn(e, t);
+                break;
+
+              case "fullscreen":
+                r = new bn(e, t);
+                break;
+
+              case "upload":
+                r = new Zn(e, t);
+                break;
+
+              case "record":
+                r = new Pn(e, t);
+                break;
+
+              case "info":
+                r = new Tn(e, t);
+                break;
+
               case "format":
-                r = new Xt(e, t);
+                r = new fn(e, t);
                 break;
 
               case "edit-mode":
-                r = new be(e, t);
+                r = new Le(e, t);
                 break;
 
               case "devtools":
-                r = new Ut(e, t);
+                r = new an(e, t);
                 break;
 
               case "outdent":
-                r = new mn(e, t);
+                r = new An(e, t);
                 break;
 
               case "indent":
-                r = new sn(e, t);
+                r = new On(e, t);
                 break;
 
               case "outline":
-                r = new gn(e, t);
+                r = new Hn(e, t);
                 break;
 
               case "insert-after":
-                r = new un(e, t);
+                r = new Ln(e, t);
                 break;
 
               case "insert-before":
-                r = new hn(e, t);
+                r = new _n(e, t);
                 break;
 
               case "code-theme":
-                r = new Dt(e, t);
+                r = new $t(e, t);
                 break;
 
               case "content-theme":
-                r = new It(e, t);
+                r = new en(e, t);
                 break;
 
               case "export":
-                r = new Zt(e, t);
+                r = new pn(e, t);
                 break;
 
               default:
-                r = new qt(e, t);
+                r = new rn(e, t);
             }
 
             if (r) {
@@ -99777,11 +99947,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }, e;
         }(),
-            An = n(25),
-            Nn = n.n(An),
-            Hn = function () {
+            Gn = n(24),
+            Xn = n.n(Gn),
+            Qn = function () {
           function e() {
-            this.stackSize = 50, this.redoStack = [], this.undoStack = [], this.dmp = new Nn.a(), this.lastText = "", this.hasUndo = !1;
+            this.stackSize = 50, this.redoStack = [], this.undoStack = [], this.dmp = new Xn.a(), this.lastText = "", this.hasUndo = !1;
           }
 
           return e.prototype.resetIcon = function (e) {
@@ -99827,16 +99997,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               start: this.undoStack[this.undoStack.length - 1].end
             });
 
-            this.lastText = r, L(t, r, i, {
+            this.lastText = r, z(t, r, i, {
               enableAddUndoStack: !1,
               enableHint: !1,
               enableInput: !0
-            }), Se(t), this.undoStack.length > 1 ? f(t.toolbar.elements, ["undo"]) : m(t.toolbar.elements, ["undo"]), 0 !== this.redoStack.length ? f(t.toolbar.elements, ["redo"]) : m(t.toolbar.elements, ["redo"]);
+            }), De(t), this.undoStack.length > 1 ? f(t.toolbar.elements, ["undo"]) : m(t.toolbar.elements, ["undo"]), 0 !== this.redoStack.length ? f(t.toolbar.elements, ["redo"]) : m(t.toolbar.elements, ["redo"]);
           }, e;
         }(),
-            Dn = function () {
+            $n = function () {
           function e() {
-            this.stackSize = 50, this.redoStack = [], this.undoStack = [], this.dmp = new Nn.a(), this.lastText = "", this.hasUndo = !1;
+            this.stackSize = 50, this.redoStack = [], this.undoStack = [], this.dmp = new Xn.a(), this.lastText = "", this.hasUndo = !1;
           }
 
           return e.prototype.resetIcon = function (e) {
@@ -99852,7 +100022,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               t && (this.undoStack.push(t), this.renderDiff(t, e, !0));
             }
           }, e.prototype.recordFirstWbr = function (e, t) {
-            0 !== getSelection().rangeCount && 1 === this.undoStack.length && 0 !== this.undoStack[0].length && (Object(u.d)() && "Backspace" === t.key || Object(u.e)() || (getSelection().getRangeAt(0).insertNode(document.createElement("wbr")), this.undoStack[0][0].diffs[0][1] = e.lute.SpinVditorIRDOM(e.ir.element.innerHTML), this.lastText = this.undoStack[0][0].diffs[0][1], e.ir.element.querySelector("wbr") && e.ir.element.querySelector("wbr").remove()));
+            0 !== getSelection().rangeCount && 1 === this.undoStack.length && 0 !== this.undoStack[0].length && (Object(u.e)() && "Backspace" === t.key || Object(u.f)() || (getSelection().getRangeAt(0).insertNode(document.createElement("wbr")), this.undoStack[0][0].diffs[0][1] = e.lute.SpinVditorIRDOM(e.ir.element.innerHTML), this.lastText = this.undoStack[0][0].diffs[0][1], e.ir.element.querySelector("wbr") && e.ir.element.querySelector("wbr").remove()));
           }, e.prototype.addToUndoStack = function (e) {
             var t;
 
@@ -99878,16 +100048,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }), r = this.dmp.patch_apply(i, this.lastText)[0];
             } else r = this.dmp.patch_apply(e, this.lastText)[0];
 
-            this.lastText = r, t.ir.element.innerHTML = r, Object(M.f)(t.ir.element, t.ir.element.ownerDocument.createRange()), Se(t), st(t, {
+            this.lastText = r, t.ir.element.innerHTML = r, t.ir.element.querySelectorAll(".vditor-ir__preview[data-render='2']").forEach(function (e) {
+              H(e, t);
+            }), Object(M.f)(t.ir.element, t.ir.element.ownerDocument.createRange()), De(t), Tt(t, {
               enableAddUndoStack: !1,
               enableHint: !1,
               enableInput: !0
             }), this.undoStack.length > 1 ? f(t.toolbar.elements, ["undo"]) : m(t.toolbar.elements, ["undo"]), 0 !== this.redoStack.length ? f(t.toolbar.elements, ["redo"]) : m(t.toolbar.elements, ["redo"]);
           }, e;
         }(),
-            Rn = function () {
+            Yn = function () {
           function e() {
-            this.stackSize = 50, this.redoStack = [], this.undoStack = [], this.dmp = new Nn.a(), this.lastText = "", this.hasUndo = !1;
+            this.stackSize = 50, this.redoStack = [], this.undoStack = [], this.dmp = new Xn.a(), this.lastText = "", this.hasUndo = !1;
           }
 
           return e.prototype.resetIcon = function (e) {
@@ -99903,7 +100075,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               t && (this.undoStack.push(t), this.renderDiff(t, e, !0));
             }
           }, e.prototype.recordFirstWbr = function (e, t) {
-            0 !== getSelection().rangeCount && 1 === this.undoStack.length && 0 !== this.undoStack[0].length && (Object(u.d)() && "Backspace" === t.key || Object(u.e)() || (getSelection().getRangeAt(0).insertNode(document.createElement("wbr")), this.undoStack[0][0].diffs[0][1] = e.lute.SpinVditorDOM(e.wysiwyg.element.innerHTML), this.lastText = this.undoStack[0][0].diffs[0][1], e.wysiwyg.element.querySelector("wbr") && e.wysiwyg.element.querySelector("wbr").remove()));
+            0 !== getSelection().rangeCount && 1 === this.undoStack.length && 0 !== this.undoStack[0].length && (Object(u.e)() && "Backspace" === t.key || Object(u.f)() || (getSelection().getRangeAt(0).insertNode(document.createElement("wbr")), this.undoStack[0][0].diffs[0][1] = e.lute.SpinVditorDOM(e.wysiwyg.element.innerHTML), this.lastText = this.undoStack[0][0].diffs[0][1], e.wysiwyg.element.querySelector("wbr") && e.wysiwyg.element.querySelector("wbr").remove()));
           }, e.prototype.addToUndoStack = function (e) {
             var t;
 
@@ -99930,75 +100102,79 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             } else r = this.dmp.patch_apply(e, this.lastText)[0];
 
             this.lastText = r, t.wysiwyg.element.innerHTML = r, t.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview[data-render='2']").forEach(function (e) {
-              z(e, t);
-            }), Object(M.f)(t.wysiwyg.element, t.wysiwyg.element.ownerDocument.createRange()), Se(t), U(t, {
+              H(e, t);
+            }), Object(M.f)(t.wysiwyg.element, t.wysiwyg.element.ownerDocument.createRange()), De(t), K(t, {
               enableAddUndoStack: !1,
               enableHint: !1,
               enableInput: !0
-            }), Le(t), this.undoStack.length > 1 ? f(t.toolbar.elements, ["undo"]) : m(t.toolbar.elements, ["undo"]), 0 !== this.redoStack.length ? f(t.toolbar.elements, ["redo"]) : m(t.toolbar.elements, ["redo"]);
+            }), ze(t), this.undoStack.length > 1 ? f(t.toolbar.elements, ["undo"]) : m(t.toolbar.elements, ["undo"]), 0 !== this.redoStack.length ? f(t.toolbar.elements, ["redo"]) : m(t.toolbar.elements, ["redo"]);
           }, e;
         }(),
-            In = n(37),
-            Pn = n.n(In),
-            Bn = n(38),
-            qn = n.n(Bn),
-            zn = n(39),
-            Un = n.n(zn),
-            Fn = n(40),
-            Kn = n.n(Fn),
-            Vn = n(41),
-            Wn = n.n(Vn),
-            Jn = n(42),
-            Zn = n.n(Jn),
-            Gn = n(43),
-            Xn = n.n(Gn),
-            Qn = n(44),
-            $n = n.n(Qn),
-            Yn = n(45),
-            er = n.n(Yn),
-            tr = n(46),
-            nr = n.n(tr),
-            rr = n(47),
-            ir = n.n(rr),
-            or = n(48),
-            ar = n.n(or),
-            sr = n(49),
-            lr = n.n(sr),
-            cr = n(50),
-            dr = n.n(cr),
-            ur = n(51),
-            pr = n.n(ur),
-            hr = n(52),
-            fr = n.n(hr),
-            mr = n(53),
-            vr = n.n(mr),
-            gr = n(54),
-            br = n.n(gr),
-            yr = n(55),
-            wr = n.n(yr),
-            Er = n(56),
-            Mr = n.n(Er),
-            Sr = n(57),
-            Or = n.n(Sr),
-            kr = n(58),
-            Lr = n.n(kr),
-            xr = n(59),
-            Tr = n.n(xr),
-            _r = n(60),
-            jr = n.n(_r),
-            Cr = n(61),
-            Ar = n.n(Cr),
-            Nr = n(62),
-            Hr = n.n(Nr),
-            Dr = n(63),
-            Rr = n.n(Dr),
-            Ir = n(64),
-            Pr = n.n(Ir),
-            Br = n(65),
+            er = n(42),
+            tr = n.n(er),
+            nr = n(43),
+            rr = n.n(nr),
+            ir = n(44),
+            or = n.n(ir),
+            ar = n(45),
+            sr = n.n(ar),
+            lr = n(46),
+            cr = n.n(lr),
+            dr = n(47),
+            ur = n.n(dr),
+            pr = n(48),
+            hr = n.n(pr),
+            fr = n(49),
+            mr = n.n(fr),
+            vr = n(50),
+            gr = n.n(vr),
+            br = n(51),
+            yr = n.n(br),
+            wr = n(52),
+            Er = n.n(wr),
+            Mr = n(53),
+            Sr = n.n(Mr),
+            Or = n(54),
+            kr = n.n(Or),
+            Tr = n(55),
+            xr = n.n(Tr),
+            Lr = n(56),
+            jr = n.n(Lr),
+            _r = n(57),
+            Cr = n.n(_r),
+            Ar = n(58),
+            Nr = n.n(Ar),
+            Hr = n(59),
+            Dr = n.n(Hr),
+            Rr = n(60),
+            Ir = n.n(Rr),
+            zr = n(61),
+            Pr = n.n(zr),
+            Br = n(62),
             qr = n.n(Br),
-            zr = n(66),
-            Ur = n.n(zr),
-            Fr = function () {
+            Ur = n(63),
+            Fr = n.n(Ur),
+            Kr = n(64),
+            Wr = n.n(Kr),
+            Vr = n(29),
+            Zr = n.n(Vr),
+            Jr = n(65),
+            Gr = n.n(Jr),
+            Xr = n(66),
+            Qr = n.n(Xr),
+            $r = n(67),
+            Yr = n.n($r),
+            ei = n(68),
+            ti = n.n(ei),
+            ni = n(69),
+            ri = n.n(ni),
+            ii = n(70),
+            oi = n.n(ii),
+            ai = n(71),
+            si = n.n(ai),
+            li = n(72),
+            ci = n.n(li),
+            di = function () {
           function e(e) {
             this.defaultOptions = {
               after: void 0,
@@ -100050,6 +100226,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   codeBlockPreview: !0,
                   fixTermTypo: !1,
                   footnotes: !0,
+                  linkBase: "",
                   listMarker: !1,
                   sanitize: !0,
                   setext: !1,
@@ -100091,43 +100268,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               value: "",
               width: "auto"
             }, this.toolbarItem = [{
-              icon: ir.a,
+              icon: Er.a,
               name: "export",
               tipPosition: "ne"
             }, {
               hotkey: "⌘-E",
-              icon: nr.a,
+              icon: yr.a,
               name: "emoji",
               tipPosition: "ne"
             }, {
               hotkey: "⌘-H",
-              icon: lr.a,
+              icon: kr.a,
               name: "headings",
               tipPosition: "ne"
             }, {
               hotkey: "⌘-B",
-              icon: Un.a,
+              icon: or.a,
               name: "bold",
               prefix: "**",
               suffix: "**",
               tipPosition: "ne"
             }, {
               hotkey: "⌘-I",
-              icon: vr.a,
+              icon: Dr.a,
               name: "italic",
               prefix: "*",
               suffix: "*",
               tipPosition: "ne"
             }, {
               hotkey: "⌘-S",
-              icon: Rr.a,
+              icon: ri.a,
               name: "strike",
               prefix: "~~",
               suffix: "~~",
               tipPosition: "ne"
             }, {
               hotkey: "⌘-K",
-              icon: wr.a,
+              icon: Pr.a,
               name: "link",
               prefix: "[",
               suffix: "](https://)",
@@ -100136,83 +100313,83 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               name: "|"
             }, {
               hotkey: "⌘-L",
-              icon: Mr.a,
+              icon: qr.a,
               name: "list",
               prefix: "* ",
               tipPosition: "n"
             }, {
               hotkey: "⌘-O",
-              icon: Lr.a,
+              icon: Wr.a,
               name: "ordered-list",
               prefix: "1. ",
               tipPosition: "n"
             }, {
               hotkey: "⌘-J",
-              icon: Zn.a,
+              icon: ur.a,
               name: "check",
               prefix: "* [ ] ",
               tipPosition: "n"
             }, {
               hotkey: "⌘-⇧-I",
-              icon: X.a,
+              icon: Zr.a,
               name: "outdent",
               tipPosition: "n"
             }, {
               hotkey: "⌘-⇧-O",
-              icon: Z.a,
+              icon: jr.a,
               name: "indent",
               tipPosition: "n"
             }, {
               name: "|"
             }, {
               hotkey: "⌘-;",
-              icon: jr.a,
+              icon: Qr.a,
               name: "quote",
               prefix: "> ",
               tipPosition: "n"
             }, {
               hotkey: "⌘-⇧-H",
-              icon: br.a,
+              icon: Ir.a,
               name: "line",
               prefix: "---",
               tipPosition: "n"
             }, {
               hotkey: "⌘-U",
-              icon: $n.a,
+              icon: mr.a,
               name: "code",
               prefix: "```\n",
               suffix: "\n```",
               tipPosition: "n"
             }, {
               hotkey: "⌘-G",
-              icon: fr.a,
+              icon: Nr.a,
               name: "inline-code",
               prefix: "`",
               suffix: "`",
               tipPosition: "n"
             }, {
               hotkey: "⌘-⇧-B",
-              icon: qn.a,
+              icon: rr.a,
               name: "insert-before",
               tipPosition: "n"
             }, {
               hotkey: "⌘-⇧-E",
-              icon: Pn.a,
+              icon: tr.a,
               name: "insert-after",
               tipPosition: "n"
             }, {
               name: "|"
             }, {
-              icon: Tn.a,
+              icon: Wn.a,
               name: "upload",
               tipPosition: "n"
             }, {
-              icon: Ar.a,
+              icon: Yr.a,
               name: "record",
               tipPosition: "n"
             }, {
               hotkey: "⌘-M",
-              icon: Pr.a,
+              icon: oi.a,
               name: "table",
               prefix: "| col1",
               suffix: " | col2 | col3 |\n| --- | --- | --- |\n|  |  |  |\n|  |  |  |",
@@ -100221,65 +100398,65 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               name: "|"
             }, {
               hotkey: "⌘-Z",
-              icon: Ur.a,
+              icon: ci.a,
               name: "undo",
               tipPosition: "nw"
             }, {
               hotkey: "⌘-Y",
-              icon: Hr.a,
+              icon: ti.a,
               name: "redo",
               tipPosition: "nw"
             }, {
               name: "|"
             }, {
-              icon: Or.a,
+              icon: Fr.a,
               name: "more",
               tipPosition: "e"
             }, {
               hotkey: "⌘-'",
-              icon: ar.a,
+              icon: Sr.a,
               name: "fullscreen",
               tipPosition: "nw"
             }, {
-              icon: er.a,
+              icon: gr.a,
               name: "edit-mode",
               tipPosition: "nw"
             }, {
               hotkey: "⌘-P",
-              icon: Kn.a,
+              icon: sr.a,
               name: "both",
               tipPosition: "nw"
             }, {
-              icon: Tr.a,
+              icon: Gr.a,
               name: "preview",
               tipPosition: "nw"
             }, {
               hotkey: "⌘-⇧-F",
-              icon: X.a,
+              icon: Zr.a,
               name: "format",
               tipPosition: "nw"
             }, {
-              icon: K.a,
+              icon: V.a,
               name: "outline",
               tipPosition: "nw"
             }, {
-              icon: qr.a,
+              icon: si.a,
               name: "content-theme",
               tipPosition: "nw"
             }, {
-              icon: Xn.a,
+              icon: hr.a,
               name: "code-theme",
               tipPosition: "nw"
             }, {
-              icon: Wn.a,
+              icon: cr.a,
               name: "devtools",
               tipPosition: "nw"
             }, {
-              icon: pr.a,
+              icon: Cr.a,
               name: "info",
               tipPosition: "nw"
             }, {
-              icon: dr.a,
+              icon: xr.a,
               name: "help",
               tipPosition: "nw"
             }, {
@@ -100303,59 +100480,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }), n;
           }, e;
         }(),
-            Kr = function Kr(e, t, n) {
-          var r = Object(w.c)(t.startContainer);
-
-          if (r || (r = e.wysiwyg.element), n && "formatItalic" !== n.inputType && "deleteByDrag" !== n.inputType && "insertFromDrop" !== n.inputType && "formatBold" !== n.inputType && "formatRemove" !== n.inputType && "formatStrikeThrough" !== n.inputType && "insertUnorderedList" !== n.inputType && "insertOrderedList" !== n.inputType && "formatOutdent" !== n.inputType && "formatIndent" !== n.inputType && "" !== n.inputType || !n) {
-            var i = function (e) {
-              for (var t = e.previousSibling; t;) {
-                if (3 !== t.nodeType && "A" === t.tagName && !t.previousSibling && "" === t.innerHTML.replace(a.a.ZWSP, "") && t.nextSibling) return t;
-                t = t.previousSibling;
-              }
-
-              return !1;
-            }(t.startContainer);
-
-            i && i.remove(), e.wysiwyg.element.querySelectorAll("wbr").forEach(function (e) {
-              e.remove();
-            }), t.insertNode(document.createElement("wbr")), r.querySelectorAll("[style]").forEach(function (e) {
-              e.removeAttribute("style");
-            });
-            var o = "";
-            "link-ref-defs-block" !== r.getAttribute("data-type") && "[toc]" !== r.innerText.trim().toLowerCase() || (r = e.wysiwyg.element);
-            var s = r.isEqualNode(e.wysiwyg.element);
-            if (s) o = r.innerHTML;else {
-              var l = Object(w.b)(t.startContainer);
-              if (l) r = Object(E.b)(t.startContainer, "BLOCKQUOTE") ? Object(w.c)(t.startContainer) || r : l;
-              var c,
-                  d,
-                  u = Object(w.d)(r, "data-type", "footnotes-block");
-
-              if (u && (r = u), o = r.outerHTML, "UL" === r.tagName || "OL" === r.tagName) {
-                var p = r.previousElementSibling,
-                    h = r.nextElementSibling;
-                !p || "UL" !== p.tagName && "OL" !== p.tagName || (o = p.outerHTML + o, p.remove()), !h || "UL" !== h.tagName && "OL" !== h.tagName || (o += h.outerHTML, h.remove()), o = o.replace("<div><wbr><br></div>", "<li><p><wbr><br></p></li>");
-              }
-
-              (c = e.wysiwyg.element.querySelector("[data-type='link-ref-defs-block']")) && !r.isEqualNode(c) && (o += c.outerHTML, c.remove()), (d = e.wysiwyg.element.querySelector("[data-type='footnotes-block']")) && !r.isEqualNode(d) && (o += d.outerHTML, d.remove());
-            }
-            if (o = o.replace(/<\/(strong|b)><strong data-marker="\W{2}">/g, "").replace(/<\/(em|i)><em data-marker="\W{1}">/g, "").replace(/<\/(s|strike)><s data-marker="~{1,2}">/g, ""), ht("SpinVditorDOM", o, "argument", e.options["debugger"]), o = e.lute.SpinVditorDOM(o), ht("SpinVditorDOM", o, "result", e.options["debugger"]), s) r.innerHTML = o;else r.outerHTML = o, (c = e.wysiwyg.element.querySelector("[data-type='link-ref-defs-block']")) && e.wysiwyg.element.insertAdjacentElement("beforeend", c), (d = e.wysiwyg.element.querySelector("[data-type='footnotes-block']")) && e.wysiwyg.element.insertAdjacentElement("beforeend", d);
-            (Object(E.a)(r) || o.startsWith("<h") || "deleteContentBackward" === n.inputType || "deleteContentForward" === n.inputType) && Ze(e), Object(M.f)(e.wysiwyg.element, t), e.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview[data-render='2']").forEach(function (t) {
-              z(t, e);
-            });
-          }
-
-          U(e, {
-            enableAddUndoStack: !0,
-            enableHint: !0,
-            enableInput: !0
-          });
-        },
-            Vr = function () {
+            ui = function () {
           function e(e) {
             this.composingLock = !1;
             var t = document.createElement("div");
-            t.className = "vditor-wysiwyg", t.innerHTML = '<pre class="vditor-reset" placeholder="' + e.options.placeholder + '"\n contenteditable="true" spellcheck="false"></pre>\n<div class="vditor-panel vditor-panel--none"></div>', this.element = t.firstElementChild, this.popover = t.lastElementChild, this.bindEvent(e), document.execCommand("DefaultParagraphSeparator", !1, "p"), Me(e, this.element), Oe(e, this.element), ke(e, this.element);
+            t.className = "vditor-wysiwyg", t.innerHTML = '<pre class="vditor-reset" placeholder="' + e.options.placeholder + '"\n contenteditable="true" spellcheck="false"></pre>\n<div class="vditor-panel vditor-panel--none"></div>', this.element = t.firstElementChild, this.popover = t.lastElementChild, this.bindEvent(e), document.execCommand("DefaultParagraphSeparator", !1, "p"), Ne(e, this.element), He(e, this.element), Re(e, this.element), Ie(e, this.element);
           }
 
           return e.prototype.bindEvent = function (e) {
@@ -100363,7 +100492,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             (e.options.upload.url || e.options.upload.handler) && this.element.addEventListener("drop", function (t) {
               if ("Files" === t.dataTransfer.types[0]) {
                 var n = t.dataTransfer.items;
-                n.length > 0 && C(e, n), t.preventDefault();
+                n.length > 0 && F(e, n), t.preventDefault();
               }
             }), window.addEventListener("scroll", function () {
               if (b(e, ["hint"]), "block" === t.popover.style.display) {
@@ -100401,7 +100530,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 c.appendChild(n.cloneContents()), t.clipboardData.setData("text/plain", e.lute.VditorDOM2Md(c.innerHTML).trim()), t.clipboardData.setData("text/html", "");
               }
             }), this.element.addEventListener("paste", function (n) {
-              ot(e, n, {
+              Ot(e, n, {
                 pasteCode: function pasteCode(n) {
                   var r = Object(M.b)(t.element),
                       i = document.createElement("template");
@@ -100414,13 +100543,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               t.composingLock = !0;
             }), this.element.addEventListener("compositionend", function (t) {
               var n = Object(E.a)(getSelection().getRangeAt(0).startContainer);
-              n && "" === n.textContent ? Ze(e) : Kr(e, getSelection().getRangeAt(0).cloneRange(), t);
+              n && "" === n.textContent ? lt(e) : We(e, getSelection().getRangeAt(0).cloneRange(), t);
             }), this.element.addEventListener("input", function (n) {
               if (t.preventInput) t.preventInput = !1;else if (!t.composingLock) {
                 var r = getSelection().getRangeAt(0),
                     i = Object(w.c)(r.startContainer);
 
-                if (i || (he(e, r), i = Object(w.c)(r.startContainer)), i) {
+                if (i || (Se(e, r), i = Object(w.c)(r.startContainer)), i) {
                   for (var o = Object(M.c)(i, r).start, a = !0, s = o - 1; s > i.textContent.substr(0, o).lastIndexOf("\n"); s--) {
                     if (" " !== i.textContent.charAt(s) && "\t" !== i.textContent.charAt(s)) {
                       a = !1;
@@ -100439,23 +100568,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   }
 
                   var c = Object(E.a)(getSelection().getRangeAt(0).startContainer);
-                  c && "" === c.textContent ? Ze(e) : a && !i.querySelector(".language-mindmap") || l || We(i.innerHTML) || Je(i.innerHTML) || Kr(e, r, n);
+                  c && "" === c.textContent ? lt(e) : a && !i.querySelector(".language-mindmap") || l || ot(i.innerHTML) || at(i.innerHTML) || We(e, r, n);
                 }
               }
             }), this.element.addEventListener("click", function (n) {
               if ("INPUT" === n.target.tagName) {
                 var r = n.target;
-                return r.checked ? r.setAttribute("checked", "checked") : r.removeAttribute("checked"), t.preventInput = !0, void U(e);
+                return r.checked ? r.setAttribute("checked", "checked") : r.removeAttribute("checked"), t.preventInput = !0, void K(e);
               }
 
               if ("IMG" !== n.target.tagName) {
-                var i = Object(M.b)(t.element),
-                    o = t.element.lastElementChild.getBoundingClientRect();
-                if (n.target.isEqualNode(t.element) && t.element.lastElementChild && i.collapsed && n.y > o.top + o.height) "P" === t.element.lastElementChild.tagName ? (i.selectNodeContents(t.element.lastElementChild), i.collapse(!1)) : (t.element.insertAdjacentHTML("beforeend", '<p data-block="0">' + a.a.ZWSP + "<wbr></p>"), Object(M.f)(t.element, i));else {
-                  Le(e);
-                  var s = Object(w.e)(n.target, "vditor-wysiwyg__preview");
-                  s || (s = Object(w.e)(Object(M.b)(t.element).startContainer, "vditor-wysiwyg__preview")), s && Ee(s, e);
+                var i = Object(M.b)(t.element);
+
+                if (n.target.isEqualNode(t.element) && t.element.lastElementChild && i.collapsed) {
+                  var o = t.element.lastElementChild.getBoundingClientRect();
+                  if (n.y > o.top + o.height) return void ("P" === t.element.lastElementChild.tagName ? (i.selectNodeContents(t.element.lastElementChild), i.collapse(!1)) : (t.element.insertAdjacentHTML("beforeend", '<p data-block="0">' + a.a.ZWSP + "<wbr></p>"), Object(M.f)(t.element, i)));
                 }
+
+                ze(e);
+                var s = Object(w.e)(n.target, "vditor-wysiwyg__preview");
+                s || (s = Object(w.e)(Object(M.b)(t.element).startContainer, "vditor-wysiwyg__preview")), s && Ce(s, e);
               } else !function (e, t) {
                 var n = e.target;
                 t.wysiwyg.popover.innerHTML = "";
@@ -100465,30 +100597,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 },
                     i = document.createElement("span");
 
-                i.setAttribute("aria-label", O.a[t.options.lang].imageURL), i.className = "vditor-tooltipped vditor-tooltipped__n";
+                i.setAttribute("aria-label", R.a[t.options.lang].imageURL), i.className = "vditor-tooltipped vditor-tooltipped__n";
                 var o = document.createElement("input");
-                i.appendChild(o), o.className = "vditor-input", o.setAttribute("placeholder", O.a[t.options.lang].imageURL), o.value = n.getAttribute("src") || "", o.oninput = function () {
+                i.appendChild(o), o.className = "vditor-input", o.setAttribute("placeholder", R.a[t.options.lang].imageURL), o.value = n.getAttribute("src") || "", o.oninput = function () {
                   r();
+                }, o.onkeydown = function (e) {
+                  Ae(t, e);
                 };
                 var a = document.createElement("span");
-                a.setAttribute("aria-label", O.a[t.options.lang].alternateText), a.className = "vditor-tooltipped vditor-tooltipped__n";
+                a.setAttribute("aria-label", R.a[t.options.lang].alternateText), a.className = "vditor-tooltipped vditor-tooltipped__n";
                 var s = document.createElement("input");
-                a.appendChild(s), s.className = "vditor-input", s.setAttribute("placeholder", O.a[t.options.lang].alternateText), s.style.width = "52px", s.value = n.getAttribute("alt") || "", s.oninput = function () {
+                a.appendChild(s), s.className = "vditor-input", s.setAttribute("placeholder", R.a[t.options.lang].alternateText), s.style.width = "52px", s.value = n.getAttribute("alt") || "", s.oninput = function () {
                   r();
+                }, s.onkeydown = function (e) {
+                  Ae(t, e);
                 };
                 var l = document.createElement("span");
                 l.setAttribute("aria-label", "Title"), l.className = "vditor-tooltipped vditor-tooltipped__n";
                 var c = document.createElement("input");
                 l.appendChild(c), c.className = "vditor-input", c.setAttribute("placeholder", "Title"), c.value = n.getAttribute("title") || "", c.oninput = function () {
                   r();
-                }, t.wysiwyg.popover.insertAdjacentElement("beforeend", i), t.wysiwyg.popover.insertAdjacentElement("beforeend", a), t.wysiwyg.popover.insertAdjacentElement("beforeend", l), xe(t, n);
+                }, c.onkeydown = function (e) {
+                  Ae(t, e);
+                }, Ue(n, t), t.wysiwyg.popover.insertAdjacentElement("beforeend", i), t.wysiwyg.popover.insertAdjacentElement("beforeend", a), t.wysiwyg.popover.insertAdjacentElement("beforeend", l), Pe(t, n);
               }(n, e);
             }), this.element.addEventListener("keyup", function (n) {
-              if (!n.isComposing && !Object(u.c)(n)) {
-                "Enter" === n.key && Se(e), "Backspace" !== n.key && "Delete" !== n.key || "" === e.wysiwyg.element.innerHTML || 1 !== e.wysiwyg.element.childNodes.length || !e.wysiwyg.element.firstElementChild || "P" !== e.wysiwyg.element.firstElementChild.tagName || 0 !== e.wysiwyg.element.firstElementChild.childElementCount || "" !== e.wysiwyg.element.textContent && "\n" !== e.wysiwyg.element.textContent || (e.wysiwyg.element.innerHTML = "");
+              if (!n.isComposing && !Object(u.d)(n)) {
+                "Enter" === n.key && De(e), "Backspace" !== n.key && "Delete" !== n.key || "" === e.wysiwyg.element.innerHTML || 1 !== e.wysiwyg.element.childNodes.length || !e.wysiwyg.element.firstElementChild || "P" !== e.wysiwyg.element.firstElementChild.tagName || 0 !== e.wysiwyg.element.firstElementChild.childElementCount || "" !== e.wysiwyg.element.textContent && "\n" !== e.wysiwyg.element.textContent || (e.wysiwyg.element.innerHTML = "");
                 var r = Object(M.b)(t.element);
 
-                if ("Backspace" === n.key && Object(u.d)() && "\n" === r.startContainer.textContent && 1 === r.startOffset && (r.startContainer.textContent = ""), he(e, r), Le(e), "ArrowDown" === n.key || "ArrowRight" === n.key || "Backspace" === n.key || "ArrowLeft" === n.key || "ArrowUp" === n.key) {
+                if ("Backspace" === n.key && Object(u.e)() && "\n" === r.startContainer.textContent && 1 === r.startOffset && (r.startContainer.textContent = ""), Se(e, r), ze(e), "ArrowDown" === n.key || "ArrowRight" === n.key || "Backspace" === n.key || "ArrowLeft" === n.key || "ArrowUp" === n.key) {
                   "ArrowLeft" !== n.key && "ArrowRight" !== n.key || e.hint.render(e);
                   var i = Object(w.e)(r.startContainer, "vditor-wysiwyg__preview");
                   if (!i && 3 !== r.startContainer.nodeType && r.startOffset > 0) (a = r.startContainer).classList.contains("vditor-wysiwyg__block") && (i = a.lastElementChild);
@@ -100507,7 +100645,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                       if (s && 3 !== s.nodeType) {
                         var l = s.querySelector(".vditor-wysiwyg__preview");
-                        if (l) return void Ee(l, e);
+                        if (l) return void Ce(l, e);
                       }
 
                       if (3 === s.nodeType) {
@@ -100518,13 +100656,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         r.setStart(s, 1);
                       } else r.setStart(s.firstChild, 0);
                     } else r.selectNodeContents(o), r.collapse(!1);
-                  } else "ArrowDown" === n.key || "ArrowRight" === n.key ? Ee(i, e) : Ee(i, e, !1);
+                  } else "ArrowDown" === n.key || "ArrowRight" === n.key ? Ce(i, e) : Ce(i, e, !1);
                 }
               }
             });
           }, e;
         }(),
-            Wr = function () {
+            pi = function () {
           var _e24 = function e(t, n) {
             return (_e24 = Object.setPrototypeOf || {
               __proto__: []
@@ -100545,27 +100683,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _e24(t, n), t.prototype = null === n ? Object.create(n) : (r.prototype = n.prototype, new r());
           };
         }(),
-            Jr = function (e) {
+            hi = function (e) {
           function t(t, n) {
             var r = e.call(this) || this;
             r.version = a.b, "string" == typeof t && (n.cache ? n.cache.id || (n.cache.id = "vditor" + t) : n.cache = {
               id: "vditor" + t
             }, t = document.getElementById(t));
-            var i = new Fr(n).merge();
+            var i = new di(n).merge();
             if (!["en_US", "ko_KR", "zh_CN"].includes(i.lang)) throw new Error("options.lang error, see https://hacpai.com/article/1549638745630#options");
             r.vditor = {
               currentMode: i.mode,
               element: t,
-              hint: new ut(),
+              hint: new _t(),
               lute: void 0,
               options: i,
               originalInnerHTML: t.innerHTML,
-              outline: new yt(O.a[i.lang].outline),
-              tip: new Tt()
-            }, r.vditor.sv = new xt(r.vditor), r.vditor.undo = new Hn(), r.vditor.wysiwyg = new Vr(r.vditor), r.vditor.wysiwygUndo = new Rn(), r.vditor.irUndo = new Dn(), r.vditor.ir = new mt(r.vditor), r.vditor.toolbar = new Cn(r.vditor), i.resize.enable && (r.vditor.resize = new Lt(r.vditor)), r.vditor.toolbar.elements.devtools && (r.vditor.devtools = new d()), (i.upload.url || i.upload.handler) && (r.vditor.upload = new j());
+              outline: new Rt(R.a[i.lang].outline),
+              tip: new Wt()
+            }, r.vditor.sv = new Kt(r.vditor), r.vditor.undo = new Qn(), r.vditor.wysiwyg = new ui(r.vditor), r.vditor.wysiwygUndo = new Yn(), r.vditor.irUndo = new $n(), r.vditor.ir = new At(r.vditor), r.vditor.toolbar = new Jn(r.vditor), i.resize.enable && (r.vditor.resize = new Ft(r.vditor)), r.vditor.toolbar.elements.devtools && (r.vditor.devtools = new d()), (i.upload.url || i.upload.handler) && (r.vditor.upload = new U());
             var o = i.cdn + "/dist/js/lute/lute.min.js";
             return Object(c.a)(o, "vditorLuteScript").then(function () {
-              r.vditor.lute = Object(gt.a)({
+              r.vditor.lute = Object(Ht.a)({
                 autoSpace: r.vditor.options.preview.markdown.autoSpace,
                 chinesePunct: r.vditor.options.preview.markdown.chinesePunct,
                 codeBlockPreview: r.vditor.options.preview.markdown.codeBlockPreview,
@@ -100575,16 +100713,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 footnotes: r.vditor.options.preview.markdown.footnotes,
                 headingAnchor: !1,
                 inlineMathDigit: r.vditor.options.preview.math.inlineDigit,
+                linkBase: r.vditor.options.preview.markdown.linkBase,
                 listMarker: r.vditor.options.preview.markdown.listMarker,
                 paragraphBeginningSpace: r.vditor.options.preview.markdown.paragraphBeginningSpace,
                 sanitize: r.vditor.options.preview.markdown.sanitize,
                 setext: r.vditor.options.preview.markdown.setext,
                 toc: r.vditor.options.preview.markdown.toc
-              }), r.vditor.preview = new St(r.vditor), function (e) {
-                e.element.innerHTML = "", e.element.classList.add("vditor"), ae(e), Object(oe.a)(e.options.preview.markdown.theme, e.options.cdn), "number" == typeof e.options.height && (e.element.style.height = e.options.height + "px"), "number" == typeof e.options.minHeight && (e.element.style.minHeight = e.options.minHeight + "px"), "number" == typeof e.options.width ? e.element.style.width = e.options.width + "px" : e.element.style.width = e.options.width, e.element.appendChild(e.toolbar.element);
+              }), r.vditor.preview = new Bt(r.vditor), function (e) {
+                e.element.innerHTML = "", e.element.classList.add("vditor"), ve(e), Object(me.a)(e.options.preview.markdown.theme, e.options.cdn), "number" == typeof e.options.height && (e.element.style.height = e.options.height + "px"), "number" == typeof e.options.minHeight && (e.element.style.minHeight = e.options.minHeight + "px"), "number" == typeof e.options.width ? e.element.style.width = e.options.width + "px" : e.element.style.width = e.options.width, e.element.appendChild(e.toolbar.element);
                 var t = document.createElement("div");
 
-                if (t.className = "vditor-content", t.appendChild(e.outline.element), t.appendChild(e.wysiwyg.element.parentElement), t.appendChild(e.sv.element), t.appendChild(e.ir.element.parentElement), t.appendChild(e.preview.element), e.toolbar.elements.devtools && t.appendChild(e.devtools.element), e.upload && t.appendChild(e.upload.element), e.options.resize.enable && t.appendChild(e.resize.element), t.appendChild(e.hint.element), t.appendChild(e.tip.element), e.element.appendChild(t), e.toolbar.elements["export"] && e.element.insertAdjacentHTML("beforeend", '<iframe style="width: 100%;height: 0;border: 0"></iframe>'), ge(e, e.options.mode, ce(e, t)), navigator.userAgent.indexOf("iPhone") > -1 && void 0 !== window.visualViewport) {
+                if (t.className = "vditor-content", t.appendChild(e.outline.element), t.appendChild(e.wysiwyg.element.parentElement), t.appendChild(e.sv.element), t.appendChild(e.ir.element.parentElement), t.appendChild(e.preview.element), e.toolbar.elements.devtools && t.appendChild(e.devtools.element), e.upload && t.appendChild(e.upload.element), e.options.resize.enable && t.appendChild(e.resize.element), t.appendChild(e.hint.element), t.appendChild(e.tip.element), e.element.appendChild(t), e.toolbar.elements["export"] && e.element.insertAdjacentHTML("beforeend", '<iframe style="width: 100%;height: 0;border: 0"></iframe>'), xe(e, e.options.mode, ye(e, t)), navigator.userAgent.indexOf("iPhone") > -1 && void 0 !== window.visualViewport) {
                   var n = !1,
                       r = function r(t) {
                     n || (n = !0, requestAnimationFrame(function () {
@@ -100600,8 +100739,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }), r;
           }
 
-          return Wr(t, e), t.prototype.setTheme = function (e, t, n) {
-            this.vditor.options.theme = e, ae(this.vditor), t && (this.vditor.options.preview.markdown.theme = t, Object(oe.a)(t, this.vditor.options.cdn)), n && (this.vditor.options.preview.hljs.style = n, Object(Nt.a)(n, this.vditor.options.cdn));
+          return pi(t, e), t.prototype.setTheme = function (e, t, n) {
+            this.vditor.options.theme = e, ve(this.vditor), t && (this.vditor.options.preview.markdown.theme = t, Object(me.a)(t, this.vditor.options.cdn)), n && (this.vditor.options.preview.hljs.style = n, Object(Xt.a)(n, this.vditor.options.cdn));
           }, t.prototype.getValue = function () {
             return l(this.vditor);
           }, t.prototype.getCurrentMode = function () {
@@ -100611,17 +100750,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }, t.prototype.blur = function () {
             "sv" === this.vditor.currentMode ? this.vditor.sv.element.blur() : "wysiwyg" === this.vditor.currentMode ? this.vditor.wysiwyg.element.blur() : "ir" === this.vditor.currentMode && this.vditor.ir.element.blur();
           }, t.prototype.disabled = function () {
-            m(this.vditor.toolbar.elements, ["emoji", "headings", "bold", "italic", "strike", "link", "list", "ordered-list", "check", "quote", "line", "code", "inline-code", "upload", "record", "table", "undo", "redo", "wysiwyg"]), this.vditor.sv.element.setAttribute("contenteditable", "false"), this.vditor.wysiwyg.element.setAttribute("contenteditable", "false"), this.vditor.wysiwyg.element.setAttribute("contenteditable", "false");
+            m(this.vditor.toolbar.elements, a.a.EDIT_TOOLBARS.concat(["undo", "redo", "fullscreen", "edit-mode"])), this.vditor[this.vditor.currentMode].element.setAttribute("contenteditable", "false");
           }, t.prototype.enable = function () {
-            f(this.vditor.toolbar.elements, ["emoji", "headings", "bold", "italic", "strike", "link", "list", "ordered-list", "check", "quote", "line", "code", "inline-code", "upload", "record", "table", "wysiwyg"]), this.vditor.undo.resetIcon(this.vditor), this.vditor.sv.element.setAttribute("contenteditable", "true"), this.vditor.wysiwygUndo.resetIcon(this.vditor), this.vditor.wysiwyg.element.setAttribute("contenteditable", "true"), this.vditor.ir.element.setAttribute("contenteditable", "true");
+            f(this.vditor.toolbar.elements, a.a.EDIT_TOOLBARS.concat(["undo", "redo", "fullscreen", "edit-mode"])), this.vditor.undo.resetIcon(this.vditor), this.vditor.wysiwygUndo.resetIcon(this.vditor), this.vditor[this.vditor.currentMode].element.setAttribute("contenteditable", "true");
           }, t.prototype.setSelection = function (e, t) {
             "sv" !== this.vditor.currentMode ? console.error("所见即所得模式暂不支持该方法") : Object(M.g)(e, t, this.vditor.sv.element);
           }, t.prototype.getSelection = function () {
-            return "wysiwyg" === this.vditor.currentMode ? te(this.vditor.wysiwyg.element) : "sv" === this.vditor.currentMode ? te(this.vditor.sv.element) : "ir" === this.vditor.currentMode ? te(this.vditor.ir.element) : void 0;
+            return "wysiwyg" === this.vditor.currentMode ? ue(this.vditor.wysiwyg.element) : "sv" === this.vditor.currentMode ? ue(this.vditor.sv.element) : "ir" === this.vditor.currentMode ? ue(this.vditor.ir.element) : void 0;
           }, t.prototype.renderPreview = function (e) {
             this.vditor.preview.render(this.vditor, e);
           }, t.prototype.getCursorPosition = function () {
-            return "wysiwyg" === this.vditor.currentMode ? Object(M.a)(this.vditor.wysiwyg.element) : "sv" === this.vditor.currentMode ? Object(M.a)(this.vditor.sv.element) : "ir" === this.vditor.currentMode ? Object(M.a)(this.vditor.ir.element) : void 0;
+            return Object(M.a)(this.vditor[this.vditor.currentMode].element);
           }, t.prototype.isUploading = function () {
             return this.vditor.upload.isUploading;
           }, t.prototype.clearCache = function () {
@@ -100632,32 +100771,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (!this.vditor.options.cache.id) throw new Error("need options.cache.id, see https://hacpai.com/article/1549638745630#options");
             this.vditor.options.cache.enable = !0;
           }, t.prototype.html2md = function (e) {
-            return ie(this.vditor, e);
+            return fe(this.vditor, e);
           }, t.prototype.getHTML = function () {
-            return vt(this.vditor);
+            return Nt(this.vditor);
           }, t.prototype.tip = function (e, t) {
             this.vditor.tip.show(e, t);
           }, t.prototype.setPreviewMode = function (e) {
-            _t(e, this.vditor);
+            Vt(e, this.vditor);
           }, t.prototype.deleteValue = function () {
-            window.getSelection().isCollapsed || ("sv" === this.vditor.currentMode ? x(this.vditor, "", "", !0) : document.execCommand("delete", !1));
+            window.getSelection().isCollapsed || ("sv" === this.vditor.currentMode ? P(this.vditor, "", "", !0) : document.execCommand("delete", !1));
           }, t.prototype.updateValue = function (e) {
-            "sv" === this.vditor.currentMode ? x(this.vditor, e, "", !0) : document.execCommand("insertHTML", !1, e);
+            "sv" === this.vditor.currentMode ? P(this.vditor, e, "", !0) : document.execCommand("insertHTML", !1, e);
           }, t.prototype.insertValue = function (e, t) {
-            if (void 0 === t && (t = !0), "sv" === this.vditor.currentMode) x(this.vditor, e, "");else if ("wysiwyg" === this.vditor.currentMode) {
-              Object(M.b)(this.vditor.wysiwyg.element).collapse(!0), this.vditor.wysiwyg.preventInput = !0, document.execCommand("insertHTML", !1, e), t && Kr(this.vditor, getSelection().getRangeAt(0));
+            if (void 0 === t && (t = !0), "sv" === this.vditor.currentMode) P(this.vditor, e, "");else if ("wysiwyg" === this.vditor.currentMode) {
+              Object(M.b)(this.vditor.wysiwyg.element).collapse(!0), this.vditor.wysiwyg.preventInput = !0, document.execCommand("insertHTML", !1, e), t && We(this.vditor, getSelection().getRangeAt(0));
             } else if ("ir" === this.vditor.currentMode) {
-              Object(M.b)(this.vditor.ir.element).collapse(!0), this.vditor.ir.preventInput = !0, document.execCommand("insertHTML", !1, e), t && ft(this.vditor, getSelection().getRangeAt(0), !0);
+              Object(M.b)(this.vditor.ir.element).collapse(!0), this.vditor.ir.preventInput = !0, document.execCommand("insertHTML", !1, e), t && D(this.vditor, getSelection().getRangeAt(0), !0);
             }
           }, t.prototype.setValue = function (e) {
-            "sv" === this.vditor.currentMode ? L(this.vditor, e, {
+            "sv" === this.vditor.currentMode ? z(this.vditor, e, {
               end: e.length,
               start: e.length
             }, {
               enableAddUndoStack: !0,
               enableHint: !1,
               enableInput: !1
-            }) : "wysiwyg" === this.vditor.currentMode ? de(this.vditor, e, !1) : (this.vditor.ir.element.innerHTML = this.vditor.lute.Md2VditorIRDOM(e), st(this.vditor, {
+            }) : "wysiwyg" === this.vditor.currentMode ? we(this.vditor, e, !1) : (this.vditor.ir.element.innerHTML = this.vditor.lute.Md2VditorIRDOM(e), Tt(this.vditor, {
               enableAddUndoStack: !0,
               enableHint: !1,
               enableInput: !1
@@ -100665,7 +100804,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }, t;
         }(o["default"]);
 
-        t["default"] = Jr;
+        t["default"] = hi;
       }])["default"];
     });
     /***/

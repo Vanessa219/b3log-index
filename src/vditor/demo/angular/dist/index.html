@@ -49,8 +49,43 @@
 <div class="wrapper">
   <div class="fn-50"></div>
   <app-root></app-root>
+  <div id="vditorDemoCode" class="vditor-reset">
+    <pre><code class="typescript">import {Component, OnInit} from '@angular/core';
+import Vditor from 'vditor';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+})
+
+export class AppComponent implements OnInit{
+  vditor: Vditor;
+
+  ngOnInit(): void {
+    this.vditor = new Vditor('vditor', {
+      toolbarConfig: {
+        pin: true,
+      },
+      cache: {
+        enable: false,
+      },
+      after: () => {
+        this.vditor.setValue('Hello, Vditor + Angular!');
+      }
+    });
+  }
+}
+</code></pre>
+  </div>
+  <div class="fn-100"></div>
+  <div class="fn-clear">
+    <h2 class="fn-left">参与讨论</h2>
+    <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
+  </div>
+  <div class="fn-50"></div>
+  <div id="vditorComments"></div>
+  <div class="fn-100"></div>
 </div>
-<div class="fn-50"></div>
 <div class="footer">
   <div class="wrapper fn-clear">
     <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
@@ -62,6 +97,6 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
+<script type="text/javascript" src="//vditor.b3log.org/vditor.js"></script>
 <script src="runtime-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills-es2015.js" type="module"></script><script src="styles-es2015.js" type="module"></script><script src="styles-es5.js" nomodule defer></script><script src="vendor-es2015.js" type="module"></script><script src="vendor-es5.js" nomodule defer></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule defer></script></body>
 </html>

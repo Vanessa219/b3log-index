@@ -88,9 +88,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             cache: {
               enable: false
             },
-            minHeight: 500,
             after: function after() {
-              _this.vditor.setValue("\n```typescript\nimport {Component} from '@angular/core';\nimport Vditor from 'vditor';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n})\nexport class AppComponent {\n  vditor: Vditor;\n\n  ngOnInit(): void {\n    this.vditor = new Vditor('vditor', {\n      toolbarConfig: {\n        pin: true,\n      },\n      cache: {\n        enable: false,\n      },\n      minHeight: 500,\n      after: () => {\n        this.vditor.setValue('Hello, React + Vditor!')\n      }\n    })\n  }\n}\n```\n");
+              _this.vditor.setValue('Hello, Vditor + Angular!');
             }
           });
         }
