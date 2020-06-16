@@ -33,9 +33,16 @@
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
+    <style>
+        .header {
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+    </style>
 </head>
 <body>
-<div class="header fn-clear header-fixed">
+<div class="header fn-clear">
     <a class="header-logo" href="https://vditor.b3log.org">
         <img src="//static.b3log.org/images/brand/vditor-128.png">
         <h1>Vditor</h1>
@@ -49,8 +56,7 @@
 </div>
 
 <div class="wrapper">
-    <div class="fn-100"></div>
-    <div class="fn-100"></div>
+    <div class="fn-50"></div>
     <div class="fn-clear">
         <a class="fn-right" href="https://github.com/Vanessa219/b3log-index/tree/master/src/vditor/demo"
            target="_blank">Demo 源码</a>
@@ -115,16 +121,14 @@
     </ul>
 </div>
 <div class="fn-100"></div>
-<div class="fn-100"></div>
 <div class="wrapper">
     <div class="fn-clear">
         <h2 class="fn-left">参与讨论</h2>
         <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
     </div>
     <div class="fn-50"></div>
-    <div id="comments"></div>
+    <div id="vditorComments"></div>
 </div>
-<div class="fn-100"></div>
 <div class="fn-100"></div>
 <!-- end main -->
 
@@ -141,30 +145,6 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
-<script>
-  const vcomment = new Vcomment({
-    id: 'comments',
-    postId: '1549638745630',
-    url: 'https://hacpai.com',
-    userName: 'Vanessa',
-    currentPage: 1,
-    vditor: {
-      hljsEnable: true,
-      hljsStyle: 'github',
-    },
-    after () {
-      const commentCntElement = document.getElementById('commentsCount')
-      document.getElementById('commentCnt').innerText = commentCntElement.innerText + ' 个讨论'
-      commentCntElement.nextSibling.remove()
-      commentCntElement.remove()
-    },
-    error () {
-      document.getElementById('comments').remove()
-    },
-  })
-
-  vcomment.render()
-</script>
+<script type="text/javascript" src="//vditor.b3log.org/vditor.js"></script>
 </body>
 </html>

@@ -59,8 +59,18 @@
     <div id="app">
         <div id="vditor"></div>
     </div>
+    <div id="vditorDemoCode" class="vditor-reset">
+        <pre><code class="javascript"></code></pre>
+    </div>
+    <div class="fn-100"></div>
+    <div class="fn-clear">
+        <h2 class="fn-left">参与讨论</h2>
+        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
+    </div>
+    <div class="fn-50"></div>
+    <div id="vditorComments"></div>
+    <div class="fn-100"></div>
 </div>
-<div class="fn-50"></div>
 <!-- end main -->
 
 <div class="footer">
@@ -76,9 +86,9 @@
 </div>
 <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
-<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
-<script>
+<script id="vditorScript">
   const e = React.createElement
 
   class APP extends React.Component {
@@ -94,41 +104,8 @@
         cache: {
           enable: false,
         },
-        minHeight: 500,
         after () {
-          vditor.setValue(`\`\`\`javascript
-  const e = React.createElement
-
-  class APP extends React.Component {
-    constructor (props) {
-      super(props)
-    }
-
-    componentDidMount () {
-      const vditor = new Vditor('vditor', {
-        toolbarConfig: {
-          pin: true,
-        },
-        cache: {
-          enable: false,
-        },
-        minHeight: 500,
-        after () {
-          vditor.setValue('Hello, React + Vditor!')
-        },
-      })
-    }
-
-    render () {
-      return e(
-        'div',
-        {id: 'vditor'},
-      )
-    }
-  }
-
-  ReactDOM.render(e(APP), document.querySelector('#app'))
-\`\`\``)
+          vditor.setValue('Hello, Vditor + React!')
         },
       })
     }
@@ -143,5 +120,6 @@
 
   ReactDOM.render(e(APP), document.querySelector('#app'))
 </script>
+<script type="text/javascript" src="//vditor.b3log.org/vditor.js" charset="utf-8"></script>
 </body>
 </html>
