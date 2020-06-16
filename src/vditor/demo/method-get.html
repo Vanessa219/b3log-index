@@ -71,20 +71,20 @@
     getValue()，getHTML()，getSelection()，getCurrentMode()，getCursorPosition()，html2md()
     <div class="fn-50"></div>
     <div>
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getValue()">获取 Markdown
+        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getValue();updateCode(this, 'vditor.getValue();')">获取 Markdown
         </button> &nbsp;
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getHTML()">获取 HTML</button>
+        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getHTML();updateCode(this, 'vditor.getHTML();')">获取 HTML</button>
         &nbsp;
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getSelection()">获取选中内容
+        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getSelection();updateCode(this, 'vditor.getSelection();')">获取选中内容
         </button> &nbsp;
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getCurrentMode()">
+        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getCurrentMode();updateCode(this, 'vditor.getCurrentMode();')">
             获取编辑器当前模式
         </button> &nbsp;
         <button class="btn--small btn"
-                onclick="vditor.focus();document.getElementById('log').value=JSON.stringify(vditor.getCursorPosition())">
+                onclick="vditor.focus();document.getElementById('log').value=JSON.stringify(vditor.getCursorPosition());updateCode(this, 'vditor.getCursorPosition();')">
             获取光标位置
         </button> &nbsp;
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.html2md(vditor.getHTML())">
+        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.html2md(vditor.getHTML());updateCode(this, 'vditor.html2md(vditor.getHTML());')">
             HTML ->
             Markdown
         </button>

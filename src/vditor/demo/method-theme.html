@@ -120,7 +120,24 @@
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">const vditor = new Vditor('vditor', {
+    height: 360,
+    cache: {
+      enable: false,
+    },
+    value: `# 演示 Go 代码高亮
+
+\`\`\`go
+package main
+
+import "fmt"
+
+func main() {
+\tfmt.Println("Hello, 世界")
+}
+\`\`\``,
+  })
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -148,7 +165,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
   const vditor = new Vditor('vditor', {
-    height: 500,
+    height: 360,
     cache: {
       enable: false,
     },
@@ -168,6 +185,9 @@ func main() {
     item.onchange = () => {
       vditor.setTheme(document.getElementById('theme').value, document.getElementById('contentTheme').value,
         document.getElementById('codeTheme').value)
+      updateCode(item, `vditor.setTheme(document.getElementById('theme').value,
+document.getElementById('contentTheme').value,
+document.getElementById('codeTheme').value)`)
     }
   })
 </script>

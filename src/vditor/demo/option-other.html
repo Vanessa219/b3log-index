@@ -61,18 +61,23 @@
     options.tab，options.typewriterMode，options.outline，options.placeholder
     <div class="fn-50"></div>
     <div>
-        <button class="btn btn--small" onclick="setOptions({tab: '    ', value: '请按下 tab 键'})">按下 tab 键新增四个空格</button> &nbsp;
-        <button class="btn btn--small" onclick="setOptions({tab: '\t', value: '请按下 tab 键'})">按下 tab 键新增 \t</button> &nbsp;
-        <button class="btn btn--small" onclick="setOptions({typewriterMode: true})">开启打字机模式（编辑位置上下剧中）</button> &nbsp;
-        <button class="btn btn--small" onclick="setOptions({outline: true})">默认展现大纲</button> &nbsp;
+        <button class="btn btn--small" onclick="setOptions(this, {cache: {enable: false},tab: '    ', placeholder: '请按下 tab 键'})">按下 tab 键新增四个空格
+        </button> &nbsp;
+        <button class="btn btn--small" onclick="setOptions(this, {cache: {enable: false},tab: '\t', placeholder: '请按下 tab 键'})">按下 tab 键新增 \t
+        </button> &nbsp;
+        <button class="btn btn--small" onclick="setOptions(this, {cache: {enable: false},typewriterMode: true})">开启打字机模式（编辑位置上下剧中）</button> &nbsp;
+        <button class="btn btn--small" onclick="setOptions(this, {cache: {enable: false},outline: true})">默认展现大纲</button> &nbsp;
         <button class="btn btn--small"
-                onclick="setOptions({value: '', placeholder: 'Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式'})">
+                onclick="setOptions(this, {cache: {enable: false},value: '', placeholder: 'Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式'})">
             内容为空的提示
         </button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  cache: {enable: false}
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -99,19 +104,14 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
-  const setOptions = (options) => {
+  const setOptions = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', Object.assign({
-      toolbarConfig: {
-        pin: true,
-      },
-      cache: {
-        enable: false,
-      },
-      height: 500,
-    }, options))
+    if (it) {
+      updateCode(it, `new Vditor('vditor', ${JSON.stringify(options)})`)
+    }
+    new Vditor('vditor', options)
   }
-  setOptions()
+  setOptions(undefined, {cache: {enable: false}})
 </script>
 <script src="../vditor.js"></script>
 </body>
