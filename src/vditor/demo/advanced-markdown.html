@@ -97,22 +97,30 @@
     options.preview.markdown
     <div class="fn-50"></div>
     <div class="actions">
-        <button class="btn btn--small" data-config="autoSpace">自动空格</button> &nbsp;
-        <button class="btn btn--small" data-config="paragraphBeginningSpace">段落开头空两格</button> &nbsp;
-        <button class="btn btn--small" data-config="fixTermTypo">矫正术语</button> &nbsp;
-        <button class="btn btn--small" data-config="chinesePunct">矫正标点</button> &nbsp;
-        <button class="btn btn--small" data-config="toc">启用目录</button> &nbsp;
-        <button class="btn btn--small" data-config="footnotes">禁用脚注</button> &nbsp;
-        <button class="btn btn--small" data-config="codeBlockPreview">wysiwyg & ir 模式不渲染代码块</button> &nbsp;
-        <button class="btn btn--small" data-config="setext">解析 settext</button> &nbsp;
-        <button class="btn btn--small" data-config="sanitize">不过滤 XSS</button> &nbsp;
-        <button class="btn btn--small" data-config="theme-dark">dark theme</button> &nbsp;
-        <button class="btn btn--small" data-config="theme-wechat">wechat theme</button> &nbsp;
-        <button class="btn btn--small" data-config="listMarker">为列表添加标记</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'autoSpace')">自动空格</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'paragraphBeginningSpace')">段落开头空两格</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'fixTermTypo')">矫正术语</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'chinesePunct')">矫正标点</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'toc')">启用目录</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'footnotes')">禁用脚注</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'codeBlockPreview')">wysiwyg & ir 模式不渲染代码块</button>
+        &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'setext')">解析 settext</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'sanitize')">不过滤 XSS</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'theme-dark')">dark theme</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'theme-wechat')">wechat theme</button> &nbsp;
+        <button class="btn btn--small" onclick="setConfig(this, 'listMarker')">为列表添加标记</button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  height: 360,
+  cache: {
+    enable: false,
+  },
+  value: 'Markdown 配置',
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -139,32 +147,8 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
-  document.querySelectorAll('.actions .btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      document.getElementById('vditor').innerHTML = ''
-      setConfig(this.getAttribute('data-config'))
-    })
-  })
-
-  const setConfig = (type) => {
-    let config = {}
-    config[type] = true
-    if (type === 'footnotes' || type === 'codeBlockPreview' || type === 'sanitize') {
-      config[type] = false
-    }
-    if (type && type.indexOf("theme") > -1) {
-      config = {
-        theme: type.split('-')[1]
-      }
-    }
-    new Vditor('vditor', {
-      theme: config.theme,
-      typewriterMode: true,
-      mode: (type === 'paragraphBeginningSpace' || type === 'sanitize' || type === 'listMarker') ? 'sv' : 'wysiwyg',
-      cache: {
-        enable: false,
-      },
-      value: `[toc]
+  const setConfig = (it, type) => {
+    const value = `[toc]
 
 # Vditor
 
@@ -194,18 +178,51 @@
 这里是一个脚注引用[^1]，这里是另一个脚注引用[^bignote]。
 
 \`\`\`javascript
-new Vditor('vditor', {})
+new Vditor('vditor')
 \`\`\`
+
 [^1]: 第一个脚注定义。
-[^bignote]: 脚注定义可使用多段内容。`,
+[^bignote]: 脚注定义可使用多段内容。`
+
+    document.getElementById('vditor').innerHTML = ''
+
+    let config = {}
+    config[type] = true
+    if (type === 'footnotes' || type === 'codeBlockPreview' || type === 'sanitize') {
+      config[type] = false
+    }
+    if (type && type.indexOf('theme') > -1) {
+      config = {
+        theme: type.split('-')[1],
+      }
+    }
+
+    const options = {
+      height: 360,
+      theme: config.theme,
+      mode: (type === 'paragraphBeginningSpace' || type === 'sanitize' || type === 'listMarker') ? 'sv' : 'wysiwyg',
+      cache: {
+        enable: false,
+      },
       preview: {
         markdown: config,
       },
-    })
+      value,
+    }
+
+    updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ').replace(/\\n/g, `
+`).replace('<', '&lt;').replace(/`/g, '\\`').replace('"[', '`[').replace('。"', '。`')})`)
+    new Vditor('vditor', options)
   }
 
-  setConfig()
+  new Vditor('vditor', {
+    height: 360,
+    cache: {
+      enable: false,
+    },
+    value: 'Markdown 配置',
+  })
 </script>
-<script src="../vditor.js"></script>
+<script src="//vditor.b3log.org/vditor.js"></script>
 </body>
 </html>

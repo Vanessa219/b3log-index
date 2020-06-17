@@ -58,30 +58,35 @@
 <div class="wrapper">
     <div class="fn-50"></div>
     相关 <a href="https://hacpai.com/article/1549638745630#options-hint" target="_blank">API</a>：
-    options.hint.emoji，options.hint.emojiTail，options.hint.emojiPath，options.hint.delay，options.hint.at
+    options.hint.emoji，options.hint.emojiTail，options.hint.emojiPath，options.hint.delay，options.hint.at<br>
+    ⚠️ 注意事项：
+    <ul style="margin-left: 30px">
+        <li>设置自定义表情后需输入 : 或点击工具栏上的表情按钮才可查看到效果</li>
+        <li>设置表情提示文案后需点击工具栏上的表情按钮才可查看到效果</li>
+        <li>设置表情图片地址后需在调试栏中查看表情图片地址才可看到效果，试一试 :wulina: 表情图片吧</li>
+        <li>当启用 At 功能时，可使用 options.hint.delay 来减少服务器压力</li>
+    </ul>
     <div class="fn-50"></div>
     <div class="actions">
         <button class="btn btn--small"
-                onclick="setHint({hint:{emoji: {'sad': '💔','j': 'https://unpkg.com/vditor@1.3.1/dist/images/emoji/j.png'}}})">
+                onclick="setHint(this, {hint:{emoji: {'sad': '💔','j': 'https://unpkg.com/vditor@1.3.1/dist/images/emoji/j.png'}}})">
             自定义表情
         </button> &nbsp;
-        <button class="btn btn--small" onclick="setHint({hint:{emojiTail: emojiTail}})">设置表情提示文案</button> &nbsp;
+        <button class="btn btn--small" onclick="setHint(this, {hint:{emojiTail: emojiTail}})">设置表情提示文案</button> &nbsp;
         <button class="btn btn--small"
-                onclick="setHint({hint:{emojiPath: 'https://cdn.jsdelivr.net/npm/vditor@1.8.3/dist/images/emoji'}})">
+                onclick="setHint(this, {hint:{emojiPath: 'https://cdn.jsdelivr.net/npm/vditor@3.2.0/dist/images/emoji'}})">
             设置表情图片地址
         </button> &nbsp;
-        <button class="btn btn--small" onclick="at()">At</button> &nbsp;
-    </div>
-    <div class="vditor-reset" style="margin-bottom: 10px">
-        <ul>
-            <li>需输入 <kbd>:</kbd> 或点击表情查看效果</li>
-            <li>设置表情图片地址后，可 F12 查看表情图片地址。试一试图片表情 <kbd>:wulian:</kbd></li>
-            <li>当启用 At 功能时，可使用 options.hint.delay 来减少服务器压力</li>
-        </ul>
+        <button class="btn btn--small"
+                onclick="setHint(this, {cache: {enable: false},value: '示例代码如下，由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看'})">At
+        </button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  height: 360,
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -109,23 +114,18 @@
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
   const emojiTail = '<a href="https://hacpai.com/settings/function" target="_blank">设置常用表情</a>'
-  const setHint = (options) => {
+  const setHint = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', Object.assign({
+    const mergedOptions = Object.assign({
       height: 360,
-      typewriterMode: true,
-    }, options))
-  }
-  setHint()
+    }, options)
 
-  const at = () => {
-    setHint({
-        cache: {
-          enable: false,
-        },
-        value: `示例代码如下，由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看
-\`\`\`javascript
-options.hint = {
+    if (it) {
+      let code = JSON.stringify(mergedOptions, null, '  ')
+      if (options.value) {
+        code = `{
+  height: 360,
+  hint:{
     at: (key) => {
       let atUsers = []
       $.ajax({
@@ -137,20 +137,23 @@ options.hint = {
           if (result.code === 0) {
             atUsers = result.data.map((item) => {
               item.value = '@' + item.userName
-              item.html = '<img src="' + item.userAvatarURL + '"/> ' + item.userName
+              item.html = '&lt;img src="' + item.userAvatarURL + '"/> ' + item.userName
               return item
             })
           }
         },
       })
       return atUsers
-    },
+    }
   }
-\`\`\``,
-      },
-    )
+}`
+      }
+      updateCode(it, `new Vditor('vditor', ${code})`)
+    }
+    new Vditor('vditor', mergedOptions)
   }
+  setHint()
 </script>
-<script src="../vditor.js"></script>
+<script src="//vditor.b3log.org/vditor.js"></script>
 </body>
 </html>
