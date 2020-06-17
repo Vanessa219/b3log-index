@@ -107,7 +107,7 @@
   const setOptions = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
     if (it) {
-      updateCode(it, `new Vditor('vditor', ${JSON.stringify(options)})`)
+      updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ')})`)
     }
     new Vditor('vditor', options)
   }

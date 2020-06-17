@@ -58,25 +58,33 @@
 <div class="wrapper">
     <div class="fn-50"></div>
     相关 <a href="https://hacpai.com/article/1549638745630#options-preview" target="_blank">API</a>：
-    options.preview.delay，options.preview.url，options.preview.parse()，options.preview.transform()
+    options.preview.delay，options.preview.url，options.preview.parse()，options.preview.transform() <br>
+    ⚠️ 注意事项：相关 API 仅支持 sv 模式
     <div class="fn-50"></div>
     <div class="actions">
         <button class="btn btn--small"
-                onclick="setPreview({preview:{transform(html){alert('添加感叹号');return html + '<p>!</p>'}}})">HTML 字符串处理
+                onclick="setPreview(this, {mode: 'sv',height: 360,preview:{transform(html){alert('添加感叹号');return html + '<p>!</p>'}}})">
+            HTML 字符串处理
         </button> &nbsp;
         <button class="btn btn--small"
-                onclick="setPreview({preview:{parse(element){alert('添加蓝色背景');element.style.backgroundColor='#4285f4'}}})">
+                onclick="setPreview(this, {mode: 'sv',height: 360,preview:{parse(element){alert('添加蓝色背景');element.style.backgroundColor='#4285f4'}}})">
             DOM 处理
         </button> &nbsp;
-        <button class="btn btn--small" onclick="setPreview({preview:{delay: 5000}})">延迟 5s</button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setPreview({value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看。服务端可使用 [Lute](https://github.com/88250/lute) 进行解析。'})">预览请求
+        <button class="btn btn--small" onclick="setPreview(this, {mode: 'sv',height: 360,preview:{delay: 5000}})">延迟
+            5s
         </button> &nbsp;
-        <button class="btn btn--small btn--red">仅支持 sv 模式</button>
+        <button class="btn btn--small"
+                onclick="setPreview(this, {cache: {enable: false}, mode: 'sv',height: 360,value: '相关 API 为 options.preview.url。由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看。服务端可使用 [Lute](https://github.com/88250/lute) 进行解析。'})">
+            预览请求
+        </button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  mode: 'sv',
+  height: 360,
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -103,19 +111,23 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
-  const setPreview = (options) => {
+  const setPreview = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', Object.assign({
-      cache: {
-        enable: false,
-      },
-      mode: 'sv',
-      height: 360,
-      typewriterMode: true,
-      value: '实时保存内容，防止意外丢失',
-    }, options))
+    if (it) {
+      let code = JSON.stringify(options, null, '  ')
+      if (options.preview && options.preview.transform) {
+        code = `{mode: 'sv',height: 360,preview:{transform(html){alert('添加感叹号');return html + '&lt;p>!&lt;/p>'}}}`
+      } else if (options.preview && options.preview.parse) {
+        code = `{mode: 'sv',height: 360,preview:{parse(element){alert('添加蓝色背景');element.style.backgroundColor='#4285f4'}}}`
+      }
+      updateCode(it, `new Vditor('vditor', ${code})`)
+    }
+    new Vditor('vditor', options)
   }
-  setPreview()
+  setPreview(undefined, {
+    mode: 'sv',
+    height: 360,
+  })
 </script>
 <script src="../vditor.js"></script>
 </body>

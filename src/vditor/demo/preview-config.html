@@ -161,7 +161,7 @@
 ![vditor.png](https://b3log.org/images/brand/vditor-512.png)`, config)
 
     if (it) {
-      let configStr = JSON.stringify(config)
+      let configStr = JSON.stringify(config, null, '  ')
       if (config.transform) {
         configStr = '{transform(html){return html.replace(\'简介&lt;/h2>\', \'Vditor 介绍&lt;/h2>\')}}'
       } else if (config.after) {

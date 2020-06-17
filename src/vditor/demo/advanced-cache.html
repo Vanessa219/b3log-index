@@ -40,6 +40,7 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
+
         #log {
             margin-bottom: 10px;
             overflow: auto;
@@ -72,33 +73,50 @@
         href="https://hacpai.com/article/1549638745630#methods" target="_blank">disabledCache()</a>，<a
         href="https://hacpai.com/article/1549638745630#methods" target="_blank">enableCache()</a>，<a
         href="https://hacpai.com/article/1549638745630#methods" target="_blank">clearCache()</a>，<a
-        href="https://hacpai.com/article/1549638745630#options" target="_blank">options.value</a>
+        href="https://hacpai.com/article/1549638745630#options" target="_blank">options.value</a><br>
+    ⚠️ 注意事项：使用 innerHTML 和 options.value 设置初始值时需禁用缓存或清空缓存
     <div class="fn-50"></div>
     <div class="actions">
-        <button class="btn btn--small" onclick="setCache({value: '支持主窗口大小拖拽、字符计数', cache: {enable: false}});
-        document.getElementById('log').innerHTML = ''">
+        <button class="btn btn--small" onclick="setCache(this, {value: '支持主窗口大小拖拽、字符计数', cache: {enable: false}});
+setLog('')">
             设置初始值
         </button> &nbsp;
         <button class="btn btn--small" onclick="document.getElementById('vditor').innerHTML = '';
-        setCache({cache: {enable: true,id:'vditorCache'}});
-        document.getElementById('log').innerHTML = '当前缓存 ID 为 vditorCache<br>' + JSON.stringify(localStorage)">
+        setCache(this, {cache: {enable: true,id:'vditorCache'}});
+setLog('当前缓存 ID 为 vditorCache\n' + JSON.stringify(localStorage, null, '  '))">
             设置缓存 ID
         </button> &nbsp;
         <button class="btn btn--small" onclick="document.getElementById('vditor').innerHTML = '';
-        setCache({cache:{after(text){document.getElementById('log').innerHTML = '缓存回调，当前缓存 ID 为 vditorvditor<br>' + JSON.stringify(localStorage)}}})">启用缓存回调</button> &nbsp;
-        <button class="btn btn--small" onclick="vditor.clearCache();
-        document.getElementById('log').innerHTML = '缓存已清除<br>' + JSON.stringify(localStorage)">清除当前缓存</button> &nbsp;
-        <button class="btn btn--small" onclick="vditor.disabledCache();
-document.getElementById('log').innerHTML = '缓存已禁用<br>' + JSON.stringify(localStorage)">禁用当前缓存</button> &nbsp;
-        <button class="btn btn--small" onclick="vditor.enableCache();
-document.getElementById('log').innerHTML = '缓存已启用<br>' + JSON.stringify(localStorage)">启用当前缓存</button> &nbsp;
+        setCache(this, {cache:{after(text){setLog('缓存回调，当前缓存 ID 为 vditorvditor\n' + JSON.stringify(localStorage, null, '  '))}}})">
+            启用缓存回调
+        </button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.clearCache();updateCode(this, 'vditor.clearCache()')
+setLog('缓存已清除\n' + JSON.stringify(localStorage, null, '  '))">清除当前缓存
+        </button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.disabledCache();;updateCode(this, 'vditor.disabledCache()')
+setLog('缓存已禁用\n' + JSON.stringify(localStorage, null, '  '))">禁用当前缓存
+        </button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.enableCache();;updateCode(this, 'vditor.enableCache()')
+setLog('缓存已启用\n' + JSON.stringify(localStorage, null, '  '));">启用当前缓存
+        </button> &nbsp;
     </div>
-    <div id="log" class="ft-fade">使用 innerHTML 做为初始值</div>
+    <textarea id="log" readonly class="ft-fade">使用 innerHTML 做为初始值</textarea>
     <div id="vditor">
         <h2>Vditor</h2>
     </div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">// 使用 innerHTML 做为初始值
+new Vditor('vditor', {
+  cache: {
+    enable: false,
+  },
+  height: 360,
+})
+// HTML
+// &lt;div id="vditor">
+//     &lt;h2>Vditor&lt;/h2>
+// &lt;/div>
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -126,14 +144,34 @@ document.getElementById('log').innerHTML = '缓存已启用<br>' + JSON.stringif
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
   let vditor
-  const setCache = (options) => {
-    vditor = new Vditor('vditor', Object.assign({
-      cache: {enable: false},
+  const setCache = (it, options) => {
+    const mergedOptions = Object.assign({
+      cache: {
+        enable: false,
+      },
       height: 360,
-      typewriterMode: true,
-    }, options))
+    }, options)
+
+    if (it) {
+      let code = JSON.stringify(mergedOptions, null, '  ')
+      if (options.cache.after) {
+        code = `{
+  height: 360,
+  cache:{
+    after(text) {
+      alert('缓存完毕回调，当前缓存值为' + text)
+    }
   }
-  setCache({})
+}`
+      }
+      updateCode(it, `new Vditor('vditor', ${code})`)
+    }
+    vditor = new Vditor('vditor', mergedOptions)
+  }
+  setCache()
+  const setLog = (text) => {
+    document.getElementById('log').textContent = text
+  }
 </script>
 <script src="../vditor.js"></script>
 </body>

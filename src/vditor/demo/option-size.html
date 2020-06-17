@@ -110,7 +110,7 @@
     vditorElement.style.minHeight = 'auto'
     vditorElement.style.height = 'auto'
     if (it) {
-      updateCode(it, `new Vditor('vditor', ${JSON.stringify(options)})`)
+      updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ')})`)
     }
     new Vditor('vditor', options)
   }

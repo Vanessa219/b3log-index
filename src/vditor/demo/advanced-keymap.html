@@ -58,16 +58,25 @@
 <div class="wrapper">
     <div class="fn-50"></div>
     相关 <a href="https://hacpai.com/article/1549638745630#options-keymap" target="_blank">API</a>：
-    options.keymap.deleteLine，options.keymap.duplicate
+    options.keymap.deleteLine，options.keymap.duplicate<br>
+    ⚠️ 注意事项：相关 API 仅支持 sv 模式
     <div class="fn-50"></div>
     <div class="actions">
-        <button class="btn btn--small" onclick="setKeymap({keymap:{deleteLine:'⌘-⇧-Backspace'}})">删除行[⌘-⇧-Backspace]</button> &nbsp;
-        <button class="btn btn--small" onclick="setKeymap({keymap:{duplicate:'⌘-⇧-D'}})">复制行[⌘-⇧-D]</button> &nbsp;
-        <button class="btn btn--small btn--red">仅支持 sv 模式</button>
+        <button class="btn btn--small"
+                onclick="setKeymap(this, {mode:'sv',height: 360, keymap:{deleteLine:'⌘-⇧-Backspace'}})">
+            删除行[⌘-⇧-Backspace]
+        </button> &nbsp;
+        <button class="btn btn--small" onclick="setKeymap(this, {mode:'sv',height: 360, keymap:{duplicate:'⌘-⇧-D'}})">
+            复制行[⌘-⇧-D]
+        </button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  mode: 'sv',
+  height: 360,
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -94,15 +103,17 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
-  const setKeymap = (options) => {
+  const setKeymap = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', Object.assign({
-      mode: 'sv',
-      height: 360,
-      typewriterMode: true,
-    }, options))
+    if (it) {
+      updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ')})`)
+    }
+    new Vditor('vditor', options)
   }
-  setKeymap()
+  setKeymap(undefined, {
+    mode: 'sv',
+    height: 360,
+  })
 </script>
 <script src="../vditor.js"></script>
 </body>

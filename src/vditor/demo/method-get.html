@@ -81,7 +81,7 @@
             获取编辑器当前模式
         </button> &nbsp;
         <button class="btn--small btn"
-                onclick="vditor.focus();document.getElementById('log').value=JSON.stringify(vditor.getCursorPosition());updateCode(this, 'vditor.getCursorPosition();')">
+                onclick="vditor.focus();document.getElementById('log').value=JSON.stringify(vditor.getCursorPosition(), null, '  ');updateCode(this, 'vditor.getCursorPosition();')">
             获取光标位置
         </button> &nbsp;
         <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.html2md(vditor.getHTML());updateCode(this, 'vditor.html2md(vditor.getHTML());')">

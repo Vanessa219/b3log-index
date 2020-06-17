@@ -61,14 +61,20 @@
     options.resize.enable，options.resize.position，options.resize.after()
     <div class="fn-50"></div>
     <div class="actions">
-        <button class="btn btn--small" onclick="setResize({resize:{enable:true}})">启用</button> &nbsp;
-        <button class="btn btn--small" onclick="setResize({resize:{enable:true,position:'bottom'}})">位于底部</button> &nbsp;
-        <button class="btn btn--small" onclick="setResize({resize:{enable:true,position:'top'}})">位于顶部</button> &nbsp;
-        <button class="btn btn--small" onclick="setResize({resize:{enable:true,after(height){alert(height)}}})">拖拽结束弹出高度偏差</button> &nbsp;
+        <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true}})">启用</button> &nbsp;
+        <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true,position:'bottom'}})">位于底部</button>
+        &nbsp;
+        <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true,position:'top'}})">位于顶部</button> &nbsp;
+        <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true,after(height){alert(height)}}})">
+            拖拽结束弹出高度偏差
+        </button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  height: 360
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -95,14 +101,20 @@
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
-  const setResize = (options) => {
+  const setResize = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', Object.assign({
-      height: 360,
-      typewriterMode: true,
-    }, options))
+    if (it) {
+      let code = JSON.stringify(options, null, '  ')
+      if (options.resize.after) {
+        code = `{resize:{enable:true,after(height){alert(height)}}}`
+      }
+      updateCode(it, `new Vditor('vditor', ${code})`)
+    }
+    new Vditor('vditor', options)
   }
-  setResize()
+  setResize(undefined, {
+    height: 360,
+  })
 </script>
 <script src="../vditor.js"></script>
 </body>

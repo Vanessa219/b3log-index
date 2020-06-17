@@ -69,8 +69,8 @@
     options.preview.hljs.enable，options.preview.hljs.style，options.preview.hljs.lineNumber
     <div class="fn-50"></div>
     <div style="display: flex;align-items: center">
-        <button class="btn--small btn" onclick="setHljs({preview: {hljs:{enable:true}}})">启用代码高亮</button>
-        <button class="btn--small btn" onclick="setHljs({preview: {hljs:{lineNumber:true}}})">启用行号</button>
+        <button class="btn--small btn" onclick="setHljs(this, {preview: {hljs:{enable:true}}})">启用代码高亮</button>
+        <button class="btn--small btn" onclick="setHljs(this, {preview: {hljs:{lineNumber:true}}})">启用行号</button>
         <span class="label">代码块主题</span>
         <select class="btn btn--small" id="codeTheme">
             <option>abap</option>
@@ -113,7 +113,26 @@
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  height: 360,
+  cache: {
+    enable: false,
+  },
+  preview: {
+    hljs: {
+      enable: false,
+    },
+  },
+  value: `\`\`\`go
+package main
+
+import "fmt"
+
+func main() {
+\tfmt.Println("Hello, 世界")
+}
+\`\`\``,
+    })</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -138,14 +157,11 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
-  const setHljs = (options) => {
+  const setHljs = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
-    new Vditor('vditor', Object.assign({
-      mode: 'sv',
+    const mergedOptions = Object.assign({
       height: 360,
-      typewriterMode: true,
       cache: {
         enable: false,
       },
@@ -154,9 +170,7 @@
           enable: false,
         },
       },
-      value: `# 演示 Go 代码高亮
-
-\`\`\`go
+      value: `\`\`\`go
 package main
 
 import "fmt"
@@ -165,17 +179,25 @@ func main() {
 \tfmt.Println("Hello, 世界")
 }
 \`\`\``,
-    }, options))
+    }, options)
+
+    if (it) {
+      updateCode(it, `new Vditor('vditor', ${JSON.stringify(mergedOptions, null, '  ')})`)
+    }
+    new Vditor('vditor', mergedOptions)
   }
   setHljs()
-  document.querySelector('#codeTheme').onchange = () => {
-    setHljs({
+  document.querySelector('#codeTheme').onchange = function () {
+    setHljs(this, {
       preview: {
-        style: document.getElementById('codeTheme').value,
+        hljs: {
+          style: document.getElementById('codeTheme').value,
+        },
       },
     })
   }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script src="../vditor.js"></script>
 </body>
 </html>
