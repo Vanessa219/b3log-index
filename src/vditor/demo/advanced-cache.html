@@ -82,7 +82,7 @@ setLog('')">
             设置初始值
         </button> &nbsp;
         <button class="btn btn--small" onclick="document.getElementById('vditor').innerHTML = '';
-        setCache(this, {cache: {enable: true,id:'vditorCache'}});
+        setCache(this, {cache: {id:'vditorCache'}});
 setLog('当前缓存 ID 为 vditorCache\n' + JSON.stringify(localStorage, null, '  '))">
             设置缓存 ID
         </button> &nbsp;
@@ -140,7 +140,7 @@ new Vditor('vditor', {
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vditor@3.3.1/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
   let vditor

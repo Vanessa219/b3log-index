@@ -61,22 +61,18 @@
     options.height，options.minHeight，options.width
     <div class="fn-50"></div>
     <div>
-        <button class="btn btn--small" onclick="setSize(this, {cache: {enable: true}, height: 360,width:360})">固定高宽 360
+        <button class="btn btn--small" onclick="setSize(this, {height: 360,width:360})">固定高宽 360
             * 360
         </button> &nbsp;
-        <button class="btn btn--small" onclick="setSize(this, {cache: {enable: true}, width:'70%'})">宽度百分比 70%</button>
+        <button class="btn btn--small" onclick="setSize(this, {width:'70%'})">宽度百分比 70%</button>
         &nbsp;
-        <button class="btn btn--small" onclick="setSize(this, {cache: {enable: true}, minHeight: 500})">最小高度 500
+        <button class="btn btn--small" onclick="setSize(this, {minHeight: 500})">最小高度 500
         </button> &nbsp;
-        <button class="btn btn--small" onclick="setSize(this, {cache: {enable: true}, })">自适应</button> &nbsp;
+        <button class="btn btn--small" onclick="setSize(this)">自适应</button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">new Vditor('vditor', {
-  cache: {
-    enable: true,
-  }
-})
+        <pre><code class="javascript">new Vditor('vditor')
 </code></pre>
     </div>
     <div class="fn-100"></div>
@@ -101,7 +97,7 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vditor@3.3.1/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.4/dist/index.min.js"></script>
 <script id="vditorScript">
   const vditorElement = document.getElementById('vditor')
@@ -114,7 +110,7 @@
     }
     new Vditor('vditor', options)
   }
-  setSize(undefined, {cache: {enable: true}})
+  setSize()
 </script>
 <script src="//vditor.b3log.org/vditor.js"></script>
 </body>
