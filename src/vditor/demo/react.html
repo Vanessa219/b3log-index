@@ -33,6 +33,7 @@
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
+    <script src="../vditor.js" defer></script>
     <style>
         .header {
             background-color: #fff;
@@ -86,9 +87,7 @@
 </div>
 <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
-<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.5/dist/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.3.1/dist/index.min.js"></script>
-<script id="vditorScript">
+<script>
   const e = React.createElement
 
   class APP extends React.Component {
@@ -120,6 +119,5 @@
 
   ReactDOM.render(e(APP), document.querySelector('#app'))
 </script>
-<script src="//vditor.b3log.org/vditor.js"></script>
 </body>
 </html>

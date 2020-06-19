@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>多功能渲染：大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/Markdown -> HTML - Vditor</title>
+    <title>功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphvizL - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
@@ -18,7 +18,7 @@
     <link type="text/css" rel="stylesheet" href="//static.b3log.org/css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="多功能渲染：大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/Markdown -> HTML - Vditor"/>
+    <meta property="og:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphvizL - Vditor"/>
     <meta property="og:description"
           content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -27,27 +27,18 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
-    <meta name="twitter:title" content="多功能渲染：大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/Markdown -> HTML - Vditor"/>
+    <meta name="twitter:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphvizL - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
+    <script src="../vditor.js" defer></script>
     <style>
         .header {
             background-color: #fff;
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
-        }
-
-        #content {
-            flex: 1;
-            padding: 10px;
-            margin-right: 20px;
-            border: 1px solid #d1d5da;
-            min-height: 300px;
-            border-radius: 3px
         }
     </style>
 </head>
@@ -67,9 +58,10 @@
 <div class="fn-50"></div>
 <div class="wrapper">
     相关 <a href="https://hacpai.com/article/1549638745630#static-methods" target="_blank">API</a>：
-    Vditor.outlineRender()，Vditor.mathRender()，Vditor.mindmapRender()，Vditor.chartRender()，Vditor.mermaidRender()，
-    Vditor.abcRender()，<a href="https://hacpai.com/article/1589813914768" target="_blank">Vditor.mediaRender()</a>，Vditor.codeRender()，Vditor.highlightRender()，Vditor.graphvizRender()
+    Vditor.md2html()，Vditor.outlineRender()，Vditor.mathRender()，Vditor.mindmapRender()，Vditor.chartRender()，Vditor.mermaidRender()，
+    Vditor.abcRender()，<a href="https://hacpai.com/article/1589813914768" target="_blank">Vditor.mediaRender()</a>，Vditor.highlightRender()，Vditor.codeRender()，Vditor.graphvizRender()
     <div class="fn-50"></div>
+    <button class="btn btn--small" onclick="render('md2html', this)">Markdown2HTML</button> &nbsp;
     <button class="btn btn--small" onclick="render('outlineRender', this)">大纲</button> &nbsp;
     <button class="btn btn--small" onclick="render('mathRender', this)">数学公式</button> &nbsp;
     <button class="btn btn--small" onclick="render('mindmapRender', this)">脑图</button> &nbsp;
@@ -79,8 +71,7 @@
     <button class="btn btn--small" onclick="render('mediaRender', this)">多媒体</button> &nbsp;
     <button class="btn btn--small" onclick="render('highlightRender', this)">代码高亮</button> &nbsp;
     <button class="btn btn--small" onclick="render('codeRender', this)">代码复制</button> &nbsp;
-    <button class="btn btn--small" onclick="render('graphvizRender', this)">graphviz</button> &nbsp;
-    <button class="btn btn--small" onclick="render('md2html', this)">Markdown -> HTML</button> &nbsp;
+    <button class="btn btn--small" onclick="render('graphvizRender', this)">graphviz</button>
     <div id="preview" class="vditor-reset"></div>
     <div id="vditorDemoCode" class="vditor-reset">
         <pre><code class="javascript">点击按钮查看效果
@@ -108,9 +99,7 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.3.1/dist/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.5/dist/index.min.js"></script>
-<script id="vditorScript">
+<script>
   const texts = {
     outlineRender: `# 教程
 
@@ -314,7 +303,7 @@ digraph finite_state_machine {
     const previewElement = document.getElementById('preview')
     const html = await Vditor.md2html(texts[type])
     previewElement.innerHTML = html
-    let code
+    let code = ''
     if (type === 'outlineRender') {
       Vditor[type](previewElement, previewElement)
       code = `Vditor.${type}(previewElement, previewElement)`
@@ -322,8 +311,6 @@ digraph finite_state_machine {
       Vditor[type]({lineNumber: true, enable: true}, previewElement)
       code = `Vditor.${type}({lineNumber: true, enable: true}, previewElement)`
     } else if (type === 'md2html') {
-      Vditor[type]({enable: true}, previewElement)
-      code = `Vditor.${type}({enable: true}, previewElement)`
     } else {
       Vditor[type](previewElement)
       code = `Vditor.${type}(previewElement)`
@@ -336,6 +323,5 @@ previewElement.innerHTML = html
 ${code}`)
   }
 </script>
-<script src="//vditor.b3log.org/vditor.js"></script>
 </body>
 </html>

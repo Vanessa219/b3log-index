@@ -32,8 +32,8 @@
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
+    <script src="../vditor.js" defer></script>
     <style>
         .header {
             background-color: #fff;
@@ -109,9 +109,7 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.3.1/dist/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vcmt@1.2.5/dist/index.min.js"></script>
-<script id="vditorScript">
+<script>
   const setMode = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
     if (it) {
@@ -121,6 +119,5 @@
   }
   setMode()
 </script>
-<script src="//vditor.b3log.org/vditor.js"></script>
 </body>
 </html>

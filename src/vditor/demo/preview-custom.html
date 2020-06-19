@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>本地缓存：设置默认值/设置缓存 ID/清除缓存/禁用缓存/启用缓存/缓存回调 - vditor</title>
+    <title>自定义渲染 - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
@@ -18,7 +18,7 @@
     <link type="text/css" rel="stylesheet" href="//static.b3log.org/css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="本地缓存：设置默认值/设置缓存 ID/清除缓存/禁用缓存/启用缓存/缓存回调 - vditor"/>
+    <meta property="og:title" content="自定义渲染 - Vditor"/>
     <meta property="og:description"
           content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -27,7 +27,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
-    <meta name="twitter:title" content="本地缓存：设置默认值/设置缓存 ID/清除缓存/禁用缓存/启用缓存/缓存回调 - vditor"/>
+    <meta name="twitter:title" content="自定义渲染 - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -41,15 +41,33 @@
             border-bottom: 1px solid #e1e4e8;
         }
 
-        #log {
-            margin-bottom: 10px;
-            overflow: auto;
-            height: 120px;
-            border: 1px solid #eee;
+        .heading {
+            border-bottom: 1px solid #4285f4 !important;
+            position: relative;
+        }
+
+        .heading__prefix {
+            width: 20px;
+            height: 20px;
+            background-size: 20px 20px;
+            background-image: url(https://b3log.org/images/brand/vditor-32.png);
+            margin: 7px 2px 0 0;
+            float: left;
+        }
+
+        .heading__content {
+            border-bottom: 1px solid #4285f4;
+            padding-bottom: 3px;
+        }
+
+        .heading__suffix {
             width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-            border-radius: 3px;
+            height: 4px;
+            border-radius: 0 0 10px 0;
+            background: #4285f4;
+            position: absolute;
+            right: 0;
+            bottom: -6px;
         }
     </style>
 </head>
@@ -66,56 +84,32 @@
         <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
     </div>
 </div>
+<div class="fn-50"></div>
 <div class="wrapper">
+    相关 <a href="https://hacpai.com/article/1549638745630#static-methods" target="_blank">API</a>：<a
+        href="https://hacpai.com/article/1588412297062" target="_blank">options.renderers()</a>
     <div class="fn-50"></div>
-    相关 <a href="https://hacpai.com/article/1549638745630#options-cache" target="_blank">API</a>：
-    options.cache.enable，options.cache.id，options.cache.after()，<a
-        href="https://hacpai.com/article/1549638745630#methods" target="_blank">disabledCache()</a>，<a
-        href="https://hacpai.com/article/1549638745630#methods" target="_blank">enableCache()</a>，<a
-        href="https://hacpai.com/article/1549638745630#methods" target="_blank">clearCache()</a>，<a
-        href="https://hacpai.com/article/1549638745630#options" target="_blank">options.value</a><br>
-    ⚠️ 注意事项：使用 innerHTML 和 options.value 设置初始值时需禁用缓存或清空缓存
-    <div class="fn-50"></div>
-    <div class="actions">
-        <button class="btn btn--small" onclick="setCache(this, {value: '支持主窗口大小拖拽、字符计数', cache: {enable: false}});
-setLog('')">
-            设置初始值
-        </button> &nbsp;
-        <button class="btn btn--small" onclick="document.getElementById('vditor').innerHTML = '';
-        setCache(this, {cache: {id:'vditorCache'}});
-setLog('当前缓存 ID 为 vditorCache\n' + JSON.stringify(localStorage, null, '  '))">
-            设置缓存 ID
-        </button> &nbsp;
-        <button class="btn btn--small" onclick="document.getElementById('vditor').innerHTML = '';
-        setCache(this, {cache:{after(text){setLog('缓存回调，当前缓存 ID 为 vditorvditor\n' + JSON.stringify(localStorage, null, '  '))}}})">
-            启用缓存回调
-        </button> &nbsp;
-        <button class="btn btn--small" onclick="vditor.clearCache();updateCode(this, 'vditor.clearCache()')
-setLog('缓存已清除\n' + JSON.stringify(localStorage, null, '  '))">清除当前缓存
-        </button> &nbsp;
-        <button class="btn btn--small" onclick="vditor.disabledCache();;updateCode(this, 'vditor.disabledCache()')
-setLog('缓存已禁用\n' + JSON.stringify(localStorage, null, '  '))">禁用当前缓存
-        </button> &nbsp;
-        <button class="btn btn--small" onclick="vditor.enableCache();;updateCode(this, 'vditor.enableCache()')
-setLog('缓存已启用\n' + JSON.stringify(localStorage, null, '  '));">启用当前缓存
-        </button> &nbsp;
-    </div>
-    <textarea id="log" readonly class="ft-fade">使用 innerHTML 做为初始值</textarea>
-    <div id="vditor">
-        <h2>Vditor</h2>
-    </div>
+    <div id="preview"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">// 使用 innerHTML 做为初始值
-new Vditor('vditor', {
-  cache: {
-    enable: false,
+        <pre><code class="javascript">Vditor.preview(document.getElementById('preview'), `## 💡 简介
+
+[Vditor](https://vditor.b3log.org) 是一款浏览器端的 Markdown 编辑器，支持所见即所得（富文本）、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供[桌面版](https://github.com/88250/liandi)。`,
+{
+  renderers: {
+    renderHeading: (node, entering) => {
+      const id = Lute.GetHeadingID(node)
+      if (entering) {
+        return [
+          `&lt;h${node.__internal_object__.HeadingLevel} id='${id}' class='heading'>&lt;span class='heading__prefix'>&lt;/span>&lt;span class='heading__content'>`,
+          Lute.WalkContinue]
+      } else {
+        return [
+          `&lt;/span>&lt;span class='heading__suffix'>&lt;/span>&lt;a id='vditorAnchor-${id}' class='vditor-anchor' href='#${id}'>&lt;svg viewBox='0 0 16 16' version='1.1' width='16' height='16'>&lt;path fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'>&lt;/path>&lt;/svg>&lt;/a>&lt;/h${node.__internal_object__.HeadingLevel}>`,
+          Lute.WalkContinue]
+      }
+    },
   },
-  height: 360,
 })
-// HTML
-// &lt;div id="vditor">
-//     &lt;h2>Vditor&lt;/h2>
-// &lt;/div>
 </code></pre>
     </div>
     <div class="fn-100"></div>
@@ -141,34 +135,26 @@ new Vditor('vditor', {
     </div>
 </div>
 <script>
-  let vditor
-  const setCache = (it, options) => {
-    const mergedOptions = Object.assign({
-      cache: {
-        enable: false,
-      },
-      height: 360,
-    }, options)
+  window.vditorScript = () => {
+    Vditor.preview(document.getElementById('preview'), `## 💡 简介
 
-    if (it) {
-      let code = JSON.stringify(mergedOptions, null, '  ')
-      if (options.cache.after) {
-        code = `{
-  height: 360,
-  cache:{
-    after(text) {
-      alert('缓存完毕回调，当前缓存值为' + text)
-    }
-  }
-}`
-      }
-      updateCode(it, `new Vditor('vditor', ${code})`)
-    }
-    vditor = new Vditor('vditor', mergedOptions)
-  }
-  setCache()
-  const setLog = (text) => {
-    document.getElementById('log').textContent = text
+[Vditor](https://vditor.b3log.org) 是一款浏览器端的 Markdown 编辑器，支持所见即所得（富文本）、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供[桌面版](https://github.com/88250/liandi)。`,
+      {
+        renderers: {
+          renderHeading: (node, entering) => {
+            const id = Lute.GetHeadingID(node)
+            if (entering) {
+              return [
+                `<h${node.__internal_object__.HeadingLevel} id='${id}' class='heading'><span class='heading__prefix'></span><span class='heading__content'>`,
+                Lute.WalkContinue]
+            } else {
+              return [
+                `</span><span class='heading__suffix'></span><a id='vditorAnchor-${id}' class='vditor-anchor' href='#${id}'><svg viewBox='0 0 16 16' version='1.1' width='16' height='16'><path fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'></path></svg></a></h${node.__internal_object__.HeadingLevel}>`,
+                Lute.WalkContinue]
+            }
+          },
+        },
+      })
   }
 </script>
 </body>
