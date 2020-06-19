@@ -120,12 +120,12 @@
       }
       updateCode(it, `new Vditor('vditor', ${code})`)
     }
-    new Vditor('vditor', options)
+    new Vditor('vditor', options || {
+      mode: 'sv',
+      height: 360,
+    })
   }
-  setPreview(undefined, {
-    mode: 'sv',
-    height: 360,
-  })
+  vditorScript = setPreview
 </script>
 </body>
 </html>

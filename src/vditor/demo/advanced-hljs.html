@@ -180,7 +180,7 @@ func main() {
     }
     new Vditor('vditor', mergedOptions)
   }
-  setHljs()
+  vditorScript = setHljs
   document.querySelector('#codeTheme').onchange = function () {
     setHljs(this, {
       preview: {

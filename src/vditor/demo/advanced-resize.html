@@ -62,10 +62,15 @@
     <div class="fn-50"></div>
     <div class="actions">
         <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true}})">启用</button> &nbsp;
-        <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true,position:'bottom'}})">位于底部</button>
+        <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true,position:'bottom'}})">
+            位于底部
+        </button>
         &nbsp;
-        <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true,position:'top'}})">位于顶部</button> &nbsp;
-        <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true,after(height){alert(height)}}})">
+        <button class="btn btn--small" onclick="setResize(this, {height: 360, resize:{enable:true,position:'top'}})">
+            位于顶部
+        </button> &nbsp;
+        <button class="btn btn--small"
+                onclick="setResize(this, {height: 360, resize:{enable:true,after(height){alert(height)}}})">
             拖拽结束弹出高度偏差
         </button> &nbsp;
     </div>
@@ -108,11 +113,11 @@
       }
       updateCode(it, `new Vditor('vditor', ${code})`)
     }
-    new Vditor('vditor', options)
+    new Vditor('vditor', options || {
+      height: 360,
+    })
   }
-  setResize(undefined, {
-    height: 360,
-  })
+  vditorScript = setResize
 </script>
 </body>
 </html>

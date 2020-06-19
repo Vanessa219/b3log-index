@@ -78,7 +78,8 @@
             设置表情图片地址
         </button> &nbsp;
         <button class="btn btn--small"
-                onclick="setHint(this, {cache: {enable: false},value: '示例代码如下，由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看'})">At
+                onclick="setHint(this, {cache: {enable: false},value: '示例代码如下，由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看'})">
+            At
         </button> &nbsp;
     </div>
     <div id="vditor"></div>
@@ -150,7 +151,7 @@
     }
     new Vditor('vditor', mergedOptions)
   }
-  setHint()
+  vditorScript = setHint
 </script>
 </body>
 </html>

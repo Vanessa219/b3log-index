@@ -64,7 +64,8 @@
         <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true}})">Markdown 字数统计</button> &nbsp;
         <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true,type:'text'}})">文本字数统计</button>
         &nbsp;
-        <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true,max: 520}})">最大 520 个字</button> &nbsp;
+        <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true,max: 520}})">最大 520 个字</button>
+        &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
@@ -107,7 +108,7 @@
     }
     new Vditor('vditor', mergedOptions)
   }
-  setCounter()
+  vditorScript = setCounter
 </script>
 <script src="../vditor.js"></script>
 </body>

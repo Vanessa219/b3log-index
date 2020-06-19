@@ -65,7 +65,26 @@
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">  new Vditor('vditor', {
+    cache: {
+      enable: false,
+    },
+    upload: {
+      accept: 'image/*,.mp3, .wav, .rar',
+      token: 'test',
+      url: '/api/upload/editor',
+      linkToImgUrl: '/api/upload/fetch',
+      filename (name) {
+        return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
+          replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
+          replace('/\\s/g', '')
+      },
+    },
+    height: 360,
+    typewriterMode: true,
+    value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行体验，前往 [API](https://hacpai.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
+  })
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -90,25 +109,28 @@
     </div>
 </div>
 <script>
-  const vditor = new Vditor('vditor', {
-    cache: {
-      enable: false,
-    },
-    upload: {
-      accept: 'image/*,.mp3, .wav, .rar',
-      token: 'test',
-      url: '/api/upload/editor',
-      linkToImgUrl: '/api/upload/fetch',
-      filename (name) {
-        return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
-          replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
-          replace('/\\s/g', '')
+  let vditor
+  vditorScript = () => {
+    vditor = new Vditor('vditor', {
+      cache: {
+        enable: false,
       },
-    },
-    height: 360,
-    typewriterMode: true,
-    value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行体验，前往 [API](https://hacpai.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
-  })
+      upload: {
+        accept: 'image/*,.mp3, .wav, .rar',
+        token: 'test',
+        url: '/api/upload/editor',
+        linkToImgUrl: '/api/upload/fetch',
+        filename (name) {
+          return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
+            replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
+            replace('/\\s/g', '')
+        },
+      },
+      height: 360,
+      typewriterMode: true,
+      value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行体验，前往 [API](https://hacpai.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
+    })
+  }
 </script>
 </body>
 </html>

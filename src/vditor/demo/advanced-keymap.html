@@ -106,12 +106,12 @@
     if (it) {
       updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ')})`)
     }
-    new Vditor('vditor', options)
+    new Vditor('vditor', options || {
+      mode: 'sv',
+      height: 360,
+    })
   }
-  setKeymap(undefined, {
-    mode: 'sv',
-    height: 360,
-  })
+  vditorScript = setKeymap
 </script>
 </body>
 </html>
