@@ -70,7 +70,15 @@
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  mode: 'sv',
+  cache: {
+    enable: false
+  },
+  height: 360,
+  value: '所见即所得模式对不熟悉 Markdown 的用户较为友好，熟悉 Markdown 的话也可以无缝使用。'
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -95,14 +103,17 @@
     </div>
 </div>
 <script>
-    const vditor = new Vditor('vditor', {
-      mode: 'sv',
-      cache: {
-        enable: false
-      },
-      height: 360,
-      value: '所见即所得模式对不熟悉 Markdown 的用户较为友好，熟悉 Markdown 的话也可以无缝使用。'
-    })
+    let vditor
+    vditorScript = () => {
+      vditor = new Vditor('vditor', {
+        mode: 'sv',
+        cache: {
+          enable: false
+        },
+        height: 360,
+        value: '所见即所得模式对不熟悉 Markdown 的用户较为友好，熟悉 Markdown 的话也可以无缝使用。'
+      })
+    }
 </script>
 </body>
 </html>

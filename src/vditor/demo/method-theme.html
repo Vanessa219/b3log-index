@@ -40,9 +40,11 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
+
         .label {
             margin: 0 10px 10px 0;
         }
+
         .btn--small {
             margin-right: 20px;
         }
@@ -64,7 +66,8 @@
 <div class="wrapper">
     <div class="fn-50"></div>
     相关 <a href="https://hacpai.com/article/1549638745630#methods" target="_blank">API</a>：
-    setTheme()
+    setTheme()<br>
+    ⚠️ 注意事项：编辑器主题为 dark 时，内容主题请不要设置为 light
     <div class="fn-50"></div>
     <div style="display: flex;align-items: center">
         <span class="label">编辑器主题</span>
@@ -80,47 +83,47 @@
         </select>
         <span class="label">代码块主题</span>
         <select class="btn btn--small" id="codeTheme">
-           <option>abap</option>
-           <option>algol</option>
-           <option>algol_nu</option>
-           <option>arduino</option>
-           <option>autumn</option>
-           <option>borland</option>
-           <option>bw</option>
-           <option>colorful</option>
-           <option>dracula</option>
-           <option>emacs</option>
-           <option>friendly</option>
-           <option>fruity</option>
-           <option selected>github</option>
-           <option>igor</option>
-           <option>lovelace</option>
-           <option>manni</option>
-           <option>monokai</option>
-           <option>monokailight</option>
-           <option>murphy</option>
-           <option>native</option>
-           <option>paraiso-dark</option>
-           <option>paraiso-light</option>
-           <option>pastie</option>
-           <option>perldoc</option>
-           <option>pygments</option>
-           <option>rainbow_dash</option>
-           <option>rrt</option>
-           <option>solarized-dark</option>
-           <option>solarized-dark256</option>
-           <option>solarized-light</option>
-           <option>swapoff</option>
-           <option>tango</option>
-           <option>trac</option>
-           <option>vim</option>
-           <option>vs</option>
-           <option>xcode</option>
+            <option>abap</option>
+            <option>algol</option>
+            <option>algol_nu</option>
+            <option>arduino</option>
+            <option>autumn</option>
+            <option>borland</option>
+            <option>bw</option>
+            <option>colorful</option>
+            <option>dracula</option>
+            <option>emacs</option>
+            <option>friendly</option>
+            <option>fruity</option>
+            <option selected>github</option>
+            <option>igor</option>
+            <option>lovelace</option>
+            <option>manni</option>
+            <option>monokai</option>
+            <option>monokailight</option>
+            <option>murphy</option>
+            <option>native</option>
+            <option>paraiso-dark</option>
+            <option>paraiso-light</option>
+            <option>pastie</option>
+            <option>perldoc</option>
+            <option>pygments</option>
+            <option>rainbow_dash</option>
+            <option>rrt</option>
+            <option>solarized-dark</option>
+            <option>solarized-dark256</option>
+            <option>solarized-light</option>
+            <option>swapoff</option>
+            <option>tango</option>
+            <option>trac</option>
+            <option>vim</option>
+            <option>vs</option>
+            <option>xcode</option>
         </select>
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">const vditor = new Vditor('vditor', {
+        <pre><code class="javascript">new Vditor('vditor', {
     height: 360,
     cache: {
       enable: false,
@@ -162,12 +165,13 @@ func main() {
     </div>
 </div>
 <script>
-  const vditor = new Vditor('vditor', {
-    height: 360,
-    cache: {
-      enable: false,
-    },
-    value: `# 演示 Go 代码高亮
+  vditorScript = () => {
+    const vditor = new Vditor('vditor', {
+      height: 360,
+      cache: {
+        enable: false,
+      },
+      value: `# 演示 Go 代码高亮
 
 \`\`\`go
 package main
@@ -178,16 +182,17 @@ func main() {
 \tfmt.Println("Hello, 世界")
 }
 \`\`\``,
-  })
-  document.querySelectorAll('select').forEach(item => {
-    item.onchange = () => {
-      vditor.setTheme(document.getElementById('theme').value, document.getElementById('contentTheme').value,
-        document.getElementById('codeTheme').value)
-      updateCode(item, `vditor.setTheme(document.getElementById('theme').value,
+    })
+    document.querySelectorAll('select').forEach(item => {
+      item.onchange = () => {
+        vditor.setTheme(document.getElementById('theme').value, document.getElementById('contentTheme').value,
+          document.getElementById('codeTheme').value)
+        updateCode(item, `vditor.setTheme(document.getElementById('theme').value,
 document.getElementById('contentTheme').value,
 document.getElementById('codeTheme').value)`)
-    }
-  })
+      }
+    })
+  }
 </script>
 </body>
 </html>

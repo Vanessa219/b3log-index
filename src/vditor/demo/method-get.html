@@ -71,20 +71,29 @@
     getValue()，getHTML()，getSelection()，getCurrentMode()，getCursorPosition()，html2md()
     <div class="fn-50"></div>
     <div>
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getValue();updateCode(this, 'vditor.getValue();')">获取 Markdown
+        <button class="btn--small btn"
+                onclick="document.getElementById('log').value=vditor.getValue();updateCode(this, 'vditor.getValue();')">
+            获取 Markdown
         </button> &nbsp;
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getHTML();updateCode(this, 'vditor.getHTML();')">获取 HTML</button>
+        <button class="btn--small btn"
+                onclick="document.getElementById('log').value=vditor.getHTML();updateCode(this, 'vditor.getHTML();')">获取
+            HTML
+        </button>
         &nbsp;
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getSelection();updateCode(this, 'vditor.getSelection();')">获取选中内容
+        <button class="btn--small btn"
+                onclick="document.getElementById('log').value=vditor.getSelection();updateCode(this, 'vditor.getSelection();')">
+            获取选中内容
         </button> &nbsp;
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.getCurrentMode();updateCode(this, 'vditor.getCurrentMode();')">
+        <button class="btn--small btn"
+                onclick="document.getElementById('log').value=vditor.getCurrentMode();updateCode(this, 'vditor.getCurrentMode();')">
             获取编辑器当前模式
         </button> &nbsp;
         <button class="btn--small btn"
                 onclick="vditor.focus();document.getElementById('log').value=JSON.stringify(vditor.getCursorPosition(), null, '  ');updateCode(this, 'vditor.getCursorPosition();')">
             获取光标位置
         </button> &nbsp;
-        <button class="btn--small btn" onclick="document.getElementById('log').value=vditor.html2md(vditor.getHTML());updateCode(this, 'vditor.html2md(vditor.getHTML());')">
+        <button class="btn--small btn"
+                onclick="document.getElementById('log').value=vditor.html2md(vditor.getHTML());updateCode(this, 'vditor.html2md(vditor.getHTML());')">
             HTML ->
             Markdown
         </button>
@@ -92,7 +101,11 @@
     <textarea id="log"></textarea>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  typewriterMode: true,
+  value: '下一代的 Markdown 编辑器，为未来而构建',
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -117,10 +130,13 @@
     </div>
 </div>
 <script>
-  const vditor = new Vditor('vditor', {
-    typewriterMode: true,
-    value: '下一代的 Markdown 编辑器，为未来而构建',
-  })
+  let vditor
+  vditorScript = () => {
+    vditor = new Vditor('vditor', {
+      typewriterMode: true,
+      value: '下一代的 Markdown 编辑器，为未来而构建',
+    })
+  }
 </script>
 </body>
 </html>
