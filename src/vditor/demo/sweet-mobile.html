@@ -59,32 +59,7 @@
     <div class="fn-50"></div>
     <div id="vditor" style="max-width: 520px"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
-    </div>
-    <div class="fn-100"></div>
-    <div class="fn-clear">
-        <h2 class="fn-left">参与讨论</h2>
-        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
-    </div>
-    <div class="fn-50"></div>
-    <div id="vditorComments"></div>
-    <div class="fn-100"></div>
-</div>
-<!-- end main -->
-
-<div class="footer">
-    <div class="wrapper fn-clear">
-        <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
-        <a href="https://hacpai.com" target="_blank">社区</a> &nbsp; &nbsp;
-        <a href="https://b3log.org/brand-marking.html">品牌标识</a> &nbsp; &nbsp;
-        <a href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
-        <div class="fn-right">
-            © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
-        </div>
-    </div>
-</div>
-<script>
-  new Vditor('vditor', {
+        <pre><code class="javascript">  new Vditor('vditor', {
     toolbarConfig: {
       pin: true
     },
@@ -109,6 +84,58 @@
       },
     ],
   })
+</code></pre>
+    </div>
+    <div class="fn-100"></div>
+    <div class="fn-clear">
+        <h2 class="fn-left">参与讨论</h2>
+        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
+    </div>
+    <div class="fn-50"></div>
+    <div id="vditorComments"></div>
+    <div class="fn-100"></div>
+</div>
+<!-- end main -->
+
+<div class="footer">
+    <div class="wrapper fn-clear">
+        <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com" target="_blank">社区</a> &nbsp; &nbsp;
+        <a href="https://b3log.org/brand-marking.html">品牌标识</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+        <div class="fn-right">
+            © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
+        </div>
+    </div>
+</div>
+<script>
+    vditorScript = () => {
+      new Vditor('vditor', {
+        toolbarConfig: {
+          pin: true
+        },
+        counter: {
+          enable: true
+        },
+        toolbar: [
+          'emoji',
+          'link',
+          'upload',
+          'edit-mode',
+          {
+            name: 'more',
+            toolbar: [
+              'insert-after',
+              'fullscreen',
+              'preview',
+              'format',
+              'info',
+              'help',
+            ],
+          },
+        ],
+      })
+    }
 </script>
 </body>
 </html>

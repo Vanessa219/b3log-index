@@ -61,7 +61,25 @@
     <div class="fn-50"></div>
     <div id="vditor2"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vditor('vditor', {
+  toolbarConfig: {
+    pin: true,
+  },
+  height: 360,
+  counter: {
+    enable: true,
+    max: 1024,
+  },
+})
+
+new Vditor('vditor2', {
+  height: 200,
+  counter: {
+    enable: true,
+    max: 512,
+  },
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -86,24 +104,26 @@
     </div>
 </div>
 <script>
-  new Vditor('vditor', {
-    toolbarConfig: {
-      pin: true
-    },
-    height: 360,
-    counter: {
-      enable: true,
-      max: 1024
-    },
-  })
+  vditorScript = () => {
+    new Vditor('vditor', {
+      toolbarConfig: {
+        pin: true,
+      },
+      height: 360,
+      counter: {
+        enable: true,
+        max: 1024,
+      },
+    })
 
-  new Vditor('vditor2', {
-    height: 200,
-    counter: {
-      enable: true,
-      max: 512,
-    }
-  })
+    new Vditor('vditor2', {
+      height: 200,
+      counter: {
+        enable: true,
+        max: 512,
+      },
+    })
+  }
 </script>
 </body>
 </html>
