@@ -34,6 +34,7 @@
     <meta name="twitter:creator" content="@b3logos"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
     <script src="../vditor.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue" defer></script>
     <style>
         .header {
             background-color: #fff;
@@ -61,7 +62,26 @@
         <div id="vditor"></div>
     </div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">new Vue({
+  el: '#app',
+  data: {
+    contentEditor: '',
+  },
+  mounted () {
+    this.contentEditor = new Vditor('vditor', {
+      toolbarConfig: {
+        pin: true,
+      },
+      cache: {
+        enable: false,
+      },
+      after: () => {
+        this.contentEditor.setValue('hello, Vditor + Vue!')
+      },
+    })
+  },
+})
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -85,27 +105,28 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
-  new Vue({
-    el: '#app',
-    data: {
-      contentEditor: '',
-    },
-    mounted () {
-      this.contentEditor = new Vditor('vditor', {
-        toolbarConfig: {
-          pin: true,
-        },
-        cache: {
-          enable: false,
-        },
-        after: () => {
-          this.contentEditor.setValue('hello, Vditor + Vue!')
-        },
-      })
-    },
-  })
+  window.vditorScript = () => {
+    new Vue({
+      el: '#app',
+      data: {
+        contentEditor: '',
+      },
+      mounted () {
+        this.contentEditor = new Vditor('vditor', {
+          toolbarConfig: {
+            pin: true,
+          },
+          cache: {
+            enable: false,
+          },
+          after: () => {
+            this.contentEditor.setValue('hello, Vditor + Vue!')
+          },
+        })
+      },
+    })
+  }
 </script>
 </body>
 </html>

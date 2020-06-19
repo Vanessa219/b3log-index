@@ -33,6 +33,8 @@
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin defer></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin defer></script>
     <script src="../vditor.js" defer></script>
     <style>
         .header {
@@ -61,7 +63,37 @@
         <div id="vditor"></div>
     </div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
+        <pre><code class="javascript">const e = React.createElement
+
+class APP extends React.Component {
+  constructor (props) {
+    super(props)
+  }
+
+  componentDidMount () {
+    const vditor = new Vditor('vditor', {
+      toolbarConfig: {
+        pin: true,
+      },
+      cache: {
+        enable: false,
+      },
+      after () {
+        vditor.setValue('Hello, Vditor + React!')
+      },
+    })
+  }
+
+  render () {
+    return e(
+      'div',
+      {id: 'vditor'},
+    )
+  }
+}
+
+ReactDOM.render(e(APP), document.querySelector('#app'))
+</code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -85,39 +117,39 @@
         </div>
     </div>
 </div>
-<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 <script>
-  const e = React.createElement
+  window.vditorScript = () => {
+    const e = React.createElement
 
-  class APP extends React.Component {
-    constructor (props) {
-      super(props)
+    class APP extends React.Component {
+      constructor (props) {
+        super(props)
+      }
+
+      componentDidMount () {
+        const vditor = new Vditor('vditor', {
+          toolbarConfig: {
+            pin: true,
+          },
+          cache: {
+            enable: false,
+          },
+          after () {
+            vditor.setValue('Hello, Vditor + React!')
+          },
+        })
+      }
+
+      render () {
+        return e(
+          'div',
+          {id: 'vditor'},
+        )
+      }
     }
 
-    componentDidMount () {
-      const vditor = new Vditor('vditor', {
-        toolbarConfig: {
-          pin: true,
-        },
-        cache: {
-          enable: false,
-        },
-        after () {
-          vditor.setValue('Hello, Vditor + React!')
-        },
-      })
-    }
-
-    render () {
-      return e(
-        'div',
-        {id: 'vditor'},
-      )
-    }
+    ReactDOM.render(e(APP), document.querySelector('#app'))
   }
-
-  ReactDOM.render(e(APP), document.querySelector('#app'))
 </script>
 </body>
 </html>
