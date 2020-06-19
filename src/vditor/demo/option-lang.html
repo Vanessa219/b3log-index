@@ -95,10 +95,10 @@
     </div>
 </div>
 <script>
-  const setLang = (it, lang) => {
+  const setLang = (it, lang = 'zh_CN') => {
     document.getElementById('vditor').innerHTML = ''
     new Vditor('vditor', {
-      lang
+      lang,
     })
     if (it) {
       updateCode(it, `new Vditor('vditor', {
@@ -106,7 +106,7 @@
 })`)
     }
   }
-  setLang(undefined, 'zh_CN')
+  vditorScript = setLang
 </script>
 </body>
 </html>

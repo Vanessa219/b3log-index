@@ -73,32 +73,7 @@
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript"></code></pre>
-    </div>
-    <div class="fn-100"></div>
-    <div class="fn-clear">
-        <h2 class="fn-left">参与讨论</h2>
-        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
-    </div>
-    <div class="fn-50"></div>
-    <div id="vditorComments"></div>
-    <div class="fn-100"></div>
-</div>
-<!-- end main -->
-
-<div class="footer">
-    <div class="wrapper fn-clear">
-        <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
-        <a href="https://hacpai.com" target="_blank">社区</a> &nbsp; &nbsp;
-        <a href="https://b3log.org/brand-marking.html">品牌标识</a> &nbsp; &nbsp;
-        <a href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
-        <div class="fn-right">
-            © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
-        </div>
-    </div>
-</div>
-<script>
-  const logElement = document.getElementById('log')
+        <pre><code class="javascript">  const logElement = document.getElementById('log')
   new Vditor('vditor', {
     typewriterMode: true,
     after () {
@@ -123,6 +98,58 @@
       logElement.innerText = '用户按下了 ESC，Markdown 内容为：\n' + md
     },
   })
+</code></pre>
+    </div>
+    <div class="fn-100"></div>
+    <div class="fn-clear">
+        <h2 class="fn-left">参与讨论</h2>
+        <span class="fn-right" style="line-height: 36px" id="commentCnt"></span>
+    </div>
+    <div class="fn-50"></div>
+    <div id="vditorComments"></div>
+    <div class="fn-100"></div>
+</div>
+<!-- end main -->
+
+<div class="footer">
+    <div class="wrapper fn-clear">
+        <a href="https://b3log.org">首页</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com" target="_blank">社区</a> &nbsp; &nbsp;
+        <a href="https://b3log.org/brand-marking.html">品牌标识</a> &nbsp; &nbsp;
+        <a href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
+        <div class="fn-right">
+            © 2010-present <a href="https://b3log.org">B3log 开源</a>旗下云南链滴科技有限公司
+        </div>
+    </div>
+</div>
+<script>
+  vditorScript = () => {
+    const logElement = document.getElementById('log')
+    new Vditor('vditor', {
+      typewriterMode: true,
+      after () {
+        logElement.innerText = '渲染完成'
+      },
+      ctrlEnter (md) {
+        logElement.innerText = '用户按下了 Ctrl+Enter，Markdown 内容为：\n' + md
+      },
+      input (md) {
+        logElement.innerText = '用户进行了输入，Markdown 内容为：\n' + md
+      },
+      blur (md) {
+        logElement.innerText = '用户离开了编辑器，Markdown 内容为：\n' + md
+      },
+      select (md) {
+        logElement.innerText = '用户选中了一段文字，内容为：\n' + md
+      },
+      focus (md) {
+        logElement.innerText = '用户选中了编辑器，Markdown 内容为：\n' + md
+      },
+      esc (md) {
+        logElement.innerText = '用户按下了 ESC，Markdown 内容为：\n' + md
+      },
+    })
+  }
 </script>
 </body>
 </html>

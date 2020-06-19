@@ -74,9 +74,7 @@
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">new Vditor('vditor', {
-  cache: {enable: false}
-})
+        <pre><code class="javascript">new Vditor('vditor')
 </code></pre>
     </div>
     <div class="fn-100"></div>
@@ -109,7 +107,7 @@
     }
     new Vditor('vditor', options)
   }
-  setOptions(undefined, {cache: {enable: false}})
+  window.vditorScript = setOptions
 </script>
 </body>
 </html>
