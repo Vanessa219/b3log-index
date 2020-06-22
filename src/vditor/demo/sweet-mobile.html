@@ -58,6 +58,8 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
+    💛 温馨提示：移动端可将整个编辑器固定在顶部，高度设置为屏幕的一半，以防止不同机型、不同浏览器在软键盘弹起时不一致的表现。
+    <div class="fn-50"></div>
     <div id="vditor" style="max-width: 520px"></div>
     <div id="vditorDemoCode" class="vditor-reset">
         <pre><code class="javascript">  new Vditor('vditor', {
@@ -67,6 +69,7 @@
     counter: {
       enable: true
     },
+    height: window.innerHeight / 2,
     toolbar: [
       'emoji',
       'link',
@@ -110,33 +113,34 @@
     </div>
 </div>
 <script>
-    vditorScript = () => {
-      new Vditor('vditor', {
-        toolbarConfig: {
-          pin: true
+  vditorScript = () => {
+    new Vditor('vditor', {
+      toolbarConfig: {
+        pin: true,
+      },
+      height: window.innerHeight / 2,
+      counter: {
+        enable: true,
+      },
+      toolbar: [
+        'emoji',
+        'link',
+        'upload',
+        'edit-mode',
+        {
+          name: 'more',
+          toolbar: [
+            'insert-after',
+            'fullscreen',
+            'preview',
+            'format',
+            'info',
+            'help',
+          ],
         },
-        counter: {
-          enable: true
-        },
-        toolbar: [
-          'emoji',
-          'link',
-          'upload',
-          'edit-mode',
-          {
-            name: 'more',
-            toolbar: [
-              'insert-after',
-              'fullscreen',
-              'preview',
-              'format',
-              'info',
-              'help',
-            ],
-          },
-        ],
-      })
-    }
+      ],
+    })
+  }
 </script>
 </body>
 </html>
