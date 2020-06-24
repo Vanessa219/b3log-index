@@ -736,7 +736,23 @@
       "start_date": {
         "year": 2020,
         "month": 6,
-        "day": 1
+        "day": 18
+      },
+      "text": {
+        "headline": "发布链滴笔记",
+        "text": "&star; 产品发布公告：<br>链滴笔记：<a href=\"https://hacpai.com/article/1588255793960\" target=\"_blank\">1.0.0</a><br>\nSym：<a href=\"https://github.com/88250/symphony/releases/tag/v3.6.1\" target=\"_blank\">3.6.1</a>，<a href=\"https://github.com/88250/symphony/releases/tag/v3.6.2\" target=\"_blank\">3.6.2</a>，<a href=\"https://github.com/88250/symphony/releases/tag/v3.6.3\" target=\"_blank\">3.6.3</a><br>Solo：<a href=\"https://github.com/88250/solo/releases/tag/v3.6.8\" target=\"_blank\">3.6.8</a>，<a href=\"https://github.com/88250/solo/releases/tag/v3.7.0\" target=\"_blank\">3.7.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v3.8.0\" target=\"_blank\">3.8.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v3.9.0\" target=\"_blank\">3.9.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v4.0.0\" target=\"_blank\">4.0.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v4.1.0\" target=\"_blank\">4.1.0</a><br><a href=\"//vditor.b3log.org\">Vditor</a>：<a href=\"https://hacpai.com/article/1578715364597\" target=\"_blank\">2.0.15</a>，<a href=\"https://hacpai.com/article/1581247827418\" target=\"_blank\">2.1.15</a>，<a href=\"https://hacpai.com/article/1583904122190\" target=\"_blank\">2.2.19</a>，<a href=\"https://hacpai.com/article/1586226263615\" target=\"_blank\">3.0.12 支持 Typora</a>，<a href=\"https://hacpai.com/article/1588725299444\" target=\"_blank\">3.1.23 复制到公众号 </a>，<a href=\"https://hacpai.com/article/1591587693876\" target=\"_blank\">3.2.12 发布官网 </a><br>Pipe：<a href=\"https://github.com/88250/pipe/releases/tag/v1.9.1\" target=\"_blank\">1.9.1</a>，<a href=\"https://github.com/88250/pipe/releases/tag/v2.0.0\" target=\"_blank\">2.0.0</a><br><br>&starf; 不负好时光：<br><a target=\"_blank\" href=\"https://hacpai.com/article/1577537173858\">黑客派第一届年终总结赠书活动</a><br><br>&star; 艰苦创业：<br><a href='https://hacpai.com/article/1581219038316' target='_blank'>第二个冬天</a><br><a href='https://hacpai.com/article/1588210663196' target='_blank'>第三个春天</a>"
+      },
+      "media": {
+        "thumbnail": "//static.b3log.org/images/brand/liandi-512.png",
+        "url": "//static.b3log.org/images/brand/liandi-512.png",
+        "caption": "链滴笔记，链接点滴"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2020,
+        "month": 12,
+        "day": 12
       },
       "text": {
         "headline": "???",
