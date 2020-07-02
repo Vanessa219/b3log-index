@@ -119,8 +119,19 @@
     if (it) {
       let code = JSON.stringify(options, null, '  ').replace(/</g, '&lt;')
       if (options.toolbar && options.toolbar[0].click) {
-        code = `{toolbar:[{hotkey: '⌘-⇧-S',  name:'sponsor',tipPosition: 's',tip: '成为赞助者',className: 'right',icon: '${sponsorIcon.replace(
-          /</g, '&lt;')}', click () {alert('捐赠地址：https://hacpai.com/sponsor')}}]}`
+        code = `{
+  toolbar:[{
+    hotkey: '⌘-⇧-S',
+    name:'sponsor',
+    tipPosition: 's',
+    tip: '成为赞助者',
+    className: 'right',
+    icon: '${sponsorIcon.replace(/</g, '&lt;')}',
+    click () {
+      alert('捐赠地址：https://hacpai.com/sponsor')
+    }
+  }]
+}`
       }
       updateCode(it, `new Vditor('vditor', ${code})`)
     }
