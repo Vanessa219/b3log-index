@@ -52,7 +52,7 @@
       },
       "text": {
         "headline": "Solo 0.1.0 Preview1",
-        "text": "经过一个月的奋斗已经初步成型，终于勇敢的发布了 <a href='http://88250.b3log.org/articles/2010/09/08/1283986560000.html' target='_blank'>Preview1</a>"
+        "text": "经过一个月的奋斗已经初步成型，终于勇敢的发布了 Preview1"
       },
       "media": {
         "thumbnail": "https://static.b3log.org/images/brand/b3log-128.png",
@@ -68,7 +68,7 @@
       },
       "text": {
         "headline": "Solo 0.1.0 发布",
-        "text": "在不断的修修补补中，<a href='http://88250.b3log.org/articles/2010/09/26/1285519372666.html' target='_blank'>Preview2</a>后，<a href='http://88250.b3log.org/articles/2010/10/13/1286980002007.html' target='_blank'>0.1.0</a>正式版终于发布了。"
+        "text": "在不断的修修补补 Preview2 后，0.1.0 正式版终于发布了。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/daniel.jpg",
@@ -84,7 +84,7 @@
       },
       "text": {
         "headline": "Solo 0.2.0 发布",
-        "text": "在 <a href='http://88250.b3log.org/articles/2010/10/13/1286980002007.html' target='_blank'>0.1.0</a> 发布13天后，<a href='http://88250.b3log.org/articles/2010/10/26/1288097886428.html' target='_blank'>0.1.1</a> 仓促发布（囧），当然 <a href='http://88250.b3log.org/articles/2010/10/26/1288097886428.html' target='_blank'>0.2.0</a> 也很囧。"
+        "text": "在 0.1.0 发布 13 天后，0.1.1 仓促发布（囧），当然 0.2.0 也很囧。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/vanessa.jpg",
@@ -164,7 +164,7 @@
       },
       "text": {
         "headline": "Solo 0.3.0 发布",
-        "text": "走过 <a href='http://88250.b3log.org/b3log-solo-release-021.html' target='_blank'>0.2.1</a>、<a href='http://88250.b3log.org/b3log-solo-release-025-beta1.html' target='_blank'>0.2.5 Beta1</a>、<a href='http://88250.b3log.org/b3log-solo-release-025-beta2.html' target='_blank'>0.2.5 Beta2</a>、<a href='http://88250.b3log.org/b3log-solo-release-025.html' target='_blank'>0.2.5</a>、<a href='http://88250.b3log.org/b3log-solo-release-026.html' target='_blank'>0.2.6</a> 后，<a href='http://88250.b3log.org/b3log-solo-release-030.html' target='_blank'>0.3.0</a> 总算诞生了。"
+        "text": "走过 0.2.1、0.2.5 Beta1、0.2.5 Beta2、0.2.5、0.2.6 后，0.3.0 总算诞生了。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/030.jpg",
@@ -228,7 +228,7 @@
       },
       "text": {
         "headline": "Solo 0.4.0 发布",
-        "text": "这一年团队成员大都换了工作，比较奔波。虽然发布了 <a href='http://88250.b3log.org/b3log-solo-release-031.html' target='_blank'>0.3.1</a>、<a href='http://88250.b3log.org/b3log-solo-release-035.html' target='_blank'>0.3.5</a>、<a href='http://88250.b3log.org/b3log-solo-release-040-beta1.html' target='_blank'>0.4.0 Beta1</a>、<a href='http://88250.b3log.org/b3log-solo-release-040-beta2.html' target='_blank'>0.4.0 Beta2</a>，但 <a href='http://88250.b3log.org/b3log-solo-release-040-final.html' target='_blank'>0.4.0</a> 一直拖到现在，在此只能说声抱歉！"
+        "text": "这一年团队成员大都换了工作，比较奔波。虽然发布了 0.3.1、0.3.5、0.4.0 Beta1、0.4.0 Beta2，但 0.4.0 正式版一直拖到现在，在此只能说声抱歉！"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/v20120219.jpg",
@@ -329,7 +329,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20130426.jpg",
         "url": "//static.b3log.org/images/timeline/20130426.jpg",
-        "caption": "四川加油，让我们为您广播"
+        "caption": "四川加油，让我们为你广播"
       }
     },
     {
@@ -356,7 +356,7 @@
       },
       "text": {
         "headline": "Noty",
-        "text": "Solo 从 <a href='http://88250.b3log.org/b3log-solo-065-released' target='_blank'>0.6.5</a> 后将只会对其进行维护，不再增加新特性了。<br/>不过，不要沮丧和失望，这一切并没有结束，而是一个全新的开始，欢迎我们的新作品 —— <a href='https://github.com/88250/noty' target='_blank'>Noty</a>。"
+        "text": "Solo 从 0.6.5 后将只会对其进行维护，不再增加新特性了。<br/>不过，不要沮丧和失望，这一切并没有结束，而是一个全新的开始，欢迎我们的新作品 —— <a href='https://github.com/88250/noty' target='_blank'>Noty</a>。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20140601.jpeg",
@@ -372,7 +372,7 @@
       },
       "text": {
         "headline": "Wide 1.0.0 发布",
-        "text": "经过了不断的思索，我们暂停了 <a href='https://github.com/88250/noty' target='_blank'>Noty</a> 的开发，毅然决然开始挑战高难度的 Web IDE。在 3 个月的努力后，<a href='http://88250.b3log.org/wide-1.0.0-released' target='_blank'>1.0.0</a> 发布了。"
+        "text": "经过了不断的思索，我们暂停了 <a href='https://github.com/88250/noty' target='_blank'>Noty</a> 的开发，毅然决然开始挑战高难度的 Web IDE。在 3 个月的努力后，Wide 1.0.0 发布了。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/wide.png",
@@ -404,7 +404,7 @@
       },
       "text": {
         "headline": "Wide 1.2.0 发布",
-        "text": "分享乃永恒之道，让我们使用 <a href='https://wide.b3log.org/playground' target='_blank'>Playground</a> 来分享您对 Golang 认知的点点滴滴吧！"
+        "text": "分享乃永恒之道，让我们使用 <a href='https://wide.b3log.org/playground' target='_blank'>Playground</a> 来分享你对 Golang 认知的点点滴滴吧！"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20150301.jpg",
@@ -505,7 +505,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/GitOpen.png",
         "url": "//static.b3log.org/images/timeline/GitOpen.png",
-        "caption": "B3log 开源组织<a href='https://hacpai.com/article/1463025124998' target='_blank'>欢迎</a>您！"
+        "caption": "B3log 开源组织<a href='https://hacpai.com/article/1463025124998' target='_blank'>欢迎</a>你加入！"
       }
     },
     {
@@ -756,7 +756,7 @@
       },
       "text": {
         "headline": "???",
-        "text": "经历了 11 年的风雨，我们不断成长，只为能靠自己的力量给您带来一点点变化。"
+        "text": "经历了 11 年的风雨，我们不断成长，只为能靠自己的力量给世界带来一点点美好的变化。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/question.png",
