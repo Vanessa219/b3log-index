@@ -7,7 +7,7 @@
     <title>Demo 示例 - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
-          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+          content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta name="copyright" content="B3log"/>
     <link rel="canonical" href="https://vditor.b3log.org/demo">
     <link rel="apple-touch-icon" href="//static.b3log.org/images/brand/vditor-128.png">
@@ -21,13 +21,13 @@
     <meta property="og:locale" content="zh_CN"/>
     <meta property="og:title" content="Demo 示例 - Vditor"/>
     <meta property="og:description"
-          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+          content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta property="og:url" content="https://vditor.b3log.org"/>
     <meta property="og:site_name" content="B3log"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
-          content="Vditor 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、多媒体、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染"/>
+          content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta name="twitter:title" content="Demo 示例 - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
@@ -91,12 +91,13 @@
     <div class="fn-50"></div>
     <h3>👠 高级配置</h3>
     <ul class="fn-list">
-        <li><a href="advanced-markdown.html">Markdown 配置</a> - 自动空格/段落开头空两格/矫正术语/矫正标点/启用目录/禁用脚注/wysiwyg & ir 模式不渲染代码块/解析
-            settext/不过滤 XSS/主题/为列表添加标记
+        <li><a href="advanced-markdown.html">Markdown 配置</a> - 自动空格/段落开头空两格/矫正术语/矫正标点/启用目录/禁用脚注/wysiwyg & ir 模式不渲染代码块/禁止
+            setext 解析/不过滤 XSS/主题/为列表添加标记
         </li>
         <li><a href="advanced-toolbar.html">工具栏</a> - 自定义按钮/新增按钮/固定/隐藏</li>
         <li><a href="advanced-upload.html">文件上传</a></li>
         <li><a href="advanced-preview.html">预览</a> - 延迟解析/HTML 字符串处理/DOM 处理/预览请求</li>
+        <li><a href="advanced-preview-actions.html">预览操作的配置及自定义</a></li>
         <li><a href="advanced-hint.html">自动提示</a> - 自定义表情/表情图片地址/表情提示/@ 及其 debounce</li>
         <li><a href="advanced-counter.html">字数统计</a> - Markdown/文本/最大字数提示</li>
         <li><a href="advanced-resize.html">拖拽调整编辑器高度</a> - 启用/位于底部/位于顶部/拖拽结束回调</li>
@@ -108,9 +109,9 @@
     <h3>🎨 基本方法</h3>
     <ul class="fn-list">
         <li><a href="method-theme.html">主题修改</a> - 编辑器/内容/代码块渲染/<a href="https://hacpai.com/article/1549638745630#%E4%B8%BB%E9%A2%98" target="_blank">自定义主题</a></li>
-        <li><a href="method-CRUD.html">文本操作</a> - 更新内容/插入内容/选中指定内容/更新选中内容/删除选中内容/设置预览区域内容</li>
+        <li><a href="method-CRUD.html">文本操作</a> - 更新内容/插入内容/更新选中内容/删除选中内容/设置预览区域内容</li>
         <li><a href="method-get.html">获取</a> - Markdown/HTML/选中的文本/编辑器模式/光标位置/HTML->Markdown</li>
-        <li><a href="method-other.html">其他方法</a> - 设置为只读/聚焦/失焦/消息提示</li>
+        <li><a href="method-other.html">其他方法</a> - 设置为只读/聚焦/失焦/消息提示/销毁</li>
     </ul>
     <div class="fn-50"></div>
     <h3>💛 暖心示例</h3>
