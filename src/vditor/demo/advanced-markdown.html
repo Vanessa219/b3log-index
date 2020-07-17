@@ -36,7 +36,6 @@
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css"/>
     <script src="//vditor.b3log.org/vditor.js?v1.0.0" defer></script>
     <style>
         .header {
@@ -193,13 +192,8 @@ new Vditor('vditor')
     if (type === 'footnotes' || type === 'codeBlockPreview' || type === 'sanitize') {
       config[type] = false
     }
-    if (type && type.indexOf('theme') > -1) {
-      config = {
-        theme: type.split('-')[1],
-      }
-    }
 
-    const options = {
+    let options = {
       height: 360,
       theme: config.theme,
       mode: (type === 'paragraphBeginningSpace' || type === 'sanitize' || type === 'listStyle') ? 'sv' : 'wysiwyg',
@@ -210,6 +204,21 @@ new Vditor('vditor')
         markdown: config,
       },
       value,
+    }
+    if (type && type.indexOf('theme') > -1) {
+      options = {
+        height: 360,
+        theme: type.split('-')[1] === "dark" ? "dark" : "light",
+        cache: {
+          enable: false,
+        },
+        preview: {
+          theme: {
+            current: type.split('-')[1]
+          },
+        },
+        value,
+      }
     }
 
     updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ').replace(/\\n/g, `

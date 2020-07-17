@@ -8,6 +8,15 @@ const addScript = (path, callback) => {
   }
 }
 
+const addStyle = (url) => {
+    const styleElement = document.createElement("link");
+    styleElement.rel = "stylesheet";
+    styleElement.type = "text/css";
+    styleElement.href = url;
+    document.getElementsByTagName("head")[0].appendChild(styleElement);
+};
+
+
 const updateCode = (btnElement, code) => {
   if (btnElement.classList.contains('btn--red')) {
     return
@@ -26,6 +35,7 @@ const updateCode = (btnElement, code) => {
   Vditor.codeRender(demoCodeElement)
 }
 
+addStyle("https://cdn.jsdelivr.net/npm/vditor@3.3.8/dist/index.css")
 document.addEventListener('DOMContentLoaded', function () {
   var hm = document.createElement('script')
   hm.src = 'https://hm.baidu.com/hm.js?3035c273d83b0b76e762b7397c790e84'
@@ -33,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   s.parentNode.insertBefore(hm, s)
 
   if (document.getElementById('vditorComments')) {
-    addScript('https://cdn.jsdelivr.net/npm/vditor@3.3.2/dist/index.min.js',
+    addScript('https://cdn.jsdelivr.net/npm/vditor@3.3.8/dist/index.min.js',
       () => {
         const demoCodeElement = document.getElementById('vditorDemoCode')
         if (demoCodeElement) {
