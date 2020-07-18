@@ -19,7 +19,7 @@
     "@angular/router": "~9.1.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "vditor": "^3.3.8",
+    "vditor": "^3.3.9",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

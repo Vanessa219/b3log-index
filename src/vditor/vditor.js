@@ -35,7 +35,7 @@ const updateCode = (btnElement, code) => {
   Vditor.codeRender(demoCodeElement)
 }
 
-addStyle("https://cdn.jsdelivr.net/npm/vditor@3.3.8/dist/index.css")
+addStyle("https://cdn.jsdelivr.net/npm/vditor@3.3.9/dist/index.css")
 document.addEventListener('DOMContentLoaded', function () {
   var hm = document.createElement('script')
   hm.src = 'https://hm.baidu.com/hm.js?3035c273d83b0b76e762b7397c790e84'
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   s.parentNode.insertBefore(hm, s)
 
   if (document.getElementById('vditorComments')) {
-    addScript('https://cdn.jsdelivr.net/npm/vditor@3.3.8/dist/index.min.js',
+    addScript('https://cdn.jsdelivr.net/npm/vditor@3.3.9/dist/index.min.js',
       () => {
         const demoCodeElement = document.getElementById('vditorDemoCode')
         if (demoCodeElement) {
