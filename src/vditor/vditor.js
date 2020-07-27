@@ -9,13 +9,12 @@ const addScript = (path, callback) => {
 }
 
 const addStyle = (url) => {
-    const styleElement = document.createElement("link");
-    styleElement.rel = "stylesheet";
-    styleElement.type = "text/css";
-    styleElement.href = url;
-    document.getElementsByTagName("head")[0].appendChild(styleElement);
-};
-
+  const styleElement = document.createElement('link')
+  styleElement.rel = 'stylesheet'
+  styleElement.type = 'text/css'
+  styleElement.href = url
+  document.getElementsByTagName('head')[0].appendChild(styleElement)
+}
 
 const updateCode = (btnElement, code) => {
   if (btnElement.classList.contains('btn--red')) {
@@ -35,7 +34,7 @@ const updateCode = (btnElement, code) => {
   Vditor.codeRender(demoCodeElement)
 }
 
-addStyle("https://cdn.jsdelivr.net/npm/vditor@3.3.10/dist/index.css")
+addStyle('https://cdn.jsdelivr.net/npm/vditor@3.3.10/dist/index.css')
 document.addEventListener('DOMContentLoaded', function () {
   var hm = document.createElement('script')
   hm.src = 'https://hm.baidu.com/hm.js?3035c273d83b0b76e762b7397c790e84'
@@ -82,5 +81,43 @@ document.addEventListener('DOMContentLoaded', function () {
             vcomment.render()
           })
       })
+  }
+
+  const dynamicElement = document.getElementById('dynamic')
+  if (dynamicElement) {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', 'https://hacpai.com/api/v2/articles/tag/vditor?p=1')
+    xhr.withCredentials = true
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          const responseJSON = JSON.parse(xhr.responseText)
+          const articles = responseJSON.data.articles
+          if (responseJSON.code !== 0 || 0 === articles.length) {
+            dynamicElement.innerHTML = '无新闻'
+            dynamicElement.style.backgroundImage = 'none'
+            return
+          }
+
+          let listHTML = '<ul class="fn-list">'
+          for (var i = 0; i < articles.length; i++) {
+            const article = articles[i]
+            listHTML += '<li>'
+              + '<a target=\'_blank\' href=\'' + article.articlePermalink +
+              '\'>'
+              + article.articleTitle + '</a>&nbsp;<small class="ft-fade">[' +
+              article.cmtTimeAgo
+              + ']</small></li>'
+          }
+          listHTML += '</ul>'
+          dynamicElement.innerHTML = listHTML
+          dynamicElement.style.backgroundImage = 'none'
+        } else {
+          dynamicElement.innerHTML = '加载列表失败 :-('
+          dynamicElement.style.backgroundImage = 'none'
+        }
+      }
+    }
+    xhr.send()
   }
 })
