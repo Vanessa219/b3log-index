@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>其他方法：设置为只读/聚焦/失焦/消息提示/销毁 - Vditor</title>
+    <title>其他方法：设置为只读/聚焦/失焦/消息提示/销毁/清空历史栈 - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="//static.b3log.org/css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="其他方法：设置为只读/聚焦/失焦/消息提示/销毁 - Vditor"/>
+    <meta property="og:title" content="其他方法：设置为只读/聚焦/失焦/消息提示/销毁/清空历史栈 - Vditor"/>
     <meta property="og:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -28,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
-    <meta name="twitter:title" content="其他方法：设置为只读/聚焦/失焦/消息提示/销毁 - Vditor"/>
+    <meta name="twitter:title" content="其他方法：设置为只读/聚焦/失焦/消息提示/销毁/清空历史栈 - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -58,7 +58,7 @@
 <div class="wrapper">
     <div class="fn-50"></div>
     相关 <a href="https://hacpai.com/article/1549638745630#methods" target="_blank">API</a>：
-    disabled()，enable()，focus()，blur()，tip()
+    disabled()，enable()，focus()，blur()，tip()，clearStack()
     <div class="fn-50"></div>
     <div>
         <button class="btn btn--small" onclick="vditor.disabled();updateCode(this, 'vditor.disabled();')">只读</button>
@@ -75,7 +75,8 @@
                 onclick="vditor.tip('表情自动补全，设置常用表情，支持表情自定义', 0);updateCode(this, 'vditor.tip(\'表情自动补全，设置常用表情，支持表情自定义\', 0)')">
             消息提示需手动关闭
         </button> &nbsp;
-        <button class="btn btn--small" onclick="vditor.destroy();updateCode(this, 'vditor.destroy();')">销毁</button>
+        <button class="btn btn--small" onclick="vditor.destroy();updateCode(this, 'vditor.destroy();')">销毁</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.clearStack();updateCode(this, 'vditor.clearStack();')">清空历史栈</button>
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">

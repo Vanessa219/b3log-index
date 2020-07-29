@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>文本操作：更新内容/插入内容/更新选中内容/删除选中内容/设置预览区域内容 - Vditor</title>
+    <title>文本操作：更新内容/更新内容并清空历史栈/插入内容/更新选中内容/删除选中内容/设置预览区域内容 - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="//static.b3log.org/css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="文本操作：更新内容/插入内容/更新选中内容/删除选中内容/设置预览区域内容 - Vditor"/>
+    <meta property="og:title" content="文本操作：更新内容/更新内容并清空历史栈/插入内容/更新选中内容/删除选中内容/设置预览区域内容 - Vditor"/>
     <meta property="og:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -28,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
-    <meta name="twitter:title" content="文本操作：更新内容/插入内容/更新选中内容/删除选中内容/设置预览区域内容 - Vditor"/>
+    <meta name="twitter:title" content="文本操作：更新内容/更新内容并清空历史栈/插入内容/更新选中内容/删除选中内容/设置预览区域内容 - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -62,6 +62,7 @@
     <div class="fn-50"></div>
     <div>
         <button class="btn btn--small" onclick="vditor.setValue('wysiwyg = Typora');updateCode(this, 'vditor.setValue(\'wysiwyg = Typora\');')">更新内容</button> &nbsp;
+        <button class="btn btn--small" onclick="vditor.setValue('wysiwyg = Typora', true);updateCode(this, 'vditor.setValue(\'wysiwyg = Typora\', true);')">更新内容并清空历史栈</button> &nbsp;
         <button class="btn btn--small" onclick="vditor.insertValue('Vditor ');updateCode(this, 'vditor.insertValue(\'Vditor \');')">在光标位置插入内容</button> &nbsp;
         <button class="btn btn--small" onclick="vditor.deleteValue();updateCode(this, 'vditor.deleteValue();')">删除选中内容</button> &nbsp;
         <button class="btn btn--small" onclick="vditor.updateValue('Vditor');updateCode(this, 'vditor.updateValue(\'Vditor\');')">更新选中内容</button> &nbsp;

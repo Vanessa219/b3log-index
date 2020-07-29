@@ -4,12 +4,12 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>文件上传 - Vditor</title>
+    <title>图标配置：Ant Design/Material - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta name="copyright" content="B3log"/>
-    <link rel="canonical" href="https://vditor.b3log.org/demo/advanced-upload.html">
+    <link rel="canonical" href="https://vditor.b3log.org/demo/option-mode.html">
     <link rel="apple-touch-icon" href="//static.b3log.org/images/brand/vditor-128.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="//static.b3log.org/css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="文件上传 - Vditor"/>
+    <meta property="og:title" content="图标配置：Ant Design/Material - Vditor"/>
     <meta property="og:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -28,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
-    <meta name="twitter:title" content="文件上传 - Vditor"/>
+    <meta name="twitter:title" content="图标配置：Ant Design/Material - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -57,42 +57,27 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://hacpai.com/article/1549638745630#options-upload" target="_blank">API</a>：
-    options.upload，<a href="https://hacpai.com/article/1549638745630#methods" target="_blank">isUploading()</a><br>
-    ⚠️ 注意事项：
-    <ul style="margin-left: 30px">
-        <li>需配置 upload.url 后才能进行上传</li>
-        <li>基本配置：upload.url，upload.max，upload.linkToImgUrl，upload.extraData，upload.multiple，upload.fieldName</li>
-        <li>安全配置：upload.token，upload.withCredentials，upload.headers，upload.accept</li>
-        <li>方法：upload.success，upload.error，upload.filename，upload.validate，upload.handler，upload.format，upload.file，upload.setHeaders，upload.linkToImgCallback</li>
-        <li>使用 upload.handler 需更新上传后地址可参考<a href="https://github.com/Vanessa219/vditor/blob/master/src/ts/upload/index.ts#L76">index.ts#L76</a>，非特殊需求不建议使用。</li>
-        <li>如数据结构不一致时，请使用 upload.format</li>
-    </ul>
+    相关 <a href="https://hacpai.com/article/1549638745630#options" target="_blank">API</a>：
+    options.icon
     <div class="fn-50"></div>
-    <div class="actions">
-        <button class="btn btn--small" onclick="alert(vditor.isUploading())">检测文件是否在上传中</button>
+    <div>
+        <button class="btn btn--small"
+                onclick="setMode(this, {icon: 'ant', cache: {enable: false,},value: '可选图标：ant, material'})">
+            Ant Design
+        </button> &nbsp;
+        <button class="btn btn--small"
+                onclick="setMode(this, {icon: 'material', cache: {enable: false,},value: '可选图标：ant, material'})">
+            Material
+        </button>
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">  new Vditor('vditor', {
-    cache: {
-      enable: false,
-    },
-    upload: {
-      accept: 'image/*,.mp3, .wav, .rar',
-      token: 'test',
-      url: '/api/upload/editor',
-      linkToImgUrl: '/api/upload/fetch',
-      filename (name) {
-        return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
-          replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
-          replace('/\\s/g', '')
-      },
-    },
-    height: 360,
-    typewriterMode: true,
-    value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行体验，前往 [API](https://hacpai.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
-  })
+        <pre><code class="javascript">new Vditor('vditor', {
+  cache: {
+    enable: false,
+  },
+  value: '可选图标：ant, material',
+})
 </code></pre>
     </div>
     <div class="fn-100"></div>
@@ -118,28 +103,15 @@
     </div>
 </div>
 <script>
-  let vditor
-  vditorScript = () => {
-    vditor = new Vditor('vditor', {
-      cache: {
-        enable: false,
-      },
-      upload: {
-        accept: 'image/*,.mp3, .wav, .rar',
-        token: 'test',
-        url: '/api/upload/editor',
-        linkToImgUrl: '/api/upload/fetch',
-        filename (name) {
-          return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
-            replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
-            replace('/\\s/g', '')
-        },
-      },
-      height: 360,
-      typewriterMode: true,
-      value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行体验，前往 [API](https://hacpai.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
-    })
+  let vditorObj
+  const setMode = (it, options) => {
+    vditorObj && vditorObj.destroy()
+    if (it) {
+      updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ')})`)
+    }
+    vditorObj = new Vditor('vditor', options || {cache: {enable: false}, value: '可选图标：ant, material'})
   }
+  vditorScript = setMode
 </script>
 </body>
 </html>
