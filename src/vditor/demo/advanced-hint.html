@@ -120,6 +120,9 @@
     if (vditorObj) {
       vditorObj.destroy()
     }
+    const mergedOptions = Object.assign({
+      height: 360,
+    }, options)
     if (it) {
       if (options.value) {
         const hintOptions = {
@@ -199,9 +202,6 @@
       }
       updateCode(it, `new Vditor('vditor', ${JSON.stringify(mergedOptions, null, '  ')})`)
     }
-    const mergedOptions = Object.assign({
-      height: 360,
-    }, options)
     vditorObj = new Vditor('vditor', mergedOptions)
   }
   vditorScript = setHint
