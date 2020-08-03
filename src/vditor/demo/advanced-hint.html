@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>自动提示：自定义表情/表情图片地址/表情提示/@ 及其 debounce - Vditor</title>
+    <title>自动补全：@、话题等关键字扩展/自定义表情/表情图片地址/表情提示 - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="//static.b3log.org/css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="自动提示：自定义表情/表情图片地址/表情提示/@ 及其 debounce - Vditor"/>
+    <meta property="og:title" content="自动补全：@、话题等关键字扩展/自定义表情/表情图片地址/表情提示 - Vditor"/>
     <meta property="og:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -28,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
-    <meta name="twitter:title" content="自动提示：自定义表情/表情图片地址/表情提示/@ 及其 debounce - Vditor"/>
+    <meta name="twitter:title" content="自动补全：@、话题等关键字扩展/自定义表情/表情图片地址/表情提示 - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://vditor.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -58,17 +58,21 @@
 <div class="wrapper">
     <div class="fn-50"></div>
     相关 <a href="https://hacpai.com/article/1549638745630#options-hint" target="_blank">API</a>：
-    options.hint.emoji，options.hint.emojiTail，options.hint.emojiPath，options.hint.delay，options.hint.at<br>
+    options.hint.emoji，options.hint.emojiTail，options.hint.emojiPath，options.hint.delay，options.hint.extend<br>
     ⚠️ 注意事项：
     <ul style="margin-left: 30px">
         <li>设置自定义表情后需输入 : 或点击工具栏上的表情按钮才可查看到效果</li>
         <li>设置表情提示文案后需点击工具栏上的表情按钮才可查看到效果</li>
         <li>设置表情图片地址后需在调试栏中查看表情图片地址才可看到效果，试一试 :wulina: 表情图片吧</li>
-        <li>At 回调中的 value 值需以 `@` 开头</li>
-        <li>当启用 At 功能时，可使用 options.hint.delay 来减少服务器压力</li>
+        <li>At、话题等扩展功能的回调中 value 值需以 `key` 开头</li>
+        <li>当启用 At、话题等扩展功能时，可使用 options.hint.delay 来减少服务器压力</li>
     </ul>
     <div class="fn-50"></div>
     <div class="actions">
+        <button class="btn btn--small"
+                onclick="setHint(this, {cache: {enable: false},value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行体验'})">
+            @、话题等关键字扩展
+        </button> &nbsp;
         <button class="btn btn--small"
                 onclick="setHint(this, {hint:{emoji: {'sad': '💔','j': 'https://unpkg.com/vditor@1.3.1/dist/images/emoji/j.png'}}})">
             自定义表情
@@ -77,11 +81,7 @@
         <button class="btn btn--small"
                 onclick="setHint(this, {hint:{emojiPath: 'https://cdn.jsdelivr.net/npm/vditor@3.2.0/dist/images/emoji'}})">
             设置表情图片地址
-        </button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setHint(this, {cache: {enable: false},value: '示例代码如下，由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行查看'})">
-            At
-        </button> &nbsp;
+        </button>
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
@@ -121,33 +121,73 @@
     }, options)
 
     if (it) {
-      let code = JSON.stringify(mergedOptions, null, '  ')
+      let code = ''
       if (options.value) {
+        mergedOptions.hint = {
+          extend: [
+            {
+              key: '@',
+              hint: (key) => {
+                if ('vanessa'.indexOf(key.toLocaleLowerCase()) > -1) {
+                  return [
+                    {
+                      value: '@Vanessa',
+                      html: '<img src="https://avatars0.githubusercontent.com/u/970828?s=60&v=4"/> Vanessa',
+                    }]
+                }
+                return []
+              },
+            },
+            {
+              key: '((',
+              hint: (key) => {
+                if ('vditor'.indexOf(key.toLocaleLowerCase()) > -1) {
+                  return [
+                    {
+                      value: '#Vditor',
+                      html: '<span style="color: #999;">#Vditor</span> ♏ 一款浏览器端的 Markdown 编辑器，支持所见即所得（富文本）、即时渲染（类似 Typora）和分屏预览模式。',
+                    }]
+                }
+                return []
+              },
+            }],
+        }
         code = `{
-  height: 360,
-  hint:{
-    at: (key) => {
-      let atUsers = []
-      $.ajax({
-        url: 'https://hacpai.com/users/names',
-        type: 'POST',
-        async: false,
-        data: JSON.stringify({name: key}),
-        success: function (result) {
-          if (result.code === 0) {
-            atUsers = result.data.map((item) => {
-              item.value = '@' + item.userName
-              item.html = '&lt;img src="' + item.userAvatarURL + '"/> ' + item.userName
-              return item
-            })
-          }
-        },
-      })
-      return atUsers
-    }
-  }
-}`
+cache: {enable: false},
+value: '由于跨域问题，可前往[完整示例](https://hacpai.com/guide/markdown)进行体验',
+hint: {
+  extend: [
+    {
+      key: '@',
+      hint: (key) => {
+        if ('vanessa'.indexOf(key.toLocaleLowerCase()) > -1) {
+          return [
+            {
+              value: '@Vanessa',
+              html: '&lt;img src="https://avatars0.githubusercontent.com/u/970828?s=60&v=4"/> Vanessa',
+            }]
+        }
+        return []
+      },
+    },
+    {
+      key: '#',
+      hint: (key) => {
+        if ('vditor'.indexOf(key.toLocaleLowerCase()) > -1) {
+          return [
+            {
+              value: '#Vditor',
+              html: '<span style="color: #999;">#Vditor</span> ♏ 一款浏览器端的 Markdown 编辑器，支持所见即所得（富文本）、即时渲染（类似 Typora）和分屏预览模式。',
+            }]
+        }
+        return []
+      },
+    }],
+}}`
+      } else {
+        code = JSON.stringify(mergedOptions, null, '  ')
       }
+
       updateCode(it, `new Vditor('vditor', ${code})`)
     }
     new Vditor('vditor', mergedOptions)
