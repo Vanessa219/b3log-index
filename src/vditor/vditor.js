@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof vditorScript !== 'undefined') {
           vditorScript()
         }
-        addScript('https://cdn.jsdelivr.net/npm/vcmt@latest/dist/index.min.js',
+        addScript('https://cdn.jsdelivr.net/npm/vcmt@1.2.8/dist/index.min.js',
           () => {
             const vcomment = new Vcomment({
               id: 'vditorComments',
