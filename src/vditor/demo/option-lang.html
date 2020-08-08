@@ -64,10 +64,12 @@
         <button class="btn btn--small" onclick="setLang(this, 'zh_CN')">中文</button> &nbsp;
         <button class="btn btn--small" onclick="setLang(this, 'en_US')">英文</button> &nbsp;
         <button class="btn btn--small" onclick="setLang(this, 'ko_KR')">韩文</button> &nbsp;
+        <button class="btn btn--small" onclick="setLang(this, 'ja_JP')">日文</button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
         <pre><code class="javascript">new Vditor('vditor', {
+  height: 360,
   lang: 'zh_CN'
 })
 </code></pre>
@@ -98,10 +100,12 @@
   const setLang = (it, lang = 'zh_CN') => {
     document.getElementById('vditor').innerHTML = ''
     new Vditor('vditor', {
+      height: 360,
       lang,
     })
     if (it) {
       updateCode(it, `new Vditor('vditor', {
+  height: 360,
   lang: '${lang}'
 })`)
     }

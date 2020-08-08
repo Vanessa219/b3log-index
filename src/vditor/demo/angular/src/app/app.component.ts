@@ -11,6 +11,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.vditor = new Vditor('vditor', {
+      height: 360,
       toolbarConfig: {
         pin: true,
       },

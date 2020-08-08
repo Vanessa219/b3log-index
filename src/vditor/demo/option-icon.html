@@ -62,17 +62,18 @@
     <div class="fn-50"></div>
     <div>
         <button class="btn btn--small"
-                onclick="setMode(this, {icon: 'ant', cache: {enable: false,},value: '可选图标：ant, material'})">
+                onclick="setMode(this, {height: 360, icon: 'ant', cache: {enable: false,},value: '可选图标：ant, material'})">
             Ant Design
         </button> &nbsp;
         <button class="btn btn--small"
-                onclick="setMode(this, {icon: 'material', cache: {enable: false,},value: '可选图标：ant, material'})">
+                onclick="setMode(this, {height: 360, icon: 'material', cache: {enable: false,},value: '可选图标：ant, material'})">
             Material
         </button>
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
         <pre><code class="javascript">new Vditor('vditor', {
+  height: 360,
   cache: {
     enable: false,
   },
@@ -109,7 +110,7 @@
     if (it) {
       updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ')})`)
     }
-    vditorObj = new Vditor('vditor', options || {cache: {enable: false}, value: '可选图标：ant, material'})
+    vditorObj = new Vditor('vditor', options || {height: 360, cache: {enable: false}, value: '可选图标：ant, material'})
   }
   vditorScript = setMode
 </script>

@@ -61,20 +61,20 @@
     options.tab，options.typewriterMode，options.outline，options.placeholder
     <div class="fn-50"></div>
     <div>
-        <button class="btn btn--small" onclick="setOptions(this, {cache: {enable: false},tab: '    ', placeholder: '请按下 tab 键'})">按下 tab 键新增四个空格
+        <button class="btn btn--small" onclick="setOptions(this, {height: 360, cache: {enable: false},tab: '    ', placeholder: '请按下 tab 键'})">按下 tab 键新增四个空格
         </button> &nbsp;
-        <button class="btn btn--small" onclick="setOptions(this, {cache: {enable: false},tab: '\t', placeholder: '请按下 tab 键'})">按下 tab 键新增 \t
+        <button class="btn btn--small" onclick="setOptions(this, {height: 360, cache: {enable: false},tab: '\t', placeholder: '请按下 tab 键'})">按下 tab 键新增 \t
         </button> &nbsp;
-        <button class="btn btn--small" onclick="setOptions(this, {cache: {enable: false},typewriterMode: true})">开启打字机模式（编辑位置上下剧中）</button> &nbsp;
-        <button class="btn btn--small" onclick="setOptions(this, {cache: {enable: false},outline: true})">默认展现大纲</button> &nbsp;
+        <button class="btn btn--small" onclick="setOptions(this, {height: 360, cache: {enable: false},typewriterMode: true})">开启打字机模式（编辑位置上下剧中）</button> &nbsp;
+        <button class="btn btn--small" onclick="setOptions(this, {height: 360, cache: {enable: false},outline: true})">默认展现大纲</button> &nbsp;
         <button class="btn btn--small"
-                onclick="setOptions(this, {cache: {enable: false},value: '', placeholder: 'Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得（富文本）、即时渲染（类似 Typora）和分屏预览模式'})">
+                onclick="setOptions(this, {height: 360, cache: {enable: false},value: '', placeholder: 'Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得（富文本）、即时渲染（类似 Typora）和分屏预览模式'})">
             内容为空的提示
         </button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">new Vditor('vditor')
+        <pre><code class="javascript">new Vditor('vditor', {height: 360})
 </code></pre>
     </div>
     <div class="fn-100"></div>
@@ -105,7 +105,7 @@
     if (it) {
       updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ')})`)
     }
-    new Vditor('vditor', options)
+    new Vditor('vditor', options || {height: 360})
   }
   vditorScript = setOptions
 </script>

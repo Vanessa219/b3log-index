@@ -72,6 +72,7 @@ class APP extends React.Component {
 
   componentDidMount () {
     const vditor = new Vditor('vditor', {
+      height: 360,
       toolbarConfig: {
         pin: true,
       },
@@ -128,6 +129,7 @@ ReactDOM.render(e(APP), document.querySelector('#app'))
 
       componentDidMount () {
         const vditor = new Vditor('vditor', {
+          height: 360,
           toolbarConfig: {
             pin: true,
           },

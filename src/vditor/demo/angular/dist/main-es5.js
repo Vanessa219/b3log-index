@@ -82,6 +82,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this = this;
 
           this.vditor = new vditor__WEBPACK_IMPORTED_MODULE_1___default.a('vditor', {
+            height: 360,
             toolbarConfig: {
               pin: true
             },

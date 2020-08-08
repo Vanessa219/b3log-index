@@ -42,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 class AppComponent {
     ngOnInit() {
         this.vditor = new vditor__WEBPACK_IMPORTED_MODULE_1___default.a('vditor', {
+            height: 360,
             toolbarConfig: {
                 pin: true,
             },

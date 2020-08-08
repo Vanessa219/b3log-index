@@ -66,26 +66,26 @@
     <div class="fn-50"></div>
     <div class="actions">
         <button class="btn btn--small"
-                onclick="setToolbar(this, {toolbar:[{hotkey: '⌘-⇧-B',  name:'bold',tipPosition: 'n',tip: '自定义粗体按钮',className: 'right',icon: boldIcon}]})">
+                onclick="setToolbar(this, {height: 360, toolbar:[{hotkey: '⌘-⇧-B',  name:'bold',tipPosition: 'n',tip: '自定义粗体按钮',className: 'right',icon: boldIcon}]})">
             自定义按钮(保持 name 一致)
         </button> &nbsp;
         <button class="btn btn--small"
-                onclick="setToolbar(this, {toolbar:[{hotkey: '⌘-⇧-S',  name:'sponsor',tipPosition: 's',tip: '成为赞助者',className: 'right',icon: sponsorIcon, click () {alert('捐赠地址：https://hacpai.com/sponsor')}}]})">
+                onclick="setToolbar(this, {height: 360, toolbar:[{hotkey: '⌘-⇧-S',  name:'sponsor',tipPosition: 's',tip: '成为赞助者',className: 'right',icon: sponsorIcon, click () {alert('捐赠地址：https://hacpai.com/sponsor')}}]})">
             新增按钮
         </button>
         &nbsp;
         <button class="btn btn--small"
-                onclick="setToolbar(this, {toolbarConfig:{pin:true}})">
+                onclick="setToolbar(this, {height: 360, toolbarConfig:{pin:true}})">
             固定工具栏(上滚才能看到效果呦)
         </button> &nbsp;
         <button class="btn btn--small"
-                onclick="setToolbar(this, {toolbarConfig:{hide:true}})">
+                onclick="setToolbar(this, {height: 360, toolbarConfig:{hide:true}})">
             隐藏工具栏
         </button> &nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">new Vditor('vditor')
+        <pre><code class="javascript">new Vditor('vditor', {height: 360})
 </code></pre>
     </div>
     <div class="fn-100"></div>
@@ -119,6 +119,7 @@
       let code = JSON.stringify(options, null, '  ').replace(/</g, '&lt;')
       if (options.toolbar && options.toolbar[0].click) {
         code = `{
+  height: 360,
   toolbar:[{
     hotkey: '⌘-⇧-S',
     name:'sponsor',
@@ -135,7 +136,7 @@
       updateCode(it, `new Vditor('vditor', ${code})`)
     }
 
-    new Vditor('vditor', options)
+    new Vditor('vditor', options || {height: 360})
   }
   vditorScript = setToolbar
 </script>
