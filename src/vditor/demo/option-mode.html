@@ -62,18 +62,18 @@
     <div class="fn-50"></div>
     <div>
         <button class="btn btn--small"
-                onclick="setMode(this, {cache: {enable: false,},value: '可选模式：sv, ir, wysiwyg',mode: 'wysiwyg'})">wysiwyg
+                onclick="setMode(this, {height: 360, cache: {enable: false,},value: '## 所见即所得（WYSIWYG）\n所见即所得模式对不熟悉 Markdown 的用户较为友好，熟悉 Markdown 的话也可以无缝使用。 ',mode: 'wysiwyg'})">wysiwyg
             模式
         </button> &nbsp;
         <button class="btn btn--small"
-                onclick="setMode(this, {cache: {enable: false,},value: '可选模式：sv, ir, wysiwyg',mode: 'ir'})">ir 模式
+                onclick="setMode(this, {height: 360, cache: {enable: false,},value: '## 即时渲染（IR）\n即时渲染模式对熟悉 Typora 的用户应该不会感到陌生，理论上这是最优雅的 Markdown 编辑方式。',mode: 'ir'})">ir 模式
         </button> &nbsp;
         <button class="btn btn--small"
-                onclick="setMode(this, {cache: {enable: false,},value: '可选模式：sv, ir, wysiwyg',mode: 'sv',preview:{mode:'editor'}})">
+                onclick="setMode(this, {height: 360, cache: {enable: false,},value: '## 分屏预览（SV）\n传统的分屏预览模式适合大屏下的 Markdown 编辑。',mode: 'sv',preview:{mode:'editor'}})">
             sv 模式 - 编辑器
         </button>&nbsp;
         <button class="btn btn--small"
-                onclick="setMode(this, {cache: {enable: false,},value: '可选模式：sv, ir, wysiwyg',mode: 'sv',preview:{mode:'both'}})">
+                onclick="setMode(this, {height: 360, cache: {enable: false,},value: '## 分屏预览（SV）\n传统的分屏预览模式适合大屏下的 Markdown 编辑。',mode: 'sv',preview:{mode:'both'}})">
             sv 模式 - 编辑器 & 预览
         </button> &nbsp;
     </div>
@@ -115,7 +115,7 @@
     if (it) {
       updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ')})`)
     }
-    new Vditor('vditor', options || {cache: {enable: false}, value: '可选模式：sv, ir, wysiwyg'})
+    new Vditor('vditor', options || {height: 360, cache: {enable: false}, value: '可选模式：sv, ir, wysiwyg'})
   }
   vditorScript = setMode
 </script>
