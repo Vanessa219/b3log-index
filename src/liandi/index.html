@@ -72,20 +72,19 @@
             color: #fff;
             padding: 0 10px;
             line-height: 50px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 50px;
+            height: 100px;
         }
 
         .first-screen .required .caret {
             width: 4px;
-            height: 100%;
+            height: 50px;
             background-color: #fff;
             margin-left: 5px;
             animation-duration: 2s;
             animation-fill-mode: both;
             animation-iteration-count: infinite;
+            display: inline-block;
+            vertical-align: bottom;
         }
 
         .first-screen .description {
@@ -130,6 +129,12 @@
             25%,
             75% {
                 opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .first-screen .description {
+                font-size: 14px;
             }
         }
     </style>
@@ -209,7 +214,7 @@
     <div class="fn-100"></div>
     <div class="fn-flex panel-wrap panel-wrap">
         <div class="panel-abstract">
-            <a href="images/3-1.png" target="_blank"><img style="max-height: 360px;" src="images/3-1.png"></a>
+            <a href="images/3-1.png" target="_blank"><img src="images/3-1.png"></a>
         </div>
         <div class="panel-split"></div>
         <div class="panel-content">
@@ -227,13 +232,13 @@
         </div>
         <div class="panel-split"></div>
         <div class="panel-abstract">
-            <a href="images/3-2.png" target="_blank"><img style="max-width: 340px" src="images/3-2.png"></a>
+            <a href="images/3-2.png" target="_blank"><img src="images/3-2.png"></a>
         </div>
     </div>
     <div class="fn-100"></div>
     <div class="fn-flex panel-wrap">
         <div class="panel-abstract">
-            <a href="images/3-3.png" target="_blank"><img src="images/3-3.png" style="max-width: 340px"></a>
+            <a href="images/3-3.png" target="_blank"><img src="images/3-3.png"></a>
         </div>
         <div class="panel-split"></div>
         <div class="panel-content">
@@ -243,7 +248,7 @@
         </div>
     </div>
     <div class="fn-100"></div>
-    <div class="fn-flex panel-wrap">
+    <div class="fn-flex panel-wrap fn-flex-reverse">
         <div class="panel-content">
             <h2>离线可用</h2>
             <div class="fn-50"></div>
@@ -252,7 +257,7 @@
         </div>
         <div class="panel-split"></div>
         <div class="panel-abstract">
-            <a href="images/3-4.png" target="_blank"><img src="images/3-4.png" style="max-width: 340px"></a>
+            <a href="images/3-4.png" target="_blank"><img src="images/3-4.png"></a>
         </div>
     </div>
     <div class="fn-100"></div>
