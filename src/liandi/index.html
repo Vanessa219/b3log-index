@@ -53,7 +53,7 @@
             position: absolute;
             height: 100%;
             width: 100%;
-            background-color: #3b3e43;
+            background-image: linear-gradient(to right top, #000000, #121011, #1c1b1c, #262427, #2f2f33, #2f3038, #2e313d, #2c3242, #242840, #1f1e3d, #1e1338, #1f0331);
         }
 
         .first-screen .panel {
@@ -91,15 +91,20 @@
         .first-screen .description {
             color: #bbb;
             font-size: 18px;
+            text-align: center;
         }
 
-        .first-screen .btn--download {
+        .first-screen .download {
             padding: 5px 60px;
             display: inline-block;
+            background-color: #d23f31;
+            color: #fff;
+            border-radius: 5px;
         }
 
-        .first-screen .btn--download div {
+        .first-screen .download div {
             font-size: 14px;
+            color: #bbb;
         }
 
         @keyframes flash {
@@ -137,10 +142,10 @@
     <div class="panel">
         <div class="required"></div>
         <div class="fn-100"></div>
-        <div class="description">链滴笔记是一款基于 Markdown 的本地知识管理工具，支持块级引用和类似 Typora 的即时渲染编辑</div>
+        <div class="description">链滴笔记是一款基于 Markdown 的本地知识管理工具<br>支持块级引用和类似 Typora 的即时渲染编辑</div>
         <div class="fn-100"></div>
         <div class="ft-center">
-            <div class="btn btn--download">
+            <div class="download">
                 下载链滴笔记
                 <div>敬请期待</div>
             </div>
