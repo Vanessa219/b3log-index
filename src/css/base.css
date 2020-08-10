@@ -324,7 +324,7 @@ blockquote {
     width: 100%;
     z-index: 1600;
     background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 7px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
     border-bottom: 1px solid #e1e4e8;
 }
 
