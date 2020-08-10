@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>Sym - Java 社区系统，Java 论坛系统，Java 开源社区系统</title>
+    <title>链滴笔记 - 本地离线 Markdown 编辑器，支持块级引用、双向链接、个人知识管理</title>
     <meta name="robots" content="index,follow,archive">
-    <meta name="description" content="一款用 Java 实现的现代化社区（论坛/BBS/社交网络/博客）系统平台。"/>
+    <meta name="description" content="链滴笔记 - 本地离线 Markdown 编辑器，支持块级引用、双向链接、个人知识管理"/>
     <meta name="copyright" content="B3log"/>
-    <link rel="canonical" href="https://sym.b3log.org">
+    <link rel="canonical" href="https://liandi.b3log.org">
     <link rel="apple-touch-icon" href="//static.b3log.org/images/brand/linadi-128.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -17,16 +17,16 @@
     <link rel="icon" type="image/png" href="//static.b3log.org/images/brand/linadi-128.png"/>
     <link rel="shortcut icon" type="image/x-icon" href="//static.b3log.org/images/brand/linadi-128.png"/>
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="下一代的社区系统，为未来而构建"/>
-    <meta property="og:description" content="一款用 Java 实现的现代化社区（论坛/BBS/社交网络/博客）系统平台。"/>
+    <meta property="og:title" content="链滴笔记 - 本地离线 Markdown 编辑器，支持块级引用、双向链接、个人知识管理"/>
+    <meta property="og:description" content="链滴笔记 - 本地离线 Markdown 编辑器，支持块级引用、双向链接、个人知识管理"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/linadi-128.png"/>
-    <meta property="og:url" content="https://sym.b3log.org"/>
+    <meta property="og:url" content="https://liandi.b3log.org"/>
     <meta property="og:site_name" content="Sym"/>
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:description" content="一款用 Java 实现的现代化社区（论坛/BBS/社交网络/博客）系统平台。"/>
-    <meta name="twitter:title" content="下一代的社区系统，为未来而构建"/>
+    <meta name="twitter:description" content="链滴笔记 - 本地离线 Markdown 编辑器，支持块级引用、双向链接、个人知识管理"/>
+    <meta name="twitter:title" content="链滴笔记 - 本地离线 Markdown 编辑器，支持块级引用、双向链接、个人知识管理"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/linadi-128.png"/>
-    <meta name="twitter:url" content="https://sym.b3log.org"/>
+    <meta name="twitter:url" content="https://liandi.b3log.org"/>
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
     <style>
@@ -41,10 +41,6 @@
             background-image: url(images/bg2.png);
         }
 
-        .header-a-first.header-a:before {
-            border-radius: 0 0 0 3px;
-        }
-
         .first-screen {
             height: 100vh;
             display: flex;
@@ -52,16 +48,12 @@
             position: relative;
         }
 
-        .first-screen .img {
-            background-image: url(images/bg1.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
+        .first-screen canvas {
             top: 0;
             position: absolute;
             height: 100%;
             width: 100%;
-            opacity: .86;
+            background-color: #3b3e43;
         }
 
         .first-screen .panel {
@@ -80,155 +72,78 @@
             color: #fff;
             padding: 0 10px;
             line-height: 50px;
-        }
-
-        .first-screen .scroll {
-            overflow: hidden;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             height: 50px;
-            box-sizing: border-box;
-            vertical-align: bottom;
-            padding: 0 10px;
-            color: #4285f4;
-            text-shadow: 0 0 1px rgba(66, 133, 244, 1);
-            background-color: rgba(255, 255, 255, 0.86);
-            border-radius: 3px;
         }
 
-        .first-screen .scroll ul {
-            animation: scroll 15s cubic-bezier(0.545, 0.035, 0.255, .6) normal forwards;
-            line-height: 54px;
-            list-style: none;
+        .first-screen .required .caret {
+            width: 4px;
+            height: 100%;
+            background-color: #fff;
+            margin-left: 5px;
+            animation-duration: 2s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
         }
 
-        @keyframes scroll {
-            0% {
-                transform: translateY(0px)
+        .first-screen .description {
+            color: #bbb;
+            font-size: 18px;
+        }
+
+        .first-screen .btn--download {
+            padding: 5px 60px;
+            display: inline-block;
+        }
+
+        .first-screen .btn--download div {
+            font-size: 14px;
+        }
+
+        @keyframes flash {
+            from,
+            50%,
+            to {
+                opacity: 1;
             }
 
-            5% {
-                transform: translateY(0px)
-            }
-
-            10% {
-                transform: translateY(-54px)
-            }
-
-            15% {
-                transform: translateY(-54px)
-            }
-
-            20% {
-                transform: translateY(-108px)
-            }
-
-            25% {
-                transform: translateY(-108px)
-            }
-
-            30% {
-                transform: translateY(-162px)
-            }
-
-            35% {
-                transform: translateY(-162px)
-            }
-
-            40% {
-                transform: translateY(-216px)
-            }
-
-            45% {
-                transform: translateY(-216px)
-            }
-
-            50% {
-                transform: translateY(-270px)
-            }
-
-            55% {
-                transform: translateY(-270px)
-            }
-
-            60% {
-                transform: translateY(-324px)
-            }
-
-            65% {
-                transform: translateY(-324px)
-            }
-
-            70% {
-                transform: translateY(-378px)
-            }
-
+            25%,
             75% {
-                transform: translateY(-378px)
-            }
-
-            80% {
-                transform: translateY(-432px)
-            }
-
-            85% {
-                transform: translateY(-432px)
-            }
-
-            90% {
-                transform: translateY(-486px)
-            }
-
-            95% {
-                transform: translateY(-486px)
-            }
-
-            100% {
-                transform: translateY(-486px)
+                opacity: 0;
             }
         }
     </style>
     <script src="js/pixi.min.js"></script>
 </head>
 <body>
-<div class="first-screen">
-    <div class="img"></div>
-    <div class="header fn-clear">
-        <a class="header-logo" href="https://liandi.b3log.org">
-            <img src="//static.b3log.org/images/brand/liandi-128.png">
-            <h1>链滴笔记</h1>
-        </a>
+<div class="header header-fixed fn-clear" style="display: none">
+    <a class="header-logo" href="https://liandi.b3log.org">
+        <img src="//static.b3log.org/images/brand/liandi-128.png">
+        <h1>链滴笔记</h1>
+    </a>
 
-        <div class="fn-clear">
-            <a class="header-a header-a-first current" href="https://hacpai.com/tag/liandi-biji" target="_blank">社区</a>
-            <a class="header-a header-a-first header-red current" href="https://hacpai.com/article/1486188905847"
-               target="_blank">下载</a>
-            <a class="header-a header-a-first header-green current" target="_blank"
-               href="https://github.com/88250/liandi">源码</a>
-            <a class="header-a header-a-first header-yellow current" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
-        </div>
+    <div class="fn-clear">
+        <a class="header-a" href="https://hacpai.com/tag/liandi-biji" target="_blank">社区</a>
+        <a class="header-a header-red" href="https://hacpai.com/article/1486188905847"
+           target="_blank">下载</a>
+        <a class="header-a header-green" target="_blank"
+           href="https://github.com/88250/liandi">源码</a>
+        <a class="header-a header-yellow" href="https://hacpai.com/sponsor" target="_blank">成为赞助者</a>
     </div>
+</div>
+<div class="first-screen">
     <div class="panel">
-        <div class="required">
-            你的
-            <div class="scroll">
-                <ul>
-                    <li>朋友</li>
-                    <li>支持者</li>
-                    <li>赞助者</li>
-                    <li>仰慕者</li>
-                    <li>圈子</li>
-                    <li>企业</li>
-                    <li>团队</li>
-                    <li>顾客</li>
-                    <li>产品</li>
-                    <li>社群</li>
-                </ul>
-            </div>
-            需要一个现代化的社区
-        </div>
+        <div class="required"></div>
+        <div class="fn-100"></div>
+        <div class="description">链滴笔记是一款基于 Markdown 的本地知识管理工具，支持块级引用和类似 Typora 的即时渲染编辑</div>
         <div class="fn-100"></div>
         <div class="ft-center">
-            <a class="btn" href="pricing.html">免费使用</a>
+            <div class="btn btn--download">
+                下载链滴笔记
+                <div>敬请期待</div>
+            </div>
         </div>
     </div>
 </div>
@@ -239,7 +154,7 @@
     <div class="fn-100"></div>
     <div class="fn-flex panel-wrap">
         <div class="panel-abstract">
-            <h2 class="fn-title">Symphony</h2>
+            <h2 class="fn-title">链滴笔记</h2>
             <div class="fn-50"></div>
             <div class="ft-fade">
                 [ˈsɪmfəni]，n.交响乐
@@ -247,7 +162,7 @@
         </div>
         <div class="panel-split"></div>
         <div class="panel-content">
-            <h2>下一代的社区系统，为未来而构建</h2>
+            <h2>本地离线 Markdown 编辑器，支持块级引用、双向链接、个人知识管理</h2>
             <div class="fn-50"></div>
             <ul class="fn-list">
                 <li>实现了面向内容讨论的论坛</li>

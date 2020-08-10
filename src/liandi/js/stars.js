@@ -1,7 +1,7 @@
 var STAR_COLORS = [0xffffff, 0xffffff]
 var FILL_COLOR = 0xffffff
-var LINE_COLOR = 0x6acad1
-var LINE_SPEED = 40
+var LINE_COLOR = 0xd23f31
+var LINE_SPEED = 60
 var LINE_FADE_SECONDS = 15
 var LINE_OPACITY_MAX = 0.8
 var LINE_OPACITY_MIN = 0.05
@@ -9,8 +9,8 @@ var LINE_FORK_CHANCE = 0.35 // 35% chance
 var LINE_WIDTH = 1
 var HOPS = 10
 var NEW_LINE_ON_HOP = 8 // if more than hops, start a new one at last hop
-var STAR_RADIUS_MAX = 4
-var STAR_RADIUS_MIN = 0.5
+var STAR_RADIUS_MAX = 5
+var STAR_RADIUS_MIN = 1.5
 var STAR_RADIUS_LARGE_MIN = 2 // small stars are smaller than this, larger stars are larger than this
 var STAR_LARGE_CHANCE = 0.1 // 10% chance
 var STAR_OPACITY_MAX = 0.9
@@ -33,7 +33,8 @@ var _PIXEL_RATIO = window.devicePixelRatio || 1
 
 function isVisible (elm) {
   var rect = elm.getBoundingClientRect()
-  var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight)
+  var viewHeight = Math.max(document.documentElement.clientHeight,
+    window.innerHeight)
   return !(rect.bottom < 0 || rect.top - viewHeight >= 0)
 }
 
@@ -50,7 +51,7 @@ function StarChart (div, pixi) {
   this.renderer = new PIXI.CanvasRenderer(800, 600, {
     antialias: true,
     transparent: true,
-    resolution: _PIXEL_RATIO
+    resolution: _PIXEL_RATIO,
   })
 
   // don't disable scrolling interactions
@@ -83,7 +84,7 @@ function StarChart (div, pixi) {
 }
 
 (function () {
-  this.setAnimationEnabled = function (enabled) {
+  this.setAnimationEnabled = function () {
     this.checkVisible()
   }
 
@@ -159,7 +160,8 @@ function StarChart (div, pixi) {
     for (var cx = startX; cx <= endX; cx++) {
       for (var cy = startY; cy <= endY; cy++) {
         this.cells[cx][cy].forEach(function (other) {
-          var dist = Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2))
+          var dist = Math.sqrt(
+            Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2))
           if (dist < minDist) {
             minDist = dist
             star = other
@@ -189,8 +191,10 @@ function StarChart (div, pixi) {
         var col = []
 
         for (var n = 0; n < this.starCount; n++) {
-          var x = Math.round(Math.random() * (this.cellWidth) + gx * this.cellWidth)
-          var y = Math.round(Math.random() * (this.cellHeight) + gy * this.cellHeight)
+          var x = Math.round(
+            Math.random() * (this.cellWidth) + gx * this.cellWidth)
+          var y = Math.round(
+            Math.random() * (this.cellHeight) + gy * this.cellHeight)
           var star = new Star(this, x, y, gx, gy)
           this.stars[star.id] = star
           this.starList.push(star)
@@ -209,9 +213,12 @@ function StarChart (div, pixi) {
       star.setLinks()
     })
 
-    this.comets.push(new CometGroup(this, this.randomStar(), undefined, HOPS, true, 1))
-    this.comets.push(new CometGroup(this, this.randomStar(), undefined, HOPS, true))
-    this.comets.push(new CometGroup(this, this.randomStar(), undefined, HOPS, true))
+    this.comets.push(
+      new CometGroup(this, this.randomStar(), undefined, HOPS, true, 1))
+    this.comets.push(
+      new CometGroup(this, this.randomStar(), undefined, HOPS, true))
+    this.comets.push(
+      new CometGroup(this, this.randomStar(), undefined, HOPS, true))
     this.twinkleStar()
   }
 
@@ -297,7 +304,8 @@ function CometGroup (game, star, next, hops, addAnother, alpha) {
   this.fading = false
   this.addAnother = addAnother
   this.added = !addAnother
-  this.lineAlpha = alpha || (LINE_OPACITY_MIN + Math.random() * _LINE_OPACITY_DIFF)
+  this.lineAlpha = alpha ||
+    (LINE_OPACITY_MIN + Math.random() * _LINE_OPACITY_DIFF)
   this.addComet(star, next, hops)
 }
 
@@ -339,7 +347,9 @@ function CometGroup (game, star, next, hops, addAnother, alpha) {
   this.didHop = function (hop) {
     if (!this.added && HOPS - hop === NEW_LINE_ON_HOP) {
       this.added = true
-      this.game.comets.push(new CometGroup(this.game, this.game.randomStar(), undefined, HOPS, this.addAnother))
+      this.game.comets.push(
+        new CometGroup(this.game, this.game.randomStar(), undefined, HOPS,
+          this.addAnother))
     }
   }
 
@@ -363,7 +373,9 @@ function CometGroup (game, star, next, hops, addAnother, alpha) {
 
     if (!this.added) {
       this.added = true
-      this.game.comets.push(new CometGroup(this.game, this.game.randomStar(), undefined, HOPS, this.addAnother))
+      this.game.comets.push(
+        new CometGroup(this.game, this.game.randomStar(), undefined, HOPS,
+          this.addAnother))
     }
   }
 
@@ -416,8 +428,10 @@ function Comet (game, parent, star, next, hops) {
   this.setNext = function (first) {
     this.parent.visited[this.fromStar.id] = true
     this.parent.visited[this.nextStar.id] = true
-    this.speed = LINE_SPEED * (1 - (Math.abs(this.fromStar.radius - this.nextStar.radius) / 3) * 0.7)
-    this.speed *= 0.5 + ((this.fromStar.radius + this.nextStar.radius - 2) / 6 * 0.5)
+    this.speed = LINE_SPEED *
+      (1 - (Math.abs(this.fromStar.radius - this.nextStar.radius) / 3) * 0.7)
+    this.speed *= 0.5 +
+      ((this.fromStar.radius + this.nextStar.radius - 2) / 6 * 0.5)
 
     if (!first && this.hops > 0 && Math.random() < LINE_FORK_CHANCE) {
       this.parent.addComet(this.fromStar, undefined, this.hops - 1, false)
@@ -456,7 +470,8 @@ function Comet (game, parent, star, next, hops) {
       return this.end()
     }
 
-    this.nextStar = this.fromStar.links[keys[Math.floor(Math.random() * keys.length)]]
+    this.nextStar = this.fromStar.links[keys[Math.floor(
+      Math.random() * keys.length)]]
     this.setNext()
 
     if (!first) {
@@ -535,7 +550,8 @@ function Star (game, x, y, cellX, cellY) {
 
   this.sprite.drawCircle(0, 0, this.radius)
   this.sprite.endFill()
-  this.targetAlpha = this.sprite.alpha = STAR_OPACITY_MAX - Math.random() * _STAR_OPACITY_DIFF
+  this.targetAlpha = this.sprite.alpha = STAR_OPACITY_MAX - Math.random() *
+    _STAR_OPACITY_DIFF
 
   this.sprite.x = x
   this.sprite.y = y
@@ -553,7 +569,8 @@ function Star (game, x, y, cellX, cellY) {
   this.animate = function (dt) {
     if (this.twinkling) {
       this.alpha += dt * TWINKLE_SPEED
-      this.sprite.alpha = this.targetAlpha - Math.sin(this.alpha) * (this.targetAlpha - STAR_OPACITY_MIN)
+      this.sprite.alpha = this.targetAlpha - Math.sin(this.alpha) *
+        (this.targetAlpha - STAR_OPACITY_MIN)
 
       if (this.alpha >= Math.PI) {
         this.alpha = 0
@@ -576,7 +593,8 @@ function Star (game, x, y, cellX, cellY) {
       for (var cy = startY; cy <= endY; cy++) {
         this.game.cells[cx][cy].forEach(function (other) {
           if (other !== this && !this.links.hasOwnProperty(other.id)) {
-            var dist = Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2))
+            var dist = Math.sqrt(
+              Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2))
             near.push({star: other, dist: dist})
           }
         }.bind(this))
@@ -587,7 +605,8 @@ function Star (game, x, y, cellX, cellY) {
       return a.dist - b.dist
     })
 
-    for (var i = 0; near[i].dist < MAX_NEIGHBOR_DISTANCE && Object.keys(this.links).length <= MAX_LINKS; i++) {
+    for (var i = 0; near[i].dist < MAX_NEIGHBOR_DISTANCE &&
+    Object.keys(this.links).length <= MAX_LINKS; i++) {
       neighbor = near[i].star
       this.links[neighbor.id] = neighbor
       neighbor.links[this.id] = this
@@ -613,26 +632,66 @@ function Star (game, x, y, cellX, cellY) {
     delete this.game.stars[this.id]
     removeItem(this.game.starList, this)
   }
-}.call(Star.prototype))
+}.call(Star.prototype));
 
 (function () {
 
   var hm = document.createElement('script')
-  hm.src = "https://hm.baidu.com/hm.js?c5987c99adea364abddda47382fec820";
+  hm.src = 'https://hm.baidu.com/hm.js?35c088d16ffed2d7401e97658e9af941'
   var s = document.getElementsByTagName('script')[0]
   s.parentNode.insertBefore(hm, s)
 
-  const starChart = new StarChart(document.getElementById('stars'), PIXI)
+  const starChart = new StarChart(document.querySelector('.first-screen'), PIXI)
   starChart.setAnimationEnabled(true)
 
   // scroll
-  window.addEventListener("scroll", function () {
-    if (document.querySelector("html").scrollTop > $(window).height()) {
-      $('.header').addClass('header-fixed')
-      $('.header-a').removeClass('current header-a-first')
+  window.addEventListener('scroll', function () {
+    if (document.querySelector('html').scrollTop > window.innerHeight) {
+      document.querySelector('.header').style.display = 'block'
     } else {
-      $('.header').removeClass('header-fixed')
-      $('.header-a').addClass('current header-a-first')
+      document.querySelector('.header').style.display = 'none'
+    }
+  })
+
+  // type
+  const typeElement = document.querySelector('.required')
+  const texts = [
+    '我们需要优雅的 Markdown 编辑体验',
+    '我们需要看到灵感思绪的清晰脉络',
+    '我们在文字创作时需要沉浸在内容中',
+    '我们的知识碎片需要构建成结构化的体系',
+    '我们需要找到那些埋藏在记忆深处的灵犀',
+    '我们希望离线使用带来完全的隐私安全',
+    '链滴笔记，连接点滴',
+  ]
+  let textLength = 0
+  let time = 0
+  texts.forEach((text, i) => {
+    if (i > 0) {
+      textLength += text[i - 1].length + 20
+    }
+    for (let j = 0; j < text.length; j++) {
+      time += 200
+      setTimeout(() => {
+        typeElement.innerHTML = text.substr(0, j + 1) +
+          `<span class="caret" style="${(j === text.length - 1
+            ? 'animation-name:flash'
+            : '')}"></span>`
+      }, time)
+    }
+    if (i !== texts.length - 1) {
+      time += 2000
+      for (let k = 0; k < text.length; k++) {
+        time += 50
+        setTimeout(() => {
+          typeElement.innerHTML = typeElement.textContent.substr(0,
+            typeElement.textContent.length - 1) + '<span class="caret"></span>'
+        }, time)
+      }
+    } else {
+      setTimeout(() => {
+        document.querySelector('.caret').style.animationName = 'flash'
+      }, time + 1)
     }
   })
 })()
