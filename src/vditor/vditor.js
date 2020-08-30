@@ -37,7 +37,7 @@ const updateCode = (btnElement, code) => {
 addStyle('https://cdn.jsdelivr.net/npm/vditor@3.4.5/dist/index.css')
 document.addEventListener('DOMContentLoaded', function () {
   var hm = document.createElement('script')
-  hm.src = 'https://hm.baidu.com/hm.js?3035c273d83b0b76e762b7397c790e84'
+  hm.src = 'https://hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c'
   var s = document.getElementsByTagName('script')[0]
   s.parentNode.insertBefore(hm, s)
 

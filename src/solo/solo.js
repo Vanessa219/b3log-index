@@ -20,7 +20,7 @@
 
   // baidu
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?c83493c5643600999077aaba59edc1e4";
+  hm.src = "https://hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c";
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();

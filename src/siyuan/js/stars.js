@@ -637,7 +637,7 @@ function Star (game, x, y, cellX, cellY) {
 (function () {
 
   var hm = document.createElement('script')
-  hm.src = 'https://hm.baidu.com/hm.js?35c088d16ffed2d7401e97658e9af941'
+  hm.src = 'https://hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c'
   var s = document.getElementsByTagName('script')[0]
   s.parentNode.insertBefore(hm, s)
 
