@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const vcomment = new Vcomment({
               id: 'vditorComments',
               postId: '1549638745630',
-              url: 'https://hacpai.com',
+              url: 'https://ld246.com',
               userName: 'Vanessa',
               currentPage: 1,
               vditor: {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const dynamicElement = document.getElementById('dynamic')
   if (dynamicElement) {
     const xhr = new XMLHttpRequest()
-    xhr.open('GET', 'https://hacpai.com/api/v2/articles/tag/vditor?p=1')
+    xhr.open('GET', 'https://ld246.com/api/v2/articles/tag/vditor?p=1')
     xhr.withCredentials = true
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {

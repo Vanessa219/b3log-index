@@ -5,7 +5,7 @@
     },
     "text": {
       "headline": "B3log 开源",
-      "text": "<a href='https://b3log.org' target='_blank'>B3log</a> 是一个开源组织，名字来源于“Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 <a href='https://hacpai.com/b3log' target='_blank'>B3log 构思</a>。目前 B3log 已经开源了多款产品：<a href='https://hacpai.com/tag/sym' target='_blank'>Sym</a>、<a href='https://hacpai.com/tag/solo' target='_blank'>Solo</a>、<a href='https://hacpai.com/tag/pipe' target='_blank'>Pipe</a>、 <a href='https://github.com/vanessa219/vditor' target='_blank'>Vditor</a>、<a href='https://hacpai.com/tag/wide' target='_blank'>Wide</a> 等，欢迎大家<a href='https://hacpai.com/article/1463025124998' target='_blank'>加入</a>，贡献开源。"
+      "text": "<a href='https://b3log.org' target='_blank'>B3log</a> 是一个开源组织，名字来源于“Bulletin Board Blog”缩写，目标是将独立博客与论坛结合，形成一种新的网络社区体验，详细请看 <a href='https://ld246.com/b3log' target='_blank'>B3log 构思</a>。目前 B3log 已经开源了多款产品：<a href='https://ld246.com/tag/sym' target='_blank'>Sym</a>、<a href='https://ld246.com/tag/solo' target='_blank'>Solo</a>、<a href='https://ld246.com/tag/pipe' target='_blank'>Pipe</a>、 <a href='https://github.com/vanessa219/vditor' target='_blank'>Vditor</a>、<a href='https://ld246.com/tag/wide' target='_blank'>Wide</a> 等，欢迎大家<a href='https://ld246.com/article/1463025124998' target='_blank'>加入</a>，贡献开源。"
     },
     "background": {
       "url": "//static.b3log.org/images/brand/b3log-460.png"
@@ -105,7 +105,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/lamb.png",
         "url": "//static.b3log.org/images/timeline/lamb.png",
-        "caption": "羔羊是我，我是 <a href='https://hacpai.com/member/lamb' target='_blank'>Lamb (L)</a>"
+        "caption": "羔羊是我，我是 <a href='https://ld246.com/member/lamb' target='_blank'>Lamb (L)</a>"
       }
     },
     {
@@ -121,7 +121,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/dx.jpg",
         "url": "//static.b3log.org/images/timeline/dx.jpg",
-        "caption": "土星盐是我，我是 <a href='https://hacpai.com/member/e' target='_blank'>DX</a>"
+        "caption": "土星盐是我，我是 <a href='https://ld246.com/member/e' target='_blank'>DX</a>"
       }
     },
     {
@@ -137,7 +137,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/jboat.jpg",
         "url": "//static.b3log.org/images/timeline/jboat.jpg",
-        "caption": "Smile to see the distance<br><br>我是 <a href='https://hacpai.com/member/jiangzezhou' target='_blank'>Jboat (J)</a>"
+        "caption": "Smile to see the distance<br><br>我是 <a href='https://ld246.com/member/jiangzezhou' target='_blank'>Jboat (J)</a>"
       }
     },
     {
@@ -153,7 +153,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/mainlove.png",
         "url": "//static.b3log.org/images/timeline/mainlove.png",
-        "caption": "有人为你往前冲是一种幸福<br><br>我是 <a href='https://hacpai.com/member/mainlove' target='_blank'>Mainlove</a>，叫我 Y 吧！"
+        "caption": "有人为你往前冲是一种幸福<br><br>我是 <a href='https://ld246.com/member/mainlove' target='_blank'>Mainlove</a>，叫我 Y 吧！"
       }
     },
     {
@@ -196,12 +196,12 @@
       },
       "text": {
         "headline": "第三方皮肤",
-        "text": "不满意现有 Solo 的皮肤？<br/><span>想要和他人分享自己亲手做的皮肤？</span><br/>来<a href='https://hacpai.com/article/1493814851007' target='_blank'>开发第三方皮肤</a>吧！"
+        "text": "不满意现有 Solo 的皮肤？<br/><span>想要和他人分享自己亲手做的皮肤？</span><br/>来<a href='https://ld246.com/article/1493814851007' target='_blank'>开发第三方皮肤</a>吧！"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/skiner.jpg",
         "url": "//static.b3log.org/images/timeline/skiner.jpg",
-        "caption": " 第三方皮肤贡献者：<br/><br/><a href='https://github.com/noday/' target='_blank'>Noday</a>(左上), <a href='https://hacpai.com/member/An/' target='_blank'>Ansen</a>(右上) <br/><br/><a href='https://hacpai.com/member/oncereply/' target='_blank'>答复</a>(左下), <a href='http://www.gesong.org/' target='_blank'>Chevo</a>(右下)"
+        "caption": " 第三方皮肤贡献者：<br/><br/><a href='https://github.com/noday/' target='_blank'>Noday</a>(左上), <a href='https://ld246.com/member/An/' target='_blank'>Ansen</a>(右上) <br/><br/><a href='https://ld246.com/member/oncereply/' target='_blank'>答复</a>(左下), <a href='http://www.gesong.org/' target='_blank'>Chevo</a>(右下)"
       }
     },
     {
@@ -217,7 +217,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/ly.jpg",
         "url": "//static.b3log.org/images/timeline/ly.jpg",
-        "caption": "首位赞助者:<a href='http://www.lyzane.com' target='_blank'>胸毛</a><br><br>欢迎你也<a href='https://hacpai.com/sponsor' target='_blank'>成为赞助者</a>"
+        "caption": "首位赞助者:<a href='http://www.lyzane.com' target='_blank'>胸毛</a><br><br>欢迎你也<a href='https://ld246.com/sponsor' target='_blank'>成为赞助者</a>"
       }
     },
     {
@@ -233,7 +233,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/v20120219.jpg",
         "url": "//static.b3log.org/images/timeline/v20120219.jpg",
-        "caption": "今天也是 <a href='https://hacpai.com/member/e' target='_blank'>V</a> 的生日"
+        "caption": "今天也是 <a href='https://ld246.com/member/e' target='_blank'>V</a> 的生日"
       }
     },
     {
@@ -244,7 +244,7 @@
       },
       "text": {
         "headline": "DVLY 上海一夜",
-        "text": "有缘千里来相会，无缘对面不相识。<br/>在阴雨连绵的三月，团队成员 <a href='http://88250.b3log.org' target='_blank'>D</a>、<a href='http://vanessa.b3log.org' target='_blank'>V</a>、<a href='https://hacpai.com/member/lamb' target='_blank'>L</a>、<a href='https://hacpai.com/member/mainlove' target='_blank'>Y</a> 终于在上海会面了。<a href='https://hacpai.com/member/e' target='_blank'>DX</a>、<a href='http://jiangzezhou.b3log.org' target='_blank'>J</a> 就差你们俩了！"
+        "text": "有缘千里来相会，无缘对面不相识。<br/>在阴雨连绵的三月，团队成员 <a href='http://88250.b3log.org' target='_blank'>D</a>、<a href='http://vanessa.b3log.org' target='_blank'>V</a>、<a href='https://ld246.com/member/lamb' target='_blank'>L</a>、<a href='https://ld246.com/member/mainlove' target='_blank'>Y</a> 终于在上海会面了。<a href='https://ld246.com/member/e' target='_blank'>DX</a>、<a href='http://jiangzezhou.b3log.org' target='_blank'>J</a> 就差你们俩了！"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20120304.png",
@@ -260,7 +260,7 @@
       },
       "text": {
         "headline": "项目已经迁往 <a href='https://github.com/88250/solo' target='_blank'>GitHub</a>",
-        "text": "经过 <a href='http://88250.b3log.org' target='_blank'>D</a> 一次、二次的尝试，终于在 <a href='http://88250.b3log.org' target='_blank'>V</a> 第三次尝试的带动下，<a href='https://github.com/88250' target='_blank'>项目</a>及<a href='https://hacpai.com/article/1492881378588' target='_blank'>文档</a>顺利迁往 GitHub，欢迎大家围观。"
+        "text": "经过 <a href='http://88250.b3log.org' target='_blank'>D</a> 一次、二次的尝试，终于在 <a href='http://88250.b3log.org' target='_blank'>V</a> 第三次尝试的带动下，<a href='https://github.com/88250' target='_blank'>项目</a>及<a href='https://ld246.com/article/1492881378588' target='_blank'>文档</a>顺利迁往 GitHub，欢迎大家围观。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/move-github.png",
@@ -292,7 +292,7 @@
       },
       "text": {
         "headline": "Symphony",
-        "text": "虽然曾经对游戏有过恋战，对彼此失去过信任....<br/>但今天 <a href='http://vanessa.b3log.org/b3log-solo-055-released' target='_blank'>Solo 0.5.5</a> 和 <a href='https://hacpai.com/about' target='_blank'>Symphony</a> 一起发布了。<br>欢迎加入 <a href='https://hacpai.com' target='_blank'>Symphony</a>，与大家一起 - 平等 • 自由 • 奔放。"
+        "text": "虽然曾经对游戏有过恋战，对彼此失去过信任....<br/>但今天 <a href='http://vanessa.b3log.org/b3log-solo-055-released' target='_blank'>Solo 0.5.5</a> 和 <a href='https://ld246.com/about' target='_blank'>Symphony</a> 一起发布了。<br>欢迎加入 <a href='https://ld246.com' target='_blank'>Symphony</a>，与大家一起 - 平等 • 自由 • 奔放。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/lol.png",
@@ -313,7 +313,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/DASHU.jpg",
         "url": "//static.b3log.org/images/timeline/DASHU.jpg",
-        "caption": "我是有准备的菜鸟<a href='https://hacpai.com/member/DASHU' target='_blank'>大叔</a>"
+        "caption": "我是有准备的菜鸟<a href='https://ld246.com/member/DASHU' target='_blank'>大叔</a>"
       }
     },
     {
@@ -340,7 +340,7 @@
       },
       "text": {
         "headline": "Solo 0.6.5 发布",
-        "text": "经历了八个年头断断续续的风雨，<a href='http://88250.b3log.org' target='_blank'>D</a> & <a href='http://vanessa.b3log.org' target='_blank'>V</a> 终于走到了一起。此刻，<a href='http://88250.b3log.org/b3log-solo-061-released' target='_blank'>0.6.1</a> 也在祝福声中诞生了。<br/>随着 <a href='https://hacpai.com/member/DASHU/' target='_blank'>DASHU</a> 红本本的到手，<a href='http://88250.b3log.org/b3log-solo-065-released' target='_blank'>0.6.5</a> 同样也在幸福温馨中发布了。"
+        "text": "经历了八个年头断断续续的风雨，<a href='http://88250.b3log.org' target='_blank'>D</a> & <a href='http://vanessa.b3log.org' target='_blank'>V</a> 终于走到了一起。此刻，<a href='http://88250.b3log.org/b3log-solo-061-released' target='_blank'>0.6.1</a> 也在祝福声中诞生了。<br/>随着 <a href='https://ld246.com/member/DASHU/' target='_blank'>DASHU</a> 红本本的到手，<a href='http://88250.b3log.org/b3log-solo-065-released' target='_blank'>0.6.5</a> 同样也在幸福温馨中发布了。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20130817.jpg",
@@ -409,7 +409,7 @@
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20150301.jpg",
         "url": "//static.b3log.org/images/timeline/20150301.jpg",
-        "caption": "<a href='https://hacpai.com/article/1427255168447' target='_blank'>Solo 0.6.8</a> 也于 2015-3-25 发布了 ^^"
+        "caption": "<a href='https://ld246.com/article/1427255168447' target='_blank'>Solo 0.6.8</a> 也于 2015-3-25 发布了 ^^"
       }
     },
     {
@@ -419,13 +419,13 @@
         "day": 1
       },
       "text": {
-        "headline": "黑客派上线",
-        "text": "<a href='http://hacpai.com' target='_blank'>黑客派</a>程序员和设计师的聚集地，汇聚了来自程序技术领域的工程师和富有创意的设计师！<br/>PS: 在 7-19 <a href='http://hacpai.com/article/1437292757551' target='_blank'>Wide 1.3.0</a> 发布了 ^^"
+        "headline": "链滴上线",
+        "text": "<a href='http://ld246.com' target='_blank'>链滴</a>程序员和设计师的聚集地，汇聚了来自程序技术领域的工程师和富有创意的设计师！<br/>PS: 在 7-19 <a href='http://hacpai.com/article/1437292757551' target='_blank'>Wide 1.3.0</a> 发布了 ^^"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/hp.png",
         "url": "//static.b3log.org/images/timeline/hp.png",
-        "caption": "感谢 <a href='https://hacpai.com/member/youngski' target='_blank'>youngski</a> 曾今提供的 Logo"
+        "caption": "感谢 <a href='https://ld246.com/member/youngski' target='_blank'>youngski</a> 曾今提供的 Logo"
       }
     },
     {
@@ -436,12 +436,12 @@
       },
       "text": {
         "headline": "Solo 1.0.0 发布",
-        "text": "<a href='https://github.com/88250/noty' target='_blank'>Noty</a> 跳票了...<br/>经过 5 年时间的进化，在 Solo <a href='http://hacpai.com/article/1435544295119' target='_blank'>0.6.9</a> 后，终于迎来了一个大版本 <a href='http://hacpai.com/article/1442461563547' target='_blank'>1.0.0</a>，可以上传图片喽！"
+        "text": "<a href='https://github.com/88250/noty' target='_blank'>Noty</a> 跳票了...<br/>经过 5 年时间的进化，在 Solo <a href='http://ld246.com/article/1435544295119' target='_blank'>0.6.9</a> 后，终于迎来了一个大版本 <a href='http://hacpai.com/article/1442461563547' target='_blank'>1.0.0</a>，可以上传图片喽！"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/qiniu.jpg",
         "url": "//static.b3log.org/images/timeline/qiniu.jpg",
-        "caption": "还是贴<a href='http://hd.qiniu.com/7TDC?utm_campaign=zhibofabu&utm_source=heikepai&utm_medium=advposition&utm_content=png' target='_blank'>七牛</a>在 <a href='https://hacpai.com/article/1463035290924' target='_blank'>黑客派</a> 的赞助图好了"
+        "caption": "还是贴<a href='http://hd.qiniu.com/7TDC?utm_campaign=zhibofabu&utm_source=heikepai&utm_medium=advposition&utm_content=png' target='_blank'>七牛</a>在 <a href='https://ld246.com/article/1463035290924' target='_blank'>链滴</a> 的赞助图好了"
       }
     },
     {
@@ -452,7 +452,7 @@
       },
       "text": {
         "headline": "Sym 1.3.0 发布",
-        "text": "在10月1日国庆节，Solo <a href='https://hacpai.com/article/1443685401909' target='_blank'>1.1.0</a> 挥泪告别 GAE 的第二天，Sym <a href='https://hacpai.com/article/1443685401909' target='_blank'>1.3.0</a> 居然紧随发布啦！"
+        "text": "在10月1日国庆节，Solo <a href='https://ld246.com/article/1443685401909' target='_blank'>1.1.0</a> 挥泪告别 GAE 的第二天，Sym <a href='https://ld246.com/article/1443685401909' target='_blank'>1.3.0</a> 居然紧随发布啦！"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20151002.jpg",
@@ -468,12 +468,12 @@
       },
       "text": {
         "headline": "Solo 1.3.0 发布",
-        "text": "在12月2日 Solo <a href='http://hacpai.com/article/1449026390274' target='_blank'>1.2.0</a> 可以一键启动后，对 Docker 支持的 <a href='https://hacpai.com/article/1450507069972' target='_blank'>1.3.0</a> 也发布啦。<br/>这应该是史上最容易跑起来的博客系统了，欢迎大家<a href='https://pan.baidu.com/s/1dzk7SU' target='_blank'>下载</a>体验，也欢迎来 <a href='https://github.com/88250/solo' target='_blank'>Star/Fork</a>！"
+        "text": "在12月2日 Solo <a href='http://ld246.com/article/1449026390274' target='_blank'>1.2.0</a> 可以一键启动后，对 Docker 支持的 <a href='https://ld246.com/article/1450507069972' target='_blank'>1.3.0</a> 也发布啦。<br/>这应该是史上最容易跑起来的博客系统了，欢迎大家<a href='https://pan.baidu.com/s/1dzk7SU' target='_blank'>下载</a>体验，也欢迎来 <a href='https://github.com/88250/solo' target='_blank'>Star/Fork</a>！"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/one_key_start.jpg",
         "url": "//static.b3log.org/images/timeline/one_key_start.jpg",
-        "caption": "<a href='https://hacpai.com/article/1449026390274' target='_blank'>一键启动</a> & <a href='https://hacpai.com/article/1492881378588#toc_h3_12' target='_blank'>Docker 支持</a>"
+        "caption": "<a href='https://ld246.com/article/1449026390274' target='_blank'>一键启动</a> & <a href='https://ld246.com/article/1492881378588#toc_h3_12' target='_blank'>Docker 支持</a>"
       }
     },
     {
@@ -484,7 +484,7 @@
       },
       "text": {
         "headline": "API 开放",
-        "text": "Wide 居然半年没发布了，就在 3-5 <a href='https://hacpai.com/article/1457158841475' target='_blank'>1.5.0</a> 终于出场了！<br/>如今 <a href='http://hacpai.com' target='_blank'>黑客派</a> 内容 <a href='https://hacpai.com/article/1457158841475' target='_blank'>API</a> 也开放了，欢迎各位独立博客主进行连接。"
+        "text": "Wide 居然半年没发布了，就在 3-5 <a href='https://ld246.com/article/1457158841475' target='_blank'>1.5.0</a> 终于出场了！<br/>如今 <a href='http://ld246.com' target='_blank'>链滴</a> 内容 <a href='https://ld246.com/article/1457158841475' target='_blank'>API</a> 也开放了，欢迎各位独立博客主进行连接。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/API.jpg",
@@ -500,12 +500,12 @@
       },
       "text": {
         "headline": "Solo 1.4.0",
-        "text": "<a href='https://hacpai.com/article/1467125795481' target='_blank'>1.4.0</a> 对复杂的配置进行了简化 － 减而不简<br/><br/>在此对黑客派的 <a href='https://hacpai.com/article/1463035290924' target='_blank'>2016 赞助商</a> 进行感谢"
+        "text": "<a href='https://ld246.com/article/1467125795481' target='_blank'>1.4.0</a> 对复杂的配置进行了简化 － 减而不简<br/><br/>在此对社区的 <a href='https://ld246.com/article/1463035290924' target='_blank'>2016 赞助商</a> 进行感谢"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/GitOpen.png",
         "url": "//static.b3log.org/images/timeline/GitOpen.png",
-        "caption": "B3log 开源组织<a href='https://hacpai.com/article/1463025124998' target='_blank'>欢迎</a>你加入！"
+        "caption": "B3log 开源组织<a href='https://ld246.com/article/1463025124998' target='_blank'>欢迎</a>你加入！"
       }
     },
     {
@@ -516,7 +516,7 @@
       },
       "text": {
         "headline": "小薇 2.2.0 发布",
-        "text": "一个用 Java 写的 QQ 聊天机器人 Web 服务，可以用于社群互动<br><br><small>• 发现有“感兴趣”的内容时进行智能回复<br>• 推送到消息至论坛某个接口上，<a href='https://hacpai.com/community' target='_blank'>实例</a></small>"
+        "text": "一个用 Java 写的 QQ 聊天机器人 Web 服务，可以用于社群互动<br><br><small>• 发现有“感兴趣”的内容时进行智能回复<br>• 推送到消息至论坛某个接口上，<a href='https://ld246.com/community' target='_blank'>实例</a></small>"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20161019.jpg",
@@ -532,7 +532,7 @@
       },
       "text": {
         "headline": "Sym & Solo & Wide",
-        "text": "&star; <a href='https://github.com/88250/Symphony' target='_blank'>Symphony</a>: <a href='https://hacpai.com/article/1469762913967' target='_blank'>1.4.0</a>, <a href='https://hacpai.com/article/1471574493590' target='_blank'>1.5.0</a>, <a href='https://hacpai.com/article/1476845608414' target='_blank'>1.6.0</a>, <a href='https://hacpai.com/article/1481077678502' target='_blank'>1.7.0</a>, <a href='https://hacpai.com/article/1482730362728' target='_blank'>1.8.0</a><br><br>&starf; <a href='https://github.com/88250/Solo' target='_blank'>Solo</a>: <a href='https://hacpai.com/article/1470807556709' target='_blank'>1.5.0</a>, <a href='https://hacpai.com/article/1473387238770' target='_blank'>1.6.0</a>, <a href='https://hacpai.com/article/1478745509611' target='_blank'>1.7.0</a><br><br>&star; <a href='https://github.com/88250/Wide' target='_blank'>Wide</a>: <a href='https://hacpai.com/article/1472609944493' target='_blank'>1.5.1</a>, <a href='https://hacpai.com/article/1481769670521' target='_blank'>1.5.2</a>"
+        "text": "&star; <a href='https://github.com/88250/Symphony' target='_blank'>Symphony</a>: <a href='https://ld246.com/article/1469762913967' target='_blank'>1.4.0</a>, <a href='https://ld246.com/article/1471574493590' target='_blank'>1.5.0</a>, <a href='https://ld246.com/article/1476845608414' target='_blank'>1.6.0</a>, <a href='https://ld246.com/article/1481077678502' target='_blank'>1.7.0</a>, <a href='https://ld246.com/article/1482730362728' target='_blank'>1.8.0</a><br><br>&starf; <a href='https://github.com/88250/Solo' target='_blank'>Solo</a>: <a href='https://ld246.com/article/1470807556709' target='_blank'>1.5.0</a>, <a href='https://ld246.com/article/1473387238770' target='_blank'>1.6.0</a>, <a href='https://ld246.com/article/1478745509611' target='_blank'>1.7.0</a><br><br>&star; <a href='https://github.com/88250/Wide' target='_blank'>Wide</a>: <a href='https://ld246.com/article/1472609944493' target='_blank'>1.5.1</a>, <a href='https://ld246.com/article/1481769670521' target='_blank'>1.5.2</a>"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20161226.jpg",
@@ -548,7 +548,7 @@
       },
       "text": {
         "headline": "『书单』计划",
-        "text": "<a href='https://hacpai.com/tag/hacpai' target='_blank'>黑客派</a>社区的一个纸质书共享计划，所有书均来自捐赠，原则上当前的书籍持有者有义务将书寄送给需要的会员<br><br>PS: <a href='https://hacpai.com/article/1484210995211' target='_blank'>Sym 1.9.0</a>, <a href='https://hacpai.com/article/1485143241940' target='_blank'>Solo 1.8.0</a> 也发布了哦！"
+        "text": "<a href='https://ld246.com/tag/ld246' target='_blank'>链滴</a>社区的一个纸质书共享计划，所有书均来自捐赠，原则上当前的书籍持有者有义务将书寄送给需要的会员<br><br>PS: <a href='https://ld246.com/article/1484210995211' target='_blank'>Sym 1.9.0</a>, <a href='https://ld246.com/article/1485143241940' target='_blank'>Solo 1.8.0</a> 也发布了哦！"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20170123.png",
@@ -564,12 +564,12 @@
       },
       "text": {
         "headline": "B3log 2、3 季度发布列表",
-        "text": "&star; Solo: <a href='https://hacpai.com/article/1487662607431' target='_blank'>1.9.0</a>，<a href='https://hacpai.com/article/1492099966859' target='_blank'>2.0.0</a>，<a href='https://hacpai.com/article/1495722503519' target='_blank'>2.1.0</a>，<a href='https://hacpai.com/article/1499692251155' target='_blank'>2.2.0</a>，<a href='https://hacpai.com/article/1504150339315' target='_blank'>2.3.0</a><br/><br/>&starf; Sym：<a href='https://hacpai.com/article/1488854554507' target='_blank'>2.0.0</a>，<a href='https://hacpai.com/article/1495121357038' target='_blank'>2.1.0</a>，<a href='https://hacpai.com/article/1500543226433' target='_blank'>商业版优势</a><br/><br/>&star; Go 语言 IDE - <a href='https://hacpai.com/article/1502247172047' target='_blank'>Wide 1.5.3</a>"
+        "text": "&star; Solo: <a href='https://ld246.com/article/1487662607431' target='_blank'>1.9.0</a>，<a href='https://ld246.com/article/1492099966859' target='_blank'>2.0.0</a>，<a href='https://ld246.com/article/1495722503519' target='_blank'>2.1.0</a>，<a href='https://ld246.com/article/1499692251155' target='_blank'>2.2.0</a>，<a href='https://ld246.com/article/1504150339315' target='_blank'>2.3.0</a><br/><br/>&starf; Sym：<a href='https://ld246.com/article/1488854554507' target='_blank'>2.0.0</a>，<a href='https://ld246.com/article/1495121357038' target='_blank'>2.1.0</a>，<a href='https://ld246.com/article/1500543226433' target='_blank'>商业版优势</a><br/><br/>&star; Go 语言 IDE - <a href='https://ld246.com/article/1502247172047' target='_blank'>Wide 1.5.3</a>"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20170831.png",
         "url": "//static.b3log.org/images/timeline/20170831.png",
-        "caption": "新 Logo，新<a href='https://hacpai.com/article/1492881378588' target='_blank'>文档</a><br><br><a href='https://hacpai.com/article/1488603534762' target='_blank'>社区客户端 API 文档</a>"
+        "caption": "新 Logo，新<a href='https://ld246.com/article/1492881378588' target='_blank'>文档</a><br><br><a href='https://ld246.com/article/1488603534762' target='_blank'>社区客户端 API 文档</a>"
       }
     },
     {
@@ -580,12 +580,12 @@
       },
       "text": {
         "headline": "火力全开",
-        "text": "本季度新上线了 <a href='https://hacpai.com/article/1514431709556' target='_blank'>Go 开源博客平台 Pipe</a>、<a href='//sym.b3log.org' target='_blank'>Sym 官网主页</a> 以及<a href='https://hacpai.com/article/1514135920272' target='_blank'>百度网盘高速下载 Chrome 插件</a><br><br>&star; Solo: <a href='https://hacpai.com/article/1506050482466' target='_blank'>2.4.0 - 全文搜索</a>，<a href='https://hacpai.com/article/1513746439653' target='_blank'>2.5.0 - 数据导出</a><br/><br/>&starf; QQ 聊天机器人小薇 <a href='https://hacpai.com/article/1510281180427' target='_blank'>2.2.2</a><br/><br/>&star; Sym：<a href='https://hacpai.com/article/1509516824402' target='_blank'>2.2.0</a>，<a href='https://hacpai.com/article/1513141691403' target='_blank'>2.3.0</a> - 引入<a href='https://hacpai.com/article/1511015097370' target='_blank'>星际文件系统</a>"
+        "text": "本季度新上线了 <a href='https://ld246.com/article/1514431709556' target='_blank'>Go 开源博客平台 Pipe</a>、<a href='//sym.b3log.org' target='_blank'>Sym 官网主页</a> 以及<a href='https://ld246.com/article/1514135920272' target='_blank'>百度网盘高速下载 Chrome 插件</a><br><br>&star; Solo: <a href='https://ld246.com/article/1506050482466' target='_blank'>2.4.0 - 全文搜索</a>，<a href='https://ld246.com/article/1513746439653' target='_blank'>2.5.0 - 数据导出</a><br/><br/>&starf; QQ 聊天机器人小薇 <a href='https://ld246.com/article/1510281180427' target='_blank'>2.2.2</a><br/><br/>&star; Sym：<a href='https://ld246.com/article/1509516824402' target='_blank'>2.2.0</a>，<a href='https://ld246.com/article/1513141691403' target='_blank'>2.3.0</a> - 引入<a href='https://ld246.com/article/1511015097370' target='_blank'>星际文件系统</a>"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20171228.png",
         "url": "//static.b3log.org/images/timeline/20171228.png",
-        "caption": "又一个开源博客 <a href='https://github.com/88250/pipe' target='_blank'>Pipe</a>，<a href='https://hacpai.com/article/1513761942333' target='_blank'>用户指南</a>"
+        "caption": "又一个开源博客 <a href='https://github.com/88250/pipe' target='_blank'>Pipe</a>，<a href='https://ld246.com/article/1513761942333' target='_blank'>用户指南</a>"
       }
     },
     {
@@ -596,12 +596,12 @@
       },
       "text": {
         "headline": "B3T",
-        "text": "&star; 基于 ETH，<a href='https://hacpai.com/article/1516547810228' target='_blank'>B3log 社区币 B3T 发布</a>了！<br><br>&starf; 为了实现共享激励与社区基础价值的统一，B3log 社区启动了<a href='https://github.com/88250/chainbook' target='_blank'>链书（Chainbook）</a> 产品。 <br><br>&star; <a href='https://github.com/88250/pipe' target='_blank'>Pipe</a> 趁热打铁，继续发布了 <a href='https://hacpai.com/article/1515641797476' target='_blank'>1.1.0</a> 和 <a href='https://hacpai.com/article/1516343873822' target='_blank'>1.2.0</a>，同时也添加了 Next 和 Medium <a href='https://hacpai.com/article/1512550354920' target='_blank'>主题</a>。"
+        "text": "&star; 基于 ETH，<a href='https://ld246.com/article/1516547810228' target='_blank'>B3log 社区币 B3T 发布</a>了！<br><br>&starf; 为了实现共享激励与社区基础价值的统一，B3log 社区启动了<a href='https://github.com/88250/chainbook' target='_blank'>链书（Chainbook）</a> 产品。 <br><br>&star; <a href='https://github.com/88250/pipe' target='_blank'>Pipe</a> 趁热打铁，继续发布了 <a href='https://ld246.com/article/1515641797476' target='_blank'>1.1.0</a> 和 <a href='https://ld246.com/article/1516343873822' target='_blank'>1.2.0</a>，同时也添加了 Next 和 Medium <a href='https://ld246.com/article/1512550354920' target='_blank'>主题</a>。"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20180121.jpg",
         "url": "//static.b3log.org/images/timeline/20180121.jpg",
-        "caption": "快来设置你的<a href='https://hacpai.com/settings/wallet' target='_blank'>钱包地址</a>，领取 B3T"
+        "caption": "快来设置你的<a href='https://ld246.com/settings/wallet' target='_blank'>钱包地址</a>，领取 B3T"
       }
     },
     {
@@ -612,12 +612,12 @@
       },
       "text": {
         "headline": "创业的第一个春天",
-        "text": "&star; 创业就需要加快脚步 <br>Pipe：<a href='https://hacpai.com/article/1518154723635' target='_blank'>1.3.0</a>，<a href='https://hacpai.com/article/1521599743284' target='_blank'>1.4.0</a><br>Sym：<a href='https://hacpai.com/article/1517970640599' target='_blank'>2.4.0</a>，<a href='https://hacpai.com/article/1520990044918' target='_blank'>2.5.0</a>， <a href='https://hacpai.com/article/1523320655615' target='_blank'>2.6.0</a><br>Solo：<a href='https://hacpai.com/article/1517468377777' target='_blank'>2.6.0</a>，<a href='https://hacpai.com/article/1520345077734' target='_blank'>2.7.0</a>， <a href='https://hacpai.com/article/1523932059345' target='_blank'>2.8.0</a><br><br>&starf; 每个项目都需要跟进<br>Java Web 开源框架 <a href='https://hacpai.com/article/1522908946586' target='_blank'>Latke 2.4.1</a> 发布，ORM 生成改进<br>QQ 聊天机器人<a href='https://hacpai.com/article/1522805732657' target='_blank'>小薇 2.3.0</a> 发布！<br><br>&star; 成立云南链滴科技有限公司"
+        "text": "&star; 创业就需要加快脚步 <br>Pipe：<a href='https://ld246.com/article/1518154723635' target='_blank'>1.3.0</a>，<a href='https://ld246.com/article/1521599743284' target='_blank'>1.4.0</a><br>Sym：<a href='https://ld246.com/article/1517970640599' target='_blank'>2.4.0</a>，<a href='https://ld246.com/article/1520990044918' target='_blank'>2.5.0</a>， <a href='https://ld246.com/article/1523320655615' target='_blank'>2.6.0</a><br>Solo：<a href='https://ld246.com/article/1517468377777' target='_blank'>2.6.0</a>，<a href='https://ld246.com/article/1520345077734' target='_blank'>2.7.0</a>， <a href='https://ld246.com/article/1523932059345' target='_blank'>2.8.0</a><br><br>&starf; 每个项目都需要跟进<br>Java Web 开源框架 <a href='https://ld246.com/article/1522908946586' target='_blank'>Latke 2.4.1</a> 发布，ORM 生成改进<br>QQ 聊天机器人<a href='https://ld246.com/article/1522805732657' target='_blank'>小薇 2.3.0</a> 发布！<br><br>&star; 成立云南链滴科技有限公司"
       },
       "media": {
-        "thumbnail": "https://img.hacpai.com/bing/20180412.jpg?imageView2/2/w/260/h/187/format/jpg/interlace/0/q",
-        "url": "https://img.hacpai.com/bing/20180412.jpg?imageView2/2/w/260/h/187/format/jpg/interlace/0/q",
-        "caption": "在春天种下<a href='https://hacpai.com/article/1524191993505' target='_blank'>创业</a>的种子，期待秋天的丰收"
+        "thumbnail": "https://b3logfile.com/bing/20180412.jpg?imageView2/2/w/260/h/187/format/jpg/interlace/0/q",
+        "url": "https://b3logfile.com/bing/20180412.jpg?imageView2/2/w/260/h/187/format/jpg/interlace/0/q",
+        "caption": "在春天种下<a href='https://ld246.com/article/1524191993505' target='_blank'>创业</a>的种子，期待秋天的丰收"
       }
     },
     {
@@ -628,12 +628,12 @@
       },
       "text": {
         "headline": "链书 M1 上线",
-        "text": "&star; 在第二版博客 Pipe 后，书单也有了第二个版本<a href='https://hacpai.com/article/1529545076617' target='_blank'>链书</a><br><br>&starf; 商业版的驱动下 Sym 起飞了：<a href='https://hacpai.com/article/1525364510282' target='_blank'>2.7.0 - 首页改版</a>，<a href='https://hacpai.com/article/1527210884306' target='_blank'>2.8.0 - 新增微博功能</a>，<a href='https://hacpai.com/article/1528862109296' target='_blank'>3.0.0 - 新增问答帖</a><br><br>&star; Pipe：<a href='https://hacpai.com/article/1524641193727' target='_blank'>1.5.0</a>，<a href='https://hacpai.com/article/1527731300003' target='_blank'>1.6.0 - 支持 sitemap</a><br>Solo：<a href='https://hacpai.com/article/1526519602248' target='_blank'>2.9.0 - 支持后台文章搜索</a>"
+        "text": "&star; 在第二版博客 Pipe 后，书单也有了第二个版本<a href='https://ld246.com/article/1529545076617' target='_blank'>链书</a><br><br>&starf; 商业版的驱动下 Sym 起飞了：<a href='https://ld246.com/article/1525364510282' target='_blank'>2.7.0 - 首页改版</a>，<a href='https://ld246.com/article/1527210884306' target='_blank'>2.8.0 - 新增微博功能</a>，<a href='https://ld246.com/article/1528862109296' target='_blank'>3.0.0 - 新增问答帖</a><br><br>&star; Pipe：<a href='https://ld246.com/article/1524641193727' target='_blank'>1.5.0</a>，<a href='https://ld246.com/article/1527731300003' target='_blank'>1.6.0 - 支持 sitemap</a><br>Solo：<a href='https://ld246.com/article/1526519602248' target='_blank'>2.9.0 - 支持后台文章搜索</a>"
       },
       "media": {
         "thumbnail": "https://static.hacpai.com/images/chainbook-weapp.png",
         "url": "https://static.hacpai.com/images/chainbook-weapp.png",
-        "caption": "<a href='https://hacpai.com/tag/chainbook' target='_blank'>链书</a>是区块链纸质书交易平台"
+        "caption": "<a href='https://ld246.com/tag/chainbook' target='_blank'>链书</a>是区块链纸质书交易平台"
       }
     },
     {
@@ -644,12 +644,12 @@
       },
       "text": {
         "headline": "Solo 迎来了看板娘",
-        "text": "边<a href='https://hacpai.com/article/1532583489064' target='_blank'>旅游</a>边打码 <br><br>&star; Java 社区平台 Sym：<a href='https://hacpai.com/article/1531357995424' target='_blank'>3.1.0</a>，<a href='https://hacpai.com/article/1533179927765' target='_blank'>3.2.0</a><br><br>&starf; Java 开源博客 Solo：<a href='https://hacpai.com/article/1530067238194' target='_blank'>2.9.1</a>，<a href='https://hacpai.com/article/1532567800804' target='_blank'>2.9.2 - 看板娘来了</a><br><br>&star; Go 博客平台 <a href='https://hacpai.com/article/1530584729120' target='_blank'>Pipe 1.7.0</a> 发布，支持本地账号"
+        "text": "边<a href='https://ld246.com/article/1532583489064' target='_blank'>旅游</a>边打码 <br><br>&star; Java 社区平台 Sym：<a href='https://ld246.com/article/1531357995424' target='_blank'>3.1.0</a>，<a href='https://ld246.com/article/1533179927765' target='_blank'>3.2.0</a><br><br>&starf; Java 开源博客 Solo：<a href='https://ld246.com/article/1530067238194' target='_blank'>2.9.1</a>，<a href='https://ld246.com/article/1532567800804' target='_blank'>2.9.2 - 看板娘来了</a><br><br>&star; Go 博客平台 <a href='https://ld246.com/article/1530584729120' target='_blank'>Pipe 1.7.0</a> 发布，支持本地账号"
       },
       "media": {
-        "thumbnail": "https://img.hacpai.com/file/2018/08/fdac6ba946b347178f3a026a45e729b1_1.png",
-        "url": "https://img.hacpai.com/file/2018/08/fdac6ba946b347178f3a026a45e729b1_1.png",
-        "caption": "<a href='https://hacpai.com/article/1532590847178' target='_blank'>创业的第一个夏天</a>需要萝莉控来降降温"
+        "thumbnail": "https://b3logfile.com/file/2018/08/fdac6ba946b347178f3a026a45e729b1_1.png",
+        "url": "https://b3logfile.com/file/2018/08/fdac6ba946b347178f3a026a45e729b1_1.png",
+        "caption": "<a href='https://ld246.com/article/1532590847178' target='_blank'>创业的第一个夏天</a>需要萝莉控来降降温"
       }
     },
     {
@@ -660,7 +660,7 @@
       },
       "text": {
         "headline": "迎来多家重量级客户",
-        "text": "&star; Java 社区平台 Sym：<a href='https://hacpai.com/article/1535506742626' target='_blank'>3.3.0 - 支持停用账号</a>，<a href='https://hacpai.com/article/1536195705605' target='_blank'>3.4.0 - 配置标签广告位</a>，<a href='https://hacpai.com/article/1538015735056' target='_blank'>3.4.1</a>，<a href='https://hacpai.com/article/1540345039105' target='_blank'>3.4.2</a><br><br>&starf; 博客系统：<a href='https://hacpai.com/article/1534989198402' target='_blank'>Solo 2.9.3</a>，<a href='https://hacpai.com/article/1537109312363' target='_blank'>Solo 2.9.4</a>，<a href='https://hacpai.com/article/1533785855258' target='_blank'>Pipe 1.8.0 - 添加摘要</a>，<a href='https://hacpai.com/article/1536719459514' target='_blank'>Pipe 1.8.1 - 新主题 Fara</a>"
+        "text": "&star; Java 社区平台 Sym：<a href='https://ld246.com/article/1535506742626' target='_blank'>3.3.0 - 支持停用账号</a>，<a href='https://ld246.com/article/1536195705605' target='_blank'>3.4.0 - 配置标签广告位</a>，<a href='https://ld246.com/article/1538015735056' target='_blank'>3.4.1</a>，<a href='https://ld246.com/article/1540345039105' target='_blank'>3.4.2</a><br><br>&starf; 博客系统：<a href='https://ld246.com/article/1534989198402' target='_blank'>Solo 2.9.3</a>，<a href='https://ld246.com/article/1537109312363' target='_blank'>Solo 2.9.4</a>，<a href='https://ld246.com/article/1533785855258' target='_blank'>Pipe 1.8.0 - 添加摘要</a>，<a href='https://ld246.com/article/1536719459514' target='_blank'>Pipe 1.8.1 - 新主题 Fara</a>"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20181024.png",
@@ -675,8 +675,8 @@
         "day": 22
       },
       "text": {
-        "headline": "<a href='https://hacpai.com/article/1540781279972' target='_blank'>创业的第一个秋天</a>",
-        "text": "&star; 产品发布公告：<br><a href='https://hacpai.com/article/1539139945647' target='_blank'>Solo 2.9.5</a> - 大量细节优化，<a href='https://hacpai.com/article/1542252980969' target='_blank'>Solo 2.9.6</a> - 细节优化<br><a href='https://hacpai.com/article/1539737195745' target='_blank'>Pipe 1.8.2</a> - 支持 GitHub 登录，<a href='https://hacpai.com/article/1541123073767' target='_blank'>Pipe 1.8.3</a> - 支持 PJAX<br><a href='https://hacpai.com/article/1541646094222' target='_blank'>Sym 3.4.0</a> - 可自定义首页跳转，<a href='https://hacpai.com/article/1542856681254' target='_blank'>Sym 3.4.4</a> - 加入审计日志<br><br>&starf; <a href='https://hacpai.com/article/1538577113305' target='_blank'>协慌网</a>，一个汉化 Stack Overflow 的网站<br><br>&star; 链书快应用已上架多家手机平台"
+        "headline": "<a href='https://ld246.com/article/1540781279972' target='_blank'>创业的第一个秋天</a>",
+        "text": "&star; 产品发布公告：<br><a href='https://ld246.com/article/1539139945647' target='_blank'>Solo 2.9.5</a> - 大量细节优化，<a href='https://ld246.com/article/1542252980969' target='_blank'>Solo 2.9.6</a> - 细节优化<br><a href='https://ld246.com/article/1539737195745' target='_blank'>Pipe 1.8.2</a> - 支持 GitHub 登录，<a href='https://ld246.com/article/1541123073767' target='_blank'>Pipe 1.8.3</a> - 支持 PJAX<br><a href='https://ld246.com/article/1541646094222' target='_blank'>Sym 3.4.0</a> - 可自定义首页跳转，<a href='https://ld246.com/article/1542856681254' target='_blank'>Sym 3.4.4</a> - 加入审计日志<br><br>&starf; <a href='https://ld246.com/article/1538577113305' target='_blank'>协慌网</a>，一个汉化 Stack Overflow 的网站<br><br>&star; 链书快应用已上架多家手机平台"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20181122.gif",
@@ -692,7 +692,7 @@
       },
       "text": {
         "headline": "Vditor 发布",
-        "text": "&star; 产品发布公告：<br><a href='https://hacpai.com/article/1544494910517' target='_blank'>Solo 2.9.7</a>，<a href='https://hacpai.com/article/1547612387838' target='_blank'>Solo 2.9.8</a>，<a href='https://hacpai.com/article/1542252980969' target='_blank'>Solo 2.9.9</a><br><a href='https://hacpai.com/article/1543455416741' target='_blank'>Pipe 1.8.4</a>，<a href='https://hacpai.com/article/1546567261120' target='_blank'>Pipe 1.8.5</a>，<a href='https://hacpai.com/article/1548305562049' target='_blank'>Pipe 1.8.6</a><br><a href='https://hacpai.com/article/1544143529252' target='_blank'>Sym 3.4.5</a> - 重构控制器层，<a href='https://hacpai.com/article/1547084819536' target='_blank'>Sym 3.4.6</a> - 优化 Markdown<br><br>&starf; <a href='https://github.com/vanessa219/vditor' target='_blank'>Vditor</a>，一款浏览器端的 Markdown 编辑器。<br><br>&star; <a href='https://hacpai.com/article/1549100368149' target='_blank'>创业的第一个冬天</a>"
+        "text": "&star; 产品发布公告：<br><a href='https://ld246.com/article/1544494910517' target='_blank'>Solo 2.9.7</a>，<a href='https://ld246.com/article/1547612387838' target='_blank'>Solo 2.9.8</a>，<a href='https://ld246.com/article/1542252980969' target='_blank'>Solo 2.9.9</a><br><a href='https://ld246.com/article/1543455416741' target='_blank'>Pipe 1.8.4</a>，<a href='https://ld246.com/article/1546567261120' target='_blank'>Pipe 1.8.5</a>，<a href='https://ld246.com/article/1548305562049' target='_blank'>Pipe 1.8.6</a><br><a href='https://ld246.com/article/1544143529252' target='_blank'>Sym 3.4.5</a> - 重构控制器层，<a href='https://ld246.com/article/1547084819536' target='_blank'>Sym 3.4.6</a> - 优化 Markdown<br><br>&starf; <a href='https://github.com/vanessa219/vditor' target='_blank'>Vditor</a>，一款浏览器端的 Markdown 编辑器。<br><br>&star; <a href='https://ld246.com/article/1549100368149' target='_blank'>创业的第一个冬天</a>"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/brand/vditor-512.png",
@@ -708,7 +708,7 @@
       },
       "text": {
         "headline": "星火发布",
-        "text": "&star; 产品发布公告：<br>Solo：<a href=\"https://hacpai.com/article/1550329964759\" target=\"_blank\">3.0.0</a>，<a href=\"https://hacpai.com/article/1551334344078\" target=\"_blank\">3.1.0</a>，<a href=\"https://hacpai.com/article/1551746941427\" target=\"_blank\">3.2.0</a>，<a href=\"https://hacpai.com/article/1552828065463\" target=\"_blank\">3.3.0</a>，<a href=\"https://hacpai.com/article/1553561154369\" target=\"_blank\">3.4.0</a>，<a href=\"https://hacpai.com/tag/solo\" target=\"_blank\">3.5.0</a>，<a href=\"https://hacpai.com/tag/solo\" target=\"_blank\">3.6.0</a>，<a href=\"https://hacpai.com/tag/solo\" target=\"_blank\">3.6.1</a>，<a href=\"https://hacpai.com/tag/solo\" target=\"_blank\">3.6.2</a><br>Sym：<a href=\"https://hacpai.com/article/1550843264718\" target=\"_blank\">3.4.7</a>，<a href=\"https://hacpai.com/tag/sym\" target=\"_blank\">3.4.8</a>，<a href=\"https://hacpai.com/tag/sym\" target=\"_blank\">3.5.0</a><br>Pipe：<a href=\"https://hacpai.com/article/1550369171082\" target=\"_blank\">1.8.7</a>，<a href=\"https://hacpai.com/article/1551361665694\" target=\"_blank\">1.8.8</a>，<a href=\"https://hacpai.com/tag/pipe\" target=\"_blank\">1.8.9</a><br>Vditor：<a href=\"https://hacpai.com/article/1552528089282\" target=\"_blank\">1.0.0</a>，<a href=\"https://hacpai.com/article/1553142368547\" target=\"_blank\">1.1.11</a>，<a href=\"https://hacpai.com/article/1554340754530\" target=\"_blank\">1.2.10</a>，<a href=\"https://hacpai.com/article/1557025312424\" target=\"_blank\">1.3.5</a>，<a href=\"https://hacpai.com/article/1559786637041\" target=\"_blank\">1.4.7</a><br><br>&starf; 新品发布：<br><a target=\"_blank\" href=\"https://github.com/88250/we-are-under-attack\">\uD83D\uDE31We are under attack!</a>：你的服务器、电脑、电视、电冰箱、空调、洗衣机、摄像头等一切可联网设备是否已经沦为肉鸡？<br><a target=\"_blank\" href=\"https://github.com/88250/starfire\">\uD83C\uDF1FStarfire</a>：一个分布式的内容分享讨论社区，星星之火可以燎原。<br><a target=\"_blank\" href=\"https://github.com/88250/gulu\">⭕Gulu</a>：Go 语言常用工具库，这个轱辘还算圆！<br><a target=\"_blank\" href=\"https://github.com/vanessa219/30-seconds-zh_CN\">\uD83D\uDCD4每天 30 秒系列</a>：精选前端问题集，坚持每天 30 秒。<br><br>&star; <a href='https://hacpai.com/article/1555989598304' target='_blank'>创业的第二个春天</a>"
+        "text": "&star; 产品发布公告：<br>Solo：<a href=\"https://ld246.com/article/1550329964759\" target=\"_blank\">3.0.0</a>，<a href=\"https://ld246.com/article/1551334344078\" target=\"_blank\">3.1.0</a>，<a href=\"https://ld246.com/article/1551746941427\" target=\"_blank\">3.2.0</a>，<a href=\"https://ld246.com/article/1552828065463\" target=\"_blank\">3.3.0</a>，<a href=\"https://ld246.com/article/1553561154369\" target=\"_blank\">3.4.0</a>，<a href=\"https://ld246.com/tag/solo\" target=\"_blank\">3.5.0</a>，<a href=\"https://ld246.com/tag/solo\" target=\"_blank\">3.6.0</a>，<a href=\"https://ld246.com/tag/solo\" target=\"_blank\">3.6.1</a>，<a href=\"https://ld246.com/tag/solo\" target=\"_blank\">3.6.2</a><br>Sym：<a href=\"https://ld246.com/article/1550843264718\" target=\"_blank\">3.4.7</a>，<a href=\"https://ld246.com/tag/sym\" target=\"_blank\">3.4.8</a>，<a href=\"https://ld246.com/tag/sym\" target=\"_blank\">3.5.0</a><br>Pipe：<a href=\"https://ld246.com/article/1550369171082\" target=\"_blank\">1.8.7</a>，<a href=\"https://ld246.com/article/1551361665694\" target=\"_blank\">1.8.8</a>，<a href=\"https://ld246.com/tag/pipe\" target=\"_blank\">1.8.9</a><br>Vditor：<a href=\"https://ld246.com/article/1552528089282\" target=\"_blank\">1.0.0</a>，<a href=\"https://ld246.com/article/1553142368547\" target=\"_blank\">1.1.11</a>，<a href=\"https://ld246.com/article/1554340754530\" target=\"_blank\">1.2.10</a>，<a href=\"https://ld246.com/article/1557025312424\" target=\"_blank\">1.3.5</a>，<a href=\"https://ld246.com/article/1559786637041\" target=\"_blank\">1.4.7</a><br><br>&starf; 新品发布：<br><a target=\"_blank\" href=\"https://github.com/88250/we-are-under-attack\">\uD83D\uDE31We are under attack!</a>：你的服务器、电脑、电视、电冰箱、空调、洗衣机、摄像头等一切可联网设备是否已经沦为肉鸡？<br><a target=\"_blank\" href=\"https://github.com/88250/starfire\">\uD83C\uDF1FStarfire</a>：一个分布式的内容分享讨论社区，星星之火可以燎原。<br><a target=\"_blank\" href=\"https://github.com/88250/gulu\">⭕Gulu</a>：Go 语言常用工具库，这个轱辘还算圆！<br><a target=\"_blank\" href=\"https://github.com/vanessa219/30-seconds-zh_CN\">\uD83D\uDCD4每天 30 秒系列</a>：精选前端问题集，坚持每天 30 秒。<br><br>&star; <a href='https://ld246.com/article/1555989598304' target='_blank'>创业的第二个春天</a>"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20190618.png",
@@ -724,7 +724,7 @@
       },
       "text": {
         "headline": "Sym 北京实施",
-        "text": "&star; 产品发布公告：<br>Sym：<a href=\"https://b3log.org/sym\" target=\"_blank\">3.5.1</a>，<a href=\"https://b3log.org/sym\" target=\"_blank\">3.6.0</a><br>Solo：<a href=\"https://hacpai.com/tag/solo\" target=\"_blank\">3.6.3</a>，<a href=\"https://hacpai.com/tag/solo\" target=\"_blank\">3.6.4</a>，<a href=\"https://hacpai.com/tag/solo\" target=\"_blank\">3.6.5</a>，<a href=\"https://hacpai.com/tag/solo\" target=\"_blank\">3.6.6</a>，<a href=\"https://hacpai.com/article/1573408539790\" target=\"_blank\">3.6.7</a><br>Vditor：<a href=\"https://hacpai.com/article/1562641853805\" target=\"_blank\">1.5.12</a>，<a href=\"https://hacpai.com/article/1565073452052\" target=\"_blank\">1.6.12</a>，<a href=\"https://hacpai.com/article/1567396809227\" target=\"_blank\">1.7.25</a>，<a href=\"https://hacpai.com/article/1570506183920\" target=\"_blank\">1.8.16</a>，<a href=\"https://hacpai.com/article/1573441349802\" target=\"_blank\">1.9.7</a>，<a href=\"https://hacpai.com/article/1576208265154\" target=\"_blank\">1.10.11</a><br>Pipe：<a href=\"https://hacpai.com/tag/pipe\" target=\"_blank\">1.9.0</a><br><br>&starf; 不负好时光：<br><a target=\"_blank\" href=\"https://hacpai.com/article/1571292817039\">三亚 9 天 8 夜穷游</a><br>\n<a target=\"_blank\" href=\"https://hacpai.com/article/1576766001404\">北京 19 日工作游</a><br><br>&star; 艰苦创业：<br><a href='https://hacpai.com/article/1565318802920' target='_blank'>第二个夏天</a><br><a href='https://hacpai.com/article/1573402018349' target='_blank'>第二个秋天</a>"
+        "text": "&star; 产品发布公告：<br>Sym：<a href=\"https://b3log.org/sym\" target=\"_blank\">3.5.1</a>，<a href=\"https://b3log.org/sym\" target=\"_blank\">3.6.0</a><br>Solo：<a href=\"https://ld246.com/tag/solo\" target=\"_blank\">3.6.3</a>，<a href=\"https://ld246.com/tag/solo\" target=\"_blank\">3.6.4</a>，<a href=\"https://ld246.com/tag/solo\" target=\"_blank\">3.6.5</a>，<a href=\"https://ld246.com/tag/solo\" target=\"_blank\">3.6.6</a>，<a href=\"https://ld246.com/article/1573408539790\" target=\"_blank\">3.6.7</a><br>Vditor：<a href=\"https://ld246.com/article/1562641853805\" target=\"_blank\">1.5.12</a>，<a href=\"https://ld246.com/article/1565073452052\" target=\"_blank\">1.6.12</a>，<a href=\"https://ld246.com/article/1567396809227\" target=\"_blank\">1.7.25</a>，<a href=\"https://ld246.com/article/1570506183920\" target=\"_blank\">1.8.16</a>，<a href=\"https://ld246.com/article/1573441349802\" target=\"_blank\">1.9.7</a>，<a href=\"https://ld246.com/article/1576208265154\" target=\"_blank\">1.10.11</a><br>Pipe：<a href=\"https://ld246.com/tag/pipe\" target=\"_blank\">1.9.0</a><br><br>&starf; 不负好时光：<br><a target=\"_blank\" href=\"https://ld246.com/article/1571292817039\">三亚 9 天 8 夜穷游</a><br>\n<a target=\"_blank\" href=\"https://ld246.com/article/1576766001404\">北京 19 日工作游</a><br><br>&star; 艰苦创业：<br><a href='https://ld246.com/article/1565318802920' target='_blank'>第二个夏天</a><br><a href='https://ld246.com/article/1573402018349' target='_blank'>第二个秋天</a>"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/20191214.jpg",
@@ -740,7 +740,7 @@
       },
       "text": {
         "headline": "发布思源笔记",
-        "text": "&star; 产品发布公告：<br>思源笔记：<a href=\"https://hacpai.com/article/1588255793960\" target=\"_blank\">1.0.0</a><br>\nSym：<a href=\"https://github.com/88250/symphony/releases/tag/v3.6.1\" target=\"_blank\">3.6.1</a>，<a href=\"https://github.com/88250/symphony/releases/tag/v3.6.2\" target=\"_blank\">3.6.2</a>，<a href=\"https://github.com/88250/symphony/releases/tag/v3.6.3\" target=\"_blank\">3.6.3</a><br>Solo：<a href=\"https://github.com/88250/solo/releases/tag/v3.6.8\" target=\"_blank\">3.6.8</a>，<a href=\"https://github.com/88250/solo/releases/tag/v3.7.0\" target=\"_blank\">3.7.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v3.8.0\" target=\"_blank\">3.8.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v3.9.0\" target=\"_blank\">3.9.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v4.0.0\" target=\"_blank\">4.0.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v4.1.0\" target=\"_blank\">4.1.0</a><br><a href=\"//vditor.b3log.org\">Vditor</a>：<a href=\"https://hacpai.com/article/1578715364597\" target=\"_blank\">2.0.15</a>，<a href=\"https://hacpai.com/article/1581247827418\" target=\"_blank\">2.1.15</a>，<a href=\"https://hacpai.com/article/1583904122190\" target=\"_blank\">2.2.19</a>，<a href=\"https://hacpai.com/article/1586226263615\" target=\"_blank\">3.0.12 支持 Typora</a>，<a href=\"https://hacpai.com/article/1588725299444\" target=\"_blank\">3.1.23 复制到公众号 </a>，<a href=\"https://hacpai.com/article/1591587693876\" target=\"_blank\">3.2.12 发布官网 </a><br>Pipe：<a href=\"https://github.com/88250/pipe/releases/tag/v1.9.1\" target=\"_blank\">1.9.1</a>，<a href=\"https://github.com/88250/pipe/releases/tag/v2.0.0\" target=\"_blank\">2.0.0</a><br><br>&starf; 不负好时光：<br><a target=\"_blank\" href=\"https://hacpai.com/article/1577537173858\">黑客派第一届年终总结赠书活动</a><br><br>&star; 艰苦创业：<br><a href='https://hacpai.com/article/1581219038316' target='_blank'>第二个冬天</a><br><a href='https://hacpai.com/article/1588210663196' target='_blank'>第三个春天</a>"
+        "text": "&star; 产品发布公告：<br>思源笔记：<a href=\"https://ld246.com/article/1588255793960\" target=\"_blank\">1.0.0</a><br>\nSym：<a href=\"https://github.com/88250/symphony/releases/tag/v3.6.1\" target=\"_blank\">3.6.1</a>，<a href=\"https://github.com/88250/symphony/releases/tag/v3.6.2\" target=\"_blank\">3.6.2</a>，<a href=\"https://github.com/88250/symphony/releases/tag/v3.6.3\" target=\"_blank\">3.6.3</a><br>Solo：<a href=\"https://github.com/88250/solo/releases/tag/v3.6.8\" target=\"_blank\">3.6.8</a>，<a href=\"https://github.com/88250/solo/releases/tag/v3.7.0\" target=\"_blank\">3.7.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v3.8.0\" target=\"_blank\">3.8.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v3.9.0\" target=\"_blank\">3.9.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v4.0.0\" target=\"_blank\">4.0.0</a>，<a href=\"https://github.com/88250/solo/releases/tag/v4.1.0\" target=\"_blank\">4.1.0</a><br><a href=\"//vditor.b3log.org\">Vditor</a>：<a href=\"https://ld246.com/article/1578715364597\" target=\"_blank\">2.0.15</a>，<a href=\"https://ld246.com/article/1581247827418\" target=\"_blank\">2.1.15</a>，<a href=\"https://ld246.com/article/1583904122190\" target=\"_blank\">2.2.19</a>，<a href=\"https://ld246.com/article/1586226263615\" target=\"_blank\">3.0.12 支持 Typora</a>，<a href=\"https://ld246.com/article/1588725299444\" target=\"_blank\">3.1.23 复制到公众号 </a>，<a href=\"https://ld246.com/article/1591587693876\" target=\"_blank\">3.2.12 发布官网 </a><br>Pipe：<a href=\"https://github.com/88250/pipe/releases/tag/v1.9.1\" target=\"_blank\">1.9.1</a>，<a href=\"https://github.com/88250/pipe/releases/tag/v2.0.0\" target=\"_blank\">2.0.0</a><br><br>&starf; 不负好时光：<br><a target=\"_blank\" href=\"https://ld246.com/article/1577537173858\">链滴第一届年终总结赠书活动</a><br><br>&star; 艰苦创业：<br><a href='https://ld246.com/article/1581219038316' target='_blank'>第二个冬天</a><br><a href='https://ld246.com/article/1588210663196' target='_blank'>第三个春天</a>"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/brand/siyuan-512.png",

@@ -24,7 +24,7 @@
 var Index = {
   getNews: function () {
     $.ajax({
-      url: 'https://hacpai.com/apis/news',
+      url: 'https://ld246.com/apis/news',
       type: 'GET',
       dataType: 'jsonp',
       jsonp: 'callback',

@@ -94364,21 +94364,21 @@
     function node_modulesVditorDistIndexMinJs(module, exports, __webpack_require__) {
       /*!
        * Vditor v3.5.1 - A markdown editor written in TypeScript.
-       *   
+       *
        * MIT License
-       * 
+       *
        * Copyright (c) 2018-present B3log 开源, b3log.org
-       * 
+       *
        * Permission is hereby granted, free of charge, to any person obtaining a copy
        * of this software and associated documentation files (the "Software"), to deal
        * in the Software without restriction, including without limitation the rights
        * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
        * copies of the Software, and to permit persons to whom the Software is
        * furnished to do so, subject to the following conditions:
-       * 
+       *
        * The above copyright notice and this permission notice shall be included in all
        * copies or substantial portions of the Software.
-       * 
+       *
        * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
        * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
        * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -94386,7 +94386,7 @@
        * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
        * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
        * SOFTWARE.
-       * 
+       *
        */
       !function (e, t) {
         true ? module.exports = t() : undefined;
@@ -99447,7 +99447,7 @@
             function t(t, n) {
               var r = e.call(this, t, n) || this;
               return r.element.children[0].addEventListener(Object(u.b)(), function (e) {
-                e.preventDefault(), t.tip.show('<div style="margin-bottom:14px;font-size: 14px;line-height: 22px;min-width:300px;max-width: 360px;display: flex;">\n<div style="margin-top: 14px;flex: 1">\n    <div>Markdown 使用指南</div>\n    <ul style="list-style: none">\n        <li><a href="https://hacpai.com/article/1583308420519" target="_blank">语法速查手册</a></li>\n        <li><a href="https://hacpai.com/article/1583129520165" target="_blank">基础语法</a></li>\n        <li><a href="https://hacpai.com/article/1583305480675" target="_blank">扩展语法</a></li>\n        <li><a href="https://hacpai.com/article/1582778815353" target="_blank">键盘快捷键</a></li>\n    </ul>\n</div>\n<div style="margin-top: 14px;flex: 1">\n    <div>Vditor 支持</div>\n    <ul style="list-style: none">\n        <li><a href="https://github.com/Vanessa219/vditor/issues" target="_blank">Issues</a></li>\n        <li><a href="https://hacpai.com/tag/vditor" target="_blank">官方讨论区</a></li>\n        <li><a href="https://hacpai.com/article/1549638745630" target="_blank">开发手册</a></li>\n        <li><a href="https://hacpai.com/guide/markdown" target="_blank">演示地址</a></li>\n    </ul>\n</div></div>', 0);
+                e.preventDefault(), t.tip.show('<div style="margin-bottom:14px;font-size: 14px;line-height: 22px;min-width:300px;max-width: 360px;display: flex;">\n<div style="margin-top: 14px;flex: 1">\n    <div>Markdown 使用指南</div>\n    <ul style="list-style: none">\n        <li><a href="https://ld246.com/article/1583308420519" target="_blank">语法速查手册</a></li>\n        <li><a href="https://ld246.com/article/1583129520165" target="_blank">基础语法</a></li>\n        <li><a href="https://ld246.com/article/1583305480675" target="_blank">扩展语法</a></li>\n        <li><a href="https://ld246.com/article/1582778815353" target="_blank">键盘快捷键</a></li>\n    </ul>\n</div>\n<div style="margin-top: 14px;flex: 1">\n    <div>Vditor 支持</div>\n    <ul style="list-style: none">\n        <li><a href="https://github.com/Vanessa219/vditor/issues" target="_blank">Issues</a></li>\n        <li><a href="https://ld246.com/tag/vditor" target="_blank">官方讨论区</a></li>\n        <li><a href="https://ld246.com/article/1549638745630" target="_blank">开发手册</a></li>\n        <li><a href="https://ld246.com/guide/markdown" target="_blank">演示地址</a></li>\n    </ul>\n</div></div>', 0);
               }), r;
             }
 
@@ -99513,7 +99513,7 @@
             function t(t, n) {
               var r = e.call(this, t, n) || this;
               return r.element.children[0].addEventListener(Object(u.b)(), function (e) {
-                e.preventDefault(), t.tip.show('<div style="max-width: 520px; font-size: 14px;line-height: 22px;margin-bottom: 14px;">\n<p style="text-align: center;margin: 14px 0">\n    <em>下一代的 Markdown 编辑器，为未来而构建</em>\n</p>\n<div style="display: flex;margin-bottom: 14px;flex-wrap: wrap;align-items: center">\n    <img src="https://cdn.jsdelivr.net/npm/vditor/src/assets/images/logo.png" style="margin: 0 auto;height: 68px"/>\n    <div>&nbsp;&nbsp;</div>\n    <div style="flex: 1;min-width: 250px">\n        Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。\n        它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供<a target="_blank" href="https://b3log.org/siyuan">桌面版</a>。\n    </div>\n</div>\n<div style="display: flex;flex-wrap: wrap;">\n    <ul style="list-style: none;flex: 1;min-width:148px">\n        <li>\n        项目地址：<a href="https://b3log.org/vditor" target="_blank">b3log.org/vditor</a>\n        </li>\n        <li>\n        开源协议：MIT\n        </li>\n    </ul>\n    <ul style="list-style: none;margin-right: 18px">\n        <li>\n        组件版本：Vditor v' + a.b + " / Lute v" + Lute.Version + '\n        </li>\n        <li>\n        赞助捐赠：<a href="https://hacpai.com/sponsor" target="_blank">https://hacpai.com/sponsor</a>\n        </li>\n    </ul>\n</div>\n</div>', 0);
+                e.preventDefault(), t.tip.show('<div style="max-width: 520px; font-size: 14px;line-height: 22px;margin-bottom: 14px;">\n<p style="text-align: center;margin: 14px 0">\n    <em>下一代的 Markdown 编辑器，为未来而构建</em>\n</p>\n<div style="display: flex;margin-bottom: 14px;flex-wrap: wrap;align-items: center">\n    <img src="https://cdn.jsdelivr.net/npm/vditor/src/assets/images/logo.png" style="margin: 0 auto;height: 68px"/>\n    <div>&nbsp;&nbsp;</div>\n    <div style="flex: 1;min-width: 250px">\n        Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。\n        它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供<a target="_blank" href="https://b3log.org/siyuan">桌面版</a>。\n    </div>\n</div>\n<div style="display: flex;flex-wrap: wrap;">\n    <ul style="list-style: none;flex: 1;min-width:148px">\n        <li>\n        项目地址：<a href="https://b3log.org/vditor" target="_blank">b3log.org/vditor</a>\n        </li>\n        <li>\n        开源协议：MIT\n        </li>\n    </ul>\n    <ul style="list-style: none;margin-right: 18px">\n        <li>\n        组件版本：Vditor v' + a.b + " / Lute v" + Lute.Version + '\n        </li>\n        <li>\n        赞助捐赠：<a href="https://ld246.com/sponsor" target="_blank">https://ld246.com/sponsor</a>\n        </li>\n    </ul>\n</div>\n</div>', 0);
               }), r;
             }
 
@@ -100225,7 +100225,7 @@
               var e, t, n;
               this.options && (this.options.toolbar ? this.options.toolbar = this.mergeToolbar(this.options.toolbar) : this.options.toolbar = this.mergeToolbar(this.defaultOptions.toolbar), (null === (t = null === (e = this.options.preview) || void 0 === e ? void 0 : e.theme) || void 0 === t ? void 0 : t.list) && (this.defaultOptions.preview.theme.list = this.options.preview.theme.list), (null === (n = this.options.hint) || void 0 === n ? void 0 : n.emoji) && (this.defaultOptions.hint.emoji = this.options.hint.emoji));
               var r = Object(_n.a)(this.defaultOptions, this.options);
-              if (r.cache.enable && !r.cache.id) throw new Error("need options.cache.id, see https://hacpai.com/article/1549638745630#options");
+              if (r.cache.enable && !r.cache.id) throw new Error("need options.cache.id, see https://ld246.com/article/1549638745630#options");
               return r;
             }, e.prototype.mergeToolbar = function (e) {
               var t = this,
@@ -100637,7 +100637,7 @@
                 }
               }, t = document.getElementById(t));
               var i = new xn(n).merge();
-              if (!["en_US", "ja_JP", "ko_KR", "zh_CN"].includes(i.lang)) throw new Error("options.lang error, see https://hacpai.com/article/1549638745630#options");
+              if (!["en_US", "ja_JP", "ko_KR", "zh_CN"].includes(i.lang)) throw new Error("options.lang error, see https://ld246.com/article/1549638745630#options");
               return r.vditor = {
                 currentMode: i.mode,
                 element: t,
@@ -100711,7 +100711,7 @@
             }, t.prototype.disabledCache = function () {
               this.vditor.options.cache.enable = !1;
             }, t.prototype.enableCache = function () {
-              if (!this.vditor.options.cache.id) throw new Error("need options.cache.id, see https://hacpai.com/article/1549638745630#options");
+              if (!this.vditor.options.cache.id) throw new Error("need options.cache.id, see https://ld246.com/article/1549638745630#options");
               this.vditor.options.cache.enable = !0;
             }, t.prototype.html2md = function (e) {
               return this.vditor.lute.HTML2Md(e);
