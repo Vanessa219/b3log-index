@@ -420,7 +420,7 @@
       },
       "text": {
         "headline": "链滴上线",
-        "text": "<a href='http://ld246.com' target='_blank'>链滴</a>程序员和设计师的聚集地，汇聚了来自程序技术领域的工程师和富有创意的设计师！<br/>PS: 在 7-19 <a href='http://hacpai.com/article/1437292757551' target='_blank'>Wide 1.3.0</a> 发布了 ^^"
+        "text": "<a href='http://ld246.com' target='_blank'>链滴</a>程序员和设计师的聚集地，汇聚了来自程序技术领域的工程师和富有创意的设计师！<br/>PS: 在 7-19 <a href='https://ld246.com/article/1437292757551' target='_blank'>Wide 1.3.0</a> 发布了 ^^"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/hp.png",
@@ -436,7 +436,7 @@
       },
       "text": {
         "headline": "Solo 1.0.0 发布",
-        "text": "<a href='https://github.com/88250/noty' target='_blank'>Noty</a> 跳票了...<br/>经过 5 年时间的进化，在 Solo <a href='http://ld246.com/article/1435544295119' target='_blank'>0.6.9</a> 后，终于迎来了一个大版本 <a href='http://hacpai.com/article/1442461563547' target='_blank'>1.0.0</a>，可以上传图片喽！"
+        "text": "<a href='https://github.com/88250/noty' target='_blank'>Noty</a> 跳票了...<br/>经过 5 年时间的进化，在 Solo <a href='http://ld246.com/article/1435544295119' target='_blank'>0.6.9</a> 后，终于迎来了一个大版本 <a href='https://ld246.com/article/1442461563547' target='_blank'>1.0.0</a>，可以上传图片喽！"
       },
       "media": {
         "thumbnail": "//static.b3log.org/images/timeline/qiniu.jpg",
@@ -631,8 +631,8 @@
         "text": "&star; 在第二版博客 Pipe 后，书单也有了第二个版本<a href='https://ld246.com/article/1529545076617' target='_blank'>链书</a><br><br>&starf; 商业版的驱动下 Sym 起飞了：<a href='https://ld246.com/article/1525364510282' target='_blank'>2.7.0 - 首页改版</a>，<a href='https://ld246.com/article/1527210884306' target='_blank'>2.8.0 - 新增微博功能</a>，<a href='https://ld246.com/article/1528862109296' target='_blank'>3.0.0 - 新增问答帖</a><br><br>&star; Pipe：<a href='https://ld246.com/article/1524641193727' target='_blank'>1.5.0</a>，<a href='https://ld246.com/article/1527731300003' target='_blank'>1.6.0 - 支持 sitemap</a><br>Solo：<a href='https://ld246.com/article/1526519602248' target='_blank'>2.9.0 - 支持后台文章搜索</a>"
       },
       "media": {
-        "thumbnail": "https://static.hacpai.com/images/chainbook-weapp.png",
-        "url": "https://static.hacpai.com/images/chainbook-weapp.png",
+        "thumbnail": "https://static.ld246.com/images/chainbook-weapp.png",
+        "url": "https://static.ld246.com/images/chainbook-weapp.png",
         "caption": "<a href='https://ld246.com/tag/chainbook' target='_blank'>链书</a>是区块链纸质书交易平台"
       }
     },
