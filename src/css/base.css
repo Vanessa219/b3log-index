@@ -180,6 +180,10 @@ blockquote {
     clear: both;
 }
 
+.fn-20 {
+    height: 20px;
+}
+
 .fn-50 {
     height: 50px;
 }
@@ -499,6 +503,10 @@ blockquote {
     }
 
     .fn-50 {
+        height: 20px;
+    }
+
+    .fn-20 {
         height: 20px;
     }
 
