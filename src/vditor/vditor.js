@@ -34,7 +34,7 @@ const updateCode = (btnElement, code) => {
   Vditor.codeRender(demoCodeElement)
 }
 
-addStyle('https://cdn.jsdelivr.net/npm/vditor@3.5.1/dist/index.css')
+addStyle('https://cdn.jsdelivr.net/npm/vditor@3.5.5/dist/index.css')
 document.addEventListener('DOMContentLoaded', function () {
   var hm = document.createElement('script')
   hm.src = 'https://hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c'
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
   s.parentNode.insertBefore(hm, s)
 
   if (document.getElementById('vditorComments')) {
-    addScript('https://cdn.jsdelivr.net/npm/vditor@3.5.1/dist/index.min.js',
+    addScript('https://cdn.jsdelivr.net/npm/vditor@3.5.5/dist/index.min.js',
       () => {
         const demoCodeElement = document.getElementById('vditorDemoCode')
         if (demoCodeElement) {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof vditorScript !== 'undefined') {
           vditorScript()
         }
-        addScript('https://cdn.jsdelivr.net/npm/vcmt@1.2.8/dist/index.min.js',
+        addScript('https://cdn.jsdelivr.net/npm/vcmt@1.2.11/dist/index.min.js',
           () => {
             const vcomment = new Vcomment({
               id: 'vditorComments',

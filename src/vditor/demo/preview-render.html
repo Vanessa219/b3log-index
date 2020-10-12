@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphvizL - Vditor</title>
+    <title>功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/flowchart - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="https://static.b3log.org/css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphvizL - Vditor"/>
+    <meta property="og:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/flowchart - Vditor"/>
     <meta property="og:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -28,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
-    <meta name="twitter:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphvizL - Vditor"/>
+    <meta name="twitter:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/flowchart - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://b3log.org/vditor"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -59,7 +59,7 @@
 <div class="wrapper">
     相关 <a href="https://ld246.com/article/1549638745630#static-methods" target="_blank">API</a>：
     Vditor.md2html()，Vditor.outlineRender()，Vditor.mathRender()，Vditor.mindmapRender()，Vditor.chartRender()，Vditor.mermaidRender()，
-    Vditor.abcRender()，<a href="https://ld246.com/article/1589813914768" target="_blank">Vditor.mediaRender()</a>，Vditor.highlightRender()，Vditor.codeRender()，Vditor.graphvizRender()
+    Vditor.abcRender()，<a href="https://ld246.com/article/1589813914768" target="_blank">Vditor.mediaRender()</a>，Vditor.highlightRender()，Vditor.codeRender()，Vditor.graphvizRender(),Vditor.flowchartRender()
     <div class="fn-50"></div>
     <button class="btn btn--small" onclick="render('md2html', this)">Markdown2HTML</button> &nbsp;
     <button class="btn btn--small" onclick="render('outlineRender', this)">大纲</button> &nbsp;
@@ -72,6 +72,7 @@
     <button class="btn btn--small" onclick="render('highlightRender', this)">代码高亮</button> &nbsp;
     <button class="btn btn--small" onclick="render('codeRender', this)">代码复制</button> &nbsp;
     <button class="btn btn--small" onclick="render('graphvizRender', this)">graphviz</button>
+    <button class="btn btn--small" onclick="render('flowchartRender', this)">flowchart</button>
     <div id="preview" class="vditor-reset"></div>
     <div id="vditorDemoCode" class="vditor-reset">
         <pre><code class="javascript">点击按钮查看效果
@@ -295,6 +296,22 @@ digraph finite_state_machine {
     q2 -> q1 [ label = "b" ];
     q2 -> q2 [ label = "b" ];
 }
+\`\`\``,
+    flowchartRender: `\`\`\`flowchart
+st=>start: Start:>http://www.google.com[blank]
+e=>end:>http://www.google.com
+op1=>operation: My Operation
+sub1=>subroutine: My Subroutine
+cond=>condition: Yes
+or No?:>http://www.google.com
+io=>inputoutput: catch something...
+para=>parallel: parallel tasks
+
+st->op1->cond
+cond(yes)->io->e
+cond(no)->para
+para(path1, bottom)->sub1(right)->op1
+para(path2, top)->op1
 \`\`\``,
     md2html: `## 💡 简介
 
