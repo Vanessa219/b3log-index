@@ -40,6 +40,11 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
+
+        #comments .fn-flex > button {
+            margin-left: 10px;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -274,9 +279,10 @@ ${text}&lt;br>
         const cmtElement = document.createElement('div')
         cmtElement.setAttribute('data-id', id)
         cmtElement.innerHTML = `<div>
-${text}<br>
-<button>删除</button><br>
-<input class="vcomment__input">
+${text}
+<div class="fn-flex">
+    <input class="vcomment__input"><button>删除</button>
+</div>
 </div>`
         cmtElement.value = text
         document.getElementById('comments').
@@ -288,7 +294,6 @@ ${text}<br>
     vditor = new Vditor('vditor', {
       mode: 'wysiwyg',
       height: 360,
-      cache: false,
       value: '选中文字后即可进行评论',
       comment: {
         enable: true,
@@ -296,9 +301,10 @@ ${text}<br>
           const cmtElement = document.createElement('div')
           cmtElement.setAttribute('data-id', id)
           cmtElement.innerHTML = `<div>
-${text}<br>
-<button>删除</button><br>
-<input class="vcomment__input">
+${text}
+<div class="fn-flex">
+    <input class="vcomment__input"><button>删除</button>
+</div>
 </div>`
           cmtElement.value = text
           document.getElementById('comments').
