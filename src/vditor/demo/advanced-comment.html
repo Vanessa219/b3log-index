@@ -57,21 +57,13 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://ld246.com/article/1549638745630#options-upload" target="_blank">API</a>：
-    options.upload，<a href="https://ld246.com/article/1549638745630#methods" target="_blank">isUploading()</a><br>
+    相关 <a href="https://ld246.com/article/1549638745630" target="_blank">API</a>：
+    options.comment，Vditor.getCommentIds，Vditor.hlCommentIds，Vditor.unHlCommentIds，Vditor.removeCommentIds<br>
     ⚠️ 注意事项：
     <ul style="margin-left: 30px">
-        <li>需配置 upload.url 后才能进行上传</li>
-        <li>基本配置：upload.url，upload.max，upload.linkToImgUrl，upload.extraData，upload.multiple，upload.fieldName</li>
-        <li>安全配置：upload.token，upload.withCredentials，upload.headers，upload.accept</li>
-        <li>方法：upload.success，upload.error，upload.filename，upload.validate，upload.handler，upload.format，upload.file，upload.setHeaders，upload.linkToImgCallback</li>
-        <li>使用 upload.handler 需更新上传后地址可参考<a href="https://github.com/Vanessa219/vditor/blob/master/src/ts/upload/index.ts#L76">index.ts#L76</a>，非特殊需求不建议使用。</li>
-        <li>如数据结构不一致时，请使用 upload.format</li>
+        <li>目前仅支持 wysiwyg 模式</li>
     </ul>
     <div class="fn-50"></div>
-    <div class="actions">
-        <button class="btn btn--small" onclick="alert(vditor.isUploading())">检测文件是否在上传中</button>
-    </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
         <pre><code class="javascript">  new Vditor('vditor', {
@@ -121,24 +113,119 @@
 <script>
   let vditor
   vditorScript = () => {
+    const bindCommentEvent = (cmtElement) => {
+      const inputElement = cmtElement.querySelector('input')
+      const id = cmtElement.getAttribute('data-id')
+      inputElement.addEventListener('blur', () => {
+        if (inputElement.value.trim() === '') {
+          vditor.removeCommentIds([id])
+          cmtElement.remove()
+        }
+      })
+      cmtElement.querySelector('button').addEventListener('click', () => {
+        vditor.removeCommentIds([id])
+        removeComment(cmtElement, id)
+      })
+
+      cmtElement.addEventListener('mouseover', () => {
+        vditor.hlCommentIds([id])
+      })
+
+      cmtElement.addEventListener('mouseout', () => {
+        vditor.unHlCommentIds([id])
+      })
+    }
+
+    const removeComment = (cmtElement, id) => {
+      cmtElement.remove()
+
+      let cmts = localStorage.getItem('cmts')
+      if (!cmts) {
+        return
+      } else {
+        cmts = JSON.parse(cmts)
+      }
+      cmts.find((item, index) => {
+        if (item.id === id) {
+          cmts.splice(index, 1)
+          return true
+        }
+      })
+      localStorage.setItem('cmts', JSON.stringify(cmts))
+    }
+
+    const renderComments = (ids) => {
+      let cmts = localStorage.getItem('cmts')
+      if (!cmts) {
+        localStorage.setItem('cmts', '[]')
+        cmts = []
+      } else {
+        cmts = JSON.parse(cmts)
+      }
+
+      ids.forEach(id => {
+        let text = ''
+        cmts.find((item) => {
+          if (item.id === id) {
+            text = item.text
+            return true
+          }
+        })
+
+        const cmtElement = document.createElement('div')
+        cmtElement.setAttribute('data-id', id)
+        cmtElement.innerHTML = `<div>
+${text}<br>
+<button>删除</button><br>
+<input>
+</div>`
+        cmtElement.value = text
+        document.getElementById('comments').
+          insertAdjacentElement('beforeend', cmtElement)
+        bindCommentEvent(cmtElement)
+      })
+    }
+
     vditor = new Vditor('vditor', {
-      cache: {
-        enable: false,
-      },
-      upload: {
-        accept: 'image/*,.mp3, .wav, .rar',
-        token: 'test',
-        url: '/api/upload/editor',
-        linkToImgUrl: '/api/upload/fetch',
-        filename (name) {
-          return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
-            replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
-            replace('/\\s/g', '')
+      mode: 'wysiwyg',
+      height: 360,
+      cache: false,
+      value: '选中文字后即可进行评论',
+      comment: {
+        enable: true,
+        add (id, text) {
+          const cmtElement = document.createElement('div')
+          cmtElement.setAttribute('data-id', id)
+          cmtElement.innerHTML = `<div>
+${text}<br>
+<button>删除</button><br>
+<input>
+</div>`
+          cmtElement.value = text
+          document.getElementById('comments').
+            insertAdjacentElement('beforeend', cmtElement)
+          bindCommentEvent(cmtElement)
+          cmtElement.querySelector('input').focus()
+          let cmts = localStorage.getItem('cmts')
+          if (!cmts) {
+            localStorage.setItem('cmts', '[]')
+            cmts = []
+          } else {
+            cmts = JSON.parse(cmts)
+          }
+          cmts.push({id, text})
+          localStorage.setItem('cmts', JSON.stringify(cmts))
+        },
+        remove (ids) {
+          ids.forEach((id) => {
+            removeComment(document.querySelector(`#comments div[data-id="${id}"]`),
+              id)
+          })
         },
       },
-      height: 360,
-      typewriterMode: true,
-      value: '由于跨域问题，可前往[完整示例](https://ld246.com/guide/markdown)进行体验，前往 [API](https://ld246.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
+      after () {
+        renderComments(vditor.getCommentIds())
+      },
     })
   }
 </script>
