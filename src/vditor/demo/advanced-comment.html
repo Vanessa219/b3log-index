@@ -64,28 +64,127 @@
         <li>目前仅支持 wysiwyg 模式</li>
     </ul>
     <div class="fn-50"></div>
-    <div id="vditor"></div>
+    <div class="fn-flex">
+        <div id="vditor"></div>
+        <div id="comments" style="margin-left: 20px"></div>
+    </div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">  new Vditor('vditor', {
-    cache: {
-      enable: false,
-    },
-    upload: {
-      accept: 'image/*,.mp3, .wav, .rar',
-      token: 'test',
-      url: '/api/upload/editor',
-      linkToImgUrl: '/api/upload/fetch',
-      filename (name) {
-        return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
-          replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
-          replace('/\\s/g', '')
+        <pre><code class="javascript">
+    const bindCommentEvent = (cmtElement) => {
+      const inputElement = cmtElement.querySelector('input')
+      const id = cmtElement.getAttribute('data-id')
+      inputElement.addEventListener('blur', () => {
+        if (inputElement.value.trim() === '') {
+          vditor.removeCommentIds([id])
+          cmtElement.remove()
+        }
+      })
+      cmtElement.querySelector('button').addEventListener('click', () => {
+        vditor.removeCommentIds([id])
+        removeComment(cmtElement, id)
+      })
+
+      cmtElement.addEventListener('mouseover', () => {
+        vditor.hlCommentIds([id])
+      })
+
+      cmtElement.addEventListener('mouseout', () => {
+        vditor.unHlCommentIds([id])
+      })
+    }
+
+    const removeComment = (cmtElement, id) => {
+      cmtElement.remove()
+
+      let cmts = localStorage.getItem('cmts')
+      if (!cmts) {
+        return
+      } else {
+        cmts = JSON.parse(cmts)
+      }
+      cmts.find((item, index) => {
+        if (item.id === id) {
+          cmts.splice(index, 1)
+          return true
+        }
+      })
+      localStorage.setItem('cmts', JSON.stringify(cmts))
+    }
+
+    const renderComments = (ids) => {
+      let cmts = localStorage.getItem('cmts')
+      if (!cmts) {
+        localStorage.setItem('cmts', '[]')
+        cmts = []
+      } else {
+        cmts = JSON.parse(cmts)
+      }
+
+      ids.forEach(id => {
+        let text = ''
+        cmts.find((item) => {
+          if (item.id === id) {
+            text = item.text
+            return true
+          }
+        })
+
+        const cmtElement = document.createElement('div')
+        cmtElement.setAttribute('data-id', id)
+        cmtElement.innerHTML = `&lt;div>
+${text}&lt;br>
+&lt;button>删除&lt;/button>&lt;br>
+&lt;input class="vcomment__input">
+&lt;/div>`
+        cmtElement.value = text
+        document.getElementById('comments').
+          insertAdjacentElement('beforeend', cmtElement)
+        bindCommentEvent(cmtElement)
+      })
+    }
+
+    vditor = new Vditor('vditor', {
+      mode: 'wysiwyg',
+      height: 360,
+      cache: false,
+      value: '选中文字后即可进行评论',
+      comment: {
+        enable: true,
+        add (id, text) {
+          const cmtElement = document.createElement('div')
+          cmtElement.setAttribute('data-id', id)
+          cmtElement.innerHTML = `&lt;div>
+${text}&lt;br>
+&lt;button>删除&lt;/button>&lt;br>
+&lt;input class="vcomment__input">
+&lt;/div>`
+          cmtElement.value = text
+          document.getElementById('comments').
+            insertAdjacentElement('beforeend', cmtElement)
+          bindCommentEvent(cmtElement)
+          cmtElement.querySelector('input').focus()
+          let cmts = localStorage.getItem('cmts')
+          if (!cmts) {
+            localStorage.setItem('cmts', '[]')
+            cmts = []
+          } else {
+            cmts = JSON.parse(cmts)
+          }
+          cmts.push({id, text})
+          localStorage.setItem('cmts', JSON.stringify(cmts))
+        },
+        remove (ids) {
+          ids.forEach((id) => {
+            removeComment(document.querySelector(`#comments div[data-id="${id}"]`),
+              id)
+          })
+        },
       },
-    },
-    height: 360,
-    typewriterMode: true,
-    value: '由于跨域问题，可前往[完整示例](https://ld246.com/guide/markdown)进行体验，前往 [API](https://ld246.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
-  })
-</code></pre>
+      after () {
+        renderComments(vditor.getCommentIds())
+      },
+    })
+        </code></pre>
     </div>
     <div class="fn-100"></div>
     <div class="fn-clear">
@@ -177,7 +276,7 @@
         cmtElement.innerHTML = `<div>
 ${text}<br>
 <button>删除</button><br>
-<input>
+<input class="vcomment__input">
 </div>`
         cmtElement.value = text
         document.getElementById('comments').
@@ -199,7 +298,7 @@ ${text}<br>
           cmtElement.innerHTML = `<div>
 ${text}<br>
 <button>删除</button><br>
-<input>
+<input class="vcomment__input">
 </div>`
           cmtElement.value = text
           document.getElementById('comments').
