@@ -4,12 +4,12 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>预览：延迟解析/HTML 字符串处理/DOM 处理/预览请求/自定义工具栏 - Vditor</title>
+    <title>画词评论 - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta name="copyright" content="B3log"/>
-    <link rel="canonical" href="https://b3log.org/vditor/demo/advanced-preview.html">
+    <link rel="canonical" href="https://b3log.org/vditor/demo/advanced-upload.html">
     <link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/vditor-128.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="https://static.b3log.org/css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="预览：延迟解析/HTML 字符串处理/DOM 处理/预览请求/自定义工具栏 - Vditor"/>
+    <meta property="og:title" content="画词评论 - Vditor"/>
     <meta property="og:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -28,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
-    <meta name="twitter:title" content="预览：延迟解析/HTML 字符串处理/DOM 处理/预览请求/自定义工具栏 - Vditor"/>
+    <meta name="twitter:title" content="画词评论 - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://b3log.org/vditor"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -57,41 +57,42 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://ld246.com/article/1549638745630#options-preview" target="_blank">API</a>：
-    options.preview.delay，options.preview.url，options.preview.parse()，options.preview.transform()，options.preview.actions()
-    <br>
-    ⚠️ 注意事项：相关 API 仅支持 sv 模式
+    相关 <a href="https://ld246.com/article/1549638745630#options-upload" target="_blank">API</a>：
+    options.upload，<a href="https://ld246.com/article/1549638745630#methods" target="_blank">isUploading()</a><br>
+    ⚠️ 注意事项：
+    <ul style="margin-left: 30px">
+        <li>需配置 upload.url 后才能进行上传</li>
+        <li>基本配置：upload.url，upload.max，upload.linkToImgUrl，upload.extraData，upload.multiple，upload.fieldName</li>
+        <li>安全配置：upload.token，upload.withCredentials，upload.headers，upload.accept</li>
+        <li>方法：upload.success，upload.error，upload.filename，upload.validate，upload.handler，upload.format，upload.file，upload.setHeaders，upload.linkToImgCallback</li>
+        <li>使用 upload.handler 需更新上传后地址可参考<a href="https://github.com/Vanessa219/vditor/blob/master/src/ts/upload/index.ts#L76">index.ts#L76</a>，非特殊需求不建议使用。</li>
+        <li>如数据结构不一致时，请使用 upload.format</li>
+    </ul>
     <div class="fn-50"></div>
     <div class="actions">
-        <button class="btn btn--small"
-                onclick="setPreview(this, {mode: 'sv',height: 360,preview:{transform(html){alert('添加感叹号');return html + '<p>!</p>'}}})">
-            HTML 字符串处理
-        </button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setPreview(this, {mode: 'sv',height: 360,preview:{parse(element){alert('添加蓝色背景');element.style.backgroundColor='#4285f4'}}})">
-            DOM 处理
-        </button> &nbsp;
-        <button class="btn btn--small" onclick="setPreview(this, {mode: 'sv',height: 360,preview:{delay: 5000}})">延迟
-            5s
-        </button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setPreview(this, {cache: {enable: false}, mode: 'sv',height: 360,value: '相关 API 为 options.preview.url。由于跨域问题，可前往[完整示例](https://ld246.com/guide/markdown)进行查看。服务端可使用 [Lute](https://github.com/88250/lute) 进行解析。'})">
-            预览请求
-        </button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setPreview(this, {cache: {enable: false}, mode: 'sv',height: 360,value: '定制预览界面的工具栏', preview:{actions: [{click() {const previewElement = document.querySelector('.vditor-preview .vditor-reset');const range = previewElement.ownerDocument.createRange();range.selectNode(previewElement);
-    const selection =window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range)},key: 'selectAll', text:'选中文本',tooltip: '点击选中',className:'vditor-tooltipped vditor-tooltipped__w'}]}})">
-            自定义工具栏
-        </button>
+        <button class="btn btn--small" onclick="alert(vditor.isUploading())">检测文件是否在上传中</button>
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">new Vditor('vditor', {
-  mode: 'sv',
-  height: 360,
-})
+        <pre><code class="javascript">  new Vditor('vditor', {
+    cache: {
+      enable: false,
+    },
+    upload: {
+      accept: 'image/*,.mp3, .wav, .rar',
+      token: 'test',
+      url: '/api/upload/editor',
+      linkToImgUrl: '/api/upload/fetch',
+      filename (name) {
+        return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
+          replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
+          replace('/\\s/g', '')
+      },
+    },
+    height: 360,
+    typewriterMode: true,
+    value: '由于跨域问题，可前往[完整示例](https://ld246.com/guide/markdown)进行体验，前往 [API](https://ld246.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
+  })
 </code></pre>
     </div>
     <div class="fn-100"></div>
@@ -118,44 +119,28 @@
     </div>
 </div>
 <script>
-  const setPreview = (it, options) => {
-    document.getElementById('vditor').innerHTML = ''
-    if (it) {
-      let code = JSON.stringify(options, null, '  ')
-      if (options.preview && options.preview.transform) {
-        code = `{mode: 'sv',height: 360,preview:{transform(html){alert('添加感叹号');return html + '&lt;p>!&lt;/p>'}}}`
-      } else if (options.preview && options.preview.parse) {
-        code = `{mode: 'sv',height: 360,preview:{parse(element){alert('添加蓝色背景');element.style.backgroundColor='#4285f4'}}}`
-      } else if (options.preview && options.preview.actions) {
-        code = `{
-        cache: {enable: false},
-        mode: 'sv',
-        height: 360,
-        value: '定制预览界面的工具栏',
-        preview: {
-            actions: [{
-                click() {
-                    const previewElement = document.querySelector('.vditor-preview .vditor-reset');
-                    const range = previewElement.ownerDocument.createRange();range.selectNode(previewElement);
-                    const selection =window.getSelection();
-                    selection.removeAllRanges();
-                    selection.addRange(range)
-                },
-                key: 'selectAll',
-                text:'选中文本',
-                tooltip: '点击选中',
-                className:'vditor-tooltipped vditor-tooltipped__w'
-            }]
-     }}`
-      }
-      updateCode(it, `new Vditor('vditor', ${code})`)
-    }
-    new Vditor('vditor', options || {
-      mode: 'sv',
+  let vditor
+  vditorScript = () => {
+    vditor = new Vditor('vditor', {
+      cache: {
+        enable: false,
+      },
+      upload: {
+        accept: 'image/*,.mp3, .wav, .rar',
+        token: 'test',
+        url: '/api/upload/editor',
+        linkToImgUrl: '/api/upload/fetch',
+        filename (name) {
+          return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
+            replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
+            replace('/\\s/g', '')
+        },
+      },
       height: 360,
+      typewriterMode: true,
+      value: '由于跨域问题，可前往[完整示例](https://ld246.com/guide/markdown)进行体验，前往 [API](https://ld246.com/article/1549638745630#options-upload) 进行了解。当然也欢迎在下方进行留言。',
     })
   }
-  vditorScript = setPreview
 </script>
 </body>
 </html>
