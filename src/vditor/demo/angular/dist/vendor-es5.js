@@ -67,7 +67,7 @@
     /***/
     function GP(module, exports, __webpack_require__) {
       /*!
-       * Vditor v3.6.4 - A markdown editor written in TypeScript.
+       * Vditor v3.6.6 - A markdown editor written in TypeScript.
        *   
        * MIT License
        * 
@@ -393,11 +393,11 @@
             return i;
           });
 
-          var r = "3.6.4",
+          var r = "3.6.6",
               i = function () {
             function e() {}
 
-            return e.ZWSP = "​", e.MOBILE_WIDTH = 520, e.CLASS_MENU_DISABLED = "vditor-menu--disabled", e.EDIT_TOOLBARS = ["emoji", "headings", "bold", "italic", "strike", "link", "list", "ordered-list", "outdent", "indent", "check", "line", "quote", "code", "inline-code", "insert-after", "insert-before", "upload", "record", "table"], e.CODE_THEME = ["abap", "algol", "algol_nu", "arduino", "autumn", "borland", "bw", "colorful", "dracula", "emacs", "friendly", "fruity", "github", "igor", "lovelace", "manni", "monokai", "monokailight", "murphy", "native", "paraiso-dark", "paraiso-light", "pastie", "perldoc", "pygments", "rainbow_dash", "rrt", "solarized-dark", "solarized-dark256", "solarized-light", "swapoff", "tango", "trac", "vim", "vs", "xcode", "ant-design"], e.CODE_LANGUAGES = ["mermaid", "echarts", "mindmap", "abc", "graphviz", "flowchart", "apache", "bash", "cs", "cpp", "css", "coffeescript", "diff", "xml", "http", "ini", "json", "java", "javascript", "js", "makefile", "markdown", "nginx", "objectivec", "php", "perl", "properties", "python", "ruby", "sql", "shell", "dart", "erb", "go", "gradle", "julia", "kotlin", "less", "lua", "matlab", "rust", "scss", "typescript", "ts", "yaml"], e.CDN = "https://cdn.jsdelivr.net/npm/vditor@3.6.4", e.MARKDOWN_OPTIONS = {
+            return e.ZWSP = "​", e.MOBILE_WIDTH = 520, e.CLASS_MENU_DISABLED = "vditor-menu--disabled", e.EDIT_TOOLBARS = ["emoji", "headings", "bold", "italic", "strike", "link", "list", "ordered-list", "outdent", "indent", "check", "line", "quote", "code", "inline-code", "insert-after", "insert-before", "upload", "record", "table"], e.CODE_THEME = ["abap", "algol", "algol_nu", "arduino", "autumn", "borland", "bw", "colorful", "dracula", "emacs", "friendly", "fruity", "github", "igor", "lovelace", "manni", "monokai", "monokailight", "murphy", "native", "paraiso-dark", "paraiso-light", "pastie", "perldoc", "pygments", "rainbow_dash", "rrt", "solarized-dark", "solarized-dark256", "solarized-light", "swapoff", "tango", "trac", "vim", "vs", "xcode", "ant-design"], e.CODE_LANGUAGES = ["mermaid", "echarts", "mindmap", "abc", "graphviz", "flowchart", "apache", "bash", "cs", "cpp", "css", "coffeescript", "diff", "xml", "http", "ini", "json", "java", "javascript", "js", "makefile", "markdown", "nginx", "objectivec", "php", "perl", "properties", "python", "ruby", "sql", "shell", "dart", "erb", "go", "gradle", "julia", "kotlin", "less", "lua", "matlab", "rust", "scss", "typescript", "ts", "yaml"], e.CDN = "https://cdn.jsdelivr.net/npm/vditor@3.6.6", e.MARKDOWN_OPTIONS = {
               autoSpace: !1,
               chinesePunct: !1,
               codeBlockPreview: !0,
@@ -858,7 +858,7 @@
             var o = e.querySelectorAll(".language-echarts");
             o.length > 0 && Object(i.a)(t + "/dist/js/echarts/echarts.min.js", "vditorEchartsScript").then(function () {
               o.forEach(function (e) {
-                if (!e.parentElement.classList.contains("vditor-wysiwyg__pre") && !e.parentElement.classList.contains("vditor-ir__marker--pre ")) {
+                if (!e.parentElement.classList.contains("vditor-wysiwyg__pre") && !e.parentElement.classList.contains("vditor-ir__marker--pre")) {
                   var t = e.innerText.trim();
                   if (t) try {
                     if ("true" === e.getAttribute("data-processed")) return;
@@ -885,7 +885,7 @@
             var o = e.querySelectorAll(".language-mindmap");
             o.length > 0 && Object(i.a)(t + "/dist/js/echarts/echarts.min.js", "vditorEchartsScript").then(function () {
               o.forEach(function (e) {
-                if (!e.parentElement.classList.contains("vditor-wysiwyg__pre") && !e.parentElement.classList.contains("vditor-ir__marker--pre ")) {
+                if (!e.parentElement.classList.contains("vditor-wysiwyg__pre") && !e.parentElement.classList.contains("vditor-ir__marker--pre")) {
                   var t = e.getAttribute("data-code");
                   if (t) try {
                     if ("true" === e.getAttribute("data-processed")) return;
@@ -970,10 +970,7 @@
             var n = e.querySelectorAll(".language-abc");
             n.length > 0 && Object(i.a)(t + "/dist/js/abcjs/abcjs_basic.min.js", "vditorAbcjsScript").then(function () {
               n.forEach(function (e) {
-                if (!e.parentElement.classList.contains("vditor-wysiwyg__pre") && !e.parentElement.classList.contains("vditor-ir__marker--pre ")) {
-                  var t = document.createElement("div");
-                  t.className = "language-abc", e.parentNode.replaceChild(t, e), ABCJS.renderAbc(t, e.textContent.trim()), t.style.overflowX = "auto";
-                }
+                e.parentElement.classList.contains("vditor-wysiwyg__pre") || e.parentElement.classList.contains("vditor-ir__marker--pre") || "true" !== e.getAttribute("data-processed") && (ABCJS.renderAbc(e, e.textContent.trim()), e.style.overflowX = "auto", e.setAttribute("data-processed", "true"));
               });
             });
           };
@@ -988,7 +985,7 @@
               i = n(11),
               o = function o(e, t) {
             void 0 === t && (t = "zh_CN"), e.querySelectorAll("pre > code").forEach(function (n, o) {
-              if (!n.parentElement.classList.contains("vditor-wysiwyg__pre") && !n.parentElement.classList.contains("vditor-ir__marker--pre ") && !(n.classList.contains("language-mermaid") || n.classList.contains("language-flowchart") || n.classList.contains("language-echarts") || n.classList.contains("language-mindmap") || n.classList.contains("language-abc") || n.classList.contains("language-graphviz") || n.classList.contains("language-math") || n.style.maxHeight.indexOf("px") > -1 || e.classList.contains("vditor-preview") && o > 5)) {
+              if (!n.parentElement.classList.contains("vditor-wysiwyg__pre") && !n.parentElement.classList.contains("vditor-ir__marker--pre") && !(n.classList.contains("language-mermaid") || n.classList.contains("language-flowchart") || n.classList.contains("language-echarts") || n.classList.contains("language-mindmap") || n.classList.contains("language-abc") || n.classList.contains("language-graphviz") || n.classList.contains("language-math") || n.style.maxHeight.indexOf("px") > -1 || e.classList.contains("vditor-preview") && o > 5)) {
                 var a = n.innerText;
 
                 if (n.classList.contains("highlight-chroma")) {
@@ -1019,8 +1016,10 @@
             var n = e.querySelectorAll(".language-flowchart");
             0 !== n.length && Object(i.a)(t + "/dist/js/flowchart.js/flowchart.min.js", "vditorFlowchartScript").then(function () {
               n.forEach(function (e) {
-                var t = flowchart.parse(e.innerText);
-                e.innerHTML = "", t.drawSVG(e);
+                if ("true" !== e.getAttribute("data-processed")) {
+                  var t = flowchart.parse(e.textContent);
+                  e.innerHTML = "", t.drawSVG(e), e.setAttribute("data-processed", "true");
+                }
               });
             });
           };
@@ -1038,7 +1037,7 @@
             var n = e.querySelectorAll(".language-graphviz");
             0 !== n.length && Object(i.a)(t + "/dist/js/graphviz/viz.js", "vditorGraphVizScript").then(function () {
               n.forEach(function (e) {
-                if (!e.parentElement.classList.contains("vditor-wysiwyg__pre") && !e.parentElement.classList.contains("vditor-ir__marker--pre ") && "true" !== e.getAttribute("data-processed")) {
+                if (!e.parentElement.classList.contains("vditor-wysiwyg__pre") && !e.parentElement.classList.contains("vditor-ir__marker--pre") && "true" !== e.getAttribute("data-processed")) {
                   try {
                     var t = new Blob(["importScripts('" + document.getElementById("vditorGraphVizScript").src.replace("viz.js", "full.render.js") + "');"], {
                       type: "application/javascript"
@@ -1288,7 +1287,7 @@
                 titleColor: "#F9FFFE",
                 todayLineColor: "#DB5757"
               }), mermaid.initialize(e), o.forEach(function (e) {
-                mermaid.init(void 0, e);
+                "true" !== e.getAttribute("data-processed") && (mermaid.init(void 0, e), e.setAttribute("data-processed", "true"));
               });
             });
           };
