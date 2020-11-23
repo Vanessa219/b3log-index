@@ -42,9 +42,14 @@
         }
 
         #comments {
-            flex: 1;
             overflow: auto;
             position: relative;
+            flex-shrink: 0;
+            width: 260px;
+        }
+
+        #comments .vcomment__input {
+            padding: 5px 10px;
         }
 
         #comments > div {
@@ -80,7 +85,7 @@
     </ul>
     <div class="fn-50"></div>
     <div class="fn-flex">
-        <div id="vditor"></div>
+        <div id="vditor" style="flex: 1"></div>
         <div id="comments" style="margin-left: 20px"></div>
     </div>
     <div id="vditorDemoCode" class="vditor-reset">
@@ -384,7 +389,7 @@ ${text}
             removeComment(document.querySelector(`#comments div[data-id="${id}"]`),
               id)
           })
-          matchCommentsTop(window.vditor.getCommentIds())
+          matchCommentsTop(vditor.getCommentIds())
         },
         scroll (top) {
           document.getElementById('comments').scrollTop = top
