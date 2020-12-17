@@ -57,11 +57,23 @@
             background-color: #d23f31;
             color: #fff;
             border-radius: 5px;
+            margin-bottom: 20px;
         }
 
         .download:hover {
             text-decoration: none;
             opacity: 0.86;
+        }
+
+        .download__space {
+            width: 50px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .download__space {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -135,6 +147,10 @@
         <div class="ft-center">
             <a class="download" target="_blank" rel="nofollow" href="https://github.com/siyuan-note/siyuan/releases">
                 下载思源笔记
+            </a>
+            <span class="download__space"></span>
+            <a class="download" style="background-color: #4285f4" href="https://ld246.com/xanadu/">
+                在线体验
             </a>
         </div>
         <div class="fn-100"></div>
