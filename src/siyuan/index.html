@@ -64,6 +64,7 @@
             flex: 1;
             position: relative;
             z-index: 1;
+            padding: 0 10px;
         }
 
         .first-screen .required {
@@ -72,7 +73,7 @@
             color: #fff;
             padding: 0 10px;
             line-height: 50px;
-            height: 100px;
+            height: 200px;
         }
 
         .first-screen .required .caret {
@@ -91,7 +92,7 @@
             color: #f6f8fa;
             font-size: 18px;
             text-align: center;
-            line-height: 32px;
+            line-height: 20px;
         }
 
         .download {
@@ -100,11 +101,17 @@
             background-color: #d23f31;
             color: #fff;
             border-radius: 5px;
+            margin-bottom: 20px;
         }
 
         .download:hover {
             text-decoration: none;
             opacity: 0.86;
+        }
+
+        .download__space {
+            width: 50px;
+            display: inline-block;
         }
 
         code {
@@ -136,6 +143,10 @@
             .first-screen .description {
                 font-size: 14px;
             }
+
+            .download__space {
+                display: none;
+            }
         }
     </style>
     <script src="js/pixi.min.js"></script>
@@ -156,14 +167,13 @@
 <div class="first-screen">
     <div class="panel">
         <div class="required"></div>
-        <div class="fn-100"></div>
-        <div class="description">思源笔记是一款基于 Markdown 的本地知识管理工具<br>支持块级引用和类似 Typora 的即时渲染编辑</div>
+        <div class="description">思源笔记是一款基于 Markdown 的本地知识管理工具<br><br>支持块级引用和类似 Typora 的即时渲染编辑</div>
         <div class="fn-100"></div>
         <div class="ft-center">
             <a class="download" target="_blank" rel="nofollow" href="https://github.com/siyuan-note/siyuan/releases">
                 下载思源笔记
             </a>
-            &nbsp;&nbsp;&nbsp;
+            <span class="download__space"></span>
             <a class="download" style="background-color: #4285f4" href="https://ld246.com/xanadu/">
                 在线体验
             </a>
@@ -201,7 +211,7 @@
         <a class="download" target="_blank" rel="nofollow" href="https://github.com/siyuan-note/siyuan/releases">
             下载思源笔记
         </a>
-        &nbsp;&nbsp;&nbsp;
+        <span class="download__space"></span>
         <a class="download" style="background-color: #4285f4" href="https://ld246.com/xanadu/">
             在线体验
         </a>
@@ -269,7 +279,7 @@
         <a class="download" target="_blank" rel="nofollow" href="https://github.com/siyuan-note/siyuan/releases">
             下载思源笔记
         </a>
-        &nbsp;&nbsp;&nbsp;
+        <span class="download__space"></span>
         <a class="download" style="background-color: #4285f4" href="https://ld246.com/xanadu/">
             在线体验
         </a>
