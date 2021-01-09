@@ -4,12 +4,12 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>实用小特性：tab/打字机模式/内容为空的提示/历史延时/全屏层级 - Vditor</title>
+    <title>大纲：显示大纲/大纲位置 - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta name="copyright" content="B3log"/>
-    <link rel="canonical" href="https://b3log.org/vditor/demo/option-other.html">
+    <link rel="canonical" href="https://b3log.org/vditor/demo/advanced-counter.html">
     <link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/vditor-128.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -17,9 +17,8 @@
     <link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/vditor-128.png"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/vditor-512.png"/>
     <link type="text/css" rel="stylesheet" href="https://static.b3log.org/css/base.css" charset="utf-8"/>
-
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="实用小特性：tab/打字机模式/内容为空的提示/历史延时/全屏层级 - Vditor"/>
+    <meta property="og:title" content="大纲：显示大纲/大纲位置 - Vditor"/>
     <meta property="og:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -28,7 +27,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
-    <meta name="twitter:title" content="实用小特性：tab/打字机模式/内容为空的提示/历史延时/全屏层级 - Vditor"/>
+    <meta name="twitter:title" content="大纲：显示大纲/大纲位置 - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://b3log.org/vditor"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -57,37 +56,18 @@
 </div>
 <div class="wrapper">
     <div class="fn-50"></div>
-    相关 <a href="https://ld246.com/article/1549638745630#options" target="_blank">API</a>：
-    options.tab，options.typewriterMode，options.placeholder，options.undoDelay，options.fullscreen.index
+    相关 <a href="https://ld246.com/article/1549638745630#options-counter" target="_blank">API</a>：
+    options.outline.enable，options.outline.position
     <div class="fn-50"></div>
-    <div>
-        <button class="btn btn--small"
-                onclick="setOptions(this, {height: 360, cache: {enable: false},tab: '    ', placeholder: '请按下 tab 键'})">
-            按下 tab 键新增四个空格
-        </button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setOptions(this, {height: 360, cache: {enable: false},tab: '\t', placeholder: '请按下 tab 键'})">按下
-            tab 键新增 \t
-        </button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setOptions(this, {height: 360, cache: {enable: false},typewriterMode: true})">开启打字机模式（编辑位置上下剧中）
-        </button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setOptions(this, {height: 360, cache: {enable: false},value: '', placeholder: 'Vditor 是一款浏览器端的 Markdown 编辑器，支持所见即所得（富文本）、即时渲染（类似 Typora）和分屏预览模式'})">
-            内容为空的提示
-        </button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setOptions(this, {height: 360, cache: {enable: false},undoDelay: 2000})">
-            历史延时
-        </button> &nbsp;
-        <button class="btn btn--small"
-                onclick="setOptions(this, {height: 360, cache: {enable: false},fullscreen: {index: 0}})">
-            全屏层级
-        </button> &nbsp;
+    <div class="actions">
+        <button class="btn btn--small" onclick="setOutline(this, {outline:{enable:true}})">显示大纲</button> &nbsp;
+        <button class="btn btn--small" onclick="setOutline(this, {outline:{enable:true,position:'right'}})">大纲居右</button>&nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">new Vditor('vditor', {height: 360})
+        <pre><code class="javascript">new Vditor('vditor', {
+  height: 360
+})
 </code></pre>
     </div>
     <div class="fn-100"></div>
@@ -114,14 +94,18 @@
     </div>
 </div>
 <script>
-  const setOptions = (it, options) => {
+  const setOutline = (it, options) => {
     document.getElementById('vditor').innerHTML = ''
+    const mergedOptions = Object.assign({
+      height: 360,
+    }, options)
+
     if (it) {
-      updateCode(it, `new Vditor('vditor', ${JSON.stringify(options, null, '  ')})`)
+      updateCode(it, `new Vditor('vditor', ${JSON.stringify(mergedOptions, null, '  ')})`)
     }
-    new Vditor('vditor', options || {height: 360})
+    new Vditor('vditor', mergedOptions)
   }
-  vditorScript = setOptions
+  vditorScript = setOutline
 </script>
 </body>
 </html>

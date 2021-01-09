@@ -34,7 +34,7 @@ const updateCode = (btnElement, code) => {
   Vditor.codeRender(demoCodeElement)
 }
 
-addStyle('https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/index.css')
+addStyle('https://cdn.jsdelivr.net/npm/vditor@3.7.5/dist/index.css')
 document.addEventListener('DOMContentLoaded', function () {
   var hm = document.createElement('script')
   hm.src = 'https://hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c'
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
   s.parentNode.insertBefore(hm, s)
 
   if (document.getElementById('vditorComments')) {
-    addScript('https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/index.min.js',
+    addScript('https://cdn.jsdelivr.net/npm/vditor@3.7.5/dist/index.min.js',
       () => {
         const demoCodeElement = document.getElementById('vditorDemoCode')
         if (demoCodeElement) {
@@ -102,8 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
           let listHTML = '<ul class="fn-list">'
           for (var i = 0; i < articles.length; i++) {
             const article = articles[i]
-            listHTML += '<li>'
-              + '<a target=\'_blank\' href=\'' + article.articlePermalink +
+            listHTML += '<li><a target=\'_blank\' href=\'' + article.articlePermalink +
               '\'>'
               + article.articleTitle + '</a>&nbsp;<small class="ft-fade">[' +
               article.cmtTimeAgo

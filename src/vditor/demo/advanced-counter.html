@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>字数统计：Markdown/文本/最大字数提示 - Vditor</title>
+    <title>字数统计：Markdown/文本/最大字数提示/回调 - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/vditor-512.png"/>
     <link type="text/css" rel="stylesheet" href="https://static.b3log.org/css/base.css" charset="utf-8"/>
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="字数统计：Markdown/文本/最大字数提示 - Vditor"/>
+    <meta property="og:title" content="字数统计：Markdown/文本/最大字数提示/回调 - Vditor"/>
     <meta property="og:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -27,7 +27,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
-    <meta name="twitter:title" content="字数统计：Markdown/文本/最大字数提示 - Vditor"/>
+    <meta name="twitter:title" content="字数统计：Markdown/文本/最大字数提示/回调 - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://b3log.org/vditor"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -57,14 +57,14 @@
 <div class="wrapper">
     <div class="fn-50"></div>
     相关 <a href="https://ld246.com/article/1549638745630#options-counter" target="_blank">API</a>：
-    options.counter.enable，options.counter.max，options.counter.type
+    options.counter.enable，options.counter.max，options.counter.type，options.counter.after
     <div class="fn-50"></div>
     <div class="actions">
         <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true}})">Markdown 字数统计</button> &nbsp;
-        <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true,type:'text'}})">文本字数统计</button>
-        &nbsp;
-        <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true,max: 520}})">最大 520 个字</button>
-        &nbsp;
+        <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true,type:'text'}})">文本字数统计</button>&nbsp;
+        <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true,max: 520}})">最大 520 个字</button>&nbsp;
+        <button class="btn btn--small" onclick="setCounter(this, {counter:{enable:true,after(count){alert('字数为' + count)}}})">回调
+        </button>&nbsp;
     </div>
     <div id="vditor"></div>
     <div id="vditorDemoCode" class="vditor-reset">
@@ -104,7 +104,19 @@
     }, options)
 
     if (it) {
-      updateCode(it, `new Vditor('vditor', ${JSON.stringify(mergedOptions, null, '  ')})`)
+      if(options.counter.after) {
+        updateCode(it, `new Vditor('vditor', {
+  "height": 360,
+  "counter": {
+    "enable": true,
+     after(count) {
+        alert('字数为' + count);
+     }
+  }
+})`)
+      } else {
+        updateCode(it, `new Vditor('vditor', ${JSON.stringify(mergedOptions, null, '  ')})`)
+      }
     }
     new Vditor('vditor', mergedOptions)
   }

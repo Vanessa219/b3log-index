@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/flowchart - Vditor</title>
+    <title>功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/flowchart/图片预览 - Vditor</title>
     <meta name="robots" content="index,follow,archive">
     <meta name="description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="https://static.b3log.org/css/base.css" charset="utf-8"/>
 
     <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/flowchart - Vditor"/>
+    <meta property="og:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/flowchart/图片预览 - Vditor"/>
     <meta property="og:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
     <meta property="og:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
@@ -28,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:description"
           content="Vditor - 易于使用的 Markdown 编辑器，为适配不同的应用场景而生。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供桌面版。"/>
-    <meta name="twitter:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/flowchart - Vditor"/>
+    <meta name="twitter:title" content="功能渲染：Markdown2HTM/大纲/数学公式/脑图/图表/流程图/甘特图/时序图/五线谱/多媒体/代码高亮/代码复制/graphviz/flowchart/图片预览 - Vditor"/>
     <meta name="twitter:image" content="https://static.b3log.org/images/brand/vditor-128.png"/>
     <meta name="twitter:url" content="https://b3log.org/vditor"/>
     <meta name="twitter:site" content="@b3logos"/>
@@ -59,7 +59,7 @@
 <div class="wrapper">
     相关 <a href="https://ld246.com/article/1549638745630#static-methods" target="_blank">API</a>：
     Vditor.md2html()，Vditor.outlineRender()，Vditor.mathRender()，Vditor.mindmapRender()，Vditor.chartRender()，Vditor.mermaidRender()，
-    Vditor.abcRender()，<a href="https://ld246.com/article/1589813914768" target="_blank">Vditor.mediaRender()</a>，Vditor.highlightRender()，Vditor.codeRender()，Vditor.graphvizRender(),Vditor.flowchartRender()
+    Vditor.abcRender()，<a href="https://ld246.com/article/1589813914768" target="_blank">Vditor.mediaRender()</a>，Vditor.highlightRender()，Vditor.codeRender()，Vditor.graphvizRender()，Vditor.flowchartRender()，Vditor.previewImage()
     <div class="fn-50"></div>
     <button class="btn btn--small" onclick="render('md2html', this)">Markdown2HTML</button> &nbsp;
     <button class="btn btn--small" onclick="render('outlineRender', this)">大纲</button> &nbsp;
@@ -73,6 +73,7 @@
     <button class="btn btn--small" onclick="render('codeRender', this)">代码复制</button> &nbsp;
     <button class="btn btn--small" onclick="render('graphvizRender', this)">graphviz</button>
     <button class="btn btn--small" onclick="render('flowchartRender', this)">flowchart</button>
+    <button class="btn btn--small" onclick="render('previewImage', this)">点击图片查看</button>
     <div id="preview" class="vditor-reset"></div>
     <div id="vditorDemoCode" class="vditor-reset">
         <pre><code class="javascript">点击按钮查看效果
@@ -313,6 +314,7 @@ cond(no)->para
 para(path1, bottom)->sub1(right)->op1
 para(path2, top)->op1
 \`\`\``,
+    previewImage: `![](https://static.b3log.org/images/brand/vditor-128.png)`,
     md2html: `## 💡 简介
 
 [Vditor](https://b3log.org/vditor) 是一款浏览器端的 Markdown 编辑器，支持所见即所得（富文本）、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript、Vue、React、Angular，提供[桌面版](https://b3log.org/siyuan)。`,
@@ -329,6 +331,17 @@ para(path2, top)->op1
       Vditor[type]({lineNumber: true, enable: true}, previewElement)
       code = `Vditor.${type}({lineNumber: true, enable: true}, previewElement)`
     } else if (type === 'md2html') {
+    } else if (type === 'previewImage') {
+      previewElement.addEventListener("click", (event) => {
+        if (event.target.tagName === "IMG") {
+          Vditor.previewImage(event.target);
+        }
+      });
+      code = `previewElement.addEventListener("click", (event) => {
+    if (event.target.tagName === "IMG") {
+      Vditor.previewImage(event.target);
+    }
+});`
     } else {
       Vditor[type](previewElement)
       code = `Vditor.${type}(previewElement)`

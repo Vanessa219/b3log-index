@@ -54,22 +54,34 @@
             right: 20px;
             bottom: 86px;
             overflow: auto;
-            font-size: 12px;
-            border-left: 1px solid #eee;
+            font-size: 14px;
             background-color: #fff;
+            line-height: 20px;
         }
 
-        .vditor-outline__item {
+        #outline ul {
+            margin-left: 16px;
+            list-style: none;
+        }
+
+        #outline > ul {
+            margin-left: 0;
+        }
+
+        #outline li > span {
+            cursor: pointer;
             border-left: 1px solid transparent;
+            display: block;
+            padding-left: 8px;
         }
 
-        .vditor-outline__item--current {
+        #outline li > span.vditor-outline__item--current {
             border-left: 1px solid #4285f4;
             color: #4285f4;
             background-color: #f6f8fa;
         }
 
-        .vditor-outline__item:hover {
+        #outline li > span:hover {
             color: #4285f4;
             background-color: #f6f8fa;
         }
@@ -128,7 +140,7 @@
             currentElement.classList.remove('vditor-outline__item--current')
           }
           let index = i > 0 ? i - 1 : 0
-          document.querySelector('div[data-id="' + toc[index].id + '"]').classList.add('vditor-outline__item--current')
+          document.querySelector('span[data-target-id="' + toc[index].id + '"]').classList.add('vditor-outline__item--current')
           break
         }
       }
@@ -234,7 +246,7 @@
             currentElement.classList.remove('vditor-outline__item--current')
           }
           let index = i > 0 ? i - 1 : 0
-          document.querySelector('div[data-id="' + toc[index].id + '"]').classList.add('vditor-outline__item--current')
+          document.querySelector('span[data-target-id="' + toc[index].id + '"]').classList.add('vditor-outline__item--current')
           break
         }
       }
