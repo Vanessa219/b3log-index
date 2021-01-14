@@ -40,9 +40,40 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0 1px 7px;
             border-bottom: 1px solid #e1e4e8;
         }
+
+        .outline ul {
+            margin-left: 16px;
+            list-style: none;
+        }
+
+        .outline > ul {
+            margin-left: 0;
+        }
+
+        .outline li > span {
+            cursor: pointer;
+            border-left: 1px solid transparent;
+            display: block;
+            padding-left: 8px;
+        }
+
+        .outline li > span:hover {
+            color: #4285f4;
+            background-color: #f6f8fa;
+        }
     </style>
 </head>
 <body>
+<svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <symbol id="vditor-icon-down" viewBox="0 0 32 32">
+            <path d="M31.663 5.221h-3.158c-0.215 0-0.417 0.105-0.543 0.278l-11.962 16.489-11.962-16.489c-0.126-0.173-0.328-0.278-0.543-0.278h-3.158c-0.274 0-0.434 0.312-0.274 0.535l14.847 20.468c0.539 0.741 1.642 0.741 2.177 0l14.847-20.468c0.164-0.223 0.004-0.535-0.269-0.535z"></path>
+        </symbol>
+        <symbol id="vditor-icon-copy" viewBox="0 0 32 32">
+            <path d="M27.429 0h-19.143c-0.157 0-0.286 0.129-0.286 0.286v2c0 0.157 0.129 0.286 0.286 0.286h17.714v24.571c0 0.157 0.129 0.286 0.286 0.286h2c0.157 0 0.286-0.129 0.286-0.286v-26c0-0.632-0.511-1.143-1.143-1.143zM22.857 4.571h-18.286c-0.632 0-1.143 0.511-1.143 1.143v18.954c0 0.304 0.121 0.593 0.336 0.807l6.189 6.189c0.079 0.079 0.168 0.143 0.264 0.196v0.068h0.15c0.125 0.046 0.257 0.071 0.393 0.071h12.096c0.632 0 1.143-0.511 1.143-1.143v-25.143c0-0.632-0.511-1.143-1.143-1.143zM10.214 28.293l-3.075-3.079h3.075v3.079zM21.429 29.429h-8.929v-5.071c0-0.789-0.639-1.429-1.429-1.429h-5.071v-15.786h15.429v22.286z"></path>
+        </symbol>
+    </defs>
+</svg>
 <div class="header fn-clear">
     <a class="header-logo" href="https://b3log.org/vditor">
         <img src="https://static.b3log.org/images/brand/vditor-128.png">
@@ -324,9 +355,13 @@ para(path2, top)->op1
     const html = await Vditor.md2html(texts[type])
     previewElement.innerHTML = html
     let code = ''
+    previewElement.classList.add("vditor-reset")
+    previewElement.classList.remove("outline")
     if (type === 'outlineRender') {
       Vditor[type](previewElement, previewElement)
       code = `Vditor.${type}(previewElement, previewElement)`
+      previewElement.classList.remove("vditor-reset")
+      previewElement.classList.add("outline")
     } else if (type === 'highlightRender') {
       Vditor[type]({lineNumber: true, enable: true}, previewElement)
       code = `Vditor.${type}({lineNumber: true, enable: true}, previewElement)`
