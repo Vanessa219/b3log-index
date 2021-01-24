@@ -148,6 +148,28 @@
                 display: none;
             }
         }
+
+        .arrowdown {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            color: #fff;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+            padding: 20px;
+        }
+
+        @keyframes pulse {
+            0%, to {
+                opacity: .4;
+                bottom: 16px;
+            }
+
+            50% {
+                opacity: 1;
+                bottom: 0px
+            }
+        }
     </style>
     <script src="js/pixi.min.js"></script>
 </head>
@@ -170,13 +192,21 @@
         <div class="description">思源笔记是一款基于 Markdown 的本地知识管理工具<br><br>支持块级引用和类似 Typora 的即时渲染编辑</div>
         <div class="fn-100"></div>
         <div class="ft-center">
-            <a class="download" style="background-color: #3b3e43" href="https://ld246.com/xanadu/">
+            <a class="download" style="background-color: #4285f4" href="https://ld246.com/xanadu/">
                 在线体验
             </a>
             <span class="download__space"></span>
-            <a class="download" style="background-color: #4285f4" target="_blank" href="download.html">
+            <a class="download" style="background-color: #3b3e43" target="_blank" href="download.html">
                 下载安装包
             </a>
+        </div>
+        <div class="fn-flex1"></div>
+        <div class="ft-center">
+            <svg onclick="window.scroll({top: window.innerHeight,left: 0,behavior: 'smooth'})"
+                 class="arrowdown" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                 viewBox="0 0 32 32">
+                <path d="M31.663 5.221h-3.158c-0.215 0-0.417 0.105-0.543 0.278l-11.962 16.489-11.962-16.489c-0.126-0.173-0.328-0.278-0.543-0.278h-3.158c-0.274 0-0.434 0.312-0.274 0.535l14.847 20.468c0.539 0.741 1.642 0.741 2.177 0l14.847-20.468c0.164-0.223 0.004-0.535-0.269-0.535z"></path>
+            </svg>
         </div>
     </div>
 </div>
@@ -208,11 +238,11 @@
     </div>
     <div class="fn-100"></div>
     <div class="ft-center">
-        <a class="download" style="background-color: #3b3e43" href="https://ld246.com/xanadu/">
+        <a class="download" style="background-color: #4285f4" href="https://ld246.com/xanadu/">
             在线体验
         </a>
         <span class="download__space"></span>
-        <a class="download" style="background-color: #4285f4" target="_blank" href="download.html">
+        <a class="download" style="background-color: #3b3e43" target="_blank" href="download.html">
             下载安装包
         </a>
     </div>
@@ -276,11 +306,11 @@
     </div>
     <div class="fn-100"></div>
     <div class="ft-center">
-        <a class="download" style="background-color: #3b3e43" href="https://ld246.com/xanadu/">
+        <a class="download" style="background-color: #4285f4" href="https://ld246.com/xanadu/">
             在线体验
         </a>
         <span class="download__space"></span>
-        <a class="download" style="background-color: #4285f4" target="_blank" href="download.html">
+        <a class="download" style="background-color: #3b3e43" target="_blank" href="download.html">
             下载安装包
         </a>
     </div>
