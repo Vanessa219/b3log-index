@@ -635,6 +635,9 @@ function Star (game, x, y, cellX, cellY) {
 }.call(Star.prototype));
 
 (function () {
+  if (0 > navigator.language.indexOf("zh")) {
+    window.location.href = "en"
+  }
 
   var hm = document.createElement('script')
   hm.src = 'https://hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c'
