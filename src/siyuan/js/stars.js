@@ -637,6 +637,7 @@ function Star (game, x, y, cellX, cellY) {
 (function () {
   if (0 > navigator.language.indexOf("zh")) {
     window.location.href = "en"
+    return
   }
 
   var hm = document.createElement('script')
