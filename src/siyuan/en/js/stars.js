@@ -635,7 +635,10 @@ function Star (game, x, y, cellX, cellY) {
 }.call(Star.prototype));
 
 (function () {
-
+  document.getElementById('changeTOzh').addEventListener('click', function () {
+    localStorage.setItem('language', 'zh')
+    window.location.href = this.getAttribute("data-href");
+  })
   var hm = document.createElement('script')
   hm.src = 'https://hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c'
   var s = document.getElementsByTagName('script')[0]
