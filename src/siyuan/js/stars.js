@@ -635,8 +635,13 @@ function Star (game, x, y, cellX, cellY) {
 }.call(Star.prototype));
 
 (function () {
-  if (0 > navigator.language.indexOf("zh")) {
-    window.location.href = "en"
+  document.getElementById('changeTOzh').addEventListener('click', function () {
+    localStorage.setItem('language', 'zh')
+    window.location.href = this.getAttribute("data-href");
+  })
+  if (0 > navigator.language.indexOf('zh') &&
+    localStorage.getItem('language') !== 'zh') {
+    window.location.href = 'en'
     return
   }
 
