@@ -650,6 +650,10 @@ function Star (game, x, y, cellX, cellY) {
   var s = document.getElementsByTagName('script')[0]
   s.parentNode.insertBefore(hm, s)
 
+  if (!document.querySelector('.first-screen')) {
+    return;
+  }
+
   const starChart = new StarChart(document.querySelector('.first-screen'), PIXI)
   starChart.setAnimationEnabled(true)
 
