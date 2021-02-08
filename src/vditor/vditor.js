@@ -34,12 +34,59 @@ const updateCode = (btnElement, code) => {
   Vditor.codeRender(demoCodeElement)
 }
 
+const autoType = () => {
+  const typeElement = document.getElementById('autoType')
+  if (!typeElement) {
+    return
+  }
+  const texts = [
+    '实现 CommonMark 和 GFM 规范',
+    '支持数学公式、图表、五线谱、脑图等14+渲染',
+    '所见即所得（wysiwyg）',
+    '即时渲染（ir）',
+    '分屏预览（sv）',
+    '易于使用的 Markdown 编辑器，为适配不同的应用场景而生',
+  ]
+  let textLength = 0
+  let time = 0
+  texts.forEach((text, i) => {
+    if (i > 0) {
+      textLength += text[i - 1].length + 20
+    }
+    for (let j = 0; j < text.length; j++) {
+      time += 200
+      setTimeout(() => {
+        typeElement.innerHTML = text.substr(0, j + 1) +
+          `<span class="caret" style="${(j === text.length - 1
+            ? 'animation-name:flash'
+            : '')}"></span>`
+      }, time)
+    }
+    if (i !== texts.length - 1) {
+      time += 2000
+      for (let k = 0; k < text.length; k++) {
+        time += 50
+        setTimeout(() => {
+          typeElement.innerHTML = typeElement.textContent.substr(0,
+            typeElement.textContent.length - 1) + '<span class="caret"></span>'
+        }, time)
+      }
+    } else {
+      setTimeout(() => {
+        document.querySelector('.caret').style.animationName = 'flash'
+      }, time + 1)
+    }
+  })
+}
+
 addStyle('https://cdn.jsdelivr.net/npm/vditor@3.7.5/dist/index.css')
 document.addEventListener('DOMContentLoaded', function () {
   var hm = document.createElement('script')
   hm.src = 'https://hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c'
   var s = document.getElementsByTagName('script')[0]
   s.parentNode.insertBefore(hm, s)
+
+  autoType();
 
   if (document.getElementById('vditorComments')) {
     addScript('https://cdn.jsdelivr.net/npm/vditor@3.7.5/dist/index.min.js',
@@ -53,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof vditorScript !== 'undefined') {
           vditorScript()
         }
-        addScript('https://cdn.jsdelivr.net/npm/vcmt@1.2.11/dist/index.min.js',
+        addScript(
+          'https://cdn.jsdelivr.net/npm/vcmt@1.2.11/dist/index.min.js',
           () => {
             const vcomment = new Vcomment({
               id: 'vditorComments',
@@ -69,7 +117,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 const commentCntElement = document.getElementById(
                   'commentsCount')
                 document.getElementById(
-                  'commentCnt').innerText = commentCntElement.innerText + ' 个讨论'
+                  'commentCnt').innerText = commentCntElement.innerText +
+                  ' 个讨论'
                 commentCntElement.nextSibling.remove()
                 commentCntElement.remove()
               },
@@ -102,7 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
           let listHTML = '<ul class="fn-list">'
           for (var i = 0; i < articles.length; i++) {
             const article = articles[i]
-            listHTML += '<li><a target=\'_blank\' href=\'' + article.articlePermalink +
+            listHTML += '<li><a target=\'_blank\' href=\'' +
+              article.articlePermalink +
               '\'>'
               + article.articleTitle + '</a>&nbsp;<small class="ft-fade">[' +
               article.cmtTimeAgo
