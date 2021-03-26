@@ -398,17 +398,6 @@ para(path2, top)->op1
       Vditor.previewImage(event.target);
     }
 });`
-    } else if (type === 'plantumlRender') {
-      // TODO 3.8.4 移除
-      previewElement.firstElementChild.innerText = `@startuml component
-actor client
-node app
-database db
-db -> app
-app -> client
-@enduml`
-      Vditor[type](previewElement)
-      code = `Vditor.${type}(previewElement)`
     } else {
       Vditor[type](previewElement)
       code = `Vditor.${type}(previewElement)`
