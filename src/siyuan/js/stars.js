@@ -645,11 +645,6 @@ function Star (game, x, y, cellX, cellY) {
     return
   }
 
-  var hm = document.createElement('script')
-  hm.src = 'https://hm.baidu.com/hm.js?174a1111f4c1724383232f848510cd2c'
-  var s = document.getElementsByTagName('script')[0]
-  s.parentNode.insertBefore(hm, s)
-
   if (!document.querySelector('.first-screen')) {
     return;
   }
