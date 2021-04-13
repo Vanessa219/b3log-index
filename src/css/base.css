@@ -471,7 +471,7 @@ blockquote {
     margin: 30px auto;
 }
 
-.details {
+.header-a .details {
     display: none;
     padding: 5px 0;
     -webkit-animation-duration: .15s;
@@ -491,7 +491,7 @@ blockquote {
     z-index: 100
 }
 
-.details .item {
+.header-a .details .item {
     display: block;
     text-shadow: 0 1px 0 #fff;
     position: relative;
@@ -504,14 +504,14 @@ blockquote {
     line-height: 24px;
 }
 
-.details .item:hover {
+.header-a .details .item:hover {
     text-decoration: none;
     background-color: #4285f4;
     color: #fff;
     text-shadow: none
 }
 
-.details:after, .details:before {
+.header-a .details:after, .header-a .details:before {
     top: -14px;
     right: 12px;
     left: auto;
@@ -521,18 +521,18 @@ blockquote {
     content: " "
 }
 
-.details:before {
+.header-a .details:before {
     border-width: 8px;
     border-bottom-color: #eee;
     top: -16px;
     right: 11px
 }
 
-.details-summary {
+.header-a.details-summary {
     position: relative;
 }
 
-.details-summary:hover .details {
+.header-a.details-summary:hover .details {
     display: block;
 }
 
