@@ -665,6 +665,7 @@ function Star (game, x, y, cellX, cellY) {
     'We need an elegant Markdown editing experience',
     'We need offline use to bring complete privacy and security',
     'We need to find those souls buried deep in memory',
+    'SiYuan - Your digital garden',
   ]
   let textLength = 0
   let time = 0

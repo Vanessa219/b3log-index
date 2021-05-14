@@ -670,6 +670,7 @@ function Star (game, x, y, cellX, cellY) {
     '我们需要优雅的 Markdown 编辑体验',
     '我们需要离线使用带来完全的隐私安全',
     '我们需要找到那些埋藏在记忆深处的灵犀',
+    '思源笔记 —— 你的数字花园',
   ]
   let textLength = 0
   let time = 0
