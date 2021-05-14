@@ -659,10 +659,10 @@ function Star (game, x, y, cellX, cellY) {
   // type
   const typeElement = document.querySelector('.required')
   const texts = [
-    'We need an elegant Markdown editing experience',
+    'We need to build knowledge fragments into a structured system',
     'We need to be immersed in content ideas when writing text',
     'We need to see a clear line of inspiration and thoughts',
-    'We need to build knowledge fragments into a structured system',
+    'We need an elegant Markdown editing experience',
     'We need offline use to bring complete privacy and security',
     'We need to find those souls buried deep in memory',
   ]
