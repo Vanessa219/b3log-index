@@ -214,6 +214,11 @@ blockquote {
     color: #3b3e43;
 }
 
+.fn-title2 {
+    font-size: 50px;
+    olor: #3b3e43;
+}
+
 .fn-border {
     border-bottom: 1px solid #e1e4e8;
 }
