@@ -1,0 +1,197 @@
+@keyframes flash {
+    from,
+    50%,
+    to {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+.fn__flex-1 {
+    flex: 1;
+}
+
+.home {
+    height: calc(100vh + 31px);
+    background-color: #040d21;
+}
+
+.home__bg {
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    max-width: none;
+    z-index: 1;
+}
+
+.header {
+    padding: 8px 16px;
+    max-width: 1280px;
+    position: relative;
+    display: flex;
+    z-index: 3;
+    margin: 0 auto;
+}
+
+.header__logo img {
+    width: 32px;
+    height: 32px;
+    float: left;
+}
+
+.header__logo h1 {
+    display: none;
+}
+
+.header__a {
+    align-self: center;
+    text-decoration: none;
+    margin-left: 24px;
+    color: #fff;
+    transition: opacity .4s;
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.header__a:hover {
+    opacity: 0.75;
+}
+
+.header__menu {
+    display: none;
+    animation: dropdown-display .4s cubic-bezier(.73, .005, .22, 1);
+    box-shadow: 0 3px 12px rgb(27 31 35 / 15%), 0 0 1px rgb(27 31 35 / 20%);
+    border-radius: 8px;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    padding: 16px 16px 8px 16px;
+}
+
+.header__menu .item {
+    color: #24292e;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.header__menu .item:hover {
+    color: #0366d6;
+}
+
+.header__lang {
+    align-self: center;
+    position: relative;
+}
+
+.header__lang:hover .header__menu {
+    display: block;
+}
+
+.home__panel {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.home__slogan {
+    color: #fff;
+    font-size: 56px;
+    line-height: 72px;
+}
+
+.home__desc {
+    color: #8193b2;
+    font-size: 24px;
+    margin-top: 48px;
+}
+
+.home__download {
+    color: #fff;
+    background-color: #4969ed;
+    background-image: linear-gradient(-180deg, #617eef, #4969ed);
+    padding: 8px 48px;
+    font-size: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    align-self: baseline;
+    margin-top: 48px;
+}
+
+.home__download:hover {
+    opacity: .75;
+    transition: opacity .4s;
+}
+
+.home__side {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 32px 0 16px;
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    z-index: 2;
+}
+
+.home__img {
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.second {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.second__type {
+    color: #212224;
+    font-size: 48px;
+    line-height: 56px;
+    height: 56px;
+    padding: 0 16px;
+    margin-top: 64px;
+}
+
+.second__caret {
+    width: 4px;
+    height: 56px;
+    background-color: #292a2d;
+    margin-left: 5px;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    display: inline-block;
+    vertical-align: bottom;
+}
