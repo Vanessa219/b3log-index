@@ -52,10 +52,10 @@ const type = () => {
     return
   }
 
-  // type
   let initType = false
   window.addEventListener('scroll', function () {
-    if (!initType && document.querySelector('html').scrollTop > 214) {
+    const top = document.querySelector('html').scrollTop
+    if (!initType && top > 214) {
       type()
       initType = true
     }

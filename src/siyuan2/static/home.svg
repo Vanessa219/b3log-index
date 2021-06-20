@@ -25,15 +25,15 @@
         <feGaussianBlur result="effect1_foregroundBlur" stdDeviation="100"/>
     </filter>
     <g filter="url(#a)" opacity=".34">
-        <circle cx="2204" cy="1080" fill="#d23f31" r="322"/>
+        <circle cx="2204" cy="1080" fill="#db469f" r="322"/>
     </g>
     <g filter="url(#b)" opacity=".7">
-        <circle cx="2247" cy="522" fill="#4285f4" r="322"/>
+        <circle cx="2247" cy="522" fill="#043a8a" r="322"/>
     </g>
     <g filter="url(#c)" opacity=".9">
-        <ellipse cx="491" cy="452" fill="#4285f4" rx="291" ry="229"/>
+        <ellipse cx="491" cy="452" fill="#043a8a" rx="291" ry="229"/>
     </g>
     <g filter="url(#d)" opacity=".43">
-        <ellipse cx="770" cy="381" fill="#4285f4" rx="291" ry="123"/>
+        <ellipse cx="770" cy="381" fill="#043a8a" rx="291" ry="123"/>
     </g>
 </svg>
