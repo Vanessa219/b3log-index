@@ -208,7 +208,7 @@ img {
 
 .navigation {
     position: sticky;
-    top: -1px;
+    top: 0;
     z-index: 4;
     background-color: #fff;
     padding: 8px 16px;
@@ -232,6 +232,10 @@ img {
     color: #6a737d;
     border-bottom: 2px solid transparent;
     display: inline-block;
+}
+
+.navigation .item:hover span {
+    color: #040d21;
 }
 
 .navigation .item--select span {
@@ -390,6 +394,10 @@ img {
 
 .footer svg {
     fill: #586069;
+}
+
+.footer .icon:hover svg {
+    fill: #0366d6;
 }
 
 .footer a.item:hover {

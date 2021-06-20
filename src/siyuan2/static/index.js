@@ -41,6 +41,18 @@ const type = () => {
   })
 }
 
+const hasClosestByClassName = (element, className) => {
+  let isClosest = false
+  while (element && !isClosest && !element.classList.contains('navigation')) {
+    if (element.classList.contains(className)) {
+      isClosest = true
+    } else {
+      element = element.parentElement
+    }
+  }
+  return isClosest && element
+};
+
 (function () {
   document.getElementById('changeTOzh').addEventListener('click', function () {
     localStorage.setItem('language', 'zh')
@@ -52,12 +64,48 @@ const type = () => {
     return
   }
 
+  document.querySelector('.navigation').addEventListener('click', (event) => {
+    const itemElement = hasClosestByClassName(event.target, 'item')
+    if (itemElement) {
+      document.querySelector('html').scrollTop = document.getElementById(
+        itemElement.getAttribute('data-id')).offsetTop
+    }
+  })
+
   let initType = false
   window.addEventListener('scroll', function () {
     const top = document.querySelector('html').scrollTop
     if (!initType && top > 214) {
       type()
       initType = true
+    }
+    document.querySelectorAll('.navigation .item').forEach(item => {
+      item.classList.remove('item--select')
+    })
+    if (top >= document.getElementById('feature1').offsetTop && top <
+      document.getElementById('feature2').offsetTop) {
+      document.querySelector('.navigation .item[data-id="feature1"]').
+        classList.
+        add('item--select')
+    } else if (top >= document.getElementById('feature2').offsetTop && top <
+      document.getElementById('feature3').offsetTop) {
+      document.querySelector('.navigation .item[data-id="feature2"]').
+        classList.
+        add('item--select')
+    } else if (top >= document.getElementById('feature3').offsetTop && top <
+      document.getElementById('feature4').offsetTop) {
+      document.querySelector('.navigation .item[data-id="feature3"]').
+        classList.
+        add('item--select')
+    } else if (top >= document.getElementById('feature4').offsetTop && top <
+      document.getElementById('feature5').offsetTop) {
+      document.querySelector('.navigation .item[data-id="feature4"]').
+        classList.
+        add('item--select')
+    } else if (top >= document.getElementById('feature5').offsetTop) {
+      document.querySelector('.navigation .item[data-id="feature5"]').
+        classList.
+        add('item--select')
     }
   })
 })()
