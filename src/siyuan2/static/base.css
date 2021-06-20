@@ -12,6 +12,7 @@
 }
 
 body {
+    background-color: #fafbfc;
     margin: 0;
     overflow-x: hidden;
 }
@@ -368,4 +369,35 @@ img {
 .feature__a:hover svg {
     transition: transform .2s;
     transform: translateX(3px);
+}
+
+.footer {
+    padding: 24px 0;
+}
+
+.footer .item {
+    font-size: 12px;
+    color: #586069;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+.footer .icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 16px;
+}
+
+.footer svg {
+    fill: #586069;
+}
+
+.footer a.item:hover {
+    color: #0366d6;
+    text-decoration: underline;
+}
+
+.footer__inner {
+    align-items: center;
+    display: flex;
 }
