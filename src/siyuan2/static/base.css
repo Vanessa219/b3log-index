@@ -277,9 +277,8 @@ img {
 }
 
 .feature {
-    padding: 128px 0;
+    padding: 128px 48px;
     background-color: #040d21;
-    border-radius: 16px;
     overflow: hidden;
 }
 
@@ -445,7 +444,7 @@ img {
     display: flex;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1281px) {
     .feature {
         border-radius: 16px;
     }
