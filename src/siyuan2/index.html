@@ -36,8 +36,8 @@
     <link type="text/css" rel="stylesheet" href="static/base.css" charset="utf-8"/>
 </head>
 <body>
-<img class="home__bg" src="static/home.svg">
 <main class="home">
+    <img class="home__bg" src="static/home.svg">
     <header class="header wrapper">
         <a href="https://b3log.org/siyuan" class="header__logo">
             <img src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d6b3ad3964429fe682f3de3ff4a48b59ea3145d9/src/images/brand/siyuan-128.png">
@@ -59,20 +59,22 @@
         <div class="home__side">
             <h2 class="home__slogan">加密同步　本地优先<br>思源有云　往来随心</h2>
             <p class="home__desc">思源笔记是一款本地优先的个人知识管理系统，支持完全离线使用，同时也支持端到端加密同步。</p>
-            <a href="download.html" class="home__download">下载</a>
+            <a style="padding: 16px 64px;" href="download.html" class="home__download">下载</a>
         </div>
         <div class="home__img">
             <img src="static/home2.svg">
         </div>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="0 0 1680 40"
-         style="bottom: -31px;position: absolute;">
-        <path d="M0 40h1680V30S1340 0 840 0 0 30 0 30z" fill="#fafbfc"></path>
+         style="z-index1;bottom: -31px;position: absolute;">
+        <path d="M0 40h1680V30S1340 0 840 0 0 30 0 30z" fill="#fff"></path>
     </svg>
 </main>
-<div class="second">
+
+<div class="second wrapper">
     <div id="slogan" class="second__type"></div>
-    <img src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/bg1.png">
+    <img class="build-in-scale-fade" style="box-sizing: border-box;padding: 0 48px"
+         src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/bg1.png">
 </div>
 <div class="navigation">
     <div class="navigation__warp wrapper">
@@ -95,48 +97,42 @@
     </div>
 </div>
 
-<div class="feature" id="feature1">
-    <div class="wrapper">
-        <div class="feature__info">
-            <h2 class="feature__title feature__title--1">Block 编辑模式</h2>
-            <div class="feature__hr"></div>
-            <h3 class="feature__desc">
-                Block 编辑模式 以块来组织内容，每个块都可以缩放聚焦，支持横向排版和大纲式笔记书写
-                <span class="feature__primary">Block 编辑模式 以块来组织内容，每个块都可以缩放聚焦，支持横向排版和大纲式笔记书写</span>
-            </h3>
-        </div>
+<div class="feature wrapper" id="feature1">
+    <div class="feature__info">
+        <h2 class="feature__title feature__title--1">Block 编辑模式</h2>
+        <div class="feature__hr"></div>
+        <h3 class="feature__desc">
+            Block 编辑模式 以块来组织内容，每个块都可以缩放聚焦，支持横向排版和大纲式笔记书写
+            <span class="feature__primary">Block 编辑模式 以块来组织内容，每个块都可以缩放聚焦，支持横向排版和大纲式笔记书写</span>
+        </h3>
     </div>
     <div class="feature__hr"></div>
     <div class="feature__imgs">
-        <div class="wrapper">
-            <img class="feature__img"
-                 src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/bg3.png">
-        </div>
+        <img class="feature__img"
+             src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/bg3.png">
         <img src="static/img-bg.svg"
              style="position:absolute;left:0;width: 117.31%; margin: 0 -8.65%; top: 50%; transform: translateY(-50%);">
     </div>
     <div class="feature__hr"></div>
     <div class="feature__hr"></div>
 
-    <div style="position: relative">
+    <div style="position: relative" class="feature__two">
         <img src="static/img-bg2.svg"
              style="position:absolute;left:0;width: 150%; margin: 0 -25%; top: 50%; transform: translateY(-50%);">
-        <div class="wrapper feature__two">
-            <div class="feature__info">
-                <h2 class="feature__title feature__title--1">Block 编辑模式</h2>
-                <div class="feature__hr"></div>
-                <h3 class="feature__desc">
-                    <span class="feature__primary">Block 编辑模式 以块来组织内容，每个块都可以缩放聚焦，支持横向排版和大纲式笔记书写</span>
-                    Block 编辑模式 以块来组织内容，每个块都可以缩放聚焦，支持横向排版和大纲式笔记书写
-                </h3>
-            </div>
-            <div class="feature__space"></div>
-            <div class="feature__imgs fn__flex-1">
-                <img class="feature__img"
-                     src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/3-2.png">
-            </div>
-            <div class="feature__space"></div>
+        <div class="feature__info">
+            <h2 class="feature__title feature__title--1">Block 编辑模式</h2>
+            <div class="feature__hr"></div>
+            <h3 class="feature__desc">
+                <span class="feature__primary">Block 编辑模式 以块来组织内容，每个块都可以缩放聚焦，支持横向排版和大纲式笔记书写</span>
+                Block 编辑模式 以块来组织内容，每个块都可以缩放聚焦，支持横向排版和大纲式笔记书写
+            </h3>
         </div>
+        <div class="feature__space"></div>
+        <div class="feature__imgs fn__flex-1">
+            <img class="feature__img"
+                 src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/3-2.png">
+        </div>
+        <div class="feature__space"></div>
     </div>
 </div>
 
@@ -319,7 +315,10 @@
         </div>
     </div>
 </div>
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="0 0 1680 40" style="transform: scaleY(-1);margin-top: -1px"><path d="M0 40h1680V30S1340 0 840 0 0 30 0 30z" fill="#040d21"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="0 0 1680 40"
+     style="transform: scaleY(-1);margin-top: -1px">
+    <path d="M0 40h1680V30S1340 0 840 0 0 30 0 30z" fill="#040d21"></path>
+</svg>
 <footer class="footer">
     <div class="wrapper footer__inner">
         <span class="item">滇ICP备14007358号-1     © 2010-2021 云南链滴科技有限公司</span>
@@ -346,7 +345,10 @@
             </svg>
         </a>
         <a class="icon" href="https://discord.gg/bzfCBwMzdP" target="_blank" rel="nofollow">
-            <svg viewBox="0 0 1024 1024"><path d="M862.805333 0c59.989333 0 108.373333 48.512 111.232 105.6V1024l-114.218666-96.981333-62.72-57.088-68.437334-59.648 28.586667 94.08H158.293333c-59.818667 0-108.373333-45.44-108.373333-105.642667V105.813333C49.92 48.725333 98.56 0.128 158.506667 0.128h704L862.805333 0z m-261.034666 242.474667h-1.28l-8.618667 8.533333c88.448 25.6 131.242667 65.578667 131.242667 65.578667-57.002667-28.501333-108.373333-42.752-159.744-48.512-37.12-5.76-74.24-2.730667-105.6 0h-8.533334c-20.053333 0-62.72 8.533333-119.893333 31.36-19.925333 8.661333-31.36 14.336-31.36 14.336s42.752-42.752 136.96-65.578667l-5.76-5.76s-71.338667-2.730667-148.352 54.186667c0 0-77.013333 134.144-77.013333 299.52 0 0 42.666667 74.24 159.701333 77.056 0 0 17.066667-22.741333 34.346667-42.752-65.706667-19.968-91.306667-59.904-91.306667-59.904s5.717333 2.816 14.293333 8.533333h2.56c1.28 0 1.877333 0.64 2.56 1.28v0.256c0.682667 0.682667 1.28 1.28 2.56 1.28 14.08 5.802667 28.16 11.52 39.68 17.066667a349.013333 349.013333 0 0 0 76.8 22.869333c39.68 5.76 85.162667 8.533333 136.96 0 25.6-5.76 51.2-11.392 76.8-22.826667 16.64-8.533333 37.12-17.066667 59.605334-31.445333 0 0-25.6 39.936-94.08 59.904 14.08 19.882667 33.92 42.666667 33.92 42.666667 117.077333-2.56 162.56-76.8 165.12-73.642667 0-165.12-77.44-299.52-77.44-299.52-69.76-51.797333-135.04-53.76-146.56-53.76l2.389333-0.853333z m7.168 188.288c29.994667 0 54.186667 25.6 54.186666 56.96 0 31.573333-24.32 57.173333-54.186666 57.173333-29.866667 0-54.186667-25.6-54.186667-56.917333 0.085333-31.573333 24.448-57.088 54.186667-57.088z m-193.834667 0c29.866667 0 54.016 25.6 54.016 56.96 0 31.573333-24.32 57.173333-54.186667 57.173333-29.866667 0-54.186667-25.6-54.186666-56.917333 0-31.573333 24.32-57.088 54.186666-57.088z" p-id="1706"></path></svg>
+            <svg viewBox="0 0 1024 1024">
+                <path d="M862.805333 0c59.989333 0 108.373333 48.512 111.232 105.6V1024l-114.218666-96.981333-62.72-57.088-68.437334-59.648 28.586667 94.08H158.293333c-59.818667 0-108.373333-45.44-108.373333-105.642667V105.813333C49.92 48.725333 98.56 0.128 158.506667 0.128h704L862.805333 0z m-261.034666 242.474667h-1.28l-8.618667 8.533333c88.448 25.6 131.242667 65.578667 131.242667 65.578667-57.002667-28.501333-108.373333-42.752-159.744-48.512-37.12-5.76-74.24-2.730667-105.6 0h-8.533334c-20.053333 0-62.72 8.533333-119.893333 31.36-19.925333 8.661333-31.36 14.336-31.36 14.336s42.752-42.752 136.96-65.578667l-5.76-5.76s-71.338667-2.730667-148.352 54.186667c0 0-77.013333 134.144-77.013333 299.52 0 0 42.666667 74.24 159.701333 77.056 0 0 17.066667-22.741333 34.346667-42.752-65.706667-19.968-91.306667-59.904-91.306667-59.904s5.717333 2.816 14.293333 8.533333h2.56c1.28 0 1.877333 0.64 2.56 1.28v0.256c0.682667 0.682667 1.28 1.28 2.56 1.28 14.08 5.802667 28.16 11.52 39.68 17.066667a349.013333 349.013333 0 0 0 76.8 22.869333c39.68 5.76 85.162667 8.533333 136.96 0 25.6-5.76 51.2-11.392 76.8-22.826667 16.64-8.533333 37.12-17.066667 59.605334-31.445333 0 0-25.6 39.936-94.08 59.904 14.08 19.882667 33.92 42.666667 33.92 42.666667 117.077333-2.56 162.56-76.8 165.12-73.642667 0-165.12-77.44-299.52-77.44-299.52-69.76-51.797333-135.04-53.76-146.56-53.76l2.389333-0.853333z m7.168 188.288c29.994667 0 54.186667 25.6 54.186666 56.96 0 31.573333-24.32 57.173333-54.186666 57.173333-29.866667 0-54.186667-25.6-54.186667-56.917333 0.085333-31.573333 24.448-57.088 54.186667-57.088z m-193.834667 0c29.866667 0 54.016 25.6 54.016 56.96 0 31.573333-24.32 57.173333-54.186667 57.173333-29.866667 0-54.186667-25.6-54.186666-56.917333 0-31.573333 24.32-57.088 54.186666-57.088z"
+                      p-id="1706"></path>
+            </svg>
         </a>
     </div>
 </footer>

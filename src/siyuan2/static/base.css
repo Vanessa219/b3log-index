@@ -11,10 +11,31 @@
     }
 }
 
+@keyframes dropdown-display {
+    0% {
+        opacity: 0;
+        transform: scale(.98) translateY(-.6em);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.build-in-scale-fade {
+    opacity: 0;
+    transition: opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);
+    transform: scale(.96) translateY(24px);
+}
+
+.build-in-scale-fade.build-in-animate {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
 body {
-    background-color: #fafbfc;
+    background-color: #fff;
     margin: 0;
-    overflow-x: hidden;
 }
 
 img {
@@ -27,6 +48,10 @@ img {
     padding: 0 16px;
 }
 
+.fn__flex {
+    display: flex;
+}
+
 .fn__flex-1 {
     flex: 1;
 }
@@ -34,6 +59,8 @@ img {
 .home {
     height: calc(100vh + 31px);
     background-color: #040d21;
+    overflow: hidden;
+    position: relative;
 }
 
 .home__bg {
@@ -72,6 +99,7 @@ img {
     position: relative;
     cursor: pointer;
     font-size: 16px;
+    line-height: 32px;
 }
 
 .header__a:hover {
@@ -87,6 +115,7 @@ img {
     position: absolute;
     right: 0;
     padding: 16px 16px 8px 16px;
+    dropdown-display .4s cubic-bezier(.73,.005,.22,1)
 }
 
 .header__menu .item {
@@ -183,6 +212,7 @@ img {
     position: relative;
     z-index: 2;
     text-align: center;
+    margin-bottom: 128px;
 }
 
 .second__type {
@@ -212,6 +242,9 @@ img {
     z-index: 4;
     background-color: #fff;
     padding: 8px 16px;
+}
+
+.navigation--pin {
     box-shadow: 0 2.76726px 2.21381px rgb(0 0 0 / 7%), 0 6.6501px 5.32008px rgb(0 0 0 / 4%), 0 12.5216px 10.0172px rgb(0 0 0 / 3%), 0 22.3363px 17.869px rgb(0 0 0 / 3%), 0 41.7776px 33.4221px rgb(0 0 0 / 2%), 0 100px 80px rgb(0 0 0 / 2%), 0 1px 0 0 rgb(4 13 33 / 10%);
 }
 
@@ -246,6 +279,8 @@ img {
 .feature {
     padding: 128px 0;
     background-color: #040d21;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 .feature--2 {
@@ -408,4 +443,10 @@ img {
 .footer__inner {
     align-items: center;
     display: flex;
+}
+
+@media (min-width: 1280px) {
+    .feature {
+        border-radius: 16px;
+    }
 }

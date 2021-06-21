@@ -64,6 +64,22 @@ const hasClosestByClassName = (element, className) => {
     return
   }
 
+  const observer = new IntersectionObserver((e) => {
+    if (e[0].isIntersecting) {
+      e[0].target.classList.add('build-in-animate')
+    } else {
+      e[0].target.classList.remove('build-in-animate')
+    }
+    console.log(e)
+  }, {
+    rootMargin: '-0% 0% -30% 0%',
+    threshold: 0,
+  })
+
+  document.querySelectorAll('.build-in-scale-fade').forEach(item => {
+    observer.observe(item)
+  })
+
   document.querySelector('.navigation').addEventListener('click', (event) => {
     const itemElement = hasClosestByClassName(event.target, 'item')
     if (itemElement) {
@@ -73,6 +89,7 @@ const hasClosestByClassName = (element, className) => {
   })
 
   let initType = false
+  const navigationElement = document.querySelector('.navigation')
   window.addEventListener('scroll', function () {
     const top = document.querySelector('html').scrollTop
     if (!initType && top > 214) {
@@ -82,30 +99,25 @@ const hasClosestByClassName = (element, className) => {
     document.querySelectorAll('.navigation .item').forEach(item => {
       item.classList.remove('item--select')
     })
+    if (top >= document.getElementById('feature1').offsetTop - 58) {
+      navigationElement.classList.add('navigation--pin')
+    } else {
+      navigationElement.classList.remove('navigation--pin')
+    }
     if (top >= document.getElementById('feature1').offsetTop && top <
       document.getElementById('feature2').offsetTop) {
-      document.querySelector('.navigation .item[data-id="feature1"]').
-        classList.
-        add('item--select')
+      navigationElement.querySelector('.item[data-id="feature1"]').classList.add('item--select')
     } else if (top >= document.getElementById('feature2').offsetTop && top <
       document.getElementById('feature3').offsetTop) {
-      document.querySelector('.navigation .item[data-id="feature2"]').
-        classList.
-        add('item--select')
+      navigationElement.querySelector('.item[data-id="feature2"]').classList.add('item--select')
     } else if (top >= document.getElementById('feature3').offsetTop && top <
       document.getElementById('feature4').offsetTop) {
-      document.querySelector('.navigation .item[data-id="feature3"]').
-        classList.
-        add('item--select')
+      navigationElement.querySelector('.item[data-id="feature3"]').classList.add('item--select')
     } else if (top >= document.getElementById('feature4').offsetTop && top <
       document.getElementById('feature5').offsetTop) {
-      document.querySelector('.navigation .item[data-id="feature4"]').
-        classList.
-        add('item--select')
+      navigationElement.querySelector('.item[data-id="feature4"]').classList.add('item--select')
     } else if (top >= document.getElementById('feature5').offsetTop) {
-      document.querySelector('.navigation .item[data-id="feature5"]').
-        classList.
-        add('item--select')
+      navigationElement.querySelector('.item[data-id="feature5"]').classList.add('item--select')
     }
   })
 })()
