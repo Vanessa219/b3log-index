@@ -67,9 +67,9 @@ const hasClosestByClassName = (element, className) => {
   const observer = new IntersectionObserver((e) => {
     e.forEach(item => {
       if (item.isIntersecting) {
-        item.target.classList.add('build-in-animate')
+        item.target.classList.add('animate--in')
       } else {
-        item.target.classList.remove('build-in-animate')
+        item.target.classList.remove('animate--in')
       }
     })
   }, {
@@ -77,7 +77,7 @@ const hasClosestByClassName = (element, className) => {
     threshold: 0,
   })
 
-  document.querySelectorAll('.build-in-scale-fade').forEach(item => {
+  document.querySelectorAll('.animate').forEach(item => {
     observer.observe(item)
   })
 
