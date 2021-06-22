@@ -1,6 +1,6 @@
 @keyframes flash {
     24%,
-    32%{
+    32% {
         opacity: 1
     }
 
@@ -442,14 +442,21 @@ img {
 }
 
 .footer {
-    position: relative;
-    padding: 80px 0 24px 0;
-    background-color: #040d21;
+    padding: 24px 0;
 }
 
-.footer .header__a {
-    color: #8193b2;
+.footer .item {
+    font-size: 12px;
+    color: #586069;
+    margin-right: 16px;
+    text-decoration: none;
 }
+
+.footer a.item:hover {
+    color: #0366d6;
+    text-decoration: underline;
+}
+
 
 .footer .icon {
     width: 24px;
@@ -458,16 +465,11 @@ img {
 }
 
 .footer svg {
-    fill: #8193b2;
+    fill: #586069;
 }
 
 .footer .icon:hover svg {
-    opacity: .75;
-}
-
-.footer a.item:hover {
-    color: #0366d6;
-    text-decoration: underline;
+    fill: #0366d6;
 }
 
 .footer__inner {
