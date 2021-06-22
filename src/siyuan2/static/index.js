@@ -17,7 +17,7 @@ const type = () => {
       textLength += text[i - 1].length + 20
     }
     for (let j = 0; j < text.length; j++) {
-      time += 200
+      time += 150
       setTimeout(() => {
         typeElement.innerHTML = text.substr(0, j + 1) +
           `<span class="second__caret" style="${(j === text.length - 1
@@ -26,7 +26,7 @@ const type = () => {
       }, time)
     }
     if (i !== texts.length - 1) {
-      time += 2000
+      time += 1500
       for (let k = 0; k < text.length; k++) {
         time += 50
         setTimeout(() => {
