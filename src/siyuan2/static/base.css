@@ -221,7 +221,7 @@ img {
 .home__img {
     height: 100vh;
     position: absolute;
-    right: 0;
+    right: 16px;
     bottom: 0;
     width: 50%;
     display: flex;
