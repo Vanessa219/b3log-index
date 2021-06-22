@@ -1,5 +1,6 @@
 @keyframes flash {
-    24% {
+    24%,
+    32%{
         opacity: 1
     }
 
