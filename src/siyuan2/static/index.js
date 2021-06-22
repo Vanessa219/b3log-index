@@ -26,7 +26,7 @@ const type = () => {
       }, time)
     }
     if (i !== texts.length - 1) {
-      time += 1500
+      time += 2000
       for (let k = 0; k < text.length; k++) {
         time += 50
         setTimeout(() => {
