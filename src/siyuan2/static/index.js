@@ -92,6 +92,9 @@ const hasClosestByClassName = (element, className) => {
 
   let initType = false
   const navigationElement = document.querySelector('.navigation')
+  const block1Element = document.getElementById('block1')
+  const block2Element = document.getElementById('block2')
+  const blockImgElement = document.getElementById('blockImg')
   window.addEventListener('scroll', function () {
     const top = document.querySelector('html').scrollTop
 
@@ -142,7 +145,15 @@ const hasClosestByClassName = (element, className) => {
     }
 
     // 块级双链图片切换
-    // https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/3-4.png
-    // https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/bg1.png
+    blockImgElement.src = 'https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/3-2.png'
+    if (top >= block1Element.offsetTop + block1Element.offsetParent.offsetTop +
+      block1Element.clientHeight - 58 &&
+      top < block2Element.offsetTop + block2Element.offsetParent.offsetTop +
+      block2Element.clientHeight - 58) {
+      blockImgElement.src = 'https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/3-4.png'
+    } else if (top >= block2Element.offsetTop +
+      block2Element.offsetParent.offsetTop + block2Element.clientHeight - 58) {
+      blockImgElement.src = 'https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/bg1.png'
+    }
   })
 })()
