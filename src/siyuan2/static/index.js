@@ -94,18 +94,24 @@ const hasClosestByClassName = (element, className) => {
   const navigationElement = document.querySelector('.navigation')
   window.addEventListener('scroll', function () {
     const top = document.querySelector('html').scrollTop
+
+    // type
     if (!initType && top > 214) {
       type()
       initType = true
     }
-    document.querySelectorAll('.navigation .item').forEach(item => {
-      item.classList.remove('item--select')
-    })
+
+    // nav box-shadow
     if (top >= document.getElementById('feature1').offsetTop - 58) {
       navigationElement.classList.add('navigation--pin')
     } else {
       navigationElement.classList.remove('navigation--pin')
     }
+
+    // nav select
+    document.querySelectorAll('.navigation .item').forEach(item => {
+      item.classList.remove('item--select')
+    })
     if (top >= document.getElementById('feature1').offsetTop - 58 && top <
       document.getElementById('feature2').offsetTop - 58) {
       navigationElement.querySelector('.item[data-id="feature1"]').
@@ -134,5 +140,9 @@ const hasClosestByClassName = (element, className) => {
         classList.
         add('item--select')
     }
+
+    // 块级双链图片切换
+    // https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/3-4.png
+    // https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d24edc526ee2486c082273f93c79a7e92cc79134/src/siyuan/images/bg1.png
   })
 })()
