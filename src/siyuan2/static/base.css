@@ -104,6 +104,7 @@ img {
 }
 
 .header--black {
+    display: block;
     background-color: rgb(4 13 33 / 75%);
 }
 
