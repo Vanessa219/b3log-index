@@ -143,41 +143,6 @@ img {
     opacity: 0.75;
 }
 
-.header__menu {
-    display: none;
-    animation: dropdown-display .4s cubic-bezier(.73, .005, .22, 1);
-    box-shadow: 0 3px 12px rgb(27 31 35 / 15%), 0 0 1px rgb(27 31 35 / 20%);
-    border-radius: 8px;
-    background-color: #fff;
-    position: absolute;
-    right: 0;
-    padding: 16px 16px 8px 16px;
-    dropdown-display .4s cubic-bezier(.73, .005, .22, 1)
-}
-
-.header__menu .item {
-    color: #24292e;
-    text-decoration: none;
-    font-size: 14px;
-    cursor: pointer;
-    white-space: nowrap;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.header__menu .item:hover {
-    color: #0366d6;
-}
-
-.header__lang {
-    align-self: center;
-    position: relative;
-}
-
-.header__lang:hover .header__menu {
-    display: block;
-}
-
 .home__panel {
     position: relative;
     height: 100vh;

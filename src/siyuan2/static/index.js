@@ -73,16 +73,6 @@ const getOS = () => {
 }
 
 (function () {
-  document.getElementById('changeTOzh').addEventListener('click', function () {
-    localStorage.setItem('language', 'zh')
-    window.location.href = this.getAttribute('data-href')
-  })
-  if (0 > navigator.language.indexOf('zh') &&
-    localStorage.getItem('language') !== 'zh') {
-    window.location.href = 'en'
-    return
-  }
-
   const downloadElements = document.querySelectorAll('#download a')
   if (downloadElements.length > 0) {
     const os = getOS()
