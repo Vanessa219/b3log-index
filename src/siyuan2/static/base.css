@@ -633,6 +633,15 @@ img {
     margin-left: 4px;
 }
 
+.price__feature {
+    display: none;
+}
+
+.price__feature div {
+    margin: 8px 0;
+    font-weight: bold;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .animate {
         transition-delay: 0s;
@@ -755,5 +764,17 @@ img {
 
     .feature__img1 {
         margin-bottom: 32px;
+    }
+
+    .price {
+        display: block;
+    }
+
+    .price--hide {
+        display: none;
+    }
+
+    .price__feature {
+        display: block;
     }
 }
