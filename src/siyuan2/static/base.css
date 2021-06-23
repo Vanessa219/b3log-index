@@ -578,6 +578,7 @@ img {
     color: #8193b2;
     font-size: 20px;
     margin: 0;
+    line-height: 32px;
 }
 
 @media (prefers-reduced-motion: reduce) {
