@@ -79,6 +79,14 @@ img {
     flex: 1;
 }
 
+.fn__a {
+    color: #035bd6;
+}
+
+.fn__a:hover {
+    color: #043a8a;
+}
+
 .home {
     height: calc(100vh + 40px);
     background-color: #040d21;
