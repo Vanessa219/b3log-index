@@ -57,6 +57,8 @@
 body {
     background-color: #fff;
     margin: 0;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 img {
