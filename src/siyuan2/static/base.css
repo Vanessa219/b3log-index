@@ -104,6 +104,7 @@ img {
 }
 
 .header--black {
+    display: block;
     background-color: rgb(4 13 33 / 75%);
 }
 
@@ -520,6 +521,7 @@ img {
     position: relative;
     z-index: 1;
     place-content: space-evenly;
+    max-width: 1000px;
 }
 
 .download .item {
@@ -532,7 +534,7 @@ img {
     padding: 24px;
     border-radius: 8px;
     background-color: #fafbfc;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 }
 
 .download .item:hover {
@@ -598,7 +600,8 @@ img {
     color: #fff;
 }
 
-.faq .item p {
+.faq .item p,
+.faq .item ul {
     color: #8193b2;
     font-size: 20px;
     margin: 0;
