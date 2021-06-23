@@ -103,7 +103,12 @@ img {
     z-index: 3;
 }
 
-.header__logo img {
+.header--white .header__a {
+    color: #040d21;
+}
+
+.header__logo img,
+.header__logo svg {
     width: 48px;
     height: 48px;
     float: left;
@@ -395,7 +400,6 @@ img {
     border-radius: 8px;
     position: relative;
     z-index: 1;
-    background: #0c162d;
     box-shadow: 0 0 0 1px hsl(0deg 0% 100% / 10%), 0 34px 65px #040d21, 0 2.76726px 2.21381px rgb(0 0 0 / 7%), 0 6.6501px 5.32008px rgb(0 0 0 / 4%), 0 12.5216px 10.0172px rgb(0 0 0 / 3%), 0 22.3363px 17.869px rgb(0 0 0 / 3%), 0 41.7776px 33.4221px rgb(0 0 0 / 2%), 0 100px 80px rgb(0 0 0 / 2%);
 }
 

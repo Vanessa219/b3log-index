@@ -66,6 +66,10 @@ const hasClosestByClassName = (element, className) => {
     return
   }
 
+  if (!document.querySelector('.navigation')) {
+    return;
+  }
+
   const observer = new IntersectionObserver((e) => {
     e.forEach(item => {
       if (item.isIntersecting) {
