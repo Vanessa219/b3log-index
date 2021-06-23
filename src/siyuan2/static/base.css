@@ -79,14 +79,6 @@ img {
     flex: 1;
 }
 
-.fn__a {
-    color: #035bd6;
-}
-
-.fn__a:hover {
-    color: #043a8a;
-}
-
 .home {
     height: calc(100vh + 40px);
     background-color: #040d21;
@@ -422,6 +414,14 @@ img {
 .feature__a:hover svg {
     transition: transform .2s;
     transform: translateX(3px);
+}
+
+.feature__a--white {
+    color: #fff;
+}
+
+.feature__a--white span {
+    border-bottom: 2px solid #fff;
 }
 
 .feature__img2 {
