@@ -347,7 +347,7 @@ img {
 
 .feature__title {
     font-size: 64px;
-    line-height: 68px;
+    line-height: 80px;
     -webkit-box-decoration-break: clone;
     display: inline-block;
     margin: 0;
