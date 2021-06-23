@@ -492,3 +492,38 @@ img {
         box-shadow: none;
     }
 }
+
+
+@media (max-width: 1024px) {
+    .home,
+    .home__panel,
+    .home__side{
+        height: auto;
+
+    }
+    .home__panel,
+    .home__side{
+        position: initial;
+    }
+
+    .home__side,
+    .feature__info {
+        width: 100%;
+    }
+
+    .home__img {
+        position: relative;
+        width: 60vw;
+        display: block;
+        height: 60vw;
+        margin: 64px auto;
+    }
+
+    .feature__two {
+        display: block;
+    }
+
+    .feature__imgs {
+        margin-top: 24px;
+    }
+}
