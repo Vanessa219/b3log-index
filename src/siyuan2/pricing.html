@@ -36,9 +36,9 @@
     <link type="text/css" rel="stylesheet" href="static/base.css" charset="utf-8"/>
 </head>
 <body>
-<div style="position: relative;overflow: hidden;">
-    <img class="home__bg" src="static/home.svg">
-    <img style="position: absolute" src="static/text-bg.svg">
+<div style="position: relative;">
+    <div style="position: absolute;overflow: hidden;height: 100%;width: 100%;"><img class="home__bg" src="static/home.svg"></div>
+    <img style="position: absolute" src="static/img-bg4.svg">
     <header class="header--black header">
         <div class="wrapper fn__flex">
             <a href="https://b3log.org/siyuan" class="header__logo">
@@ -55,14 +55,35 @@
     <div class="feature__hr"></div>
     <div class="feature__hr"></div>
     <div class="wrapper" style="position: relative;z-index: 1;">
-        <h2 class="feature__title feature__black" style="text-align: center">
-            价格
-        </h2>
+        <div style="text-align: center">
+            <h2 class="feature__title feature__black">
+                价格
+            </h2>
+        </div>
         <div class="feature__hr"></div>
-        <p>
-            所有数据都保存在用户自己完全控制的设备上
-            不会收集任何使用数据
-        </p>
+        <div class="fn__flex price" style="position: sticky;top: 0">
+            <div class="item item--empty"></div>
+            <div class="item">
+                <h3>免费</h3>
+                <div class="item__money">0 <span>每月</span></div>
+                <a href="download.html" class="home__download home__download--outline" style="display: block;margin-top: 24px">下载</a>
+            </div>
+            <div class="item item--s">
+                <h3>订阅</h3>
+                <div class="item__money">12.33 <span>每月</span></div>
+                <a href="https://ld246.com/subscribe/siyuan" class="home__download" style="display: block;margin-top: 24px">升级</a>
+            </div>
+        </div>
+        <div class="price fn__flex">
+            <div class="item item--empty">11</div>
+            <div class="item"><img src="static/icon-check.svg"></div>
+            <div class="item item--s"><img src="static/icon-x.svg"></div>
+        </div>
+        <div class="price fn__flex">
+            <div class="item item--empty">11</div>
+            <div class="item">11</div>
+            <div class="item item--s">11</div>
+        </div>
     </div>
     <div class="feature__hr"></div>
     <div class="feature__hr"></div>

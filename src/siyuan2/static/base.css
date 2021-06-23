@@ -164,17 +164,23 @@ img {
     font-size: 16px;
     border-radius: 8px;
     text-decoration: none;
-    align-self: baseline;
-}
-
-.home__download--nav {
-    margin-top: 0;
-    align-self: center;
 }
 
 .home__download:hover {
     opacity: .75;
     transition: opacity .4s;
+}
+
+.home__download--outline {
+    background: none;
+    box-shadow: 0 0 0 1px rgb(73 105 237 / 30%) inset;
+    transition: box-shadow .4s, color .4s;
+    color: #4969ed;
+}
+
+.home__download--outline:hover {
+    color: #3355e0;
+    box-shadow: 0 0 0 2px rgb(51 85 224 / 50%) inset;
 }
 
 .home__side {
@@ -579,6 +585,52 @@ img {
     font-size: 20px;
     margin: 0;
     line-height: 32px;
+}
+
+.price {
+    display: flex;
+}
+
+.price .item {
+    flex: 1;
+    padding: 16px;
+    background-color: #fafbfc;
+    margin: 0 8px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.price .item--s {
+    background-color: #f6f8fa;
+}
+
+.price .item--empty {
+    background-color: transparent;
+    font-weight: 500;
+    text-align: left;
+}
+
+.price .item h3 {
+    font-size: 20px;
+}
+
+.price .item__money {
+    margin: 8px 0;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 32px;
+}
+
+.price .item img {
+    vertical-align: text-bottom;
+}
+
+.price .item__money span {
+    font-size: 12px;
+    margin-left: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
