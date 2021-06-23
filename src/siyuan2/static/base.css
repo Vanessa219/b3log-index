@@ -175,12 +175,12 @@ img {
     color: #fff;
     font-size: 56px;
     line-height: 72px;
+    margin-bottom: 0;
 }
 
 .home__desc {
     color: #8193b2;
     font-size: 24px;
-    margin-top: 48px;
 }
 
 .home__download {
@@ -192,7 +192,6 @@ img {
     border-radius: 8px;
     text-decoration: none;
     align-self: baseline;
-    margin-top: 48px;
 }
 
 .home__download--nav {
@@ -322,6 +321,14 @@ img {
     justify-content: center;
 }
 
+.feature__info--small {
+    width: 42%;
+}
+
+.feature__info--small {
+    width: 38%;
+}
+
 .feature__title {
     font-size: 64px;
     line-height: 68px;
@@ -437,6 +444,31 @@ img {
     transform: translateX(3px);
 }
 
+.feature__img2 {
+    position: sticky;
+    max-width: none;
+    right: 0;
+    width: 100%;
+    top: 14vh;
+}
+
+.feature__img1 {
+    position: absolute;
+    top: 480px;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    margin-bottom: 128px
+}
+
+.feature__height {
+    height: 80vh;
+}
+
+.feature__height2 {
+    height: 50vh;
+}
+
 .footer {
     padding: 24px 0;
 }
@@ -471,6 +503,7 @@ img {
 .footer__inner {
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -497,17 +530,20 @@ img {
 @media (max-width: 1024px) {
     .home,
     .home__panel,
-    .home__side{
+    .home__side {
         height: auto;
 
     }
+
     .home__panel,
-    .home__side{
+    .home__side {
         position: initial;
     }
 
     .home__side,
-    .feature__info {
+    .feature__info,
+    .feature__info--small,
+    .feature__info--smaller {
         width: 100%;
     }
 
@@ -517,6 +553,7 @@ img {
         display: block;
         height: 60vw;
         margin: 64px auto;
+        left: 0;
     }
 
     .feature__two {
@@ -525,5 +562,70 @@ img {
 
     .feature__imgs {
         margin-top: 24px;
+    }
+
+    .feature__img1 {
+        z-index: 1;
+        width: 100%;
+    }
+
+    .feature__img2 {
+        top: 50vh;
+    }
+
+    .feature__height {
+        height: 50vh;
+    }
+
+    .feature__height2 {
+        height: 100vh;
+    }
+
+    .feature__img {
+        max-width: 100%;
+    }
+
+    .footer__inner .fn__flex-1 {
+        width: 100%;
+        flex: auto;
+        display: block;
+        height: 8px;
+    }
+
+    .footer .icon--first {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 620px) {
+    .home__slogan,
+    .second__type,
+    .feature__title {
+        font-size: 36px;
+        line-height: 48px;
+    }
+
+    .feature__hr {
+        height: 32px;
+    }
+
+    .home__img {
+        margin: 32px auto;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .feature {
+        padding: 32px 8px;
+    }
+
+    .feature__space {
+        width: 8px;
+    }
+
+    .feature__img1 {
+        margin-bottom: 32px;
     }
 }
