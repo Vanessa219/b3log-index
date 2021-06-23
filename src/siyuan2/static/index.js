@@ -53,7 +53,24 @@ const hasClosestByClassName = (element, className) => {
     }
   }
   return isClosest && element
-};
+}
+
+const getOS = () => {
+  const appVersion = navigator.appVersion
+  if (appVersion.indexOf('Win') !== -1) {
+    return 'Windows'
+  }
+  if (appVersion.indexOf('Mac') !== -1) {
+    return 'macOS'
+  }
+  if (appVersion.indexOf('X11') !== -1 || appVersion.indexOf('Linux') !== -1) {
+    return 'Linux'
+  }
+  if (/Android/.test(window.navigator.userAgent)) {
+    return 'Android'
+  }
+  return 'Windows'
+}
 
 (function () {
   document.getElementById('changeTOzh').addEventListener('click', function () {
@@ -66,8 +83,20 @@ const hasClosestByClassName = (element, className) => {
     return
   }
 
+  const downloadElements = document.querySelectorAll('#download a')
+  if (downloadElements.length > 0) {
+    const os = getOS()
+    downloadElements.forEach(item => {
+      if (item.getAttribute('data-os') === os) {
+        item.style.display = 'inline-block'
+      } else {
+        item.style.display = 'none'
+      }
+    })
+  }
+
   if (!document.querySelector('.navigation')) {
-    return;
+    return
   }
 
   const observer = new IntersectionObserver((e) => {
