@@ -136,12 +136,40 @@
         <div class="faq__inner">
             <h2 class="feature__title feature__title--1">常见问题</h2>
             <div class="item">
-                <h3>你好我是问题</h3>
-                <p>你好，我是答案</p>
+                <h3>思源是如何存储数据的？</h3>
+                <p>数据保存在工作空间文件夹下（默认位于用户家目录 Documents/SiYuan，可在 <kbd>设置</kbd> - <kbd>关于</kbd> 中进行修改），在工作空间 data 文件夹下：</p>
+                <ul>
+                    <li><code>assets</code> 用于保存所有插入的资源文件</li>
+                    <li><code>templates</code> 用于保存模板片段</li>
+                    <li><code>widgets</code> 用于保存挂件</li>
+                    <li><code>backup</code> 用于保存备份数据</li>
+                    <li><code>sync</code> 用于保存同步数据</li>
+                    <li>其余文件夹就是用户自己创建的笔记本文件夹，笔记本文件夹下 <code>.sy</code> 后缀的文件用于保存文档数据，数据格式为 JSON</li>
+                </ul>
             </div>
             <div class="item">
-                <h3>你好我是问题</h3>
-                <p>你好，我是答案</p>
+                <h3>如何修改笔记本名或删除笔记本？</h3>
+                <p>请在文件系统上直接修改或删除，然后重启思源。</p>
+            </div>
+            <div class="item">
+                <h3>删除文件/文件夹有什么#注意#事项吗？</h3>
+                <p>删除后文件不会出现在操作系统回收站中，而是直接删除，删除时思源会生成编辑历史。</p>
+            </div>
+            <div class="item">
+                <h3>如何删除不需要的历史记录以减少空间占用和提升性能？</h3>
+                <p>在文件系统上打开笔记本下的 `.siyuan/history/` 文件夹，删除不需要的历史。</p>
+            </div>
+            <div class="item">
+                <h3>如何才能只换行不新起段落？</h3>
+                <p>请使用 <kbd>Shift+Enter</kbd>。</p>
+            </div>
+            <div class="item">
+                <h3>如何在中文段首缩进？</h3>
+                <p>请使用全角空格。</p>
+            </div>
+            <div class="item">
+                <h3>使用需要付费吗？</h3>
+                <p>基础功能完全免费使用，高级特性需要<a href="pricing.html" target="_blank">年付订阅</a></p>
             </div>
         </div>
     </div>
