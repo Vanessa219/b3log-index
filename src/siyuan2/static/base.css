@@ -103,8 +103,8 @@ img {
     z-index: 3;
 }
 
-.header--white .header__a {
-    color: #040d21;
+.header--black {
+    background-color: rgb(4 13 33 / 75%);
 }
 
 .header__logo img,
@@ -584,6 +584,10 @@ img {
 
 .faq .item {
     margin: 40px 0;
+}
+
+.faq .item:last-child {
+    margin-bottom: 0;
 }
 
 .faq .item h3 {
