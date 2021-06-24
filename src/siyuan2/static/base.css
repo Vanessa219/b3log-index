@@ -20,6 +20,15 @@
     }
 }
 
+@keyframes tooltip-appear {
+    0% {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
 .animate__scale {
     opacity: 0;
     transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1);
@@ -52,6 +61,58 @@
     box-shadow: 0 0 0 1px rgb(53 72 91 / 10%), 0 2px 2px rgb(0 0 0 / 3%), 0 4px 4px rgb(0 0 0 / 4%), 0 10px 8px rgb(0 0 0 / 5%), 0 15px 15px rgb(0 0 0 / 6%), 0 30px 30px rgb(0 0 0 / 7%), 0 70px 65px rgb(0 0 0 / 9%);
     opacity: 1;
     transform: translateX(0);
+}
+
+.tip {
+    position: absolute;
+    left: -8px;
+    top: 20px;
+    height: 16px;
+    display: inline-flex;
+    width: 16px;
+}
+
+.tip:before {
+    left: 2px;
+    top: -6px;
+    border: 6px solid transparent;
+    border-top-color: rgb(36, 41, 46);
+    position: absolute;
+    z-index: 1000001;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    content: " ";
+    opacity: 0;
+}
+
+.tip:after {
+    width: max-content;
+    max-width: 250px;
+    word-wrap: break-word;
+    white-space: pre-line;
+    left: -8px;
+    bottom: 100%;
+    margin-bottom: 6px;
+    position: absolute;
+    z-index: 1000000;
+    padding: 8px 4px;
+    color: #fff;
+    text-align: center;
+    pointer-events: none;
+    content: attr(aria-label);
+    background: rgb(36, 41, 46);
+    border-radius: 8px;
+    opacity: 0;
+}
+
+.tip:hover:after,
+.tip:hover:before {
+    animation-name: tooltip-appear;
+    animation-duration: .1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+    animation-delay: .4s;
 }
 
 body {
@@ -609,6 +670,7 @@ img {
     background-color: transparent;
     font-weight: 500;
     text-align: left;
+    position: relative;
 }
 
 .price .item--empty h3 {
