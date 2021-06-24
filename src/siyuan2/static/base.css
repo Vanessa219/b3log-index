@@ -611,6 +611,19 @@ img {
     text-align: left;
 }
 
+.price .item--empty h3 {
+    font-size: 20px;
+    line-height: 24px;
+    color: #6a737d;
+    margin: 0;
+}
+
+.price .item__img {
+    height: 42px;
+    width: 42px;
+    margin-bottom: 8px;
+}
+
 .price .item h3 {
     font-size: 20px;
 }
@@ -640,6 +653,13 @@ img {
 .price__feature div {
     margin: 8px 0;
     font-weight: bold;
+}
+
+.price .item .home__download {
+    display: block;
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 14px;
 }
 
 @media (prefers-reduced-motion: reduce) {
