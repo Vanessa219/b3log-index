@@ -33,11 +33,13 @@
     <meta name="twitter:url" content="https://b3log.org/siyuan"/>
     <meta name="twitter:site" content="@b3logos"/>
     <meta name="twitter:creator" content="@b3logos"/>
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@b94812cb7a19b70ce9a3c9df0becaf6524f404a0/src/siyuan/static/base.css" charset="utf-8"/>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@84d9f182c434a9fb5e6014491d325198f79c41f1/src/siyuan/static/base.css" charset="utf-8"/>
 </head>
 <body>
 <main class="home">
-    <img class="home__bg" src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@b94812cb7a19b70ce9a3c9df0becaf6524f404a0/src/siyuan/static/home.svg">
+    <div style="position: absolute;overflow: hidden;height: 100%;width: 100%;">
+        <img class="home__bg" src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@b94812cb7a19b70ce9a3c9df0becaf6524f404a0/src/siyuan/static/home.svg">
+    </div>
     <header class="header wrapper">
         <a href="https://b3log.org/siyuan" class="header__logo">
             <img src="https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@b94812cb7a19b70ce9a3c9df0becaf6524f404a0/src/siyuan/static/logo.svg">
@@ -51,7 +53,7 @@
     </header>
     <div class="home__panel wrapper">
         <div class="home__side">
-            <h2 class="home__slogan">所见所得　双链块引<br>加密同步　本地优先</h2>
+            <h2 class="home__slogan">所见所得　<span class="feature__title--nowrap">双链块引</span><br>加密同步　<span class="feature__title--nowrap">本地优先</span></h2>
             <div class="feature__hr"></div>
             <p class="home__desc">思源笔记是一款本地优先的个人知识管理系统，支持完全离线使用，同时也支持端到端加密同步。<br><br>融合块、大纲和双向链接，构建你永恒的<em>数字花园</em>。
             </p>
@@ -243,7 +245,7 @@
     <div style="text-align: center">
         <h2 class="feature__title">
             <span class="feature__primary">双链块引</span>
-            <span class="feature__title--3">块级双向链接</span>
+            <span class="feature__title--3 feature__title--nowrap">块级双向链接</span>
         </h2>
     </div>
     <div class="feature__hr"></div>

@@ -378,6 +378,10 @@ img {
     color: #24292e;
 }
 
+.feature__title--nowrap {
+    white-space: nowrap;
+}
+
 .feature__title--1 {
     -webkit-text-fill-color: transparent;
     background: -webkit-linear-gradient(-70deg, #a2facf, #64acff);
@@ -750,10 +754,8 @@ img {
     .home__panel,
     .home__side {
         height: auto;
-
     }
 
-    .home__panel,
     .home__side {
         position: initial;
     }
