@@ -63,11 +63,11 @@ const getOS = () => {
   if (appVersion.indexOf('Mac') !== -1) {
     return 'macOS'
   }
-  if (appVersion.indexOf('X11') !== -1 || appVersion.indexOf('Linux') !== -1) {
-    return 'Linux'
-  }
   if (/Android/.test(window.navigator.userAgent)) {
     return 'Android'
+  }
+  if (appVersion.indexOf('X11') !== -1 || appVersion.indexOf('Linux') !== -1) {
+    return 'Linux'
   }
   return 'Windows'
 }
