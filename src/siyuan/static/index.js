@@ -169,15 +169,15 @@ const getOS = () => {
     }
 
     // 块级双链图片切换
-    blockImgElement.src = 'https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@b94812cb7a19b70ce9a3c9df0becaf6524f404a0/src/siyuan/static/feature3-1.png'
+    blockImgElement.src = 'https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d4811d951774f9d2700e53fa48ddaded6a94d5f9/src/siyuan/static/feature3-1.png'
     if (top >= block1Element.offsetTop + block1Element.offsetParent.offsetTop +
       block1Element.clientHeight - 58 &&
       top < block2Element.offsetTop + block2Element.offsetParent.offsetTop +
       block2Element.clientHeight - 58) {
-      blockImgElement.src = 'https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@b94812cb7a19b70ce9a3c9df0becaf6524f404a0/src/siyuan/static/feature3-2.png'
+      blockImgElement.src = 'https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d4811d951774f9d2700e53fa48ddaded6a94d5f9/src/siyuan/static/feature3-2.png'
     } else if (top >= block2Element.offsetTop +
       block2Element.offsetParent.offsetTop + block2Element.clientHeight - 58) {
-      blockImgElement.src = 'https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@b94812cb7a19b70ce9a3c9df0becaf6524f404a0/src/siyuan/static/feature3-3.png'
+      blockImgElement.src = 'https://cdn.jsdelivr.net/gh/vanessa219/b3log-index@d4811d951774f9d2700e53fa48ddaded6a94d5f9/src/siyuan/static/feature3-3.png'
     }
   })
 })()
