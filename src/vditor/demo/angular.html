@@ -61,7 +61,24 @@
         <div id="vditor"></div>
     </div>
     <div id="vditorDemoCode" class="vditor-reset">
-        <pre><code class="javascript">import {Component, OnInit} from '@angular/core';
+        <p>1.创建项目并添加<code>vditor</code>库</p>
+        <pre><code class="language-shell">$ ng new PROJECT_NAME
+$ cd PROJECT_NAME
+</code></pre>
+        <p>2.在<code>angular.json</code>添加<code>vditor</code>样式表</p>
+        <pre><code class="language-json">{
+ ...
+ &quot;styles&quot;:[
+    ...,
+    &quot;node_modules/vditor/src/assets/scss/index.scss&quot;
+  ]
+}
+</code></pre>
+        <p>3.在<code>app.component.html</code>中添加代码</p>
+        <pre><code class="language-html">&lt;div id=&quot;vditor&quot;&gt;&lt;/div&gt;
+</code></pre>
+        <p>4.在 <code>app.component.ts</code>中添加代码</p>
+        <pre><code class="language-ts">import {Component, OnInit} from '@angular/core';
 import Vditor from 'vditor';
 
 @Component({
@@ -81,12 +98,13 @@ export class AppComponent implements OnInit{
       cache: {
         enable: false,
       },
-      after: () => {
+      after: () =&gt; {
         this.vditor.setValue('Hello, Vditor + Angular!');
       }
     });
   }
 }
+
 </code></pre>
     </div>
     <div class="fn-100"></div>
