@@ -96,7 +96,8 @@
     margin-bottom: 6px;
     position: absolute;
     z-index: 1000000;
-    padding: 8px 4px;
+    padding: 4px 8px;
+    font-size: 12px;
     color: #fff;
     text-align: center;
     pointer-events: none;
@@ -707,6 +708,12 @@ img {
     vertical-align: text-bottom;
 }
 
+.price .item del {
+    color: #6a737d;
+    font-size: 14px;
+    margin-left: 16px;
+}
+
 .price .item__money span {
     font-size: 12px;
     margin-left: 4px;
@@ -726,6 +733,15 @@ img {
     margin-top: 24px;
     font-size: 14px;
     line-height: 14px;
+}
+
+.link {
+    transition: opacity .4s, color .4s;
+    color: #4969ed;
+}
+
+.link:hover {
+    opacity: .75;
 }
 
 @media (prefers-reduced-motion: reduce) {
