@@ -223,7 +223,7 @@ img {
     background-color: #4969ed;
     background-image: linear-gradient(-180deg, #617eef, #4969ed);
     padding: 8px 48px;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 8px;
     text-decoration: none;
 }
@@ -231,6 +231,13 @@ img {
 .home__download:hover {
     opacity: .75;
     transition: opacity .4s;
+}
+
+.home__download span {
+    font-size: 14px;
+    display: block;
+    margin-top: 8px;
+    opacity: 0.46;
 }
 
 .home__download--outline {
@@ -736,12 +743,12 @@ img {
 }
 
 .link {
-    transition: opacity .4s, color .4s;
-    color: #4969ed;
+    color: #035bd6;
+    transition: color .4s;
 }
 
 .link:hover {
-    opacity: .75;
+    color: #043a8a;
 }
 
 @media (prefers-reduced-motion: reduce) {
