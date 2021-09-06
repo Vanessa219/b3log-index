@@ -141,6 +141,10 @@ img {
     flex: 1;
 }
 
+.fn__space {
+    width: 8px;
+}
+
 .home {
     height: calc(100vh + 40px);
     background-color: #040d21;
@@ -602,7 +606,6 @@ img {
 .download .item a {
     color: #035bd6;
     transition: color .4s;
-    display: block;
     margin-bottom: 8px;
     font-size: 16px;
     text-decoration: none;
