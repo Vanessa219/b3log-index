@@ -591,6 +591,7 @@ img {
     border-radius: 8px;
     background-color: #fafbfc;
     margin-bottom: 32px;
+    line-height: 24px;
 }
 
 .download .item:hover {
@@ -606,7 +607,6 @@ img {
 .download .item a {
     color: #035bd6;
     transition: color .4s;
-    margin-bottom: 8px;
     font-size: 16px;
     text-decoration: none;
 }
