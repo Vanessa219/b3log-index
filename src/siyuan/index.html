@@ -34,6 +34,13 @@
     <link type="text/css" rel="stylesheet" href="static/base.css"/>
 </head>
 <body>
+<script>
+  const lang = 'cn';
+  if ("zh-CN" !== navigator.language && 0 > window.location.search.indexOf("lang")) {
+    window.location.href = "en/"
+  }
+</script>
+
 <main class="home">
     <div style="position: absolute;overflow: hidden;height: 100%;width: 100%;">
         <img class="home__bg"
@@ -434,12 +441,6 @@
         </a>
     </div>
 </footer>
-<script>
-  const lang = 'cn';
-  if ("zh-CN" !== navigator.language && 0 > window.location.search.indexOf("lang")) {
-    window.location.href = "en/"
-  }
-</script>
 <script src="static/index.js"></script>
 </body>
 </html>
