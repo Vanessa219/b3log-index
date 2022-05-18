@@ -226,10 +226,14 @@ img {
     color: #fff;
     background-color: #4969ed;
     background-image: linear-gradient(-180deg, #617eef, #4969ed);
-    padding: 8px 48px;
+    padding: 16px 24px;
     font-size: 18px;
     border-radius: 8px;
     text-decoration: none;
+    line-height: 24px;
+    margin-bottom: 16px;
+    width: 256px;
+    box-sizing: border-box;
 }
 
 .home__download:hover {
@@ -249,6 +253,7 @@ img {
     box-shadow: 0 0 0 1px rgb(73 105 237 / 30%) inset;
     transition: box-shadow .4s, color .4s;
     color: #4969ed;
+
 }
 
 .home__download--outline:hover {
@@ -314,7 +319,7 @@ img {
 
 .navigation {
     position: sticky;
-    top: 0;
+    top: -1px;
     z-index: 4;
     background-color: #fff;
     padding: 8px 16px;
@@ -581,6 +586,23 @@ img {
     max-width: 1000px;
 }
 
+.download__link {
+    color: #035bd6;
+    transition: color .4s;
+    text-decoration: none;
+}
+
+.download__link:hover {
+    color: #043a8a;
+}
+
+.download__address {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .download .item {
     display: flex;
     flex-direction: column;
@@ -603,17 +625,6 @@ img {
     height: 64px;
     width: 64px;
     margin-bottom: 18px;
-}
-
-.download .item a {
-    color: #035bd6;
-    transition: color .4s;
-    font-size: 16px;
-    text-decoration: none;
-}
-
-.download .item a:hover {
-    color: #043a8a;
 }
 
 .download .item span {
@@ -744,6 +755,8 @@ img {
     margin-top: 24px;
     font-size: 14px;
     line-height: 14px;
+    width: auto;
+    padding: 8px;
 }
 
 .link {

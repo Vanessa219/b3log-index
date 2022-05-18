@@ -58,43 +58,41 @@
             </h2>
         </div>
         <div class="feature__hr"></div>
-        <div style="text-align: center" id="download">
-            <a style="padding: 16px 64px;display: none" target="_blank"
+        <div class="download__address" id="download">
+            <a style="display: none" target="_blank"
                href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-mac.dmg"
                class="home__download"
                data-os="macOS">
                 Intel
                 <span>(Upgrade requires re-download)</span>
             </a>
-            <a data-os="macOS" style="width: 10px;display:none;"></a>
-            <a style="padding: 16px 64px;display: none" target="_blank"
+            <a style="display: none" target="_blank"
                href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-mac-arm64.dmg"
                class="home__download"
                data-os="macOS">
                 Apple
                 <span>(Upgrade requires re-download)</span>
             </a>
-            <a style="padding: 16px 64px;" target="_blank"
+            <a target="_blank"
                href="https://www.microsoft.com/store/apps/9P7HPMXP73K4"
                class="home__download" data-os="Windows">
                 Microsoft Store
                 <span>In-store upgrade</span>
             </a>
-            <a data-os="Windows" style="display: none;width: 10px"></a>
-            <a style="padding: 16px 80px;" target="_blank"
+            <a target="_blank"
                href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-win.exe"
                class="home__download" data-os="Windows">
                 64-bit Installer
                 <span>Download upgrade</span>
             </a>
-            <a style="padding: 16px 64px;display: none" target="_blank"
+            <a style="display: none" target="_blank"
                href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9.apk"
                class="home__download"
                data-os="Android">
                 Android
                 <span>(Upgrade requires re-download)</span>
             </a>
-            <a style="padding: 16px 64px;display: none" target="_blank"
+            <a style="display: none" target="_blank"
                href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-linux.AppImage"
                class="home__download"
                data-os="Linux">
@@ -102,7 +100,7 @@
                 <span>(Upgrade requires re-download)</span>
             </a>
         </div>
-        <div style="opacity: 0.75;color: #586069;font-size: 12px;text-align: center;margin-top: 48px;">
+        <div style="opacity: 0.75;color: #586069;font-size: 12px;text-align: center;margin-top: 32px;">
             <em>Your happiness is the sun in my world</em>
         </div>
     </div>
@@ -112,15 +110,15 @@
             <img src="../static/logo-windows.png"/>
             <h3>Windows</h3>
             <div class="fn__flex">
-                <a href="https://www.microsoft.com/store/apps/9P7HPMXP73K4"
+                <a class="download__link" href="https://www.microsoft.com/store/apps/9P7HPMXP73K4"
                    target="_blank">Microsoft Store</a>
             </div>
             <div class="fn__flex">
-                <a href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-win.exe"
+                <a class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-win.exe"
                    target="_blank">64-bit Installer</a>
             </div>
             <div class="fn__flex">
-                <a href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-win32.exe"
+                <a class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-win32.exe"
                    target="_blank">32-bit Installer</a>
             </div>
         </div>
@@ -128,11 +126,11 @@
             <img src="../static/logo-macOS.png"/>
             <h3>macOS</h3>
             <div class="fn__flex">
-                <a href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-mac.dmg"
+                <a class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-mac.dmg"
                    target="_blank">Intel</a>
             </div>
             <div class="fn__flex">
-                <a href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-mac-arm64.dmg"
+                <a class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-mac-arm64.dmg"
                    target="_blank">Apple</a>
             </div>
         </div>
@@ -140,11 +138,11 @@
             <img src="../static/logo-linux.png"/>
             <h3>Linux</h3>
             <div class="fn__flex">
-                <a href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-linux.AppImage"
+                <a class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-linux.AppImage"
                    target="_blank">AppImage</a>
             </div>
             <div class="fn__flex">
-                <a href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-linux.tar.gz"
+                <a class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9-linux.tar.gz"
                    target="_blank">tar.gz</a>
             </div>
         </div>
@@ -152,35 +150,34 @@
             <img src="../static/logo-android.png"/>
             <h3>Android</h3>
             <div class="fn__flex">
-                <a href="https://play.google.com/store/apps/details?id=org.b3log.siyuan"
+                <a class="download__link" href="https://play.google.com/store/apps/details?id=org.b3log.siyuan"
                    target="_blank">Google Play</a>
                 <span class="fn__space"></span>
             </div>
             <div class="fn__flex">
-                <a href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9.apk"
+                <a class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.0.9/siyuan-2.0.9.apk"
                    target="_blank">APK</a>
             </div>
         </div>
         <div class="item">
             <img src="../static/logo-ios.png"/>
             <h3>iPhone/iPad</h3>
-                <a href="https://apps.apple.com/cn/app/siyuan/id1583226508" target="_blank" rel="nofollow">App Store</a>
-                <a href="https://testflight.apple.com/join/BBLHMJ4g" target="_blank" rel="nofollow">TestFlight</a>
+                <a class="download__link" href="https://apps.apple.com/cn/app/siyuan/id1583226508" target="_blank" rel="nofollow">App Store</a>
+                <a class="download__link" href="https://testflight.apple.com/join/BBLHMJ4g" target="_blank" rel="nofollow">TestFlight</a>
         </div>
         <div class="item">
             <img src="../static/logo-chromium.png"/>
             <h3>Browser extension</h3>
-            <a href="https://chrome.google.com/webstore/detail/siyuan/hkcgjbeblifaincobbcfiffbpgoafepk" target="_blank">Chrome</a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/siyuan/lclhdlhleinlppggbbgimbekofanbkcf"
+            <a class="download__link" href="https://chrome.google.com/webstore/detail/siyuan/hkcgjbeblifaincobbcfiffbpgoafepk" target="_blank">Chrome</a>
+            <a class="download__link" href="https://microsoftedge.microsoft.com/addons/detail/siyuan/lclhdlhleinlppggbbgimbekofanbkcf"
                target="_blank">Edge</a>
         </div>
         <div class="item">
             <img src="../static/logo-docker.png"/>
             <h3>Server</h3>
-            <div class="fn__flex">
+            <div>
                 Non-programmers don't try
-                <span class="fn__space"></span>
-                <a href="https://hub.docker.com/r/b3log/siyuan" target="_blank" rel="nofollow">Docker image</a>
+                <a class="download__link" href="https://hub.docker.com/r/b3log/siyuan" target="_blank" rel="nofollow">Docker image</a>
             </div>
         </div>
         <div class="item">
@@ -191,7 +188,7 @@
         <div class="item">
             <img src="../static/logo.svg"/>
             <h3>History</h3>
-            <a href="https://github.com/siyuan-note/siyuan/releases" target="_blank" rel="nofollow">Download historical releases</a>
+            <a class="download__link" href="https://github.com/siyuan-note/siyuan/releases" target="_blank" rel="nofollow">Download historical releases</a>
         </div>
     </div>
     <div class="feature__hr"></div>
@@ -214,14 +211,14 @@
                 <h3>Is SiYuan open source?</h3>
                 <p>It is not completely open source at present, but some components and applications have been open sourced, and contributions are welcome.</p>
                 <ul>
-                    <li><a href="https://github.com/siyuan-note/user-guide-en_US" target="_blank">User Guide</a></li>
-                    <li><a href="https://github.com/siyuan-note/appearance" target="_blank">Appearance</a></li>
-                    <li><a href="https://github.com/88250/protyle" target="_blank">Data Parser</a></li>
-                    <li><a href="https://github.com/88250/lute" target="_blank">Editor Engine</a></li>
-                    <li><a href="https://github.com/siyuan-note/encryption" target="_blank">End-to-end encryption</a></li>
-                    <li><a href="https://github.com/siyuan-note/siyuan-chrome" target="_blank">Chrome Clipping Extension</a></li>
-                    <li><a href="https://github.com/siyuan-note/siyuan-android" target="_blank">Android App</a></li>
-                    <li><a href="https://github.com/siyuan-note/siyuan-ios" target="_blank">iOS App</a></li>
+                    <li><a href="https://github.com/siyuan-note/user-guide-en_US" class="download__link" target="_blank">User Guide</a></li>
+                    <li><a href="https://github.com/siyuan-note/appearance" class="download__link" target="_blank">Appearance</a></li>
+                    <li><a href="https://github.com/88250/protyle" class="download__link" target="_blank">Data Parser</a></li>
+                    <li><a href="https://github.com/88250/lute" class="download__link" target="_blank">Editor Engine</a></li>
+                    <li><a href="https://github.com/siyuan-note/encryption" class="download__link" target="_blank">End-to-end encryption</a></li>
+                    <li><a href="https://github.com/siyuan-note/siyuan-chrome" class="download__link" target="_blank">Chrome Clipping Extension</a></li>
+                    <li><a href="https://github.com/siyuan-note/siyuan-android" class="download__link" target="_blank">Android App</a></li>
+                    <li><a href="https://github.com/siyuan-note/siyuan-ios" class="download__link" target="_blank">iOS App</a></li>
                 </ul>
             </div>
             <div class="item">
