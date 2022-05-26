@@ -651,6 +651,16 @@ img {
     width: 66%;
 }
 
+.faq__inner .download__link {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.faq__inner .download__link:hover {
+    padding-bottom: 2px;
+    transition: padding .2s;
+}
+
 .faq .item {
     margin: 40px 0;
 }
