@@ -173,19 +173,15 @@ const getOS = () => {
     }
 
     // 块级双链图片切换
-    let pathPrefix = ""
-    if ('en' === lang) {
-      pathPrefix = "../"
-    }
-    blockImgElement.src = pathPrefix + 'static/feature3-1.png'
+    blockImgElement.src = 'https://b3log.org/siyuan/static/feature3-1.png'
     if (top >= block1Element.offsetTop + block1Element.offsetParent.offsetTop +
       block1Element.clientHeight - 58 &&
       top < block2Element.offsetTop + block2Element.offsetParent.offsetTop +
       block2Element.clientHeight - 58) {
-      blockImgElement.src = pathPrefix + 'static/feature3-2.png'
+      blockImgElement.src = 'https://b3log.org/siyuan/static/feature3-2.png'
     } else if (top >= block2Element.offsetTop +
       block2Element.offsetParent.offsetTop + block2Element.clientHeight - 58) {
-      blockImgElement.src = pathPrefix + 'static/feature3-3.png'
+      blockImgElement.src = 'https://b3log.org/siyuan/static/feature3-3.png'
     }
   })
 })()
