@@ -1,5 +1,5 @@
 const path = require('path')
-const PugPlugin = require('pug-plugin');
+const PugPlugin = require('pug-plugin')
 
 module.exports = (env, argv) => {
   return {
@@ -10,22 +10,16 @@ module.exports = (env, argv) => {
       extensions: ['.pug'],
     },
     output: {
-      publicPath:"",
+      publicPath: '',
       path: path.resolve(__dirname, 'dist'),
     },
     entry: {
-      // all scripts and styles can be used in Pug,
-      // do not need to define JS and SCSS in the webpack entry
-
-      // define Pug files in entry:
-      index: './src/index.pug',      // output index.html
-      // ...
+      index: './src/index.pug',
+      eula: './src/eula.pug',
     },
     plugins: [
-      // enable processing of Pug files from entry
-      new PugPlugin()
+      new PugPlugin(),
     ],
-
     module: {
       rules: [
         {
@@ -33,8 +27,8 @@ module.exports = (env, argv) => {
           loader: PugPlugin.loader, // PugPlugin already contain the pug-loader
           options: {
             method: 'render', // fastest method to generate static HTML files
-          }
-        }
+          },
+        },
       ],
     },
   }

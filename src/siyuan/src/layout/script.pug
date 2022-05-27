@@ -1,0 +1,5 @@
+script.
+  const lang = 'cn';
+  if (navigator.language.indexOf("zh") === -1 && 0 > window.location.search.indexOf("lang")) {
+    window.location.href = "en/"
+  }

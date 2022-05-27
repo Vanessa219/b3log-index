@@ -1,0 +1,45 @@
+extends layout/layout.pug
+
+block head
+    - var title = "用户协议 - "
+    include layout/head.pug
+
+block content
+    div(style="position: relative;overflow: hidden;")
+        img(class="home__bg" src="https://b3log.org/siyuan/static/home.svg")
+        img(style="position: absolute" src="https://b3log.org/siyuan/static/img-bg4.svg")
+        - var headerClass = " header--black"
+        include layout/header.pug
+        div(class="feature__hr")
+        div(class="feature__hr")
+        div(class="wrapper" style="max-width: 620px;position: relative;z-index: 1;min-height: 90vh")
+            div(style="text-align: center")
+                h2(class="feature__title feature__black") 用户协议
+            div(class="feature__hr")
+            div(class="home__desc")
+                ul
+                    li
+                        p 发布日期：2022 年 2 月 11 日
+                    li
+                        p 最近更新：2022 年 5 月 26 日
+                p 思源笔记使用
+                    a(href="https://github.com/siyuan-note/siyuan/blob/master/LICENSE" target="_blank") AGPLv3 开源协议
+                    |，请务必遵循。
+                pre(style="line-height:16px;font-size: 12px;white-space: break-spaces;color: #586069;background: rgba(130, 148, 179,.16);border-radius: 4px;padding: 4px 8px;"): code
+                    |
+                    |// This program is free software: you can redistribute it and/or modify
+                    |// it under the terms of the GNU Affero General Public License as published by
+                    |// the Free Software Foundation, either version 3 of the License, or
+                    |// (at your option) any later version.
+                    |//
+                    |// This program is distributed in the hope that it will be useful,
+                    |// but WITHOUT ANY WARRANTY; without even the implied warranty of
+                    |// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                    |// GNU Affero General Public License for more details.
+                    |//
+                    |// You should have received a copy of the GNU Affero General Public License
+                    |// along with this program.  If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
+                    |\n
+                p 对于思源笔记云端服务，禁止共享用户账号，否则账号会被停用。
+        div(class="feature__hr")
+        include layout/footer.pug

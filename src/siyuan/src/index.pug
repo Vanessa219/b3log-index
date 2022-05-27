@@ -1,6 +1,10 @@
 extends layout/layout.pug
 
+block head
+  include layout/head.pug
+
 block content
+  include layout/script.pug
   main(class="home")
     div(style="position: absolute;overflow: hidden;height: 100%;width: 100%;")
       img(class="home__bg" src="https://b3log.org/siyuan/static/home.svg")
@@ -254,3 +258,4 @@ block content
       div(class="feature__space")
       div(class="feature__imgs fn__flex-1")
         img(class="feature__img feature__img--red animate__scale animate" src="https://b3log.org/siyuan/static/feature5-3.svg")
+  include layout/footer.pug
