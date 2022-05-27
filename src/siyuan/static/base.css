@@ -127,6 +127,25 @@ img {
     max-width: 100%;
 }
 
+li code {
+    background-color: #294c5d;
+    font-size: 85%;
+    border-radius: 4px;
+    padding: 2px 4px;
+    white-space: nowrap;
+}
+
+kbd {
+    white-space: nowrap;
+    padding: 3px 5px;
+    font: 11px ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    line-height: 10px;
+    vertical-align: middle;
+    border: solid 1px #294c5d;
+    border-radius: 6px;
+    box-shadow: inset 0 -1px 0 #294c5d;
+}
+
 .wrapper {
     max-width: 1280px;
     margin: 0 auto;
@@ -172,11 +191,15 @@ img {
     background-color: rgb(4 13 33 / 75%);
 }
 
-.header__logo img,
-.header__logo svg {
+.header__logo {
+    flex-shrink: 0;
+}
+
+.header__logo img {
     width: 48px;
     height: 48px;
     float: left;
+    fill: #fff;
 }
 
 .header__logo h1 {
@@ -197,6 +220,12 @@ img {
 
 .header__a:hover {
     opacity: 0.75;
+}
+
+.header__a svg {
+    height: 24px;
+    fill: #fff;
+    float: left;
 }
 
 .home__panel {
@@ -867,6 +896,25 @@ img {
 }
 
 @media (max-width: 620px) {
+    .header {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .header__logo img {
+        height: 24px;
+        width: 24px;
+    }
+
+    .header__a {
+        margin-left: 4px;
+        line-height: 24px;
+    }
+
+    .header__a svg {
+        height: 16px;
+    }
+
     .home__slogan,
     .second__type,
     .feature__title {
@@ -908,5 +956,11 @@ img {
 
     .price__feature {
         display: block;
+    }
+
+    .footer .icon {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
     }
 }
