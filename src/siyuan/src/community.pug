@@ -1,0 +1,31 @@
+extends layout/layout.pug
+
+block head
+    - var title = "社区 - "
+    include layout/head.pug
+
+block content
+    div(style="position: relative;overflow: hidden;")
+        img(style="position: absolute" src="https://b3log.org/siyuan/static/img-bg4.svg")
+        - var headerClass = "header--black header"
+        include layout/header.pug
+        div(class="feature__hr")
+        div(class="feature__hr")
+        div(class="wrapper" style="max-width: 620px;position: relative;z-index: 1; text-align: center")
+            h2(class="feature__title feature__black") 社区
+            div(class="feature__hr")
+            div(style="opacity: 0.75;color: #586069;") 星星之火，可以燎原
+        div(class="feature__hr")
+        div(class="feature__hr")
+        div(class="download wrapper")
+            div(class="item")
+                img(src="https://b3log.org/images/brand/hacpai-128.png")
+                h3 链滴
+                a(class="download__link" href="https://ld246.com/article/1649901726096" target="_blank") 反馈指引
+                a(class="download__link" href="https://ld246.com/article/1640266171309" target="_blank") 社区汇总
+            div(class="item")
+                img(src="https://b3log.org/siyuan/static/logo-github.png")
+                h3 GitHub
+                a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank" rel="nofollow") SiYuan - GitHub
+        div(class="feature__hr")
+        include layout/footer.pug

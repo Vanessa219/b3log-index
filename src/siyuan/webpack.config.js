@@ -16,6 +16,10 @@ module.exports = (env, argv) => {
     entry: {
       index: './src/index.pug',
       eula: './src/eula.pug',
+      community: './src/community.pug',
+      // pricing: './src/pricing.pug',
+      privacy: './src/privacy.pug',
+      // download: './src/download.pug',
     },
     plugins: [
       new PugPlugin(),
