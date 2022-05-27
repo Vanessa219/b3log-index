@@ -1,7 +1,7 @@
 const type = () => {
   const typeElement = document.querySelector('#slogan')
-  let texts;
-  if ('en' !== lang) {
+  let texts
+  if (typeof lang !== 'undefined' && 'zh' === lang) {
     texts = [
       '随时随地离线可用',
       '端到端加密保证隐私安全',
@@ -155,21 +155,31 @@ const getOS = () => {
     })
     if (top >= document.getElementById('feature1').offsetTop - 58 && top <
       document.getElementById('feature2').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature1"]').classList.add('item--select')
+      navigationElement.querySelector('.item[data-id="feature1"]').
+        classList.
+        add('item--select')
     } else if (top >= document.getElementById('feature2').offsetTop - 58 &&
       top <
       document.getElementById('feature3').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature2"]').classList.add('item--select')
+      navigationElement.querySelector('.item[data-id="feature2"]').
+        classList.
+        add('item--select')
     } else if (top >= document.getElementById('feature3').offsetTop - 58 &&
       top <
       document.getElementById('feature4').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature3"]').classList.add('item--select')
+      navigationElement.querySelector('.item[data-id="feature3"]').
+        classList.
+        add('item--select')
     } else if (top >= document.getElementById('feature4').offsetTop - 58 &&
       top <
       document.getElementById('feature5').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature4"]').classList.add('item--select')
+      navigationElement.querySelector('.item[data-id="feature4"]').
+        classList.
+        add('item--select')
     } else if (top >= document.getElementById('feature5').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature5"]').classList.add('item--select')
+      navigationElement.querySelector('.item[data-id="feature5"]').
+        classList.
+        add('item--select')
     }
 
     // 块级双链图片切换
