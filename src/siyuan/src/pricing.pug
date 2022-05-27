@@ -1,0 +1,546 @@
+extends layout/layout.pug
+
+block head
+  - var title = "定价 - "
+    include layout/head.pug
+
+block content
+    div(style="position: relative;")
+        div(style="position: absolute;overflow: hidden;height: 100%;width: 100%;")
+            img(class="home__bg" src="https://b3log.org/siyuan/static/home.svg")
+        img(style="position: absolute" src="https://b3log.org/siyuan/static/img-bg4.svg")
+        - var headerClass = "header--black header"
+        include layout/header.pug
+        div(class="feature__hr")
+        div(class="feature__hr")
+        div(class="wrapper" style="position: relative;z-index: 1;")
+            div(style="text-align: center")
+                h2(class="feature__title feature__black") 定价
+            div(class="feature__hr")
+            div(class="fn__flex price" style="position: sticky;top: 0")
+                div(class="item item--empty")
+                div(class="item")
+                    h3 免费
+                    div(class="item__money") ￥0
+                        span 终身
+                    svg(style="height: 12px;width: 12px;fill: #ea4aaa;" id="iconHeart" viewBox="0 0 32 32")
+                        path(d="M16 30.685l-2.329-2.103q-3.981-3.606-5.784-5.333t-4.019-4.282-3.042-4.62-0.826-4.244q0-3.681 2.516-6.235t6.272-2.554q4.357 0 7.211 3.38 2.854-3.38 7.211-3.38 3.756 0 6.272 2.554t2.516 6.235q0 2.93-1.953 6.084t-4.244 5.484-7.474 6.986z")
+                    a(href="https://ld246.com/sponsor" target="_blank" class="link")  靠爱发电
+                    a(href="download.html" class="home__download home__download--outline") 下载
+                    div(class="price__feature")
+                        div 完全离线
+                        div 多工作空间
+                        div API
+                        div a(href="https://github.com/siyuan-note/siyuan" class="link" target="_blank") 完全开源
+                        div Markdown
+                        div 中西文自动空格
+                        div 表格合并单元格
+                        div 网络图片转换为本地文件
+                        div 块属性
+                        div 块书签
+                        div 块聚焦
+                        div 列表大纲
+                        div 父子文档
+                        div 日记
+                        div 层级标签
+                        div 模板片段
+                        div 文件历史
+                        div 清理未引用资源文件
+                        div 关系图
+                        div 块引用双向连接
+                        div 反向链接和提及
+                        div 块动态查询嵌入
+                        div 块链浮窗
+                        div
+                            a(class="link" href="https://github.com/siyuan-note/siyuan/issues/2249" target="_blank") 虚拟引用
+                        div PDF 标注双链
+                        div 分屏编辑
+                        div 浏览器上使用
+                        div 记录布局
+                        div 自定义主题
+                        div 自定义图标
+                        div 主题集市
+                        div 模板集市
+                        div 图标集市
+                        div 挂件集市
+                        div Docker 伺服
+                        div 桌面伺服
+                        div Android 伺服
+                        div 导入 Markdown
+                        div Word 粘贴携带资源文件
+                        div 网页剪藏拉取图片到本地
+                        div 导出 PDF
+                        div 导出 HTML
+                        div 导出 Word
+                        div 导出 Markdown
+                        div 将块引用导出为脚注
+                        div 复制粘贴到微信公众号、知乎、语雀
+                        div 账号登录两步验证
+                        div 账号登录微信提醒
+                        div 密码锁屏
+                        div 更多精美的主题、图标（计划中）
+                div(class="feature__hr")
+                div(class="item item--s")
+                    h3 订阅
+                    div(class="item__money") ￥148
+                        span 每年
+                    a(href="#faq" class="link") 常见问题
+                    a(href="https://ld246.com/subscribe/siyuan" class="home__download") 升级
+                    div(class="price__feature")
+                        div 尊贵身份标识
+                        div 端到端加密数据同步
+                        div 端到端加密数据备份
+                        div 资源文件图床
+                        div 云端存储大小 8G
+                        div 定时微信提醒
+                        div 收集箱
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__img" src="https://b3log.org/siyuan/static/icon-price1.png")
+                    h3 基础特性
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 完全离线
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 多工作空间
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") API
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    a(href="https://github.com/siyuan-note/siyuan" class="link" target="_blank") 完全开源
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__img" src="https://b3log.org/siyuan/static/icon-price2.png")
+                    h3 编辑排版
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") Markdown
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 中西文自动空格
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 表格合并单元格
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 网络图片转换为本地文件
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 块属性
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 块书签
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 块聚焦
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 列表大纲
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 父子文档
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 日记
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 层级标签
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 模板片段
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 文件历史
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 清理未引用资源文件
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__img" src="https://b3log.org/siyuan/static/icon-price3.png")
+                    h3 双向链接
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 关系图
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 块引用双向连接
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 反向链接和提及
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 块动态查询嵌入
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 块链浮窗
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    a(href="https://github.com/siyuan-note/siyuan/issues/2249" class="link" target="_blank") 虚拟引用
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") PDF 标注双链
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__img" src="https://b3log.org/siyuan/static/icon-price4.png")
+                    h3 窗口和页签
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 分屏编辑
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 浏览器上使用
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 记录布局
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__img" src="https://b3log.org/siyuan/static/icon-price5.png")
+                    h3 外观
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 自定义主题
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 自定义图标
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 更多精美的主题、图标（计划中）
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 按日出日落时间自动切换外观模式（计划中）
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__img" src="https://b3log.org/siyuan/static/icon-price6.png")
+                    h3 社区集市
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 主题集市
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 模板集市
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 图标集市
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 挂件集市
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__img"
+                         src="https://b3log.org/siyuan/static/icon-price7.png")
+                    h3 私有化部署
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") Docker 伺服
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 桌面伺服
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") Android 伺服
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__img"
+                         src="https://b3log.org/siyuan/static/icon-price8.png")
+                    h3 导入和导出
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 导入 Markdown
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") Word 粘贴携带资源文件
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    span(class="tip" aria-label="需要使用浏览器扩展")
+                        img(src="https://b3log.org/siyuan/static/icon-info.svg")
+                    | 网页剪藏拉取图片到本地
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 导出 Markdown
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 导出 Word
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 导出 PDF
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 导出 HTML
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 将块引用导出为脚注
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                   span(class="tip" aria-label="图片需要先上传到云端资源文件图床")
+                        img(src="https://b3log.org/siyuan/static/icon-info.svg")
+                   | 复制粘贴到微信公众号、知乎、语雀
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__imgimg(src=static/icon-price9.png")
+                    h3 安全
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 账号登录两步验证
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 账号登录微信提醒
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 密码锁屏
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    img(class="item__img" src="https://b3log.org/siyuan/static/icon-price10.png")
+                    h3 云端服务
+                div(class="item")
+                div(class="item item--s")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 尊贵身份标识
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-x.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 端到端加密数据同步
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-x.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 端到端加密数据备份
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-x.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 资源文件图床
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-x.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty")
+                    span(class="tip" aria-label="同步、备份和图床占用的云端存储大小")
+                      img(src="https://b3log.org/siyuan/static/icon-info.svg")
+                    |云端存储大小
+                div(class="item") -
+                div(class="item item--s") 8G
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 定时微信提醒
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-x.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+            div(class="price price--hide fn__flex")
+                div(class="item item--empty") 收集箱
+                div(class="item")
+                      img(src="https://b3log.org/siyuan/static/icon-x.svg")
+                div(class="item item--s")
+                      img(src="https://b3log.org/siyuan/static/icon-check.svg")
+        div(class="feature__hr")
+        div(class="feature__hr")
+        div(class="feature wrapper faq")
+            div(class="faq__inner")
+                h2(id="faq" class="feature__title feature__title--1") 常见问题
+                div(class="item")
+                    h3 订阅后是否支持退款？
+                    ul
+                        li 目前支持退款，但有一些条件限制。具体请看&nbsp;
+                            a(href="https://ld246.com/article/1623032639157" target="_blank" class="feature__a feature__a--white" style="margin-top: 0")
+                                span 思源笔记付费订阅须知
+                                svg(height="16" viewBox="0 0 16 16" width="16" fill="#fff")
+                                    path(clip-rule="evenodd"
+                                          d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z"
+                                          fill-rule="evenodd")
+                div(class="item")
+                    h3 中断过订阅之后重新订阅价格怎么算？
+                    ul
+                        li 续订价格终身按第一次订阅时的价格
+                        li 如果退款过，则只能按最新价格订阅
+                div(class="item")
+                    h3 学生用户订阅有教育优惠吗？
+                    ul
+                        li 目前已经暂停教育优惠订阅，具体请看&nbsp;
+                            a(href="https://ld246.com/article/1628685591154" target="_blank" class="feature__a feature__a--white" style="margin-top: 0")
+                                span 关于思源笔记暂停教育优惠的公告
+                                svg(height="16" viewBox="0 0 16 16" width="16" fill="#fff")
+                                    path(clip-rule="evenodd"
+                                          d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z"
+                                          fill-rule="evenodd")
+        include layout/footer.pug

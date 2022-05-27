@@ -1,0 +1,41 @@
+extends ../layout/layout.pug
+
+block head
+  - var title = "数码荔枝 - 代理经销商 - "
+    include ../layout/head.pug
+
+block content
+    div(style="position: relative;overflow: hidden;")
+        img(class="home__bg" src="https://b3log.org/siyuan/static/home.svg")
+        img(style="position: absolute" src="https://b3log.org/siyuan/static/img-bg4.svg")
+        - var headerClass = "header--black header"
+        include ../layout/header.pug
+        div(class="feature__hr")
+        div(class="feature__hr")
+        div(class="wrapper" style="max-width: 620px;position: relative;z-index: 1;min-height: 90vh")
+            div(style="text-align: center")
+                h2(class="feature__title feature__black") 授权证明
+            div(class="feature__hr")
+            p
+                strong 云南链滴科技有限公司&nbsp;
+                | 授权&nbsp;
+                strong 苏州荔枝数码科技有限公司&nbsp;
+                | 为大中国区官方合作伙伴，并享有本公司旗下正版软件&nbsp;
+                strong 思源笔记&nbsp;
+                | 在中国的销售资质。
+            p 该合作伙伴的商城名为「数码荔枝正版软件」商城，商城网址为：https://lizhi.io/store。
+            p 请勿在其他未经授权的网站购买我们的软件。我们不再为这样的顾客提供任何售后服务，包括：密钥找回、版本更新、技术支持。
+            p
+                img(width="660" height="330" src="https://b3log.org/siyuan/static/distributors-lizhi.png" alt="数码荔枝")
+            h2 AUTHORIZATION CERTIFICATE
+            p We,&nbsp;
+                strong Yunnan Liandi Technology Co., Ltd.&nbsp;
+                | the developer of&nbsp;
+                strong SiYuan&nbsp;
+                | authorizes&nbsp;
+                strong DIGITALYCHEE TECHNOLOGY CO, LTD.&nbsp;
+                | as our official partner in China, and it owns the right to sell the copyrighted software of us on their store: https://lizhi.io/store.
+            p Please don't purchase our product(s) from any other unauthorized websites.
+            p Customers who purchase from them are not allowed to enjoy the official customer support, including license retrieval, version update, tech assistance.
+        div(class="feature__hr")
+        include ../layout/footer.pug
