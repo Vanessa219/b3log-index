@@ -42,13 +42,13 @@ block content
       div(class="item" data-id="feature1")
         span 块式编辑
       div(class="item" data-id="feature2")
-        span 隐私安全
+        span 复习和 AI
       div(class="item" data-id="feature3")
         span 双链块引
       div(class="item" data-id="feature4")
         span 列表大纲
       div(class="item" data-id="feature5")
-        span 数据同步
+        span 隐私和同步
       a(style="width: auto;padding: 8px 48px;margin-bottom: 0;" href="download.html" class="home__download") 下载
   div(class="feature wrapper" id="feature1")
     div(class="feature__hr")
@@ -103,6 +103,7 @@ block content
         img(src="https://b3log.org/siyuan/static/img-bg2.svg" style="position:absolute;left:0;width: 150%; margin: 0 -25%; top: 50%; transform: translateY(-50%);")
         img(class="feature__img" src="https://b3log.org/siyuan/static/feature1-4.png")
       div(class="feature__space")
+
   div(class="feature feature--2 wrapper" id="feature2")
     div(class="fn__flex")
       div(class="feature__space")
@@ -110,13 +111,10 @@ block content
       div(class="feature__space")
       div(class="feature__info")
         h2(class="feature__title")
-          div(class="feature__title--2") 隐私安全
-          | 加密上云，隐私无忧
-        div
-          a(href="privacy.html" class="feature__a")
-            span 隐私政策
-            svg(class="octicon" height="16" viewBox="0 0 16 16" width="16")
-              path(clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd")
+          div(class="feature__title--2") 间隔复习
+          | 使用&nbsp;
+          a(target="_blank" href="https://github.com/open-spaced-repetition/free-spaced-repetition-scheduler") FSRS
+          | &nbsp;算法
     div(class="feature__hr")
     div(class="feature__two feature__two--row")
       div(class="feature__space")
@@ -124,9 +122,9 @@ block content
       div(class="feature__space")
       div(class="feature__info animate__left animate")
         h3(class="feature__desc")
-          span(class="feature__black") 数据完全存储在用户自己掌控的设备上。
-          | 即使没有网络、即使云端服务宕机，依然可以在本地不受限制使用。
-          em 无离线，不笔记。
+          span(class="feature__black") 提高记忆效率，调节学习效果，优化时间分配，增加学习动力。
+          | 通过有效的回顾所学内容，发现自己的进步和成就，进而增强
+          em 自信和自我认同。
       div(class="feature__space")
       div(class="feature__imgs fn__flex-1")
         img(class="feature__img feature__img--white animate__right animate" src="https://b3log.org/siyuan/static/feature2-1.svg")
@@ -138,13 +136,37 @@ block content
       div(class="feature__space")
       div(class="feature__info animate__left animate")
         h3(class="feature__desc")
-          span(class="feature__black") 隐私安全靠的不是承诺。
-          | 多设备数据同步基于端到端加密技术实现，云端数据即使泄漏也几乎不可能被他人知晓内容。
-          em 个人隐私、知识财富不容他人觊觎。
+          span(class="feature__black") 文档、卡包自由组合。
+          | 可基于文档结构纬度进行使用，支持父子文档复习；可将不同块放入专属卡包，实现自由复习。
       div(class="feature__space")
       div(class="feature__imgs fn__flex-1")
         img(class="feature__img feature__img--white animate__right animate"
           src="https://b3log.org/siyuan/static/feature2-2.png")
+
+    div(class="feature__hr")
+    div(class="feature__hr")
+    div(class="fn__flex")
+      div(class="feature__space")
+      div(class="feature__space")
+      div(class="feature__space")
+      div(class="feature__info")
+        h2(class="feature__title")
+          div(class="feature__title--2") 人工智能
+          | 接入&nbsp;
+          a(href="https://openai.com/" target="_blank") OpenAI
+    div(class="feature__hr")
+    div(class="feature__two feature__two--row")
+      div(class="feature__space")
+      div(class="feature__space")
+      div(class="feature__space")
+      div(class="feature__info animate__left animate")
+        h3(class="feature__desc")
+          span(class="feature__black") 可以帮助我们续写，翻译，摘取提要，进行头脑风暴，修正语法、拼写和错别字。
+          | 答我所需，不问我所知。
+          em 人工智能助力。
+      div(class="feature__space")
+      div(class="feature__imgs fn__flex-1")
+        img(class="feature__img feature__img--white animate__right animate" src="https://b3log.org/siyuan/static/feature2-1.svg")
 
   div(class="feature wrapper" id="feature3" style="overflow: initial;position: relative;")
     div(class="feature__hr")
@@ -215,6 +237,45 @@ block content
         img(class="feature__img feature__img--white" style="max-width: 100%" src="https://b3log.org/siyuan/static/feature4-3.png")
 
   div(id="feature5" class="feature wrapper")
+    div(class="feature__hr")
+    div(class="fn__flex")
+      div(class="feature__space")
+      div(class="feature__info")
+        h2(class="feature__title feature__primary")
+          div(class="feature__title--5") 隐私安全
+          | 加密上云，隐私无忧
+        div
+          a(href="privacy.html" class="feature__a feature__a--white")
+            span 隐私政策
+            svg(class="octicon" height="16" viewBox="0 0 16 16" width="16" fill="#fff")
+              path(clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd")
+    div(class="feature__hr")
+    div(class="feature__hr")
+    div(class="feature__two feature__two--row wrapper")
+      div(class="feature__space")
+      div(class="feature__info")
+        h3(class="feature__desc animate__left animate")
+          span(class="feature__primary") 数据完全存储在用户自己掌控的设备上。
+          | 即使没有网络、即使云端服务宕机，依然可以在本地不受限制使用。
+          em 无离线，不笔记。
+      div(class="feature__space")
+      div(class="feature__imgs fn__flex-1")
+        img(class="feature__img feature__img--red animate__scale animate" src="https://b3log.org/siyuan/static/feature2-1.svg")
+    div(class="feature__hr")
+    div(class="feature__hr")
+    div(class="feature__two feature__two--row wrapper")
+      div(class="feature__space")
+      div(class="feature__info")
+        h3(class="feature__desc animate__left animate")
+          span(class="feature__primary") 隐私安全靠的不是承诺。
+          | 多设备数据同步基于端到端加密技术实现，云端数据即使泄漏也几乎不可能被他人知晓内容。
+          em 个人隐私、知识财富不容他人觊觎。
+      div(class="feature__space")
+      div(class="feature__imgs fn__flex-1")
+        img(class="feature__img feature__img--red animate__scale animate"
+          src="https://b3log.org/siyuan/static/feature2-2.png")
+
+    div(class="feature__hr")
     div(class="feature__hr")
     div(class="fn__flex")
       div(class="feature__space")
