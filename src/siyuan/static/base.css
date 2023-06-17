@@ -239,9 +239,10 @@ kbd {
 
 .home__slogan {
     color: #fff;
-    font-size: 56px;
+    font-size: 52px;
     line-height: 72px;
     margin-bottom: 0;
+    white-space: nowrap;
 }
 
 .home__desc {
@@ -920,6 +921,8 @@ kbd {
     .feature__title {
         font-size: 36px;
         line-height: 48px;
+        white-space: break-spaces;
+        word-wrap: break-word;
     }
 
     .feature__hr {
