@@ -245,6 +245,14 @@ kbd {
     white-space: nowrap;
 }
 
+.home__keywords {
+    color: #c9d1d9;
+    font-size: 36px;
+    line-height: 48px;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
 .home__desc {
     color: #8193b2;
     font-size: 24px;
@@ -917,6 +925,7 @@ kbd {
     }
 
     .home__slogan,
+    .home__keywords,
     .second__type,
     .feature__title {
         font-size: 36px;
