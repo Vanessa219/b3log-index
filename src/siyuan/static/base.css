@@ -321,16 +321,6 @@ kbd {
     flex-direction: column;
 }
 
-.home__img img {
-    position: absolute;
-}
-
-.home__img img:last-child {
-    animation: flash 8s cubic-bezier(.73, .005, .22, 1) infinite;
-    border-radius: 64px;
-    opacity: 0;
-}
-
 .second__type {
     color: #212224;
     font-size: 48px;
