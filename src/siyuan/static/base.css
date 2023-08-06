@@ -726,6 +726,10 @@ kbd {
     background-color: #f6f8fa;
 }
 
+.price .item--m {
+    background-color: #fafcfb;
+}
+
 .price .item--empty {
     background-color: transparent;
     font-weight: 500;
