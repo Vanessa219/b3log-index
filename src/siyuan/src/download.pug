@@ -23,11 +23,11 @@ block content
                     span 升级需要再次下载
                 a(target="_blank" href="https://www.microsoft.com/store/apps/9P7HPMXP73K4" class="home__download" data-os="Windows") 微软应用商店
                     span 支持一键升级
-                a(target="_blank" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.9.1-win.exe" class="home__download" data-os="Windows") 64 位安装包
+                a(target="_blank" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.10.12-win.exe" class="home__download" data-os="Windows") 64 位安装包
                     span 升级需要再次下载
-                a(style="display: none" target="_blank" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.9.1.apk" class="home__download" data-os="Android") 安卓安装包
+                a(style="display: none" target="_blank" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.10.12.apk" class="home__download" data-os="Android") 安卓安装包
                     span 升级需要再次下载
-                a(style="display: none" target="_blank" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.9.1-linux.AppImage" class="home__download" data-os="Linux") Linux AppImage
+                a(style="display: none" target="_blank" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.10.12-linux.AppImage" class="home__download" data-os="Linux") Linux AppImage
                     span 升级需要再次下载
             div(style="opacity: 0.75;color: #586069;font-size: 12px;text-align: center;margin-top: 16px;")
                 span 如果下载速度过慢，可尝试通过
@@ -38,19 +38,19 @@ block content
                 img(src="https://b3log.org/siyuan/static/logo-windows.png")
                 h3 Windows
                 a(class="download__link" rel="nofollow" href="https://www.microsoft.com/store/apps/9P7HPMXP73K4" target="_blank") 微软应用商店
-                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.9.1-win.exe" target="_blank") 64 位
+                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.10.12-win.exe" target="_blank") 64 位
                 a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") 源代码
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-macOS.png")
                 h3 macOS
-                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.9.1-mac.dmg" target="_blank") Intel
-                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.9.1-mac-arm64.dmg" target="_blank") Apple
+                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.10.12-mac.dmg" target="_blank") Intel
+                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.10.12-mac-arm64.dmg" target="_blank") Apple
                 a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") 源代码
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-linux.png")
                 h3 Linux
-                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.9.1-linux.AppImage" target="_blank") AppImage
-                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.9.1-linux.tar.gz" target="_blank") tar.gz
+                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.10.12-linux.AppImage" target="_blank") AppImage
+                a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.10.12-linux.tar.gz" target="_blank") tar.gz
                 a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") 源代码
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-android.png")
@@ -61,7 +61,7 @@ block content
                 div
                     a(class="download__link" href="https://www.coolapk.com/apk/292664" target="_blank") 酷安
                     |&nbsp;&nbsp;
-                    a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.9.1.apk" target="_blank") APK
+                    a(class="download__link" rel="nofollow" href="https://release.b3log.org/siyuan/siyuan-2.10.12.apk" target="_blank") APK
                     |&nbsp;&nbsp;
                     a(class="download__link" href="https://github.com/siyuan-note/siyuan-android" target="_blank") 源代码
             div(class="item")
@@ -117,6 +117,12 @@ block content
                         li
                             code widgets
                             |  用于保存挂件
+                        li
+                            code plugins
+                            |  用于保存插件
+                        li
+                            code public
+                            |  用于保存公开的数据
                         li 其余文件夹就是用户自己创建的笔记本文件夹，笔记本文件夹下 <code>.sy</code> 后缀的文件用于保存文档数据，数据格式为 JSON
                 div(class="item")
                     h3 思源是开源的吗？
@@ -132,9 +138,11 @@ block content
                             a(href="https://github.com/siyuan-note/siyuan-chrome" target="_blank" class="download__link") Chrome 剪藏扩展
                 div(class="item")
                     h3 使用需要付费吗？
-                    p 本地功能完全免费使用，云端服务需要
-                        a(href="pricing.html" class="feature__a feature__a--white" style="margin-top: 0")
-                            span 年付订阅
+                    p 大部分功能是免费的，即使是在商业环境下使用。
+                      br
+                      | 部分功能需要付费才能使用，更多细节请参考&nbsp;
+                      a(href="pricing.html" class="feature__a feature__a--white" style="margin-top: 0")
+                        span 定价
                             svg(height="16" viewBox="0 0 16 16" width="16" fill="#fff")
                                 path(clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd")
 

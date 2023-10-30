@@ -1,6 +1,7 @@
 extends layout/layout.pug
 
 block head
+  - var title = ""
   include layout/head.pug
 
 block content
@@ -12,7 +13,8 @@ block content
     include layout/header.pug
     div(class="home__panel wrapper")
       div(class="home__side")
-        h2(class="home__slogan") 所见所得&emsp;
+        h2(class="home__slogan") 重构你的思维
+        h2(class="home__keywords") 所见所得&emsp;
           span(class="feature__title--nowrap") 双链块引
           br
           | 加密同步&emsp;
@@ -21,12 +23,12 @@ block content
         p(class="home__desc") 思源笔记是一款隐私优先的个人知识管理系统，支持完全离线使用，同时也支持端到端加密同步。
           br
           br
-          | 融合块、大纲和双向链接，构建你永恒的数字花园。
-        div(class="feature__hr")
-        a(style="padding: 16px 64px;width: auto;align-self: baseline;" href="download.html" class="home__download") 免费下载使用
+          | 融合块、大纲和双向链接，重构你的思维。
       div(class="home__img")
-        img(src="https://b3log.org/siyuan/static/home-img.svg")
-        img(src="https://b3log.org/siyuan/static/home-img2.svg")
+        img(src="https://b3log.org/siyuan/static/feature0.png")
+        div(class="feature__hr")
+        div(class="feature__hr")
+        a(style="padding: 16px 64px;width:auto;white-space:nowrap" href="download.html" class="home__download") 免费下载使用
     svg(xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="0 0 1680 40" style="z-index:1;bottom: 0;position: absolute;")
         path(d="M0 40h1680V30S1340 0 840 0 0 30 0 30z" fill="#fff")
   div(class="wrapper")
@@ -34,7 +36,7 @@ block content
     div(class="feature__hr")
     div(class="feature__imgs animate animate__scale")
       img(src="https://b3log.org/siyuan/static/img-bg.svg" style="position:absolute;left:10%;width: 90%; top: 50%; transform: translateY(-50%);")
-      img(style="position: relative" src="https://b3log.org/siyuan/static/feature0.png")
+      img(style="position: relative" src="https://b3log.org/siyuan/static/home-img.png")
   div(class="feature__hr")
   div(class="feature__hr")
   div(class="navigation")
@@ -49,7 +51,7 @@ block content
         span 列表大纲
       div(class="item" data-id="feature5")
         span 隐私和同步
-      a(style="width: auto;padding: 8px 48px;margin-bottom: 0;" href="download.html" class="home__download") 下载
+      a(style="width: auto;padding: 8px 48px;margin-bottom: 0;align-self: center;" href="download.html" class="home__download") 下载
   div(class="feature wrapper" id="feature1")
     div(class="feature__hr")
     div(class="fn__flex")
@@ -127,22 +129,7 @@ block content
           em 自信和自我认同。
       div(class="feature__space")
       div(class="feature__imgs fn__flex-1")
-        img(class="feature__img feature__img--white animate__right animate" src="https://b3log.org/siyuan/static/feature2-card.png")
-    div(class="feature__hr")
-    div(class="feature__hr")
-    div(class="feature__two feature__two--row")
-      div(class="feature__space")
-      div(class="feature__space")
-      div(class="feature__space")
-      div(class="feature__info animate__left animate")
-        h3(class="feature__desc")
-          span(class="feature__black") 文档、卡包自由组合。
-          | 可基于文档结构纬度进行使用，支持父子文档复习；可将不同块放入专属卡包，实现自由复习。
-      div(class="feature__space")
-      div(class="feature__imgs fn__flex-1")
-        img(class="feature__img feature__img--white animate__right animate"
-          src="https://b3log.org/siyuan/static/feature2-card2.png")
-
+        img(class="feature__img feature__img--white animate__right animate" src="https://b3log.org/siyuan/static/feature2-4.png")
     div(class="feature__hr")
     div(class="feature__hr")
     div(class="fn__flex")
@@ -166,7 +153,7 @@ block content
           em 高效助力。
       div(class="feature__space")
       div(class="feature__imgs fn__flex-1")
-        img(class="feature__img feature__img--white animate__right animate" src="https://b3log.org/siyuan/static/feature2-ai.png")
+        img(class="feature__img feature__img--white animate__right animate" src="https://b3log.org/siyuan/static/feature2-3.png")
 
   div(class="feature wrapper" id="feature3" style="overflow: initial;position: relative;")
     div(class="feature__hr")

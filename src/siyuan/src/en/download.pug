@@ -23,11 +23,11 @@ block content
                     span (Upgrade requires re-download)
                 a(target="_blank" href="https://www.microsoft.com/store/apps/9P7HPMXP73K4" class="home__download" data-os="Windows") Microsoft Store
                     span In-store upgrade
-                a(target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v2.9.1/siyuan-2.9.1-win.exe" class="home__download" data-os="Windows") 64-bit Installer
+                a(target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v2.10.12/siyuan-2.10.12-win.exe" class="home__download" data-os="Windows") 64-bit Installer
                     span Download upgrade
-                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v2.9.1/siyuan-2.9.1.apk" class="home__download" data-os="Android") Android
+                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v2.10.12/siyuan-2.10.12.apk" class="home__download" data-os="Android") Android
                     span (Upgrade requires re-download)
-                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v2.9.1/siyuan-2.9.1-linux.AppImage" class="home__download" data-os="Linux") Linux AppImage
+                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v2.10.12/siyuan-2.10.12-linux.AppImage" class="home__download" data-os="Linux") Linux AppImage
                     span (Upgrade requires re-download)
         div(class="feature__hr")
         div(class="download wrapper")
@@ -35,25 +35,25 @@ block content
                 img(src="https://b3log.org/siyuan/static/logo-windows.png")
                 h3 Windows
                 a(class="download__link" href="https://www.microsoft.com/store/apps/9P7HPMXP73K4" target="_blank") Microsoft Store
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.9.1/siyuan-2.9.1-win.exe" target="_blank") 64-bit Installer
+                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.10.12/siyuan-2.10.12-win.exe" target="_blank") 64-bit Installer
                 a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-macOS.png")
                 h3 macOS
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.9.1/siyuan-2.9.1-mac.dmg" target="_blank") Intel
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.9.1/siyuan-2.9.1-mac-arm64.dmg" target="_blank") Apple
+                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.10.12/siyuan-2.10.12-mac.dmg" target="_blank") Intel
+                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.10.12/siyuan-2.10.12-mac-arm64.dmg" target="_blank") Apple
                 a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-linux.png")
                 h3 Linux
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.9.1/siyuan-2.9.1-linux.AppImage" target="_blank") AppImage
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.9.1/siyuan-2.9.1-linux.tar.gz" target="_blank") tar.gz
+                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.10.12/siyuan-2.10.12-linux.AppImage" target="_blank") AppImage
+                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.10.12/siyuan-2.10.12-linux.tar.gz" target="_blank") tar.gz
                 a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-android.png")
                 h3 Android
                 a(class="download__link" href="https://play.google.com/store/apps/details?id=org.b3log.siyuan" target="_blank") Google Play
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.9.1/siyuan-2.9.1.apk" target="_blank") APK
+                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v2.10.12/siyuan-2.10.12.apk" target="_blank") APK
                 a(class="download__link" href="https://github.com/siyuan-note/siyuan-android" target="_blank") Source
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-ios.png")
@@ -108,6 +108,12 @@ block content
                         li
                             code widgets
                             |  is used to save widgets
+                        li
+                            code plugins
+                            |  is used to save plugins
+                        li
+                            code public
+                            |  is used to save public data
                         li The rest of the folders are the notebook folders created by the user, files with the suffix of <code>.sy</code> in the notebook folder are used to save the document data, and the data format is JSON
                 div(class="item")
                     h3 Is SiYuan open source?
@@ -123,9 +129,11 @@ block content
                             a(href="https://github.com/siyuan-note/siyuan-chrome" class="download__link" target="_blank") Chrome Clipping Extension
                 div(class="item")
                     h3 Do I need to pay to use it?
-                    p Local functions are completely free to use, cloud services require&nbsp;
-                        a(href="pricing.html" class="feature__a feature__a--white" style="margin-top: 0")
-                            span annual subscription
+                    p Most features are free, even for commercial use.
+                      br
+                      | Some features are only available to paid members, for more details please refer to&nbsp;
+                      a(href="pricing.html" class="feature__a feature__a--white" style="margin-top: 0")
+                        span pricing
                             svg(height="16" viewBox="0 0 16 16" width="16" fill="#fff")
                                 path(clip-rule="evenodd" d="m8.21967 2.96967c.29289-.29289.76777-.29289 1.06066 0l4.24997 4.25c.2929.29289.2929.76777 0 1.06066l-4.24997 4.24997c-.29289.2929-.76777.2929-1.06066 0s-.29289-.7677 0-1.0606l2.96963-2.9697h-7.4393c-.41421 0-.75-.33579-.75-.75s.33579-.75.75-.75h7.4393l-2.96963-2.96967c-.29289-.29289-.29289-.76777 0-1.06066z" fill-rule="evenodd")
         include ../layout/footer-en.pug

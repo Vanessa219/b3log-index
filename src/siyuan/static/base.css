@@ -235,12 +235,20 @@ kbd {
     width: 100%;
     z-index: 2;
     padding: 0;
+    display: flex;
 }
 
 .home__slogan {
     color: #fff;
     font-size: 52px;
     line-height: 72px;
+    margin-bottom: 0;
+}
+
+.home__keywords {
+    color: #c9d1d9;
+    font-size: 36px;
+    line-height: 48px;
     margin-bottom: 0;
     white-space: nowrap;
 }
@@ -297,30 +305,16 @@ kbd {
     width: 50%;
     box-sizing: border-box;
     padding: 0 32px 0 16px;
-    position: absolute;
-    height: 100vh;
-    top: 0;
 }
 
 .home__img {
-    height: 100vh;
-    position: absolute;
-    right: 16px;
-    bottom: 0;
     width: 50%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-}
-
-.home__img img {
-    position: absolute;
-}
-
-.home__img img:last-child {
-    animation: flash 8s cubic-bezier(.73, .005, .22, 1) infinite;
-    border-radius: 64px;
-    opacity: 0;
+    align-items: center;
+    padding-right: 16px;
+    box-sizing: border-box;
 }
 
 .second__type {
@@ -589,6 +583,7 @@ kbd {
     width: 24px;
     height: 24px;
     margin-left: 16px;
+    flex: 1;
 }
 
 .footer svg {
@@ -731,6 +726,10 @@ kbd {
     background-color: #f6f8fa;
 }
 
+.price .item--m {
+    background-color: #fafcfb;
+}
+
 .price .item--empty {
     background-color: transparent;
     font-weight: 500;
@@ -829,30 +828,21 @@ kbd {
 
 @media (max-width: 1024px) {
     .home,
-    .home__panel,
-    .home__side {
+    .home__panel {
         height: auto;
     }
 
-    .home__side {
-        position: initial;
+    .home__panel {
+        flex-direction: column;
     }
 
     .home__side,
+    .home__img,
     .feature__info,
     .feature__info--small,
     .feature__info--smaller,
     .faq__inner {
         width: 100%;
-    }
-
-    .home__img {
-        position: relative;
-        width: 60vw;
-        display: block;
-        height: 60vw;
-        margin: 64px auto;
-        left: 0;
     }
 
     .feature__two {
@@ -917,6 +907,7 @@ kbd {
     }
 
     .home__slogan,
+    .home__keywords,
     .second__type,
     .feature__title {
         font-size: 36px;
@@ -925,12 +916,12 @@ kbd {
         word-wrap: break-word;
     }
 
-    .feature__hr {
-        height: 32px;
+    .second__type {
+        height: 148px;
     }
 
-    .home__img {
-        margin: 32px auto;
+    .feature__hr {
+        height: 32px;
     }
 
     .navigation {
@@ -961,9 +952,13 @@ kbd {
         display: block;
     }
 
+    .footer .fn__flex {
+        width: 100%;
+    }
+
     .footer .icon {
         width: 100%;
-        text-align: center;
         margin-left: 0;
+        text-align: center;
     }
 }
