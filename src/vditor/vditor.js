@@ -30,7 +30,7 @@ const updateCode = (btnElement, code) => {
   const demoCodeElement = document.getElementById('vditorDemoCode')
   demoCodeElement.firstElementChild.innerHTML = `<code>${code}
 </code>`
-  Vditor.highlightRender({lineNumber: true, enable: true}, demoCodeElement)
+  Vditor.highlightRender({lineNumber: true, enable: true}, demoCodeElement, "https://cdn.jsdelivr.net/npm/vditor")
   Vditor.codeRender(demoCodeElement)
 }
 
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const demoCodeElement = document.getElementById('vditorDemoCode')
         if (demoCodeElement) {
           Vditor.highlightRender({lineNumber: true, enable: true},
-            demoCodeElement)
+            demoCodeElement, "https://cdn.jsdelivr.net/npm/vditor")
           Vditor.codeRender(demoCodeElement)
         }
         if (typeof vditorScript !== 'undefined') {

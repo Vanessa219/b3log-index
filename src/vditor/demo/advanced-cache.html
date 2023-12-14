@@ -145,6 +145,9 @@ new Vditor('vditor', {
   let vditor
   const setCache = (it, options) => {
     const mergedOptions = Object.assign({
+      cdn: "https://cdn.jsdelivr.net/npm/vditor",
+      hint: {emojiPath: "https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji"},
+      preview: {theme: {path: "https://cdn.jsdelivr.net/npm/vditor/dist/css/content-theme"}},
       cache: {
         enable: false,
       },
