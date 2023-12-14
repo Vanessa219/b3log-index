@@ -79,12 +79,12 @@ const autoType = () => {
   })
 }
 
-addStyle('https://cdn.jsdelivr.net/npm/vditor@3.9.3/dist/index.css')
+addStyle('https://cdn.jsdelivr.net/npm/vditor@3.9.7/dist/index.css')
 document.addEventListener('DOMContentLoaded', function () {
   autoType();
 
   if (document.getElementById('vditorComments')) {
-    addScript('https://cdn.jsdelivr.net/npm/vditor@3.9.3/dist/index.min.js',
+    addScript('https://cdn.jsdelivr.net/npm/vditor@3.9.7/dist/index.min.js',
       () => {
         const demoCodeElement = document.getElementById('vditorDemoCode')
         if (demoCodeElement) {
