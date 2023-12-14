@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
           vditorScript()
         }
         addScript(
-          'https://cdn.jsdelivr.net/npm/vcmt@1.3.1/dist/index.min.js',
+          'https://cdn.jsdelivr.net/npm/vcmt@1.3.2/dist/index.min.js',
           () => {
             const vcomment = new Vcomment({
               id: 'vditorComments',
