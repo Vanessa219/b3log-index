@@ -30,7 +30,7 @@ const updateCode = (btnElement, code) => {
   const demoCodeElement = document.getElementById('vditorDemoCode')
   demoCodeElement.firstElementChild.innerHTML = `<code>${code}
 </code>`
-  Vditor.highlightRender({lineNumber: true, enable: true}, demoCodeElement)
+  Vditor.highlightRender({lineNumber: true, enable: true}, demoCodeElement, "https://cdn.jsdelivr.net/npm/vditor")
   Vditor.codeRender(demoCodeElement)
 }
 
@@ -89,14 +89,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const demoCodeElement = document.getElementById('vditorDemoCode')
         if (demoCodeElement) {
           Vditor.highlightRender({lineNumber: true, enable: true},
-            demoCodeElement)
+            demoCodeElement, "https://cdn.jsdelivr.net/npm/vditor")
           Vditor.codeRender(demoCodeElement)
         }
         if (typeof vditorScript !== 'undefined') {
           vditorScript()
         }
         addScript(
-          'https://cdn.jsdelivr.net/npm/vcmt@1.3.1/dist/index.min.js',
+          'https://cdn.jsdelivr.net/npm/vcmt@1.3.2/dist/index.min.js',
           () => {
             const vcomment = new Vcomment({
               id: 'vditorComments',
