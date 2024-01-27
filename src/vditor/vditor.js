@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const dynamicElement = document.getElementById('dynamic')
   if (dynamicElement) {
     const xhr = new XMLHttpRequest()
-    xhr.open('GET', 'https://ld246.com/api/v2/articles/tag/vditor?p=1')
+    xhr.open('GET', 'https://ld246.com/api/index/articles/tag/vditor?p=1')
     xhr.withCredentials = true
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
