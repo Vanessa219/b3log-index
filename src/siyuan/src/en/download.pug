@@ -17,43 +17,72 @@ block content
                 h2(class="feature__title feature__black") Download
             div(class="feature__hr")
             div(class="download__address" id="download")
-                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-mac.dmg" class="home__download" data-os="macOS") Intel chip
+                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.17/siyuan-3.0.17-mac.dmg" class="home__download" data-os="macOS") Intel chip
                     span (Upgrade requires re-download)
-                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-mac-arm64.dmg" class="home__download" data-os="macOS") Apple silicon
+                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.17/siyuan-3.0.17-mac-arm64.dmg" class="home__download" data-os="macOS") Apple silicon
                     span (Upgrade requires re-download)
                 a(target="_blank" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" class="home__download" data-os="Windows") Microsoft Store
                     span In-store upgrade
-                a(target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-win.exe" class="home__download" data-os="Windows") x86-64 Installer
+                a(target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.17/siyuan-3.0.17-win.exe" class="home__download" data-os="Windows") x86_64 Installer
                     span Download upgrade
-                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16.apk" class="home__download" data-os="Android") Android
+                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.17/siyuan-3.0.17.apk" class="home__download" data-os="Android") Android
                     span (Upgrade requires re-download)
-                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-linux.AppImage" class="home__download" data-os="Linux") Linux AppImage
+                a(style="display: none" target="_blank" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.17/siyuan-3.0.17-linux.AppImage" class="home__download" data-os="Linux") Linux AppImage
                     span (Upgrade requires re-download)
+            div(style="opacity: 0.75;color: #586069;font-size: 12px;text-align: center;margin-top: 16px;")
+                div(style="margin-bottom: 16px")
+                    | v3.0.17
         div(class="feature__hr")
         div(class="download wrapper")
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-windows.png")
                 h3 Windows
-                a(class="download__link" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" target="_blank") Microsoft Store
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-win.exe" target="_blank") x86-64 Installer
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
+                span(style="margin-bottom:0")
+                    | Microsoft Store&nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" target="_blank") x86_64
+                span(style="margin-bottom:0")
+                    | Installer&nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-win.exe" target="_blank") x86_64
+                    | &nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-win-arm64.exe" target="_blank") arm64
+                span
+                    a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-macOS.png")
                 h3 macOS
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-mac.dmg" target="_blank") Intel
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-mac-arm64.dmg" target="_blank") Apple
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
+                span(style="margin-bottom:0")
+                    | Apple dmg&nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-mac-arm64.dmg" target="_blank") arm64
+                span(style="margin-bottom:0")
+                    | Intel dmg&nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-mac.dmg" target="_blank") x86_64
+                span
+                    a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-linux.png")
                 h3 Linux
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-linux.AppImage" target="_blank") AppImage
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16-linux.tar.gz" target="_blank") tar.gz
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
+                span(style="margin-bottom:0")
+                    | AppImage&nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-linux.AppImage" target="_blank") x86_64
+                    | &nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-linux-arm64.AppImage" target="_blank") arm64
+                span(style="margin-bottom:0")
+                    | deb&nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-linux.deb" target="_blank") x86_64
+                    | &nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-linux-arm64.deb" target="_blank") arm64
+                span(style="margin-bottom:0")
+                    | tar.gz&nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-linux.tar.gz" target="_blank") x86_64
+                    | &nbsp;&nbsp;
+                    a(class="download__link" rel="nofollow" href="https://release.liuyun.io/siyuan/siyuan-3.0.17-linux-arm64.tar.gz" target="_blank") arm64
+                span
+                    a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-android.png")
                 h3 Android
                 a(class="download__link" href="https://play.google.com/store/apps/details?id=org.b3log.siyuan" target="_blank") Google Play
-                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.16/siyuan-3.0.16.apk" target="_blank") APK
+                a(class="download__link" href="https://github.com/siyuan-note/siyuan/releases/download/v3.0.17/siyuan-3.0.17.apk" target="_blank") APK
                 a(class="download__link" href="https://github.com/siyuan-note/siyuan-android" target="_blank") Source
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-ios.png")
@@ -70,7 +99,7 @@ block content
             div(class="item")
                 img(src="https://b3log.org/siyuan/static/logo-docker.png")
                 h3 Server
-                | Non-programmers don't try
+                em Non-programmers don't try
                 a(class="download__link" href="https://hub.docker.com/r/b3log/siyuan" target="_blank" rel="nofollow") Docker image
                 a(class="download__link" href="https://github.com/siyuan-note/siyuan" target="_blank") Source
             div(class="item")
