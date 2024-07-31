@@ -698,4 +698,23 @@ block content
                 div(class="item item--s")
                     img(src="https://b3log.org/siyuan/static/icon-check.svg")
         div(class="feature__hr")
+        div(class="feature__hr")
+        div(class="feature wrapper faq")
+            div(class="faq__inner")
+                h2(class="feature__title feature__title--1") FAQ
+                div(class="item")
+                    h3 Is a refund supported after subscription?
+                    p Refunds are <b>not supported</b> after payment for the subscription.
+                    p If you have the intension for a subscription, it is highly recommanded to firstly enable the trial subscription in SiYuan Desktop - Settings - Account, and consider paying for the subscription only if you are satisfied. <b>Do not act impulsively</b>.
+                div(class="item")
+                    h3 Why is the official synchronization space only 8GB? Are there plans to expand it in the future, such as increasing it to hundreds of GB like other cloud note services?
+                    p The official synchronization service of SiYuan has higher traffic costs compared to cloud note services. Providing 8GB of cloud space for each user is the current limit we can afford.
+                    p If you have a high demand for cloud synchronization space, it is recommended to use third-party S3 synchronization services (included in the subscription or purchased separately as a feature).
+                div(class="item")
+                    h3 How is the price calculated for resubscribing after a subscription interruption?
+                    p The renewal price is permanently based on the price at the time of the first subscription. Even if the subscription is interrupted and renewed later, the price will still be the same as the first subscription.
+                div(class="item")
+                    h3 What is "The 3rd-party data sync and backup"?
+                    p This means you can <b>set up</b> your own S3 (or webdave) service (such as purchasing from Amazon, Azure cloud, etc.) and integrate it with SiYuan for synchronization and backup.
+
         include ../layout/footer-en.pug
