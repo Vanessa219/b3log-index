@@ -65,8 +65,8 @@
 
 .tip {
     position: absolute;
-    left: -8px;
-    top: 20px;
+    left: 0;
+    top: 8px;
     height: 16px;
     display: inline-flex;
     width: 16px;
@@ -710,31 +710,27 @@ kbd {
 
 .price {
     display: flex;
+
+    &:nth-child(even) .item:not(.item--empty) {
+        background-color: #fff;
+    }
 }
 
 .price .item {
     flex: 1;
-    padding: 16px;
+    padding: 4px 16px;
     background-color: #fafbfc;
-    margin: 0 8px;
     text-align: center;
     font-size: 14px;
     line-height: 24px;
 }
 
-.price .item--s {
-    background-color: #f6f8fa;
-}
-
-.price .item--m {
-    background-color: #fafcfb;
-}
-
 .price .item--empty {
-    background-color: transparent;
+    background-color: #fff;
     font-weight: 500;
     text-align: left;
     position: relative;
+    padding-left: 24px;
 }
 
 .price .item--empty h3 {
