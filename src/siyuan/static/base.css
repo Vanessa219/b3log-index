@@ -65,7 +65,7 @@
 
 .tip {
     position: absolute;
-    left: 0;
+    left: 8px;
     top: 8px;
     height: 16px;
     display: inline-flex;
@@ -711,29 +711,49 @@ kbd {
 .price {
     display: flex;
 
-    &:nth-child(even) .item:not(.item--empty) {
+    &:nth-child(odd) {
+        background-color: #fafbfc;
+    }
+
+    &:nth-child(even) {
         background-color: #fff;
     }
+
+    &:hover:not(.price--white) {
+        background-color: #f6f8fa;
+    }
+}
+
+.price--white {
+    background-color: #fff !important;
 }
 
 .price .item {
     flex: 1;
     padding: 4px 16px;
-    background-color: #fafbfc;
     text-align: center;
     font-size: 14px;
     line-height: 24px;
+    transition: background-color .4s;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.price .item--empty {
-    background-color: #fff;
+.price .item--label {
     font-weight: 500;
     text-align: left;
     position: relative;
-    padding-left: 24px;
+    padding-left: 32px;
+    display: block;
 }
 
-.price .item--empty h3 {
+.price .item--block {
+    display: block;
+}
+
+.price .item--label h3 {
     font-size: 20px;
     line-height: 24px;
     color: #6a737d;
@@ -743,11 +763,12 @@ kbd {
 .price .item__img {
     height: 42px;
     width: 42px;
-    margin-bottom: 8px;
+    margin: 8px 0;
 }
 
 .price .item h3 {
     font-size: 20px;
+    margin-bottom: 8px;
 }
 
 .price .item__money {
