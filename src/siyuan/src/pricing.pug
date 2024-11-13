@@ -11,6 +11,7 @@ block content
         img(style="position: absolute" src="https://b3log.org/siyuan/static/img-bg4.svg")
         - var headerClass = "header--black header"
         include layout/header.pug
+        div(class="feature__hr")
         div(class="wrapper price__wrap")
             div(class="price price--white" style="position: sticky;top: 0;z-index:1")
                 div(class="item")
@@ -128,7 +129,7 @@ block content
                         img(src="https://b3log.org/siyuan/static/icon-check.svg")
                 div(class="price price--hide")
                     div(class="item item--label")
-                        | 第三方 WebDAV 数据同步和备份
+                        | 接入第三方 WebDAV 数据同步和备份
                         br
                         small
                             |（需自行购买或搭建 WebDAV 服务，
