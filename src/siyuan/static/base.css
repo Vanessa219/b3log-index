@@ -746,6 +746,10 @@ kbd {
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+
+    &:first-child {
+        flex: 1.2;
+    }
 }
 
 .price .item--label {
