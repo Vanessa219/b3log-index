@@ -646,7 +646,8 @@ kbd {
 
 .download .item img {
     height: 64px;
-    width: 64px;
+    width: max-content;
+    object-fit: contain;
     margin-bottom: 18px;
 }
 
