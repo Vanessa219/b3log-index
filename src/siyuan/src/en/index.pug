@@ -64,7 +64,7 @@ block content
         div(class="feature__hr")
         div(class="feature__imgs animate animate__scale")
             img(src="https://b3log.org/siyuan/static/img-bg.svg" style="position:absolute;left:0;width: 117.31%; margin: 0 -8.65%; top: 50%; transform: translateY(-50%);")
-            img(style="position: relative" src="https://b3log.org/siyuan/static/feature1-1.png")
+            img(style="position: relative;border-radius: 8px;" src="https://b3log.org/siyuan/static/feature1-1.png")
         div(class="feature__hr")
         div(class="feature__hr")
         div(class="feature__two")
@@ -80,17 +80,17 @@ block content
             div(class="feature__space")
         div(class="feature__hr")
         div(class="feature__hr")
-        div(class="fn__flex")
+        div(class="feature__two")
             div(class="feature__space")
-            div(class="feature__info")
+            div(class="feature__imgs fn__flex-1 animate__scale animate")
+                img(src="https://b3log.org/siyuan/static/img-bg2.svg" style="position:absolute;left:0;width: 117.31%; margin: 0 -8.65%; top: 50%; transform: translate(-20%, -50%);")
+                img(style="position: relative;max-width: 100%" class="feature__img" src="https://b3log.org/siyuan/static/feature1-3.png")
+            div(class="feature__space")
+            div(class="feature__info animate animate__left")
                 h2(class="feature__title feature__title--1") Zoom-in
                 div(class="feature__hr")
                 h3(class="feature__desc") Going into block focus, let's focus more on the content of the current block.
                     span(class="feature__primary")  All blocks support zoom-in focus, easily switch in context with breadcrumb navigation.
-        div(class="feature__hr")
-        div(class="feature__imgs animate animate__scale")
-            img(src="https://b3log.org/siyuan/static/img-bg.svg" style="position:absolute;left:0;width: 117.31%; margin: 0 -8.65%; top: 50%; transform: translateY(-50%);")
-            img(style="position: relative;max-width: 100%" class="feature__img" src="https://b3log.org/siyuan/static/feature1-3.png")
         div(class="feature__hr")
         div(class="feature__hr")
         div(class="feature__two")
@@ -142,8 +142,6 @@ block content
         div(class="feature__hr")
         div(class="feature__two feature__two--row")
             div(class="feature__space")
-            div(class="feature__space")
-            div(class="feature__space")
             div(class="feature__info animate__left animate")
                 h3(class="feature__desc")
                     span(class="feature__black") The two databases can be connected through "relation" to achieve linkage management.
@@ -165,8 +163,6 @@ block content
                     a(href="https://openai.com/" target="_blank") OpenAI
         div(class="feature__hr")
         div(class="feature__two feature__two--row")
-            div(class="feature__space")
-            div(class="feature__space")
             div(class="feature__space")
             div(class="feature__info animate__left animate")
                 h3(class="feature__desc")
@@ -323,4 +319,3 @@ block content
             div(class="feature__imgs fn__flex-1")
                 img(class="feature__img feature__img--red animate__scale animate" src="https://b3log.org/siyuan/static/feature5-3.svg")
     include ../layout/footer-en.pug
-
