@@ -239,18 +239,14 @@ kbd {
 .home__slogan {
     color: #fff;
     font-size: 60px;
-}
-
-.home__keywords {
-    color: #c9d1d9;
-    font-size: 18px;
-    margin-top: 50px;
+    margin: 80px 0 50px;
 }
 
 .home__desc {
     color: #8193b2;
     font-size: 14px;
     margin: 0;
+    font-weight: normal;
 }
 
 .home__download {
