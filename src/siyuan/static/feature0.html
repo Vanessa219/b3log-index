@@ -1840,14 +1840,16 @@
             }
 
             .siyuan-showcase {
+                align-items: center;
                 aspect-ratio: auto;
-                height: 760px;
+                display: flex;
+                height: calc(100vh - 20px);
+                justify-content: center;
                 min-height: 0;
             }
 
             .desktop-window {
-                height: 80%;
-                width: 100%;
+                display: none;
             }
 
             .titlebar {
@@ -1942,10 +1944,11 @@
             }
 
             .phone-window {
-                bottom: 0;
-                height: 62%;
-                right: -1px;
-                width: 58%;
+                bottom: auto;
+                height: min(720px, 100%);
+                position: relative;
+                right: auto;
+                width: min(360px, 100%);
             }
         }
 
