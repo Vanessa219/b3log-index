@@ -165,7 +165,6 @@ kbd {
 }
 
 .home {
-    height: calc(100vh + 40px);
     background-color: #040d21;
     overflow: hidden;
     position: relative;
@@ -230,32 +229,28 @@ kbd {
 
 .home__panel {
     position: relative;
-    height: 100vh;
     top: -32px;
     width: 100%;
     z-index: 2;
     padding: 0;
-    display: flex;
+    text-align: center;
 }
 
 .home__slogan {
     color: #fff;
-    font-size: 52px;
-    line-height: 72px;
-    margin-bottom: 0;
+    font-size: 60px;
 }
 
 .home__keywords {
     color: #c9d1d9;
-    font-size: 36px;
-    line-height: 48px;
-    margin-bottom: 0;
-    white-space: nowrap;
+    font-size: 18px;
+    margin-top: 50px;
 }
 
 .home__desc {
     color: #8193b2;
-    font-size: 24px;
+    font-size: 14px;
+    margin: 0;
 }
 
 .home__download {
@@ -302,7 +297,6 @@ kbd {
     flex: 1;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
     box-sizing: border-box;
     padding: 0 32px 0 16px;
 }
@@ -924,16 +918,6 @@ kbd {
 
     .header__a svg {
         height: 16px;
-    }
-
-    .home__slogan,
-    .home__keywords,
-    .second__type,
-    .feature__title {
-        font-size: 36px;
-        line-height: 48px;
-        white-space: break-spaces;
-        word-wrap: break-word;
     }
 
     .second__type {

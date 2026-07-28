@@ -1,0 +1,3250 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>SiYuan Interactive Showcase</title>
+    <style>
+        :root {
+            --page-bg: #061126;
+            --app-bg: #ebecf0;
+            --panel-bg: #ffffff;
+            --editor-bg: #ffffff;
+            --surface: #f6f6f6;
+            --surface-hover: rgb(0 0 0 / 7.5%);
+            --surface-selected: rgb(53 117 240 / 12%);
+            --border: #e0e0e0;
+            --border-strong: #d2d2d2;
+            --text: #222222;
+            --text-soft: #5f6368;
+            --text-soft-light: rgb(95 99 104 / 68%);
+            --text-faint: #9aa0a6;
+            --primary: #3575f0;
+            --primary-soft: rgb(53 117 240 / 12%);
+            --purple: #b388ff;
+            --green: #65b84d;
+            --phone-bg: #1e1e1e;
+            --phone-surface: #2c2c2c;
+            --phone-border: #484848;
+            --phone-text: #dadada;
+            --phone-soft: #9aa0a6;
+            --radius-sm: 6px;
+            --radius: 6px;
+            --radius-large: 12px;
+            --shadow-window: 0 30px 90px rgb(0 0 0 / 34%), 0 1px 0 rgb(255 255 255 / 70%) inset;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            align-items: center;
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 0px;
+        }
+
+        button {
+            appearance: none;
+            background: transparent;
+            border: 0;
+            color: inherit;
+            cursor: pointer;
+            font: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        button:focus-visible {
+            box-shadow: 0 0 0 2px var(--editor-bg), 0 0 0 4px var(--primary);
+            outline: none;
+            position: relative;
+            z-index: 4;
+        }
+
+        .icon-sprite {
+            height: 0;
+            overflow: hidden;
+            position: absolute;
+            width: 0;
+        }
+
+        .ui-icon {
+            display: block;
+            fill: currentColor;
+            height: 16px;
+            pointer-events: none;
+            width: 16px;
+        }
+
+        .siyuan-showcase {
+            aspect-ratio: 1.72;
+            max-width: 1800px;
+            min-height: 650px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .desktop-window {
+            background: var(--app-bg);
+            border: 1px solid rgb(255 255 255 / 72%);
+            border-radius: 15px;
+            box-shadow: var(--shadow-window);
+            height: 94%;
+            left: 0;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 94%;
+        }
+
+        .titlebar {
+            align-items: center;
+            background: linear-gradient(100deg, #efe5f8 0%, #ebeef4 43%, #eceef3 100%);
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: auto auto 1fr auto;
+            height: 38px;
+            padding: 0 12px;
+            position: relative;
+        }
+
+        .traffic-lights {
+            display: flex;
+            gap: 8px;
+            margin-right: 16px;
+        }
+
+        .traffic-lights span {
+            border: 1px solid rgb(0 0 0 / 10%);
+            border-radius: 50%;
+            display: block;
+            height: 12px;
+            width: 12px;
+        }
+
+        .traffic-lights span:nth-child(1) {
+            background: #ff5f57;
+        }
+
+        .traffic-lights span:nth-child(2) {
+            background: #febc2e;
+        }
+
+        .traffic-lights span:nth-child(3) {
+            background: #28c840;
+        }
+
+        .brand {
+            align-items: center;
+            color: var(--text-soft-light);
+            display: flex;
+            font-size: 12px;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .brand-caret {
+            color: var(--text-soft-light);
+            height: 12px;
+            width: 12px;
+        }
+
+        .history-actions {
+            display: flex;
+            gap: 0;
+            margin-left: 12px;
+        }
+
+        .titlebar-button,
+        .tool-button,
+        .rail-button,
+        .phone-button {
+            align-items: center;
+            border-radius: var(--radius-sm);
+            color: var(--text-soft);
+            display: inline-flex;
+            justify-content: center;
+            transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
+        }
+
+        .titlebar-button,
+        .rail-button {
+            color: var(--text-soft-light);
+        }
+
+        .titlebar-button {
+            height: 23.5px;
+            margin: 2px;
+            padding: 4px;
+            width: 23.5px;
+        }
+
+        .titlebar-button .ui-icon {
+            height: 15.5px;
+            width: 15.5px;
+        }
+
+        .titlebar-button:hover,
+        .tool-button:hover,
+        .rail-button:hover {
+            background: rgb(0 0 0 / 6%);
+            color: var(--text);
+        }
+
+        .titlebar-button:active,
+        .tool-button:active,
+        .rail-button:active,
+        .phone-button:active {
+            transform: scale(.94);
+        }
+
+        .window-title {
+            color: var(--text-faint);
+            font-size: 12px;
+            left: 50%;
+            max-width: 34%;
+            overflow: hidden;
+            pointer-events: none;
+            position: absolute;
+            text-align: center;
+            text-overflow: ellipsis;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .titlebar-actions {
+            align-items: center;
+            display: flex;
+            gap: 0;
+            justify-content: flex-end;
+        }
+
+        .titlebar-decoration {
+            align-items: center;
+            border-radius: var(--radius);
+            display: inline-flex;
+            height: 23.5px;
+            justify-content: center;
+            margin: 2px;
+            padding: 4px;
+            width: 23.5px;
+        }
+
+        .titlebar-decoration .ui-icon {
+            height: 15.5px;
+            width: 15.5px;
+        }
+
+        .vip--annual {
+            color: #f4a000;
+        }
+
+        .vip--lifetime {
+            color: #5cae45;
+        }
+
+        .heart {
+            color: #ea4aaa;
+            font-size: 17px;
+            line-height: 15.5px;
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: 42px 280px minmax(0, 1fr) 280px 42px;
+            grid-template-rows: minmax(0, 1fr);
+            height: calc(100% - 38px);
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .app-rail,
+        .right-rail {
+            align-items: center;
+            background: #eef0f5;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: 0;
+        }
+
+        .app-rail {
+            border-right: 0;
+        }
+
+        .right-rail {
+            border-left: 0;
+        }
+
+        .rail-separator {
+            height: 17px;
+            margin-top: 7px;
+            position: relative;
+            width: 100%;
+        }
+
+        .rail-separator::after {
+            background: var(--border-strong);
+            border-radius: var(--radius);
+            content: "";
+            height: 1px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 22px;
+        }
+
+        .rail-button {
+            height: 26px;
+            margin: 7px 7px 0;
+            padding: 5px;
+            width: 28px;
+        }
+
+        .rail-button .ui-icon {
+            height: 16px;
+            width: 17.5px;
+        }
+
+        .rail-button[aria-pressed="true"] {
+            background: rgb(255 255 255 / 68%);
+            box-shadow: none;
+        }
+
+        .left-panel {
+            background: var(--panel-bg);
+            border-right: 0;
+            display: grid;
+            grid-template-rows: minmax(0, 2fr) minmax(150px, .58fr);
+            margin-right: 4px;
+            min-height: 0;
+        }
+
+        .panel-section {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .panel-section + .panel-section {
+            border-top: 1px solid var(--border);
+        }
+
+        .panel-heading {
+            align-items: center;
+            display: flex;
+            flex: none;
+            font-size: 14px;
+            font-weight: 600;
+            height: 42px;
+            justify-content: space-between;
+            padding: 0 8px;
+        }
+
+        .panel-heading > span:first-child {
+            margin: 0 8px;
+        }
+
+        .panel-heading-actions {
+            display: flex;
+            gap: 4px;
+            opacity: 0;
+            transition: opacity 150ms ease;
+        }
+
+        .panel-heading:hover .panel-heading-actions,
+        .panel-heading:focus-within .panel-heading-actions {
+            opacity: 1;
+        }
+
+        .tool-button {
+            height: 24px;
+            padding: 4px;
+            width: 24px;
+        }
+
+        .tool-button .ui-icon {
+            height: 16px;
+            width: 16px;
+        }
+
+        .tool-button[aria-pressed="true"] {
+            background: var(--surface-selected);
+            color: var(--primary);
+        }
+
+        .documents-scroll,
+        .outline-list,
+        .context-scroll {
+            min-height: 0;
+            overflow: auto;
+            scrollbar-color: #c5c7cc transparent;
+            scrollbar-width: thin;
+        }
+
+        .documents-scroll {
+            padding: 1px 0 12px;
+        }
+
+        .notebook-row {
+            align-items: center;
+            border-radius: var(--radius);
+            color: var(--text);
+            display: flex;
+            font-size: 14px;
+            line-height: 28px;
+            margin: 1px 8px;
+            min-height: 28px;
+            padding: 0 4px;
+            text-align: left;
+            transition: background-color 20ms ease-in, color 20ms ease-in;
+            width: calc(100% - 16px);
+        }
+
+        .notebook-row {
+            font-weight: 400;
+        }
+
+        .notebook-row:hover {
+            background: var(--surface-hover);
+        }
+
+        .notebook-row .chevron {
+            align-items: center;
+            color: var(--text-soft-light);
+            display: inline-flex;
+            flex: 0 0 18px;
+            height: 22px;
+            justify-content: center;
+            padding: 0 2px;
+            width: 18px;
+        }
+
+        .doc-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doc-button {
+            align-items: center;
+            border-radius: var(--radius);
+            color: var(--text);
+            display: flex;
+            font-size: 14px;
+            line-height: 28px;
+            margin: 1px 8px;
+            min-height: 28px;
+            padding: 0 4px 0 18px;
+            text-align: left;
+            transition: background-color 20ms ease-in, color 20ms ease-in;
+            width: calc(100% - 16px);
+        }
+
+        .doc-button[data-depth="1"] {
+            padding-left: 18px;
+        }
+
+        .doc-button[data-depth="2"] {
+            padding-left: 36px;
+        }
+
+        .doc-button:hover {
+            background: var(--surface-hover);
+            color: var(--text);
+        }
+
+        .doc-button[aria-current="page"] {
+            background: var(--surface-hover);
+            box-shadow: none;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .doc-button .chevron {
+            align-items: center;
+            color: var(--text-soft-light);
+            display: inline-flex;
+            flex: 0 0 18px;
+            height: 22px;
+            justify-content: center;
+            padding: 0 2px;
+            width: 18px;
+        }
+
+        .chevron .ui-icon {
+            height: 14px;
+            transition: transform 150ms ease;
+            width: 14px;
+        }
+
+        .chevron.is-expanded .ui-icon {
+            transform: rotate(90deg);
+        }
+
+        .chevron.is-empty {
+            visibility: hidden;
+        }
+
+        .doc-icon {
+            align-items: center;
+            display: inline-flex;
+            flex: 0 0 28px;
+            font-size: 16px;
+            height: 22px;
+            justify-content: center;
+            line-height: 22px;
+            margin-right: 4px;
+            padding: 0 4px;
+            text-align: center;
+            width: 28px;
+        }
+
+        .doc-label {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .doc-count {
+            color: var(--text-soft-light);
+            font-size: 14px;
+            line-height: 22px;
+            margin-left: 4px;
+            padding: 0 8px;
+        }
+
+        .doc-button[hidden] {
+            display: none;
+        }
+
+        .outline-list {
+            padding: 2px 0 12px;
+        }
+
+        .outline-button {
+            align-items: center;
+            border-radius: var(--radius);
+            color: var(--text);
+            display: flex;
+            font-size: 14px;
+            gap: 0;
+            line-height: 28px;
+            margin: 1px 8px;
+            min-height: 28px;
+            padding: 0 4px;
+            text-align: left;
+            transition: background-color 150ms ease, color 150ms ease;
+            width: calc(100% - 16px);
+        }
+
+        .outline-button--h3 {
+            color: var(--purple);
+        }
+
+        .outline-button--root {
+            gap: 4px;
+        }
+
+        .outline-toggle {
+            align-items: center;
+            color: var(--text-soft-light);
+            display: inline-flex;
+            flex: 0 0 20px;
+            height: 22px;
+            justify-content: center;
+            margin-right: 2px;
+            padding-left: 4px;
+            width: 20px;
+        }
+
+        .outline-toggle--h3 {
+            flex-basis: 34px;
+            padding-left: 18px;
+            width: 34px;
+        }
+
+        .outline-toggle.is-empty {
+            visibility: hidden;
+        }
+
+        .outline-toggle .ui-icon {
+            height: 14px;
+            width: 14px;
+        }
+
+        .outline-button .outline-count {
+            color: var(--text-soft-light);
+            margin-left: auto;
+            padding: 0 8px;
+        }
+
+        .outline-text--marked {
+            background: #e1e2e4;
+        }
+
+        .outline-button:hover {
+            background: var(--surface-hover);
+            color: var(--text);
+        }
+
+        .outline-button--h3:hover {
+            color: var(--purple);
+        }
+
+        .outline-level {
+            color: var(--text);
+            flex: 0 0 18px;
+            font-size: 12px;
+            font-weight: 500;
+            height: 22px;
+            line-height: 22px;
+            margin-right: 4px;
+            text-align: center;
+            width: 18px;
+        }
+
+        .editor-shell {
+            background: var(--editor-bg);
+            display: grid;
+            grid-template-rows: 42px 38px minmax(0, 1fr);
+            min-height: 0;
+            min-width: 0;
+        }
+
+        .tabs {
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            min-width: 0;
+            padding: 0 8px;
+        }
+
+        .tabs-list {
+            align-items: center;
+            display: flex;
+            flex: 0 1 auto;
+            min-width: 0;
+            overflow: auto;
+            scrollbar-width: none;
+        }
+
+        .tabs-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-button {
+            align-items: center;
+            border-radius: var(--radius);
+            color: var(--text-soft);
+            display: inline-flex;
+            flex: 0 0 auto;
+            font-size: 14px;
+            justify-content: flex-start;
+            line-height: 22px;
+            margin: 6px 4px;
+            max-width: 186px;
+            min-height: 29px;
+            min-width: 72px;
+            overflow: hidden;
+            padding: 0;
+            position: relative;
+            transition: background-color 150ms ease, color 150ms ease;
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            background: rgb(255 255 255 / 72%);
+            box-shadow: 0 0 0 1px rgb(95 99 104 / 14%) inset;
+            color: var(--text);
+        }
+
+        .tab-button[aria-selected="true"] {
+            background: var(--surface-selected);
+            box-shadow: 0 0 0 1px rgb(53 117 240 / 38%) inset;
+            color: var(--text);
+        }
+
+        .tab-button[aria-selected="true"]:hover {
+            background: #dce7ff;
+            box-shadow: 0 0 0 1px rgb(53 117 240 / 48%) inset;
+        }
+
+        .tab-button[aria-selected="true"]::after {
+            display: none;
+        }
+
+        .tab-icon {
+            align-items: center;
+            display: inline-flex;
+            font-size: 16px;
+            height: 27px;
+            padding: 4px 0 4px 8px;
+        }
+
+        .tab-label {
+            flex: 1;
+            overflow: hidden;
+            padding: 0 8px;
+            text-overflow: ellipsis;
+        }
+
+        .tab-close {
+            align-items: center;
+            align-self: stretch;
+            color: var(--text-soft-light);
+            display: inline-flex;
+            flex: 0 0 auto;
+            padding: 7px 6px 6px 0;
+        }
+
+        .tab-close .ui-icon {
+            height: 14px;
+            width: 14px;
+        }
+
+        .tab-button:hover .tab-close {
+            color: var(--text);
+        }
+
+        .tab-spacer {
+            flex: 1;
+            min-width: 4px;
+        }
+
+        .tab-bar-button {
+            align-items: center;
+            border-radius: var(--radius);
+            color: var(--text-soft-light);
+            display: inline-flex;
+            flex: 0 0 24px;
+            height: 24px;
+            justify-content: center;
+            margin: 2px;
+            padding: 4px;
+            transition: background-color 150ms ease, color 150ms ease;
+            width: 24px;
+        }
+
+        .tab-bar-button:hover {
+            background: rgb(255 255 255 / 72%);
+            color: var(--text);
+        }
+
+        .tab-bar-button:active {
+            transform: scale(.94);
+        }
+
+        .tab-bar-button .ui-icon {
+            height: 16px;
+            width: 16px;
+        }
+
+        .editor-toolbar {
+            align-items: center;
+            color: var(--text-soft);
+            display: flex;
+            font-size: 12px;
+            gap: 6px;
+            min-width: 0;
+            padding: 0 10px;
+        }
+
+        .breadcrumb {
+            align-items: center;
+            display: flex;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .breadcrumb-title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .editor-toolbar .toolbar-spacer {
+            flex: 1;
+        }
+
+        .editor-scroll {
+            border-radius: 0 0 var(--radius-large) var(--radius-large);
+            min-height: 0;
+            overflow: auto;
+            scroll-behavior: smooth;
+            scrollbar-color: #d0d2d7 transparent;
+            scrollbar-width: thin;
+            overflow-x: hidden;
+        }
+
+        .document-content {
+            margin: 0;
+            max-width: none;
+            min-height: 100%;
+            padding: 8px 34px 527px;
+        }
+
+        .document-content.is-entering {
+            animation: document-enter 180ms ease-out;
+        }
+
+        .doc-cover {
+            aspect-ratio: 3 / 1;
+            margin: -8px -36px 0;
+            overflow: hidden;
+            width: calc(100% + 72px);
+        }
+
+        .doc-cover img {
+            border-radius: var(--radius-large) var(--radius-large) 0 0;
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .document-content.has-cover .doc-emoji {
+            font-size: 96px;
+            height: 110px;
+            line-height: 110px;
+            margin: -54px 0 72px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes document-enter {
+            from {
+                opacity: .35;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .doc-emoji {
+            font-size: 68px;
+            height: 80px;
+            line-height: 80px;
+            margin: 0 0 52px;
+        }
+
+        .doc-title {
+            color: #222222;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 0;
+            line-height: 52px;
+            margin: 0 0 18px;
+        }
+
+        .doc-intro {
+            color: var(--text-soft);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .callout {
+            border-left: 4px solid var(--green);
+            margin: 2px 0;
+            padding: 4px 4px 4px 10px;
+        }
+
+        .callout-title {
+            color: var(--green);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 26px;
+            margin: 0;
+        }
+
+        .callout p {
+            color: var(--text-soft);
+            font-size: 16px;
+            line-height: 26px;
+            margin: 0;
+        }
+
+        .doc-sections {
+            display: grid;
+            gap: 34px;
+        }
+
+        .doc-sections--grid {
+            gap: 28px 46px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .guide-grid {
+            display: grid;
+            gap: 0 18px;
+            margin-top: 2px;
+        }
+
+        .guide-grid--2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .guide-grid--4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .guide-grid--3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .guide-link-columns,
+        .guide-subsections {
+            display: grid;
+            gap: 0 18px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .guide-section {
+            min-width: 0;
+        }
+
+        .guide-section h2 {
+            color: #292a2e;
+            border-radius: 6px;
+            font-size: 24.8px;
+            font-weight: 600;
+            line-height: 40.3px;
+            margin: 2px 0;
+            padding: 4px;
+        }
+
+        .guide-section h3 {
+            color: #292a2e;
+            border-radius: 6px;
+            font-size: 22.08px;
+            font-weight: 600;
+            line-height: 35.88px;
+            margin: 2px 0;
+            padding: 4px;
+        }
+
+        .guide-section p,
+        .guide-section li,
+        .guide-summary {
+            color: var(--text-soft);
+            font-size: 16px;
+            line-height: 26px;
+        }
+
+        .guide-section p {
+            margin: 2px 0;
+            padding: 4px;
+        }
+
+        .guide-section ul {
+            margin: 0;
+            padding-left: 34px;
+        }
+
+        .guide-section li + li {
+            margin-top: 4px;
+        }
+
+        .guide-grid--welcome .guide-section:first-child li {
+            position: relative;
+        }
+
+        .guide-grid--welcome .guide-section:first-child li::after {
+            border-left: 1px solid var(--border);
+            bottom: 0;
+            content: "";
+            left: -18px;
+            position: absolute;
+            top: 25px;
+        }
+
+        .guide-section a {
+            color: var(--purple);
+            text-decoration: none;
+        }
+
+        .guide-section a:hover {
+            text-decoration: underline;
+        }
+
+        .guide-section .guide-link--external {
+            color: #4285f4;
+        }
+
+        .guide-heading-note {
+            color: var(--text-faint);
+            float: right;
+            font-size: 9px;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .guide-counted-heading {
+            position: relative;
+        }
+
+        .guide-heading-sparkle {
+            font-size: 11px;
+            line-height: 1;
+            position: absolute;
+            right: 4px;
+            top: -10px;
+        }
+
+        .guide-counted-heading::after {
+            align-items: center;
+            background: rgb(95 99 104 / 10%);
+            border-radius: 50%;
+            bottom: -7px;
+            color: var(--text-soft-light);
+            content: "1";
+            display: flex;
+            font-size: 9px;
+            font-weight: 400;
+            height: 16px;
+            justify-content: center;
+            line-height: 16px;
+            position: absolute;
+            right: -1px;
+            width: 16px;
+            z-index: 1;
+        }
+
+        .guide-summary {
+            margin: 2px 0;
+            padding: 4px;
+        }
+
+        .guide-divider {
+            border: 0;
+            border-top: 1px solid var(--border);
+            height: 34px;
+            margin: 2px 0;
+        }
+
+        .guide-grid--4 .guide-section h2,
+        .guide-grid--3 .guide-section h2 {
+            background: #e2e3e4;
+        }
+
+        .guide-grid--4 .guide-section p,
+        .guide-grid--4 .guide-section li,
+        .guide-grid--3 .guide-section p,
+        .guide-grid--3 .guide-section li {
+            font-size: 16px;
+        }
+
+        .guide-grid--4 .guide-section ul,
+        .guide-grid--3 .guide-section ul {
+            list-style: none;
+            padding: 0 4px;
+        }
+
+        .guide-grid--4 .guide-section li,
+        .guide-grid--3 .guide-section li {
+            padding: 4px 0;
+        }
+
+        .guide-grid--4 .guide-section li + li,
+        .guide-grid--3 .guide-section li + li {
+            margin-top: 0;
+        }
+
+        .doc-section {
+            scroll-margin-top: 22px;
+        }
+
+        .doc-section h2 {
+            color: #292a2e;
+            font-size: 22px;
+            line-height: 1.3;
+            margin: 0 0 14px;
+        }
+
+        .doc-section p,
+        .doc-section li {
+            color: var(--text-soft);
+            font-size: 13.5px;
+            line-height: 1.65;
+        }
+
+        .doc-section p {
+            margin: 0 0 11px;
+        }
+
+        .doc-section ul,
+        .doc-section ol {
+            margin: 7px 0 0;
+            padding-left: 20px;
+        }
+
+        .doc-section li + li {
+            margin-top: 6px;
+        }
+
+        .doc-section a {
+            color: var(--purple);
+            text-decoration: none;
+        }
+
+        .doc-section a:hover {
+            text-decoration: underline;
+        }
+
+        kbd,
+        .inline-code {
+            background: #f2f2f3;
+            border: 1px solid #dedfe3;
+            border-radius: 5px;
+            box-shadow: 0 1px 0 #d1d2d6;
+            color: #5d5f66;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 11px;
+            padding: 1px 5px;
+        }
+
+        .statusbar {
+            align-items: center;
+            background: var(--app-bg);
+            color: var(--text-faint);
+            display: flex;
+            font-size: 11px;
+            height: 32px;
+            inset: auto 0 0;
+            justify-content: space-between;
+            padding: 0 12px;
+            position: absolute;
+            z-index: 7;
+        }
+
+        .statusbar-button {
+            align-items: center;
+            border-radius: var(--radius-sm);
+            color: var(--text-soft-light);
+            display: inline-flex;
+            height: 22px;
+            justify-content: center;
+            margin-left: -5px;
+            width: 22px;
+        }
+
+        .statusbar-button:hover {
+            background: rgb(255 255 255 / 68%);
+            color: var(--text);
+        }
+
+        .statusbar-button .ui-icon {
+            height: 15px;
+            width: 15px;
+        }
+
+        .statusbar-stats {
+            align-items: center;
+            display: flex;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .statusbar-stat strong {
+            color: var(--text);
+            font-weight: 400;
+            margin-left: 3px;
+        }
+
+        .statusbar-help {
+            align-items: center;
+            border: 1px solid var(--text-faint);
+            border-radius: 50%;
+            display: inline-flex;
+            font-size: 9px;
+            height: 17px;
+            justify-content: center;
+            margin-left: 2px;
+            width: 17px;
+        }
+
+        .context-panel {
+            background: var(--panel-bg);
+            border-left: 0;
+            display: grid;
+            grid-template-rows: minmax(230px, 0.68fr) minmax(200px, 1fr);
+            margin-left: 4px;
+            min-height: 0;
+        }
+
+        .graph-panel {
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-rows: 42px minmax(0, 1fr);
+            min-height: 0;
+        }
+
+        .graph-wrap {
+            min-height: 0;
+            position: relative;
+        }
+
+        .graph-image {
+            display: block;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+            width: 100%;
+        }
+
+        .context-scroll {
+            padding: 0 0 16px;
+        }
+
+        .reference-heading {
+            align-items: center;
+            color: var(--text);
+            display: flex;
+            font-size: 14px;
+            font-weight: 600;
+            height: 42px;
+            padding: 0 8px 0 16px;
+        }
+
+        .reference-panel-heading .panel-heading-actions {
+            gap: 0;
+            opacity: 1;
+        }
+
+        .reference-panel-heading .tool-button,
+        .reference-heading .tool-button {
+            color: var(--text-soft);
+        }
+
+        .reference-heading--mentions {
+            margin-top: 70px;
+        }
+
+        .reference-heading-title {
+            margin-right: auto;
+        }
+
+        .reference-heading .tool-button {
+            flex: 0 0 24px;
+        }
+
+        .reference-count {
+            color: var(--text-faint);
+            font-weight: 400;
+            min-width: 24px;
+            padding-left: 4px;
+            text-align: center;
+        }
+
+        .reference-tree {
+            padding: 0 4px;
+        }
+
+        .context-row {
+            align-items: center;
+            border-radius: 6px;
+            color: var(--text);
+            display: flex;
+            font-size: 14px;
+            gap: 4px;
+            line-height: 28px;
+            margin: 1px 0;
+            min-height: 28px;
+            padding: 0 8px;
+            text-align: left;
+            transition: background-color 150ms ease, color 150ms ease;
+            width: 100%;
+        }
+
+        .context-row:hover {
+            background: var(--surface-hover);
+            color: var(--text);
+        }
+
+        .context-row .chevron {
+            align-items: center;
+            color: var(--text-soft-light);
+            display: inline-flex;
+            flex: 0 0 18px;
+            height: 22px;
+            justify-content: center;
+            width: 18px;
+        }
+
+        .context-row .chevron .ui-icon {
+            height: 14px;
+            width: 14px;
+        }
+
+        .context-file-icon {
+            align-items: center;
+            display: inline-flex;
+            flex: 0 0 22px;
+            height: 22px;
+            justify-content: center;
+        }
+
+        .context-file-icon .ui-icon {
+            height: 18px;
+            width: 18px;
+        }
+
+        .context-label {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .context-item-count {
+            color: var(--text-faint);
+            padding-left: 8px;
+        }
+
+        .context-row--heading {
+            color: var(--text-soft);
+            padding-left: 34px;
+        }
+
+        .context-row--heading .outline-level {
+            flex-basis: 22px;
+        }
+
+        .context-row--reference {
+            color: var(--purple);
+            padding-left: 54px;
+        }
+
+        .context-row--reference:hover {
+            color: var(--purple);
+        }
+
+        .context-row--reference::before {
+            background: var(--text-soft);
+            border-radius: 50%;
+            content: "";
+            height: 6px;
+            margin-right: 14px;
+            width: 6px;
+        }
+
+        .reference-indicator {
+            align-items: center;
+            background: #ededee;
+            border-radius: 6px;
+            color: var(--text-soft);
+            display: inline-flex;
+            height: 24px;
+            justify-content: center;
+            margin-left: 4px;
+            width: 24px;
+        }
+
+        .reference-indicator::before {
+            background: currentcolor;
+            border-radius: 50%;
+            content: "";
+            height: 4px;
+            margin-right: 3px;
+            width: 4px;
+        }
+
+        .reference-indicator::after {
+            background: currentcolor;
+            content: "";
+            height: 2px;
+            width: 9px;
+        }
+
+        .phone-window {
+            background: var(--phone-bg);
+            border: 1px solid #36363b;
+            border-radius: 28px;
+            bottom: 0;
+            box-shadow: 0 32px 80px rgb(0 0 0 / 48%);
+            color: var(--phone-text);
+            display: grid;
+            grid-template-rows: 36px 42px minmax(0, 1fr);
+            height: 78%;
+            overflow: hidden;
+            position: absolute;
+            right: 0;
+            width: 22%;
+            z-index: 8;
+        }
+
+        .phone-status {
+            align-items: center;
+            display: flex;
+            font-size: 11px;
+            font-weight: 620;
+            justify-content: space-between;
+            padding: 0 16px;
+        }
+
+        .phone-indicators {
+            color: #f4f4f5;
+            font-size: 9px;
+            letter-spacing: .08em;
+        }
+
+        .phone-nav {
+            align-items: center;
+            border-bottom: 1px solid var(--phone-border);
+            display: grid;
+            grid-template-columns: 30px minmax(0, 1fr) 30px;
+            padding: 0 10px;
+        }
+
+        .phone-button {
+            color: var(--phone-soft);
+            height: 28px;
+            width: 28px;
+        }
+
+        .phone-button:hover {
+            background: rgb(255 255 255 / 8%);
+            color: var(--phone-text);
+        }
+
+        .phone-title {
+            color: #c9c9cf;
+            font-size: 11px;
+            overflow: hidden;
+            padding: 0 5px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .phone-scroll {
+            min-height: 0;
+            overflow: auto;
+            scrollbar-color: #4a4a4f transparent;
+            scrollbar-width: thin;
+        }
+
+        .phone-document {
+            padding: 5px 18px 52px;
+        }
+
+        .phone-document-toolbar {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+
+        .phone-cover {
+            aspect-ratio: 3 / 1;
+            margin: 0 -18px;
+            overflow: hidden;
+            width: calc(100% + 36px);
+        }
+
+        .phone-cover img {
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .phone-document.has-cover .phone-document-toolbar {
+            margin-bottom: 0;
+        }
+
+        .phone-document.has-cover .phone-emoji {
+            margin: -28px 0 20px 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .phone-breadcrumb {
+            background: #303034;
+            border-radius: 5px;
+            color: var(--phone-soft);
+            display: inline-flex;
+            font-size: 8px;
+            padding: 3px 5px;
+        }
+
+        .phone-document-actions {
+            align-items: center;
+            display: flex;
+            gap: 5px;
+        }
+
+        .phone-doc-tool {
+            align-items: center;
+            border-radius: var(--radius);
+            color: var(--phone-soft);
+            display: inline-flex;
+            height: 26px;
+            justify-content: center;
+            width: 26px;
+        }
+
+        .phone-doc-tool:hover {
+            background: rgb(255 255 255 / 8%);
+            color: var(--phone-text);
+        }
+
+        .phone-doc-tool .ui-icon {
+            height: 16px;
+            width: 16px;
+        }
+
+        .phone-emoji {
+            font-size: 52px;
+            line-height: 1;
+            margin: 0 0 20px 8px;
+        }
+
+        .phone-meta-actions {
+            align-items: center;
+            display: flex;
+            gap: 18px;
+            margin: 0 0 26px 8px;
+        }
+
+        .phone-meta-button {
+            align-items: center;
+            color: var(--phone-soft);
+            display: inline-flex;
+            font-size: 11px;
+            gap: 5px;
+        }
+
+        .phone-meta-button:hover {
+            color: var(--phone-text);
+        }
+
+        .phone-meta-button .ui-icon {
+            height: 16px;
+            width: 16px;
+        }
+
+        .phone-document h1 {
+            font-size: 24px;
+            line-height: 1.22;
+            margin: 0 0 22px;
+        }
+
+        .phone-callout {
+            border-left: 3px solid var(--green);
+            margin-bottom: 22px;
+            padding-left: 10px;
+        }
+
+        .phone-callout strong {
+            color: #72cf61;
+            display: block;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .phone-callout p,
+        .phone-section p,
+        .phone-section li {
+            color: var(--phone-soft);
+            font-size: 10px;
+            line-height: 1.55;
+        }
+
+        .phone-callout p {
+            font-size: 12px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .phone-section {
+            margin-top: 23px;
+        }
+
+        .phone-section h2 {
+            font-size: 17px;
+            line-height: 1.3;
+            margin: 0 0 10px;
+        }
+
+        .phone-section p {
+            margin: 0 0 7px;
+        }
+
+        .phone-section ul,
+        .phone-section ol {
+            margin: 5px 0 0;
+            padding-left: 17px;
+        }
+
+        .phone-section a {
+            color: #a980ff;
+            text-decoration: none;
+        }
+
+        .phone-section kbd,
+        .phone-section .inline-code {
+            background: #303034;
+            border-color: #414146;
+            box-shadow: none;
+            color: #bebec4;
+            font-size: 8px;
+        }
+
+        .phone-document .guide-grid {
+            display: block;
+            margin-top: 0;
+        }
+
+        .phone-document .guide-link-columns,
+        .phone-document .guide-subsections {
+            display: block;
+        }
+
+        .phone-document .guide-section {
+            margin-top: 23px;
+        }
+
+        .phone-document .guide-grid--4 .guide-section,
+        .phone-document .guide-grid--3 .guide-section {
+            margin-top: 10px;
+        }
+
+        .phone-document .guide-grid--4 .guide-section h2,
+        .phone-document .guide-grid--3 .guide-section h2 {
+            background: #41484a;
+            color: var(--phone-text);
+        }
+
+        .phone-document .guide-section h2 {
+            color: var(--phone-text);
+            font-size: 17px;
+            line-height: 1.3;
+            margin: 0 0 10px;
+        }
+
+        .phone-document .guide-section h3 {
+            color: var(--phone-text);
+            font-size: 15px;
+            margin: 15px 0 7px;
+        }
+
+        .phone-document .guide-section p,
+        .phone-document .guide-section li,
+        .phone-document .guide-summary {
+            color: var(--phone-soft);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .phone-document .guide-section ul {
+            margin: 5px 0 0;
+            padding-left: 17px;
+        }
+
+        .phone-document .guide-grid--4 .guide-section ul,
+        .phone-document .guide-grid--3 .guide-section ul {
+            margin-top: 0;
+            padding: 0 4px;
+        }
+
+        .phone-document .guide-grid--4 .guide-section li,
+        .phone-document .guide-grid--3 .guide-section li {
+            padding: 4px 0;
+        }
+
+        .phone-document .guide-section a {
+            color: #a980ff;
+        }
+
+        .phone-document .guide-section .guide-link--external {
+            color: #75a7ff;
+        }
+
+        .phone-document .guide-grid--welcome .guide-section:first-child li::after {
+            border-left-color: var(--phone-border);
+            left: -13px;
+            top: 20px;
+        }
+
+        .phone-document .guide-heading-note {
+            color: var(--phone-soft);
+            font-size: 8px;
+            margin-top: 7px;
+        }
+
+        .phone-document .guide-summary {
+            margin: 22px 0;
+        }
+
+        .phone-document .guide-divider {
+            border-top-color: var(--phone-border);
+            margin-top: 24px;
+        }
+
+        .desktop-window.is-top-fused {
+            background:
+                radial-gradient(ellipse 45% 20% at 0 0, rgb(53 117 240 / 12%), transparent 100%),
+                var(--app-bg);
+        }
+
+        .desktop-window.is-top-fused .titlebar {
+            background: transparent;
+            border-bottom: 0;
+            height: 42px;
+            inset: 0 0 auto;
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+            z-index: 5;
+        }
+
+        .desktop-window.is-top-fused .titlebar-actions,
+        .desktop-window.is-top-fused .titlebar button {
+            pointer-events: auto;
+        }
+
+        .desktop-window.is-top-fused .titlebar-button:hover {
+            background: rgb(255 255 255 / 68%);
+        }
+
+        .desktop-window.is-top-fused .window-title {
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+
+        .desktop-window.is-top-fused .workspace {
+            height: calc(100% - 32px);
+        }
+
+        .desktop-window.is-top-fused .app-rail,
+        .desktop-window.is-top-fused .left-panel,
+        .desktop-window.is-top-fused .context-panel,
+        .desktop-window.is-top-fused .right-rail {
+            margin-top: 42px;
+        }
+
+        .desktop-window.is-top-fused .app-rail,
+        .desktop-window.is-top-fused .right-rail {
+            background: transparent;
+        }
+
+        .desktop-window.is-top-fused .left-panel,
+        .desktop-window.is-top-fused .context-panel {
+            border-radius: var(--radius-large);
+            overflow: hidden;
+        }
+
+        .desktop-window.is-top-fused .editor-shell {
+            background: transparent;
+            grid-template-rows: 42px 38px minmax(0, 1fr);
+        }
+
+        .desktop-window.is-top-fused .tabs {
+            align-items: center;
+            background: transparent;
+            border-bottom-color: transparent;
+            padding: 0 4px;
+        }
+
+        .desktop-window.is-top-fused .editor-toolbar,
+        .desktop-window.is-top-fused .editor-scroll {
+            background: var(--editor-bg);
+        }
+
+        .desktop-window.is-top-fused .editor-toolbar {
+            border-radius: var(--radius-large) var(--radius-large) 0 0;
+        }
+
+        @media (max-width: 1200px) {
+            .siyuan-showcase {
+                min-height: 620px;
+            }
+
+            .workspace {
+                grid-template-columns: 40px 230px minmax(0, 1fr) 240px 38px;
+            }
+
+            .document-content {
+                padding-left: 38px;
+                padding-right: 38px;
+            }
+
+            .phone-window {
+                width: 26%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .siyuan-showcase {
+                aspect-ratio: 1.25;
+                min-height: 670px;
+            }
+
+            .desktop-window {
+                height: 90%;
+                width: 96%;
+            }
+
+            .workspace {
+                grid-template-columns: 40px 215px minmax(0, 1fr);
+            }
+
+            .context-panel,
+            .right-rail {
+                display: none;
+            }
+
+            .phone-window {
+                height: 69%;
+                width: 34%;
+            }
+
+            .desktop-window.is-top-fused .tabs {
+                margin-right: 240px;
+            }
+
+            .doc-sections--grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            body {
+                padding: 10px;
+            }
+
+            .siyuan-showcase {
+                align-items: center;
+                aspect-ratio: auto;
+                display: flex;
+                height: calc(100vh - 20px);
+                justify-content: center;
+                min-height: 0;
+            }
+
+            .desktop-window {
+                display: none;
+            }
+
+            .titlebar {
+                grid-template-columns: auto 1fr auto;
+                padding: 0 8px;
+            }
+
+            .brand {
+                display: none;
+            }
+
+            .traffic-lights {
+                gap: 5px;
+                margin-right: 7px;
+            }
+
+            .traffic-lights span {
+                height: 9px;
+                width: 9px;
+            }
+
+            .history-actions {
+                margin-left: 0;
+            }
+
+            .history-actions .titlebar-button:first-child {
+                display: none;
+            }
+
+            .window-title {
+                max-width: 38%;
+            }
+
+            .workspace {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .app-rail,
+            .left-panel {
+                display: none;
+            }
+
+            .editor-shell {
+                grid-template-rows: 40px 36px minmax(0, 1fr) 22px;
+            }
+
+            .tab-button {
+                font-size: 10px;
+                min-width: 70px;
+                padding: 0 7px;
+            }
+
+            .desktop-window.is-top-fused .tabs {
+                margin-right: 0;
+                padding-left: 108px;
+                padding-right: 4px;
+            }
+
+            .desktop-window.is-top-fused .titlebar-actions {
+                display: none;
+            }
+
+            .statusbar {
+                font-size: 9px;
+                padding: 0 6px;
+            }
+
+            .statusbar-stats {
+                gap: 5px;
+            }
+
+            .statusbar-stat strong {
+                margin-left: 1px;
+            }
+
+            .statusbar-help {
+                height: 14px;
+                width: 14px;
+            }
+
+            .document-content {
+                padding: 34px 24px 70px;
+            }
+
+            .doc-emoji {
+                font-size: 42px;
+                margin-bottom: 28px;
+            }
+
+            .doc-title {
+                font-size: 32px;
+            }
+
+            .phone-window {
+                bottom: auto;
+                height: min(720px, 100%);
+                position: relative;
+                right: auto;
+                width: min(360px, 100%);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg class="icon-sprite" aria-hidden="true">
+        <symbol id="iconDown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+        </symbol>
+        <symbol id="iconAdd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="M12 5v14"/>
+        </symbol>
+        <symbol id="iconClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </symbol>
+        <symbol id="iconTags" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13.172 2a2 2 0 0 1 1.414.586l6.71 6.71a2.4 2.4 0 0 1 0 3.408l-4.592 4.592a2.4 2.4 0 0 1-3.408 0l-6.71-6.71A2 2 0 0 1 6 9.172V3a1 1 0 0 1 1-1z"/><path d="M2 7v6.172a2 2 0 0 0 .586 1.414l6.71 6.71a2.4 2.4 0 0 0 3.191.193"/><circle cx="10.5" cy="6.5" r=".5" fill="currentColor"/>
+        </symbol>
+        <symbol id="iconImage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+        </symbol>
+        <symbol id="iconCloudSucc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m17 15-5.5 5.5L9 18"/><path d="M5.516 16.07A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 3.501 7.327"/>
+        </symbol>
+        <symbol id="iconBack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
+        </symbol>
+        <symbol id="iconForward" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </symbol>
+        <symbol id="iconVIP" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/>
+        </symbol>
+        <symbol id="iconHeart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
+        </symbol>
+        <symbol id="iconPlugin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z"/>
+        </symbol>
+        <symbol id="iconTerminal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m7 11 2-2-2-2"/><path d="M11 13h4"/><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+        </symbol>
+        <symbol id="iconSearch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>
+        </symbol>
+        <symbol id="iconLight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </symbol>
+        <symbol id="iconFiles" viewBox="40 -920 880 880">
+            <path d="M300-172.31v-416q0-29.92 21.5-50.8Q343-660 372.92-660h414.77q29.92 0 51.12 21.19Q860-617.61 860-587.69v299.23L671.54-100H372.31q-29.92 0-51.12-21.19Q300-142.39 300-172.31ZM101-703.08Q95.39-733 112.66-757q17.26-24 47.19-29.61L569.23-859q29.92-5.61 53.92 11.66 24 17.26 29.62 47.19l9.23 52.46h-61.23L593-791.54q-.77-4.23-4.62-6.73-3.84-2.5-8.46-1.73l-409.53 72.77q-5.39.77-8.08 5-2.69 4.23-1.93 9.62l51.93 293.31v178.22q-14.85-7.84-25.39-21.5-10.53-13.65-13.53-31.11L101-703.08Zm259 115.39v415.38q0 5.39 3.46 8.85t8.85 3.46H640v-160h160v-267.69q0-5.39-3.46-8.85t-8.85-3.46H372.31q-5.39 0-8.85 3.46t-3.46 8.85ZM580-380Z"/>
+        </symbol>
+        <symbol id="iconInbox" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>
+        </symbol>
+        <symbol id="iconOutline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 5H3"/><path d="M16 12H3"/><path d="M16 19H3"/><path d="M21 5h.01"/><path d="M21 12h.01"/><path d="M21 19h.01"/>
+        </symbol>
+        <symbol id="iconBookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"/>
+        </symbol>
+        <symbol id="iconTag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/>
+        </symbol>
+        <symbol id="iconHideDock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 10V9"/><path d="M15 15v-1"/><path d="M15 21v-2"/><path d="M15 5V3"/><path d="M9 10V9"/><path d="M9 15v-1"/><path d="M9 21v-2"/><path d="M9 5V3"/><rect x="3" y="3" width="18" height="18" rx="2"/>
+        </symbol>
+        <symbol id="iconSparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/>
+        </symbol>
+        <symbol id="iconGraph" viewBox="30 -930 900 900">
+            <path d="M286.99-100.39q-44.68 0-76.03-31.29-31.34-31.3-31.34-76.01 0-36.31 21.92-64.81t55.38-37.81v-340.15q-33.46-9.31-55.38-37.81t-21.92-64.81q0-44.55 31.27-75.73Q242.17-860 286.86-860q44.68 0 76.02 31.3 31.35 31.3 31.35 76.01 0 36.31-21.73 64.61-21.73 28.31-55.58 37.62v192q23.85-24 55.7-37.96 31.84-13.96 68.92-13.96h76.92q51.76 0 88-36.73 36.23-36.74 36.23-88.66v-14.69q-33.46-9.31-55.19-37.62-21.73-28.3-21.73-64.61 0-44.71 31.2-76.01 31.2-31.3 75.77-31.3 44.57 0 76.1 31.3 31.54 31.3 31.54 76.01 0 36.31-21.92 64.61-21.92 28.31-55.77 37.62v14.69q0 76.94-53.89 131.16-53.88 54.22-130.34 54.22h-76.92q-51.92 0-88.27 36.69-36.35 36.68-36.35 89.08v14.31q33.85 9.31 55.58 37.81 21.73 28.5 21.73 64.81 0 44.71-31.28 76.01-31.28 31.29-75.96 31.29Zm.13-605.38q19.88 0 33.5-13.59 13.61-13.6 13.61-33.7 0-20.09-13.6-33.71-13.6-13.61-33.71-13.61-19.69 0-33.5 13.8-13.8 13.81-13.8 33.5 0 19.7 13.8 33.5 13.81 13.81 33.7 13.81Zm385.76 0q19.89 0 33.5-13.59 13.62-13.6 13.62-33.7 0-20.09-13.6-33.71-13.6-13.61-33.71-13.61-19.69 0-33.5 13.8-13.81 13.81-13.81 33.5 0 19.7 13.81 33.5 13.81 13.81 33.69 13.81ZM287.12-160.38q19.88 0 33.5-13.6 13.61-13.6 13.61-33.69 0-20.1-13.6-33.72Q307.03-255 286.92-255q-19.69 0-33.5 13.81-13.8 13.8-13.8 33.5 0 19.69 13.8 33.5 13.81 13.81 33.7 13.81Z"/>
+        </symbol>
+        <symbol id="iconGlobalGraph" viewBox="30 -930 900 900">
+            <path d="M480.05-100q-44.57 0-75.77-31.19-31.2-31.18-31.2-75.73 0-6.16.88-12.73.89-6.58 2.66-12.74l-94.93-53.53q-14.46 14.38-33.6 22.26-19.15 7.89-41.17 7.89-44.55 0-75.73-31.28Q100-318.33 100-363.01q0-44.68 31.19-76.03 31.18-31.34 75.73-31.34 23.16 0 43.43 9.19t35.34 25.58l129-65q-4.54-23.39 1.35-46.16 5.88-22.77 21.42-41l-42.07-63.15q-7.39 2.77-15.64 4.15-8.25 1.38-17.06 1.38-44.55 0-75.73-31.27-31.19-31.28-31.19-75.96 0-44.69 31.2-76.03Q318.17-860 362.74-860q44.57 0 76.11 31.3 31.53 31.3 31.53 76.01 0 19.61-6.88 37.34-6.89 17.74-18.65 31.58l42.69 63.16q8-2.77 15.61-4.16 7.61-1.38 16.31-1.38 16.86 0 31.74 4.57 14.88 4.58 27.72 13.35l76-62.08q-4.38-10-6.96-20.5-2.57-10.5-2.57-21.88 0-44.71 31.19-76.01 31.2-31.3 75.77-31.3 44.57 0 76.11 31.28T860-712.76q0 44.68-31.54 76.03-31.54 31.34-76.15 31.34-17 0-31.62-5.07-14.61-5.08-27.46-13.85l-75.62 62.69q4.77 10.19 7.16 20.88 2.38 10.69 2.38 21.89 0 44.72-31.54 76.01-31.53 31.3-76.15 31.3-23.23 0-43.38-9.38-20.16-9.39-35.23-25.77l-128.39 64.38q3.15 10.92 2.4 21.98-.76 11.05-3.78 22.1l95.15 54.15q14.46-14.38 33.12-22.27 18.65-7.88 40.65-7.88 44.61 0 76.15 31.2 31.54 31.2 31.54 75.77 0 44.57-31.54 75.91Q524.61-100 480.05-100ZM207.12-315.77q19.88 0 33.69-13.59 13.81-13.6 13.81-33.7 0-20.09-13.72-33.9-13.71-13.81-33.98-13.81-19.69 0-33.3 13.71Q160-383.35 160-363.08q0 19.7 13.62 33.5 13.61 13.81 33.5 13.81Zm155.76-389.61q19.89 0 33.7-13.6 13.81-13.59 13.81-33.69 0-20.1-13.72-33.71Q382.96-800 362.69-800q-19.69 0-33.31 13.81-13.61 13.81-13.61 33.5 0 19.69 13.61 33.5 13.62 13.81 33.5 13.81Zm117.31 545.76q19.89 0 33.5-13.59 13.62-13.6 13.62-33.69 0-20.1-13.6-33.72-13.6-13.61-33.71-13.61-19.69 0-33.5 13.81-13.81 13.8-13.81 33.5 0 19.69 13.81 33.5 13.81 13.8 33.69 13.8Zm38.85-311.92q19.88 0 33.5-13.59 13.61-13.6 13.61-33.7 0-20.09-13.6-33.71-13.6-13.61-33.7-13.61-19.7 0-33.5 13.8-13.81 13.81-13.81 33.5 0 19.7 13.81 33.5 13.8 13.81 33.69 13.81ZM752.5-665.38q19.88 0 33.69-13.6Q800-692.57 800-712.67q0-20.1-13.71-33.71Q772.58-760 752.31-760q-19.7 0-33.31 13.6-13.62 13.6-13.62 33.71 0 19.69 13.62 33.5 13.61 13.81 33.5 13.81Z"/>
+        </symbol>
+        <symbol id="iconLink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </symbol>
+        <symbol id="iconRight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6"/>
+        </symbol>
+        <symbol id="iconFocus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+        </symbol>
+        <symbol id="iconContract" viewBox="1 1 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m7 20 5-5 5 5"/><path d="m7 4 5 5 5-5"/>
+        </symbol>
+        <symbol id="iconExpand" viewBox="1 1 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/>
+        </symbol>
+        <symbol id="iconSort" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="M11 4h10"/><path d="M11 8h7"/><path d="M11 12h4"/>
+        </symbol>
+        <symbol id="iconUp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+        </symbol>
+        <symbol id="iconMore" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/>
+        </symbol>
+        <symbol id="iconMin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/>
+        </symbol>
+        <symbol id="iconRefresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>
+        </symbol>
+        <symbol id="iconFullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><rect width="10" height="8" x="7" y="8" rx="1"/>
+        </symbol>
+        <symbol id="iconFilter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/>
+        </symbol>
+        <symbol id="iconLock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </symbol>
+        <symbol id="iconFile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/>
+        </symbol>
+        <symbol id="iconMenu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>
+        </symbol>
+        <symbol id="iconSettings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/>
+        </symbol>
+    </svg>
+    <main class="siyuan-showcase" aria-label="Interactive SiYuan desktop and mobile interface preview">
+        <section class="desktop-window is-top-fused" aria-label="SiYuan desktop preview">
+            <header class="titlebar">
+                <div class="traffic-lights" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="brand">
+                    <span>SiYuan</span>
+                    <svg class="ui-icon brand-caret" aria-hidden="true"><use href="#iconDown"></use></svg>
+                </div>
+                <nav class="history-actions" aria-label="Document history">
+                    <button class="titlebar-button toggle-action" type="button" aria-label="Toggle sync status" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconCloudSucc"></use></svg></button>
+                    <button class="titlebar-button" id="previousDocument" type="button" aria-label="Previous document"><svg class="ui-icon" aria-hidden="true"><use href="#iconBack"></use></svg></button>
+                    <button class="titlebar-button" id="nextDocument" type="button" aria-label="Next document"><svg class="ui-icon" aria-hidden="true"><use href="#iconForward"></use></svg></button>
+                </nav>
+                <div class="window-title" id="windowTitle">Please Start Here</div>
+                <div class="titlebar-actions">
+                    <span class="titlebar-decoration vip--annual" aria-hidden="true"><svg class="ui-icon"><use href="#iconVIP"></use></svg></span>
+                    <span class="titlebar-decoration vip--lifetime" aria-hidden="true"><svg class="ui-icon"><use href="#iconVIP"></use></svg></span>
+                    <span class="titlebar-decoration heart" aria-hidden="true">♥</span>
+                    <button class="titlebar-button toggle-action heart" type="button" aria-label="Toggle favorite" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconHeart"></use></svg></button>
+                    <button class="titlebar-button toggle-action" type="button" aria-label="Toggle plugins" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconPlugin"></use></svg></button>
+                    <button class="titlebar-button" type="button" aria-label="Open command panel"><svg class="ui-icon" aria-hidden="true"><use href="#iconTerminal"></use></svg></button>
+                    <button class="titlebar-button" type="button" aria-label="Search"><svg class="ui-icon" aria-hidden="true"><use href="#iconSearch"></use></svg></button>
+                    <button class="titlebar-button" type="button" aria-label="Toggle appearance"><svg class="ui-icon" aria-hidden="true"><use href="#iconLight"></use></svg></button>
+                </div>
+            </header>
+
+            <div class="workspace">
+                <nav class="app-rail" aria-label="Application panels">
+                    <button class="rail-button toggle-action" type="button" aria-label="Open documents" aria-pressed="true"><svg class="ui-icon" aria-hidden="true"><use href="#iconFiles"></use></svg></button>
+                    <button class="rail-button toggle-action" type="button" aria-label="Open inbox" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconInbox"></use></svg></button>
+                    <div class="rail-separator"></div>
+                    <button class="rail-button toggle-action" type="button" aria-label="Open outline" aria-pressed="true"><svg class="ui-icon" aria-hidden="true"><use href="#iconOutline"></use></svg></button>
+                    <button class="rail-button toggle-action" type="button" aria-label="Open bookmarks" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconBookmark"></use></svg></button>
+                    <button class="rail-button toggle-action" type="button" aria-label="Open tags" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconTag"></use></svg></button>
+                </nav>
+
+                <aside class="left-panel">
+                    <section class="panel-section" aria-labelledby="documentsHeading">
+                        <header class="panel-heading">
+                            <span id="documentsHeading">Documents</span>
+                            <span class="panel-heading-actions">
+                                <button class="tool-button toggle-action" type="button" aria-label="Select opened document" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconFocus"></use></svg></button>
+                                <button class="tool-button" type="button" aria-label="More document actions"><svg class="ui-icon" aria-hidden="true"><use href="#iconMore"></use></svg></button>
+                            </span>
+                        </header>
+                        <div class="documents-scroll">
+                            <nav class="doc-list" id="documentTree" aria-label="User guide documents"></nav>
+                        </div>
+                    </section>
+
+                    <section class="panel-section" aria-labelledby="outlineHeading">
+                        <header class="panel-heading">
+                            <span id="outlineHeading">Outline</span>
+                        </header>
+                        <nav class="outline-list" id="outlineList" aria-label="Current document outline"></nav>
+                    </section>
+                </aside>
+
+                <section class="editor-shell" aria-label="Document editor">
+                    <nav class="tabs" id="documentTabs" role="tablist" aria-label="Fixed documents"></nav>
+
+                    <div class="editor-toolbar">
+                        <div class="breadcrumb">
+                            <svg class="ui-icon" aria-hidden="true"><use href="#iconFile"></use></svg>
+                            <svg class="ui-icon" aria-hidden="true"><use href="#iconRight"></use></svg>
+                            <span class="breadcrumb-title" id="breadcrumbTitle">Please Start Here</span>
+                        </div>
+                        <span class="toolbar-spacer"></span>
+                        <button class="tool-button toggle-action" type="button" aria-label="Toggle document lock" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconLock"></use></svg></button>
+                        <button class="tool-button toggle-action" type="button" aria-label="Toggle document panel" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconFile"></use></svg></button>
+                        <button class="tool-button" type="button" aria-label="More editor actions"><svg class="ui-icon" aria-hidden="true"><use href="#iconMore"></use></svg></button>
+                    </div>
+
+                    <div class="editor-scroll" id="editorScroll" tabindex="0">
+                        <article class="document-content" id="documentContent" aria-live="polite"></article>
+                    </div>
+                </section>
+
+                <aside class="context-panel" aria-label="Document context">
+                    <section class="graph-panel" aria-labelledby="graphHeading">
+                        <header class="panel-heading">
+                            <span id="graphHeading">Graph View</span>
+                            <span class="panel-heading-actions">
+                                <button class="tool-button" type="button" aria-label="Refresh graph"><svg class="ui-icon" aria-hidden="true"><use href="#iconRefresh"></use></svg></button>
+                                <button class="tool-button" type="button" aria-label="Toggle graph fullscreen"><svg class="ui-icon" aria-hidden="true"><use href="#iconFullscreen"></use></svg></button>
+                                <button class="tool-button" type="button" aria-label="More graph actions"><svg class="ui-icon" aria-hidden="true"><use href="#iconMore"></use></svg></button>
+                            </span>
+                        </header>
+                        <div class="graph-wrap">
+                            <img class="graph-image" src="./feature0-graph.png" alt="Document relationship graph">
+                        </div>
+                    </section>
+
+                    <section class="panel-section" aria-labelledby="backlinksHeading">
+                        <header class="panel-heading reference-panel-heading">
+                            <span id="backlinksHeading">Backlinks</span>
+                            <span class="panel-heading-actions">
+                                <button class="tool-button" type="button" aria-label="Refresh backlinks"><svg class="ui-icon" aria-hidden="true"><use href="#iconRefresh"></use></svg></button>
+                                <button class="tool-button" type="button" aria-label="Filter backlinks"><svg class="ui-icon" aria-hidden="true"><use href="#iconFilter"></use></svg></button>
+                                <button class="tool-button" type="button" aria-label="Sort backlinks"><svg class="ui-icon" aria-hidden="true"><use href="#iconSort"></use></svg></button>
+                                <button class="tool-button" type="button" aria-label="Contract backlinks"><svg class="ui-icon" aria-hidden="true"><use href="#iconContract"></use></svg></button>
+                                <button class="tool-button" type="button" aria-label="Expand backlinks"><svg class="ui-icon" aria-hidden="true"><use href="#iconExpand"></use></svg></button>
+                                <button class="tool-button" type="button" aria-label="Minimize backlinks"><svg class="ui-icon" aria-hidden="true"><use href="#iconMin"></use></svg></button>
+                                <span class="reference-count">1</span>
+                            </span>
+                        </header>
+                        <div class="context-scroll" id="contextContent"></div>
+                    </section>
+                </aside>
+
+                <nav class="right-rail" aria-label="Context panels">
+                    <button class="rail-button toggle-action" type="button" aria-label="Open assistant" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconSparkles"></use></svg></button>
+                    <button class="rail-button toggle-action" type="button" aria-label="Open graph" aria-pressed="true"><svg class="ui-icon" aria-hidden="true"><use href="#iconGraph"></use></svg></button>
+                    <button class="rail-button toggle-action" type="button" aria-label="Open global graph" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconGlobalGraph"></use></svg></button>
+                    <div class="rail-separator"></div>
+                    <button class="rail-button toggle-action" type="button" aria-label="Open backlinks" aria-pressed="true"><svg class="ui-icon" aria-hidden="true"><use href="#iconLink"></use></svg></button>
+                </nav>
+            </div>
+
+            <footer class="statusbar">
+                <button class="statusbar-button toggle-action" type="button" aria-label="Toggle dock layout" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconHideDock"></use></svg></button>
+                <div class="statusbar-stats">
+                    <span class="statusbar-stat">Characters <strong id="characterCount">1662</strong></span>
+                    <span class="statusbar-stat">Words <strong id="wordCount">315</strong></span>
+                    <span class="statusbar-stat">Links <strong id="linkCount">4</strong></span>
+                    <span class="statusbar-stat">Refs <strong id="referenceCount">68</strong></span>
+                    <span class="statusbar-stat">Blocks <strong>125</strong></span>
+                    <span class="statusbar-help" aria-label="Status help">?</span>
+                </div>
+            </footer>
+        </section>
+
+        <aside class="phone-window" aria-label="SiYuan mobile preview">
+            <div class="phone-status">
+                <span>13:13</span>
+                <span class="phone-indicators">▮▮▮ 4G ▰</span>
+            </div>
+            <header class="phone-nav">
+                <button class="phone-button toggle-action" type="button" aria-label="Toggle mobile menu" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconMenu"></use></svg></button>
+                <div class="phone-title" id="phoneTitle">Please Start Here</div>
+                <button class="phone-button toggle-action" type="button" aria-label="Toggle mobile settings" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconSettings"></use></svg></button>
+            </header>
+            <div class="phone-scroll" id="phoneScroll">
+                <article class="phone-document" id="phoneDocument" aria-live="polite"></article>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        const documents = [
+            {
+                id: "start",
+                title: "Please Start Here",
+                icon: "🎉",
+                cover: "./feature0-cover.webp",
+                depth: 0,
+                count: 2,
+                source: "app/guide/20210808180117-6v0mkxr/20200923234011-ieuun1p.sy",
+                layout: "grid",
+                callout: {
+                    title: "💡 Tip",
+                    body: "When you close SiYuan, the User Guide will be automatically deleted. You can click <span class=\"inline-code\">Main Menu</span> - <span class=\"inline-code\">User Guide</span> to view it again."
+                },
+                sections: [
+                    {
+                        title: "🍔 Start eating",
+                        body: "<ul><li>Create a new notebook in the <span class=\"inline-code\">More</span> menu of the doc panel, and create a new doc under the notebook.</li><li>Enter <kbd>/</kbd> in the editor to trigger the function menu.</li><li><a href=\"#\">Navigate in the content block</a> and Window and tab.</li></ul>"
+                    },
+                    {
+                        title: "🍹 Drink recommend",
+                        body: "<ul><li><a href=\"#\">FAQ</a></li><li><a href=\"#\">Origin</a> (in Chinese)</li></ul>"
+                    },
+                    {
+                        title: "🏘️ Our home",
+                        body: "<ul><li><a href=\"#\">LiuYun</a></li><li><a href=\"#\">X</a></li></ul>"
+                    },
+                    {
+                        title: "💌 Contribution",
+                        body: "<ul><li><a href=\"#\">Open source</a></li><li><a href=\"#\">Pay to support development</a></li></ul><p>We hope that SiYuan can become an efficient tool for your life and study, helping you achieve more goals and plans.</p>"
+                    }
+                ],
+                backlinks: ["Formatting elements", "Template snippet"],
+                mentions: ["Block Ref", "Community marketplace"],
+                metrics: [1662, 315, 4, 68]
+            },
+            {
+                id: "content-block",
+                title: "Content Block",
+                icon: "🍫",
+                depth: 1,
+                count: 1,
+                source: "app/guide/20210808180117-6v0mkxr/20200923234011-ieuun1p/20210808180303-6yi0dv5.sy",
+                intro: "In SiYuan, the only important core concept is the content block. Formatting creates content blocks so thoughts and knowledge can be organized at block-level granularity while remaining convenient for long-form reading and output.",
+                sections: [
+                    {
+                        title: "What is a Content Block",
+                        body: "<p>Document pages, paragraphs, headings, lists and other elements are all content blocks. Every block has a stable identity and can be referenced independently.</p>"
+                    },
+                    {
+                        title: "Content Block Type",
+                        body: "<p>SiYuan provides document, heading, paragraph, list, code, math, table and many other block types.</p><ul><li>Block-level elements organize structure.</li><li>Inline elements enrich text inside a block.</li></ul>"
+                    },
+                    {
+                        title: "Ref Content Block",
+                        body: "<p>References establish bidirectional links between blocks. A referenced block can be discovered through backlinks without duplicating its content.</p>"
+                    },
+                    {
+                        title: "Navigate in the Content Block",
+                        body: "<p>Use breadcrumb navigation and zoom focus to move through a document while preserving its surrounding context.</p>"
+                    }
+                ],
+                backlinks: ["Block reference", "Embed Content Block"],
+                mentions: ["Content Block/Type", "Content Block/Reference"],
+                metrics: [918, 167, 7, 24]
+            },
+            {
+                id: "editor",
+                title: "Editor",
+                icon: "🍱",
+                depth: 1,
+                count: 1,
+                source: "app/guide/20210808180117-6v0mkxr/20200923234011-ieuun1p/20210808180303-h361q1i.sy",
+                intro: "SiYuan editing and typesetting are based on content blocks, combining document writing with structured outlines.",
+                sections: [
+                    {
+                        title: "Formatting elements",
+                        body: "<ul><li>Editing and typesetting based on content blocks.</li><li>Rich block-level and inline formatting elements.</li><li>Use <kbd>/</kbd> to open the function menu.</li></ul>"
+                    },
+                    {
+                        title: "Outline by Heading and List",
+                        body: "<p>Lists support outlines with or without sub-level indentation. Heading outlines and list outlines complement each other.</p>"
+                    },
+                    {
+                        title: "Content block zoom",
+                        body: "<p>Each content block can be zoomed into focus. Breadcrumbs make it easy to return to the surrounding context.</p>"
+                    },
+                    {
+                        title: "Dynamic loading",
+                        body: "<p>Dynamic loading keeps very large documents responsive. Blocks can also be dragged into horizontal layouts.</p>"
+                    }
+                ],
+                backlinks: ["Formatting elements", "Document outline"],
+                mentions: ["Optimize typography", "Block menu"],
+                metrics: [742, 126, 5, 17]
+            },
+            {
+                id: "advanced-search",
+                title: "Advanced search",
+                icon: "🔍",
+                depth: 1,
+                count: 1,
+                source: "app/guide/20210808180117-6v0mkxr/20200923234011-ieuun1p/20210808180303-l3qg72k.sy",
+                intro: "Global search supports query syntax for AND, OR and NOT logic, type filtering and field filtering, from simple keywords to complex conditions.",
+                sections: [
+                    {
+                        title: "Query syntax",
+                        body: "<p>Combine keywords with logical operators and field filters to narrow results. Type filters help target documents, headings, paragraphs or other blocks.</p>"
+                    },
+                    {
+                        title: "Case Sensitivity",
+                        body: "<p>Configure case sensitivity in <span class=\"inline-code\">Settings - Search</span>. After changing the option, wait for index rebuilding to complete.</p>"
+                    },
+                    {
+                        title: "Simplified/Traditional Sensitivity",
+                        body: "<p>When distinction is disabled, a Simplified Chinese search can match both Simplified and Traditional Chinese content.</p>"
+                    },
+                    {
+                        title: "Replace",
+                        body: "<p>The search dialog supports single and batch replacement. Open the replace row with <kbd>Ctrl+P</kbd>.</p><p><strong>Note:</strong> replacement cannot be undone with <kbd>Ctrl+Z</kbd>; use data history when rollback is needed.</p>"
+                    }
+                ],
+                backlinks: ["Database table", "Type filtering"],
+                mentions: ["Ignore indexing", "Ignore search"],
+                metrics: [1240, 218, 8, 13]
+            },
+            {
+                id: "faq",
+                title: "FAQ",
+                icon: "❓",
+                depth: 0,
+                count: 5,
+                source: "app/guide/20210808180117-6v0mkxr/20200923234731-h3zkwm2.sy",
+                sections: [
+                    {
+                        title: "How does SiYuan store data?",
+                        body: "<p>Data is stored in the workspace <span class=\"inline-code\">data/</span> folder. Notebook folders contain <span class=\"inline-code\">.sy</span> JSON documents, while assets, snippets, templates and other supporting data have dedicated folders.</p>"
+                    },
+                    {
+                        title: "Does it support third-party sync disks?",
+                        body: "<p>Synchronization through third-party sync disks is not supported because concurrent file operations may corrupt data. SiYuan supports connecting to third-party cloud storage through its synchronization system.</p>"
+                    },
+                    {
+                        title: "Is SiYuan open source?",
+                        body: "<p>SiYuan is completely open source, and the full source code is available on GitHub.</p>"
+                    },
+                    {
+                        title: "How to upgrade to a new version?",
+                        body: "<p>App-store installations should update through the store. Desktop package installations can enable automatic update downloads in <span class=\"inline-code\">Settings - About</span>.</p>"
+                    }
+                ],
+                backlinks: ["Workspace", "Account & Sync"],
+                mentions: ["Data repo key", "Current Version"],
+                metrics: [1870, 344, 12, 21]
+            },
+            {
+                id: "navigate",
+                title: "Navigate in the Content Block",
+                shortTitle: "Navigate in the Content",
+                icon: "🧭",
+                tabIcon: "",
+                depth: 2,
+                count: 1,
+                source: "app/guide/20210808180117-6v0mkxr/20200923234011-ieuun1p/20210808180303-6yi0dv5/20200924101200-gss5vee.sy",
+                sections: [
+                    {
+                        title: "Link",
+                        body: "<p>Standard URL hyperlinks open Internet resources in a browser. Block references establish bidirectional links within SiYuan.</p>"
+                    },
+                    {
+                        title: "Zoom focus",
+                        body: "<p>Choose focus from the block menu to zoom into a block. Use the breadcrumb at the top of the editor to jump through its context.</p>"
+                    },
+                    {
+                        title: "Graph",
+                        body: "<p>The document graph expands from the current document and shows linked content blocks. The global graph visualizes blocks and links across all notebooks.</p>"
+                    },
+                    {
+                        title: "Backlinks and Mentions",
+                        body: "<p>Backlinks list blocks where the current content is referenced. Mentions search names, aliases, anchor text and document names to reveal potential connections.</p>"
+                    }
+                ],
+                backlinks: ["Graph View", "Breadcrumb"],
+                mentions: ["Virtual reference", "Zoom focus"],
+                metrics: [1060, 191, 10, 36]
+            },
+            {
+                id: "security",
+                title: "Data Security",
+                icon: "✒️",
+                depth: 0,
+                count: 1,
+                source: "app/guide/20210808180117-6v0mkxr/20210117215840-jcl17fx.sy",
+                intro: "Data security has two main aspects: availability keeps data complete and consistent, while confidentiality prevents data from being leaked or tampered with.",
+                sections: [
+                    {
+                        title: "Plaintext storage",
+                        body: "<p>SiYuan stores local data as plaintext files. Availability therefore depends on the reliability of hardware disks and the operating system.</p>"
+                    },
+                    {
+                        title: "End-to-end encryption",
+                        body: "<p>SiYuan cloud synchronization uses end-to-end encryption. Password material is encrypted with a built-in key stored locally, so third parties cannot obtain plaintext cloud data.</p>"
+                    },
+                    {
+                        title: "Suggestions",
+                        body: "<ul><li>Back up data regularly using the 3-2-1 guideline.</li><li>Use dedicated software, equipment or offline storage for important passwords, keys and secrets.</li></ul>"
+                    },
+                    {
+                        title: "Threat Model",
+                        body: "<p>The local operating system must be a trusted environment. Key secrecy, cloud availability and the security of AES-GCM are foundational assumptions.</p>"
+                    }
+                ],
+                backlinks: ["End-to-end Encryption", "Backup Guidelines"],
+                mentions: ["Data repo key", "Cloud storage"],
+                metrics: [1395, 237, 6, 18]
+            }
+        ];
+
+        const supportingDocuments = [
+            {
+                id: "custom-appearance",
+                title: "Custom Appearance",
+                icon: "🎨",
+                source: "app/guide/20210808180117-6v0mkxr/20200923234011-ieuun1p/20210808180303-axh6q1d.sy",
+                intro: "SiYuan supports custom icon packs and themes, so the workspace can match different reading and writing environments.",
+                sections: [
+                    {
+                        title: "Icon",
+                        body: "<p>Install an icon package from the Marketplace, then select it in <span class=\"inline-code\">Settings - Appearance</span>. Icon packages can be enabled, updated or removed at any time.</p>"
+                    },
+                    {
+                        title: "Theme",
+                        body: "<p>The Marketplace provides light and dark themes. After installation, choose the theme that matches the current appearance mode.</p>"
+                    }
+                ],
+                backlinks: ["Appearance", "Marketplace"],
+                mentions: ["Icon package", "Theme package"],
+                metrics: [438, 72, 4, 8]
+            },
+            {
+                id: "general-operations",
+                title: "General Operations",
+                icon: "🚌",
+                source: "app/guide/20210808180117-6v0mkxr/20200923234011-ieuun1p/20210808180303-xaduj2o.sy",
+                intro: "These guides cover the everyday workflows used to organize, move and reuse knowledge in SiYuan.",
+                sections: [
+                    {
+                        title: "Workspace",
+                        body: "<p>A workspace contains notebooks, assets, settings and other data. Use separate workspaces when knowledge bases need independent storage.</p>"
+                    },
+                    {
+                        title: "Import and Export",
+                        body: "<p>Documents can be imported from common formats and exported for sharing, archiving or publishing.</p>"
+                    },
+                    {
+                        title: "Window and Tab",
+                        body: "<p>Open documents in tabs, move them between split layouts and use back or forward navigation to revisit recent locations.</p>"
+                    },
+                    {
+                        title: "Daily notes",
+                        body: "<p>Daily notes create date-based documents from a template and provide a consistent place for journals and quick capture.</p>"
+                    }
+                ],
+                backlinks: ["Workspace", "Window and Tab"],
+                mentions: ["Daily notes", "Import and Export"],
+                metrics: [812, 128, 9, 14]
+            },
+            {
+                id: "member-privileges",
+                title: "Member's privileges",
+                icon: "👑",
+                source: "app/guide/20210808180117-6v0mkxr/20200923234011-ieuun1p/20230805231614-vqn28eh.sy",
+                intro: "Membership privileges are divided into annual cloud-service subscriptions and one-time function-feature purchases.",
+                sections: [
+                    {
+                        title: "Annual subscription",
+                        body: "<p>The annual subscription provides SiYuan cloud services and includes access to the paid function features during the subscription period.</p>"
+                    },
+                    {
+                        title: "One-time payment",
+                        body: "<p>Function features can be purchased separately with a one-time payment when cloud services are not required.</p>"
+                    }
+                ],
+                backlinks: ["Cloud Services", "Account"],
+                mentions: ["Subscription", "Function Features"],
+                metrics: [426, 65, 3, 7]
+            },
+            {
+                id: "mobile-app",
+                title: "Mobile App",
+                icon: "📱",
+                source: "app/guide/20210808180117-6v0mkxr/20240113110040-7sgw8kl.sy",
+                sections: [
+                    {
+                        title: "Overview",
+                        body: "<p>SiYuan provides Android, iOS and HarmonyOS apps. Search for <strong>SiYuan</strong> in a supported mobile app store.</p>"
+                    },
+                    {
+                        title: "Installation and updates",
+                        body: "<p>The mobile app is available from Huawei, Honor, OPPO, vivo, Apple, Kuan and Google Play stores. Android installation packages are also available from the SiYuan website.</p>"
+                    },
+                    {
+                        title: "Use the marketplace",
+                        body: "<p>Due to app-store review requirements, the Marketplace cannot be provided directly in some mobile app builds.</p>"
+                    }
+                ],
+                backlinks: ["Android", "iOS"],
+                mentions: ["HarmonyOS", "Marketplace"],
+                metrics: [736, 111, 7, 9]
+            },
+            {
+                id: "glossary",
+                title: "Glossary",
+                icon: "🗂️",
+                source: "app/guide/20210808180117-6v0mkxr/20230429115711-ejbts4s.sy",
+                intro: "This chapter explains terminology used throughout SiYuan and the desktop editor.",
+                sections: [
+                    {
+                        title: "Breadcrumb",
+                        body: "<p>Breadcrumbs are the block paths joined by right arrows at the top of the editor. They provide context and make it easy to navigate through the block structure.</p>"
+                    },
+                    {
+                        title: "Anchor text",
+                        body: "<p>SiYuan extends anchor text beyond hyperlinks to block references and PDF annotation references.</p>"
+                    },
+                    {
+                        title: "Editor Mode",
+                        body: "<p>The editor provides editable, read-only and export-preview modes for different reading and writing tasks.</p>"
+                    }
+                ],
+                backlinks: ["Breadcrumb", "Block Ref"],
+                mentions: ["Anchor text", "Editor Mode"],
+                metrics: [1260, 198, 14, 24]
+            },
+            {
+                id: "performance",
+                title: "Performance Optimization",
+                icon: "🚀",
+                source: "app/guide/20210808180117-6v0mkxr/20230405172236-pg3l9eu.sy",
+                sections: [
+                    {
+                        title: "Overview",
+                        body: "<p>Performance varies with hardware, operating systems and data size. Adjusting usage patterns and configuration can keep large workspaces responsive.</p>"
+                    },
+                    {
+                        title: "Overall Performance",
+                        body: "<ul><li>Archive infrequently used or clipped documents in a separate notebook.</li><li>Keep enough system resources available and place the workspace on a solid-state drive.</li><li>Reduce the number of displayed search results when requests become slow.</li></ul>"
+                    },
+                    {
+                        title: "Editor Performance",
+                        body: "<p>Very large leaf blocks can slow the editor. Split long blocks into smaller blocks to improve editing and rendering performance.</p>"
+                    }
+                ],
+                backlinks: ["Search", "Archive Notebook"],
+                mentions: ["Editor Performance", "System resources"],
+                metrics: [1124, 172, 8, 17]
+            },
+            {
+                id: "latest-updates",
+                title: "Latest Updates",
+                icon: "🛣️",
+                source: "app/guide/20210808180117-6v0mkxr/20260614113113-ss78888.sy",
+                intro: "Follow the official channels to see release notes, project news and recent improvements.",
+                sections: [
+                    {
+                        title: "B3log Open Source",
+                        body: "<p>Follow the B3log open-source community for project announcements and development updates.</p>"
+                    },
+                    {
+                        title: "GitHub Releases",
+                        body: "<p>GitHub Releases contains version history, downloadable packages and detailed release notes.</p>"
+                    }
+                ],
+                backlinks: ["Release Notes", "Download"],
+                mentions: ["B3log Open Source", "GitHub Releases"],
+                metrics: [302, 47, 4, 3]
+            },
+            {
+                id: "extend-development",
+                title: "Extend development",
+                icon: "🧑‍💻",
+                source: "app/guide/20210808180117-6v0mkxr/20240317202444-5txwumu.sy",
+                sections: [
+                    {
+                        title: "Theme and Icon",
+                        body: "<p>Use the official sample repositories as a starting point for custom themes and icon packages.</p>"
+                    },
+                    {
+                        title: "Widget and Plugin",
+                        body: "<p>Widgets embed reusable interfaces in documents, while plugins extend the application through the SiYuan Plugin API.</p>"
+                    },
+                    {
+                        title: "Template and Marketplace",
+                        body: "<p>Templates automate repeated document structures. Packages can be published through the community Marketplace repository.</p>"
+                    },
+                    {
+                        title: "Development notes",
+                        body: "<p>Extensions that read or write workspace data should use the kernel API instead of accessing files under the <span class=\"inline-code\">data</span> directory directly.</p>"
+                    }
+                ],
+                backlinks: ["Plugin API", "Marketplace"],
+                mentions: ["Theme sample", "Widget sample"],
+                metrics: [894, 136, 12, 15]
+            },
+            {
+                id: "privacy",
+                title: "Privacy Policy and User Agreement",
+                icon: "📄",
+                source: "app/guide/20210808180117-6v0mkxr/20200923234602-gy54e67.sy",
+                sections: [
+                    {
+                        title: "SiYuan Privacy Policy",
+                        body: "<p>The privacy policy explains how account, cloud-service and application data are handled.</p>"
+                    },
+                    {
+                        title: "User Agreement",
+                        body: "<p>The user agreement describes the terms that apply when using SiYuan and its online services.</p>"
+                    }
+                ],
+                backlinks: ["Account", "Cloud Services"],
+                mentions: ["Privacy Policy", "User Agreement"],
+                metrics: [264, 43, 2, 2]
+            },
+            {
+                id: "acknowledgements",
+                title: "Acknowledgements",
+                icon: "🙏",
+                source: "app/guide/20210808180117-6v0mkxr/20201121224345-rc27qvo.sy",
+                intro: "The birth and growth of SiYuan depend on open-source projects, contributors and user feedback.",
+                sections: [
+                    {
+                        title: "Open-source ecosystem",
+                        body: "<p>SiYuan builds on many open-source projects. Their work is listed in the source repositories and project dependencies.</p>"
+                    },
+                    {
+                        title: "Community",
+                        body: "<p>Thank you to everyone who reports issues, contributes code, shares knowledge and helps promote SiYuan. ❤️</p>"
+                    }
+                ],
+                backlinks: ["Contributing", "Open Source"],
+                mentions: ["Community", "Contributors"],
+                metrics: [384, 61, 4, 5]
+            }
+        ];
+
+        documents.push(...supportingDocuments);
+
+        const documentTreeItems = [
+            {kind: "notebook", title: "SiYuan User Guide", icon: "📔", depth: 0, expanded: true},
+            {id: "start", title: "Please Start Here", icon: "🎉", depth: 1, hasChildren: true, expanded: true, count: 2},
+            {id: "content-block", title: "Content Block", icon: "🍫", depth: 2, hasChildren: true},
+            {id: "editor", title: "Editor", icon: "🍱", depth: 2, hasChildren: true},
+            {id: "advanced-search", title: "Advanced search", icon: "🔍", depth: 2, hasChildren: true},
+            {id: "custom-appearance", title: "Custom Appearance", icon: "🎨", depth: 2, hasChildren: true},
+            {id: "general-operations", title: "General Operations", icon: "🚌", depth: 2, hasChildren: true},
+            {id: "member-privileges", title: "Member's privileges", icon: "👑", depth: 2, hasChildren: true, count: 1},
+            {id: "mobile-app", title: "Mobile App", icon: "📱", depth: 1, count: 1},
+            {id: "faq", title: "FAQ", icon: "❓", depth: 1, count: 5},
+            {id: "security", title: "Data Security", icon: "✒️", depth: 1, hasChildren: true, count: 1},
+            {id: "glossary", title: "Glossary", icon: "🗂️", depth: 1, count: 1},
+            {id: "performance", title: "Performance Optimization", icon: "🚀", depth: 1, count: 1},
+            {id: "latest-updates", title: "Latest Updates", icon: "🛣️", depth: 1},
+            {id: "extend-development", title: "Extend development", icon: "🧑‍💻", depth: 1, count: 1},
+            {id: "privacy", title: "Privacy Policy and User Agreement", icon: "📄", depth: 1, count: 1},
+            {id: "acknowledgements", title: "Acknowledgements", icon: "🙏", depth: 1, count: 1}
+        ];
+
+        const fixedTabs = ["start", "faq", "navigate", "security"];
+        let activeDocumentId = "start";
+
+        const documentTree = document.getElementById("documentTree");
+        const documentTabs = document.getElementById("documentTabs");
+        const documentContent = document.getElementById("documentContent");
+        const editorScroll = document.getElementById("editorScroll");
+        const outlineList = document.getElementById("outlineList");
+        const contextContent = document.getElementById("contextContent");
+        const phoneDocument = document.getElementById("phoneDocument");
+        const phoneScroll = document.getElementById("phoneScroll");
+
+        function getDocument(documentId) {
+            return documents.find((item) => item.id === documentId);
+        }
+
+        function createDocumentTree() {
+            const createChevron = (expanded = false, empty = false) => `
+                <span class="chevron${expanded ? " is-expanded" : ""}${empty ? " is-empty" : ""}" aria-hidden="true">
+                    <svg class="ui-icon"><use href="#iconRight"></use></svg>
+                </span>
+            `;
+            documentTree.innerHTML = documentTreeItems.map((item) => {
+                if (item.kind === "notebook") {
+                    return `
+                        <button class="notebook-row" type="button" data-tree-toggle="guide" aria-expanded="true">
+                            ${createChevron(true)}
+                            <span class="doc-icon" aria-hidden="true">${item.icon}</span>
+                            <span class="doc-label">${item.title}</span>
+                        </button>
+                    `;
+                }
+                return `
+                    <button class="doc-button" type="button" data-document="${item.id}" data-depth="${item.depth}" title="${item.title}" aria-current="${item.id === activeDocumentId ? "page" : "false"}"${item.id === "start" ? " aria-expanded=\"true\"" : ""}>
+                        ${createChevron(item.expanded, !item.hasChildren)}
+                        <span class="doc-icon" aria-hidden="true">${item.icon}</span>
+                        <span class="doc-label">${item.title}</span>
+                        <span class="doc-count">${item.count ?? ""}</span>
+                    </button>
+                `;
+            }).join("");
+
+            const notebookButton = documentTree.querySelector("[data-tree-toggle=\"guide\"]");
+            notebookButton.addEventListener("click", () => {
+                const expanded = notebookButton.getAttribute("aria-expanded") === "true";
+                notebookButton.setAttribute("aria-expanded", String(!expanded));
+                notebookButton.querySelector(".chevron").classList.toggle("is-expanded", !expanded);
+                documentTree.querySelectorAll(".doc-button").forEach((button) => {
+                    button.hidden = expanded;
+                });
+            });
+
+            documentTree.querySelectorAll("[data-document]").forEach((button) => {
+                button.addEventListener("click", (event) => {
+                    const chevron = event.target.closest(".chevron");
+                    if (button.dataset.document === "start" && chevron) {
+                        const expanded = button.getAttribute("aria-expanded") === "true";
+                        button.setAttribute("aria-expanded", String(!expanded));
+                        chevron.classList.toggle("is-expanded", !expanded);
+                        documentTree.querySelectorAll("[data-depth=\"2\"]").forEach((childButton) => {
+                            childButton.hidden = expanded;
+                        });
+                        return;
+                    }
+                });
+            });
+        }
+
+        function createFixedTabs() {
+            const tabs = fixedTabs.map((documentId) => {
+                const item = getDocument(documentId);
+                const icon = item.tabIcon ?? item.icon;
+                return `
+                    <button class="tab-button" id="tab-${item.id}" type="button" role="tab" data-document="${item.id}" aria-controls="documentContent" aria-selected="${item.id === activeDocumentId}">
+                        ${icon ? `<span class="tab-icon" aria-hidden="true">${icon}</span>` : ""}
+                        <span class="tab-label">${item.shortTitle || item.title}</span>
+                        <span class="tab-close" aria-label="Close ${item.shortTitle || item.title}">
+                            <svg class="ui-icon" aria-hidden="true"><use href="#iconClose"></use></svg>
+                        </span>
+                    </button>
+                `;
+            }).join("");
+            documentTabs.innerHTML = `
+                <div class="tabs-list">${tabs}</div>
+                <button class="tab-bar-button" type="button" aria-label="New doc"><svg class="ui-icon" aria-hidden="true"><use href="#iconAdd"></use></svg></button>
+                <span class="tab-spacer"></span>
+                <button class="tab-bar-button" type="button" aria-label="Switcher"><svg class="ui-icon" aria-hidden="true"><use href="#iconDown"></use></svg></button>
+            `;
+
+            documentTabs.querySelectorAll("[role=\"tab\"]").forEach((button, index, tabs) => {
+                button.addEventListener("keydown", (event) => {
+                    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
+                        return;
+                    }
+                    event.preventDefault();
+                    const offset = event.key === "ArrowRight" ? 1 : -1;
+                    const nextIndex = (index + offset + tabs.length) % tabs.length;
+                    tabs[nextIndex].focus();
+                });
+            });
+        }
+
+        const guideLinkTargets = {
+            "Acknowledgements": "siyuan://blocks/20201121224345-rc27qvo",
+            "Artificial Intelligence": "siyuan://blocks/20230304000547-ibldj1z",
+            "Assets": "siyuan://blocks/20200924100744-br924ar",
+            "Assets hosting": "siyuan://blocks/20210721160238-yvhbh0h",
+            "Bookmark and Tag": "siyuan://blocks/20200924100635-ms0p9lb",
+            "Cloud Services": "siyuan://blocks/20210808180303-v9awwp0",
+            "Command Line Interface": "siyuan://blocks/20260612192252-sgw2paw",
+            "Connect with third-party cloud storage": "siyuan://blocks/20230805232018-hgrq0ju",
+            "Content Block Attribute": "siyuan://blocks/20210613191509-cbkxcbz",
+            "Content Block Type": "siyuan://blocks/20200924101225-k254i8g",
+            "Content Statistics": "siyuan://blocks/20260613212028-gozdm4e",
+            "Conversion of Document and Heading": "siyuan://blocks/20201210233038-3xr19g5",
+            "Daily notes": "siyuan://blocks/20210110181011-fbhoesf",
+            "Data backup": "siyuan://blocks/20220708103401-mgydrfg",
+            "Data history": "siyuan://blocks/20210615213222-vs5tzbd",
+            "Data Security": "siyuan://blocks/20210117215840-jcl17fx",
+            "Data sync": "siyuan://blocks/20210721112206-mhr9wxi",
+            "Database": "siyuan://blocks/20240208172514-9dsv6na",
+            "Database table": "siyuan://blocks/20201222100339-i5hzcph",
+            "Docker hosting": "siyuan://blocks/20201227201128-m1wrouw",
+            "Embed Content Block": "siyuan://blocks/20201117112518-dott91x",
+            "Extend development": "siyuan://blocks/20240317202444-5txwumu",
+            "FAQ": "siyuan://blocks/20200923234731-h3zkwm2",
+            "Flashcards": "siyuan://blocks/20221223221636-ms2b4w9",
+            "Formatting elements": "siyuan://blocks/20200924093441-ft2rhps",
+            "Function Features": "siyuan://blocks/20230805231816-h1z9mpc",
+            "Glossary": "siyuan://blocks/20230429115711-ejbts4s",
+            "Hyperlink": "siyuan://blocks/20210331201142-4g923es",
+            "Icon": "siyuan://blocks/20200924100110-vcg96wy",
+            "Ignore indexing": "siyuan://blocks/20240119211017-1vbbt95",
+            "Ignore search": "siyuan://blocks/20240119212048-0huuevw",
+            "Import and Export": "siyuan://blocks/20200924100808-j9sddk9",
+            "Inbox": "siyuan://blocks/20230802114825-2jkkct7",
+            "Kernel API": "siyuan://blocks/20201227201751-gv0fpx2",
+            "Kernel parameter": "siyuan://blocks/20200924100717-yzwzn64",
+            "Limitations": "siyuan://blocks/20220105101227-n5zpr1a",
+            "Mobile App": "siyuan://blocks/20240113110040-7sgw8kl",
+            "Navigate in the Content Block": "siyuan://blocks/20200924101200-gss5vee",
+            "Navigate in the content block": "siyuan://blocks/20200924101200-gss5vee",
+            "Network Proxy": "siyuan://blocks/20260614104204-staofnm",
+            "Open source": "siyuan://blocks/20211129190925-mzmhh3v",
+            "Optimize typography": "siyuan://blocks/20220628204454-hhxohv5",
+            "Outline by Heading and List": "siyuan://blocks/20221016204105-qx2aq0g",
+            "PDF annotation": "siyuan://blocks/20210127203829-qe2mzof",
+            "Performance Optimization": "siyuan://blocks/20230405172236-pg3l9eu",
+            "Plugins": "siyuan://blocks/20230506205948-yah52eb",
+            "Privacy Policy and User Agreement": "siyuan://blocks/20200923234602-gy54e67",
+            "Publish service": "siyuan://blocks/20240517031132-jmr5ihm",
+            "Query syntax": "siyuan://blocks/20220415232231-pqcizol",
+            "Ref Content Block": "siyuan://blocks/20200924101256-f8b1sbi",
+            "Search asset content": "siyuan://blocks/20230805232134-3d6mx2k",
+            "Share document": "siyuan://blocks/20230104152135-1iei0xa",
+            "Shortcuts": "siyuan://blocks/20200924100950-9op5xi1",
+            "SiYuan": "siyuan://blocks/20230415111951-vt4y4gg",
+            "Storage": "siyuan://blocks/20210721112159-9p645xm",
+            "Template snippet": "siyuan://blocks/20201204184532-3qm9l8n",
+            "Theme": "siyuan://blocks/20200924095938-a9p5450",
+            "Type filtering": "siyuan://blocks/20201222100222-q47d64s",
+            "Use on browser": "siyuan://blocks/20201004194026-s8h2cog",
+            "Virtual reference": "siyuan://blocks/20211010212318-3wx2kqb",
+            "Web Clipping": "siyuan://blocks/20210505164949-c085p1d",
+            "What is a Content Block": "siyuan://blocks/20200924101106-19z4kaa",
+            "Widgets": "siyuan://blocks/20210824202056-udkf7wg",
+            "Window and Tab": "siyuan://blocks/20200924100906-0u4zfq3",
+            "Window and tab": "siyuan://blocks/20200924100906-0u4zfq3",
+            "Workspace": "siyuan://blocks/20230106104821-9nfphwm"
+        };
+
+        function renderGuideLink(label, options = {}) {
+            const href = options.href || guideLinkTargets[label] || "#";
+            const text = options.text || label;
+            const isExternal = href.startsWith("http");
+            const externalAttributes = isExternal ? " target=\"_blank\" rel=\"noreferrer\"" : "";
+            const className = isExternal ? " class=\"guide-link--external\"" : "";
+            return `<a href="${href}"${className}${externalAttributes}>${text}</a>${options.suffix || ""}`;
+        }
+
+        function renderGuideLinks(items) {
+            return `<ul>${items.map((item) => {
+                const link = typeof item === "string" ? renderGuideLink(item) : renderGuideLink(item.label, item);
+                return `<li>${link}</li>`;
+            }).join("")}</ul>`;
+        }
+
+        function renderCompleteGuide() {
+            const contentBlockLinks = [
+                "What is a Content Block",
+                "Content Block Type",
+                "Ref Content Block",
+                "Navigate in the Content Block",
+                "Conversion of Document and Heading",
+                "Embed Content Block",
+                "Content Block Attribute"
+            ];
+            const editorLinks = ["Formatting elements", "Optimize typography", "Outline by Heading and List"];
+            const searchLinks = ["Query syntax", "Database table", "Type filtering", "Ignore indexing", "Ignore search"];
+            const appearanceLinks = ["Icon", "Theme"];
+            const operationsLinks = [
+                "Workspace",
+                "Import and Export",
+                "Web Clipping",
+                "Window and Tab",
+                "Content Statistics",
+                "Daily notes",
+                "Bookmark and Tag",
+                "Database",
+                "Widgets",
+                "Plugins",
+                "Assets",
+                "Template snippet",
+                "PDF annotation",
+                "Virtual reference",
+                "Hyperlink",
+                "Data history",
+                "Flashcards",
+                "Artificial Intelligence",
+                "Shortcuts",
+                "Use on browser",
+                "Docker hosting",
+                "Kernel parameter",
+                "Kernel API",
+                "Share document",
+                "Publish service",
+                "Command Line Interface",
+                "Network Proxy"
+            ];
+            const otherLinks = [
+                "Mobile App",
+                "FAQ",
+                "Data Security",
+                "Glossary",
+                "Performance Optimization",
+                "Extend development",
+                "Privacy Policy and User Agreement",
+                "Acknowledgements"
+            ];
+
+            return `
+                <div class="guide-grid guide-grid--2 guide-grid--welcome">
+                    <section class="guide-section">
+                        <h2>🍔 Start eating</h2>
+                        <ul>
+                            <li>Create a new notebook in the <span class="inline-code">More</span> menu of the doc panel, and create a new doc under the notebook.</li>
+                            <li>Enter <kbd>/</kbd> in the editor to trigger the function menu.</li>
+                            <li>${renderGuideLink("Navigate in the content block")} and ${renderGuideLink("Window and tab")}.</li>
+                        </ul>
+                    </section>
+                    <section class="guide-section">
+                        <h2>🍹 Drink recommend</h2>
+                        ${renderGuideLinks([
+                            "FAQ",
+                            {
+                                label: "Origin",
+                                href: "https://ld246.com/article/1619868273581",
+                                suffix: " (in Chinese)"
+                            }
+                        ])}
+                    </section>
+                </div>
+                <div class="guide-grid guide-grid--2">
+                    <section class="guide-section">
+                        <h2>🏘️ Our home <span class="guide-heading-note">ⓒ Community</span></h2>
+                        ${renderGuideLinks([
+                            {label: "LiuYun", href: "https://liuyun.io/"},
+                            {label: "X", href: "https://x.com/b3logos"}
+                        ])}
+                    </section>
+                    <section class="guide-section">
+                        <h2>💌 Contribution</h2>
+                        ${renderGuideLinks([
+                            "Open source",
+                            {
+                                label: "Pay to support development",
+                                href: "https://b3log.org/siyuan/en/pricing.html"
+                            }
+                        ])}
+                    </section>
+                </div>
+                <p class="guide-summary">We hope that in the coming time, SiYuan can become an efficient tool for your life and study, helping you achieve more goals and plans🙏</p>
+                <hr class="guide-divider">
+                <div class="guide-grid guide-grid--4">
+                    <section class="guide-section">
+                        <h2 class="guide-counted-heading">🍫 Content block <span class="guide-heading-sparkle" aria-hidden="true">✨</span></h2>
+                        <p>In ${renderGuideLink("SiYuan")}, the only important core concept is ${renderGuideLink("What is a Content Block", {text: "Content block"})}. The content block can be formed through the formatting format, so that we can organize our thoughts and knowledge at the block-level granularity, and it is also convenient for reading and outputting long content.</p>
+                        ${renderGuideLinks(contentBlockLinks)}
+                    </section>
+                    <section class="guide-section">
+                        <h2>🍱 Editor</h2>
+                        ${renderGuideLinks(editorLinks)}
+                    </section>
+                    <section class="guide-section">
+                        <h2>🔍 Advanced search</h2>
+                        ${renderGuideLinks(searchLinks)}
+                    </section>
+                    <section class="guide-section">
+                        <h2>🎨 Custom Appearance</h2>
+                        ${renderGuideLinks(appearanceLinks)}
+                    </section>
+                </div>
+                <div class="guide-grid guide-grid--3">
+                    <section class="guide-section">
+                        <h2>🚌 General Operations</h2>
+                        <div class="guide-link-columns">
+                            ${renderGuideLinks(operationsLinks.slice(0, 14))}
+                            ${renderGuideLinks(operationsLinks.slice(14))}
+                        </div>
+                    </section>
+                    <section class="guide-section">
+                        <h2>👑 Member's privileges</h2>
+                        <div class="guide-subsections">
+                            <div>
+                                <h3>${renderGuideLink("Cloud Services")}</h3>
+                                ${renderGuideLinks(["Storage", "Data sync", "Data backup", "Assets hosting", "Inbox", "Limitations"])}
+                            </div>
+                            <div>
+                                <h3>${renderGuideLink("Function Features")}</h3>
+                                ${renderGuideLinks(["Connect with third-party cloud storage", "Search asset content"])}
+                            </div>
+                        </div>
+                    </section>
+                    <section class="guide-section">
+                        <h2>Other</h2>
+                        <div class="guide-link-columns">
+                            ${renderGuideLinks(otherLinks.slice(0, 4))}
+                            ${renderGuideLinks(otherLinks.slice(4))}
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function renderSections(item, phone = false) {
+            const sectionLimit = phone ? 3 : item.sections.length;
+            return item.sections.slice(0, sectionLimit).map((section, index) => {
+                const sectionId = `section-${item.id}-${index}`;
+                const className = phone ? "phone-section" : "doc-section";
+                return `
+                    <section class="${className}"${phone ? "" : ` id="${sectionId}"`}>
+                        <h2>${section.title}</h2>
+                        ${section.body}
+                    </section>
+                `;
+            }).join("");
+        }
+
+        function renderDocument(item) {
+            const cover = item.cover ? `
+                <div class="doc-cover">
+                    <img src="${item.cover}" alt="">
+                </div>
+            ` : "";
+            const callout = item.callout ? `
+                <aside class="callout">
+                    <div class="callout-title">${item.callout.title}</div>
+                    <p>${item.callout.body}</p>
+                </aside>
+            ` : "";
+            const intro = item.intro ? `<p class="doc-intro">${item.intro}</p>` : "";
+            const sectionClass = item.layout === "grid" ? "doc-sections doc-sections--grid" : "doc-sections";
+            const content = item.id === "start" ? renderCompleteGuide() : `
+                <div class="${sectionClass}">
+                    ${renderSections(item)}
+                </div>
+            `;
+
+            documentContent.classList.toggle("has-cover", Boolean(item.cover));
+            documentContent.innerHTML = `
+                ${cover}
+                <div class="doc-emoji" aria-hidden="true">${item.icon}</div>
+                <h1 class="doc-title">${item.title}</h1>
+                ${intro}
+                ${callout}
+                ${content}
+            `;
+            documentContent.classList.remove("is-entering");
+            requestAnimationFrame(() => documentContent.classList.add("is-entering"));
+            editorScroll.scrollTop = 0;
+        }
+
+        function renderOutline() {
+            const row = (level, label, options = {}) => `
+                <button class="outline-button outline-button--${level.toLowerCase()}" type="button"${options.expanded ? " aria-expanded=\"true\"" : ""}>
+                    <span class="outline-toggle${level === "H3" ? " outline-toggle--h3" : ""}${options.expanded ? "" : " is-empty"}" aria-hidden="true">
+                        <svg class="ui-icon"><use href="#iconDown"></use></svg>
+                    </span>
+                    <span class="outline-level">${level}</span>
+                    <span class="doc-label"><span class="${options.marked ? "outline-text--marked" : ""}">${label}</span></span>
+                    ${options.count ? `<span class="outline-count">${options.count}</span>` : ""}
+                </button>
+            `;
+            outlineList.innerHTML = `
+                <button class="outline-button outline-button--root" type="button">
+                    <span aria-hidden="true">🎉</span>
+                    <span class="doc-label">Please Start Here</span>
+                    <span class="outline-count">11</span>
+                </button>
+                ${row("H2", "🍔 Start eating")}
+                ${row("H2", "🍹 Drink recommend")}
+                ${row("H2", "🏘️ Our home")}
+                ${row("H2", "💌 Contribution")}
+                ${row("H2", "🧱 Content block", {marked: true})}
+                ${row("H2", "🧮 Editor", {marked: true})}
+                ${row("H2", "🔍 Advanced search", {marked: true})}
+                ${row("H2", "🎨 Custom Appearance", {marked: true})}
+                ${row("H2", "🚌 General Operations", {marked: true})}
+                ${row("H2", "👑 Member's privileges", {marked: true, expanded: true, count: 2})}
+                ${row("H3", "Cloud Services")}
+                ${row("H3", "Function Features")}
+                ${row("H2", "Other", {marked: true})}
+            `;
+        }
+
+        function renderContext() {
+            const mentionRow = (title, count) => `
+                <button class="context-row" type="button">
+                    <span class="chevron" aria-hidden="true"><svg class="ui-icon"><use href="#iconRight"></use></svg></span>
+                    <span class="context-file-icon" aria-hidden="true"><svg class="ui-icon"><use href="#iconFile"></use></svg></span>
+                    <span class="context-label">${title}</span>
+                    <span class="context-item-count">${count}</span>
+                </button>
+            `;
+
+            contextContent.innerHTML = `
+                <div class="reference-tree">
+                    <button class="context-row" type="button">
+                        <span class="chevron" aria-hidden="true"><svg class="ui-icon" style="transform: rotate(90deg)"><use href="#iconRight"></use></svg></span>
+                        <span class="context-file-icon" aria-hidden="true"><svg class="ui-icon"><use href="#iconFile"></use></svg></span>
+                        <span class="context-label">Formatting elements</span>
+                        <span class="context-item-count">1</span>
+                    </button>
+                    <button class="context-row context-row--heading" type="button">
+                        <span class="outline-level">H2</span>
+                        <span class="context-label">Inline elements</span>
+                        <span class="chevron" aria-hidden="true"><svg class="ui-icon"><use href="#iconRight"></use></svg></span>
+                        <span class="reference-indicator" aria-hidden="true"></span>
+                    </button>
+                    <button class="context-row context-row--reference" type="button">
+                        <span>Block Ref</span>
+                    </button>
+                </div>
+                <div class="reference-heading reference-heading--mentions">
+                    <span class="reference-heading-title">Mentions</span>
+                    <button class="tool-button" type="button" aria-label="Filter mentions"><svg class="ui-icon" aria-hidden="true"><use href="#iconFilter"></use></svg></button>
+                    <button class="tool-button" type="button" aria-label="Sort mentions"><svg class="ui-icon" aria-hidden="true"><use href="#iconSort"></use></svg></button>
+                    <button class="tool-button" type="button" aria-label="Contract mentions"><svg class="ui-icon" aria-hidden="true"><use href="#iconContract"></use></svg></button>
+                    <button class="tool-button" type="button" aria-label="Expand mentions"><svg class="ui-icon" aria-hidden="true"><use href="#iconExpand"></use></svg></button>
+                    <button class="tool-button" type="button" aria-label="Collapse mentions"><svg class="ui-icon" aria-hidden="true"><use href="#iconUp"></use></svg></button>
+                    <span class="reference-count">12</span>
+                </div>
+                <div class="reference-tree">
+                    ${mentionRow("Template snippet", 1)}
+                    ${mentionRow("Glossary", 1)}
+                    ${mentionRow("Theme", 4)}
+                    ${mentionRow("Plugins", 1)}
+                    ${mentionRow("Icon", 4)}
+                    ${mentionRow("Widgets", 1)}
+                </div>
+            `;
+        }
+
+        function renderPhone(item) {
+            const cover = item.cover ? `
+                <div class="phone-cover">
+                    <img src="${item.cover}" alt="">
+                </div>
+            ` : "";
+            const callout = item.callout ? `
+                <aside class="phone-callout">
+                    <strong>${item.callout.title}</strong>
+                    <p>${item.callout.body}</p>
+                </aside>
+            ` : item.intro ? `
+                <aside class="phone-callout">
+                    <strong>💡 Overview</strong>
+                    <p>${item.intro}</p>
+                </aside>
+            ` : "";
+
+            phoneDocument.classList.toggle("has-cover", Boolean(item.cover));
+            phoneDocument.innerHTML = `
+                <div class="phone-document-toolbar">
+                    <span class="phone-breadcrumb">Breadcrumb</span>
+                    <span class="phone-document-actions">
+                        <button class="phone-doc-tool" type="button" aria-label="Toggle document lock"><svg class="ui-icon" aria-hidden="true"><use href="#iconLock"></use></svg></button>
+                        <button class="phone-doc-tool" type="button" aria-label="Open document menu"><svg class="ui-icon" aria-hidden="true"><use href="#iconFile"></use></svg></button>
+                        <button class="phone-doc-tool" type="button" aria-label="More document actions"><svg class="ui-icon" aria-hidden="true"><use href="#iconMore"></use></svg></button>
+                    </span>
+                </div>
+                ${cover}
+                <div class="phone-emoji" aria-hidden="true">${item.icon}</div>
+                <div class="phone-meta-actions">
+                    <button class="phone-meta-button" type="button"><svg class="ui-icon" aria-hidden="true"><use href="#iconTags"></use></svg>Add Tag</button>
+                    <button class="phone-meta-button" type="button"><svg class="ui-icon" aria-hidden="true"><use href="#iconImage"></use></svg>Add cover</button>
+                </div>
+                ${callout}
+                ${item.id === "start" ? renderCompleteGuide() : renderSections(item, true)}
+            `;
+            phoneScroll.scrollTop = 0;
+        }
+
+        function updateSelection(item) {
+            document.querySelectorAll(".doc-button").forEach((button) => {
+                button.setAttribute("aria-current", button.dataset.document === item.id ? "page" : "false");
+            });
+            document.querySelectorAll(".tab-button").forEach((button) => {
+                button.setAttribute("aria-selected", String(button.dataset.document === item.id));
+            });
+            document.getElementById("windowTitle").textContent = item.title;
+            document.getElementById("breadcrumbTitle").textContent = item.title;
+            document.getElementById("phoneTitle").textContent = item.title;
+            document.getElementById("characterCount").textContent = item.metrics[0];
+            document.getElementById("wordCount").textContent = item.metrics[1];
+            document.getElementById("linkCount").textContent = item.metrics[2];
+            document.getElementById("referenceCount").textContent = item.metrics[3];
+        }
+
+        document.querySelectorAll(".toggle-action").forEach((button) => {
+            button.addEventListener("click", () => {
+                const selected = button.getAttribute("aria-pressed") === "true";
+                button.setAttribute("aria-pressed", String(!selected));
+            });
+        });
+
+        document.querySelectorAll(".document-content, .phone-document").forEach((container) => {
+            container.addEventListener("click", (event) => {
+                if (event.target.closest("a[href='#']")) {
+                    event.preventDefault();
+                }
+            });
+        });
+
+        createDocumentTree();
+        createFixedTabs();
+        renderDocument(getDocument(activeDocumentId));
+        renderOutline(getDocument(activeDocumentId));
+        renderContext(getDocument(activeDocumentId));
+        renderPhone(getDocument(activeDocumentId));
+        updateSelection(getDocument(activeDocumentId));
+    </script>
+</body>
+</html>
