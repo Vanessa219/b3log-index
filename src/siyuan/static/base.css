@@ -920,16 +920,6 @@ kbd {
         height: 16px;
     }
 
-    .home__slogan,
-    .home__keywords,
-    .second__type,
-    .feature__title {
-        font-size: 36px;
-        line-height: 48px;
-        white-space: break-spaces;
-        word-wrap: break-word;
-    }
-
     .second__type {
         height: 148px;
     }
