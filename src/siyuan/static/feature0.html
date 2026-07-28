@@ -1455,6 +1455,30 @@
             margin-bottom: 22px;
         }
 
+        .phone-cover {
+            aspect-ratio: 3 / 1;
+            margin: 0 -18px;
+            overflow: hidden;
+            width: calc(100% + 36px);
+        }
+
+        .phone-cover img {
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .phone-document.has-cover .phone-document-toolbar {
+            margin-bottom: 0;
+        }
+
+        .phone-document.has-cover .phone-emoji {
+            margin: -28px 0 20px 8px;
+            position: relative;
+            z-index: 1;
+        }
+
         .phone-breadcrumb {
             background: #303034;
             border-radius: 5px;
@@ -3141,6 +3165,11 @@
         }
 
         function renderPhone(item) {
+            const cover = item.cover ? `
+                <div class="phone-cover">
+                    <img src="${item.cover}" alt="">
+                </div>
+            ` : "";
             const callout = item.callout ? `
                 <aside class="phone-callout">
                     <strong>${item.callout.title}</strong>
@@ -3153,6 +3182,7 @@
                 </aside>
             ` : "";
 
+            phoneDocument.classList.toggle("has-cover", Boolean(item.cover));
             phoneDocument.innerHTML = `
                 <div class="phone-document-toolbar">
                     <span class="phone-breadcrumb">Breadcrumb</span>
@@ -3162,6 +3192,7 @@
                         <button class="phone-doc-tool" type="button" aria-label="More document actions"><svg class="ui-icon" aria-hidden="true"><use href="#iconMore"></use></svg></button>
                     </span>
                 </div>
+                ${cover}
                 <div class="phone-emoji" aria-hidden="true">${item.icon}</div>
                 <div class="phone-meta-actions">
                     <button class="phone-meta-button" type="button"><svg class="ui-icon" aria-hidden="true"><use href="#iconTags"></use></svg>Add Tag</button>
