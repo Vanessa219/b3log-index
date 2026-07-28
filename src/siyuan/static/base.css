@@ -165,7 +165,6 @@ kbd {
 }
 
 .home {
-    height: calc(100vh + 40px);
     background-color: #040d21;
     overflow: hidden;
     position: relative;
@@ -230,7 +229,6 @@ kbd {
 
 .home__panel {
     position: relative;
-    height: 100vh;
     top: -32px;
     width: 100%;
     z-index: 2;
@@ -240,17 +238,19 @@ kbd {
 
 .home__slogan {
     color: #fff;
-    font-size: 32px;
+    font-size: 60px;
 }
 
 .home__keywords {
     color: #c9d1d9;
     font-size: 18px;
+    margin-top: 50px;
 }
 
 .home__desc {
     color: #8193b2;
     font-size: 14px;
+    margin: 0;
 }
 
 .home__download {
