@@ -16,7 +16,11 @@ block content
         h2(class="home__slogan") 重构你的思维
         h2(class="home__desc") 所见所得&emsp;双链块引&emsp;加密同步&emsp;隐私优先
         a(style="margin:50px auto" href="download.html" class="home__download") 免费下载使用
-      iframe(src="https://b3log.org/siyuan/static/feature0.html" style="width: 100%;height: 744px;border: 0;overflow:hidden;margin-bottom: 50px;")
+      iframe(id="siyuanShowcase" data-local-src="../static/feature0.html" data-remote-src="https://b3log.org/siyuan/static/feature0.html" style="width: 100%;height: 744px;border: 0;overflow:hidden;margin-bottom: 50px;")
+      script.
+        const siyuanShowcase = document.getElementById('siyuanShowcase')
+        const isLocalPreview = window.location.protocol === 'file:' || ['localhost', '127.0.0.1'].includes(window.location.hostname)
+        siyuanShowcase.src = isLocalPreview ? siyuanShowcase.dataset.localSrc : siyuanShowcase.dataset.remoteSrc
   div(class="wrapper")
     div(id="slogan" class="second__type")
     div(class="feature__hr")

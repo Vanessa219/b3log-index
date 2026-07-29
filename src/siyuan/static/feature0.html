@@ -24,11 +24,11 @@
             --primary-soft: rgb(53 117 240 / 12%);
             --purple: #b388ff;
             --green: #65b84d;
-            --phone-bg: #1e1e1e;
-            --phone-surface: #2c2c2c;
-            --phone-border: #484848;
-            --phone-text: #dadada;
-            --phone-soft: #9aa0a6;
+            --phone-bg: #ffffff;
+            --phone-surface: #f6f6f6;
+            --phone-border: #e0e0e0;
+            --phone-text: #222222;
+            --phone-soft: #5f6368;
             --radius-sm: 6px;
             --radius: 6px;
             --radius-large: 12px;
@@ -820,10 +820,10 @@
         }
 
         .document-content.has-cover .doc-emoji {
-            font-size: 96px;
-            height: 110px;
-            line-height: 110px;
-            margin: -54px 0 72px;
+            font-size: 60px;
+            height: 70px;
+            line-height: 70px;
+            margin: -35px 0 28px -6px;
             position: relative;
             z-index: 1;
         }
@@ -894,88 +894,64 @@
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .guide-grid {
-            display: grid;
-            gap: 0 18px;
-            margin-top: 2px;
-        }
-
-        .guide-grid--2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .guide-grid--4 {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
-        .guide-grid--3 {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
+        .guide-grid,
+        .guide-grid--2,
+        .guide-grid--3,
+        .guide-grid--4,
         .guide-link-columns,
         .guide-subsections {
-            display: grid;
-            gap: 0 18px;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            display: block;
+        }
+
+        .guide-grid {
+            margin: 0;
         }
 
         .guide-section {
+            margin-top: 26px;
             min-width: 0;
         }
 
         .guide-section h2 {
             color: #292a2e;
-            border-radius: 6px;
             font-size: 24.8px;
             font-weight: 600;
-            line-height: 40.3px;
-            margin: 2px 0;
-            padding: 4px;
+            line-height: 1.35;
+            margin: 0 0 8px;
         }
 
         .guide-section h3 {
             color: #292a2e;
-            border-radius: 6px;
-            font-size: 22.08px;
+            font-size: 18px;
             font-weight: 600;
-            line-height: 35.88px;
-            margin: 2px 0;
-            padding: 4px;
+            line-height: 1.4;
+            margin: 18px 0 6px;
         }
 
         .guide-section p,
         .guide-section li,
-        .guide-summary {
+        .guide-summary,
+        .guide-intro {
             color: var(--text-soft);
             font-size: 16px;
             line-height: 26px;
         }
 
         .guide-section p {
-            margin: 2px 0;
-            padding: 4px;
+            margin: 6px 0;
+        }
+
+        .guide-intro {
+            margin: 18px 0 0;
         }
 
         .guide-section ul {
-            margin: 0;
+            margin: 6px 0 0;
             padding-left: 34px;
         }
 
-        .guide-section li + li {
-            margin-top: 4px;
-        }
-
-        .guide-grid--welcome .guide-section:first-child li {
-            position: relative;
-        }
-
-        .guide-grid--welcome .guide-section:first-child li::after {
-            border-left: 1px solid var(--border);
-            bottom: 0;
-            content: "";
-            left: -18px;
-            position: absolute;
-            top: 25px;
+        .guide-section li {
+            margin: 7px 0;
         }
 
         .guide-section a {
@@ -988,7 +964,7 @@
         }
 
         .guide-section .guide-link--external {
-            color: #4285f4;
+            color: var(--purple);
         }
 
         .guide-heading-note {
@@ -1031,43 +1007,7 @@
         }
 
         .guide-summary {
-            margin: 2px 0;
-            padding: 4px;
-        }
-
-        .guide-divider {
-            border: 0;
-            border-top: 1px solid var(--border);
-            height: 34px;
-            margin: 2px 0;
-        }
-
-        .guide-grid--4 .guide-section h2,
-        .guide-grid--3 .guide-section h2 {
-            background: #e2e3e4;
-        }
-
-        .guide-grid--4 .guide-section p,
-        .guide-grid--4 .guide-section li,
-        .guide-grid--3 .guide-section p,
-        .guide-grid--3 .guide-section li {
-            font-size: 16px;
-        }
-
-        .guide-grid--4 .guide-section ul,
-        .guide-grid--3 .guide-section ul {
-            list-style: none;
-            padding: 0 4px;
-        }
-
-        .guide-grid--4 .guide-section li,
-        .guide-grid--3 .guide-section li {
-            padding: 4px 0;
-        }
-
-        .guide-grid--4 .guide-section li + li,
-        .guide-grid--3 .guide-section li + li {
-            margin-top: 0;
+            margin: 30px 0 0;
         }
 
         .doc-section {
@@ -1379,7 +1319,7 @@
 
         .phone-window {
             background: var(--phone-bg);
-            border: 1px solid #36363b;
+            border: 1px solid var(--phone-border);
             border-radius: 28px;
             bottom: 0;
             box-shadow: 0 32px 80px rgb(0 0 0 / 48%);
@@ -1404,7 +1344,7 @@
         }
 
         .phone-indicators {
-            color: #f4f4f5;
+            color: var(--phone-text);
             font-size: 9px;
             letter-spacing: .08em;
         }
@@ -1424,12 +1364,12 @@
         }
 
         .phone-button:hover {
-            background: rgb(255 255 255 / 8%);
+            background: rgb(0 0 0 / 6%);
             color: var(--phone-text);
         }
 
         .phone-title {
-            color: #c9c9cf;
+            color: var(--phone-text);
             font-size: 11px;
             overflow: hidden;
             padding: 0 5px;
@@ -1440,7 +1380,7 @@
         .phone-scroll {
             min-height: 0;
             overflow: auto;
-            scrollbar-color: #4a4a4f transparent;
+            scrollbar-color: #d0d2d7 transparent;
             scrollbar-width: thin;
         }
 
@@ -1480,7 +1420,7 @@
         }
 
         .phone-breadcrumb {
-            background: #303034;
+            background: var(--phone-surface);
             border-radius: 5px;
             color: var(--phone-soft);
             display: inline-flex;
@@ -1505,7 +1445,7 @@
         }
 
         .phone-doc-tool:hover {
-            background: rgb(255 255 255 / 8%);
+            background: rgb(0 0 0 / 6%);
             color: var(--phone-text);
         }
 
@@ -1557,7 +1497,7 @@
         }
 
         .phone-callout strong {
-            color: #72cf61;
+            color: var(--green);
             display: block;
             font-size: 12px;
             margin-bottom: 7px;
@@ -1604,10 +1544,10 @@
 
         .phone-section kbd,
         .phone-section .inline-code {
-            background: #303034;
-            border-color: #414146;
+            background: var(--phone-surface);
+            border-color: var(--phone-border);
             box-shadow: none;
-            color: #bebec4;
+            color: var(--phone-soft);
             font-size: 8px;
         }
 
@@ -1623,17 +1563,6 @@
 
         .phone-document .guide-section {
             margin-top: 23px;
-        }
-
-        .phone-document .guide-grid--4 .guide-section,
-        .phone-document .guide-grid--3 .guide-section {
-            margin-top: 10px;
-        }
-
-        .phone-document .guide-grid--4 .guide-section h2,
-        .phone-document .guide-grid--3 .guide-section h2 {
-            background: #41484a;
-            color: var(--phone-text);
         }
 
         .phone-document .guide-section h2 {
@@ -1662,29 +1591,12 @@
             padding-left: 17px;
         }
 
-        .phone-document .guide-grid--4 .guide-section ul,
-        .phone-document .guide-grid--3 .guide-section ul {
-            margin-top: 0;
-            padding: 0 4px;
-        }
-
-        .phone-document .guide-grid--4 .guide-section li,
-        .phone-document .guide-grid--3 .guide-section li {
-            padding: 4px 0;
-        }
-
         .phone-document .guide-section a {
             color: #a980ff;
         }
 
         .phone-document .guide-section .guide-link--external {
-            color: #75a7ff;
-        }
-
-        .phone-document .guide-grid--welcome .guide-section:first-child li::after {
-            border-left-color: var(--phone-border);
-            left: -13px;
-            top: 20px;
+            color: #a980ff;
         }
 
         .phone-document .guide-heading-note {
@@ -1695,11 +1607,6 @@
 
         .phone-document .guide-summary {
             margin: 22px 0;
-        }
-
-        .phone-document .guide-divider {
-            border-top-color: var(--phone-border);
-            margin-top: 24px;
         }
 
         .desktop-window.is-top-fused {
@@ -2246,29 +2153,10 @@
                 depth: 0,
                 count: 2,
                 source: "app/guide/20210808180117-6v0mkxr/20200923234011-ieuun1p.sy",
-                layout: "grid",
                 callout: {
                     title: "💡 Tip",
                     body: "When you close SiYuan, the User Guide will be automatically deleted. You can click <span class=\"inline-code\">Main Menu</span> - <span class=\"inline-code\">User Guide</span> to view it again."
                 },
-                sections: [
-                    {
-                        title: "🍔 Start eating",
-                        body: "<ul><li>Create a new notebook in the <span class=\"inline-code\">More</span> menu of the doc panel, and create a new doc under the notebook.</li><li>Enter <kbd>/</kbd> in the editor to trigger the function menu.</li><li><a href=\"#\">Navigate in the content block</a> and Window and tab.</li></ul>"
-                    },
-                    {
-                        title: "🍹 Drink recommend",
-                        body: "<ul><li><a href=\"#\">FAQ</a></li><li><a href=\"#\">Origin</a> (in Chinese)</li></ul>"
-                    },
-                    {
-                        title: "🏘️ Our home",
-                        body: "<ul><li><a href=\"#\">LiuYun</a></li><li><a href=\"#\">X</a></li></ul>"
-                    },
-                    {
-                        title: "💌 Contribution",
-                        body: "<ul><li><a href=\"#\">Open source</a></li><li><a href=\"#\">Pay to support development</a></li></ul><p>We hope that SiYuan can become an efficient tool for your life and study, helping you achieve more goals and plans.</p>"
-                    }
-                ],
                 backlinks: ["Formatting elements", "Template snippet"],
                 mentions: ["Block Ref", "Community marketplace"],
                 metrics: [1662, 315, 4, 68]
@@ -2896,34 +2784,35 @@
                 "What is a Content Block",
                 "Content Block Type",
                 "Ref Content Block",
-                "Navigate in the Content Block",
                 "Conversion of Document and Heading",
                 "Embed Content Block",
                 "Content Block Attribute"
             ];
             const editorLinks = ["Formatting elements", "Optimize typography", "Outline by Heading and List"];
             const searchLinks = ["Query syntax", "Database table", "Type filtering", "Ignore indexing", "Ignore search"];
-            const appearanceLinks = ["Icon", "Theme"];
-            const operationsLinks = [
+            const basicLinks = [
                 "Workspace",
                 "Import and Export",
                 "Web Clipping",
-                "Window and Tab",
                 "Content Statistics",
-                "Daily notes",
+                "Daily notes"
+            ];
+            const organizationLinks = [
                 "Bookmark and Tag",
                 "Database",
-                "Widgets",
-                "Plugins",
                 "Assets",
                 "Template snippet",
                 "PDF annotation",
                 "Virtual reference",
-                "Hyperlink",
+                "Hyperlink"
+            ];
+            const learningLinks = [
                 "Data history",
                 "Flashcards",
-                "Artificial Intelligence",
-                "Shortcuts",
+                "Artificial Intelligence"
+            ];
+            const appearanceLinks = ["Icon", "Theme", "Widgets", "Plugins"];
+            const publishLinks = [
                 "Use on browser",
                 "Docker hosting",
                 "Kernel parameter",
@@ -2933,108 +2822,88 @@
                 "Command Line Interface",
                 "Network Proxy"
             ];
-            const otherLinks = [
-                "Mobile App",
+            const helpLinks = [
                 "FAQ",
                 "Data Security",
                 "Glossary",
                 "Performance Optimization",
-                "Extend development",
-                "Privacy Policy and User Agreement",
-                "Acknowledgements"
+                "Privacy Policy and User Agreement"
             ];
 
             return `
-                <div class="guide-grid guide-grid--2 guide-grid--welcome">
+                <p class="guide-intro">If you are using SiYuan for the first time, start with the steps below, then explore the rest of the guide as needed.</p>
+                <div class="guide-grid">
                     <section class="guide-section">
-                        <h2>🍔 Start eating</h2>
+                        <h2>🚀 Quick Start</h2>
                         <ul>
-                            <li>Create a new notebook in the <span class="inline-code">More</span> menu of the doc panel, and create a new doc under the notebook.</li>
-                            <li>Enter <kbd>/</kbd> in the editor to trigger the function menu.</li>
-                            <li>${renderGuideLink("Navigate in the content block")} and ${renderGuideLink("Window and tab")}.</li>
+                            <li>Create a new notebook in the <span class="inline-code">More</span> menu of the doc panel, and create a new doc under the notebook</li>
+                            <li>Enter <kbd>/</kbd> in the editor to open the function menu</li>
+                            <li>Read ${renderGuideLink("Navigate in the Content Block")} to learn how to select, move, and edit content blocks</li>
+                            <li>Learn about ${renderGuideLink("Window and Tab")}</li>
+                            <li>Review ${renderGuideLink("Shortcuts")}</li>
                         </ul>
                     </section>
                     <section class="guide-section">
-                        <h2>🍹 Drink recommend</h2>
-                        ${renderGuideLinks([
-                            "FAQ",
-                            {
-                                label: "Origin",
-                                href: "https://ld246.com/article/1619868273581",
-                                suffix: " (in Chinese)"
-                            }
-                        ])}
+                        <h2 class="guide-counted-heading">🍫 Core Concepts <span class="guide-heading-sparkle" aria-hidden="true">✨</span></h2>
+                        <p>${renderGuideLink("SiYuan")} uses content blocks as its basic units of organization. Paragraphs, headings, lists, and other content can be edited, referenced, and organized independently, making it easier to manage knowledge at block-level granularity and work with long-form content.</p>
+                        ${renderGuideLinks(contentBlockLinks)}
                     </section>
-                </div>
-                <div class="guide-grid guide-grid--2">
                     <section class="guide-section">
-                        <h2>🏘️ Our home <span class="guide-heading-note">ⓒ Community</span></h2>
+                        <h2>✍️ Editing and Formatting</h2>
+                        ${renderGuideLinks(editorLinks)}
+                    </section>
+                    <section class="guide-section">
+                        <h2>🔍 Search and Databases</h2>
+                        ${renderGuideLinks(searchLinks)}
+                    </section>
+                    <section class="guide-section">
+                        <h2>🧭 Common Features</h2>
+                        <h3>Basic Operations</h3>
+                        ${renderGuideLinks(basicLinks)}
+                        <h3>Content Organization</h3>
+                        ${renderGuideLinks(organizationLinks)}
+                        <h3>Learning and Review</h3>
+                        ${renderGuideLinks(learningLinks)}
+                    </section>
+                    <section class="guide-section">
+                        <h2>🎨 Customize</h2>
+                        ${renderGuideLinks(appearanceLinks)}
+                    </section>
+                    <section class="guide-section">
+                        <h2>🌐 Share &amp; Deploy</h2>
+                        ${renderGuideLinks(publishLinks)}
+                    </section>
+                    <section class="guide-section">
+                        <h2>☁️ Apps &amp; Services</h2>
+                        ${renderGuideLinks(["Mobile App"])}
+                        <h3>${renderGuideLink("Cloud Services")}</h3>
+                        ${renderGuideLinks(["Storage", "Data sync", "Data backup", "Assets hosting", "Inbox", "Limitations"])}
+                        <h3>${renderGuideLink("Function Features")}</h3>
+                        ${renderGuideLinks(["Connect with third-party cloud storage", "Search asset content"])}
+                    </section>
+                    <section class="guide-section">
+                        <h2>❓ Help and Security</h2>
+                        ${renderGuideLinks(helpLinks)}
+                    </section>
+                    <section class="guide-section">
+                        <h2>🏘️ Community <span class="guide-heading-note">ⓒ Community</span></h2>
                         ${renderGuideLinks([
                             {label: "LiuYun", href: "https://liuyun.io/"},
-                            {label: "X", href: "https://x.com/b3logos"}
+                            {label: "X", href: "https://x.com/b3logos"},
+                            {label: "Origin (in Chinese)", href: "https://ld246.com/article/1619868273581"}
                         ])}
                     </section>
                     <section class="guide-section">
-                        <h2>💌 Contribution</h2>
+                        <h2>💌 Contribute</h2>
                         ${renderGuideLinks([
                             "Open source",
-                            {
-                                label: "Pay to support development",
-                                href: "https://b3log.org/siyuan/en/pricing.html"
-                            }
+                            {label: "Pay to support development", href: "https://b3log.org/siyuan/en/pricing.html"},
+                            "Extend development",
+                            "Acknowledgements"
                         ])}
                     </section>
                 </div>
                 <p class="guide-summary">We hope that in the coming time, SiYuan can become an efficient tool for your life and study, helping you achieve more goals and plans🙏</p>
-                <hr class="guide-divider">
-                <div class="guide-grid guide-grid--4">
-                    <section class="guide-section">
-                        <h2 class="guide-counted-heading">🍫 Content block <span class="guide-heading-sparkle" aria-hidden="true">✨</span></h2>
-                        <p>In ${renderGuideLink("SiYuan")}, the only important core concept is ${renderGuideLink("What is a Content Block", {text: "Content block"})}. The content block can be formed through the formatting format, so that we can organize our thoughts and knowledge at the block-level granularity, and it is also convenient for reading and outputting long content.</p>
-                        ${renderGuideLinks(contentBlockLinks)}
-                    </section>
-                    <section class="guide-section">
-                        <h2>🍱 Editor</h2>
-                        ${renderGuideLinks(editorLinks)}
-                    </section>
-                    <section class="guide-section">
-                        <h2>🔍 Advanced search</h2>
-                        ${renderGuideLinks(searchLinks)}
-                    </section>
-                    <section class="guide-section">
-                        <h2>🎨 Custom Appearance</h2>
-                        ${renderGuideLinks(appearanceLinks)}
-                    </section>
-                </div>
-                <div class="guide-grid guide-grid--3">
-                    <section class="guide-section">
-                        <h2>🚌 General Operations</h2>
-                        <div class="guide-link-columns">
-                            ${renderGuideLinks(operationsLinks.slice(0, 14))}
-                            ${renderGuideLinks(operationsLinks.slice(14))}
-                        </div>
-                    </section>
-                    <section class="guide-section">
-                        <h2>👑 Member's privileges</h2>
-                        <div class="guide-subsections">
-                            <div>
-                                <h3>${renderGuideLink("Cloud Services")}</h3>
-                                ${renderGuideLinks(["Storage", "Data sync", "Data backup", "Assets hosting", "Inbox", "Limitations"])}
-                            </div>
-                            <div>
-                                <h3>${renderGuideLink("Function Features")}</h3>
-                                ${renderGuideLinks(["Connect with third-party cloud storage", "Search asset content"])}
-                            </div>
-                        </div>
-                    </section>
-                    <section class="guide-section">
-                        <h2>Other</h2>
-                        <div class="guide-link-columns">
-                            ${renderGuideLinks(otherLinks.slice(0, 4))}
-                            ${renderGuideLinks(otherLinks.slice(4))}
-                        </div>
-                    </section>
-                </div>
             `;
         }
 
@@ -3058,6 +2927,7 @@
                     <img src="${item.cover}" alt="">
                 </div>
             ` : "";
+            const emoji = `<div class="doc-emoji" aria-hidden="true">${item.icon}</div>`;
             const callout = item.callout ? `
                 <aside class="callout">
                     <div class="callout-title">${item.callout.title}</div>
@@ -3075,7 +2945,7 @@
             documentContent.classList.toggle("has-cover", Boolean(item.cover));
             documentContent.innerHTML = `
                 ${cover}
-                <div class="doc-emoji" aria-hidden="true">${item.icon}</div>
+                ${emoji}
                 <h1 class="doc-title">${item.title}</h1>
                 ${intro}
                 ${callout}
@@ -3103,19 +2973,22 @@
                     <span class="doc-label">Please Start Here</span>
                     <span class="outline-count">11</span>
                 </button>
-                ${row("H2", "🍔 Start eating")}
-                ${row("H2", "🍹 Drink recommend")}
-                ${row("H2", "🏘️ Our home")}
-                ${row("H2", "💌 Contribution")}
-                ${row("H2", "🧱 Content block", {marked: true})}
-                ${row("H2", "🧮 Editor", {marked: true})}
-                ${row("H2", "🔍 Advanced search", {marked: true})}
-                ${row("H2", "🎨 Custom Appearance", {marked: true})}
-                ${row("H2", "🚌 General Operations", {marked: true})}
-                ${row("H2", "👑 Member's privileges", {marked: true, expanded: true, count: 2})}
+                ${row("H2", "🚀 Quick Start")}
+                ${row("H2", "🍫 Core Concepts", {marked: true})}
+                ${row("H2", "✍️ Editing and Formatting", {marked: true})}
+                ${row("H2", "🔍 Search and Databases", {marked: true})}
+                ${row("H2", "🧭 Common Features", {marked: true, expanded: true, count: 3})}
+                ${row("H3", "Basic Operations")}
+                ${row("H3", "Content Organization")}
+                ${row("H3", "Learning and Review")}
+                ${row("H2", "🎨 Customize", {marked: true})}
+                ${row("H2", "🌐 Share & Deploy", {marked: true})}
+                ${row("H2", "☁️ Apps & Services", {marked: true, expanded: true, count: 2})}
                 ${row("H3", "Cloud Services")}
                 ${row("H3", "Function Features")}
-                ${row("H2", "Other", {marked: true})}
+                ${row("H2", "❓ Help and Security", {marked: true})}
+                ${row("H2", "🏘️ Community")}
+                ${row("H2", "💌 Contribute")}
             `;
         }
 
@@ -3173,6 +3046,13 @@
                     <img src="${item.cover}" alt="">
                 </div>
             ` : "";
+            const identity = `
+                <div class="phone-emoji" aria-hidden="true">${item.icon}</div>
+                <div class="phone-meta-actions">
+                    <button class="phone-meta-button" type="button"><svg class="ui-icon" aria-hidden="true"><use href="#iconTags"></use></svg>Add Tag</button>
+                    <button class="phone-meta-button" type="button"><svg class="ui-icon" aria-hidden="true"><use href="#iconImage"></use></svg>Add cover</button>
+                </div>
+            `;
             const callout = item.callout ? `
                 <aside class="phone-callout">
                     <strong>${item.callout.title}</strong>
@@ -3196,11 +3076,7 @@
                     </span>
                 </div>
                 ${cover}
-                <div class="phone-emoji" aria-hidden="true">${item.icon}</div>
-                <div class="phone-meta-actions">
-                    <button class="phone-meta-button" type="button"><svg class="ui-icon" aria-hidden="true"><use href="#iconTags"></use></svg>Add Tag</button>
-                    <button class="phone-meta-button" type="button"><svg class="ui-icon" aria-hidden="true"><use href="#iconImage"></use></svg>Add cover</button>
-                </div>
+                ${identity}
                 ${callout}
                 ${item.id === "start" ? renderCompleteGuide() : renderSections(item, true)}
             `;
