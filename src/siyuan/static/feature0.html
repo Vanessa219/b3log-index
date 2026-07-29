@@ -24,11 +24,11 @@
             --primary-soft: rgb(53 117 240 / 12%);
             --purple: #b388ff;
             --green: #65b84d;
-            --phone-bg: #ffffff;
-            --phone-surface: #f6f6f6;
-            --phone-border: #e0e0e0;
-            --phone-text: #222222;
-            --phone-soft: #5f6368;
+            --phone-bg: #1e1e1e;
+            --phone-surface: #2c2c2c;
+            --phone-border: #484848;
+            --phone-text: #dadada;
+            --phone-soft: #9aa0a6;
             --radius-sm: 6px;
             --radius: 6px;
             --radius-large: 12px;
@@ -823,7 +823,7 @@
             font-size: 60px;
             height: 70px;
             line-height: 70px;
-            margin: -35px 0 28px -6px;
+            margin: -35px 0 20px -6px;
             position: relative;
             z-index: 1;
         }
@@ -1319,7 +1319,7 @@
 
         .phone-window {
             background: var(--phone-bg);
-            border: 1px solid var(--phone-border);
+            border: 1px solid #36363b;
             border-radius: 28px;
             bottom: 0;
             box-shadow: 0 32px 80px rgb(0 0 0 / 48%);
@@ -1344,9 +1344,75 @@
         }
 
         .phone-indicators {
-            color: var(--phone-text);
-            font-size: 9px;
-            letter-spacing: .08em;
+            align-items: center;
+            color: #f4f4f5;
+            display: flex;
+            font-size: 8px;
+            font-weight: 650;
+            gap: 4px;
+            letter-spacing: 0;
+        }
+
+        .phone-signal {
+            align-items: flex-end;
+            display: flex;
+            gap: 1.5px;
+            height: 9px;
+        }
+
+        .phone-signal i {
+            background: currentcolor;
+            border-radius: 1px;
+            display: block;
+            width: 2px;
+        }
+
+        .phone-signal i:nth-child(1) {
+            height: 3px;
+        }
+
+        .phone-signal i:nth-child(2) {
+            height: 5px;
+        }
+
+        .phone-signal i:nth-child(3) {
+            height: 7px;
+        }
+
+        .phone-signal i:nth-child(4) {
+            height: 9px;
+        }
+
+        .phone-network {
+            line-height: 1;
+        }
+
+        .phone-battery {
+            border: 1px solid currentcolor;
+            border-radius: 2px;
+            height: 7px;
+            padding: 1px;
+            position: relative;
+            width: 13px;
+        }
+
+        .phone-battery::after {
+            background: currentcolor;
+            border-radius: 0 1px 1px 0;
+            content: "";
+            height: 3px;
+            position: absolute;
+            right: -3px;
+            top: 1px;
+            width: 1.5px;
+        }
+
+        .phone-battery-level {
+            background: currentcolor;
+            border-radius: 1px;
+            display: block;
+            height: 100%;
+            width: 72%;
         }
 
         .phone-nav {
@@ -1364,12 +1430,12 @@
         }
 
         .phone-button:hover {
-            background: rgb(0 0 0 / 6%);
+            background: rgb(255 255 255 / 8%);
             color: var(--phone-text);
         }
 
         .phone-title {
-            color: var(--phone-text);
+            color: #c9c9cf;
             font-size: 11px;
             overflow: hidden;
             padding: 0 5px;
@@ -1380,7 +1446,7 @@
         .phone-scroll {
             min-height: 0;
             overflow: auto;
-            scrollbar-color: #d0d2d7 transparent;
+            scrollbar-color: #4a4a4f transparent;
             scrollbar-width: thin;
         }
 
@@ -1420,7 +1486,7 @@
         }
 
         .phone-breadcrumb {
-            background: var(--phone-surface);
+            background: #303034;
             border-radius: 5px;
             color: var(--phone-soft);
             display: inline-flex;
@@ -1445,7 +1511,7 @@
         }
 
         .phone-doc-tool:hover {
-            background: rgb(0 0 0 / 6%);
+            background: rgb(255 255 255 / 8%);
             color: var(--phone-text);
         }
 
@@ -1497,7 +1563,7 @@
         }
 
         .phone-callout strong {
-            color: var(--green);
+            color: #72cf61;
             display: block;
             font-size: 12px;
             margin-bottom: 7px;
@@ -1542,12 +1608,14 @@
             text-decoration: none;
         }
 
+        .phone-callout kbd,
+        .phone-callout .inline-code,
         .phone-section kbd,
         .phone-section .inline-code {
-            background: var(--phone-surface);
-            border-color: var(--phone-border);
+            background: #303034;
+            border-color: #414146;
             box-shadow: none;
-            color: var(--phone-soft);
+            color: #bebec4;
             font-size: 8px;
         }
 
@@ -1580,7 +1648,8 @@
 
         .phone-document .guide-section p,
         .phone-document .guide-section li,
-        .phone-document .guide-summary {
+        .phone-document .guide-summary,
+        .phone-document .guide-intro {
             color: var(--phone-soft);
             font-size: 12px;
             line-height: 1.7;
@@ -1597,6 +1666,15 @@
 
         .phone-document .guide-section .guide-link--external {
             color: #a980ff;
+        }
+
+        .phone-document .guide-section kbd,
+        .phone-document .guide-section .inline-code {
+            background: #303034;
+            border-color: #414146;
+            box-shadow: none;
+            color: #bebec4;
+            font-size: 8px;
         }
 
         .phone-document .guide-heading-note {
@@ -2130,7 +2208,11 @@
         <aside class="phone-window" aria-label="SiYuan mobile preview">
             <div class="phone-status">
                 <span>13:13</span>
-                <span class="phone-indicators">▮▮▮ 4G ▰</span>
+                <span class="phone-indicators" aria-label="5G, full signal, 72% battery">
+                    <span class="phone-signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <span class="phone-network">5G</span>
+                    <span class="phone-battery" aria-hidden="true"><span class="phone-battery-level"></span></span>
+                </span>
             </div>
             <header class="phone-nav">
                 <button class="phone-button toggle-action" type="button" aria-label="Toggle mobile menu" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use href="#iconMenu"></use></svg></button>
