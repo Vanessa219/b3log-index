@@ -17,6 +17,7 @@ block content
                 div(class="item")
                 div(class="item item--block")
                     h3 Free
+                    div(class="price__storage-summary") Local storage, completely free
                     div(class="item__money") $0
                         span Lifetime
                     |
@@ -27,6 +28,7 @@ block content
                 div(class="feature__hr")
                 div(class="item item--block")
                     h3 PRO Features
+                    div(class="price__storage-summary price__storage-summary--self-hosted") No storage included; third-party service required
                     div(class="item__money")
                         small
                             del $96
@@ -35,13 +37,18 @@ block content
                     | Pay once, use for life
                     a(href="https://liuyun.io/one-time-pay/siyuan" target="_blank" class="home__download") Upgrade
                     div(class="price__feature")
-                        div Integrate third-party S3 data sync and backup (You need to connect to the third-party S3 service yourself)
-                        div Integrate third-party WebDAV data sync and backup (You need to connect to the third-party WebDAV service yourself,&nbsp;
+                        div Third-party S3 data sync and backup integration (
+                            em Storage service not included; purchase or set up your own
+                            | )
+                        div Third-party WebDAV data sync and backup integration (
+                            em Storage service not included; purchase or set up your own
+                            |,&nbsp;
                             a(href="https://help.jianguoyun.com/?p=2064" target="_blank" class="link") Nutstore is not supported
                             |)
                 div(class="feature__hr")
                 div(class="item item--block")
                     h3 Subscription
+                    div(class="price__storage-summary price__storage-summary--official") Includes 8GB official cloud storage, ready to use
                     div(class="item__money")
                         small
                             del $296
@@ -51,11 +58,15 @@ block content
                     a(href="https://liuyun.io/subscribe/siyuan" target="_blank" class="home__download") Subscribe
                     div(class="price__feature")
                         div Cloud assets hosting (Please refer to the User Guide - Assets hosting)
-                        div Official cloud space size 8G
-                        div Official data sync and backup
+                        div Includes 8GB official cloud storage
+                        div Official data sync and backup (ready to use)
                         div Cloud Inbox
-                        div S3 data sync and backup (You need to connect to the third-party S3 service yourself)
-                        div WebDAV data sync and backup (You need to connect to the third-party WebDAV service yourself.&nbsp;
+                        div Third-party S3 data sync and backup integration (
+                            em Storage service not included; purchase or set up your own
+                            | )
+                        div Third-party WebDAV data sync and backup integration (
+                            em Storage service not included; purchase or set up your own
+                            |.&nbsp;
                             a(href="https://help.jianguoyun.com/?p=2064" target="_blank" class="link") Nutstore is not supported
                             | )
             div
@@ -90,12 +101,12 @@ block content
                     div(class="item item--label")
                         span(class="tip" aria-label="The size of cloud space occupied by sync, backup and assets hosting, it will be completely cleared after the subscription expires")
                             img(src="https://b3log.org/siyuan/static/icon-info.svg")
-                        | Official cloud space size
+                        | Official cloud storage included with subscription
                     div(class="item") -
                     div(class="item") -
                     div(class="item") 8G
                 div(class="price price--hide")
-                    div(class="item item--label") Official data sync and backup
+                    div(class="item item--label") Official data sync and backup (ready to use)
                     div(class="item")
                         img(src="https://b3log.org/siyuan/static/icon-x.svg")
                     div(class="item")
@@ -104,10 +115,9 @@ block content
                         img(src="https://b3log.org/siyuan/static/icon-check.svg")
                 div(class="price price--hide")
                     div(class="item item--label")
-                        | Integrate third-party S3 data sync and backup
+                        | Third-party S3 data sync and backup integration
                         br
-                        small
-                            | (You need to connect to the third-party S3 service yourself)
+                        em(class="price__storage-requirement") Storage service not included; purchase or set up your own
                     div(class="item")
                         img(src="https://b3log.org/siyuan/static/icon-x.svg")
                     div(class="item")
@@ -116,12 +126,11 @@ block content
                         img(src="https://b3log.org/siyuan/static/icon-check.svg")
                 div(class="price price--hide")
                     div(class="item item--label")
-                        | Integrate third-party WebDAV data sync and backup
+                        | Third-party WebDAV data sync and backup integration
                         br
-                        small
-                            | (You need to connect to the third-party WebDAV service yourself,&nbsp;
+                        em(class="price__storage-requirement")
+                            | Storage service not included; purchase or set up your own.&nbsp;
                             a(href="https://help.jianguoyun.com/?p=2064" target="_blank" class="link") Nutstore is not supported
-                            | )
                     div(class="item")
                         img(src="https://b3log.org/siyuan/static/icon-x.svg")
                     div(class="item")
@@ -139,12 +148,13 @@ block content
                 div(class="item")
                     h3 Why is the official synchronization space only 8GB? Are there plans to expand it in the future, such as increasing it to hundreds of GB like other cloud note services?
                     p The official synchronization service of SiYuan has higher traffic costs compared to cloud note services. Providing 8GB of cloud space for each user is the current limit we can afford.
-                    p If you have a high demand for cloud synchronization space, it is recommended to use third-party S3 synchronization services (included in the subscription or purchased separately as a feature).
+                    p If you need more cloud storage, you can use the third-party S3 data sync and backup integration (the integration is included in the annual subscription or can be purchased separately as a PRO Feature; you must purchase or set up the third-party storage service yourself).
                 div(class="item")
                     h3 How is the price calculated for resubscribing after a subscription interruption?
                     p The renewal price is permanently based on the price at the time of the first subscription. Even if the subscription is interrupted and renewed later, the price will still be the same as the first subscription.
                 div(class="item")
-                    h3 What is "third-party data sync and backup"?
-                    p This means you can <b>set up</b> your own S3 (or WebDAV) service (such as purchasing from Amazon, Azure cloud, etc.) and integrate it with SiYuan for synchronization and backup.
+                    h3 What is the difference between official and third-party data sync?
+                    p The annual subscription includes 8GB of official cloud storage. Official data sync and backup requires no separate storage purchase or setup and is ready to use.
+                    p Both PRO Features and the annual subscription provide third-party S3 and WebDAV data sync and backup integrations, but no third-party storage service is included. You must purchase or set up and configure the corresponding service yourself (Nutstore WebDAV is not supported).
 
         include ../layout/footer-en.pug

@@ -760,6 +760,33 @@ kbd {
     margin-bottom: 8px;
 }
 
+.price__storage-summary {
+    border-radius: 12px;
+    background-color: #f1f3f5;
+    color: #57606a;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 2px 10px;
+}
+
+.price__storage-summary--self-hosted {
+    background-color: #fff4e5;
+    color: #9a6700;
+}
+
+.price__storage-summary--official {
+    background-color: #eaf2ff;
+    color: #035bd6;
+}
+
+.price__storage-requirement {
+    color: #9a6700;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 700;
+}
+
 .price .item__money {
     margin: 8px 0;
     font-size: 24px;
