@@ -23,7 +23,37 @@ html(lang="zh-cmn-Hans")
         link(rel="preconnect", href="https://github.com")
         link(rel="icon", type="image/png", href="https://b3log.org/images/brand/siyuan-128.png")
         link(rel="shortcut icon", type="image/x-icon", href="https://b3log.org/images/brand/siyuan-128.png")
-        link(type="text/css" rel="stylesheet" href="https://b3log.org/siyuan/static/base.css")
+        script.
+            const isLocalBaseCssPreview = window.location.protocol === "file:" || ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+            const isEnglishPage = window.location.pathname.includes("/en/");
+            const isDistributorPage = window.location.pathname.includes("/distributors/");
+            const localBaseCss = isEnglishPage || isDistributorPage ? "../../static/base.css" : "../static/base.css";
+            const baseCss = document.createElement("link");
+            baseCss.rel = "stylesheet";
+            baseCss.type = "text/css";
+            baseCss.href = isLocalBaseCssPreview ? localBaseCss : "https://b3log.org/siyuan/static/base.css";
+            document.head.appendChild(baseCss);
     body
         block content
-        script(src="https://b3log.org/siyuan/static/index.js")
+        script.
+            const isLocalAssetPreview = window.location.protocol === "file:" || ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+            if (isLocalAssetPreview) {
+                const isNestedAssetPage = window.location.pathname.includes("/en/") || window.location.pathname.includes("/distributors/");
+                const localStaticRoot = isNestedAssetPage ? "../../static/" : "../static/";
+                const remoteStaticRoot = "https://b3log.org/siyuan/static/";
+                document.querySelectorAll("[src], [href]").forEach((element) => {
+                    const attribute = element.hasAttribute("src") ? "src" : "href";
+                    const resource = element.getAttribute(attribute);
+                    if (resource && resource.startsWith(remoteStaticRoot)) {
+                        element.setAttribute(attribute, localStaticRoot + resource.slice(remoteStaticRoot.length));
+                    }
+                });
+            }
+        script.
+            const isLocalIndexPreview = window.location.protocol === "file:" || ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+            const isEnglishIndexPage = window.location.pathname.includes("/en/");
+            const isDistributorIndexPage = window.location.pathname.includes("/distributors/");
+            const localIndexScript = isEnglishIndexPage || isDistributorIndexPage ? "../../static/index.js" : "../static/index.js";
+            const indexScript = document.createElement("script");
+            indexScript.src = isLocalIndexPreview ? localIndexScript : "https://b3log.org/siyuan/static/index.js";
+            document.body.appendChild(indexScript);

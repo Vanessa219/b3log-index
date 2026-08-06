@@ -6,15 +6,97 @@ block head
 
 block content
     main(class="home")
-        div(style="position: absolute;overflow: hidden;height: 100%;width: 100%;")
-            img(class="home__bg" src="https://b3log.org/siyuan/static/home.svg")
         - var headerClass = "header"
         include ../layout/header-en.pug
         div(class="home__panel wrapper")
             div(class="home__side")
                 h2(class="home__slogan") Refactor your thinking
                 h2(class="home__desc") WYSIWYG&emsp;Block Ref&emsp;E2EE Sync&emsp;Privacy-first
-                a(style="margin:50px auto" href="download.html" class="home__download") Free download to use
+                div(class="home__download-wrap")
+                    a(
+                        class="home__download-card"
+                        data-home-download
+                        href="https://github.com/siyuan-note/siyuan/releases/download/v3.7.3/siyuan-3.7.3-win.exe"
+                        target="_blank"
+                        rel="nofollow"
+                        data-windows-href="https://github.com/siyuan-note/siyuan/releases/download/v3.7.3/siyuan-3.7.3-win.exe"
+                        data-windows-platform="Available for Windows"
+                        data-macos-href="download.html#download"
+                        data-macos-platform="Available for macOS"
+                        data-android-href="https://github.com/siyuan-note/siyuan/releases/download/v3.7.3/siyuan-3.7.3.apk"
+                        data-android-platform="Available for Android"
+                        data-linux-href="https://github.com/siyuan-note/siyuan/releases/download/v3.7.3/siyuan-3.7.3-linux.AppImage"
+                        data-linux-platform="Available for Linux"
+                        data-ios-href="https://apps.apple.com/cn/app/siyuan/id1583226508"
+                        data-ios-platform="Available for iOS"
+                    )
+                        img(data-home-download-icon src="https://b3log.org/siyuan/static/logo-windows.png" alt="Windows")
+                        span(class="home__download-card-content")
+                            strong Download SiYuan
+                            small(data-home-download-platform) Available for Windows
+                    a(class="home__download-all" href="download.html") View all downloads
+                script.
+                    (() => {
+                        const homeDownloadElement = document.querySelector("[data-home-download]");
+                        if (!homeDownloadElement) {
+                            return;
+                        }
+                        const userAgent = window.navigator.userAgent;
+                        const platform = window.navigator.platform || "";
+                        const userAgentDataPlatform = window.navigator.userAgentData?.platform || "";
+                        const platformInfo = `${platform} ${userAgentDataPlatform}`;
+                        let os = "Windows";
+                        if (/iPhone|iPad|iPod/.test(userAgent) ||
+                            (platform === "MacIntel" && window.navigator.maxTouchPoints > 1)) {
+                            os = "iOS";
+                        } else if (/Android/.test(userAgent)) {
+                            os = "Android";
+                        } else if (/Win|Windows/.test(platformInfo) || /Windows/.test(userAgent)) {
+                            os = "Windows";
+                        } else if (/Mac|Macintosh/.test(platformInfo) || /Macintosh/.test(userAgent)) {
+                            os = "macOS";
+                        } else if (/X11|Linux/.test(platformInfo) || /Linux/.test(userAgent)) {
+                            os = "Linux";
+                        }
+                        const download = {
+                            Windows: {
+                                href: homeDownloadElement.dataset.windowsHref,
+                                platform: homeDownloadElement.dataset.windowsPlatform,
+                            },
+                            macOS: {
+                                href: homeDownloadElement.dataset.macosHref,
+                                platform: homeDownloadElement.dataset.macosPlatform,
+                            },
+                            Android: {
+                                href: homeDownloadElement.dataset.androidHref,
+                                platform: homeDownloadElement.dataset.androidPlatform,
+                            },
+                            Linux: {
+                                href: homeDownloadElement.dataset.linuxHref,
+                                platform: homeDownloadElement.dataset.linuxPlatform,
+                            },
+                            iOS: {
+                                href: homeDownloadElement.dataset.iosHref,
+                                platform: homeDownloadElement.dataset.iosPlatform,
+                            },
+                        }[os];
+                        if (!download) {
+                            return;
+                        }
+                        const isLocalAssetPreview = window.location.protocol === "file:" ||
+                            ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+                        const isNestedAssetPage = window.location.pathname.includes("/en/") ||
+                            window.location.pathname.includes("/distributors/");
+                        const staticAssetPrefix = isLocalAssetPreview
+                            ? (isNestedAssetPage ? "../../static/" : "../static/")
+                            : "https://b3log.org/siyuan/static/";
+                        const iconFile = os === "macOS" ? "logo-macOS.png" : `logo-${os.toLowerCase()}.png`;
+                        homeDownloadElement.href = download.href;
+                        homeDownloadElement.querySelector("[data-home-download-icon]").src =
+                            `${staticAssetPrefix}${iconFile}`;
+                        homeDownloadElement.querySelector("[data-home-download-icon]").alt = os;
+                        homeDownloadElement.querySelector("[data-home-download-platform]").textContent = download.platform;
+                    })();
             iframe(id="siyuanShowcase" data-local-src="../../static/feature0.html" data-remote-src="https://b3log.org/siyuan/static/feature0.html" style="width: 100%;height: 744px;border: 0;overflow:hidden;margin-bottom: 50px;")
             script.
                 const siyuanShowcase = document.getElementById('siyuanShowcase')

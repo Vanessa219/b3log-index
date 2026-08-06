@@ -70,23 +70,80 @@ const hasClosestByClassName = (element, className) => {
 }
 
 const getOS = () => {
-  const appVersion = navigator.appVersion
-  if (appVersion.indexOf('Win') !== -1) {
-    return 'Windows'
+  const userAgent = window.navigator.userAgent
+  const platform = window.navigator.platform || ''
+  const userAgentDataPlatform = window.navigator.userAgentData?.platform || ''
+  const platformInfo = `${platform} ${userAgentDataPlatform}`
+  if (/iPhone|iPad|iPod/.test(userAgent) ||
+    (platform === 'MacIntel' && window.navigator.maxTouchPoints > 1)) {
+    return 'iOS'
   }
-  if (appVersion.indexOf('Mac') !== -1) {
-    return 'macOS'
-  }
-  if (/Android/.test(window.navigator.userAgent)) {
+  if (/Android/.test(userAgent)) {
     return 'Android'
   }
-  if (appVersion.indexOf('X11') !== -1 || appVersion.indexOf('Linux') !== -1) {
+  if (/Win|Windows/.test(platformInfo) || /Windows/.test(userAgent)) {
+    return 'Windows'
+  }
+  if (/Mac|Macintosh/.test(platformInfo) || /Macintosh/.test(userAgent)) {
+    return 'macOS'
+  }
+  if (/X11|Linux/.test(platformInfo) || /Linux/.test(userAgent)) {
     return 'Linux'
   }
   return 'Windows'
 }
 
+const getStaticAssetPrefix = () => {
+  const isLocalAssetPreview = window.location.protocol === 'file:' ||
+    ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname)
+  if (!isLocalAssetPreview) {
+    return 'https://b3log.org/siyuan/static/'
+  }
+  const isNestedAssetPage = window.location.pathname.includes('/en/') ||
+    window.location.pathname.includes('/distributors/')
+  return isNestedAssetPage ? '../../static/' : '../static/'
+}
+
 (function () {
+  const staticAssetPrefix = getStaticAssetPrefix()
+  const homeDownloadElement = document.querySelector('[data-home-download]')
+  if (homeDownloadElement) {
+    const os = getOS()
+    const homeDownload = {
+      Windows: {
+        href: homeDownloadElement.dataset.windowsHref,
+        icon: `${staticAssetPrefix}logo-windows.png`,
+        platform: homeDownloadElement.dataset.windowsPlatform,
+      },
+      macOS: {
+        href: homeDownloadElement.dataset.macosHref,
+        icon: `${staticAssetPrefix}logo-macOS.png`,
+        platform: homeDownloadElement.dataset.macosPlatform,
+      },
+      Android: {
+        href: homeDownloadElement.dataset.androidHref,
+        icon: `${staticAssetPrefix}logo-android.png`,
+        platform: homeDownloadElement.dataset.androidPlatform,
+      },
+      Linux: {
+        href: homeDownloadElement.dataset.linuxHref,
+        icon: `${staticAssetPrefix}logo-linux.png`,
+        platform: homeDownloadElement.dataset.linuxPlatform,
+      },
+      iOS: {
+        href: homeDownloadElement.dataset.iosHref,
+        icon: `${staticAssetPrefix}logo-ios.png`,
+        platform: homeDownloadElement.dataset.iosPlatform,
+      },
+    }[os]
+    if (homeDownload) {
+      homeDownloadElement.href = homeDownload.href
+      homeDownloadElement.querySelector('[data-home-download-icon]').src = homeDownload.icon
+      homeDownloadElement.querySelector('[data-home-download-icon]').alt = os
+      homeDownloadElement.querySelector('[data-home-download-platform]').textContent = homeDownload.platform
+    }
+  }
+
   const downloadElements = document.querySelectorAll('#download a')
   if (downloadElements.length > 0) {
     const os = getOS()
@@ -183,15 +240,15 @@ const getOS = () => {
     }
 
     // 块级双链图片切换
-    blockImgElement.src = 'https://b3log.org/siyuan/static/feature3-1.png'
+    blockImgElement.src = `${staticAssetPrefix}feature3-1.png`
     if (top >= block1Element.offsetTop + block1Element.offsetParent.offsetTop +
       block1Element.clientHeight - 58 &&
       top < block2Element.offsetTop + block2Element.offsetParent.offsetTop +
       block2Element.clientHeight - 58) {
-      blockImgElement.src = 'https://b3log.org/siyuan/static/feature3-2.png'
+      blockImgElement.src = `${staticAssetPrefix}feature3-2.png`
     } else if (top >= block2Element.offsetTop +
       block2Element.offsetParent.offsetTop + block2Element.clientHeight - 58) {
-      blockImgElement.src = 'https://b3log.org/siyuan/static/feature3-3.png'
+      blockImgElement.src = `${staticAssetPrefix}feature3-3.png`
     }
   })
 })()

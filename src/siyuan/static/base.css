@@ -165,7 +165,7 @@ kbd {
 }
 
 .home {
-    background-color: #040d21;
+    background-color: #fff;
     overflow: hidden;
     position: relative;
 }
@@ -221,10 +221,18 @@ kbd {
     opacity: 0.75;
 }
 
+.home .header__a {
+    color: #24292e;
+}
+
 .header__a svg {
     height: 24px;
     fill: #fff;
     float: left;
+}
+
+.home .header__a svg {
+    fill: #24292e;
 }
 
 .home__panel {
@@ -237,7 +245,7 @@ kbd {
 }
 
 .home__slogan {
-    color: #fff;
+    color: #24292e;
     font-size: 60px;
     margin: 80px 0 50px;
 }
@@ -247,6 +255,10 @@ kbd {
     font-size: 14px;
     margin: 0;
     font-weight: normal;
+}
+
+.home .home__desc {
+    color: #586069;
 }
 
 .home__download {
@@ -266,6 +278,71 @@ kbd {
 .home__download:hover {
     opacity: .75;
     transition: opacity .4s;
+}
+
+.home__download-wrap {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+}
+
+.home__download-card {
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #d9dee4;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgb(53 72 91 / 8%);
+    box-sizing: border-box;
+    color: #24292e;
+    display: flex;
+    min-height: 70px;
+    padding: 12px 22px;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .4s, transform .4s;
+    width: 236px;
+}
+
+.home__download-card:hover {
+    box-shadow: 0 8px 20px rgb(53 72 91 / 14%);
+    transform: translateY(-2px);
+}
+
+.home__download-card img {
+    flex-shrink: 0;
+    height: 24px;
+    margin-right: 12px;
+    width: 24px;
+}
+
+.home__download-card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.home__download-card strong {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.home__download-card small {
+    color: #6a737d;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.home__download-all {
+    color: #6a737d;
+    font-size: 12px;
+    margin-top: 12px;
+    text-decoration: underline;
+    transition: color .4s;
+}
+
+.home__download-all:hover {
+    color: #24292e;
 }
 
 .home__download span {
