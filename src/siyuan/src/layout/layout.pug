@@ -24,15 +24,14 @@ html(lang="zh-cmn-Hans")
         link(rel="icon", type="image/png", href="https://b3log.org/images/brand/siyuan-128.png")
         link(rel="shortcut icon", type="image/x-icon", href="https://b3log.org/images/brand/siyuan-128.png")
         script.
-            const isLocalBaseCssPreview = window.location.protocol === "file:" || ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
-            const isEnglishPage = window.location.pathname.includes("/en/");
-            const isDistributorPage = window.location.pathname.includes("/distributors/");
-            const localBaseCss = isEnglishPage || isDistributorPage ? "../../static/base.css" : "../static/base.css";
-            const baseCss = document.createElement("link");
-            baseCss.rel = "stylesheet";
-            baseCss.type = "text/css";
-            baseCss.href = isLocalBaseCssPreview ? localBaseCss : "https://b3log.org/siyuan/static/base.css";
-            document.head.appendChild(baseCss);
+            (() => {
+                const isLocalBaseCssPreview = window.location.protocol === "file:" || ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+                const isEnglishPage = window.location.pathname.includes("/en/");
+                const isDistributorPage = window.location.pathname.includes("/distributors/");
+                const localBaseCss = isEnglishPage || isDistributorPage ? "../../static/base.css" : "../static/base.css";
+                const baseCss = isLocalBaseCssPreview ? localBaseCss : "https://b3log.org/siyuan/static/base.css";
+                document.write(`<link rel="stylesheet" type="text/css" href="${baseCss}">`);
+            })();
     body
         block content
         script.
