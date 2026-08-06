@@ -22,12 +22,24 @@ block content
             rel="nofollow"
             data-windows-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-win.exe"
             data-windows-platform="适用于 Windows"
+            data-windows-amd64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-win.exe"
+            data-windows-amd64-platform="适用于 Windows x86_64"
+            data-windows-arm64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-win-arm64.exe"
+            data-windows-arm64-platform="适用于 Windows arm64"
             data-macos-href="download.html#download"
             data-macos-platform="适用于 macOS"
+            data-macos-amd64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-mac.dmg"
+            data-macos-amd64-platform="适用于 macOS Intel"
+            data-macos-arm64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-mac-arm64.dmg"
+            data-macos-arm64-platform="适用于 macOS Apple Silicon"
             data-android-href="https://release.liuyun.io/siyuan/siyuan-3.7.3.apk"
             data-android-platform="适用于 Android"
             data-linux-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-linux.AppImage"
             data-linux-platform="适用于 Linux"
+            data-linux-amd64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-linux.AppImage"
+            data-linux-amd64-platform="适用于 Linux x86_64"
+            data-linux-arm64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-linux-arm64.AppImage"
+            data-linux-arm64-platform="适用于 Linux arm64"
             data-ios-href="https://apps.apple.com/cn/app/siyuan/id1583226508"
             data-ios-platform="适用于 iOS"
           )
@@ -44,7 +56,8 @@ block content
             }
             const userAgent = window.navigator.userAgent;
             const platform = window.navigator.platform || "";
-            const userAgentDataPlatform = window.navigator.userAgentData?.platform || "";
+            const userAgentData = window.navigator.userAgentData;
+            const userAgentDataPlatform = userAgentData?.platform || "";
             const platformInfo = `${platform} ${userAgentDataPlatform}`;
             let os = "Windows";
             if (/iPhone|iPad|iPod/.test(userAgent) ||
@@ -59,7 +72,7 @@ block content
             } else if (/X11|Linux/.test(platformInfo) || /Linux/.test(userAgent)) {
               os = "Linux";
             }
-            const download = {
+            const baseDownload = {
               Windows: {
                 href: homeDownloadElement.dataset.windowsHref,
                 platform: homeDownloadElement.dataset.windowsPlatform,
@@ -81,22 +94,61 @@ block content
                 platform: homeDownloadElement.dataset.iosPlatform,
               },
             }[os];
-            if (!download) {
+            if (!baseDownload) {
               return;
             }
-            const isLocalAssetPreview = window.location.protocol === "file:" ||
-              ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
-            const isNestedAssetPage = window.location.pathname.includes("/en/") ||
-              window.location.pathname.includes("/distributors/");
-            const staticAssetPrefix = isLocalAssetPreview
-              ? (isNestedAssetPage ? "../../static/" : "../static/")
-              : "https://b3log.org/siyuan/static/";
-            const iconFile = os === "macOS" ? "logo-macOS.png" : `logo-${os.toLowerCase()}.png`;
-            homeDownloadElement.href = download.href;
-            homeDownloadElement.querySelector("[data-home-download-icon]").src =
-              `${staticAssetPrefix}${iconFile}`;
-            homeDownloadElement.querySelector("[data-home-download-icon]").alt = os;
-            homeDownloadElement.querySelector("[data-home-download-platform]").textContent = download.platform;
+            const applyDownload = (architecture) => {
+              const architectureKey = architecture === "arm64" ? "Arm64" : "Amd64";
+              const architectureDownload = ["Windows", "macOS", "Linux"].includes(os) && architecture
+                ? {
+                    href: homeDownloadElement.dataset[`${os.toLowerCase()}${architectureKey}Href`],
+                    platform: homeDownloadElement.dataset[`${os.toLowerCase()}${architectureKey}Platform`],
+                  }
+                : null;
+              const download = architectureDownload?.href
+                ? { ...baseDownload, ...architectureDownload }
+                : baseDownload;
+              const isLocalAssetPreview = window.location.protocol === "file:" ||
+                ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+              const isNestedAssetPage = window.location.pathname.includes("/en/") ||
+                window.location.pathname.includes("/distributors/");
+              const staticAssetPrefix = isLocalAssetPreview
+                ? (isNestedAssetPage ? "../../static/" : "../static/")
+                : "https://b3log.org/siyuan/static/";
+              const iconFile = os === "macOS" ? "logo-macOS.png" : `logo-${os.toLowerCase()}.png`;
+              homeDownloadElement.href = download.href;
+              homeDownloadElement.querySelector("[data-home-download-icon]").src =
+                `${staticAssetPrefix}${iconFile}`;
+              homeDownloadElement.querySelector("[data-home-download-icon]").alt = os;
+              homeDownloadElement.querySelector("[data-home-download-platform]").textContent = download.platform;
+            };
+            const getArchitecture = async () => {
+              const architectureInfo = `${userAgent} ${platform}`;
+              if (/arm64|aarch64/i.test(architectureInfo)) {
+                return "arm64";
+              }
+              if (/x86_64|x86-64|Win64|WOW64|amd64/i.test(architectureInfo)) {
+                return "amd64";
+              }
+              if (userAgentData?.getHighEntropyValues) {
+                try {
+                  const highEntropyValues = await userAgentData.getHighEntropyValues(["architecture", "bitness"]);
+                  if (/arm/i.test(highEntropyValues.architecture)) {
+                    return "arm64";
+                  }
+                  if (/x86|amd/i.test(highEntropyValues.architecture) || highEntropyValues.bitness === "64") {
+                    return "amd64";
+                  }
+                } catch {
+                  return null;
+                }
+              }
+              return null;
+            };
+            applyDownload();
+            if (["Windows", "macOS", "Linux"].includes(os)) {
+              getArchitecture().then(applyDownload);
+            }
           })();
       iframe(id="siyuanShowcase" data-local-src="../static/feature0.html" data-remote-src="https://b3log.org/siyuan/static/feature0.html" style="display: block;width: 100%;height: 744px;border: 0;overflow:hidden;margin-bottom: 24px;")
       script.

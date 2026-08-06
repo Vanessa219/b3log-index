@@ -93,6 +93,33 @@ const getOS = () => {
   return 'Windows'
 }
 
+const getArchitecture = async () => {
+  const userAgent = window.navigator.userAgent
+  const platform = window.navigator.platform || ''
+  const architectureInfo = `${userAgent} ${platform}`
+  if (/arm64|aarch64/i.test(architectureInfo)) {
+    return 'arm64'
+  }
+  if (/x86_64|x86-64|Win64|WOW64|amd64/i.test(architectureInfo)) {
+    return 'amd64'
+  }
+  const userAgentData = window.navigator.userAgentData
+  if (userAgentData?.getHighEntropyValues) {
+    try {
+      const highEntropyValues = await userAgentData.getHighEntropyValues(['architecture', 'bitness'])
+      if (/arm/i.test(highEntropyValues.architecture)) {
+        return 'arm64'
+      }
+      if (/x86|amd/i.test(highEntropyValues.architecture) || highEntropyValues.bitness === '64') {
+        return 'amd64'
+      }
+    } catch {
+      return null
+    }
+  }
+  return null
+}
+
 const getStaticAssetPrefix = () => {
   const isLocalAssetPreview = window.location.protocol === 'file:' ||
     ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname)
@@ -109,7 +136,7 @@ const getStaticAssetPrefix = () => {
   const homeDownloadElement = document.querySelector('[data-home-download]')
   if (homeDownloadElement) {
     const os = getOS()
-    const homeDownload = {
+    const baseHomeDownload = {
       Windows: {
         href: homeDownloadElement.dataset.windowsHref,
         icon: `${staticAssetPrefix}logo-windows.png`,
@@ -136,24 +163,46 @@ const getStaticAssetPrefix = () => {
         platform: homeDownloadElement.dataset.iosPlatform,
       },
     }[os]
-    if (homeDownload) {
+    const applyHomeDownload = (architecture) => {
+      if (!baseHomeDownload) {
+        return
+      }
+      const architectureKey = architecture === 'arm64' ? 'Arm64' : 'Amd64'
+      const architectureDownload = ['Windows', 'macOS', 'Linux'].includes(os) && architecture
+        ? {
+            href: homeDownloadElement.dataset[`${os.toLowerCase()}${architectureKey}Href`],
+            platform: homeDownloadElement.dataset[`${os.toLowerCase()}${architectureKey}Platform`],
+          }
+        : null
+      const homeDownload = architectureDownload?.href
+        ? { ...baseHomeDownload, ...architectureDownload }
+        : baseHomeDownload
       homeDownloadElement.href = homeDownload.href
       homeDownloadElement.querySelector('[data-home-download-icon]').src = homeDownload.icon
       homeDownloadElement.querySelector('[data-home-download-icon]').alt = os
       homeDownloadElement.querySelector('[data-home-download-platform]').textContent = homeDownload.platform
+    }
+    applyHomeDownload()
+    if (['Windows', 'macOS', 'Linux'].includes(os)) {
+      getArchitecture().then(applyHomeDownload)
     }
   }
 
   const downloadElements = document.querySelectorAll('#download a')
   if (downloadElements.length > 0) {
     const os = getOS()
-    downloadElements.forEach(item => {
-      if (item.getAttribute('data-os') === os) {
-        item.style.display = 'inline-block'
-      } else {
-        item.style.display = 'none'
-      }
-    })
+    const applyDownloadFilter = (architecture) => {
+      downloadElements.forEach(item => {
+        const itemArchitecture = item.getAttribute('data-architecture')
+        const matchesOS = item.getAttribute('data-os') === os
+        const matchesArchitecture = !itemArchitecture || !architecture || itemArchitecture === architecture
+        item.style.display = matchesOS && matchesArchitecture ? 'inline-block' : 'none'
+      })
+    }
+    applyDownloadFilter()
+    if (['Windows', 'macOS', 'Linux'].includes(os)) {
+      getArchitecture().then(applyDownloadFilter)
+    }
   }
 
   if (!document.querySelector('.navigation')) {
