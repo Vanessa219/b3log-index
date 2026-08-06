@@ -42,7 +42,7 @@ block content
                         data-ios-href="https://apps.apple.com/cn/app/siyuan/id1583226508"
                         data-ios-platform="Available for iOS"
                     )
-                        img(data-home-download-icon src="https://b3log.org/siyuan/static/logo-windows.png" alt="Windows")
+                        img(data-home-download-icon src="https://b3log.org/siyuan/static/logo-windows.svg" alt="Windows")
                         span(class="home__download-card-content")
                             strong Download SiYuan
                             small(data-home-download-platform) Available for Windows
@@ -114,7 +114,9 @@ block content
                             const staticAssetPrefix = isLocalAssetPreview
                                 ? (isNestedAssetPage ? "../../static/" : "../static/")
                                 : "https://b3log.org/siyuan/static/";
-                            const iconFile = os === "macOS" ? "logo-macOS.png" : `logo-${os.toLowerCase()}.png`;
+                            const iconFile = os === "Windows"
+                                ? "logo-windows.svg"
+                                : `logo-${os.toLowerCase()}.svg`;
                             homeDownloadElement.href = download.href;
                             homeDownloadElement.querySelector("[data-home-download-icon]").src =
                                 `${staticAssetPrefix}${iconFile}`;

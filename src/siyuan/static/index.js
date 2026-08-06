@@ -140,27 +140,27 @@ const getStaticAssetPrefix = () => {
     const baseHomeDownload = {
       Windows: {
         href: homeDownloadElement.dataset.windowsHref,
-        icon: `${staticAssetPrefix}logo-windows.png`,
+        icon: `${staticAssetPrefix}logo-windows.svg`,
         platform: homeDownloadElement.dataset.windowsPlatform,
       },
       macOS: {
         href: homeDownloadElement.dataset.macosHref,
-        icon: `${staticAssetPrefix}logo-macOS.png`,
+        icon: `${staticAssetPrefix}logo-macos.svg`,
         platform: homeDownloadElement.dataset.macosPlatform,
       },
       Android: {
         href: homeDownloadElement.dataset.androidHref,
-        icon: `${staticAssetPrefix}logo-android.png`,
+        icon: `${staticAssetPrefix}logo-android.svg`,
         platform: homeDownloadElement.dataset.androidPlatform,
       },
       Linux: {
         href: homeDownloadElement.dataset.linuxHref,
-        icon: `${staticAssetPrefix}logo-linux.png`,
+        icon: `${staticAssetPrefix}logo-linux.svg`,
         platform: homeDownloadElement.dataset.linuxPlatform,
       },
       iOS: {
         href: homeDownloadElement.dataset.iosHref,
-        icon: `${staticAssetPrefix}logo-ios.png`,
+        icon: `${staticAssetPrefix}logo-ios.svg`,
         platform: homeDownloadElement.dataset.iosPlatform,
       },
     }[os]
