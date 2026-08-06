@@ -22,23 +22,23 @@ block content
                         data-windows-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-win.exe"
                         data-windows-platform="Available for Windows"
                         data-windows-amd64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-win.exe"
-                        data-windows-amd64-platform="Available for Windows x86_64"
+                        data-windows-amd64-platform="Available for Windows"
                         data-windows-arm64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-win-arm64.exe"
-                        data-windows-arm64-platform="Available for Windows arm64"
+                        data-windows-arm64-platform="Available for Windows"
                         data-macos-href="download.html#download"
                         data-macos-platform="Available for macOS"
                         data-macos-amd64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-mac.dmg"
-                        data-macos-amd64-platform="Available for macOS Intel"
+                        data-macos-amd64-platform="Available for macOS"
                         data-macos-arm64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-mac-arm64.dmg"
-                        data-macos-arm64-platform="Available for macOS Apple Silicon"
+                        data-macos-arm64-platform="Available for macOS"
                         data-android-href="https://release.liuyun.io/siyuan/siyuan-3.7.3.apk"
                         data-android-platform="Available for Android"
                         data-linux-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-linux.AppImage"
                         data-linux-platform="Available for Linux"
                         data-linux-amd64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-linux.AppImage"
-                        data-linux-amd64-platform="Available for Linux x86_64"
+                        data-linux-amd64-platform="Available for Linux"
                         data-linux-arm64-href="https://release.liuyun.io/siyuan/siyuan-3.7.3-linux-arm64.AppImage"
-                        data-linux-arm64-platform="Available for Linux arm64"
+                        data-linux-arm64-platform="Available for Linux"
                         data-ios-href="https://apps.apple.com/cn/app/siyuan/id1583226508"
                         data-ios-platform="Available for iOS"
                     )
@@ -145,6 +145,7 @@ block content
                             return null;
                         };
                         applyDownload();
+                        homeDownloadElement.dataset.homeDownloadInitialized = "true";
                         if (["Windows", "macOS", "Linux"].includes(os)) {
                             getArchitecture().then(applyDownload);
                         }

@@ -134,7 +134,8 @@ const getStaticAssetPrefix = () => {
 (function () {
   const staticAssetPrefix = getStaticAssetPrefix()
   const homeDownloadElement = document.querySelector('[data-home-download]')
-  if (homeDownloadElement) {
+  if (homeDownloadElement && !homeDownloadElement.dataset.homeDownloadInitialized) {
+    homeDownloadElement.dataset.homeDownloadInitialized = 'true'
     const os = getOS()
     const baseHomeDownload = {
       Windows: {
