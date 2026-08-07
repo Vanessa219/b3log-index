@@ -794,6 +794,11 @@ kbd {
     z-index: 1;
 }
 
+.pricing__wrap + .feature__hr + .faq {
+    padding-bottom: 64px;
+    padding-top: 64px;
+}
+
 .pricing__plans {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1124,6 +1129,11 @@ kbd {
 
     .pricing__wrap {
         padding: 0 16px 16px;
+    }
+
+    .pricing__wrap + .feature__hr + .faq {
+        padding-bottom: 32px;
+        padding-top: 32px;
     }
 
     .pricing__card {
