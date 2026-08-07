@@ -778,154 +778,6 @@ kbd {
     line-height: 32px;
 }
 
-.price__wrap {
-    padding: 0 64px 16px;
-    background: #fff;
-    position: relative;
-    z-index: 1;
-}
-
-.price {
-    display: flex;
-
-    &:nth-child(odd) {
-        background-color: #fafbfc;
-    }
-
-    &:nth-child(even) {
-        background-color: #fff;
-    }
-
-    &:hover:not(.price--white) {
-        background-color: #f6f8fa;
-    }
-}
-
-.price--white {
-    background-color: #fff !important;
-}
-
-.price .item {
-    flex: 1;
-    padding: 4px 16px;
-    text-align: center;
-    font-size: 14px;
-    line-height: 24px;
-    transition: background-color .4s;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    &:first-child {
-        flex: 1.2;
-    }
-}
-
-.price .item--label {
-    font-weight: 500;
-    text-align: left;
-    position: relative;
-    padding-left: 32px;
-    display: block;
-}
-
-.price .item--block {
-    display: block;
-}
-
-.price .item h3 {
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-
-.price__storage-summary {
-    border-radius: 12px;
-    background-color: #f1f3f5;
-    box-sizing: border-box;
-    color: #57606a;
-    display: flex;
-    font-size: 13px;
-    font-weight: 600;
-    justify-content: center;
-    line-height: 20px;
-    min-height: 44px;
-    padding: 2px 10px;
-    align-items: center;
-}
-
-.price__storage-summary--self-hosted {
-    background-color: #fff4e5;
-    color: #9a6700;
-}
-
-.price__storage-summary--official {
-    background-color: #eaf2ff;
-    color: #035bd6;
-}
-
-.price__note {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    line-height: 24px;
-    min-height: 24px;
-}
-
-.price__storage-requirement {
-    color: #9a6700;
-    font-size: 13px;
-    font-style: italic;
-    font-weight: 700;
-}
-
-.price .item__money {
-    margin: 8px 0;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 32px;
-}
-
-.price .item img {
-    vertical-align: text-bottom;
-}
-
-.price .item del {
-    color: #6a737d;
-    font-size: 14px;
-    margin-left: 16px;
-}
-
-.price .item__money span {
-    font-size: 12px;
-    margin-left: 4px;
-}
-
-.price__feature {
-    display: none;
-}
-
-.price__feature div {
-    margin: 8px 0;
-    font-weight: bold;
-}
-
-.price .item .home__download {
-    display: block;
-    margin-top: 24px;
-    font-size: 14px;
-    line-height: 14px;
-    width: auto;
-    padding: 8px;
-}
-
-.price .item .home__download--outline {
-    margin-top: 27px;
-}
-
 .link {
     color: #035bd6;
     transition: color .4s;
@@ -933,6 +785,231 @@ kbd {
 
 .link:hover {
     color: #043a8a;
+}
+
+.pricing__wrap {
+    max-width: 1280px;
+    padding: 0 32px 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.pricing__plans {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+.pricing__card {
+    background: #fff;
+    border: 1px solid #d8dee4;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 24px rgb(36 41 46 / 8%);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 28px 24px 24px;
+}
+
+.pricing__card--pro {
+    background: linear-gradient(180deg, #f4f7ff 0%, #fff 48%);
+    border-color: #aebdf8;
+}
+
+.pricing__card--subscription {
+    background: linear-gradient(180deg, #f4f8ff 0%, #fff 48%);
+    border-color: #8eb5ef;
+}
+
+.pricing__card-title {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    min-height: 36px;
+}
+
+.pricing__card-title h3 {
+    align-items: center;
+    color: #24292e;
+    display: flex;
+    font-size: 28px;
+    gap: 8px;
+    line-height: 36px;
+    margin: 0;
+}
+
+.pricing__plan-icon {
+    display: block;
+    flex: 0 0 32px;
+    height: 32px;
+    overflow: visible;
+    width: 32px;
+}
+
+.pricing__badge {
+    background: #e9edff;
+    border-radius: 999px;
+    color: #4969ed;
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 2px 10px;
+}
+
+.pricing__card--subscription .pricing__badge {
+    background: #e4f0ff;
+    color: #1464c0;
+}
+
+.pricing__storage-summary {
+    align-items: center;
+    background: #f1f3f5;
+    border-radius: 12px;
+    box-sizing: border-box;
+    color: #57606a;
+    display: flex;
+    font-size: 13px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    margin-top: 20px;
+    min-height: 44px;
+    padding: 4px 12px;
+    text-align: center;
+}
+
+.pricing__storage-summary--self-hosted {
+    background: #fff4e5;
+    color: #9a6700;
+}
+
+.pricing__storage-summary--official {
+    background: #eaf2ff;
+    color: #035bd6;
+}
+
+.pricing__price {
+    align-items: baseline;
+    display: flex;
+    gap: 6px;
+    margin-top: 24px;
+    min-height: 42px;
+}
+
+.pricing__amount {
+    color: #24292e;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 42px;
+}
+
+.pricing__period {
+    color: #57606a;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.pricing__original {
+    color: #8c959f;
+    font-size: 14px;
+    margin-left: auto;
+}
+
+.pricing__note {
+    align-items: center;
+    color: #57606a;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    gap: 4px;
+    line-height: 24px;
+    min-height: 24px;
+    margin-top: 12px;
+}
+
+.pricing__heart {
+    fill: #ea4aaa;
+    height: 14px;
+    width: 14px;
+}
+
+.pricing__button {
+    background: linear-gradient(-180deg, #617eef, #4969ed);
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 24px 0 0;
+    padding: 12px 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity .4s;
+    width: 100%;
+}
+
+.pricing__button:hover {
+    opacity: .75;
+}
+
+.pricing__card--pro .pricing__button {
+    background: #c0c0c0;
+    color: #24292e;
+}
+
+.pricing__card--subscription .pricing__button {
+    background: #f5b84f;
+    color: #24292e;
+}
+
+.pricing__button--outline {
+    background: #fff;
+    border: 1px solid #aebdf8;
+    color: #4969ed;
+}
+
+.pricing__features {
+    border-top: 1px solid #e6e9ed;
+    flex: 1;
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 16px 0 0;
+}
+
+.pricing__feature {
+    align-items: flex-start;
+    color: #57606a;
+    display: flex;
+    font-size: 14px;
+    gap: 10px;
+    line-height: 20px;
+    margin: 12px 0;
+}
+
+.pricing__feature img {
+    flex: 0 0 18px;
+    height: 18px;
+    margin-top: 1px;
+    width: 18px;
+}
+
+.pricing__feature > span {
+    min-width: 0;
+}
+
+.pricing__feature-note {
+    color: #9a6700;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    margin-top: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -945,10 +1022,6 @@ kbd {
 }
 
 @media (min-width: 1281px) {
-    .price__wrap {
-        border-radius: 16px;
-    }
-
     .feature {
         border-radius: 16px;
         box-shadow: 0 2.76726px 2.21381px rgba(0, 0, 0, .07), 0 6.6501px 5.32008px rgba(0, 0, 0, .04317), 0 12.5216px 10.0172px rgba(0, 0, 0, .0339075), 0 22.3363px 17.869px rgba(0, 0, 0, .0282784), 0 41.7776px 33.4221px rgba(0, 0, 0, .0235573), 0 100px 80px rgba(0, 0, 0, .0174624);
@@ -1008,6 +1081,15 @@ kbd {
         max-width: 100%;
     }
 
+    .pricing__wrap {
+        padding: 0 24px 16px;
+    }
+
+    .pricing__plans {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
     .footer__inner .fn__flex-1 {
         width: 100%;
         flex: auto;
@@ -1040,6 +1122,29 @@ kbd {
         height: 16px;
     }
 
+    .pricing__wrap {
+        padding: 0 16px 16px;
+    }
+
+    .pricing__card {
+        padding: 24px 20px 20px;
+    }
+
+    .pricing__card-title h3 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .pricing__plan-icon {
+        flex-basis: 28px;
+        height: 28px;
+        width: 28px;
+    }
+
+    .pricing__amount {
+        font-size: 34px;
+    }
+
     .second__type {
         height: 148px;
     }
@@ -1062,22 +1167,6 @@ kbd {
 
     .feature__img1 {
         margin-bottom: 32px;
-    }
-
-    .price__wrap {
-        padding: 32px 8px;
-    }
-
-    .price {
-        display: block;
-    }
-
-    .price--hide {
-        display: none;
-    }
-
-    .price__feature {
-        display: block;
     }
 
     .footer .fn__flex {

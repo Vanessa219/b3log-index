@@ -12,135 +12,97 @@ block content
         - var headerClass = "header header--black"
         include ../layout/header-en.pug
         div(class="feature__hr")
-        div(class="wrapper price__wrap" style="position: relative;z-index: 1;")
-            div(class="price--white price" style="position: sticky;top: 0;z-index:1")
-                div(class="item")
-                div(class="item item--block")
-                    h3 Free
-                    div(class="price__storage-summary") Local storage, completely free
-                    div(class="item__money") $0
-                        span Lifetime
-                    div(class="price__note")
-                        svg(style="height: 12px;width: 12px;fill: #ea4aaa;" id="iconHeart" viewBox="0 0 32 32")
+        div(class="wrapper pricing__wrap")
+            div(class="pricing__plans")
+                div(class="pricing__card pricing__card--free")
+                    div(class="pricing__card-title")
+                        h3 Free
+                    div(class="pricing__storage-summary") Local storage, completely free
+                    div(class="pricing__price")
+                        span(class="pricing__amount") $0
+                        span(class="pricing__period") Lifetime
+                    div(class="pricing__note")
+                        svg(class="pricing__heart" viewBox="0 0 32 32" aria-hidden="true")
                             path(d="M16 30.685l-2.329-2.103q-3.981-3.606-5.784-5.333t-4.019-4.282-3.042-4.62-.826-4.244q0-3.681 2.516-6.235t6.272-2.554q4.357 0 7.211 3.38 2.854-3.38 7.211-3.38 3.756 0 6.272 2.554t2.516 6.235q0 2.93-1.953 6.084t-4.244 5.484-7.474 6.986z")
-                        |&nbsp;Powered by love
-                    a(href="download.html" class="home__download home__download--outline") Download
-                    div(class="price__feature")
-                        div Basic functions
-                div(class="feature__hr")
-                div(class="item item--block")
-                    h3 PRO Features
-                    div(class="price__storage-summary price__storage-summary--self-hosted") No storage included; third-party service required
-                    div(class="item__money")
-                        small
-                            del $96
-                        | &nbsp;$64
-                        span Lifetime
-                    div(class="price__note") Pay once, use for life
-                    a(href="https://liuyun.io/one-time-pay/siyuan" target="_blank" class="home__download") Upgrade
-                    div(class="price__feature")
-                        div Third-party S3 data sync and backup integration (
-                            em Storage service not included; purchase or set up your own
-                            | )
-                        div Third-party WebDAV data sync and backup integration (
-                            em Storage service not included; purchase or set up your own
-                            |,&nbsp;
-                            a(href="https://help.jianguoyun.com/?p=2064" target="_blank" class="link") Nutstore is not supported
-                            |)
-                div(class="feature__hr")
-                div(class="item item--block")
-                    h3 Subscription
-                    div(class="price__storage-summary price__storage-summary--official") Includes 8GB official cloud storage, ready to use
-                    div(class="item__money")
-                        small
-                            del $296
-                        | &nbsp;$148
-                        span Lifetime
-                    div(class="price__note")
-                        | 🔥&nbsp;
+                        span Powered by love
+                    a(href="download.html" class="pricing__button pricing__button--outline") Download
+                    ul(class="pricing__features")
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span Basic functions
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span Local storage, completely free
+                div(class="pricing__card pricing__card--pro")
+                    div(class="pricing__card-title")
+                        h3
+                            | PRO Features
+                            svg(class="pricing__plan-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" style="color:#c0c0c0" aria-hidden="true")
+                                path(d="M2.288 12.643l23.487 12.853c0.286 0.153 0.477 0.45 0.477 0.791 0 0.082-0.011 0.161-0.032 0.237l0.001-0.006c-0.119 0.395-0.479 0.678-0.905 0.678-0.004 0-0.009 0-0.013 0h-19.439c-0.958 0-1.766-0.684-1.885-1.595l-1.691-12.956z")
+                                path(d="M29.676 12.643l-1.691 12.957c-0.119 0.911-0.927 1.594-1.884 1.594h-19.442c-0.004 0-0.009 0-0.013 0-0.425 0-0.785-0.281-0.903-0.668l-0.002-0.007c-0.019-0.070-0.031-0.15-0.031-0.232 0-0.341 0.191-0.638 0.472-0.788l0.005-0.002 23.487-12.853z")
+                                path(d="M15.413 8.369l10.394 15.921c0.378 0.579 0.407 1.317 0.076 1.924-0.328 0.591-0.948 0.985-1.66 0.985 0 0-0.001 0-0.001 0h-17.617c-0.694 0-1.331-0.378-1.661-0.985-0.144-0.26-0.229-0.569-0.229-0.899 0-0.382 0.114-0.736 0.31-1.033l-0.004 0.007 10.394-15.921z")
+                                path(d="M15.396 8.403l11.659 15.921c0.401 0.579 0.432 1.317 0.081 1.924-0.361 0.594-1.005 0.985-1.741 0.985-0.008 0-0.017 0-0.025 0h-9.344l-0.63-18.83z")
+                                path(d="M13.868 6.478c0 0.946 0.767 1.712 1.712 1.712s1.712-0.767 1.712-1.712v0c0-0.945-0.766-1.712-1.712-1.712s-1.712 0.766-1.712 1.712v0zM28.577 10.818c0 0.945 0.766 1.712 1.712 1.712s1.712-0.766 1.712-1.712v0c0-0.945-0.766-1.712-1.712-1.712s-1.712 0.766-1.712 1.712v0zM0 10.822c0 0.945 0.766 1.712 1.712 1.712s1.712-0.766 1.712-1.712v0c0-0.945-0.766-1.712-1.712-1.712s-1.712 0.766-1.712 1.712v0z")
+                        span(class="pricing__badge") One-time
+                    div(class="pricing__storage-summary pricing__storage-summary--self-hosted") No storage included; third-party service required
+                    div(class="pricing__price")
+                        span(class="pricing__amount") $64
+                        span(class="pricing__period") Lifetime
+                        del(class="pricing__original") $96
+                    div(class="pricing__note") Pay once, use for life
+                    a(href="https://liuyun.io/one-time-pay/siyuan" target="_blank" class="pricing__button") Upgrade
+                    ul(class="pricing__features")
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span Basic functions
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span
+                                | Third-party S3 data sync and backup integration
+                                small(class="pricing__feature-note") Storage service not included; purchase or set up your own
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span
+                                | Third-party WebDAV data sync and backup integration
+                                small(class="pricing__feature-note")
+                                    | Storage service not included; purchase or set up your own,&nbsp;
+                                    a(href="https://help.jianguoyun.com/?p=2064" target="_blank" class="link") Nutstore is not supported
+                div(class="pricing__card pricing__card--subscription")
+                    div(class="pricing__card-title")
+                        h3
+                            | Subscription
+                            svg(class="pricing__plan-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" style="color:#f5b84f" aria-hidden="true")
+                                path(d="M2.288 12.643l23.487 12.853c0.286 0.153 0.477 0.45 0.477 0.791 0 0.082-0.011 0.161-0.032 0.237l0.001-0.006c-0.119 0.395-0.479 0.678-0.905 0.678-0.004 0-0.009 0-0.013 0h-19.439c-0.958 0-1.766-0.684-1.885-1.595l-1.691-12.956z")
+                                path(d="M29.676 12.643l-1.691 12.957c-0.119 0.911-0.927 1.594-1.884 1.594h-19.442c-0.004 0-0.009 0-0.013 0-0.425 0-0.785-0.281-0.903-0.668l-0.002-0.007c-0.019-0.070-0.031-0.15-0.031-0.232 0-0.341 0.191-0.638 0.472-0.788l0.005-0.002 23.487-12.853z")
+                                path(d="M15.413 8.369l10.394 15.921c0.378 0.579 0.407 1.317 0.076 1.924-0.328 0.591-0.948 0.985-1.66 0.985 0 0-0.001 0-0.001 0h-17.617c-0.694 0-1.331-0.378-1.661-0.985-0.144-0.26-0.229-0.569-0.229-0.899 0-0.382 0.114-0.736 0.31-1.033l-0.004 0.007 10.394-15.921z")
+                                path(d="M15.396 8.403l11.659 15.921c0.401 0.579 0.432 1.317 0.081 1.924-0.361 0.594-1.005 0.985-1.741 0.985-0.008 0-0.017 0-0.025 0h-9.344l-0.63-18.83z")
+                                path(d="M13.868 6.478c0 0.946 0.767 1.712 1.712 1.712s1.712-0.767 1.712-1.712v0c0-0.945-0.766-1.712-1.712-1.712s-1.712 0.766-1.712 1.712v0zM28.577 10.818c0 0.945 0.766 1.712 1.712 1.712s1.712-0.766 1.712-1.712v0c0-0.945-0.766-1.712-1.712-1.712s-1.712 0.766-1.712 1.712v0zM0 10.822c0 0.945 0.766 1.712 1.712 1.712s1.712-0.766 1.712-1.712v0c0-0.945-0.766-1.712-1.712-1.712s-1.712 0.766-1.712 1.712v0z")
+                        span(class="pricing__badge") 8GB cloud
+                    div(class="pricing__storage-summary pricing__storage-summary--official") Includes 8GB official cloud storage, ready to use
+                    div(class="pricing__price")
+                        span(class="pricing__amount") $148
+                        span(class="pricing__period") per year
+                        del(class="pricing__original") $296
+                    div(class="pricing__note")
+                        | 🔥
                         a(href="https://liuyun.io/article/1784295501588" target="_blank" class="link") Seats are limited
-                    a(href="https://liuyun.io/subscribe/siyuan" target="_blank" class="home__download") Subscribe
-                    div(class="price__feature")
-                        div Cloud assets hosting (Please refer to the User Guide - Assets hosting)
-                        div Includes 8GB official cloud storage
-                        div Official data sync and backup (ready to use)
-                        div Cloud Inbox
-                        div Third-party S3 data sync and backup integration (
-                            em Storage service not included; purchase or set up your own
-                            | )
-                        div Third-party WebDAV data sync and backup integration (
-                            em Storage service not included; purchase or set up your own
-                            |.&nbsp;
-                            a(href="https://help.jianguoyun.com/?p=2064" target="_blank" class="link") Nutstore is not supported
-                            | )
-            div
-                div(class="price price--hide")
-                    div(class="item item--label") Basic functions
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
-                div(class="price price--hide")
-                    div(class="item item--label")
-                        span(class="tip" aria-label="Please refer to the User Guide - Assets hosting")
-                            img(src="https://b3log.org/siyuan/static/icon-info.svg")
-                        | Cloud assets hosting
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-x.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-x.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
-                div(class="price price--hide")
-                    div(class="item item--label") Cloud Inbox
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-x.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-x.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
-                div(class="price price--hide")
-                    div(class="item item--label")
-                        span(class="tip" aria-label="The size of cloud space occupied by sync, backup and assets hosting, it will be completely cleared after the subscription expires")
-                            img(src="https://b3log.org/siyuan/static/icon-info.svg")
-                        | Official cloud storage included with subscription
-                    div(class="item") -
-                    div(class="item") -
-                    div(class="item") 8G
-                div(class="price price--hide")
-                    div(class="item item--label") Official data sync and backup (ready to use)
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-x.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-x.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
-                div(class="price price--hide")
-                    div(class="item item--label")
-                        | Third-party S3 data sync and backup integration
-                        br
-                        em(class="price__storage-requirement") Storage service not included; purchase or set up your own
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-x.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
-                div(class="price price--hide")
-                    div(class="item item--label")
-                        | Third-party WebDAV data sync and backup integration
-                        br
-                        em(class="price__storage-requirement")
-                            | Storage service not included; purchase or set up your own.&nbsp;
-                            a(href="https://help.jianguoyun.com/?p=2064" target="_blank" class="link") Nutstore is not supported
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-x.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
-                    div(class="item")
-                        img(src="https://b3log.org/siyuan/static/icon-check.svg")
+                    a(href="https://liuyun.io/subscribe/siyuan" target="_blank" class="pricing__button") Subscribe
+                    ul(class="pricing__features")
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span PRO Features
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span Cloud assets hosting
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span Cloud Inbox
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span Includes 8GB official cloud storage
+                        li(class="pricing__feature")
+                            img(src="https://b3log.org/siyuan/static/icon-check.svg" alt="")
+                            span Official data sync and backup
         div(class="feature__hr")
         div(class="feature wrapper faq")
             div(class="faq__inner")
