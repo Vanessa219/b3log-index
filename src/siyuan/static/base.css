@@ -819,8 +819,8 @@ kbd {
 }
 
 .pricing__card--subscription {
-    background: linear-gradient(180deg, #f4f8ff 0%, #fff 48%);
-    border-color: #8eb5ef;
+    background: linear-gradient(180deg, #f2fbf5 0%, #fff 48%);
+    border-color: #8bcf9f;
 }
 
 .pricing__card-title {
@@ -861,8 +861,8 @@ kbd {
 }
 
 .pricing__card--subscription .pricing__badge {
-    background: #e4f0ff;
-    color: #1464c0;
+    background: #e6f4ea;
+    color: #238636;
 }
 
 .pricing__storage-summary {
@@ -888,8 +888,8 @@ kbd {
 }
 
 .pricing__storage-summary--official {
-    background: #eaf2ff;
-    color: #035bd6;
+    background: #eaf7ee;
+    color: #238636;
 }
 
 .pricing__price {
