@@ -842,11 +842,16 @@ kbd {
 .price__storage-summary {
     border-radius: 12px;
     background-color: #f1f3f5;
+    box-sizing: border-box;
     color: #57606a;
+    display: flex;
     font-size: 13px;
     font-weight: 600;
+    justify-content: center;
     line-height: 20px;
+    min-height: 44px;
     padding: 2px 10px;
+    align-items: center;
 }
 
 .price__storage-summary--self-hosted {
@@ -857,6 +862,15 @@ kbd {
 .price__storage-summary--official {
     background-color: #eaf2ff;
     color: #035bd6;
+}
+
+.price__note {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: 24px;
+    min-height: 24px;
 }
 
 .price__storage-requirement {
@@ -906,6 +920,10 @@ kbd {
     line-height: 14px;
     width: auto;
     padding: 8px;
+}
+
+.price .item .home__download--outline {
+    margin-top: 27px;
 }
 
 .link {
