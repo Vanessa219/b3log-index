@@ -2,14 +2,14 @@ footer(class="footer")
     div(class="wrapper footer__inner")
         span(class="item" style="opacity: .75;") 滇ICP备14007358号-1     © 2023
             span(style="white-space: nowrap;") 云南链滴科技有限公司
-        a(class="item" href="download.html") 下载
-        a(class="item" href="pricing.html") 定价
-        a(class="item" href="sponsor.html") 赞助
-        a(class="item" href="eula.html") 用户协议
-        a(class="item" href="privacy.html") 隐私政策
+        a(class="item" href=homeHref + "download.html") 下载
+        a(class="item" href=homeHref + "pricing.html") 定价
+        a(class="item" href=homeHref + "sponsor.html") 赞助
+        a(class="item" href=homeHref + "eula.html") 用户协议
+        a(class="item" href=homeHref + "privacy.html") 隐私政策
         a(class="item" href="https://siyuan-cn.b3log.org" target="_blank") 指南
         a(class="item" href="https://github.com/orgs/siyuan-note/projects/1" target="_blank") 路线图
-        a(class="item" href=(typeof languageHref === "undefined" ? "en/?lang=en" : languageHref)) English
+        a(class="item" href=languageHref data-language-switch)= languageIsFallback ? "English homepage" : "English"
         span(class="fn__flex-1")
         div(class="fn__flex")
             a(class="icon" href="https://weibo.com/u/2778228501" target="_blank" rel="nofollow" title="微博")

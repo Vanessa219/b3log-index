@@ -1,7 +1,18 @@
 include ../version.pug
 
+block page
+- var sitePages = require("../../site-pages.json");
+- var page = sitePages[pageKey];
+- var siteRoot = "https://b3log.org/siyuan/";
+- var pagePath = (key) => key === "index" ? "" : key === "en/index" ? "en/" : key + ".html";
+- var canonicalUrl = siteRoot + pagePath(pageKey);
+- var relativeRoot = "../".repeat(pageKey.split("/").length - 1);
+- var homeHref = relativeRoot + (page.language === "en" ? "en/" : "") || "./";
+- var languageHref = relativeRoot + pagePath(page.alternate || "en/index");
+- var languageIsFallback = !page.alternate;
+
 doctype html
-html(lang="zh-cmn-Hans")
+html(lang=page.language === "zh" ? "zh-Hans" : "en")
     head
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
@@ -12,12 +23,23 @@ html(lang="zh-cmn-Hans")
         meta(name="mobile-web-app-capable" content="yes")
         meta(name="apple-mobile-web-app-status-bar-style" content="black")
         meta(http-equiv="Window-target" content="_top")
-        meta(property="og:locale" content="zh_CN")
+        meta(property="og:locale" content=page.language === "zh" ? "zh_CN" : "en_US")
         meta(property="og:image" content="https://b3log.org/images/brand/siyuan-128.png")
-        meta(property="og:url" content="https://b3log.org/siyuan")
-        block head
+        meta(property="og:url" content=canonicalUrl)
+        title= page.title
+        meta(name="description" content=page.description)
+        meta(property="og:title" content=page.title)
+        meta(property="og:description" content=page.description)
+        meta(property="og:site_name" content=page.language === "zh" ? "思源笔记" : "SiYuan")
+        link(rel="canonical" href=canonicalUrl)
+        if page.alternate
+            link(rel="alternate" hreflang=page.language === "zh" ? "zh-Hans" : "en" href=canonicalUrl)
+            link(rel="alternate" hreflang=sitePages[page.alternate].language === "zh" ? "zh-Hans" : "en" href=siteRoot + pagePath(page.alternate))
+        meta(name="twitter:card" content="summary_large_image")
+        meta(name="twitter:title" content=page.title)
+        meta(name="twitter:description" content=page.description)
         meta(name="twitter:image" content="https://b3log.org/images/brand/siyuan-128.png")
-        meta(name="twitter:url" content="https://b3log.org/siyuan")
+        meta(name="twitter:url" content=canonicalUrl)
         meta(name="twitter:site" content="@b3logos")
         meta(name="twitter:creator" content="@b3logos")
         link(rel="apple-touch-icon", href="https://b3log.org/images/brand/siyuan-128.png")
@@ -36,6 +58,9 @@ html(lang="zh-cmn-Hans")
                 document.write(`<link rel="stylesheet" type="text/css" href="${baseCss}">`);
             })();
     body
+        include language.pug
+        script.
+            const lang = !{JSON.stringify(page.language)};
         block content
         script.
             const isLocalAssetPreview = window.location.protocol === "file:" || ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
@@ -48,6 +73,12 @@ html(lang="zh-cmn-Hans")
                     const resource = element.getAttribute(attribute);
                     if (resource && resource.startsWith(remoteStaticRoot)) {
                         element.setAttribute(attribute, localStaticRoot + resource.slice(remoteStaticRoot.length));
+                    }
+                });
+                document.querySelectorAll("a[href]").forEach((element) => {
+                    const href = element.getAttribute("href");
+                    if (href && !/^(?:[a-z]+:|\/\/|#)/i.test(href) && href.endsWith("/")) {
+                        element.setAttribute("href", href + "index.html");
                     }
                 });
             }

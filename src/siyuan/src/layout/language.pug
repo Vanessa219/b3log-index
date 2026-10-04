@@ -1,0 +1,25 @@
+- var suggestedLanguage = page.language === "zh" ? "en" : "zh";
+div(class="language-prompt" data-language-prompt hidden lang=suggestedLanguage)
+    div(class="wrapper language-prompt__inner")
+        if suggestedLanguage === "en"
+            p Prefer English?
+            a(class="link" href=languageHref data-language-switch)= languageIsFallback ? "Go to the English homepage" : "Switch to English"
+            button(type="button" data-language-dismiss) Dismiss
+        else
+            p 想使用中文浏览？
+            a(class="link" href=languageHref data-language-switch) 切换到中文
+            button(type="button" data-language-dismiss) 关闭
+script.
+    (() => {
+        const prompt = document.querySelector("[data-language-prompt]");
+        const browserLanguage = (navigator.languages?.[0] || navigator.language || "").toLowerCase();
+        const preferredLanguage = browserLanguage.startsWith("zh") ? "zh" : "en";
+        const hasExplicitLanguage = new URLSearchParams(window.location.search).has("lang");
+        if (browserLanguage && preferredLanguage !== document.documentElement.lang.slice(0, 2) &&
+            !hasExplicitLanguage) {
+            prompt.hidden = false;
+        }
+        prompt.querySelector("[data-language-dismiss]").addEventListener("click", () => {
+            prompt.hidden = true;
+        });
+    })();

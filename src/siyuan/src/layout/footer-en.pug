@@ -2,14 +2,14 @@ footer(class="footer")
     div(class="wrapper footer__inner")
         span(class="item" style="opacity: .75;") 滇ICP备14007358号-1     © 2023
             span(style="white-space: nowrap;")  Yunnan Liandi Technology Co., Ltd.
-        a(class="item" href="download.html") Download
-        a(class="item" href="pricing.html") Pricing
-        a(class="item" href="sponsor.html") Sponsor
-        a(class="item" href="eula.html") User Agreement
-        a(class="item" href="privacy.html") Privacy Policy
+        a(class="item" href=homeHref + "download.html") Download
+        a(class="item" href=homeHref + "pricing.html") Pricing
+        a(class="item" href=homeHref + "sponsor.html") Sponsor
+        a(class="item" href=homeHref + "eula.html") User Agreement
+        a(class="item" href=homeHref + "privacy.html") Privacy Policy
         a(class="item" href="https://siyuan-en.b3log.org" target="_blank") Guide
         a(class="item" href="https://github.com/orgs/siyuan-note/projects/1" target="_blank") Roadmap
-        a(class="item" href=(typeof languageHref === "undefined" ? "../?lang=cn" : languageHref)) 中文
+        a(class="item" href=languageHref data-language-switch) 中文
         span(class="fn__flex-1")
         div(class="fn__flex")
             a(class="icon" href="https://twitter.com/b3logos" target="_blank" rel="nofollow" title="Twitter")

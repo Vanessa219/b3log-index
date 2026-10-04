@@ -1,8 +1,7 @@
 extends ../layout/layout.pug
 
-block head
-    - var title = ""
-    include ../layout/head-en.pug
+block page
+    - var pageKey = "en/index";
 
 block content
     main(class="home")
@@ -12,6 +11,7 @@ block content
             div(class="home__side")
                 h2(class="home__slogan") From thought to insight, with agents
                 h2(class="home__desc") WYSIWYG&emsp;Block Ref&emsp;E2EE Sync&emsp;Privacy-first
+                p(class="home__desc home__intro") SiYuan is an open-source, local-first, privacy-first note-taking app with Markdown, block references, bidirectional links, databases, and multi-device sync
                 div(class="home__download-wrap")
                     a(
                         class="home__download-card"

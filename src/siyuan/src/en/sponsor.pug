@@ -1,14 +1,12 @@
 extends ../layout/layout.pug
 
-block head
-    - var title = "Sponsor - "
-    include ../layout/head-en.pug
+block page
+    - var pageKey = "en/sponsor";
 
 block content
     div(style="position: relative;overflow: hidden;")
         img(style="position: absolute" src="https://b3log.org/siyuan/static/img-bg4.svg")
         - var headerClass = "header header--black"
-        - var languageHref = "../sponsor.html?lang=cn"
         include ../layout/header-en.pug
         div(class="feature__hr")
         div(class="feature__hr")

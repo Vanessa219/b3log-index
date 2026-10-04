@@ -1,0 +1,91 @@
+{
+  "index": {
+    "language": "zh",
+    "alternate": "en/index",
+    "title": "思源笔记 - 开源、本地优先、隐私优先的个人知识管理软件",
+    "description": "思源笔记是一款开源、本地优先、隐私优先的笔记软件，支持 Markdown、块级引用、双向链接、数据库和多设备同步，帮助你管理个人知识"
+  },
+  "download": {
+    "language": "zh",
+    "alternate": "en/download",
+    "title": "下载思源笔记 - Windows、macOS、Linux、Android 和 iOS",
+    "description": "下载思源笔记桌面版和移动版，查看 Windows、macOS、Linux、Android、iOS、Docker 及浏览器剪藏扩展的官方入口，了解数据存储、开源和付费功能"
+  },
+  "pricing": {
+    "language": "zh",
+    "alternate": "en/pricing",
+    "title": "思源笔记定价 - 免费功能、专业功能与订阅",
+    "description": "了解思源笔记的免费功能、一次性付费专业功能及官方云服务订阅，对比功能和存储方案，选择适合自己的使用方式"
+  },
+  "community": {
+    "language": "zh",
+    "alternate": "en/community",
+    "title": "思源笔记社区 - 交流、贡献与路线图",
+    "description": "访问思源笔记社区、开源仓库、集市和路线图，交流使用经验，反馈问题，参与项目贡献"
+  },
+  "sponsor": {
+    "language": "zh",
+    "alternate": "en/sponsor",
+    "title": "赞助思源笔记 - 支持开源项目持续发展",
+    "description": "通过官方赞助入口支持思源笔记的持续开发和维护"
+  },
+  "eula": {
+    "language": "zh",
+    "alternate": "en/eula",
+    "title": "思源笔记用户协议",
+    "description": "阅读思源笔记用户协议，了解开源许可、云服务使用条件和相关权利义务"
+  },
+  "privacy": {
+    "language": "zh",
+    "alternate": "en/privacy",
+    "title": "思源笔记隐私政策",
+    "description": "阅读思源笔记隐私政策，了解个人信息的收集、使用、存储和保护，以及用户的相关权利"
+  },
+  "distributors/lizhi": {
+    "language": "zh",
+    "title": "思源笔记授权经销商 - 数码荔枝",
+    "description": "查看思源笔记对数码荔枝的官方授权证明及授权销售渠道"
+  },
+  "en/index": {
+    "language": "en",
+    "alternate": "index",
+    "title": "SiYuan - Open-source, local-first, privacy-first personal knowledge management",
+    "description": "SiYuan is an open-source, local-first, privacy-first note-taking app with Markdown, block references, bidirectional links, databases, and multi-device sync for personal knowledge management"
+  },
+  "en/download": {
+    "language": "en",
+    "alternate": "download",
+    "title": "Download SiYuan - Windows, macOS, Linux, Android, and iOS",
+    "description": "Download SiYuan for desktop and mobile, find official Docker and web clipper links, and learn about data storage, open source, and paid features"
+  },
+  "en/pricing": {
+    "language": "en",
+    "alternate": "pricing",
+    "title": "SiYuan Pricing - Free Features, PRO Features, and Subscription",
+    "description": "Compare SiYuan's free features, one-time PRO purchase, and official cloud subscription, including feature and storage options"
+  },
+  "en/community": {
+    "language": "en",
+    "alternate": "community",
+    "title": "SiYuan Community - Discussion, Contributions, and Roadmap",
+    "description": "Find SiYuan's community, open-source repositories, marketplace, and roadmap to share ideas, report issues, and contribute"
+  },
+  "en/sponsor": {
+    "language": "en",
+    "alternate": "sponsor",
+    "title": "Sponsor SiYuan - Support Open-source Development",
+    "description": "Support SiYuan's ongoing development and maintenance through the official sponsorship channel"
+  },
+  "en/eula": {
+    "language": "en",
+    "alternate": "eula",
+    "title": "SiYuan User Agreement",
+    "description": "Read SiYuan's user agreement to understand the open-source license, cloud service terms, and related rights and obligations"
+  },
+  "en/privacy": {
+    "language": "en",
+    "alternate": "privacy",
+    "title": "SiYuan Privacy Policy",
+    "description": "Read SiYuan's privacy policy to learn how personal information is collected, used, stored, and protected, and understand your rights"
+  }
+}

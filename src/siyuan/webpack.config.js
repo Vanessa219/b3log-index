@@ -1,48 +1,56 @@
-const path = require('path')
-const PugPlugin = require('pug-plugin')
+const path = require("path");
+const PugPlugin = require("pug-plugin");
+const sitePages = require("./site-pages.json");
 
 module.exports = (env, argv) => {
   return {
-    mode: argv.mode || 'development',
-    watch: argv.mode !== 'production',
-    devtool: argv.mode !== 'production' ? 'eval' : false,
+    mode: argv.mode || "development",
+    watch: argv.mode !== "production",
+    devtool: argv.mode !== "production" ? "eval" : false,
     resolve: {
-      extensions: ['.pug'],
+      extensions: [".pug"],
     },
     output: {
-      publicPath: '',
-      path: path.resolve(__dirname, 'dist'),
+      publicPath: "",
+      path: path.resolve(__dirname, "dist"),
     },
-    entry: {
-      index: './src/index.pug',
-      eula: './src/eula.pug',
-      community: './src/community.pug',
-      sponsor: './src/sponsor.pug',
-      pricing: './src/pricing.pug',
-      privacy: './src/privacy.pug',
-      download: './src/download.pug',
-      'distributors/lizhi': './src/distributors/lizhi.pug',
-      'en/index': './src/en/index.pug',
-      "en/eula": './src/en/eula.pug',
-      "en/community": './src/en/community.pug',
-      "en/sponsor": './src/en/sponsor.pug',
-      "en/pricing": './src/en/pricing.pug',
-      "en/privacy": './src/en/privacy.pug',
-      "en/download": './src/en/download.pug',
-    },
+    entry: Object.fromEntries(Object.keys(sitePages).map((key) => [key, `./src/${key}.pug`])),
     plugins: [
       new PugPlugin(),
+      {
+        apply(compiler) {
+          compiler.hooks.thisCompilation.tap("SiYuanSitemap", (compilation) => {
+            compilation.hooks.processAssets.tap({
+              name: "SiYuanSitemap",
+              stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
+            }, () => {
+              const urls = Object.keys(sitePages).map((key) => {
+                const pagePath = key === "index" ? "" : key === "en/index" ? "en/" : key + ".html";
+                return `  <url><loc>https://b3log.org/siyuan/${pagePath}</loc></url>`;
+              });
+              const sitemap = [
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+                "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">",
+                ...urls,
+                "</urlset>",
+                "",
+              ].join("\n");
+              compilation.emitAsset("sitemap.xml", new compiler.webpack.sources.RawSource(sitemap));
+            });
+          });
+        },
+      },
     ],
     module: {
       rules: [
         {
           test: /\.pug$/,
-          loader: PugPlugin.loader, // PugPlugin already contain the pug-loader
+          loader: PugPlugin.loader,
           options: {
-            method: 'render', // fastest method to generate static HTML files
+            method: "render",
           },
         },
       ],
     },
-  }
-}
+  };
+};

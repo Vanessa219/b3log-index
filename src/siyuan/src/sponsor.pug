@@ -1,18 +1,12 @@
 extends layout/layout.pug
 
-block head
-    - var title = "赞助 - "
-    include layout/head.pug
-    script.
-        if (navigator.language.indexOf("zh") === -1 && window.location.search.indexOf("lang") === -1) {
-            window.location.replace("en/sponsor.html");
-        }
+block page
+    - var pageKey = "sponsor";
 
 block content
     div(style="position: relative;overflow: hidden;")
         img(style="position: absolute" src="https://b3log.org/siyuan/static/img-bg4.svg")
         - var headerClass = "header--black header"
-        - var languageHref = "en/sponsor.html?lang=en"
         include layout/header.pug
         div(class="feature__hr")
         div(class="feature__hr")

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "packageManager": "pnpm@11.22.0",
   "scripts": {
+    "test": "node --test tests/seo.test.js",
     "build": "webpack --mode production",
     "dev": "webpack --mode development"
   },
